@@ -1,0 +1,6 @@
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DTO\bin\Debug\DTO.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DTO\bin\Debug\DTO.pdb
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.pdb

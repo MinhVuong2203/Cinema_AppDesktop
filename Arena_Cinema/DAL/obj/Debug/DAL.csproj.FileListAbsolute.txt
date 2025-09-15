@@ -1,0 +1,13 @@
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\bin\Debug\DAL.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\bin\Debug\DAL.pdb
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\bin\Debug\Common.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\bin\Debug\Database.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\bin\Debug\DTO.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\bin\Debug\Common.pdb
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\bin\Debug\Database.pdb
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\bin\Debug\DTO.pdb
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\obj\Debug\DAL.csproj.Up2Date
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\obj\Debug\DAL.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DAL\obj\Debug\DAL.pdb
