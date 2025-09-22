@@ -38,6 +38,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnChangeLang = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -140,6 +141,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin đăng nhập";
             // 
+            // btnChangeLang
+            // 
+            this.btnChangeLang.Location = new System.Drawing.Point(480, 20);
+            this.btnChangeLang.Name = "btnChangeLang";
+            this.btnChangeLang.Size = new System.Drawing.Size(80, 24);
+            this.btnChangeLang.TabIndex = 9;
+            this.btnChangeLang.Text = "EN";
+            this.btnChangeLang.UseVisualStyleBackColor = true;
+            this.btnChangeLang.Click += new System.EventHandler(this.btnChangeLang_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +159,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnChangeLang);
             this.Name = "Login";
             this.Text = "Login";
             this.groupBox1.ResumeLayout(false);
@@ -170,7 +182,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnChangeLang;
 
-  
+
     }
 }
