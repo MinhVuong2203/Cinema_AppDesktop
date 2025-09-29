@@ -18,3 +18,11 @@ D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.pdb
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\DAL.dll
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\DAL.pdb
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.exe.config
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\vi\UI.resources.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Login.vi.resources
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\vi\UI.resources.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\ReaLTaiizor.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\ReaLTaiizor.xml
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\en\UI.resources.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Login.en.resources
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\en\UI.resources.dll

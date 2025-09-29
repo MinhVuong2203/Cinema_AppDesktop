@@ -15,9 +15,9 @@ namespace BLL
            
         }
 
-        public TaiKhoan Login(string username, string password)
-        {
-                return taiKhoanDAL.GetTaiKhoan(username, password);           
-        }
+        //public TaiKhoan Login(string username, string password)
+        //{
+        //        return taiKhoanDAL.GetTaiKhoan(username, password);           
+        //}
     }
 }

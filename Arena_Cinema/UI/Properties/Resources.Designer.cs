@@ -63,9 +63,39 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap yasuo {
+        internal static System.Drawing.Bitmap background_Login_img {
             get {
-                object obj = ResourceManager.GetObject("yasuo", resourceCulture);
+                object obj = ResourceManager.GetObject("background_Login_img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap background_Login_img_4 {
+            get {
+                object obj = ResourceManager.GetObject("background_Login_img_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CoVietNam {
+            get {
+                object obj = ResourceManager.GetObject("CoVietNam", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CoVietNam1 {
+            get {
+                object obj = ResourceManager.GetObject("CoVietNam1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
