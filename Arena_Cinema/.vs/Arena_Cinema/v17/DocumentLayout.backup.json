@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|d:\\dai hoc\\csharp\\btl\\code\\cinema_appdesktop\\arena_cinema\\ui\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|solutionrelative:ui\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\ui\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|solutionrelative:ui\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
@@ -54,11 +58,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 132,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Login.cs",
+              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.cs",
+              "RelativeDocumentMoniker": "UI\\Login.cs",
+              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.cs",
+              "RelativeToolTip": "UI\\Login.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAawCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T06:07:22.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Person.cs",
               "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Person.cs",
               "RelativeDocumentMoniker": "DTO\\Person.cs",
@@ -71,19 +88,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Login.cs [Design]",
               "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.cs",
               "RelativeDocumentMoniker": "UI\\Login.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.cs [Design]*",
-              "RelativeToolTip": "UI\\Login.cs [Design]*",
+              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.cs [Design]",
+              "RelativeToolTip": "UI\\Login.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-28T14:57:43.237Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Employee.cs",
               "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Employee.cs",
               "RelativeDocumentMoniker": "DTO\\Employee.cs",
@@ -95,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TaiKhoanBLL.cs",
               "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\BLL\\TaiKhoanBLL.cs",
               "RelativeDocumentMoniker": "BLL\\TaiKhoanBLL.cs",
@@ -107,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "LanguageHelper.cs",
               "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\Common\\LanguageHelper.cs",
               "RelativeDocumentMoniker": "Common\\LanguageHelper.cs",
@@ -119,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Quyen.cs",
               "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Quyen.cs",
               "RelativeDocumentMoniker": "DTO\\Quyen.cs",
@@ -131,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "SqlConnectData.cs",
               "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DAL\\SqlConnectData.cs",
               "RelativeDocumentMoniker": "DAL\\SqlConnectData.cs",
@@ -143,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "TaiKhoanDAL.cs",
               "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DAL\\TaiKhoanDAL.cs",
               "RelativeDocumentMoniker": "DAL\\TaiKhoanDAL.cs",
@@ -155,7 +172,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Program.cs",
               "RelativeDocumentMoniker": "UI\\Program.cs",
@@ -167,7 +184,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "RoundedPanel.cs",
               "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Controls\\RoundedPanel.cs",
               "RelativeDocumentMoniker": "UI\\Controls\\RoundedPanel.cs",
@@ -179,7 +196,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "RoundedButton.cs",
               "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Controls\\RoundedButton.cs",
               "RelativeDocumentMoniker": "UI\\Controls\\RoundedButton.cs",
