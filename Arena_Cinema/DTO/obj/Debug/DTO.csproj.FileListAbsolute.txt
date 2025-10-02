@@ -4,3 +4,9 @@ D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.cspr
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.dll
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.pdb
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\DTO\bin\Debug\DTO.dll
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\DTO\bin\Debug\DTO.pdb
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.dll
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\DTO\obj\Debug\DTO.pdb

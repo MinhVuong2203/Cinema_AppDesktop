@@ -1,66 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\",
+  "WorkspaceRootPath": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\ui\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|solutionrelative:ui\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|c:\\users\\pc\\onedrive\\m\u00E1y t\u00EDnh\\cinema_appdesktop\\arena_cinema\\dto\\movieproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|solutionrelative:dto\\movieproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B2B11246-A419-48A0-8D85-B4319417C9FE}|BLL\\BLL.csproj|d:\\dai hoc\\csharp\\btl\\code\\cinema_appdesktop\\arena_cinema\\bll\\employeebll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2B11246-A419-48A0-8D85-B4319417C9FE}|BLL\\BLL.csproj|solutionrelative:bll\\employeebll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\dto\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|solutionrelative:dto\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90680A13-43E5-4587-B35E-ACA4E4FFF6BD}|DAL\\DAL.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\dal\\employeedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90680A13-43E5-4587-B35E-ACA4E4FFF6BD}|DAL\\DAL.csproj|solutionrelative:dal\\employeedal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\dto\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|solutionrelative:dto\\movie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\dto\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|solutionrelative:dto\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\dto\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|solutionrelative:dto\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90680A13-43E5-4587-B35E-ACA4E4FFF6BD}|DAL\\DAL.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\dal\\taikhoandal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90680A13-43E5-4587-B35E-ACA4E4FFF6BD}|DAL\\DAL.csproj|solutionrelative:dal\\taikhoandal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90680A13-43E5-4587-B35E-ACA4E4FFF6BD}|DAL\\DAL.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\dal\\sqlconnectdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90680A13-43E5-4587-B35E-ACA4E4FFF6BD}|DAL\\DAL.csproj|solutionrelative:dal\\sqlconnectdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2B11246-A419-48A0-8D85-B4319417C9FE}|BLL\\BLL.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\bll\\taikhoanbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2B11246-A419-48A0-8D85-B4319417C9FE}|BLL\\BLL.csproj|solutionrelative:bll\\taikhoanbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\dto\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\dto\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|solutionrelative:dto\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\ui\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|solutionrelative:ui\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|solutionrelative:ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\dto\\quyen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\dto\\quyen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A50BC5AA-EAAA-435C-917E-46150F02537C}|DTO\\DTO.csproj|solutionrelative:dto\\quyen.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\ui\\login.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{90680A13-43E5-4587-B35E-ACA4E4FFF6BD}|DAL\\DAL.csproj|C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\dal\\sqlconnectdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90680A13-43E5-4587-B35E-ACA4E4FFF6BD}|DAL\\DAL.csproj|solutionrelative:dal\\sqlconnectdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\ui\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|solutionrelative:ui\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|solutionrelative:ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\ui\\login.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|solutionrelative:ui\\login.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\ui\\controls\\roundedbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\ui\\controls\\roundedbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|solutionrelative:ui\\controls\\roundedbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\ui\\controls\\roundedpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7B431444-EC67-4E87-A00A-E4EC5E5D0044}|UI\\UI.csproj|solutionrelative:ui\\controls\\roundedpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,78 +50,52 @@
       "DocumentGroups": [
         {
           "DockedWidth": 132,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Person.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Person.cs",
-              "RelativeDocumentMoniker": "DTO\\Person.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Person.cs",
-              "RelativeToolTip": "DTO\\Person.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAqwBAAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T03:51:49.259Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "TaiKhoanBLL.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\BLL\\TaiKhoanBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\TaiKhoanBLL.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\BLL\\TaiKhoanBLL.cs",
-              "RelativeToolTip": "BLL\\TaiKhoanBLL.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAASwAsAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:03:53.805Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "EmployeeBLL.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\BLL\\EmployeeBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\EmployeeBLL.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\BLL\\EmployeeBLL.cs",
-              "RelativeToolTip": "BLL\\EmployeeBLL.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAcAAAAAAAAAA==",
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Product.cs",
+              "RelativeDocumentMoniker": "DTO\\Product.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Product.cs",
+              "RelativeToolTip": "DTO\\Product.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAUwBsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-01T15:02:09.709Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-02T13:46:56.23Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Login.cs [Design]",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.cs",
-              "RelativeDocumentMoniker": "UI\\Login.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.cs [Design]",
-              "RelativeToolTip": "UI\\Login.cs [Design]",
+              "Title": "MovieProduct.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\MovieProduct.cs",
+              "RelativeDocumentMoniker": "DTO\\MovieProduct.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\MovieProduct.cs",
+              "RelativeToolTip": "DTO\\MovieProduct.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAwwBsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-01T15:00:31.241Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-10-02T13:42:41.56Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "EmployeeDAL.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DAL\\EmployeeDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\EmployeeDAL.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DAL\\EmployeeDAL.cs",
-              "RelativeToolTip": "DAL\\EmployeeDAL.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAApwC4AAAANAAAAAAAAAA==",
+              "Title": "Movie.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Movie.cs",
+              "RelativeDocumentMoniker": "DTO\\Movie.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Movie.cs",
+              "RelativeToolTip": "DTO\\Movie.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAmwCUAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-01T15:10:41.106Z"
+              "WhenOpened": "2025-10-02T13:33:10.802Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "SqlConnectData.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DAL\\SqlConnectData.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DAL\\SqlConnectData.cs",
               "RelativeDocumentMoniker": "DAL\\SqlConnectData.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DAL\\SqlConnectData.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DAL\\SqlConnectData.cs",
               "RelativeToolTip": "DAL\\SqlConnectData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -149,35 +103,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TaiKhoanDAL.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DAL\\TaiKhoanDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\TaiKhoanDAL.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DAL\\TaiKhoanDAL.cs",
-              "RelativeToolTip": "DAL\\TaiKhoanDAL.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACIAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T13:03:10.73Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Employee.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Employee.cs",
-              "RelativeDocumentMoniker": "DTO\\Employee.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Employee.cs",
-              "RelativeToolTip": "DTO\\Employee.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAYwBQAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-01T14:13:50.889Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "Customer.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Customer.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Customer.cs",
               "RelativeDocumentMoniker": "DTO\\Customer.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Customer.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Customer.cs",
               "RelativeToolTip": "DTO\\Customer.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -185,11 +115,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Program.cs",
               "RelativeDocumentMoniker": "UI\\Program.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Program.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Program.cs",
               "RelativeToolTip": "UI\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -197,61 +127,47 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 4,
               "Title": "Quyen.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Quyen.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Quyen.cs",
               "RelativeDocumentMoniker": "DTO\\Quyen.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Quyen.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\DTO\\Quyen.cs",
               "RelativeToolTip": "DTO\\Quyen.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-28T13:03:29.809Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 6,
               "Title": "Login.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.cs",
               "RelativeDocumentMoniker": "UI\\Login.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.cs",
               "RelativeToolTip": "UI\\Login.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAADgvxgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-29T06:07:22.53Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-29T06:07:22.53Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 8,
               "Title": "Login.Designer.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.Designer.cs",
               "RelativeDocumentMoniker": "UI\\Login.Designer.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.Designer.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Login.Designer.cs",
               "RelativeToolTip": "UI\\Login.Designer.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-30T09:51:12.904Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-09-30T09:51:12.904Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "RoundedPanel.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Controls\\RoundedPanel.cs",
-              "RelativeDocumentMoniker": "UI\\Controls\\RoundedPanel.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Controls\\RoundedPanel.cs",
-              "RelativeToolTip": "UI\\Controls\\RoundedPanel.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAgwEAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-28T14:22:52.499Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 9,
               "Title": "RoundedButton.cs",
-              "DocumentMoniker": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Controls\\RoundedButton.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Controls\\RoundedButton.cs",
               "RelativeDocumentMoniker": "UI\\Controls\\RoundedButton.cs",
-              "ToolTip": "D:\\DAI HOC\\CSharp\\BTL\\Code\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Controls\\RoundedButton.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\M\u00E1y t\u00EDnh\\Cinema_AppDesktop\\Arena_Cinema\\UI\\Controls\\RoundedButton.cs",
               "RelativeToolTip": "UI\\Controls\\RoundedButton.cs",
               "ViewState": "AgIAADcAAAAAAAAAAAAgwF0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

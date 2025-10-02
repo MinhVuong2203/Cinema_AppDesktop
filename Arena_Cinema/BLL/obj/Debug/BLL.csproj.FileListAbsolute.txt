@@ -11,3 +11,16 @@ D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\BLL\obj\Debug\BLL.cspr
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\BLL\obj\Debug\BLL.csproj.Up2Date
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\BLL\obj\Debug\BLL.dll
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\BLL\obj\Debug\BLL.pdb
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\bin\Debug\BLL.dll
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\bin\Debug\BLL.pdb
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\bin\Debug\Common.dll
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\bin\Debug\DAL.dll
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\bin\Debug\DTO.dll
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\bin\Debug\Common.pdb
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\bin\Debug\DAL.pdb
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\bin\Debug\DTO.pdb
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\obj\Debug\BLL.csproj.Up2Date
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\obj\Debug\BLL.dll
+C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\BLL\obj\Debug\BLL.pdb
