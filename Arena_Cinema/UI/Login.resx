@@ -118,31 +118,57 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnLanguege.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 551</value>
+  <data name="btnShowPass.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnLanguege.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="btnShowPass.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 165</value>
   </data>
-  <data name="btnLanguege.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 31</value>
+  <data name="btnShowPass.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="btnLanguege.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="btnShowPass.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
-  <data name="&gt;&gt;btnLanguege.Name" xml:space="preserve">
-    <value>btnLanguege</value>
+  <data name="&gt;&gt;btnShowPass.Name" xml:space="preserve">
+    <value>btnShowPass</value>
   </data>
-  <data name="&gt;&gt;btnLanguege.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnShowPass.Type" xml:space="preserve">
     <value>ReaLTaiizor.Controls.ParrotButton, ReaLTaiizor, Version=3.8.1.3, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;btnLanguege.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;btnShowPass.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;btnLanguege.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnShowPass.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="btnForgotPassword.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="btnForgotPassword.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 197</value>
+  </data>
+  <data name="btnForgotPassword.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 28</value>
+  </data>
+  <data name="btnForgotPassword.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="btnForgotPassword.Text" xml:space="preserve">
+    <value>Quên mật khẩu?</value>
+  </data>
+  <data name="&gt;&gt;btnForgotPassword.Name" xml:space="preserve">
+    <value>btnForgotPassword</value>
+  </data>
+  <data name="&gt;&gt;btnForgotPassword.Type" xml:space="preserve">
+    <value>ReaLTaiizor.Controls.MetroButton, ReaLTaiizor, Version=3.8.1.3, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnForgotPassword.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnForgotPassword.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="btnLogin.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
@@ -150,6 +176,7 @@
   <data name="btnLogin.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 241</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnLogin.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
   </data>
@@ -172,7 +199,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;btnLogin.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="skyButton1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
@@ -202,7 +229,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;skyButton1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="tbPassword.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
@@ -214,7 +241,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tbPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 34</value>
+    <value>329, 29</value>
   </data>
   <data name="tbPassword.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -232,7 +259,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;tbPassword.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -250,7 +277,7 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 28</value>
+    <value>94, 21</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -268,7 +295,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="tbUsername.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 12pt</value>
@@ -280,7 +307,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tbUsername.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 34</value>
+    <value>329, 29</value>
   </data>
   <data name="tbUsername.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -298,7 +325,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;tbUsername.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -316,7 +343,7 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 28</value>
+    <value>96, 21</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -334,7 +361,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 15.75pt, style=Bold</value>
@@ -418,25 +445,22 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
-  </data>
   <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1148, 597</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Đăng nhập</value>

@@ -8,6 +8,9 @@ namespace UI
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        public string lang = "en";
+        public bool isShow = true; 
+
 
         /// <summary>
         /// Clean up any resources being used.
@@ -31,9 +34,10 @@ namespace UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.btnLanguege = new ReaLTaiizor.Controls.ParrotButton();
             this.panel = new UI.Controls.RoundedPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnShowPass = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnForgotPassword = new ReaLTaiizor.Controls.MetroButton();
             this.btnLogin = new ReaLTaiizor.Controls.SkyButton();
             this.skyButton1 = new ReaLTaiizor.Controls.SkyButton();
             this.tbPassword = new System.Windows.Forms.TextBox();
@@ -44,28 +48,6 @@ namespace UI
             this.panel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnLanguege
-            // 
-            this.btnLanguege.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnLanguege.ButtonImage = global::UI.Properties.Resources.CoVietNam1;
-            this.btnLanguege.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnLanguege.ButtonText = "Việt Nam";
-            this.btnLanguege.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
-            this.btnLanguege.ClickTextColor = System.Drawing.Color.DodgerBlue;
-            this.btnLanguege.CornerRadius = 10;
-            this.btnLanguege.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLanguege.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnLanguege.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btnLanguege.HoverTextColor = System.Drawing.Color.DodgerBlue;
-            this.btnLanguege.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            resources.ApplyResources(this.btnLanguege, "btnLanguege");
-            this.btnLanguege.Name = "btnLanguege";
-            this.btnLanguege.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnLanguege.TextColor = System.Drawing.Color.DodgerBlue;
-            this.btnLanguege.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnLanguege.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnLanguege.Click += new System.EventHandler(this.btnLanguege_Click);
             // 
             // panel
             // 
@@ -80,6 +62,8 @@ namespace UI
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnShowPass);
+            this.groupBox1.Controls.Add(this.btnForgotPassword);
             this.groupBox1.Controls.Add(this.btnLogin);
             this.groupBox1.Controls.Add(this.skyButton1);
             this.groupBox1.Controls.Add(this.tbPassword);
@@ -90,6 +74,50 @@ namespace UI
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btnShowPass
+            // 
+            this.btnShowPass.BackgroundColor = System.Drawing.Color.White;
+            this.btnShowPass.ButtonImage = global::UI.Properties.Resources.OpenEyes1;
+            this.btnShowPass.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnShowPass.ButtonText = "";
+            this.btnShowPass.ClickBackColor = System.Drawing.Color.White;
+            this.btnShowPass.ClickTextColor = System.Drawing.Color.White;
+            this.btnShowPass.CornerRadius = 5;
+            this.btnShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
+            resources.ApplyResources(this.btnShowPass, "btnShowPass");
+            this.btnShowPass.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnShowPass.HoverBackgroundColor = System.Drawing.Color.White;
+            this.btnShowPass.HoverTextColor = System.Drawing.Color.White;
+            this.btnShowPass.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnShowPass.Name = "btnShowPass";
+            this.btnShowPass.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnShowPass.TextColor = System.Drawing.Color.Black;
+            this.btnShowPass.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnShowPass.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
+            // 
+            // btnForgotPassword
+            // 
+            this.btnForgotPassword.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnForgotPassword.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(177)))), ((int)(((byte)(225)))));
+            this.btnForgotPassword.DisabledForeColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(this.btnForgotPassword, "btnForgotPassword");
+            this.btnForgotPassword.HoverBorderColor = System.Drawing.Color.White;
+            this.btnForgotPassword.HoverColor = System.Drawing.Color.White;
+            this.btnForgotPassword.HoverTextColor = System.Drawing.Color.IndianRed;
+            this.btnForgotPassword.IsDerivedStyle = true;
+            this.btnForgotPassword.Name = "btnForgotPassword";
+            this.btnForgotPassword.NormalBorderColor = System.Drawing.Color.White;
+            this.btnForgotPassword.NormalColor = System.Drawing.Color.White;
+            this.btnForgotPassword.NormalTextColor = System.Drawing.Color.Black;
+            this.btnForgotPassword.PressBorderColor = System.Drawing.Color.White;
+            this.btnForgotPassword.PressColor = System.Drawing.Color.White;
+            this.btnForgotPassword.PressTextColor = System.Drawing.Color.Red;
+            this.btnForgotPassword.Style = ReaLTaiizor.Enum.Metro.Style.Custom;
+            this.btnForgotPassword.StyleManager = null;
+            this.btnForgotPassword.ThemeAuthor = "Taiizor";
+            this.btnForgotPassword.ThemeName = "MetroLight";
             // 
             // btnLogin
             // 
@@ -193,10 +221,9 @@ namespace UI
             // 
             // Login
             // 
-            resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::UI.Properties.Resources.background_Login_img;
-            this.Controls.Add(this.btnLanguege);
+            resources.ApplyResources(this, "$this");
             this.Controls.Add(this.panel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -210,16 +237,16 @@ namespace UI
         }
 
         #endregion
-
-        private RoundedPanel panel;
         private RoundedPanel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
+        private ReaLTaiizor.Controls.SkyButton btnLogin;
+        private ReaLTaiizor.Controls.SkyButton skyButton1;
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbUsername;
-        private ReaLTaiizor.Controls.SkyButton skyButton1;
-        private ReaLTaiizor.Controls.SkyButton btnLogin;
-        private ReaLTaiizor.Controls.ParrotButton btnLanguege;
+        private System.Windows.Forms.Label label1;
+        private RoundedPanel panel;
+        private ReaLTaiizor.Controls.MetroButton btnForgotPassword;
+        private ReaLTaiizor.Controls.ParrotButton btnShowPass;
     }
 }

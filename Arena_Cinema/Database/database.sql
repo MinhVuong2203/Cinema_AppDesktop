@@ -25,8 +25,10 @@ CREATE TABLE Customer (
     FullName NVARCHAR(100),
     Phone VARCHAR(20) UNIQUE,
     Email NVARCHAR(100) UNIQUE,
+	BirthDate NVARCHAR(100),
+	Gender NVARCHAR(10),
     RegisterDate DATE DEFAULT GETDATE(),
-    Point INT DEFAULT 0 CHECK (Point >= 0),
+    Point DECIMAL(18,2) DEFAULT 0 CHECK (Point >= 0),
     VipLevel INT DEFAULT 0 CHECK (VipLevel >= 0),
     IsDeleted BIT DEFAULT 0 NOT NULL
 );
@@ -111,8 +113,8 @@ CREATE TABLE Ticket (
     Price DECIMAL(18,2) CHECK (Price >= 0),
     Status NVARCHAR(20), -- có sẵn, đã bán
     IsDeleted BIT DEFAULT 0 NOT NULL,
-    FOREIGN KEY (ShowTimeID) REFERENCES ShowTime(ShowTimeID) ON DELETE CASCADE,
-    FOREIGN KEY (SeatID) REFERENCES Seat(SeatID) ON DELETE CASCADE,
+    FOREIGN KEY (ShowTimeID) REFERENCES ShowTime(ShowTimeID),
+    FOREIGN KEY (SeatID) REFERENCES Seat(SeatID),
     CONSTRAINT UQ_Ticket UNIQUE (ShowTimeID, SeatID)
 );
 
@@ -138,6 +140,7 @@ CREATE TABLE MovieProduct (
     CONSTRAINT UQ_MovieProduct UNIQUE (MovieID, ProductID)
 );
 
+-- INVOICE GROUP
 CREATE TABLE Invoice (
     InvoiceID INT PRIMARY KEY IDENTITY(1,1),
     EmployeeID INT,
@@ -173,6 +176,7 @@ CREATE TABLE InvoiceProduct (
     CONSTRAINT UQ_Invoice_Product UNIQUE (InvoiceID, ProductID)
 );
 
+-- PAYMENT
 CREATE TABLE Payment (
     PaymentID INT PRIMARY KEY IDENTITY(1,1),
     InvoiceID INT NOT NULL,
@@ -298,6 +302,45 @@ INSERT INTO TextTranslation VALUES
 
 
 
+
+
+
+DROP TABLE [dbo].[InvoiceTicket]
+DROP TABLE [dbo].[InvoiceProduct]
+DROP TABLE [dbo].[Payment]
+DROP TABLE [dbo].[Invoice]
+DROP TABLE [dbo].[Ticket]
+DROP TABLE [dbo].[Seat]
+DROP TABLE [dbo].[ShowTime]
+DROP TABLE [dbo].[Room]
+DROP TABLE [dbo].[MovieProduct]
+DROP TABLE [dbo].[Product]
+DROP TABLE [dbo].[Movie]
+DROP TABLE [dbo].[Customer]
+DROP TABLE [dbo].[EmployeeChange]
+DROP TABLE [dbo].[WorkShift]
+DROP TABLE [dbo].[Employee]
+
+ 
+ INSERT INTO Employee 
+(FullName, Phone, Email, Address, BirthDate, HourWage, CCCD, Gender, Role, Username, PasswordHash, ImageUrl, RegisterDate, IsDeleted)
+VALUES
+-- Quản lý
+(N'Nguyễn Văn A', '0912345678', 'nguyenvana@company.com', N'123 Trần Hưng Đạo, Hà Nội', '1985-05-20', 30000, '012345678901', N'Nam', 'Admin', 'adminA', '123456', N'/images/adminA.jpg', GETDATE(), 0),
+
+(N'Trần Thị B', '0923456789', 'tranthib@company.com', N'45 Lê Lợi, TP.HCM', '1990-08-15', 28000, '012345678902', N'Nữ', 'Admin', 'adminB', '123456', N'/images/adminB.jpg', GETDATE(), 0),
+
+-- Nhân viên
+(N'Lê Văn C', '0934567890', 'levanc@company.com', N'78 Hai Bà Trưng, Hà Nội', '1995-03-10', 20000, '012345678903', N'Nam', 'Employee', 'staffC', '123456', N'/images/staffC.jpg', GETDATE(), 0),
+
+(N'Phạm Thị D', '0945678901', 'phamthid@company.com', N'56 Nguyễn Huệ, TP.HCM', '1998-11-25', 20000, '012345678904', N'Nữ', 'Employee', 'staffD', '123456', N'/images/staffD.jpg', GETDATE(), 0),
+
+(N'Hoàng Văn E', '0956789012', 'hoange@company.com', N'12 Võ Thị Sáu, Đà Nẵng', '1997-07-07', 20000, '012345678905', N'Nam', 'Employee', 'staffE', '123456', N'/images/staffE.jpg', GETDATE(), 0),
+
+(N'Ngô Thị F', '0967890123', 'ngothif@company.com', N'90 Lý Thường Kiệt, Huế', '2000-01-12', 20000, '012345678906', N'Nữ', 'Employee', 'staffF', '123456', N'/images/staffF.jpg', GETDATE(), 0);
+
+SELECT *
+FROM Employee
 
 
 

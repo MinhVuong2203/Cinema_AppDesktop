@@ -67,13 +67,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Login.en.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login.vi.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -128,6 +122,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CoVietNam1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngegg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\absent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OpenEyes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OpenEyes1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseEyes.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
