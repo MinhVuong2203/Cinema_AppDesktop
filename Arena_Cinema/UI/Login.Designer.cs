@@ -211,7 +211,7 @@ namespace UI
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::UI.Properties.Resources.background_Login_img_4;
+            this.panel1.BackgroundImage = global::UI.Properties.Resources.bg1;
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BorderColor = System.Drawing.Color.LightGray;
             this.panel1.BorderRadius = 16;
@@ -222,11 +222,11 @@ namespace UI
             // Login
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackgroundImage = global::UI.Properties.Resources.background_Login_img;
+            this.BackgroundImage = global::UI.Properties.Resources.bg2;
             resources.ApplyResources(this, "$this");
             this.Controls.Add(this.panel);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Login";
             this.panel.ResumeLayout(false);

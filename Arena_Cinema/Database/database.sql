@@ -2,7 +2,7 @@
 USE ArenaCinema;
 
 -- PEOPLE GROUP
-CREATE TABLE Employee (
+CREATE TABLE Employee(
     EmployeeID INT PRIMARY KEY IDENTITY(1000,1),
     FullName NVARCHAR(100) NOT NULL,
     Phone VARCHAR(20) UNIQUE,
@@ -12,7 +12,7 @@ CREATE TABLE Employee (
 	HourWage int,  -- 20.000đ /h giờ tiền lương thuộc về nhân viên
     CCCD NVARCHAR(20) UNIQUE,
     Gender NVARCHAR(10), -- Nam, nữ, khác
-    Role NVARCHAR(20), -- employee, admin
+    Role NVARCHAR(20), -- employee: thu ngân, bảo vệ, kĩ thuật, tạp vụ, admin
     Username VARCHAR(50) UNIQUE,
     PasswordHash VARCHAR(255),
     ImageUrl NVARCHAR(255),
@@ -28,8 +28,8 @@ CREATE TABLE Customer (
 	BirthDate NVARCHAR(100),
 	Gender NVARCHAR(10),
     RegisterDate DATE DEFAULT GETDATE(),
-    Point DECIMAL(18,2) DEFAULT 0 CHECK (Point >= 0),
-    VipLevel INT DEFAULT 0 CHECK (VipLevel >= 0),
+    Point DECIMAL(18,2) DEFAULT 0 CHECK (Point >= 0), --1k - 1point, -- 500 point - Vip 1, 1000 point - Vip 2, 2000 point Vip 3, 5000 point - vip 4, 10000 point - vip 5
+    VipLevel INT DEFAULT 0 CHECK (VipLevel >= 0),   -- Vip 1 - 3%, Vip 2 - 6%, Vip3 - 9%, Vip 4 - 12%, Vip 5 - 15%
     IsDeleted BIT DEFAULT 0 NOT NULL
 );
 
@@ -66,8 +66,12 @@ CREATE TABLE Movie (
     Title NVARCHAR(200) NOT NULL,
     DurationMinutes INT NOT NULL CHECK (DurationMinutes > 0),
     Genre NVARCHAR(100),
-    Language NVARCHAR(50),
+    Language NVARCHAR(50), 
+	Sub NVARCHAR(50), -- Tiếng anh, tiếng việt
+	Dub BIT, -- Có, Không
     AgeLimit NVARCHAR(10), -- P, 13+, 16+, 18+, ...
+	StartTime DATETIME,
+	EndTime DATETIME,
     Description NVARCHAR(MAX),
     ImageUrl NVARCHAR(255),
     IsDeleted BIT DEFAULT 0 NOT NULL
@@ -76,7 +80,7 @@ CREATE TABLE Movie (
 CREATE TABLE Room (
     RoomID INT PRIMARY KEY IDENTITY(1,1),
     RoomName NVARCHAR(100) NOT NULL UNIQUE,
-    SeatCount INT CHECK (SeatCount >= 0),
+    SeatCount INT CHECK (SeatCount >= 0), -- Số lượng ghế: Max(150)
     Description NVARCHAR(MAX),
     RoomType NVARCHAR(50), -- '2D','3D','IMAX','4DX'
     ImageUrl NVARCHAR(255),
