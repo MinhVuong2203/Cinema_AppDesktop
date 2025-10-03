@@ -17,7 +17,7 @@ namespace DAL
                 conn.Open();
                 string query = "SELECT * " +
                                "FROM Employee " +
-                               "WHERE sTaiKhoan = @username AND sMatKhau = @password";
+                               "WHERE Username = @username AND PasswordHash = @password";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password", password);
@@ -39,11 +39,12 @@ namespace DAL
                     string PasswordHash = reader["PasswordHash"].ToString();
                     string ImageUrl = reader["ImageUrl"].ToString();
                     DateTime? RegisterDate = reader["RegisterDate"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["RegisterDate"]);
-                    bool IsDeleted = bool.Parse(reader["FullName"].ToString());
-                
-                    //return new Employee(id, FullName, Phone, Email, BirthDate, Gender, RegisterDate,
-                    //    IsDeleted, Address, HourWage, CCCD, Role, username, PasswordHash, ImageUrl);
+                    bool IsDeleted = bool.Parse(reader["IsDeleted"].ToString());
+
+                    return new Employee(id, FullName, Phone, Email, BirthDate, Gender, RegisterDate.GetValueOrDefault(),
+                        IsDeleted, Address, HourWage, CCCD, Role, username, PasswordHash, ImageUrl);
                 }
+                
             }
 
             return null;

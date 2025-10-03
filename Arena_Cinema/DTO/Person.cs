@@ -14,7 +14,7 @@ namespace DTO
         protected string Email { get; set; }
         protected string BirthDate { get; set; }
         protected string Gender { get; set; }
-        protected DateTime RegisterDate { get; set; }
+        protected DateTime? RegisterDate { get; set; }
         protected bool IsDeleted { get; set; }
 
         public Person(int id, string fullName, string phone, string email, string birthDate, string gender, DateTime registerDate, bool isDeleted)

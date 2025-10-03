@@ -1,4 +1,6 @@
-﻿using Common;
+﻿using BLL;
+using Common;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +24,24 @@ namespace UI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (tbPassword.Text == "" || tbUsername.Text == "") return;
+            EmployeeBLL employeeBLL = new EmployeeBLL();
+            Employee employee = employeeBLL.Login(tbUsername.Text, tbPassword.Text);
+            if (employee != null)
+            {
+                MessageBox.Show(
+                "Đăng nhập thành công với tư cách " + employee.Role,
+                "Thông báo",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+                );
+            }
+            else
+            {
+                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Lỗi đăng nhập");
+
+            }
+
 
         }
 
@@ -41,11 +61,13 @@ namespace UI
             if (this.isShow)
             {
                 this.btnShowPass.ButtonImage = global::UI.Properties.Resources.CloseEyes;
+                this.tbPassword.UseSystemPasswordChar = true;
                 isShow = false;
             }
             else
             {
                 this.btnShowPass.ButtonImage = global::UI.Properties.Resources.OpenEyes1;
+                this.tbPassword.UseSystemPasswordChar = false;
                 isShow = true;
             }
                 

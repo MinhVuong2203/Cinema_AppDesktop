@@ -343,8 +343,6 @@ VALUES
 
 (N'Ngô Thị F', '0967890123', 'ngothif@company.com', N'90 Lý Thường Kiệt, Huế', '2000-01-12', 20000, '012345678906', N'Nữ', 'Employee', 'staffF', '123456', N'/images/staffF.jpg', GETDATE(), 0);
 
-SELECT *
-FROM Employee
 
 
 

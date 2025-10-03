@@ -241,7 +241,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tbPassword.Size" type="System.Drawing.Size, System.Drawing">
-    <value>329, 34</value>
+    <value>329, 29</value>
   </data>
   <data name="tbPassword.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -277,7 +277,7 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 28</value>
+    <value>94, 21</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -307,7 +307,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tbUsername.Size" type="System.Drawing.Size, System.Drawing">
-    <value>329, 34</value>
+    <value>329, 29</value>
   </data>
   <data name="tbUsername.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -343,7 +343,7 @@
     <value>4, 0, 4, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 28</value>
+    <value>96, 21</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
