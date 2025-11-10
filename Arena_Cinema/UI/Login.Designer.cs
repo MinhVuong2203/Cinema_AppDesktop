@@ -45,6 +45,7 @@ namespace UI
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new UI.Controls.RoundedPanel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -219,11 +220,19 @@ namespace UI
             this.panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panel1.Name = "panel1";
             // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Name = "label3";
+            // 
             // Login
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::UI.Properties.Resources.bg2;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -233,6 +242,7 @@ namespace UI
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -248,6 +258,6 @@ namespace UI
         private RoundedPanel panel;
         private ReaLTaiizor.Controls.MetroButton btnForgotPassword;
         private ReaLTaiizor.Controls.ParrotButton btnShowPass;
-        
+        private System.Windows.Forms.Label label3;
     }
 }
