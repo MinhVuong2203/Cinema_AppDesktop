@@ -1,0 +1,29 @@
+namespace DTO
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("Setting")]
+    public partial class Setting
+    {
+        public int ID { get; set; }
+
+        public Guid? EmployeeID { get; set; }
+
+        [StringLength(5)]
+        public string LanguageCode { get; set; }
+
+        [StringLength(20)]
+        public string FontText { get; set; }
+
+        public int? SizeText { get; set; }
+
+        [StringLength(20)]
+        public string MainColor { get; set; }
+
+        public virtual Employee Employee { get; set; }
+    }
+}

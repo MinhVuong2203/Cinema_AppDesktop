@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using DTO;
 using ReaLTaiizor.Controls;
 
 namespace UI
@@ -14,7 +15,7 @@ namespace UI
 
         private PictureBox btnToggle;
 
-        public Home()
+        public Home(Employee employee)
         {
             InitializeComponent();
             InitializeSidebarAnimation();
@@ -35,7 +36,7 @@ namespace UI
             if (isCollapsed)
             {
                 // mở rộng sidebar
-                pnMenu.Width += 20;
+                pnMenu.Width += 52;
                 if (pnMenu.Width >= sidebarExpandedWidth)
                 {
                     sidebarTimer.Stop();
@@ -47,7 +48,7 @@ namespace UI
             {
                 // thu gọn sidebar
                 ShowButtonText(false);
-                pnMenu.Width -= 20;
+                pnMenu.Width -= 52;
                 if (pnMenu.Width <= sidebarCollapsedWidth)
                 {
                     sidebarTimer.Stop();

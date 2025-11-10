@@ -60,10 +60,11 @@ namespace UI
             this.PanelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelTop.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
             this.PanelTop.Location = new System.Drawing.Point(0, 0);
+            this.PanelTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PanelTop.Name = "PanelTop";
             this.PanelTop.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.PanelTop.PrimerColor = System.Drawing.Color.White;
-            this.PanelTop.Size = new System.Drawing.Size(1314, 70);
+            this.PanelTop.Size = new System.Drawing.Size(986, 57);
             this.PanelTop.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.PanelTop.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
             this.PanelTop.TabIndex = 0;
@@ -87,8 +88,9 @@ namespace UI
             this.btnMenu.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
             this.btnMenu.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
             this.btnMenu.Location = new System.Drawing.Point(2, -1);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(70, 70);
+            this.btnMenu.Size = new System.Drawing.Size(52, 57);
             this.btnMenu.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnMenu.TabIndex = 14;
             this.btnMenu.TextColor = System.Drawing.Color.White;
@@ -111,9 +113,10 @@ namespace UI
             this.parrotButton3.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.parrotButton3.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
             this.parrotButton3.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.parrotButton3.Location = new System.Drawing.Point(3, 246);
+            this.parrotButton3.Location = new System.Drawing.Point(2, 197);
+            this.parrotButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.parrotButton3.Name = "parrotButton3";
-            this.parrotButton3.Size = new System.Drawing.Size(292, 75);
+            this.parrotButton3.Size = new System.Drawing.Size(219, 61);
             this.parrotButton3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.parrotButton3.TabIndex = 13;
             this.parrotButton3.TextColor = System.Drawing.Color.White;
@@ -135,9 +138,10 @@ namespace UI
             this.parrotButton4.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.parrotButton4.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
             this.parrotButton4.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.parrotButton4.Location = new System.Drawing.Point(3, 165);
+            this.parrotButton4.Location = new System.Drawing.Point(2, 132);
+            this.parrotButton4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.parrotButton4.Name = "parrotButton4";
-            this.parrotButton4.Size = new System.Drawing.Size(292, 75);
+            this.parrotButton4.Size = new System.Drawing.Size(219, 61);
             this.parrotButton4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.parrotButton4.TabIndex = 12;
             this.parrotButton4.TextColor = System.Drawing.Color.White;
@@ -159,9 +163,10 @@ namespace UI
             this.btnTrangChu.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.btnTrangChu.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
             this.btnTrangChu.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnTrangChu.Location = new System.Drawing.Point(3, 3);
+            this.btnTrangChu.Location = new System.Drawing.Point(2, 2);
+            this.btnTrangChu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTrangChu.Name = "btnTrangChu";
-            this.btnTrangChu.Size = new System.Drawing.Size(292, 75);
+            this.btnTrangChu.Size = new System.Drawing.Size(219, 61);
             this.btnTrangChu.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnTrangChu.TabIndex = 11;
             this.btnTrangChu.TextColor = System.Drawing.Color.White;
@@ -183,9 +188,10 @@ namespace UI
             this.btnNhanSu.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.btnNhanSu.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
             this.btnNhanSu.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnNhanSu.Location = new System.Drawing.Point(3, 84);
+            this.btnNhanSu.Location = new System.Drawing.Point(2, 67);
+            this.btnNhanSu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNhanSu.Name = "btnNhanSu";
-            this.btnNhanSu.Size = new System.Drawing.Size(292, 75);
+            this.btnNhanSu.Size = new System.Drawing.Size(219, 61);
             this.btnNhanSu.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnNhanSu.TabIndex = 10;
             this.btnNhanSu.TextColor = System.Drawing.Color.White;
@@ -200,11 +206,12 @@ namespace UI
             this.PanelMain.Controls.Add(this.pnMenu);
             this.PanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelMain.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
-            this.PanelMain.Location = new System.Drawing.Point(0, 70);
+            this.PanelMain.Location = new System.Drawing.Point(0, 57);
+            this.PanelMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PanelMain.Name = "PanelMain";
             this.PanelMain.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.PanelMain.PrimerColor = System.Drawing.Color.White;
-            this.PanelMain.Size = new System.Drawing.Size(1314, 847);
+            this.PanelMain.Size = new System.Drawing.Size(986, 688);
             this.PanelMain.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.PanelMain.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
             this.PanelMain.TabIndex = 2;
@@ -218,8 +225,9 @@ namespace UI
             this.pnMenu.Controls.Add(this.pnMenuTop);
             this.pnMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnMenu.Location = new System.Drawing.Point(0, 0);
+            this.pnMenu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnMenu.Name = "pnMenu";
-            this.pnMenu.Size = new System.Drawing.Size(290, 847);
+            this.pnMenu.Size = new System.Drawing.Size(226, 688);
             this.pnMenu.TabIndex = 1;
             // 
             // pnMenuBottom
@@ -230,10 +238,10 @@ namespace UI
             this.pnMenuBottom.Controls.Add(this.parrotButton5);
             this.pnMenuBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnMenuBottom.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.pnMenuBottom.Location = new System.Drawing.Point(0, 679);
+            this.pnMenuBottom.Location = new System.Drawing.Point(0, 551);
             this.pnMenuBottom.Margin = new System.Windows.Forms.Padding(0);
             this.pnMenuBottom.Name = "pnMenuBottom";
-            this.pnMenuBottom.Size = new System.Drawing.Size(300, 168);
+            this.pnMenuBottom.Size = new System.Drawing.Size(226, 137);
             this.pnMenuBottom.TabIndex = 2;
             // 
             // parrotButton2
@@ -251,9 +259,10 @@ namespace UI
             this.parrotButton2.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.parrotButton2.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
             this.parrotButton2.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.parrotButton2.Location = new System.Drawing.Point(3, 3);
+            this.parrotButton2.Location = new System.Drawing.Point(2, 2);
+            this.parrotButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.parrotButton2.Name = "parrotButton2";
-            this.parrotButton2.Size = new System.Drawing.Size(292, 75);
+            this.parrotButton2.Size = new System.Drawing.Size(219, 61);
             this.parrotButton2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.parrotButton2.TabIndex = 11;
             this.parrotButton2.TextColor = System.Drawing.Color.White;
@@ -275,9 +284,10 @@ namespace UI
             this.parrotButton5.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.parrotButton5.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
             this.parrotButton5.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.parrotButton5.Location = new System.Drawing.Point(3, 84);
+            this.parrotButton5.Location = new System.Drawing.Point(2, 67);
+            this.parrotButton5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.parrotButton5.Name = "parrotButton5";
-            this.parrotButton5.Size = new System.Drawing.Size(292, 75);
+            this.parrotButton5.Size = new System.Drawing.Size(219, 61);
             this.parrotButton5.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.parrotButton5.TabIndex = 10;
             this.parrotButton5.TextColor = System.Drawing.Color.White;
@@ -298,7 +308,7 @@ namespace UI
             this.pnMenuTop.Location = new System.Drawing.Point(0, 0);
             this.pnMenuTop.Margin = new System.Windows.Forms.Padding(0);
             this.pnMenuTop.Name = "pnMenuTop";
-            this.pnMenuTop.Size = new System.Drawing.Size(300, 847);
+            this.pnMenuTop.Size = new System.Drawing.Size(226, 688);
             this.pnMenuTop.TabIndex = 0;
             // 
             // parrotButton1
@@ -316,9 +326,10 @@ namespace UI
             this.parrotButton1.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.parrotButton1.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
             this.parrotButton1.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.parrotButton1.Location = new System.Drawing.Point(3, 327);
+            this.parrotButton1.Location = new System.Drawing.Point(2, 262);
+            this.parrotButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.parrotButton1.Name = "parrotButton1";
-            this.parrotButton1.Size = new System.Drawing.Size(292, 75);
+            this.parrotButton1.Size = new System.Drawing.Size(219, 61);
             this.parrotButton1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.parrotButton1.TabIndex = 14;
             this.parrotButton1.TextColor = System.Drawing.Color.White;
@@ -327,11 +338,12 @@ namespace UI
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1314, 917);
+            this.ClientSize = new System.Drawing.Size(986, 745);
             this.Controls.Add(this.PanelMain);
             this.Controls.Add(this.PanelTop);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";

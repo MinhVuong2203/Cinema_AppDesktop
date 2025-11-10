@@ -1,0 +1,39 @@
+﻿using DTO;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.Entity;
+
+namespace DAL
+{
+    public class AccountDAL
+    {
+        private readonly CinemaDBContext _context;
+        public AccountDAL()
+        {
+            _context = new CinemaDBContext();
+        }
+        public bool Login(string username, string password)
+        {
+           return _context.Accounts.FirstOrDefault(a => a.Username == username && a.PasswordHash == password) != null ? true : false;     
+        }
+
+        public Employee GetEmployeeByUsername(string username)
+        {
+            var account = _context.Accounts.FirstOrDefault(a => a.Username == username);
+            if (account == null)
+                return null;
+
+            Guid employeeId = account.EmployeeID;
+
+            return _context.Employees
+                           .Include(e => e.Role)        // load role
+                           .Include(e => e.Settings)    // load cấu hình
+                           .FirstOrDefault(e => e.EmployeeID == employeeId);
+        }
+
+
+    }
+}

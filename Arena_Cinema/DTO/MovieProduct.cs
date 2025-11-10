@@ -1,30 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DTO
+namespace DAL
 {
-    public class MovieProduct
+    using DTO;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("MovieProduct")]
+    public partial class MovieProduct
     {
-        public int MovieProductID { get; set; }
+        public Guid MovieProductID { get; set; }
+
         public int MovieID { get; set; }
+
         public int ProductID { get; set; }
+
+        [StringLength(20)]
         public string OfferType { get; set; }
-        public int Quantity { get; set; }
+
+        public int? Quantity { get; set; }
+
+        [StringLength(255)]
         public string Note { get; set; }
 
-        public MovieProduct() { }
+        public virtual Movie Movie { get; set; }
 
-        public MovieProduct(int movieProductID, int movieID, int productID, string offerType, int quantity, string note)
-        {
-            MovieProductID = movieProductID;
-            MovieID = movieID;
-            ProductID = productID;
-            OfferType = offerType;
-            Quantity = quantity;
-            Note = note;
-        }
+        public virtual Product Product { get; set; }
     }
 }

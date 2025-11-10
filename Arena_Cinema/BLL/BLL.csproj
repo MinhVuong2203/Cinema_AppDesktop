@@ -41,9 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmployeeBLL.cs" />
+    <Compile Include="AccountBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaiKhoanBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -55,7 +54,7 @@
       <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{a50bc5aa-eaaa-435c-917e-46150f02537c}</Project>
+      <Project>{9f034985-4935-4580-8336-693e045f9a51}</Project>
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>

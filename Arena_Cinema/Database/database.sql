@@ -1,27 +1,83 @@
 ﻿CREATE DATABASE ArenaCinema;
 USE ArenaCinema;
 
+CREATE TABLE Role(
+	RoleID INT PRIMARY KEY IDENTITY,
+	RoleName NVARCHAR(100) NOT NULL
+);
+INSERT INTO Role (RoleName)
+VALUES 
+    (N'Admin'),
+    (N'Employee Sales'),
+    (N'Employee Technical'),
+    (N'Employee Movie'),
+    (N'Employee Housekeeping'),
+    (N'Employee Security');
+
+
 -- PEOPLE GROUP
-CREATE TABLE Employee(
-    EmployeeID INT PRIMARY KEY IDENTITY(1000,1),
+CREATE TABLE Employee (
+    EmployeeID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     FullName NVARCHAR(100) NOT NULL,
     Phone VARCHAR(20) UNIQUE,
     Email NVARCHAR(100) UNIQUE,
     Address NVARCHAR(255),
     BirthDate DATE,
-	HourWage int,  -- 20.000đ /h giờ tiền lương thuộc về nhân viên
+    HourWage INT,
     CCCD NVARCHAR(20) UNIQUE,
-    Gender NVARCHAR(10), -- Nam, nữ, khác
-    Role NVARCHAR(20), -- employee: thu ngân, bảo vệ, kĩ thuật, tạp vụ, admin
-    Username VARCHAR(50) UNIQUE,
-    PasswordHash VARCHAR(255),
+    Gender NVARCHAR(10),
+    RoleId INT,
     ImageUrl NVARCHAR(255),
-	RegisterDate DATE DEFAULT GETDATE(),
-    IsDeleted BIT DEFAULT 0 NOT NULL
+    RegisterDate DATE DEFAULT GETDATE(),
+    IsDeleted BIT DEFAULT 0 NOT NULL,
+	FOREIGN KEY (RoleId) REFERENCES Role(RoleID) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
+
+
+INSERT INTO Employee (FullName, Phone, Email, Address, BirthDate, HourWage, CCCD, Gender, RoleId, ImageUrl)
+VALUES
+(N'Nguyễn Văn A', '0901000001', 'admin@cinema.vn', N'Quận 1, TP.HCM', '1990-01-01', 50000, N'079200000001', N'Nam', N'1', N'/images/employees/admin.jpg'),
+(N'Lê Thị B', '0901000002', 'sales@cinema.vn', N'Quận 2, TP.HCM', '1995-02-15', 30000, N'079200000002', N'Nữ', N'2', N'/images/employees/sales.jpg'),
+(N'Trần Văn C', '0901000003', 'technical@cinema.vn', N'Quận 3, TP.HCM', '1992-05-20', 32000, N'079200000003', N'Nam', N'3', N'/images/employees/technical.jpg'),
+(N'Phạm Thị D', '0901000004', 'movie@cinema.vn', N'Quận 4, TP.HCM', '1998-03-30', 28000, N'079200000004', N'Nữ', N'4', N'/images/employees/movie.jpg'),
+(N'Đỗ Văn E', '0901000005', 'housekeeping@cinema.vn', N'Quận 5, TP.HCM', '1988-08-12', 25000, N'079200000005', N'Nam', N'5', N'/images/employees/housekeeping.jpg'),
+(N'Võ Thị F', '0901000006', 'security@cinema.vn', N'Quận 6, TP.HCM', '1991-09-09', 26000, N'079200000006', N'Nữ', N'6', N'/images/employees/security.jpg');
+
+
+
+CREATE TABLE Setting(
+	ID INT PRIMARY KEY IDENTITY,
+	EmployeeID UNIQUEIDENTIFIER,
+	LanguageCode VARCHAR(5), 
+	FontText NVARCHAR(20),
+	SizeText int,
+	MainColor NVARCHAR(20),
+	FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID) ON DELETE CASCADE,
+)
+
+CREATE TABLE Account(
+	ID INT PRIMARY KEY IDENTITY,
+	Username VARCHAR(50),
+    PasswordHash VARCHAR(255),
+	EmployeeID UNIQUEIDENTIFIER NOT NULL,
+	RoleId INT NOT NULL,
+	FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID) ON DELETE CASCADE,
+	FOREIGN KEY (RoleId) REFERENCES Role(RoleId) ON DELETE CASCADE,
+);
+
+INSERT INTO Account (Username, PasswordHash, EmployeeID, RoleId)
+VALUES
+('admin', 'admin123',  (SELECT EmployeeID FROM Employee WHERE Email = 'admin@cinema.vn'), 1),
+('sales', 'sales123',  (SELECT EmployeeID FROM Employee WHERE Email = 'sales@cinema.vn'), 2),
+('tech', 'tech123',    (SELECT EmployeeID FROM Employee WHERE Email = 'technical@cinema.vn'), 3),
+('movie', 'movie123',  (SELECT EmployeeID FROM Employee WHERE Email = 'movie@cinema.vn'), 4),
+('house', 'house123',  (SELECT EmployeeID FROM Employee WHERE Email = 'housekeeping@cinema.vn'), 5),
+('security', 'sec123', (SELECT EmployeeID FROM Employee WHERE Email = 'security@cinema.vn'), 6);
+
+
 CREATE TABLE Customer (
-    CustomerID INT PRIMARY KEY IDENTITY(1000,1),
+    CustomerID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     FullName NVARCHAR(100),
     Phone VARCHAR(20) UNIQUE,
     Email NVARCHAR(100) UNIQUE,
@@ -33,30 +89,14 @@ CREATE TABLE Customer (
     IsDeleted BIT DEFAULT 0 NOT NULL
 );
 
-CREATE TABLE EmployeeChange (
-    ChangeID INT PRIMARY KEY IDENTITY(1,1),
-    EmployeeID INT NOT NULL,
-    Phone VARCHAR(20),
-    Email NVARCHAR(100),
-    Address NVARCHAR(255),
-    BirthDate DATE,
-    Username VARCHAR(50),
-    PasswordHash VARCHAR(255),
-    ImageUrl NVARCHAR(255),
-    Status NVARCHAR(30), -- đang chờ, đã duyệt, đã từ chối
-    CreatedDate DATETIME DEFAULT GETDATE(), -- (ngày tạo)
-    ApprovedDate DATETIME,  -- (ngày duyệt)
-    FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID) ON DELETE CASCADE
-);
-
 CREATE TABLE WorkShift (
     ShiftID INT PRIMARY KEY IDENTITY,
-    EmployeeID INT NOT NULL,
+    EmployeeID UNIQUEIDENTIFIER NOT NULL,
     StartTime DATETIME NOT NULL,
     EndTime DATETIME NOT NULL,
     WorkingHours FLOAT CHECK (WorkingHours >= 0), -- (số giờ làm việc)
     SalaryPerHour DECIMAL(18,2) CHECK (SalaryPerHour >= 0),  -- Giờ tiền lương của ca đó, nhằm fix lỗi thay đổi tiền lương nhân viên
-    Status NVARCHAR(30), -- Chờ duyệt ca, đã duyệt ca, vắng, đã hủy, không duyệt
+    Status NVARCHAR(30), -- nghỉ phép, Vắng, Hoàn thành, Đang làm, Sắp làm
     FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID) ON DELETE CASCADE
 );
 
@@ -70,10 +110,13 @@ CREATE TABLE Movie (
 	Sub NVARCHAR(50), -- Tiếng anh, tiếng việt
 	Dub BIT, -- Có, Không
     AgeLimit NVARCHAR(10), -- P, 13+, 16+, 18+, ...
+	MovieType NVARCHAR(10),
 	StartTime DATETIME,
 	EndTime DATETIME,
     Description NVARCHAR(MAX),
+	Preview NVARCHAR(MAX),
     ImageUrl NVARCHAR(255),
+	LinkTrailer NVARCHAR(200),
     IsDeleted BIT DEFAULT 0 NOT NULL
 );
 
@@ -98,7 +141,7 @@ CREATE TABLE Seat (
 );
 
 CREATE TABLE ShowTime (
-    ShowTimeID INT PRIMARY KEY IDENTITY(1,1),
+    ShowTimeID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     StartTime DATETIME NOT NULL,
     Price DECIMAL(18,2) NOT NULL CHECK (Price > 0),
     MovieID INT NOT NULL,
@@ -108,16 +151,19 @@ CREATE TABLE ShowTime (
     FOREIGN KEY (RoomID) REFERENCES Room(RoomID) ON DELETE CASCADE
 );
 
+
 -- TICKET
 CREATE TABLE Ticket (
-    TicketID INT PRIMARY KEY IDENTITY(1,1),
-    ShowTimeID INT NOT NULL,
+    TicketID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    ShowTimeID UNIQUEIDENTIFIER NOT NULL,
     SeatID INT NOT NULL,
     TicketType NVARCHAR(50),
     Price DECIMAL(18,2) CHECK (Price >= 0),
-    Status NVARCHAR(20), -- có sẵn, đã bán
+    Status NVARCHAR(20),
+	LockedBy UNIQUEIDENTIFIER NULL,  -- CustomerID
+    LockedAt DATETIME NULL,
     IsDeleted BIT DEFAULT 0 NOT NULL,
-    FOREIGN KEY (ShowTimeID) REFERENCES ShowTime(ShowTimeID),
+    FOREIGN KEY (ShowTimeID) REFERENCES ShowTime(ShowTimeID) ON DELETE CASCADE,
     FOREIGN KEY (SeatID) REFERENCES Seat(SeatID),
     CONSTRAINT UQ_Ticket UNIQUE (ShowTimeID, SeatID)
 );
@@ -133,7 +179,7 @@ CREATE TABLE Product (
 );
 
 CREATE TABLE MovieProduct (
-    MovieProductID INT PRIMARY KEY IDENTITY,
+    MovieProductID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     MovieID INT NOT NULL,
     ProductID INT NOT NULL,
     OfferType NVARCHAR(20), -- miễn phí, riêng biệt
@@ -146,9 +192,9 @@ CREATE TABLE MovieProduct (
 
 -- INVOICE GROUP
 CREATE TABLE Invoice (
-    InvoiceID INT PRIMARY KEY IDENTITY(1,1),
-    EmployeeID INT,
-    CustomerID INT,
+    InvoiceID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    EmployeeID UNIQUEIDENTIFIER,
+    CustomerID UNIQUEIDENTIFIER,
     IssueDate DATETIME DEFAULT GETDATE() NOT NULL, -- ngày phát hành
     TotalAmount DECIMAL(18,2) CHECK (TotalAmount >= 0), -- Tổng tiền (VND)
     Discount DECIMAL(18,2) DEFAULT 0 CHECK (Discount >= 0), -- Giám giá (VND)
@@ -159,9 +205,9 @@ CREATE TABLE Invoice (
 );
 
 CREATE TABLE InvoiceTicket (
-    InvoiceTicketID INT PRIMARY KEY IDENTITY(1,1),
-    InvoiceID INT NOT NULL,
-    TicketID INT NOT NULL,
+    InvoiceTicketID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    InvoiceID UNIQUEIDENTIFIER NOT NULL,
+    TicketID UNIQUEIDENTIFIER NOT NULL,
     Quantity INT DEFAULT 1 CHECK (Quantity > 0),
     UnitPrice DECIMAL(18,2) CHECK (UnitPrice >= 0),
     FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID) ON DELETE CASCADE,
@@ -170,8 +216,8 @@ CREATE TABLE InvoiceTicket (
 );
 
 CREATE TABLE InvoiceProduct (
-    InvoiceProductID INT PRIMARY KEY IDENTITY(1,1),
-    InvoiceID INT NOT NULL,
+    InvoiceProductID  UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    InvoiceID UNIQUEIDENTIFIER NOT NULL,
     ProductID INT NOT NULL,
     Quantity INT DEFAULT 1 CHECK (Quantity > 0),
     UnitPrice DECIMAL(18,2) CHECK (UnitPrice >= 0),
@@ -182,8 +228,8 @@ CREATE TABLE InvoiceProduct (
 
 -- PAYMENT
 CREATE TABLE Payment (
-    PaymentID INT PRIMARY KEY IDENTITY(1,1),
-    InvoiceID INT NOT NULL,
+    PaymentID  UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    InvoiceID UNIQUEIDENTIFIER NOT NULL,
     Method NVARCHAR(50), -- tiền mặt, chuyển khoản
     Amount DECIMAL(18,2) CHECK (Amount >= 0), -- Số tiền
     PaymentTime DATETIME DEFAULT GETDATE(), -- Thời gian thanh toán

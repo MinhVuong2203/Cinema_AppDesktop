@@ -17,6 +17,7 @@ namespace UI
 {
     public partial class Login : Form
     {
+        private AccountBLL _accountBLL = new AccountBLL();
         public Login()
         {
             InitializeComponent();
@@ -25,24 +26,26 @@ namespace UI
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (tbPassword.Text == "" || tbUsername.Text == "") return;
-            EmployeeBLL employeeBLL = new EmployeeBLL();
-            Employee employee = employeeBLL.Login(tbUsername.Text, tbPassword.Text);
-            if (employee != null)
+            Employee em = _accountBLL.Login(tbUsername.Text, tbPassword.Text);
+
+            if (em != null)
             {
-                MessageBox.Show(
-                "Đăng nhập thành công với tư cách " + employee.Role,
-                "Thông báo",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-                );
+                if (em.Role.RoleName == "Admin")
+                {
+                    // Set ngôn ngữ
+                    //Thread.CurrentThread.CurrentCulture = new CultureInfo(em.Settings.Language);
+                    // Mở form Home
+                    this.Hide();
+                    Home homeForm = new Home(em);
+                    homeForm.FormClosed += (s, args) => this.Close(); // Đóng form Login khi form Home đóng
+                    homeForm.Show();
+                }
             }
             else
             {
                 MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Lỗi đăng nhập");
 
             }
-
-
         }
 
         private void skyButton1_Click(object sender, EventArgs e)
