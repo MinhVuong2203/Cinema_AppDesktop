@@ -15,7 +15,6 @@ namespace DTO
         {
             Accounts = new HashSet<Account>();
             Invoices = new HashSet<Invoice>();
-            Settings = new HashSet<Setting>();
             WorkShifts = new HashSet<WorkShift>();
         }
 
@@ -61,8 +60,7 @@ namespace DTO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Invoice> Invoices { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Setting> Settings { get; set; }
+        public virtual Setting Setting { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkShift> WorkShifts { get; set; }

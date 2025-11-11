@@ -30,7 +30,7 @@ namespace DAL
 
             return _context.Employees
                            .Include(e => e.Role)        // load role
-                           .Include(e => e.Settings)    // load cấu hình
+                           .Include(e => e.Setting)    // load cấu hình
                            .FirstOrDefault(e => e.EmployeeID == employeeId);
         }
 

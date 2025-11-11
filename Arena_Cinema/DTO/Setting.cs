@@ -9,14 +9,13 @@ namespace DTO
     [Table("Setting")]
     public partial class Setting
     {
-        public int ID { get; set; }
+        [Key, ForeignKey("Employee")]
+        public Guid EmployeeID { get; set; }
 
-        public Guid? EmployeeID { get; set; }
-
-        [StringLength(5)]
+        [StringLength(10)]
         public string LanguageCode { get; set; }
 
-        [StringLength(20)]
+        [StringLength(50)]
         public string FontText { get; set; }
 
         public int? SizeText { get; set; }
@@ -25,5 +24,6 @@ namespace DTO
         public string MainColor { get; set; }
 
         public virtual Employee Employee { get; set; }
+
     }
 }

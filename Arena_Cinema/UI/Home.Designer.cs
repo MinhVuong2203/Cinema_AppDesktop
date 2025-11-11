@@ -197,6 +197,7 @@ namespace UI
             this.btnNhanSu.TextColor = System.Drawing.Color.White;
             this.btnNhanSu.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnNhanSu.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnNhanSu.Click += new System.EventHandler(this.btnNhanSu_Click);
             // 
             // PanelMain
             // 

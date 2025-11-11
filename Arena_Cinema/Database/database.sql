@@ -34,27 +34,41 @@ CREATE TABLE Employee (
 );
 
 
-
 INSERT INTO Employee (FullName, Phone, Email, Address, BirthDate, HourWage, CCCD, Gender, RoleId, ImageUrl)
 VALUES
-(N'Nguyễn Văn A', '0901000001', 'admin@cinema.vn', N'Quận 1, TP.HCM', '1990-01-01', 50000, N'079200000001', N'Nam', N'1', N'/images/employees/admin.jpg'),
-(N'Lê Thị B', '0901000002', 'sales@cinema.vn', N'Quận 2, TP.HCM', '1995-02-15', 30000, N'079200000002', N'Nữ', N'2', N'/images/employees/sales.jpg'),
-(N'Trần Văn C', '0901000003', 'technical@cinema.vn', N'Quận 3, TP.HCM', '1992-05-20', 32000, N'079200000003', N'Nam', N'3', N'/images/employees/technical.jpg'),
-(N'Phạm Thị D', '0901000004', 'movie@cinema.vn', N'Quận 4, TP.HCM', '1998-03-30', 28000, N'079200000004', N'Nữ', N'4', N'/images/employees/movie.jpg'),
-(N'Đỗ Văn E', '0901000005', 'housekeeping@cinema.vn', N'Quận 5, TP.HCM', '1988-08-12', 25000, N'079200000005', N'Nam', N'5', N'/images/employees/housekeeping.jpg'),
-(N'Võ Thị F', '0901000006', 'security@cinema.vn', N'Quận 6, TP.HCM', '1991-09-09', 26000, N'079200000006', N'Nữ', N'6', N'/images/employees/security.jpg');
+(N'Nguyễn Văn Anh', '0901000001', 'admin@cinema.vn', N'Quận 1, TP.HCM', '1990-01-01', 50000, N'079200000001', N'Nam', 1, N'/images/employees/admin.jpg'),
+(N'Lê Thị Béo', '0901000002', 'sales@cinema.vn', N'Quận 2, TP.HCM', '1995-02-15', 30000, N'079200000002', N'Nữ', 2, N'/images/employees/sales.jpg'),
+(N'Trần Văn Chú', '0901000003', 'technical@cinema.vn', N'Quận 3, TP.HCM', '1992-05-20', 32000, N'079200000003', N'Nam', 3, N'/images/employees/technical.jpg'),
+(N'Phạm Thị Dung', '0901000004', 'movie@cinema.vn', N'Quận 4, TP.HCM', '1998-03-30', 28000, N'079200000004', N'Nữ', 4, N'/images/employees/movie.jpg'),
+(N'Đỗ Văn Em', '0901000005', 'housekeeping@cinema.vn', N'Quận 5, TP.HCM', '1988-08-12', 25000, N'079200000005', N'Nam', 5, N'/images/employees/housekeeping.jpg'),
+(N'Võ Thị Lài', '0901000006', 'security@cinema.vn', N'Quận 6, TP.HCM', '1991-09-09', 26000, N'079200000006', N'Nữ', 6, N'/images/employees/security.jpg');
+
+
+DROP TABLE Setting
+
+CREATE TABLE Setting (
+    EmployeeID UNIQUEIDENTIFIER PRIMARY KEY,         -- 🔹 vừa là khóa chính
+    LanguageCode VARCHAR(10) DEFAULT 'vi-VN',        -- 🔹 mã ngôn ngữ
+    FontText NVARCHAR(50) DEFAULT N'Segoe UI',       -- 🔹 font chữ
+    SizeText INT DEFAULT 13,                         -- 🔹 kích thước chữ
+    MainColor NVARCHAR(20) DEFAULT N'255,255,255',   -- 🔹 màu nền
+    FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID) ON DELETE CASCADE
+);
+-- Trigger tạo Setting mặc định khi thêm nhân viên
+CREATE OR ALTER TRIGGER trg_CreateSettingForEmployee
+ON Employee
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    INSERT INTO Setting (EmployeeID, LanguageCode, FontText, SizeText, MainColor)
+    SELECT i.EmployeeID, 'vi-VN', N'Segoe UI', 13, N'255,255,255'
+    FROM inserted i;
+END;
+GO
 
 
 
-CREATE TABLE Setting(
-	ID INT PRIMARY KEY IDENTITY,
-	EmployeeID UNIQUEIDENTIFIER,
-	LanguageCode VARCHAR(5), 
-	FontText NVARCHAR(20),
-	SizeText int,
-	MainColor NVARCHAR(20),
-	FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID) ON DELETE CASCADE,
-)
 
 CREATE TABLE Account(
 	ID INT PRIMARY KEY IDENTITY,

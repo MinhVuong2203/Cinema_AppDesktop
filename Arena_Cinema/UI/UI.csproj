@@ -62,6 +62,12 @@
     <Compile Include="Controls\RoundedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Employee\AddEmployeeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Employee\AddEmployeeUC.Designer.cs">
+      <DependentUpon>AddEmployeeUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     <Compile Include="Setting\SettingControl.Designer.cs">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Employee\AddEmployeeUC.resx">
+      <DependentUpon>AddEmployeeUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +145,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{dd1036c9-ae73-4727-86ea-2edf8a39bda6}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{90680a13-43e5-4587-b35e-aca4e4fff6bd}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{9f034985-4935-4580-8336-693e045f9a51}</Project>

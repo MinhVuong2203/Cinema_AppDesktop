@@ -57,3 +57,4 @@ D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\en\UI.res
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Resources.Lang.resources
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Resources.Lang.en.resources
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\en\UI.resources.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Employee.AddEmployeeUC.resources

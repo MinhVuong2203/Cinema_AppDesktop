@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="AccountDAL.cs" />
     <Compile Include="CinemaDBContext.cs" />
+    <Compile Include="EmployeeDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

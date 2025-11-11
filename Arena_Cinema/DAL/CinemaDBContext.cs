@@ -66,9 +66,10 @@ namespace DAL
                 .IsUnicode(false);
 
             modelBuilder.Entity<Employee>()
-                .HasMany(e => e.Settings)
-                .WithOptional(e => e.Employee)
-                .WillCascadeOnDelete();
+                 .HasOptional(e => e.Setting)
+                 .WithRequired(s => s.Employee)
+                 .WillCascadeOnDelete(true);
+
 
             modelBuilder.Entity<Language>()
                 .Property(e => e.LanguageCode)
