@@ -26,7 +26,6 @@ C:\Users\PC\OneDrive\Máy tính\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.p
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\UI.exe.config
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\UI.exe
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\UI.pdb
-D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\en\UI.resources.dll
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\BLL.dll
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\Common.dll
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\DTO.dll
@@ -45,13 +44,16 @@ D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\EntityFra
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\EntityFramework.SqlServer.xml
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.csproj.AssemblyReference.cache
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Home.resources
-D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Login.resources
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Properties.Resources.resources
-D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Login.en.resources
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.csproj.GenerateResource.cache
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
-D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\en\UI.resources.dll
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.csproj.Up2Date
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.exe
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.pdb
 D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.exe.config
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Login.resources
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Setting.SettingControl.resources
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\bin\Debug\en\UI.resources.dll
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Resources.Lang.resources
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\UI.Resources.Lang.en.resources
+D:\DAI HOC\CSharp\BTL\Code\Cinema_AppDesktop\Arena_Cinema\UI\obj\Debug\en\UI.resources.dll

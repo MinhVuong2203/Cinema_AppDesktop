@@ -36,6 +36,7 @@ namespace UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panel = new UI.Controls.RoundedPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnShowPass = new ReaLTaiizor.Controls.ParrotButton();
             this.btnForgotPassword = new ReaLTaiizor.Controls.MetroButton();
             this.btnLogin = new ReaLTaiizor.Controls.SkyButton();
@@ -43,9 +44,7 @@ namespace UI
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbUsername = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new UI.Controls.RoundedPanel();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +62,7 @@ namespace UI
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnShowPass);
             this.groupBox1.Controls.Add(this.btnForgotPassword);
             this.groupBox1.Controls.Add(this.btnLogin);
@@ -70,11 +70,17 @@ namespace UI
             this.groupBox1.Controls.Add(this.tbPassword);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.tbUsername);
-            this.groupBox1.Controls.Add(this.label1);
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Name = "label3";
             // 
             // btnShowPass
             // 
@@ -86,11 +92,11 @@ namespace UI
             this.btnShowPass.ClickTextColor = System.Drawing.Color.White;
             this.btnShowPass.CornerRadius = 5;
             this.btnShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
-            resources.ApplyResources(this.btnShowPass, "btnShowPass");
             this.btnShowPass.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
             this.btnShowPass.HoverBackgroundColor = System.Drawing.Color.White;
             this.btnShowPass.HoverTextColor = System.Drawing.Color.White;
             this.btnShowPass.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            resources.ApplyResources(this.btnShowPass, "btnShowPass");
             this.btnShowPass.Name = "btnShowPass";
             this.btnShowPass.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnShowPass.TextColor = System.Drawing.Color.Black;
@@ -193,11 +199,13 @@ namespace UI
             resources.ApplyResources(this.tbPassword, "tbPassword");
             this.tbPassword.ForeColor = System.Drawing.SystemColors.GrayText;
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.TextChanged += new System.EventHandler(this.tbPassword_TextChanged);
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // tbUsername
             // 
@@ -205,34 +213,21 @@ namespace UI
             this.tbUsername.ForeColor = System.Drawing.SystemColors.GrayText;
             this.tbUsername.Name = "tbUsername";
             // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // panel1
             // 
             this.panel1.BackgroundImage = global::UI.Properties.Resources.bg1;
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BorderColor = System.Drawing.Color.LightGray;
             this.panel1.BorderRadius = 16;
             this.panel1.BorderThickness = 3F;
             this.panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(this.label3, "label3");
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Name = "label3";
             // 
             // Login
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::UI.Properties.Resources.bg2;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.panel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -242,7 +237,6 @@ namespace UI
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -254,7 +248,6 @@ namespace UI
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbUsername;
-        private System.Windows.Forms.Label label1;
         private RoundedPanel panel;
         private ReaLTaiizor.Controls.MetroButton btnForgotPassword;
         private ReaLTaiizor.Controls.ParrotButton btnShowPass;

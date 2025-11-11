@@ -1,8 +1,10 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using Common;
 using DTO;
 using ReaLTaiizor.Controls;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+using UI.Setting;
 
 namespace UI
 {
@@ -12,11 +14,12 @@ namespace UI
         private Timer sidebarTimer;
         private int sidebarExpandedWidth = 220;
         private int sidebarCollapsedWidth = 80;
-
+        public string lang = "vi-VN";
         private PictureBox btnToggle;
 
         public Home(Employee employee)
         {
+            //LanguageHelper.ChangeLanguage(lang);
             InitializeComponent();
             InitializeSidebarAnimation();
            
@@ -72,6 +75,17 @@ namespace UI
         private void btnMenu_Click(object sender, EventArgs e)
         {
             sidebarTimer.Start();
+        }
+
+        private void parrotButton2_Click(object sender, EventArgs e)
+        {
+            SettingControl settingControl = new SettingControl();
+            LoadControl(settingControl);
+        }
+
+        private void PanelMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
