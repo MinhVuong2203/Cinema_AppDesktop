@@ -83,24 +83,6 @@ namespace UI
             sidebarTimer.Start();
         }
 
-        private void parrotButton2_Click(object sender, EventArgs e)
-        {
-            SettingControl settingControl = new SettingControl(this._employee);
-            LoadControl(settingControl);
-        }
-
-        private void PanelMain_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnNhanSu_Click(object sender, EventArgs e)
-        {
-            EmployeeHomeUC em = new EmployeeHomeUC(_employee);
-            LoadControl(em);
-        }
-
-
 
         private void MenuItem_Click(object sender, EventArgs e)
         {
@@ -125,8 +107,9 @@ namespace UI
 
                     break;
                 case "btnNhanSu":
-                    MessageBox.Show("Chức năng nhân sự đanng chờ bạn code");
-
+                  
+                    EmployeeHomeUC em = new EmployeeHomeUC(_employee);
+                    LoadControl(em);
                     break;
                 case "btnSuatChieu":
                     MessageBox.Show("Chức năng suất chiếu đanng chờ bạn code");
@@ -153,8 +136,9 @@ namespace UI
 
                     break;
                 case "btnCaiDat":
-                    MessageBox.Show("Chức năng cài đặt đanng chờ bạn code");
-
+                    
+                    SettingControl settingControl = new SettingControl(this._employee);
+                    LoadControl(settingControl);
                     break;
                 case "btnCaNhan":
                     MessageBox.Show("Chức năng cá nhân đanng chờ bạn code");
