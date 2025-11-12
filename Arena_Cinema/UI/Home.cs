@@ -1,5 +1,6 @@
 ﻿using Common;
 using DTO;
+using Microsoft.VisualBasic;
 using ReaLTaiizor.Controls;
 using System;
 using System.Drawing;
@@ -15,7 +16,10 @@ namespace UI
         private Timer sidebarTimer;
         private int sidebarExpandedWidth = 220;
         private int sidebarCollapsedWidth = 80;
-        
+        private ParrotButton selectedButton = null;
+
+
+
         public DTO.Employee _employee { get; set; }
 
         public Home(DTO.Employee employee)
@@ -24,7 +28,7 @@ namespace UI
             LanguageHelper.ChangeLanguage(employee.Setting.LanguageCode);
             InitializeComponent();
             InitializeSidebarAnimation();
-           
+
         }
 
         private void InitializeSidebarAnimation()
@@ -34,7 +38,7 @@ namespace UI
             sidebarTimer.Tick += SidebarTimer_Tick;
         }
 
-        
+
 
         private void SidebarTimer_Tick(object sender, EventArgs e)
         {
@@ -94,6 +98,121 @@ namespace UI
         {
             EmployeeHomeUC em = new EmployeeHomeUC(_employee);
             LoadControl(em);
+        }
+
+
+
+        private void MenuItem_Click(object sender, EventArgs e)
+        {
+            ParrotButton clickedButton = sender as ParrotButton;
+            if (clickedButton == null) return;
+
+            // Reset lại button cũ (nếu có)
+            if (selectedButton != null && selectedButton != clickedButton)
+            {
+                selectedButton.BackgroundColor = Color.FromArgb(65, 70, 75);
+                selectedButton.TextColor = Color.White;
+            }
+            clickedButton.BackgroundColor = Color.FromArgb(23, 23, 23);
+            clickedButton.TextColor = Color.Red;
+            selectedButton = clickedButton;
+
+            string buttonName = clickedButton?.Name;
+            switch (buttonName)
+            {
+                case "btnTrangChu":
+                    MessageBox.Show("Trang Chủ");
+
+                    break;
+                case "btnNhanSu":
+                    MessageBox.Show("Chức năng nhân sự đanng chờ bạn code");
+
+                    break;
+                case "btnSuatChieu":
+                    MessageBox.Show("Chức năng suất chiếu đanng chờ bạn code");
+
+                    break;
+                case "btnPhim":
+                    MessageBox.Show("Chức năng phim đanng chờ bạn code");
+
+                    break;
+                case "btnPhong":
+                    MessageBox.Show("Chức năng phòng đang chờ bạn code");
+
+                    break;
+                case "btnGhe":
+                    MessageBox.Show("Chức năng ghế đang chờ bạn code");
+
+                    break;
+                case "btnBanVe":
+                    MessageBox.Show("Chức năng bán vé đang chờ bạn code");
+
+                    break;
+                case "btnThongKe":
+                    MessageBox.Show("Chức năng thống đanng chờ bạn code");
+
+                    break;
+                case "btnCaiDat":
+                    MessageBox.Show("Chức năng cài đặt đanng chờ bạn code");
+
+                    break;
+                case "btnCaNhan":
+                    MessageBox.Show("Chức năng cá nhân đanng chờ bạn code");
+                    break;
+                default:
+                    break;
+
+            }
+
+
+            //private void MenuItem_Click(object sender, EventArgs e)
+            //{
+            //    Control clickedControl = sender as Control;
+            //    ParrotButton clickedButton = clickedControl as ParrotButton;
+            //    if (clickedButton == null )
+            //    {
+            //        clickedButton = clickedControl as ParrotButton;
+            //    }
+
+            //    // Reset all buttons to default color
+            //    if (this.selectedButton != null)
+            //    {
+            //        selectedButton.BackgroundColor = Color.FromArgb(31, 30, 255);
+            //    }
+            //    if (clickedButton != null)
+            //    {
+            //        clickedButton.BackgroundColor = Color.FromArgb(31, 30, 0);
+            //        clickedButton.TextColor = Color.Red;
+            //        selectedButton = clickedButton; // Lưu lại button hiện tại
+            //    }
+
+            //    string buttonName = clickedButton?.Name;
+            //    switch (buttonName)
+            //    {
+            //        case "btnTrangChu":
+            //            this.LoadControl(ucTrangChu);
+            //            break;
+            //        case "btnHoSo":
+            //            this.LoadControl(ucHoSoMain);
+            //            break;
+            //        case "btnKyThi":
+            //            this.LoadControl(ucKythi);
+            //            break;
+            //        case "btnCapGPLX":
+            //            this.LoadControl(ucCapGPLX);
+            //            break;
+            //        case "btnViPham":
+            //            this.LoadControl(ucXuLyViPham);
+            //            break;
+
+            //        default:
+            //            break;
+
+
+
+
+            //}
+            //}
         }
     }
 }
