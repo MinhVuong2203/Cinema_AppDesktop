@@ -2,22 +2,21 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Common
 {
     public static class ImgHelper
     {
-        // Gốc thư mục ảnh (bạn có thể chỉnh lại theo project của mình)
+        // Gốc thư mục ảnh (Image trong project)
         private static readonly string BaseImagePath =
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Image");
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\UI\Image");
 
         /// <summary>
         /// Mở hộp thoại chọn ảnh và lưu ảnh vào thư mục con tương ứng
         /// </summary>
-        /// <param name="subFolder">Tên thư mục con (Employees, Products, Movies)</param>
+        /// <param name="subFolder">Tên thư mục con (Employee, Product, Movie...)</param>
         /// <param name="pictureBox">PictureBox để hiển thị ảnh sau khi chọn</param>
-        /// <returns>Đường dẫn tương đối của ảnh được lưu (ví dụ: Image\Employees\abc.jpg)</returns>
+        /// <returns>Đường dẫn tương đối (ví dụ: Image\Employee\abc.png)</returns>
         public static string UploadImage(string subFolder, PictureBox pictureBox)
         {
             try
@@ -25,29 +24,29 @@ namespace Common
                 using (OpenFileDialog ofd = new OpenFileDialog())
                 {
                     ofd.Title = "Chọn ảnh";
-                    ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+                    ofd.Filter = "Hình ảnh (*.jpg;*.jpeg;*.png;*.bmp;*.gif)|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
 
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
                         string selectedPath = ofd.FileName;
                         string fileName = Path.GetFileName(selectedPath);
 
-                        // Đường dẫn lưu vào thư mục tương ứng
+                        // Đường dẫn đích (VD: ...\UI\Image\Employee)
                         string targetFolder = Path.Combine(BaseImagePath, subFolder);
                         if (!Directory.Exists(targetFolder))
                             Directory.CreateDirectory(targetFolder);
 
-                        // Tạo tên file duy nhất tránh trùng
+                        // Tạo tên file duy nhất
                         string uniqueFileName = $"{Guid.NewGuid()}_{fileName}";
                         string destPath = Path.Combine(targetFolder, uniqueFileName);
 
-                        // Copy file vào thư mục
+                        // Copy file ảnh vào thư mục
                         File.Copy(selectedPath, destPath, true);
 
-                        // Hiển thị ảnh lên PictureBox
+                        // Hiển thị ảnh
                         DisplayImage(destPath, pictureBox);
 
-                        // Trả về đường dẫn tương đối (để lưu DB)
+                        // Trả về đường dẫn tương đối để lưu DB
                         string relativePath = Path.Combine("Image", subFolder, uniqueFileName);
                         return relativePath;
                     }
@@ -55,14 +54,14 @@ namespace Common
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi upload ảnh: " + ex.Message, "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi khi upload ảnh: " + ex.Message, "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return null;
         }
 
         /// <summary>
-        /// Hiển thị ảnh vào PictureBox từ đường dẫn
+        /// Hiển thị ảnh từ đường dẫn tuyệt đối
         /// </summary>
         public static void DisplayImage(string imagePath, PictureBox pictureBox)
         {
@@ -70,14 +69,18 @@ namespace Common
             {
                 if (File.Exists(imagePath))
                 {
-                    // Giải phóng ảnh cũ trước khi gán ảnh mới (tránh lỗi “file in use”)
+                    // Giải phóng ảnh cũ để tránh lỗi file đang được dùng
                     if (pictureBox.Image != null)
                     {
                         pictureBox.Image.Dispose();
                         pictureBox.Image = null;
                     }
 
-                    pictureBox.Image = System.Drawing.Image.FromFile(imagePath);
+                    using (var fs = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+                    {
+                        pictureBox.Image = Image.FromStream(fs);
+                    }
+
                     pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                 }
                 else
@@ -92,13 +95,16 @@ namespace Common
         }
 
         /// <summary>
-        /// Hiển thị ảnh khi có đường dẫn tương đối (ví dụ lấy từ database)
+        /// Hiển thị ảnh từ đường dẫn tương đối (lấy từ DB)
         /// </summary>
+
+        // Ví dụ đường dẫn tương đối: Image\Employee\abc.png
         public static void DisplayImageFromRelative(string relativePath, PictureBox pictureBox)
         {
             if (string.IsNullOrEmpty(relativePath)) return;
 
-            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+            string fullPath = Path.GetFullPath( // Nằm trong UI rồi
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\", relativePath));
             DisplayImage(fullPath, pictureBox);
         }
     }
