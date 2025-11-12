@@ -13,8 +13,13 @@ namespace UI.Employee
 {
     public partial class EmployeeHomeUC : UserControl
     {
-        public EmployeeHomeUC(DTO.Employee employee)
+        private Home _home;
+        private DTO.Employee _employee;
+
+        public EmployeeHomeUC(Home form, DTO.Employee employee)
         {
+            this._home = form;
+            this._employee = employee;
             InitializeComponent();
         }
 
@@ -25,8 +30,8 @@ namespace UI.Employee
 
         private void btnQuanLyNhanVien_Click(object sender, EventArgs e)
         {
-             this.Parent.Controls.Clear();
-             this.Parent.Controls.Add(new ListEmployeeUC());
+            this._home.LoadControl(new ListEmployeeUC(_home, this._employee));
+            
         }
     }
 }

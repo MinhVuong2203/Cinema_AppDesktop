@@ -108,7 +108,7 @@ namespace UI
                     break;
                 case "btnNhanSu":
                   
-                    EmployeeHomeUC em = new EmployeeHomeUC(_employee);
+                    EmployeeHomeUC em = new EmployeeHomeUC(this, _employee);
                     LoadControl(em);
                     break;
                 case "btnSuatChieu":

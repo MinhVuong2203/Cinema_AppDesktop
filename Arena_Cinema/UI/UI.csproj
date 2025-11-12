@@ -56,6 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CustomMaterialButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -305,7 +308,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Image\Employee\emloyeeDefault.png" />
+    <Content Include="Image\Employee\Gai4.jpeg" />
     <Content Include="Image\Product\popcorn %281%29.png" />
+    <None Include="Resources\trash.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\chevrons.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

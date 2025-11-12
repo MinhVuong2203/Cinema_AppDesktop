@@ -18,7 +18,10 @@ namespace DAL
 
         public List<DTO.Employee> GetAllEmployees()
         {
-            return _context.Employees.ToList();
+            return _context.Employees
+                .Include(e => e.Setting)
+                .Include(e => e.Role)
+                .ToList();
         }
 
         public Employee GetEmployeeById(Guid employeeId)
@@ -41,6 +44,29 @@ namespace DAL
 
                 _context.SaveChanges();  // ✅ EF hiểu là UPDATE, không INSERT
             }
+        }
+
+
+
+        public List<Employee> GetEmployeeBy(string name, string role, string gender, bool isDelete)
+        {
+            var query = _context.Employees.AsQueryable();
+
+            query = query.Where(e => e.IsDeleted == isDelete);
+
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                string lowerName = name.ToLower();
+                query = query.Where(e => e.FullName.ToLower().Contains(lowerName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(gender) && gender != "Tất cả")
+                query = query.Where(e => e.Gender == gender);
+
+            if (!string.IsNullOrWhiteSpace(role) && role != "Tất cả")
+                query = query.Where(e => e.Role != null && e.Role.RoleName == role);
+
+            return query.Include("Role").OrderBy(e => e.FullName).ToList();
         }
 
 
