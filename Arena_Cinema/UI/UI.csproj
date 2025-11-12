@@ -62,6 +62,12 @@
     <Compile Include="Controls\RoundedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="EmployeeSale\SaleHomeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmployeeSale\SaleHomeUC.Designer.cs">
+      <DependentUpon>SaleHomeUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employee\AddEmployeeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="Setting\SettingControl.Designer.cs">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EmployeeSale\SaleHomeUC.resx">
+      <DependentUpon>SaleHomeUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Employee\AddEmployeeUC.resx">
       <DependentUpon>AddEmployeeUC.cs</DependentUpon>
     </EmbeddedResource>

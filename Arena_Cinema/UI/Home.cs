@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using UI.Employee;
 using UI.Setting;
 using UI.Movie;
+using UI.EmployeeSale;
 
 namespace UI
 {
@@ -130,7 +131,9 @@ namespace UI
 
                     break;
                 case "btnBanVe":
-                    MessageBox.Show("Chức năng bán vé đang chờ bạn code");
+                    //MessageBox.Show("Chức năng bán vé đang chờ bạn code");
+                    SaleHomeUC saleHomeUC = new SaleHomeUC(_employee);
+                    LoadControl(saleHomeUC);
 
                     break;
                 case "btnThongKe":
