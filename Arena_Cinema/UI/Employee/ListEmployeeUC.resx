@@ -117,28 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CAIDAT" xml:space="preserve">
-    <value>CÀI ĐẶT</value>
-  </data>
-  <data name="CANHAN" xml:space="preserve">
-    <value>CÁ NHÂN</value>
-  </data>
-  <data name="NHANSU" xml:space="preserve">
-    <value>NHÂN SỰ</value>
-  </data>
-  <data name="PHIM" xml:space="preserve">
-    <value>PHIM</value>
-  </data>
-  <data name="PHONGCHIEU" xml:space="preserve">
-    <value>PHÒNG CHIẾU</value>
-  </data>
-  <data name="SUATCHIEU" xml:space="preserve">
-    <value>SUẤT CHIẾU</value>
-  </data>
-  <data name="ThemNhanVien" xml:space="preserve">
-    <value>Thêm nhân viên</value>
-  </data>
-  <data name="TRANGCHU" xml:space="preserve">
-    <value>TRANG CHỦ</value>
-  </data>
 </root>

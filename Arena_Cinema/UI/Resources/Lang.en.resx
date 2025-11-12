@@ -135,6 +135,9 @@
   <data name="SUATCHIEU" xml:space="preserve">
     <value>SHOWTIME</value>
   </data>
+  <data name="ThemNhanVien" xml:space="preserve">
+    <value>Add employee</value>
+  </data>
   <data name="TRANGCHU" xml:space="preserve">
     <value>HOME</value>
   </data>

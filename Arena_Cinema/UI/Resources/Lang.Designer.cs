@@ -115,6 +115,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thêm nhân viên.
+        /// </summary>
+        public static string ThemNhanVien {
+            get {
+                return ResourceManager.GetString("ThemNhanVien", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TRANG CHỦ.
         /// </summary>
         public static string TRANGCHU {

@@ -68,6 +68,18 @@
     <Compile Include="Employee\AddEmployeeUC.Designer.cs">
       <DependentUpon>AddEmployeeUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Employee\EmployeeHomeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Employee\EmployeeHomeUC.Designer.cs">
+      <DependentUpon>EmployeeHomeUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\ListEmployeeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Employee\ListEmployeeUC.Designer.cs">
+      <DependentUpon>ListEmployeeUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +107,12 @@
     </Compile>
     <EmbeddedResource Include="Employee\AddEmployeeUC.resx">
       <DependentUpon>AddEmployeeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee\EmployeeHomeUC.resx">
+      <DependentUpon>EmployeeHomeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee\ListEmployeeUC.resx">
+      <DependentUpon>ListEmployeeUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -199,6 +217,60 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\next1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\business-and-finance.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\teamwork.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wages.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list-symbol-of-three-items-with-dots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ellipsis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\three-dot-menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\teamwork1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\showtime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clapperboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\showtime %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\employee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cinema.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -92,7 +92,7 @@ namespace UI
 
         private void btnNhanSu_Click(object sender, EventArgs e)
         {
-            AddEmployeeUC em = new AddEmployeeUC(_employee);
+            EmployeeHomeUC em = new EmployeeHomeUC(_employee);
             LoadControl(em);
         }
     }
