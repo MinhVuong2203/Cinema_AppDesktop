@@ -105,7 +105,6 @@ namespace UI
             {
                 case "btnTrangChu":
                     MessageBox.Show("Trang Chủ");
-
                     break;
                 case "btnNhanSu":
                   
@@ -150,56 +149,7 @@ namespace UI
                     break;
 
             }
-
-
-            //private void MenuItem_Click(object sender, EventArgs e)
-            //{
-            //    Control clickedControl = sender as Control;
-            //    ParrotButton clickedButton = clickedControl as ParrotButton;
-            //    if (clickedButton == null )
-            //    {
-            //        clickedButton = clickedControl as ParrotButton;
-            //    }
-
-            //    // Reset all buttons to default color
-            //    if (this.selectedButton != null)
-            //    {
-            //        selectedButton.BackgroundColor = Color.FromArgb(31, 30, 255);
-            //    }
-            //    if (clickedButton != null)
-            //    {
-            //        clickedButton.BackgroundColor = Color.FromArgb(31, 30, 0);
-            //        clickedButton.TextColor = Color.Red;
-            //        selectedButton = clickedButton; // Lưu lại button hiện tại
-            //    }
-
-            //    string buttonName = clickedButton?.Name;
-            //    switch (buttonName)
-            //    {
-            //        case "btnTrangChu":
-            //            this.LoadControl(ucTrangChu);
-            //            break;
-            //        case "btnHoSo":
-            //            this.LoadControl(ucHoSoMain);
-            //            break;
-            //        case "btnKyThi":
-            //            this.LoadControl(ucKythi);
-            //            break;
-            //        case "btnCapGPLX":
-            //            this.LoadControl(ucCapGPLX);
-            //            break;
-            //        case "btnViPham":
-            //            this.LoadControl(ucXuLyViPham);
-            //            break;
-
-            //        default:
-            //            break;
-
-
-
-
-            //}
-            //}
+            
         }
 
         private void btnPhim_Click(object sender, EventArgs e)

@@ -299,5 +299,13 @@
   <ItemGroup>
     <None Include="Resources\ticket.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Image\Customer\" />
+    <Folder Include="Image\Movie\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image\Employee\emloyeeDefault.png" />
+    <Content Include="Image\Product\popcorn %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

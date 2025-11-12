@@ -25,7 +25,8 @@ namespace UI.Employee
 
         private void btnQuanLyNhanVien_Click(object sender, EventArgs e)
         {
-             
+             this.Parent.Controls.Clear();
+             this.Parent.Controls.Add(new ListEmployeeUC());
         }
     }
 }
