@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using UI.Employee;
 using UI.Setting;
+using UI.Movie;
 
 namespace UI
 {
@@ -116,7 +117,9 @@ namespace UI
 
                     break;
                 case "btnPhim":
-                    MessageBox.Show("Chức năng phim đanng chờ bạn code");
+                   
+                    Movie_MainUC movieMain = new Movie_MainUC(_employee);
+                    LoadControl(movieMain);
 
                     break;
                 case "btnPhong":
@@ -197,6 +200,12 @@ namespace UI
 
             //}
             //}
+        }
+
+        private void btnPhim_Click(object sender, EventArgs e)
+        {
+            Movie_MainUC movieMain = new Movie_MainUC(_employee);
+            LoadControl(movieMain);
         }
     }
 }

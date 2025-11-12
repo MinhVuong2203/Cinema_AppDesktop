@@ -95,7 +95,7 @@ namespace UI
             this.PanelMain.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.PanelMain.TopLeft = System.Drawing.Color.Transparent;
             this.PanelMain.TopRight = System.Drawing.Color.Transparent;
-            
+
             // 
             // pnMenuBottom
             // 
