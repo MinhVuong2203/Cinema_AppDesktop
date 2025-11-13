@@ -382,7 +382,7 @@ namespace UI.Employee
             // btnCancel
             // 
             this.btnCancel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnCancel.ButtonImage = global::UI.Properties.Resources.close;
+            //this.btnCancel.ButtonImage = global::UI.Properties.Resources.
             this.btnCancel.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
             this.btnCancel.ButtonText = "Hủy";
             this.btnCancel.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));

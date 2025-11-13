@@ -238,7 +238,7 @@ namespace UI
             // btnBanVe
             // 
             this.btnBanVe.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.btnBanVe.ButtonImage = global::UI.Properties.Resources.ticket;
+            //this.btnBanVe.ButtonImage = global::UI.Properties.Resources.ticket;
             this.btnBanVe.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
             this.btnBanVe.ButtonText = "BÁN VÉ";
             this.btnBanVe.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
