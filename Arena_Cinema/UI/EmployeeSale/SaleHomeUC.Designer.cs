@@ -31,8 +31,12 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.panel_SaleArea = new System.Windows.Forms.Panel();
             this.panel_SaleProduct = new System.Windows.Forms.Panel();
-            this.hopePictureBox_Icon = new ReaLTaiizor.Controls.HopePictureBox();
+            this.lb_SaleProduct_Title = new System.Windows.Forms.Label();
+            this.hopePictureBox_ = new ReaLTaiizor.Controls.HopePictureBox();
+            this.btn_SaleProduct = new ReaLTaiizor.Controls.Button();
             this.panel_SaleTicket = new System.Windows.Forms.Panel();
+            this.lb_SaleTicket_Title = new System.Windows.Forms.Label();
+            this.hopePictureBox_Icon = new ReaLTaiizor.Controls.HopePictureBox();
             this.btn_SaleTicket = new ReaLTaiizor.Controls.Button();
             this.panelSaleAreaHeader = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,20 +59,16 @@
             this.lb_EmName = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.hopePictureBox_ = new ReaLTaiizor.Controls.HopePictureBox();
-            this.btn_SaleProduct = new ReaLTaiizor.Controls.Button();
-            this.lb_SaleTicket_Title = new System.Windows.Forms.Label();
-            this.lb_SaleProduct_Title = new System.Windows.Forms.Label();
             this.panelMain.SuspendLayout();
             this.panel_SaleArea.SuspendLayout();
             this.panel_SaleProduct.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_Icon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_)).BeginInit();
             this.panel_SaleTicket.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_Icon)).BeginInit();
             this.panelSaleAreaHeader.SuspendLayout();
             this.panelEmployeeInfor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAVT)).BeginInit();
             this.panelHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMain
@@ -78,51 +78,109 @@
             this.panelMain.Location = new System.Drawing.Point(0, 60);
             this.panelMain.Name = "panelMain";
             this.panelMain.Padding = new System.Windows.Forms.Padding(25);
-            this.panelMain.Size = new System.Drawing.Size(1360, 740);
+            this.panelMain.Size = new System.Drawing.Size(1591, 740);
             this.panelMain.TabIndex = 0;
             // 
             // panel_SaleArea
             // 
-            this.panel_SaleArea.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel_SaleArea.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_SaleArea.Controls.Add(this.panel_SaleProduct);
             this.panel_SaleArea.Controls.Add(this.panel_SaleTicket);
             this.panel_SaleArea.Controls.Add(this.panelSaleAreaHeader);
-            this.panel_SaleArea.Location = new System.Drawing.Point(548, 28);
+            this.panel_SaleArea.Location = new System.Drawing.Point(715, 28);
             this.panel_SaleArea.Name = "panel_SaleArea";
-            this.panel_SaleArea.Size = new System.Drawing.Size(784, 684);
+            this.panel_SaleArea.Size = new System.Drawing.Size(848, 684);
             this.panel_SaleArea.TabIndex = 1;
             // 
             // panel_SaleProduct
             // 
+            this.panel_SaleProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_SaleProduct.Controls.Add(this.lb_SaleProduct_Title);
             this.panel_SaleProduct.Controls.Add(this.hopePictureBox_);
             this.panel_SaleProduct.Controls.Add(this.btn_SaleProduct);
-            this.panel_SaleProduct.Location = new System.Drawing.Point(407, 84);
+            this.panel_SaleProduct.Location = new System.Drawing.Point(449, 84);
             this.panel_SaleProduct.Name = "panel_SaleProduct";
-            this.panel_SaleProduct.Size = new System.Drawing.Size(342, 237);
+            this.panel_SaleProduct.Size = new System.Drawing.Size(347, 257);
             this.panel_SaleProduct.TabIndex = 2;
+            // 
+            // lb_SaleProduct_Title
+            // 
+            this.lb_SaleProduct_Title.AutoSize = true;
+            this.lb_SaleProduct_Title.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_SaleProduct_Title.Location = new System.Drawing.Point(125, 90);
+            this.lb_SaleProduct_Title.Name = "lb_SaleProduct_Title";
+            this.lb_SaleProduct_Title.Size = new System.Drawing.Size(118, 28);
+            this.lb_SaleProduct_Title.TabIndex = 2;
+            this.lb_SaleProduct_Title.Text = "Bán combo";
+            // 
+            // hopePictureBox_
+            // 
+            this.hopePictureBox_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
+            this.hopePictureBox_.Image = global::UI.Properties.Resources.popcorn__1_;
+            this.hopePictureBox_.Location = new System.Drawing.Point(133, 26);
+            this.hopePictureBox_.Name = "hopePictureBox_";
+            this.hopePictureBox_.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            this.hopePictureBox_.Size = new System.Drawing.Size(83, 61);
+            this.hopePictureBox_.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hopePictureBox_.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.hopePictureBox_.TabIndex = 1;
+            this.hopePictureBox_.TabStop = false;
+            this.hopePictureBox_.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // btn_SaleProduct
+            // 
+            this.btn_SaleProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btn_SaleProduct.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btn_SaleProduct.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_SaleProduct.EnteredBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btn_SaleProduct.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btn_SaleProduct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_SaleProduct.Image = null;
+            this.btn_SaleProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_SaleProduct.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btn_SaleProduct.Location = new System.Drawing.Point(99, 184);
+            this.btn_SaleProduct.Name = "btn_SaleProduct";
+            this.btn_SaleProduct.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btn_SaleProduct.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
+            this.btn_SaleProduct.Size = new System.Drawing.Size(171, 40);
+            this.btn_SaleProduct.TabIndex = 0;
+            this.btn_SaleProduct.Text = "Vào bán combo";
+            this.btn_SaleProduct.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // panel_SaleTicket
+            // 
+            this.panel_SaleTicket.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_SaleTicket.Controls.Add(this.lb_SaleTicket_Title);
+            this.panel_SaleTicket.Controls.Add(this.hopePictureBox_Icon);
+            this.panel_SaleTicket.Controls.Add(this.btn_SaleTicket);
+            this.panel_SaleTicket.Location = new System.Drawing.Point(51, 84);
+            this.panel_SaleTicket.Name = "panel_SaleTicket";
+            this.panel_SaleTicket.Size = new System.Drawing.Size(354, 257);
+            this.panel_SaleTicket.TabIndex = 1;
+            // 
+            // lb_SaleTicket_Title
+            // 
+            this.lb_SaleTicket_Title.AutoSize = true;
+            this.lb_SaleTicket_Title.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_SaleTicket_Title.Location = new System.Drawing.Point(133, 90);
+            this.lb_SaleTicket_Title.Name = "lb_SaleTicket_Title";
+            this.lb_SaleTicket_Title.Size = new System.Drawing.Size(76, 28);
+            this.lb_SaleTicket_Title.TabIndex = 2;
+            this.lb_SaleTicket_Title.Text = "Bán vé";
             // 
             // hopePictureBox_Icon
             // 
             this.hopePictureBox_Icon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.hopePictureBox_Icon.Location = new System.Drawing.Point(121, 26);
+            this.hopePictureBox_Icon.Image = global::UI.Properties.Resources.coupon;
+            this.hopePictureBox_Icon.Location = new System.Drawing.Point(126, 26);
             this.hopePictureBox_Icon.Name = "hopePictureBox_Icon";
             this.hopePictureBox_Icon.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox_Icon.Size = new System.Drawing.Size(100, 50);
+            this.hopePictureBox_Icon.Size = new System.Drawing.Size(83, 61);
+            this.hopePictureBox_Icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.hopePictureBox_Icon.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.hopePictureBox_Icon.TabIndex = 1;
             this.hopePictureBox_Icon.TabStop = false;
             this.hopePictureBox_Icon.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // panel_SaleTicket
-            // 
-            this.panel_SaleTicket.Controls.Add(this.lb_SaleTicket_Title);
-            this.panel_SaleTicket.Controls.Add(this.hopePictureBox_Icon);
-            this.panel_SaleTicket.Controls.Add(this.btn_SaleTicket);
-            this.panel_SaleTicket.Location = new System.Drawing.Point(24, 84);
-            this.panel_SaleTicket.Name = "panel_SaleTicket";
-            this.panel_SaleTicket.Size = new System.Drawing.Size(339, 237);
-            this.panel_SaleTicket.TabIndex = 1;
             // 
             // btn_SaleTicket
             // 
@@ -151,7 +209,7 @@
             this.panelSaleAreaHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelSaleAreaHeader.Location = new System.Drawing.Point(0, 0);
             this.panelSaleAreaHeader.Name = "panelSaleAreaHeader";
-            this.panelSaleAreaHeader.Size = new System.Drawing.Size(780, 60);
+            this.panelSaleAreaHeader.Size = new System.Drawing.Size(846, 60);
             this.panelSaleAreaHeader.TabIndex = 0;
             // 
             // label2
@@ -185,7 +243,7 @@
             this.panelEmployeeInfor.Controls.Add(this.lb_EmName);
             this.panelEmployeeInfor.Location = new System.Drawing.Point(28, 28);
             this.panelEmployeeInfor.Name = "panelEmployeeInfor";
-            this.panelEmployeeInfor.Size = new System.Drawing.Size(492, 579);
+            this.panelEmployeeInfor.Size = new System.Drawing.Size(609, 579);
             this.panelEmployeeInfor.TabIndex = 0;
             // 
             // lb_workDate
@@ -244,9 +302,9 @@
             this.lb_Branch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Branch.Location = new System.Drawing.Point(58, 268);
             this.lb_Branch.Name = "lb_Branch";
-            this.lb_Branch.Size = new System.Drawing.Size(112, 28);
+            this.lb_Branch.Size = new System.Drawing.Size(83, 28);
             this.lb_Branch.TabIndex = 3;
-            this.lb_Branch.Text = "Chi nhánh:";
+            this.lb_Branch.Text = "Địa chỉ:";
             // 
             // lb_EmpID
             // 
@@ -320,7 +378,7 @@
             // 
             this.lb_BranchText.AutoSize = true;
             this.lb_BranchText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_BranchText.Location = new System.Drawing.Point(185, 268);
+            this.lb_BranchText.Location = new System.Drawing.Point(144, 268);
             this.lb_BranchText.Name = "lb_BranchText";
             this.lb_BranchText.Size = new System.Drawing.Size(174, 28);
             this.lb_BranchText.TabIndex = 1;
@@ -353,7 +411,7 @@
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1360, 60);
+            this.panelHeader.Size = new System.Drawing.Size(1591, 60);
             this.panelHeader.TabIndex = 1;
             // 
             // lblTitle
@@ -367,58 +425,6 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Quản Lý Bán Hàng";
             // 
-            // hopePictureBox_
-            // 
-            this.hopePictureBox_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.hopePictureBox_.Location = new System.Drawing.Point(133, 26);
-            this.hopePictureBox_.Name = "hopePictureBox_";
-            this.hopePictureBox_.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox_.Size = new System.Drawing.Size(100, 50);
-            this.hopePictureBox_.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hopePictureBox_.TabIndex = 1;
-            this.hopePictureBox_.TabStop = false;
-            this.hopePictureBox_.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
-            // btn_SaleProduct
-            // 
-            this.btn_SaleProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btn_SaleProduct.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btn_SaleProduct.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_SaleProduct.EnteredBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btn_SaleProduct.EnteredColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btn_SaleProduct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_SaleProduct.Image = null;
-            this.btn_SaleProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_SaleProduct.InactiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btn_SaleProduct.Location = new System.Drawing.Point(99, 184);
-            this.btn_SaleProduct.Name = "btn_SaleProduct";
-            this.btn_SaleProduct.PressedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btn_SaleProduct.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
-            this.btn_SaleProduct.Size = new System.Drawing.Size(171, 40);
-            this.btn_SaleProduct.TabIndex = 0;
-            this.btn_SaleProduct.Text = "Vào bán combo";
-            this.btn_SaleProduct.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // lb_SaleTicket_Title
-            // 
-            this.lb_SaleTicket_Title.AutoSize = true;
-            this.lb_SaleTicket_Title.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_SaleTicket_Title.Location = new System.Drawing.Point(133, 90);
-            this.lb_SaleTicket_Title.Name = "lb_SaleTicket_Title";
-            this.lb_SaleTicket_Title.Size = new System.Drawing.Size(76, 28);
-            this.lb_SaleTicket_Title.TabIndex = 2;
-            this.lb_SaleTicket_Title.Text = "Bán vé";
-            // 
-            // lb_SaleProduct_Title
-            // 
-            this.lb_SaleProduct_Title.AutoSize = true;
-            this.lb_SaleProduct_Title.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_SaleProduct_Title.Location = new System.Drawing.Point(125, 90);
-            this.lb_SaleProduct_Title.Name = "lb_SaleProduct_Title";
-            this.lb_SaleProduct_Title.Size = new System.Drawing.Size(118, 28);
-            this.lb_SaleProduct_Title.TabIndex = 2;
-            this.lb_SaleProduct_Title.Text = "Bán combo";
-            // 
             // SaleHomeUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -426,14 +432,15 @@
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelMain);
             this.Name = "SaleHomeUC";
-            this.Size = new System.Drawing.Size(1360, 800);
+            this.Size = new System.Drawing.Size(1591, 800);
             this.panelMain.ResumeLayout(false);
             this.panel_SaleArea.ResumeLayout(false);
             this.panel_SaleProduct.ResumeLayout(false);
             this.panel_SaleProduct.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_Icon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_)).EndInit();
             this.panel_SaleTicket.ResumeLayout(false);
             this.panel_SaleTicket.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_Icon)).EndInit();
             this.panelSaleAreaHeader.ResumeLayout(false);
             this.panelSaleAreaHeader.PerformLayout();
             this.panelEmployeeInfor.ResumeLayout(false);
@@ -441,7 +448,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picAVT)).EndInit();
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_)).EndInit();
             this.ResumeLayout(false);
 
         }

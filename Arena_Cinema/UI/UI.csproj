@@ -114,11 +114,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lang.resx</DependentUpon>
     </Compile>
+    <Compile Include="Room\RoomManagementUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Room\RoomManagementUC.Designer.cs">
+      <DependentUpon>RoomManagementUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setting\SettingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Setting\SettingControl.Designer.cs">
       <DependentUpon>SettingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowTime\MNShowTimeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShowTime\MNShowTimeUC.Designer.cs">
+      <DependentUpon>MNShowTimeUC.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="EmployeeSale\SaleHomeUC.resx">
       <DependentUpon>SaleHomeUC.cs</DependentUpon>
@@ -138,6 +150,9 @@
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Movie\Movie_MainUC.resx">
+      <DependentUpon>Movie_MainUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -148,8 +163,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Room\RoomManagementUC.resx">
+      <DependentUpon>RoomManagementUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Setting\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowTime\MNShowTimeUC.resx">
+      <DependentUpon>MNShowTimeUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -324,6 +345,7 @@
     <None Include="Resources\minus.png" />
     <None Include="Resources\sign.png" />
     <None Include="Resources\user.png" />
+    <None Include="Image\SaleEmp\coupon.png" />
     <None Include="Resources\trash.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\chevrons.png" />

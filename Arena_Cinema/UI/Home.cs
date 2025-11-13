@@ -9,6 +9,8 @@ using UI.Employee;
 using UI.Setting;
 using UI.Movie;
 using UI.EmployeeSale;
+using UI.Room;
+using UI.ShowTime;
 
 namespace UI
 {
@@ -44,28 +46,7 @@ namespace UI
 
         private void SidebarTimer_Tick(object sender, EventArgs e)
         {
-            if (isCollapsed)
-            {
-                // mở rộng sidebar
-                pnMenu.Width += 52;
-                if (pnMenu.Width >= sidebarExpandedWidth)
-                {
-                    sidebarTimer.Stop();
-                    isCollapsed = false;
-                    ShowButtonText(true);
-                }
-            }
-            else
-            {
-                // thu gọn sidebar
-                ShowButtonText(false);
-                pnMenu.Width -= 52;
-                if (pnMenu.Width <= sidebarCollapsedWidth)
-                {
-                    sidebarTimer.Stop();
-                    isCollapsed = true;
-                }
-            }
+
         }
 
         private void ShowButtonText(bool visible)
@@ -113,8 +94,9 @@ namespace UI
                     LoadControl(em);
                     break;
                 case "btnSuatChieu":
-                    MessageBox.Show("Chức năng suất chiếu đanng chờ bạn code");
-
+                    
+                    MNShowTimeUC st=new MNShowTimeUC(_employee);
+                    LoadControl(st);
                     break;
                 case "btnPhim":
                    
@@ -123,8 +105,8 @@ namespace UI
 
                     break;
                 case "btnPhong":
-                    MessageBox.Show("Chức năng phòng đang chờ bạn code");
-
+                    RoomManagementUC room = new RoomManagementUC(_employee);
+                    LoadControl(room);
                     break;
                 case "btnGhe":
                     MessageBox.Show("Chức năng ghế đang chờ bạn code");
@@ -159,6 +141,11 @@ namespace UI
         {
             Movie_MainUC movieMain = new Movie_MainUC(_employee);
             LoadControl(movieMain);
+        }
+        private void btnPhong_Click(object sender, EventArgs e)
+        {
+            RoomManagementUC room = new RoomManagementUC(_employee);
+            LoadControl(room);
         }
     }
 }

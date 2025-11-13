@@ -213,6 +213,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap coupon {
+            get {
+                object obj = ResourceManager.GetObject("coupon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CoVietNam {
             get {
                 object obj = ResourceManager.GetObject("CoVietNam", resourceCulture);
@@ -416,6 +426,16 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap popcorn {
             get {
                 object obj = ResourceManager.GetObject("popcorn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap popcorn__1_ {
+            get {
+                object obj = ResourceManager.GetObject("popcorn (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

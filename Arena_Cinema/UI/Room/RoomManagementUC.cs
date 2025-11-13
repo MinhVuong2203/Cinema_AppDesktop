@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UI.Movie
+namespace UI.Room
 {
-    public partial class Movie_MainUC : UserControl
+    public partial class RoomManagementUC : UserControl
     {
-        public Movie_MainUC(DTO.Employee employee)
+        public RoomManagementUC(DTO.Employee employee)
         {
             InitializeComponent();
         }
 
-        private void panelHeader_Paint(object sender, PaintEventArgs e)
+        private void moviesContainer_Paint(object sender, PaintEventArgs e)
         {
 
         }
