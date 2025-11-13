@@ -102,7 +102,6 @@ namespace UI
                    
                     Movie_MainUC movieMain = new Movie_MainUC(_employee);
                     LoadControl(movieMain);
-
                     break;
                 case "btnPhong":
                     RoomManagementUC room = new RoomManagementUC(_employee);
