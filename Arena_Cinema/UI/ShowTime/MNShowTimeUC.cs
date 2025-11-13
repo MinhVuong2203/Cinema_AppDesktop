@@ -21,5 +21,10 @@ namespace UI.ShowTime
         {
 
         }
+
+        private void dgvShowtimes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
