@@ -46,6 +46,7 @@
     <Compile Include="ImgHelper.cs" />
     <Compile Include="LanguageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidateHepler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
