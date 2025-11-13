@@ -193,6 +193,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close {
+            get {
+                object obj = ResourceManager.GetObject("close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CloseEyes {
             get {
                 object obj = ResourceManager.GetObject("CloseEyes", resourceCulture);
@@ -216,6 +226,16 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap CoVietNam1 {
             get {
                 object obj = ResourceManager.GetObject("CoVietNam1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap diskette {
+            get {
+                object obj = ResourceManager.GetObject("diskette", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -296,6 +316,16 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap Menu {
             get {
                 object obj = ResourceManager.GetObject("Menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minus {
+            get {
+                object obj = ResourceManager.GetObject("minus", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -433,6 +463,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sign {
+            get {
+                object obj = ResourceManager.GetObject("sign", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap teamwork {
             get {
                 object obj = ResourceManager.GetObject("teamwork", resourceCulture);
@@ -476,6 +516,16 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap trash {
             get {
                 object obj = ResourceManager.GetObject("trash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user {
+            get {
+                object obj = ResourceManager.GetObject("user", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

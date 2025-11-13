@@ -319,6 +319,11 @@
     <Content Include="Image\Employee\emloyeeDefault.png" />
     <Content Include="Image\Employee\Gai4.jpeg" />
     <Content Include="Image\Product\popcorn %281%29.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\diskette.png" />
+    <None Include="Resources\minus.png" />
+    <None Include="Resources\sign.png" />
+    <None Include="Resources\user.png" />
     <None Include="Resources\trash.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\chevrons.png" />

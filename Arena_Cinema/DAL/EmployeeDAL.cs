@@ -1,10 +1,11 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.Entity;
 
 namespace DAL
 {
@@ -68,6 +69,51 @@ namespace DAL
 
             return query.Include("Role").OrderBy(e => e.FullName).ToList();
         }
+
+
+        public bool AddEmployee(Employee employee)
+        {
+            try
+            {
+                _context.Employees.Add(employee);
+                _context.SaveChanges();
+                return true;
+            }
+            catch(DbUpdateException ex)
+            {
+                string errorMessage = GetFriendlyErrorMessage(ex);
+                throw new Exception(errorMessage);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi: " + ex.Message);
+            }
+
+        }
+        // để kiểm tra trùng
+        private string GetFriendlyErrorMessage(DbUpdateException ex)
+        {
+            string innerMessage = ex.InnerException?.InnerException?.Message
+                                  ?? ex.InnerException?.Message
+                                  ?? ex.Message;
+
+            // Kiểm tra lỗi UNIQUE constraint (không phân biệt hoa thường)
+            if (innerMessage.IndexOf("UNIQUE KEY constraint", StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                if (innerMessage.IndexOf("UQ__Employee__A955A0AAB2147182", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return "Số CCCD đã tồn tại trong hệ thống!";
+
+                if (innerMessage.IndexOf("UQ__Employee__A9D10534AA23BF74", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return "Email đã tồn tại trong hệ thống!";
+
+                if (innerMessage.IndexOf("UQ__Employee__5C7E359EE09330E1", StringComparison.OrdinalIgnoreCase) >= 0)
+                    return "Số điện thoại đã tồn tại trong hệ thống!";
+            }
+
+            // Nếu không khớp với trường hợp nào, trả về message chi tiết
+            return "Lỗi cơ sở dữ liệu: " + innerMessage;
+        }
+
 
 
     }

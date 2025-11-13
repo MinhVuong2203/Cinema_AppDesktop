@@ -23,5 +23,9 @@ namespace BLL
             return _employeeDAL.GetEmployeeBy(Name, Role, Gender, isDelete);
         }
 
+        public bool AddEmployee(DTO.Employee employee) { 
+            return _employeeDAL.AddEmployee(employee);
+        }
+
     }
 }

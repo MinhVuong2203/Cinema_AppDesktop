@@ -250,6 +250,11 @@ namespace UI.Employee
             FilterEmployees();
         }
 
+        private void btnAddEmployee_Click(object sender, EventArgs e)
+        {
+            _home.LoadControl(new AddEmployeeUC(_home, _employee, this));
+        }
+
 
 
         // Sự kiện nút Xóa
