@@ -89,7 +89,7 @@ namespace UI.Employee
                 {                  
                     try
                     {
-                        ImgHelper.DisplayImageFromRelative("Image\\Employee\\employeeDefault.png", picEmployee);      
+                        ImgHelper.DisplayImageFromRelative(emp.ImageUrl, picEmployee);      
                     }
                     catch (Exception ex)
                     {

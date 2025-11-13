@@ -75,7 +75,8 @@ namespace UI.Employee
             this.cboGender.SelectedIndex = 0;
             this.txtAddress.Text = string.Empty;
             this.txtPhone.Text = string.Empty;
-            this.dtpBirthDate.Value = DateTime.MaxValue;
+            this.pathImg = "Image\\Employee\\emloyeeDefault.png";
+            LoadImage();
         }
 
         private void txtHourWage_KeyPress(object sender, KeyPressEventArgs e)
@@ -136,12 +137,12 @@ namespace UI.Employee
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
         {
-            ValidateHepler.ValidateTextBox(this.txtUsername, this.lbCheckUsername, "Tên đăng nhập", false, @"^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{6}$", "Tên đăng nhập phải ít nhất 6 ký tự có hoa và thường");
+            ValidateHepler.ValidateTextBox(this.txtUsername, this.lbCheckUsername, "Tên đăng nhập", false, @"^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{6,}$", "Tên đăng nhập phải ít nhất 6 ký tự có hoa và thường");
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
-            ValidateHepler.ValidateTextBox(this.txtPassword, this.lbCheckPassword, "Tên đăng nhập", false, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.{6,})", "Mật khẩu phải ít nhất 6 ký tự bao gồm hoa, thường và ký tự đặc biệt");
+            ValidateHepler.ValidateTextBox(this.txtPassword, this.lbCheckPassword, "Mật khẩu", false, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=.{6,})", "Mật khẩu phải ít nhất 6 ký tự bao gồm hoa, thường và ký tự đặc biệt");
         }
 
         private void txtHourWage_TextChanged(object sender, EventArgs e)
@@ -185,6 +186,7 @@ namespace UI.Employee
                         BirthDate = dtpBirthDate.Value,
                         HourWage = int.Parse(txtHourWage.Text.Trim()),
                         Gender = string.IsNullOrEmpty(cboGender.SelectedItem?.ToString()) ? "Nam" : cboGender.SelectedItem.ToString(),
+                        ImageUrl = this.pathImg,
                         RoleId = (int.Parse(cboRole.SelectedValue.ToString()) == 0) ? 2 : int.Parse(cboRole.SelectedValue.ToString()),
                         RegisterDate = DateTime.Now,
                         IsDeleted = false
@@ -207,10 +209,11 @@ namespace UI.Employee
                         "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
 
-            
-
-
+        private void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            string pathImg = ImgHelper.UploadImage("Employee", this.picImage);
         }
     }
 }
