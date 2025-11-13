@@ -10,6 +10,7 @@ using UI.Setting;
 using UI.Movie;
 using UI.EmployeeSale;
 using UI.Room;
+using UI.ShowTime;
 
 namespace UI
 {
@@ -93,8 +94,9 @@ namespace UI
                     LoadControl(em);
                     break;
                 case "btnSuatChieu":
-                    MessageBox.Show("Chức năng suất chiếu đanng chờ bạn code");
-
+                    
+                    MNShowTimeUC st=new MNShowTimeUC(_employee);
+                    LoadControl(st);
                     break;
                 case "btnPhim":
                    
