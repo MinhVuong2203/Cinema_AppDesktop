@@ -32,6 +32,7 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.PanelTop = new ReaLTaiizor.Controls.ParrotGradientPanel();
             this.btnMenu = new ReaLTaiizor.Controls.ParrotButton();
             this.PanelMain = new ReaLTaiizor.Controls.ParrotGradientPanel();
@@ -238,7 +239,7 @@ namespace UI
             // btnBanVe
             // 
             this.btnBanVe.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            //this.btnBanVe.ButtonImage = global::UI.Properties.Resources.ticket;
+            this.btnBanVe.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnBanVe.ButtonImage")));
             this.btnBanVe.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
             this.btnBanVe.ButtonText = "BÁN VÉ";
             this.btnBanVe.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));

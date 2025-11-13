@@ -46,7 +46,28 @@ namespace UI
 
         private void SidebarTimer_Tick(object sender, EventArgs e)
         {
-
+            if (isCollapsed)
+            {
+                // mở rộng sidebar
+                pnMenu.Width += 20;
+                if (pnMenu.Width >= sidebarExpandedWidth)
+                {
+                    sidebarTimer.Stop();
+                    isCollapsed = false;
+                    ShowButtonText(true);
+                }
+            }
+            else
+            {
+                // thu gọn sidebar
+                ShowButtonText(false);
+                pnMenu.Width -= 20;
+                if (pnMenu.Width <= sidebarCollapsedWidth)
+                {
+                    sidebarTimer.Stop();
+                    isCollapsed = true;
+                }
+            }
         }
 
         private void ShowButtonText(bool visible)

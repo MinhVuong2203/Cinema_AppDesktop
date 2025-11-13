@@ -9,7 +9,7 @@ namespace Common
     {
         // Gốc thư mục ảnh (Image trong project)
         private static readonly string BaseImagePath =
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\UI\Image");
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Image");
 
         /// <summary>
         /// Mở hộp thoại chọn ảnh và lưu ảnh vào thư mục con tương ứng

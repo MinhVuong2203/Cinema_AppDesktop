@@ -33,6 +33,14 @@ namespace UI.Employee
             this.cboRole = new ReaLTaiizor.Controls.MaterialComboBox();
             this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new ReaLTaiizor.Controls.GroupBox();
+            this.lbCheckPassword = new System.Windows.Forms.Label();
+            this.lbCheckUsername = new System.Windows.Forms.Label();
+            this.lbCheckLuong = new System.Windows.Forms.Label();
+            this.lbCheckEmail = new System.Windows.Forms.Label();
+            this.lbCheckPhone = new System.Windows.Forms.Label();
+            this.lbCheckCCCD = new System.Windows.Forms.Label();
+            this.lbCheckName = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtPassword = new ReaLTaiizor.Controls.MaterialTextBox();
             this.txtUsername = new ReaLTaiizor.Controls.MaterialTextBox();
             this.parrotButton2 = new ReaLTaiizor.Controls.ParrotButton();
@@ -43,14 +51,6 @@ namespace UI.Employee
             this.btnUploadImage = new ReaLTaiizor.Controls.ParrotButton();
             this.picImage = new System.Windows.Forms.PictureBox();
             this.btnPrev = new ReaLTaiizor.Controls.ParrotButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbCheckName = new System.Windows.Forms.Label();
-            this.lbCheckCCCD = new System.Windows.Forms.Label();
-            this.lbCheckPhone = new System.Windows.Forms.Label();
-            this.lbCheckEmail = new System.Windows.Forms.Label();
-            this.lbCheckLuong = new System.Windows.Forms.Label();
-            this.lbCheckUsername = new System.Windows.Forms.Label();
-            this.lbCheckPassword = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.SuspendLayout();
@@ -283,6 +283,80 @@ namespace UI.Employee
             this.groupBox1.TabIndex = 16;
             this.groupBox1.Text = "Thông tin cá nhân";
             // 
+            // lbCheckPassword
+            // 
+            this.lbCheckPassword.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCheckPassword.ForeColor = System.Drawing.Color.Red;
+            this.lbCheckPassword.Location = new System.Drawing.Point(435, 437);
+            this.lbCheckPassword.Name = "lbCheckPassword";
+            this.lbCheckPassword.Size = new System.Drawing.Size(626, 23);
+            this.lbCheckPassword.TabIndex = 28;
+            // 
+            // lbCheckUsername
+            // 
+            this.lbCheckUsername.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCheckUsername.ForeColor = System.Drawing.Color.Red;
+            this.lbCheckUsername.Location = new System.Drawing.Point(435, 358);
+            this.lbCheckUsername.Name = "lbCheckUsername";
+            this.lbCheckUsername.Size = new System.Drawing.Size(626, 23);
+            this.lbCheckUsername.TabIndex = 27;
+            // 
+            // lbCheckLuong
+            // 
+            this.lbCheckLuong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCheckLuong.ForeColor = System.Drawing.Color.Red;
+            this.lbCheckLuong.Location = new System.Drawing.Point(435, 199);
+            this.lbCheckLuong.Name = "lbCheckLuong";
+            this.lbCheckLuong.Size = new System.Drawing.Size(362, 20);
+            this.lbCheckLuong.TabIndex = 26;
+            // 
+            // lbCheckEmail
+            // 
+            this.lbCheckEmail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCheckEmail.ForeColor = System.Drawing.Color.Red;
+            this.lbCheckEmail.Location = new System.Drawing.Point(55, 208);
+            this.lbCheckEmail.Name = "lbCheckEmail";
+            this.lbCheckEmail.Size = new System.Drawing.Size(362, 20);
+            this.lbCheckEmail.TabIndex = 25;
+            // 
+            // lbCheckPhone
+            // 
+            this.lbCheckPhone.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCheckPhone.ForeColor = System.Drawing.Color.Red;
+            this.lbCheckPhone.Location = new System.Drawing.Point(55, 124);
+            this.lbCheckPhone.Name = "lbCheckPhone";
+            this.lbCheckPhone.Size = new System.Drawing.Size(362, 20);
+            this.lbCheckPhone.TabIndex = 24;
+            // 
+            // lbCheckCCCD
+            // 
+            this.lbCheckCCCD.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCheckCCCD.ForeColor = System.Drawing.Color.Red;
+            this.lbCheckCCCD.Location = new System.Drawing.Point(433, 42);
+            this.lbCheckCCCD.Name = "lbCheckCCCD";
+            this.lbCheckCCCD.Size = new System.Drawing.Size(362, 20);
+            this.lbCheckCCCD.TabIndex = 23;
+            // 
+            // lbCheckName
+            // 
+            this.lbCheckName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCheckName.ForeColor = System.Drawing.Color.Red;
+            this.lbCheckName.Location = new System.Drawing.Point(55, 42);
+            this.lbCheckName.Name = "lbCheckName";
+            this.lbCheckName.Size = new System.Drawing.Size(372, 24);
+            this.lbCheckName.TabIndex = 22;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(669, 238);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 30);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "/h";
+            // 
             // txtPassword
             // 
             this.txtPassword.AnimateReadOnly = false;
@@ -382,7 +456,7 @@ namespace UI.Employee
             // btnCancel
             // 
             this.btnCancel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            //this.btnCancel.ButtonImage = global::UI.Properties.Resources.
+            this.btnCancel.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.ButtonImage")));
             this.btnCancel.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
             this.btnCancel.ButtonText = "Hủy";
             this.btnCancel.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
@@ -452,6 +526,7 @@ namespace UI.Employee
             this.btnUploadImage.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
             this.btnUploadImage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnUploadImage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
             // 
             // picImage
             // 
@@ -486,80 +561,6 @@ namespace UI.Employee
             this.btnPrev.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnPrev.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label2.Location = new System.Drawing.Point(669, 238);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 31);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "/h";
-            // 
-            // lbCheckName
-            // 
-            this.lbCheckName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCheckName.ForeColor = System.Drawing.Color.Red;
-            this.lbCheckName.Location = new System.Drawing.Point(55, 42);
-            this.lbCheckName.Name = "lbCheckName";
-            this.lbCheckName.Size = new System.Drawing.Size(372, 24);
-            this.lbCheckName.TabIndex = 22;
-            // 
-            // lbCheckCCCD
-            // 
-            this.lbCheckCCCD.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCheckCCCD.ForeColor = System.Drawing.Color.Red;
-            this.lbCheckCCCD.Location = new System.Drawing.Point(433, 42);
-            this.lbCheckCCCD.Name = "lbCheckCCCD";
-            this.lbCheckCCCD.Size = new System.Drawing.Size(362, 20);
-            this.lbCheckCCCD.TabIndex = 23;
-            // 
-            // lbCheckPhone
-            // 
-            this.lbCheckPhone.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCheckPhone.ForeColor = System.Drawing.Color.Red;
-            this.lbCheckPhone.Location = new System.Drawing.Point(55, 124);
-            this.lbCheckPhone.Name = "lbCheckPhone";
-            this.lbCheckPhone.Size = new System.Drawing.Size(362, 20);
-            this.lbCheckPhone.TabIndex = 24;
-            // 
-            // lbCheckEmail
-            // 
-            this.lbCheckEmail.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCheckEmail.ForeColor = System.Drawing.Color.Red;
-            this.lbCheckEmail.Location = new System.Drawing.Point(55, 208);
-            this.lbCheckEmail.Name = "lbCheckEmail";
-            this.lbCheckEmail.Size = new System.Drawing.Size(362, 20);
-            this.lbCheckEmail.TabIndex = 25;
-            // 
-            // lbCheckLuong
-            // 
-            this.lbCheckLuong.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCheckLuong.ForeColor = System.Drawing.Color.Red;
-            this.lbCheckLuong.Location = new System.Drawing.Point(435, 199);
-            this.lbCheckLuong.Name = "lbCheckLuong";
-            this.lbCheckLuong.Size = new System.Drawing.Size(362, 20);
-            this.lbCheckLuong.TabIndex = 26;
-            // 
-            // lbCheckUsername
-            // 
-            this.lbCheckUsername.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCheckUsername.ForeColor = System.Drawing.Color.Red;
-            this.lbCheckUsername.Location = new System.Drawing.Point(435, 358);
-            this.lbCheckUsername.Name = "lbCheckUsername";
-            this.lbCheckUsername.Size = new System.Drawing.Size(626, 23);
-            this.lbCheckUsername.TabIndex = 27;
-            // 
-            // lbCheckPassword
-            // 
-            this.lbCheckPassword.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCheckPassword.ForeColor = System.Drawing.Color.Red;
-            this.lbCheckPassword.Location = new System.Drawing.Point(435, 437);
-            this.lbCheckPassword.Name = "lbCheckPassword";
-            this.lbCheckPassword.Size = new System.Drawing.Size(626, 23);
-            this.lbCheckPassword.TabIndex = 28;
             // 
             // AddEmployeeUC
             // 
