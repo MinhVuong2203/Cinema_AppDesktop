@@ -11,6 +11,7 @@ using UI.Movie;
 using UI.EmployeeSale;
 using UI.Room;
 using UI.ShowTime;
+using UI.Products;
 
 namespace UI
 {
@@ -136,7 +137,10 @@ namespace UI
                     //MessageBox.Show("Chức năng bán vé đang chờ bạn code");
                     SaleHomeUC saleHomeUC = new SaleHomeUC(_employee);
                     LoadControl(saleHomeUC);
-
+                    break;
+                case "btnSanPham":
+                    ProductMainUC productMainUC = new ProductMainUC(this, _employee);
+                    LoadControl(productMainUC);
                     break;
                 case "btnThongKe":
                     MessageBox.Show("Chức năng thống đanng chờ bạn code");

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Management;
@@ -64,7 +65,7 @@ namespace UI.Employee
         }
 
         public void setDefaltInfo()
-        {
+        { 
             this.txtCCCD.Text = string.Empty;
             this.txtFullName.Text = string.Empty;
             this.txtEmail.Text = string.Empty;
@@ -214,6 +215,7 @@ namespace UI.Employee
         private void btnUploadImage_Click(object sender, EventArgs e)
         {
             string pathImg = ImgHelper.UploadImage("Employee", this.picImage);
+            Debug.WriteLine("----------- " + pathImg);
         }
     }
 }

@@ -47,7 +47,7 @@ namespace UI
             this.btnPhim = new ReaLTaiizor.Controls.ParrotButton();
             this.btnPhong = new ReaLTaiizor.Controls.ParrotButton();
             this.btnGhe = new ReaLTaiizor.Controls.ParrotButton();
-            this.parrotButton1 = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnSanPham = new ReaLTaiizor.Controls.ParrotButton();
             this.btnThongKe = new ReaLTaiizor.Controls.ParrotButton();
             this.pnMenu = new System.Windows.Forms.Panel();
             this.PanelTop.SuspendLayout();
@@ -200,7 +200,7 @@ namespace UI
             this.pnMenuTop.Controls.Add(this.btnPhim);
             this.pnMenuTop.Controls.Add(this.btnPhong);
             this.pnMenuTop.Controls.Add(this.btnGhe);
-            this.pnMenuTop.Controls.Add(this.parrotButton1);
+            this.pnMenuTop.Controls.Add(this.btnSanPham);
             this.pnMenuTop.Controls.Add(this.btnThongKe);
             this.pnMenuTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMenuTop.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -364,7 +364,7 @@ namespace UI
             this.btnPhong.TextColor = System.Drawing.Color.White;
             this.btnPhong.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnPhong.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPhong.Click += new System.EventHandler(this.btnPhong_Click);
+            this.btnPhong.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // btnGhe
             // 
@@ -392,31 +392,32 @@ namespace UI
             this.btnGhe.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnGhe.Click += new System.EventHandler(this.MenuItem_Click);
             // 
-            // parrotButton1
+            // btnSanPham
             // 
-            this.parrotButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.parrotButton1.ButtonImage = global::UI.Properties.Resources.popcorn;
-            this.parrotButton1.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
-            this.parrotButton1.ButtonText = "SẢN PHẨM";
-            this.parrotButton1.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.parrotButton1.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.parrotButton1.CornerRadius = 5;
-            this.parrotButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.parrotButton1.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parrotButton1.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.parrotButton1.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.parrotButton1.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
-            this.parrotButton1.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.parrotButton1.Location = new System.Drawing.Point(3, 485);
-            this.parrotButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.parrotButton1.Name = "parrotButton1";
-            this.parrotButton1.Padding = new System.Windows.Forms.Padding(10);
-            this.parrotButton1.Size = new System.Drawing.Size(282, 65);
-            this.parrotButton1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.parrotButton1.TabIndex = 18;
-            this.parrotButton1.TextColor = System.Drawing.Color.White;
-            this.parrotButton1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.parrotButton1.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnSanPham.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
+            this.btnSanPham.ButtonImage = global::UI.Properties.Resources.popcorn;
+            this.btnSanPham.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
+            this.btnSanPham.ButtonText = "SẢN PHẨM";
+            this.btnSanPham.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.btnSanPham.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnSanPham.CornerRadius = 5;
+            this.btnSanPham.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSanPham.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSanPham.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnSanPham.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnSanPham.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.btnSanPham.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnSanPham.Location = new System.Drawing.Point(3, 485);
+            this.btnSanPham.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSanPham.Name = "btnSanPham";
+            this.btnSanPham.Padding = new System.Windows.Forms.Padding(10);
+            this.btnSanPham.Size = new System.Drawing.Size(282, 65);
+            this.btnSanPham.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnSanPham.TabIndex = 18;
+            this.btnSanPham.TextColor = System.Drawing.Color.White;
+            this.btnSanPham.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnSanPham.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnSanPham.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // btnThongKe
             // 
@@ -502,6 +503,6 @@ namespace UI
         private ReaLTaiizor.Controls.ParrotButton btnGhe;
         private ReaLTaiizor.Controls.ParrotButton btnBanVe;
         private ReaLTaiizor.Controls.ParrotButton btnThongKe;
-        private ReaLTaiizor.Controls.ParrotButton parrotButton1;
+        private ReaLTaiizor.Controls.ParrotButton btnSanPham;
     }
 }
