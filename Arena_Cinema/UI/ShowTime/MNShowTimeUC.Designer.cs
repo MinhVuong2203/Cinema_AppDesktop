@@ -28,26 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHeader = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            this.head_Right_Panel = new System.Windows.Forms.Panel();
             this.btnAddShowtime = new ReaLTaiizor.Controls.ParrotButton();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.filterPanel = new System.Windows.Forms.Panel();
-            this.lblBranch = new System.Windows.Forms.Label();
-            this.cboBranch = new ReaLTaiizor.Controls.MaterialComboBox();
-            this.lblMovie = new System.Windows.Forms.Label();
-            this.cboMovie = new ReaLTaiizor.Controls.MaterialComboBox();
-            this.lblPageSize = new System.Windows.Forms.Label();
-            this.cboPageSize = new ReaLTaiizor.Controls.MaterialComboBox();
-            this.btnFilter = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnReset = new ReaLTaiizor.Controls.ParrotButton();
-            this.infoPanel = new System.Windows.Forms.Panel();
-            this.lblInfo = new System.Windows.Forms.Label();
-            this.dataGridPanel = new System.Windows.Forms.Panel();
             this.dgvShowtimes = new ReaLTaiizor.Controls.PoisonDataGridView();
             this.colShowtimeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMovie = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,48 +55,49 @@
             this.btnPage3 = new ReaLTaiizor.Controls.ParrotButton();
             this.btnNextPage = new ReaLTaiizor.Controls.ParrotButton();
             this.btnLastPage = new ReaLTaiizor.Controls.ParrotButton();
+            this.filterPanel = new System.Windows.Forms.Panel();
+            this.left_Panel = new System.Windows.Forms.Panel();
+            this.lblBranch = new System.Windows.Forms.Label();
+            this.cboBranch = new ReaLTaiizor.Controls.MaterialComboBox();
+            this.lblMovie = new System.Windows.Forms.Label();
+            this.cboMovie = new ReaLTaiizor.Controls.MaterialComboBox();
+            this.lblPageSize = new System.Windows.Forms.Label();
+            this.cboPageSize = new ReaLTaiizor.Controls.MaterialComboBox();
+            this.right_Panel = new System.Windows.Forms.Panel();
+            this.btnFilter = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnReset = new ReaLTaiizor.Controls.ParrotButton();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.panelDataGridView = new System.Windows.Forms.Panel();
             this.panelHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
+            this.head_Right_Panel.SuspendLayout();
             this.panelMain.SuspendLayout();
-            this.filterPanel.SuspendLayout();
-            this.infoPanel.SuspendLayout();
-            this.dataGridPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowtimes)).BeginInit();
             this.paginationPanel.SuspendLayout();
+            this.filterPanel.SuspendLayout();
+            this.left_Panel.SuspendLayout();
+            this.right_Panel.SuspendLayout();
+            this.panelDataGridView.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.panelHeader.Controls.Add(this.head_Right_Panel);
             this.panelHeader.Controls.Add(this.lblTitle);
-            this.panelHeader.Controls.Add(this.pictureBoxIcon);
-            this.panelHeader.Controls.Add(this.btnAddShowtime);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1360, 60);
             this.panelHeader.TabIndex = 0;
             // 
-            // lblTitle
+            // head_Right_Panel
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(50, 14);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(275, 32);
-            this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "🎬 Quản Lý Suất Chiếu";
-            // 
-            // pictureBoxIcon
-            // 
-            this.pictureBoxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(15, 15);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(30, 30);
-            this.pictureBoxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxIcon.TabIndex = 0;
-            this.pictureBoxIcon.TabStop = false;
+            this.head_Right_Panel.Controls.Add(this.btnAddShowtime);
+            this.head_Right_Panel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.head_Right_Panel.Location = new System.Drawing.Point(1180, 0);
+            this.head_Right_Panel.Name = "head_Right_Panel";
+            this.head_Right_Panel.Size = new System.Drawing.Size(180, 60);
+            this.head_Right_Panel.TabIndex = 3;
             // 
             // btnAddShowtime
             // 
@@ -125,7 +114,7 @@
             this.btnAddShowtime.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
             this.btnAddShowtime.HoverTextColor = System.Drawing.Color.White;
             this.btnAddShowtime.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnAddShowtime.Location = new System.Drawing.Point(1210, 12);
+            this.btnAddShowtime.Location = new System.Drawing.Point(31, 9);
             this.btnAddShowtime.Name = "btnAddShowtime";
             this.btnAddShowtime.Size = new System.Drawing.Size(130, 36);
             this.btnAddShowtime.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -134,13 +123,23 @@
             this.btnAddShowtime.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnAddShowtime.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(50, 14);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(275, 32);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "🎬 Quản Lý Suất Chiếu";
+            // 
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panelMain.Controls.Add(this.filterPanel);
-            this.panelMain.Controls.Add(this.infoPanel);
-            this.panelMain.Controls.Add(this.dataGridPanel);
+            this.panelMain.Controls.Add(this.panelDataGridView);
             this.panelMain.Controls.Add(this.paginationPanel);
+            this.panelMain.Controls.Add(this.filterPanel);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 60);
             this.panelMain.Name = "panelMain";
@@ -149,227 +148,24 @@
             this.panelMain.TabIndex = 1;
             this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
-            // filterPanel
-            // 
-            this.filterPanel.BackColor = System.Drawing.Color.White;
-            this.filterPanel.Controls.Add(this.lblBranch);
-            this.filterPanel.Controls.Add(this.cboBranch);
-            this.filterPanel.Controls.Add(this.lblMovie);
-            this.filterPanel.Controls.Add(this.cboMovie);
-            this.filterPanel.Controls.Add(this.lblPageSize);
-            this.filterPanel.Controls.Add(this.cboPageSize);
-            this.filterPanel.Controls.Add(this.btnFilter);
-            this.filterPanel.Controls.Add(this.btnReset);
-            this.filterPanel.Location = new System.Drawing.Point(25, 25);
-            this.filterPanel.Name = "filterPanel";
-            this.filterPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.filterPanel.Size = new System.Drawing.Size(1310, 100);
-            this.filterPanel.TabIndex = 0;
-            // 
-            // lblBranch
-            // 
-            this.lblBranch.AutoSize = true;
-            this.lblBranch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblBranch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.lblBranch.Location = new System.Drawing.Point(15, 15);
-            this.lblBranch.Name = "lblBranch";
-            this.lblBranch.Size = new System.Drawing.Size(77, 20);
-            this.lblBranch.TabIndex = 0;
-            this.lblBranch.Text = "Chi Nhánh";
-            // 
-            // cboBranch
-            // 
-            this.cboBranch.AutoResize = false;
-            this.cboBranch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cboBranch.Depth = 0;
-            this.cboBranch.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cboBranch.DropDownHeight = 174;
-            this.cboBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBranch.DropDownWidth = 121;
-            this.cboBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cboBranch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cboBranch.FormattingEnabled = true;
-            this.cboBranch.Hint = "-- Tất cả chi nhánh --";
-            this.cboBranch.IntegralHeight = false;
-            this.cboBranch.ItemHeight = 43;
-            this.cboBranch.Location = new System.Drawing.Point(15, 38);
-            this.cboBranch.MaxDropDownItems = 4;
-            this.cboBranch.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            this.cboBranch.Name = "cboBranch";
-            this.cboBranch.Size = new System.Drawing.Size(230, 49);
-            this.cboBranch.StartIndex = 0;
-            this.cboBranch.TabIndex = 1;
-            // 
-            // lblMovie
-            // 
-            this.lblMovie.AutoSize = true;
-            this.lblMovie.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblMovie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.lblMovie.Location = new System.Drawing.Point(265, 15);
-            this.lblMovie.Name = "lblMovie";
-            this.lblMovie.Size = new System.Drawing.Size(42, 20);
-            this.lblMovie.TabIndex = 2;
-            this.lblMovie.Text = "Phim";
-            // 
-            // cboMovie
-            // 
-            this.cboMovie.AutoResize = false;
-            this.cboMovie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cboMovie.Depth = 0;
-            this.cboMovie.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cboMovie.DropDownHeight = 174;
-            this.cboMovie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMovie.DropDownWidth = 121;
-            this.cboMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cboMovie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cboMovie.FormattingEnabled = true;
-            this.cboMovie.Hint = "-- Tất cả phim --";
-            this.cboMovie.IntegralHeight = false;
-            this.cboMovie.ItemHeight = 43;
-            this.cboMovie.Location = new System.Drawing.Point(265, 38);
-            this.cboMovie.MaxDropDownItems = 4;
-            this.cboMovie.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            this.cboMovie.Name = "cboMovie";
-            this.cboMovie.Size = new System.Drawing.Size(420, 49);
-            this.cboMovie.StartIndex = 0;
-            this.cboMovie.TabIndex = 3;
-            // 
-            // lblPageSize
-            // 
-            this.lblPageSize.AutoSize = true;
-            this.lblPageSize.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblPageSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.lblPageSize.Location = new System.Drawing.Point(705, 15);
-            this.lblPageSize.Name = "lblPageSize";
-            this.lblPageSize.Size = new System.Drawing.Size(106, 20);
-            this.lblPageSize.TabIndex = 4;
-            this.lblPageSize.Text = "Số dòng/trang";
-            // 
-            // cboPageSize
-            // 
-            this.cboPageSize.AutoResize = false;
-            this.cboPageSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cboPageSize.Depth = 0;
-            this.cboPageSize.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cboPageSize.DropDownHeight = 174;
-            this.cboPageSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPageSize.DropDownWidth = 121;
-            this.cboPageSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cboPageSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cboPageSize.FormattingEnabled = true;
-            this.cboPageSize.Hint = "10";
-            this.cboPageSize.IntegralHeight = false;
-            this.cboPageSize.ItemHeight = 43;
-            this.cboPageSize.Items.AddRange(new object[] {
-            "10",
-            "25",
-            "50",
-            "100"});
-            this.cboPageSize.Location = new System.Drawing.Point(705, 38);
-            this.cboPageSize.MaxDropDownItems = 4;
-            this.cboPageSize.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            this.cboPageSize.Name = "cboPageSize";
-            this.cboPageSize.Size = new System.Drawing.Size(120, 49);
-            this.cboPageSize.StartIndex = 0;
-            this.cboPageSize.TabIndex = 5;
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnFilter.ButtonImage = null;
-            this.btnFilter.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnFilter.ButtonText = "🔍 Lọc";
-            this.btnFilter.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.btnFilter.ClickTextColor = System.Drawing.Color.White;
-            this.btnFilter.CornerRadius = 5;
-            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnFilter.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnFilter.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
-            this.btnFilter.HoverTextColor = System.Drawing.Color.White;
-            this.btnFilter.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnFilter.Location = new System.Drawing.Point(1045, 43);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(120, 40);
-            this.btnFilter.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnFilter.TabIndex = 6;
-            this.btnFilter.TextColor = System.Drawing.Color.White;
-            this.btnFilter.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnFilter.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnReset
-            // 
-            this.btnReset.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnReset.ButtonImage = null;
-            this.btnReset.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnReset.ButtonText = "🔄 Reset";
-            this.btnReset.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
-            this.btnReset.ClickTextColor = System.Drawing.Color.White;
-            this.btnReset.CornerRadius = 5;
-            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnReset.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnReset.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
-            this.btnReset.HoverTextColor = System.Drawing.Color.White;
-            this.btnReset.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnReset.Location = new System.Drawing.Point(1175, 43);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(120, 40);
-            this.btnReset.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnReset.TabIndex = 7;
-            this.btnReset.TextColor = System.Drawing.Color.White;
-            this.btnReset.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnReset.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // infoPanel
-            // 
-            this.infoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.infoPanel.Controls.Add(this.lblInfo);
-            this.infoPanel.Location = new System.Drawing.Point(25, 135);
-            this.infoPanel.Name = "infoPanel";
-            this.infoPanel.Size = new System.Drawing.Size(1310, 35);
-            this.infoPanel.TabIndex = 1;
-            // 
-            // lblInfo
-            // 
-            this.lblInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblInfo.ForeColor = System.Drawing.Color.White;
-            this.lblInfo.Location = new System.Drawing.Point(0, 0);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.lblInfo.Size = new System.Drawing.Size(1310, 35);
-            this.lblInfo.TabIndex = 0;
-            this.lblInfo.Text = "⚪ Hiển thị 10 trong tổng số 25 suất chiếu / Trang 1 / 3";
-            this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // dataGridPanel
-            // 
-            this.dataGridPanel.BackColor = System.Drawing.Color.White;
-            this.dataGridPanel.Controls.Add(this.dgvShowtimes);
-            this.dataGridPanel.Location = new System.Drawing.Point(25, 175);
-            this.dataGridPanel.Name = "dataGridPanel";
-            this.dataGridPanel.Padding = new System.Windows.Forms.Padding(5);
-            this.dataGridPanel.Size = new System.Drawing.Size(1310, 480);
-            this.dataGridPanel.TabIndex = 2;
-            // 
             // dgvShowtimes
             // 
             this.dgvShowtimes.AllowUserToAddRows = false;
             this.dgvShowtimes.AllowUserToDeleteRows = false;
             this.dgvShowtimes.AllowUserToResizeRows = false;
+            this.dgvShowtimes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvShowtimes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvShowtimes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvShowtimes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvShowtimes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShowtimes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShowtimes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvShowtimes.ColumnHeadersHeight = 40;
             this.dgvShowtimes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvShowtimes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -384,134 +180,112 @@
             this.colView,
             this.colEdit,
             this.colDelete});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvShowtimes.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvShowtimes.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvShowtimes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvShowtimes.EnableHeadersVisualStyles = false;
             this.dgvShowtimes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvShowtimes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvShowtimes.Location = new System.Drawing.Point(5, 5);
+            this.dgvShowtimes.Location = new System.Drawing.Point(0, 10);
             this.dgvShowtimes.Name = "dgvShowtimes";
-            this.dgvShowtimes.ReadOnly = true;
             this.dgvShowtimes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShowtimes.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShowtimes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvShowtimes.RowHeadersVisible = false;
             this.dgvShowtimes.RowHeadersWidth = 51;
             this.dgvShowtimes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvShowtimes.RowTemplate.Height = 35;
             this.dgvShowtimes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvShowtimes.Size = new System.Drawing.Size(1300, 470);
+            this.dgvShowtimes.Size = new System.Drawing.Size(1310, 471);
             this.dgvShowtimes.TabIndex = 0;
             this.dgvShowtimes.UseCustomBackColor = true;
             this.dgvShowtimes.UseCustomForeColor = true;
             this.dgvShowtimes.UseStyleColors = true;
+            this.dgvShowtimes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowtimes_CellContentClick);
             // 
             // colShowtimeId
             // 
             this.colShowtimeId.HeaderText = "MÃ SUẤT CHIẾU";
             this.colShowtimeId.MinimumWidth = 6;
             this.colShowtimeId.Name = "colShowtimeId";
-            this.colShowtimeId.ReadOnly = true;
-            this.colShowtimeId.Width = 120;
             // 
             // colMovie
             // 
             this.colMovie.HeaderText = "PHIM";
             this.colMovie.MinimumWidth = 6;
             this.colMovie.Name = "colMovie";
-            this.colMovie.ReadOnly = true;
-            this.colMovie.Width = 180;
             // 
             // colCinema
             // 
             this.colCinema.HeaderText = "CHI NHÁNH";
             this.colCinema.MinimumWidth = 6;
             this.colCinema.Name = "colCinema";
-            this.colCinema.ReadOnly = true;
-            this.colCinema.Width = 150;
             // 
             // colRoom
             // 
             this.colRoom.HeaderText = "PHÒNG";
             this.colRoom.MinimumWidth = 6;
             this.colRoom.Name = "colRoom";
-            this.colRoom.ReadOnly = true;
-            this.colRoom.Width = 90;
             // 
             // colStartTime
             // 
             this.colStartTime.HeaderText = "GIỜ BẮT ĐẦU";
             this.colStartTime.MinimumWidth = 6;
             this.colStartTime.Name = "colStartTime";
-            this.colStartTime.ReadOnly = true;
-            this.colStartTime.Width = 130;
             // 
             // colEndTime
             // 
             this.colEndTime.HeaderText = "GIỜ KẾT THÚC";
             this.colEndTime.MinimumWidth = 6;
             this.colEndTime.Name = "colEndTime";
-            this.colEndTime.ReadOnly = true;
-            this.colEndTime.Width = 130;
             // 
             // colPrice
             // 
             this.colPrice.HeaderText = "GIÁ";
             this.colPrice.MinimumWidth = 6;
             this.colPrice.Name = "colPrice";
-            this.colPrice.ReadOnly = true;
-            this.colPrice.Width = 125;
             // 
             // colStatus
             // 
             this.colStatus.HeaderText = "TRẠNG THÁI";
             this.colStatus.MinimumWidth = 6;
             this.colStatus.Name = "colStatus";
-            this.colStatus.ReadOnly = true;
-            this.colStatus.Width = 120;
             // 
             // colView
             // 
             this.colView.HeaderText = "THAO TÁC";
             this.colView.MinimumWidth = 6;
             this.colView.Name = "colView";
-            this.colView.ReadOnly = true;
             this.colView.Text = "👁";
             this.colView.UseColumnTextForButtonValue = true;
-            this.colView.Width = 80;
             // 
             // colEdit
             // 
             this.colEdit.HeaderText = "";
             this.colEdit.MinimumWidth = 6;
             this.colEdit.Name = "colEdit";
-            this.colEdit.ReadOnly = true;
             this.colEdit.Text = "✏";
             this.colEdit.UseColumnTextForButtonValue = true;
-            this.colEdit.Width = 80;
             // 
             // colDelete
             // 
             this.colDelete.HeaderText = "";
             this.colDelete.MinimumWidth = 6;
             this.colDelete.Name = "colDelete";
-            this.colDelete.ReadOnly = true;
             this.colDelete.Text = "🗑";
             this.colDelete.UseColumnTextForButtonValue = true;
-            this.colDelete.Width = 80;
             // 
             // paginationPanel
             // 
@@ -522,6 +296,7 @@
             this.paginationPanel.Controls.Add(this.btnPage3);
             this.paginationPanel.Controls.Add(this.btnNextPage);
             this.paginationPanel.Controls.Add(this.btnLastPage);
+            this.paginationPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.paginationPanel.Location = new System.Drawing.Point(25, 665);
             this.paginationPanel.Name = "paginationPanel";
             this.paginationPanel.Size = new System.Drawing.Size(1310, 50);
@@ -671,6 +446,223 @@
             this.btnLastPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnLastPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             // 
+            // filterPanel
+            // 
+            this.filterPanel.BackColor = System.Drawing.SystemColors.Window;
+            this.filterPanel.Controls.Add(this.left_Panel);
+            this.filterPanel.Controls.Add(this.right_Panel);
+            this.filterPanel.Controls.Add(this.lblInfo);
+            this.filterPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.filterPanel.Location = new System.Drawing.Point(25, 25);
+            this.filterPanel.Name = "filterPanel";
+            this.filterPanel.Padding = new System.Windows.Forms.Padding(15);
+            this.filterPanel.Size = new System.Drawing.Size(1310, 149);
+            this.filterPanel.TabIndex = 0;
+            // 
+            // left_Panel
+            // 
+            this.left_Panel.Controls.Add(this.lblBranch);
+            this.left_Panel.Controls.Add(this.cboBranch);
+            this.left_Panel.Controls.Add(this.lblMovie);
+            this.left_Panel.Controls.Add(this.cboMovie);
+            this.left_Panel.Controls.Add(this.lblPageSize);
+            this.left_Panel.Controls.Add(this.cboPageSize);
+            this.left_Panel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.left_Panel.Location = new System.Drawing.Point(15, 15);
+            this.left_Panel.Name = "left_Panel";
+            this.left_Panel.Size = new System.Drawing.Size(826, 84);
+            this.left_Panel.TabIndex = 9;
+            // 
+            // lblBranch
+            // 
+            this.lblBranch.AutoSize = true;
+            this.lblBranch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblBranch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.lblBranch.Location = new System.Drawing.Point(2, 5);
+            this.lblBranch.Name = "lblBranch";
+            this.lblBranch.Size = new System.Drawing.Size(77, 20);
+            this.lblBranch.TabIndex = 0;
+            this.lblBranch.Text = "Chi Nhánh";
+            // 
+            // cboBranch
+            // 
+            this.cboBranch.AutoResize = false;
+            this.cboBranch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cboBranch.Depth = 0;
+            this.cboBranch.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboBranch.DropDownHeight = 174;
+            this.cboBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBranch.DropDownWidth = 121;
+            this.cboBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cboBranch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cboBranch.FormattingEnabled = true;
+            this.cboBranch.Hint = "-- Tất cả chi nhánh --";
+            this.cboBranch.IntegralHeight = false;
+            this.cboBranch.ItemHeight = 43;
+            this.cboBranch.Location = new System.Drawing.Point(2, 28);
+            this.cboBranch.MaxDropDownItems = 4;
+            this.cboBranch.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            this.cboBranch.Name = "cboBranch";
+            this.cboBranch.Size = new System.Drawing.Size(230, 49);
+            this.cboBranch.StartIndex = 0;
+            this.cboBranch.TabIndex = 1;
+            // 
+            // lblMovie
+            // 
+            this.lblMovie.AutoSize = true;
+            this.lblMovie.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblMovie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.lblMovie.Location = new System.Drawing.Point(252, 5);
+            this.lblMovie.Name = "lblMovie";
+            this.lblMovie.Size = new System.Drawing.Size(42, 20);
+            this.lblMovie.TabIndex = 2;
+            this.lblMovie.Text = "Phim";
+            // 
+            // cboMovie
+            // 
+            this.cboMovie.AutoResize = false;
+            this.cboMovie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cboMovie.Depth = 0;
+            this.cboMovie.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboMovie.DropDownHeight = 174;
+            this.cboMovie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMovie.DropDownWidth = 121;
+            this.cboMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cboMovie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cboMovie.FormattingEnabled = true;
+            this.cboMovie.Hint = "-- Tất cả phim --";
+            this.cboMovie.IntegralHeight = false;
+            this.cboMovie.ItemHeight = 43;
+            this.cboMovie.Location = new System.Drawing.Point(252, 28);
+            this.cboMovie.MaxDropDownItems = 4;
+            this.cboMovie.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            this.cboMovie.Name = "cboMovie";
+            this.cboMovie.Size = new System.Drawing.Size(420, 49);
+            this.cboMovie.StartIndex = 0;
+            this.cboMovie.TabIndex = 3;
+            // 
+            // lblPageSize
+            // 
+            this.lblPageSize.AutoSize = true;
+            this.lblPageSize.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblPageSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.lblPageSize.Location = new System.Drawing.Point(692, 5);
+            this.lblPageSize.Name = "lblPageSize";
+            this.lblPageSize.Size = new System.Drawing.Size(106, 20);
+            this.lblPageSize.TabIndex = 4;
+            this.lblPageSize.Text = "Số dòng/trang";
+            // 
+            // cboPageSize
+            // 
+            this.cboPageSize.AutoResize = false;
+            this.cboPageSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cboPageSize.Depth = 0;
+            this.cboPageSize.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboPageSize.DropDownHeight = 174;
+            this.cboPageSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPageSize.DropDownWidth = 121;
+            this.cboPageSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cboPageSize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cboPageSize.FormattingEnabled = true;
+            this.cboPageSize.Hint = "10";
+            this.cboPageSize.IntegralHeight = false;
+            this.cboPageSize.ItemHeight = 43;
+            this.cboPageSize.Items.AddRange(new object[] {
+            "10",
+            "25",
+            "50",
+            "100"});
+            this.cboPageSize.Location = new System.Drawing.Point(692, 28);
+            this.cboPageSize.MaxDropDownItems = 4;
+            this.cboPageSize.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            this.cboPageSize.Name = "cboPageSize";
+            this.cboPageSize.Size = new System.Drawing.Size(120, 49);
+            this.cboPageSize.StartIndex = 0;
+            this.cboPageSize.TabIndex = 5;
+            // 
+            // right_Panel
+            // 
+            this.right_Panel.Controls.Add(this.btnFilter);
+            this.right_Panel.Controls.Add(this.btnReset);
+            this.right_Panel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.right_Panel.Location = new System.Drawing.Point(1019, 15);
+            this.right_Panel.Name = "right_Panel";
+            this.right_Panel.Size = new System.Drawing.Size(276, 84);
+            this.right_Panel.TabIndex = 8;
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnFilter.ButtonImage = null;
+            this.btnFilter.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnFilter.ButtonText = "🔍 Lọc";
+            this.btnFilter.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnFilter.ClickTextColor = System.Drawing.Color.White;
+            this.btnFilter.CornerRadius = 5;
+            this.btnFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFilter.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnFilter.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnFilter.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this.btnFilter.HoverTextColor = System.Drawing.Color.White;
+            this.btnFilter.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnFilter.Location = new System.Drawing.Point(17, 18);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(120, 40);
+            this.btnFilter.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnFilter.TabIndex = 6;
+            this.btnFilter.TextColor = System.Drawing.Color.White;
+            this.btnFilter.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnFilter.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnReset.ButtonImage = null;
+            this.btnReset.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnReset.ButtonText = "🔄 Reset";
+            this.btnReset.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
+            this.btnReset.ClickTextColor = System.Drawing.Color.White;
+            this.btnReset.CornerRadius = 5;
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnReset.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnReset.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
+            this.btnReset.HoverTextColor = System.Drawing.Color.White;
+            this.btnReset.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnReset.Location = new System.Drawing.Point(147, 18);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(120, 40);
+            this.btnReset.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnReset.TabIndex = 7;
+            this.btnReset.TextColor = System.Drawing.Color.White;
+            this.btnReset.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnReset.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.lblInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblInfo.ForeColor = System.Drawing.Color.White;
+            this.lblInfo.Location = new System.Drawing.Point(15, 99);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.lblInfo.Size = new System.Drawing.Size(1280, 35);
+            this.lblInfo.TabIndex = 0;
+            this.lblInfo.Text = "⚪ Hiển thị 10 trong tổng số 25 suất chiếu / Trang 1 / 3";
+            this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panelDataGridView
+            // 
+            this.panelDataGridView.Controls.Add(this.dgvShowtimes);
+            this.panelDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDataGridView.Location = new System.Drawing.Point(25, 174);
+            this.panelDataGridView.Margin = new System.Windows.Forms.Padding(10);
+            this.panelDataGridView.Name = "panelDataGridView";
+            this.panelDataGridView.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.panelDataGridView.Size = new System.Drawing.Size(1310, 491);
+            this.panelDataGridView.TabIndex = 4;
+            // 
             // MNShowTimeUC
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -680,14 +672,15 @@
             this.Size = new System.Drawing.Size(1360, 800);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
+            this.head_Right_Panel.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
-            this.filterPanel.ResumeLayout(false);
-            this.filterPanel.PerformLayout();
-            this.infoPanel.ResumeLayout(false);
-            this.dataGridPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowtimes)).EndInit();
             this.paginationPanel.ResumeLayout(false);
+            this.filterPanel.ResumeLayout(false);
+            this.left_Panel.ResumeLayout(false);
+            this.left_Panel.PerformLayout();
+            this.right_Panel.ResumeLayout(false);
+            this.panelDataGridView.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -696,7 +689,6 @@
 
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.PictureBox pictureBoxIcon;
         private ReaLTaiizor.Controls.ParrotButton btnAddShowtime;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel filterPanel;
@@ -708,9 +700,17 @@
         private ReaLTaiizor.Controls.MaterialComboBox cboPageSize;
         private ReaLTaiizor.Controls.ParrotButton btnFilter;
         private ReaLTaiizor.Controls.ParrotButton btnReset;
-        private System.Windows.Forms.Panel infoPanel;
+        private System.Windows.Forms.Panel paginationPanel;
+        private ReaLTaiizor.Controls.ParrotButton btnFirstPage;
+        private ReaLTaiizor.Controls.ParrotButton btnPrevPage;
+        private ReaLTaiizor.Controls.ParrotButton btnPage2;
+        private ReaLTaiizor.Controls.ParrotButton btnPage3;
+        private ReaLTaiizor.Controls.ParrotButton btnNextPage;
+        private ReaLTaiizor.Controls.ParrotButton btnLastPage;
+        private System.Windows.Forms.Panel right_Panel;
+        private System.Windows.Forms.Panel head_Right_Panel;
+        private System.Windows.Forms.Panel left_Panel;
         private System.Windows.Forms.Label lblInfo;
-        private System.Windows.Forms.Panel dataGridPanel;
         private ReaLTaiizor.Controls.PoisonDataGridView dgvShowtimes;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShowtimeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMovie;
@@ -723,13 +723,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn colView;
         private System.Windows.Forms.DataGridViewButtonColumn colEdit;
         private System.Windows.Forms.DataGridViewButtonColumn colDelete;
-        private System.Windows.Forms.Panel paginationPanel;
-        private ReaLTaiizor.Controls.ParrotButton btnFirstPage;
-        private ReaLTaiizor.Controls.ParrotButton btnPrevPage;
-        private ReaLTaiizor.Controls.ParrotButton btnPage2;
-        private ReaLTaiizor.Controls.ParrotButton btnPage3;
-        private ReaLTaiizor.Controls.ParrotButton btnNextPage;
-        private ReaLTaiizor.Controls.ParrotButton btnLastPage;
-
+        private System.Windows.Forms.Panel panelDataGridView;
     }
 }
