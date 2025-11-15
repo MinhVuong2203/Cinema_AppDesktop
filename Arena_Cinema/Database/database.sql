@@ -1,5 +1,5 @@
-﻿CREATE DATABASE ArenaCinema;
-USE ArenaCinema;
+﻿CREATE DATABASE arenaapp;
+USE arenaapp;
 
 CREATE TABLE Role(
 	RoleID INT PRIMARY KEY IDENTITY,
@@ -8,11 +8,11 @@ CREATE TABLE Role(
 INSERT INTO Role (RoleName)
 VALUES 
     (N'Admin'),
-    (N'Employee Sales'),
-    (N'Employee Technical'),
-    (N'Employee Movie'),
-    (N'Employee Housekeeping'),
-    (N'Employee Security');
+    (N'Nhân viên bán vé'),
+    (N'Nhân viên kỹ thuật'),
+    (N'Nhân viên phim'),
+    (N'Tạp vụ'),
+    (N'Bảo vệ');
 
 
 -- PEOPLE GROUP
@@ -45,6 +45,7 @@ WHERE tc.CONSTRAINT_TYPE = 'UNIQUE'
 
 
 
+
 INSERT INTO Employee (FullName, Phone, Email, Address, BirthDate, HourWage, CCCD, Gender, RoleId, ImageUrl)
 VALUES
 (N'Nguyễn Văn Anh', '0901000001', 'admin@cinema.vn', N'Quận 1, TP.HCM', '1990-01-01', 50000, N'079200000001', N'Nam', 1, N'/images/employees/admin.jpg'),
@@ -55,7 +56,6 @@ VALUES
 (N'Võ Thị Lài', '0901000006', 'security@cinema.vn', N'Quận 6, TP.HCM', '1991-09-09', 26000, N'079200000006', N'Nữ', 6, N'/images/employees/security.jpg');
 
 
-DROP TABLE Setting
 
 CREATE TABLE Setting (
     EmployeeID UNIQUEIDENTIFIER PRIMARY KEY,         -- 🔹 vừa là khóa chính

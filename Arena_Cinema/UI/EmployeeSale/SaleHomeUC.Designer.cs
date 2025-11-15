@@ -78,7 +78,7 @@
             this.panelMain.Location = new System.Drawing.Point(0, 60);
             this.panelMain.Name = "panelMain";
             this.panelMain.Padding = new System.Windows.Forms.Padding(25);
-            this.panelMain.Size = new System.Drawing.Size(1591, 740);
+            this.panelMain.Size = new System.Drawing.Size(1587, 740);
             this.panelMain.TabIndex = 0;
             // 
             // panel_SaleArea
@@ -411,7 +411,7 @@
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1591, 60);
+            this.panelHeader.Size = new System.Drawing.Size(1630, 60);
             this.panelHeader.TabIndex = 1;
             // 
             // lblTitle
@@ -432,7 +432,7 @@
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelMain);
             this.Name = "SaleHomeUC";
-            this.Size = new System.Drawing.Size(1591, 800);
+            this.Size = new System.Drawing.Size(1630, 800);
             this.panelMain.ResumeLayout(false);
             this.panel_SaleArea.ResumeLayout(false);
             this.panel_SaleProduct.ResumeLayout(false);
