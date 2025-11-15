@@ -10,25 +10,24 @@ using System.Windows.Forms;
 
 namespace UI.Room
 {
-    public partial class RoomManagementUC : UserControl
+    public partial class AddRoomUC : UserControl
     {
-        private Home _home;
-        public RoomManagementUC(DTO.Employee employee)
+        public AddRoomUC()
         {
             InitializeComponent();
         }
 
-        private void moviesContainer_Paint(object sender, PaintEventArgs e)
+        private void left_Panel_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void materialTextBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void btnAddRoom_Click(object sender, EventArgs e)
+        private void aloneTextBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

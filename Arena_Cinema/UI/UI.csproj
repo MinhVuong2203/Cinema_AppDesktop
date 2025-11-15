@@ -132,6 +132,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lang.resx</DependentUpon>
     </Compile>
+    <Compile Include="Room\AddRoomUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Room\AddRoomUC.Designer.cs">
+      <DependentUpon>AddRoomUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Room\RoomManagementUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     <EmbeddedResource Include="Resources\Lang.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Room\AddRoomUC.resx">
+      <DependentUpon>AddRoomUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Room\RoomManagementUC.resx">
       <DependentUpon>RoomManagementUC.cs</DependentUpon>

@@ -250,6 +250,7 @@
             this.btnSearch.TextColor = System.Drawing.Color.White;
             this.btnSearch.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnSearch.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // lblInfo
             // 
