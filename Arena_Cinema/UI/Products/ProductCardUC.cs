@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using Common;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,47 +35,9 @@ namespace UI.Products
                 ? $"{_product.Price.Value:N0} VNĐ"
                 : "Chưa có giá";
 
-            // Load hình ảnh
-            LoadProductImage();
+            ImgHelper.DisplayImageFromRelative(_product.ImageUrl, picProduct);
         }
 
-        private void LoadProductImage()
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(_product.ImageUrl) && File.Exists(_product.ImageUrl))
-                {
-                    using (var stream = new FileStream(_product.ImageUrl, FileMode.Open, FileAccess.Read))
-                    {
-                        picProduct.Image = Image.FromStream(stream);
-                    }
-                }
-                else
-                {
-                    // Hình ảnh mặc định nếu không có
-                    picProduct.Image = CreateDefaultImage();
-                }
-            }
-            catch
-            {
-                picProduct.Image = CreateDefaultImage();
-            }
-        }
-
-        private Image CreateDefaultImage()
-        {
-            // Tạo hình ảnh mặc định
-            Bitmap bmp = new Bitmap(80, 70);
-            using (Graphics g = Graphics.FromImage(bmp))
-            {
-                g.Clear(Color.FromArgb(240, 240, 240));
-                using (Font font = new Font("Segoe UI", 10))
-                {
-                    g.DrawString("No Image", font, Brushes.Gray, new PointF(10, 25));
-                }
-            }
-            return bmp;
-        }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -84,6 +47,21 @@ namespace UI.Products
         private void btnDelete_Click(object sender, EventArgs e)
         {
             OnDelete?.Invoke(this, _product);
+        }
+
+        private void panelCard_MouseEnter(object sender, EventArgs e)
+        {
+            this.BorderStyle = BorderStyle.FixedSingle;
+            this.Width += 20;
+           
+        }
+
+        private void panelCard_MouseLeave(object sender, EventArgs e)
+        {
+            this.BorderStyle = BorderStyle.None;
+            this.BackColor = Color.Azure;
+            this.Width -= 20;
+           
         }
     }
 }

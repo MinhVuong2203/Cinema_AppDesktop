@@ -7,16 +7,13 @@ namespace Common
 {
     public static class ImgHelper
     {
-        // Gốc thư mục ảnh (Image trong project)
-        private static readonly string BaseImagePath =
-            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Image");
+        private static readonly string BaseImagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Image");
 
-        /// <summary>
-        /// Mở hộp thoại chọn ảnh và lưu ảnh vào thư mục con tương ứng
-        /// </summary>
-        /// <param name="subFolder">Tên thư mục con (Employee, Product, Movie...)</param>
-        /// <param name="pictureBox">PictureBox để hiển thị ảnh sau khi chọn</param>
-        /// <returns>Đường dẫn tương đối (ví dụ: Image\Employee\abc.png)</returns>
+        // Chức năng: Upload ảnh từ file hệ thống vào PictureBox và lưu vào thư mục con tương ứng
+        // Cách dùng:
+        // string pathImg = ImgHelper.UploadImage("Employee", this.picImage);
+        // Ghi chú: Employee là tên thư mục con trong Image, this.picImage là PictureBox hiển thị ảnh hiện thời, hàm này sẽ trả về đường dẫn tương đối (vd: Image\Employee\abc.png)
+        // Ta hứng chuỗi lại string pathImg để lưu cái đó xuống DB
         public static string UploadImage(string subFolder, PictureBox pictureBox)
         {
             try
@@ -60,9 +57,20 @@ namespace Common
             return null;
         }
 
-        /// <summary>
-        /// Hiển thị ảnh từ đường dẫn tuyệt đối
-        /// </summary>
+
+        // Chức năng: Hiển thị ảnh từ đường dẫn tương đối (ví dụ hiển thị ảnh từ DB với giá trị là Image\Employee\xyz.png) vào PictureBox
+        // Cách dùng:
+        // ImgHelper.DisplayImageFromRelative(employee.ImageUrl, this.picImage);
+        // Ghi chú: employee.ImageUrl là đường dẫn tương đối lấy từ DB, this.picImage là PictureBox hiển thị ảnh
+        public static void DisplayImageFromRelative(string relativePath, PictureBox pictureBox)
+        {
+            if (string.IsNullOrEmpty(relativePath)) return;
+            string fullPath = Path.GetFullPath( // Nằm trong UI rồi
+                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\", relativePath));
+            DisplayImage(fullPath, pictureBox);
+        }
+       
+        // Hàm này để 2 hàm trên gọi ra thôi
         public static void DisplayImage(string imagePath, PictureBox pictureBox)
         {
             try
@@ -92,20 +100,6 @@ namespace Common
             {
                 MessageBox.Show("Không thể hiển thị ảnh: " + ex.Message);
             }
-        }
-
-        /// <summary>
-        /// Hiển thị ảnh từ đường dẫn tương đối (lấy từ DB)
-        /// </summary>
-
-        // Ví dụ đường dẫn tương đối: Image\Employee\abc.png
-        public static void DisplayImageFromRelative(string relativePath, PictureBox pictureBox)
-        {
-            if (string.IsNullOrEmpty(relativePath)) return;
-
-            string fullPath = Path.GetFullPath( // Nằm trong UI rồi
-                Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\", relativePath));
-            DisplayImage(fullPath, pictureBox);
         }
     }
 }

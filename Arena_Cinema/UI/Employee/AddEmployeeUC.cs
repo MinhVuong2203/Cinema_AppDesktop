@@ -215,7 +215,8 @@ namespace UI.Employee
         private void btnUploadImage_Click(object sender, EventArgs e)
         {
             string pathImg = ImgHelper.UploadImage("Employee", this.picImage);
-            Debug.WriteLine("----------- " + pathImg);
+            if (!string.IsNullOrEmpty(pathImg))    
+                this.pathImg = pathImg;
         }
     }
 }

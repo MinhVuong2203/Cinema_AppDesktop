@@ -376,6 +376,7 @@
     <Content Include="Image\Employee\emloyeeDefault.png" />
     <Content Include="Image\Employee\Gai4.jpeg" />
     <Content Include="Image\Product\popcorn %281%29.png" />
+    <None Include="Resources\no-photo.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\diskette.png" />
     <None Include="Resources\minus.png" />

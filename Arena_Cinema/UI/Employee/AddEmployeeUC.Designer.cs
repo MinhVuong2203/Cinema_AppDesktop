@@ -309,6 +309,7 @@ namespace UI.Employee
             this.lbCheckLuong.Name = "lbCheckLuong";
             this.lbCheckLuong.Size = new System.Drawing.Size(362, 20);
             this.lbCheckLuong.TabIndex = 26;
+            this.lbCheckLuong.Text = "Lương không được để trống";
             // 
             // lbCheckEmail
             // 
@@ -318,6 +319,7 @@ namespace UI.Employee
             this.lbCheckEmail.Name = "lbCheckEmail";
             this.lbCheckEmail.Size = new System.Drawing.Size(362, 20);
             this.lbCheckEmail.TabIndex = 25;
+            this.lbCheckEmail.Text = "Email không được để trống";
             // 
             // lbCheckPhone
             // 
@@ -327,6 +329,7 @@ namespace UI.Employee
             this.lbCheckPhone.Name = "lbCheckPhone";
             this.lbCheckPhone.Size = new System.Drawing.Size(362, 20);
             this.lbCheckPhone.TabIndex = 24;
+            this.lbCheckPhone.Text = "Số điện thoại không được để trống";
             // 
             // lbCheckCCCD
             // 
@@ -336,6 +339,7 @@ namespace UI.Employee
             this.lbCheckCCCD.Name = "lbCheckCCCD";
             this.lbCheckCCCD.Size = new System.Drawing.Size(362, 20);
             this.lbCheckCCCD.TabIndex = 23;
+            this.lbCheckCCCD.Text = "CCCD không được để trống";
             // 
             // lbCheckName
             // 
@@ -345,6 +349,7 @@ namespace UI.Employee
             this.lbCheckName.Name = "lbCheckName";
             this.lbCheckName.Size = new System.Drawing.Size(372, 24);
             this.lbCheckName.TabIndex = 22;
+            this.lbCheckName.Text = "Họ và tên không được để trống";
             // 
             // label2
             // 
@@ -530,6 +535,7 @@ namespace UI.Employee
             // 
             // picImage
             // 
+            this.picImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.picImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picImage.Location = new System.Drawing.Point(833, 76);
             this.picImage.Name = "picImage";
