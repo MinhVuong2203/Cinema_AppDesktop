@@ -36,18 +36,8 @@
             this.btnAddShowtime = new ReaLTaiizor.Controls.ParrotButton();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.panelDataGridView = new System.Windows.Forms.Panel();
             this.dgvShowtimes = new ReaLTaiizor.Controls.PoisonDataGridView();
-            this.colShowtimeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMovie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCinema = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRoom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colView = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.paginationPanel = new System.Windows.Forms.Panel();
             this.btnFirstPage = new ReaLTaiizor.Controls.ParrotButton();
             this.btnPrevPage = new ReaLTaiizor.Controls.ParrotButton();
@@ -67,16 +57,24 @@
             this.btnFilter = new ReaLTaiizor.Controls.ParrotButton();
             this.btnReset = new ReaLTaiizor.Controls.ParrotButton();
             this.lblInfo = new System.Windows.Forms.Label();
-            this.panelDataGridView = new System.Windows.Forms.Panel();
+            this.colShowtimeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMovie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCinema = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRoom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panelHeader.SuspendLayout();
             this.head_Right_Panel.SuspendLayout();
             this.panelMain.SuspendLayout();
+            this.panelDataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowtimes)).BeginInit();
             this.paginationPanel.SuspendLayout();
             this.filterPanel.SuspendLayout();
             this.left_Panel.SuspendLayout();
             this.right_Panel.SuspendLayout();
-            this.panelDataGridView.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -148,6 +146,17 @@
             this.panelMain.TabIndex = 1;
             this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
+            // panelDataGridView
+            // 
+            this.panelDataGridView.Controls.Add(this.dgvShowtimes);
+            this.panelDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDataGridView.Location = new System.Drawing.Point(25, 174);
+            this.panelDataGridView.Margin = new System.Windows.Forms.Padding(10);
+            this.panelDataGridView.Name = "panelDataGridView";
+            this.panelDataGridView.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.panelDataGridView.Size = new System.Drawing.Size(1310, 491);
+            this.panelDataGridView.TabIndex = 4;
+            // 
             // dgvShowtimes
             // 
             this.dgvShowtimes.AllowUserToAddRows = false;
@@ -177,9 +186,7 @@
             this.colEndTime,
             this.colPrice,
             this.colStatus,
-            this.colView,
-            this.colEdit,
-            this.colDelete});
+            this.colView});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -214,78 +221,6 @@
             this.dgvShowtimes.UseCustomForeColor = true;
             this.dgvShowtimes.UseStyleColors = true;
             this.dgvShowtimes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowtimes_CellContentClick);
-            // 
-            // colShowtimeId
-            // 
-            this.colShowtimeId.HeaderText = "MÃ SUẤT CHIẾU";
-            this.colShowtimeId.MinimumWidth = 6;
-            this.colShowtimeId.Name = "colShowtimeId";
-            // 
-            // colMovie
-            // 
-            this.colMovie.HeaderText = "PHIM";
-            this.colMovie.MinimumWidth = 6;
-            this.colMovie.Name = "colMovie";
-            // 
-            // colCinema
-            // 
-            this.colCinema.HeaderText = "CHI NHÁNH";
-            this.colCinema.MinimumWidth = 6;
-            this.colCinema.Name = "colCinema";
-            // 
-            // colRoom
-            // 
-            this.colRoom.HeaderText = "PHÒNG";
-            this.colRoom.MinimumWidth = 6;
-            this.colRoom.Name = "colRoom";
-            // 
-            // colStartTime
-            // 
-            this.colStartTime.HeaderText = "GIỜ BẮT ĐẦU";
-            this.colStartTime.MinimumWidth = 6;
-            this.colStartTime.Name = "colStartTime";
-            // 
-            // colEndTime
-            // 
-            this.colEndTime.HeaderText = "GIỜ KẾT THÚC";
-            this.colEndTime.MinimumWidth = 6;
-            this.colEndTime.Name = "colEndTime";
-            // 
-            // colPrice
-            // 
-            this.colPrice.HeaderText = "GIÁ";
-            this.colPrice.MinimumWidth = 6;
-            this.colPrice.Name = "colPrice";
-            // 
-            // colStatus
-            // 
-            this.colStatus.HeaderText = "TRẠNG THÁI";
-            this.colStatus.MinimumWidth = 6;
-            this.colStatus.Name = "colStatus";
-            // 
-            // colView
-            // 
-            this.colView.HeaderText = "THAO TÁC";
-            this.colView.MinimumWidth = 6;
-            this.colView.Name = "colView";
-            this.colView.Text = "👁";
-            this.colView.UseColumnTextForButtonValue = true;
-            // 
-            // colEdit
-            // 
-            this.colEdit.HeaderText = "";
-            this.colEdit.MinimumWidth = 6;
-            this.colEdit.Name = "colEdit";
-            this.colEdit.Text = "✏";
-            this.colEdit.UseColumnTextForButtonValue = true;
-            // 
-            // colDelete
-            // 
-            this.colDelete.HeaderText = "";
-            this.colDelete.MinimumWidth = 6;
-            this.colDelete.Name = "colDelete";
-            this.colDelete.Text = "🗑";
-            this.colDelete.UseColumnTextForButtonValue = true;
             // 
             // paginationPanel
             // 
@@ -652,16 +587,61 @@
             this.lblInfo.Text = "⚪ Hiển thị 10 trong tổng số 25 suất chiếu / Trang 1 / 3";
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panelDataGridView
+            // colShowtimeId
             // 
-            this.panelDataGridView.Controls.Add(this.dgvShowtimes);
-            this.panelDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDataGridView.Location = new System.Drawing.Point(25, 174);
-            this.panelDataGridView.Margin = new System.Windows.Forms.Padding(10);
-            this.panelDataGridView.Name = "panelDataGridView";
-            this.panelDataGridView.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.panelDataGridView.Size = new System.Drawing.Size(1310, 491);
-            this.panelDataGridView.TabIndex = 4;
+            this.colShowtimeId.HeaderText = "MÃ SUẤT CHIẾU";
+            this.colShowtimeId.MinimumWidth = 6;
+            this.colShowtimeId.Name = "colShowtimeId";
+            // 
+            // colMovie
+            // 
+            this.colMovie.HeaderText = "PHIM";
+            this.colMovie.MinimumWidth = 6;
+            this.colMovie.Name = "colMovie";
+            // 
+            // colCinema
+            // 
+            this.colCinema.HeaderText = "CHI NHÁNH";
+            this.colCinema.MinimumWidth = 6;
+            this.colCinema.Name = "colCinema";
+            // 
+            // colRoom
+            // 
+            this.colRoom.HeaderText = "PHÒNG";
+            this.colRoom.MinimumWidth = 6;
+            this.colRoom.Name = "colRoom";
+            // 
+            // colStartTime
+            // 
+            this.colStartTime.HeaderText = "GIỜ BẮT ĐẦU";
+            this.colStartTime.MinimumWidth = 6;
+            this.colStartTime.Name = "colStartTime";
+            // 
+            // colEndTime
+            // 
+            this.colEndTime.HeaderText = "GIỜ KẾT THÚC";
+            this.colEndTime.MinimumWidth = 6;
+            this.colEndTime.Name = "colEndTime";
+            // 
+            // colPrice
+            // 
+            this.colPrice.HeaderText = "GIÁ";
+            this.colPrice.MinimumWidth = 6;
+            this.colPrice.Name = "colPrice";
+            // 
+            // colStatus
+            // 
+            this.colStatus.HeaderText = "TRẠNG THÁI";
+            this.colStatus.MinimumWidth = 6;
+            this.colStatus.Name = "colStatus";
+            // 
+            // colView
+            // 
+            this.colView.HeaderText = "THAO TÁC";
+            this.colView.MinimumWidth = 6;
+            this.colView.Name = "colView";
+            this.colView.Text = "👁";
+            this.colView.UseColumnTextForButtonValue = true;
             // 
             // MNShowTimeUC
             // 
@@ -674,13 +654,13 @@
             this.panelHeader.PerformLayout();
             this.head_Right_Panel.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
+            this.panelDataGridView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvShowtimes)).EndInit();
             this.paginationPanel.ResumeLayout(false);
             this.filterPanel.ResumeLayout(false);
             this.left_Panel.ResumeLayout(false);
             this.left_Panel.PerformLayout();
             this.right_Panel.ResumeLayout(false);
-            this.panelDataGridView.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -712,6 +692,7 @@
         private System.Windows.Forms.Panel left_Panel;
         private System.Windows.Forms.Label lblInfo;
         private ReaLTaiizor.Controls.PoisonDataGridView dgvShowtimes;
+        private System.Windows.Forms.Panel panelDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShowtimeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMovie;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCinema;
@@ -721,8 +702,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.DataGridViewButtonColumn colView;
-        private System.Windows.Forms.DataGridViewButtonColumn colEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn colDelete;
-        private System.Windows.Forms.Panel panelDataGridView;
     }
 }

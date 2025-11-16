@@ -101,6 +101,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Movie\AddMovieUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Movie\AddMovieUC.Designer.cs">
+      <DependentUpon>AddMovieUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Movie\Movie_MainUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movie\AddMovieUC.resx">
+      <DependentUpon>AddMovieUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Movie\Movie_MainUC.resx">
       <DependentUpon>Movie_MainUC.cs</DependentUpon>

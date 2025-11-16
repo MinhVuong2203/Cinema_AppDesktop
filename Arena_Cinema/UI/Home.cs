@@ -13,6 +13,7 @@ using UI.ScreeningRoom;
 using UI.ShowTime;
 using UI.Products;
 
+
 namespace UI
 {
     public partial class Home : Form
@@ -123,7 +124,7 @@ namespace UI
                     break;
                 case "btnPhim":
                    
-                    Movie_MainUC movieMain = new Movie_MainUC(_employee);
+                    Movie_MainUC movieMain = new Movie_MainUC(this, _employee);
                     LoadControl(movieMain);
                     break;
                 case "btnPhong":
@@ -164,7 +165,7 @@ namespace UI
 
         private void btnPhim_Click(object sender, EventArgs e)
         {
-            Movie_MainUC movieMain = new Movie_MainUC(_employee);
+            Movie_MainUC movieMain = new Movie_MainUC(this,_employee);
             LoadControl(movieMain);
         }
         private void btnPhong_Click(object sender, EventArgs e)
