@@ -9,7 +9,7 @@ using UI.Employee;
 using UI.Setting;
 using UI.Movie;
 using UI.EmployeeSale;
-using UI.Room;
+using UI.ScreeningRoom;
 using UI.ShowTime;
 using UI.Products;
 
@@ -26,6 +26,7 @@ namespace UI
 
 
         public DTO.Employee _employee { get; set; }
+        public DTO.Room _room { get; set; }
 
         public Home(DTO.Employee employee)
         {
@@ -126,7 +127,7 @@ namespace UI
                     LoadControl(movieMain);
                     break;
                 case "btnPhong":
-                    RoomManagementUC room = new RoomManagementUC(_employee);
+                    Room_homeUC room = new Room_homeUC(this, _room);
                     LoadControl(room);
                     break;
                 case "btnGhe":
@@ -168,7 +169,7 @@ namespace UI
         }
         private void btnPhong_Click(object sender, EventArgs e)
         {
-            RoomManagementUC room = new RoomManagementUC(_employee);
+            Room_homeUC room = new Room_homeUC(this, _room);
             LoadControl(room);
         }
     }

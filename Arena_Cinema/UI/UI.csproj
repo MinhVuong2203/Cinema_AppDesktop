@@ -132,17 +132,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lang.resx</DependentUpon>
     </Compile>
-    <Compile Include="Room\AddRoomUC.cs">
+    <Compile Include="ScreeningRoom\AddRoom.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Room\AddRoomUC.Designer.cs">
-      <DependentUpon>AddRoomUC.cs</DependentUpon>
+    <Compile Include="ScreeningRoom\AddRoom.Designer.cs">
+      <DependentUpon>AddRoom.cs</DependentUpon>
     </Compile>
-    <Compile Include="Room\RoomManagementUC.cs">
+    <Compile Include="ScreeningRoom\Room-homeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Room\RoomManagementUC.Designer.cs">
-      <DependentUpon>RoomManagementUC.cs</DependentUpon>
+    <Compile Include="ScreeningRoom\Room-homeUC.Designer.cs">
+      <DependentUpon>Room-homeUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Setting\SettingControl.cs">
       <SubType>UserControl</SubType>
@@ -196,11 +196,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Room\AddRoomUC.resx">
-      <DependentUpon>AddRoomUC.cs</DependentUpon>
+    <EmbeddedResource Include="ScreeningRoom\AddRoom.resx">
+      <DependentUpon>AddRoom.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Room\RoomManagementUC.resx">
-      <DependentUpon>RoomManagementUC.cs</DependentUpon>
+    <EmbeddedResource Include="ScreeningRoom\Room-homeUC.resx">
+      <DependentUpon>Room-homeUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setting\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>

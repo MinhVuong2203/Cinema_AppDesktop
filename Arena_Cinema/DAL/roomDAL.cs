@@ -95,5 +95,15 @@ namespace DAL
                                   && !r.IsDeleted
                                   && (excludeRoomId == null || r.RoomID != excludeRoomId));
         }
+
+        public List<string> GetAllRoomType()
+        {
+            return _context.Rooms
+                           .Where(r => !r.IsDeleted && !string.IsNullOrEmpty(r.RoomType))
+                           .Select(r => r.RoomType)
+                           .Distinct()
+                           .OrderBy(t => t)
+                           .ToList();
+        }
     }
 }

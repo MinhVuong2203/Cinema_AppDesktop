@@ -257,6 +257,7 @@ namespace UI.Employee
 
 
 
+
         // Sự kiện nút Xóa
         //private void BtnDelete_Click(object sender, EventArgs e)
         //{

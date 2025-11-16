@@ -30,34 +30,34 @@
         {
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnPrev = new ReaLTaiizor.Controls.ParrotButton();
             this.panelFilter = new System.Windows.Forms.Panel();
             this.parrotGroupBox1 = new ReaLTaiizor.Controls.ParrotGroupBox();
             this.btnWorking = new ReaLTaiizor.Controls.DungeonToggleButton();
             this.txtSearch = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             this.cboRole = new ReaLTaiizor.Controls.MaterialComboBox();
             this.cboGender = new ReaLTaiizor.Controls.MaterialComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddEmployee = new ReaLTaiizor.Controls.ParrotButton();
             this.panelEmployeeList = new System.Windows.Forms.FlowLayoutPanel();
             this.cardEmployeeSample = new ReaLTaiizor.Controls.MaterialCard();
             this.panelCardContent = new System.Windows.Forms.Panel();
+            this.btnSua = new ReaLTaiizor.Controls.MaterialButton();
             this.lblEmployeePhone = new System.Windows.Forms.Label();
             this.lblEmployeeEmail = new System.Windows.Forms.Label();
+            this.btnXoa = new ReaLTaiizor.Controls.MaterialButton();
             this.lblEmployeeRole = new System.Windows.Forms.Label();
             this.lblEmployeeName = new System.Windows.Forms.Label();
             this.lblEmployeeId = new System.Windows.Forms.Label();
-            this.btnSua = new ReaLTaiizor.Controls.MaterialButton();
-            this.btnXoa = new ReaLTaiizor.Controls.MaterialButton();
             this.pictureBoxEmployee = new System.Windows.Forms.PictureBox();
-            this.btnAddEmployee = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnPrev = new ReaLTaiizor.Controls.ParrotButton();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panelHeader.SuspendLayout();
             this.panelFilter.SuspendLayout();
             this.parrotGroupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panelEmployeeList.SuspendLayout();
             this.cardEmployeeSample.SuspendLayout();
             this.panelCardContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -82,6 +82,30 @@
             this.lblTitle.Size = new System.Drawing.Size(278, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Danh sách nhân viên";
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnPrev.ButtonImage = global::UI.Properties.Resources.chevrons;
+            this.btnPrev.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnPrev.ButtonText = "";
+            this.btnPrev.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.btnPrev.ClickTextColor = System.Drawing.Color.DodgerBlue;
+            this.btnPrev.CornerRadius = 5;
+            this.btnPrev.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrev.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPrev.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnPrev.HoverTextColor = System.Drawing.Color.DodgerBlue;
+            this.btnPrev.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnPrev.Location = new System.Drawing.Point(8, 6);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(44, 38);
+            this.btnPrev.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnPrev.TabIndex = 1;
+            this.btnPrev.TextColor = System.Drawing.Color.DodgerBlue;
+            this.btnPrev.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnPrev.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
             // panelFilter
             // 
@@ -231,6 +255,42 @@
             this.cboGender.TabIndex = 2;
             this.cboGender.SelectedIndexChanged += new System.EventHandler(this.cboGender_SelectedIndexChanged);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btnAddEmployee);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(1545, 10);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(71, 66);
+            this.panel1.TabIndex = 4;
+            // 
+            // btnAddEmployee
+            // 
+            this.btnAddEmployee.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnAddEmployee.ButtonImage = global::UI.Properties.Resources.user;
+            this.btnAddEmployee.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnAddEmployee.ButtonText = "";
+            this.btnAddEmployee.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.btnAddEmployee.ClickTextColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddEmployee.CornerRadius = 5;
+            this.btnAddEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAddEmployee.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnAddEmployee.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnAddEmployee.HoverTextColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddEmployee.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnAddEmployee.Location = new System.Drawing.Point(0, 0);
+            this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.Size = new System.Drawing.Size(67, 62);
+            this.btnAddEmployee.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnAddEmployee.TabIndex = 2;
+            this.btnAddEmployee.TextColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddEmployee.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnAddEmployee.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
+            // 
             // panelEmployeeList
             // 
             this.panelEmployeeList.AutoScroll = true;
@@ -273,6 +333,27 @@
             this.panelCardContent.Size = new System.Drawing.Size(432, 214);
             this.panelCardContent.TabIndex = 0;
             // 
+            // btnSua
+            // 
+            this.btnSua.AutoSize = false;
+            this.btnSua.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSua.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnSua.Depth = 0;
+            this.btnSua.HighEmphasis = true;
+            this.btnSua.Icon = global::UI.Properties.Resources.edit;
+            this.btnSua.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnSua.Location = new System.Drawing.Point(223, 164);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSua.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btnSua.Name = "btnSua";
+            this.btnSua.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnSua.Size = new System.Drawing.Size(100, 42);
+            this.btnSua.TabIndex = 6;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnSua.UseAccentColor = false;
+            this.btnSua.UseVisualStyleBackColor = true;
+            // 
             // lblEmployeePhone
             // 
             this.lblEmployeePhone.AutoSize = true;
@@ -294,6 +375,30 @@
             this.lblEmployeeEmail.Size = new System.Drawing.Size(245, 28);
             this.lblEmployeeEmail.TabIndex = 4;
             this.lblEmployeeEmail.Text = "Email: nhanvien@mail.com";
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.AutoSize = false;
+            this.btnXoa.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnXoa.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnXoa.Depth = 0;
+            this.btnXoa.HighEmphasis = true;
+            this.btnXoa.Icon = global::UI.Properties.Resources.trash;
+            this.btnXoa.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(327, 163);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnXoa.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnXoa.Size = new System.Drawing.Size(100, 42);
+            this.btnXoa.TabIndex = 2;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnXoa.UseAccentColor = true;
+            this.btnXoa.UseMnemonic = false;
+            this.btnXoa.UseVisualStyleBackColor = false;
             // 
             // lblEmployeeRole
             // 
@@ -330,51 +435,6 @@
             this.lblEmployeeId.TabIndex = 1;
             this.lblEmployeeId.Text = "ID: NV001";
             // 
-            // btnSua
-            // 
-            this.btnSua.AutoSize = false;
-            this.btnSua.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSua.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnSua.Depth = 0;
-            this.btnSua.HighEmphasis = true;
-            this.btnSua.Icon = global::UI.Properties.Resources.edit;
-            this.btnSua.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btnSua.Location = new System.Drawing.Point(223, 164);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnSua.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            this.btnSua.Name = "btnSua";
-            this.btnSua.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnSua.Size = new System.Drawing.Size(100, 42);
-            this.btnSua.TabIndex = 6;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnSua.UseAccentColor = false;
-            this.btnSua.UseVisualStyleBackColor = true;
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.AutoSize = false;
-            this.btnXoa.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnXoa.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnXoa.Depth = 0;
-            this.btnXoa.HighEmphasis = true;
-            this.btnXoa.Icon = global::UI.Properties.Resources.trash;
-            this.btnXoa.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoa.Location = new System.Drawing.Point(327, 163);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnXoa.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnXoa.Size = new System.Drawing.Size(100, 42);
-            this.btnXoa.TabIndex = 2;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnXoa.UseAccentColor = true;
-            this.btnXoa.UseMnemonic = false;
-            this.btnXoa.UseVisualStyleBackColor = false;
-            // 
             // pictureBoxEmployee
             // 
             this.pictureBoxEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -384,66 +444,6 @@
             this.pictureBoxEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxEmployee.TabIndex = 0;
             this.pictureBoxEmployee.TabStop = false;
-            // 
-            // btnAddEmployee
-            // 
-            this.btnAddEmployee.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnAddEmployee.ButtonImage = global::UI.Properties.Resources.user;
-            this.btnAddEmployee.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnAddEmployee.ButtonText = "";
-            this.btnAddEmployee.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
-            this.btnAddEmployee.ClickTextColor = System.Drawing.Color.DodgerBlue;
-            this.btnAddEmployee.CornerRadius = 5;
-            this.btnAddEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAddEmployee.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnAddEmployee.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btnAddEmployee.HoverTextColor = System.Drawing.Color.DodgerBlue;
-            this.btnAddEmployee.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnAddEmployee.Location = new System.Drawing.Point(0, 0);
-            this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(67, 62);
-            this.btnAddEmployee.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnAddEmployee.TabIndex = 2;
-            this.btnAddEmployee.TextColor = System.Drawing.Color.DodgerBlue;
-            this.btnAddEmployee.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnAddEmployee.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
-            // 
-            // btnPrev
-            // 
-            this.btnPrev.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnPrev.ButtonImage = global::UI.Properties.Resources.chevrons;
-            this.btnPrev.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnPrev.ButtonText = "";
-            this.btnPrev.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
-            this.btnPrev.ClickTextColor = System.Drawing.Color.DodgerBlue;
-            this.btnPrev.CornerRadius = 5;
-            this.btnPrev.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrev.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPrev.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btnPrev.HoverTextColor = System.Drawing.Color.DodgerBlue;
-            this.btnPrev.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnPrev.Location = new System.Drawing.Point(8, 6);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(44, 38);
-            this.btnPrev.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnPrev.TabIndex = 1;
-            this.btnPrev.TextColor = System.Drawing.Color.DodgerBlue;
-            this.btnPrev.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnPrev.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.btnAddEmployee);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(1545, 10);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(71, 66);
-            this.panel1.TabIndex = 4;
             // 
             // ListEmployeeUC
             // 
@@ -460,12 +460,12 @@
             this.panelFilter.ResumeLayout(false);
             this.parrotGroupBox1.ResumeLayout(false);
             this.parrotGroupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.panelEmployeeList.ResumeLayout(false);
             this.cardEmployeeSample.ResumeLayout(false);
             this.panelCardContent.ResumeLayout(false);
             this.panelCardContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

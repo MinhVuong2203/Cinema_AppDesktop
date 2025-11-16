@@ -1,5 +1,4 @@
-﻿// File: BLL/RoomBLL.cs
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using DAL;
@@ -21,12 +20,20 @@ namespace BLL
         {
             return _roomDAL.GetAllRooms();
         }
-
+        public bool IsRoomNameExists(string roomName, int? excludeRoomId = null)
+        {
+            if (string.IsNullOrWhiteSpace(roomName)) return false;
+            return _roomDAL.IsRoomNameExists(roomName.Trim(), excludeRoomId);
+        }
         // Lấy phòng theo ID
         public Room GetRoomById(int roomId)
         {
             if (roomId <= 0) return null;
             return _roomDAL.GetRoomById(roomId);
+        }
+        public List<string> GetAllRoomType()
+        {
+            return _roomDAL.GetAllRoomType();
         }
 
         // Thêm phòng mới
@@ -48,7 +55,7 @@ namespace BLL
         }
 
         // Cập nhật phòng
-        public string EditRoom(Room room)
+        public string UpdateRoom(Room room)
         {
             if (room.RoomID <= 0)
                 return "ID phòng không hợp lệ.";
@@ -76,5 +83,12 @@ namespace BLL
             else
                 return "Xóa thất bại. Phòng không tồn tại hoặc đã bị xóa.";
         }
+
+        //// Kiểm tra phòng có đang được sử dụng trong lịch chiếu không
+        //public bool IsRoomInUse(int roomId)
+        //{
+        //    var room = _roomDAL.GetRoomById(roomId);
+        //    return room?.ShowTimes?.Any(st => st.EndTime > DateTime.Now) == true;
+        //}
     }
 }

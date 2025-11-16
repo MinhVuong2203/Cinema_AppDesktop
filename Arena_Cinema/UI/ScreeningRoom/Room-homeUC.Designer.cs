@@ -1,6 +1,6 @@
-﻿namespace UI.Room
+﻿namespace UI.ScreeningRoom
 {
-    partial class RoomManagementUC
+    partial class Room_homeUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,23 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnAddRoom = new ReaLTaiizor.Controls.ParrotButton();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.panelDataGridView = new System.Windows.Forms.Panel();
-            this.dgvRoom = new ReaLTaiizor.Controls.PoisonDataGridView();
-            this.colShowtimeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCinema = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRoom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colView = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panelRoomsList = new System.Windows.Forms.Panel();
+            this.cardRoomSample = new ReaLTaiizor.Controls.MaterialCard();
+            this.panelCardContent = new System.Windows.Forms.Panel();
+            this.lblSeatcount = new System.Windows.Forms.Label();
+            this.btnSua = new ReaLTaiizor.Controls.MaterialButton();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.lblRoomType = new System.Windows.Forms.Label();
+            this.btnXoa = new ReaLTaiizor.Controls.MaterialButton();
+            this.lblEmployeeName = new System.Windows.Forms.Label();
+            this.lblRoomID = new System.Windows.Forms.Label();
+            this.pictureBoxEmployee = new System.Windows.Forms.PictureBox();
             this.paginationPanel = new System.Windows.Forms.Panel();
             this.btnFirstPage = new ReaLTaiizor.Controls.ParrotButton();
             this.btnPrevPage = new ReaLTaiizor.Controls.ParrotButton();
@@ -54,8 +52,6 @@
             this.btnLastPage = new ReaLTaiizor.Controls.ParrotButton();
             this.filterPanel = new System.Windows.Forms.Panel();
             this.left_Panel = new System.Windows.Forms.Panel();
-            this.lblBranch = new System.Windows.Forms.Label();
-            this.cboBranch = new ReaLTaiizor.Controls.MaterialComboBox();
             this.lblMovie = new System.Windows.Forms.Label();
             this.cboRoomType = new ReaLTaiizor.Controls.MaterialComboBox();
             this.lblPageSize = new System.Windows.Forms.Label();
@@ -65,8 +61,10 @@
             this.lblInfo = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.panelMain.SuspendLayout();
-            this.panelDataGridView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRoom)).BeginInit();
+            this.panelRoomsList.SuspendLayout();
+            this.cardRoomSample.SuspendLayout();
+            this.panelCardContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).BeginInit();
             this.paginationPanel.SuspendLayout();
             this.filterPanel.SuspendLayout();
             this.left_Panel.SuspendLayout();
@@ -81,8 +79,8 @@
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1337, 60);
-            this.panelHeader.TabIndex = 1;
+            this.panelHeader.Size = new System.Drawing.Size(1376, 60);
+            this.panelHeader.TabIndex = 2;
             // 
             // lblTitle
             // 
@@ -105,14 +103,15 @@
             this.btnAddRoom.ClickTextColor = System.Drawing.Color.White;
             this.btnAddRoom.CornerRadius = 5;
             this.btnAddRoom.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddRoom.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnAddRoom.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAddRoom.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
             this.btnAddRoom.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
             this.btnAddRoom.HoverTextColor = System.Drawing.Color.White;
             this.btnAddRoom.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnAddRoom.Location = new System.Drawing.Point(1164, 10);
+            this.btnAddRoom.Location = new System.Drawing.Point(1206, 0);
             this.btnAddRoom.Name = "btnAddRoom";
-            this.btnAddRoom.Size = new System.Drawing.Size(170, 36);
+            this.btnAddRoom.Size = new System.Drawing.Size(170, 60);
             this.btnAddRoom.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnAddRoom.TabIndex = 2;
             this.btnAddRoom.TextColor = System.Drawing.Color.White;
@@ -123,139 +122,166 @@
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panelMain.Controls.Add(this.panelDataGridView);
+            this.panelMain.Controls.Add(this.panelRoomsList);
             this.panelMain.Controls.Add(this.paginationPanel);
             this.panelMain.Controls.Add(this.filterPanel);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 60);
             this.panelMain.Name = "panelMain";
             this.panelMain.Padding = new System.Windows.Forms.Padding(25);
-            this.panelMain.Size = new System.Drawing.Size(1337, 725);
-            this.panelMain.TabIndex = 2;
+            this.panelMain.Size = new System.Drawing.Size(1376, 737);
+            this.panelMain.TabIndex = 3;
             // 
-            // panelDataGridView
+            // panelRoomsList
             // 
-            this.panelDataGridView.Controls.Add(this.dgvRoom);
-            this.panelDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDataGridView.Location = new System.Drawing.Point(25, 174);
-            this.panelDataGridView.Margin = new System.Windows.Forms.Padding(10);
-            this.panelDataGridView.Name = "panelDataGridView";
-            this.panelDataGridView.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.panelDataGridView.Size = new System.Drawing.Size(1287, 476);
-            this.panelDataGridView.TabIndex = 4;
+            this.panelRoomsList.Controls.Add(this.cardRoomSample);
+            this.panelRoomsList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRoomsList.Location = new System.Drawing.Point(25, 174);
+            this.panelRoomsList.Margin = new System.Windows.Forms.Padding(10);
+            this.panelRoomsList.Name = "panelRoomsList";
+            this.panelRoomsList.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.panelRoomsList.Size = new System.Drawing.Size(1326, 488);
+            this.panelRoomsList.TabIndex = 4;
             // 
-            // dgvRoom
+            // cardRoomSample
             // 
-            this.dgvRoom.AllowUserToAddRows = false;
-            this.dgvRoom.AllowUserToDeleteRows = false;
-            this.dgvRoom.AllowUserToResizeRows = false;
-            this.dgvRoom.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvRoom.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvRoom.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvRoom.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvRoom.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvRoom.ColumnHeadersHeight = 40;
-            this.dgvRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colShowtimeId,
-            this.colCinema,
-            this.colRoom,
-            this.colStartTime,
-            this.colEndTime,
-            this.colStatus,
-            this.mota,
-            this.colView});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvRoom.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvRoom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvRoom.EnableHeadersVisualStyles = false;
-            this.dgvRoom.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgvRoom.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvRoom.Location = new System.Drawing.Point(0, 10);
-            this.dgvRoom.Name = "dgvRoom";
-            this.dgvRoom.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvRoom.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvRoom.RowHeadersVisible = false;
-            this.dgvRoom.RowHeadersWidth = 51;
-            this.dgvRoom.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvRoom.RowTemplate.Height = 35;
-            this.dgvRoom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRoom.Size = new System.Drawing.Size(1287, 456);
-            this.dgvRoom.TabIndex = 0;
-            this.dgvRoom.UseCustomBackColor = true;
-            this.dgvRoom.UseCustomForeColor = true;
-            this.dgvRoom.UseStyleColors = true;
+            this.cardRoomSample.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cardRoomSample.Controls.Add(this.panelCardContent);
+            this.cardRoomSample.Depth = 0;
+            this.cardRoomSample.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cardRoomSample.Location = new System.Drawing.Point(15, 13);
+            this.cardRoomSample.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+            this.cardRoomSample.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.cardRoomSample.Name = "cardRoomSample";
+            this.cardRoomSample.Padding = new System.Windows.Forms.Padding(15);
+            this.cardRoomSample.Size = new System.Drawing.Size(462, 406);
+            this.cardRoomSample.TabIndex = 1;
             // 
-            // colShowtimeId
+            // panelCardContent
             // 
-            this.colShowtimeId.HeaderText = "MÃ PHÒNG";
-            this.colShowtimeId.MinimumWidth = 6;
-            this.colShowtimeId.Name = "colShowtimeId";
+            this.panelCardContent.Controls.Add(this.lblSeatcount);
+            this.panelCardContent.Controls.Add(this.btnSua);
+            this.panelCardContent.Controls.Add(this.lblDescription);
+            this.panelCardContent.Controls.Add(this.lblRoomType);
+            this.panelCardContent.Controls.Add(this.btnXoa);
+            this.panelCardContent.Controls.Add(this.lblEmployeeName);
+            this.panelCardContent.Controls.Add(this.lblRoomID);
+            this.panelCardContent.Controls.Add(this.pictureBoxEmployee);
+            this.panelCardContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelCardContent.Location = new System.Drawing.Point(15, 15);
+            this.panelCardContent.Name = "panelCardContent";
+            this.panelCardContent.Size = new System.Drawing.Size(432, 376);
+            this.panelCardContent.TabIndex = 0;
             // 
-            // colCinema
+            // lblSeatcount
             // 
-            this.colCinema.HeaderText = "CHI NHÁNH";
-            this.colCinema.MinimumWidth = 6;
-            this.colCinema.Name = "colCinema";
+            this.lblSeatcount.AutoSize = true;
+            this.lblSeatcount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSeatcount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.lblSeatcount.Location = new System.Drawing.Point(5, 142);
+            this.lblSeatcount.Name = "lblSeatcount";
+            this.lblSeatcount.Size = new System.Drawing.Size(134, 28);
+            this.lblSeatcount.TabIndex = 7;
+            this.lblSeatcount.Text = "Số lượng ghế:";
             // 
-            // colRoom
+            // btnSua
             // 
-            this.colRoom.HeaderText = "TÊN PHÒNG";
-            this.colRoom.MinimumWidth = 6;
-            this.colRoom.Name = "colRoom";
+            this.btnSua.AutoSize = false;
+            this.btnSua.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSua.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnSua.Depth = 0;
+            this.btnSua.HighEmphasis = true;
+            this.btnSua.Icon = global::UI.Properties.Resources.edit;
+            this.btnSua.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnSua.Location = new System.Drawing.Point(216, 329);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSua.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btnSua.Name = "btnSua";
+            this.btnSua.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnSua.Size = new System.Drawing.Size(100, 42);
+            this.btnSua.TabIndex = 6;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnSua.UseAccentColor = false;
+            this.btnSua.UseVisualStyleBackColor = true;
             // 
-            // colStartTime
+            // lblDescription
             // 
-            this.colStartTime.HeaderText = "LOẠI PHÒNG";
-            this.colStartTime.MinimumWidth = 6;
-            this.colStartTime.Name = "colStartTime";
+            this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.lblDescription.Location = new System.Drawing.Point(4, 193);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(423, 122);
+            this.lblDescription.TabIndex = 5;
+            this.lblDescription.Text = "SĐT: 0123456789";
             // 
-            // colEndTime
+            // lblRoomType
             // 
-            this.colEndTime.HeaderText = "SỐ GHẾ";
-            this.colEndTime.MinimumWidth = 6;
-            this.colEndTime.Name = "colEndTime";
+            this.lblRoomType.AutoSize = true;
+            this.lblRoomType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoomType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.lblRoomType.Location = new System.Drawing.Point(4, 100);
+            this.lblRoomType.Name = "lblRoomType";
+            this.lblRoomType.Size = new System.Drawing.Size(111, 28);
+            this.lblRoomType.TabIndex = 4;
+            this.lblRoomType.Text = "Loại phòng";
             // 
-            // colStatus
+            // btnXoa
             // 
-            this.colStatus.HeaderText = "TRẠNG THÁI";
-            this.colStatus.MinimumWidth = 6;
-            this.colStatus.Name = "colStatus";
+            this.btnXoa.AutoSize = false;
+            this.btnXoa.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnXoa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnXoa.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnXoa.Depth = 0;
+            this.btnXoa.HighEmphasis = true;
+            this.btnXoa.Icon = global::UI.Properties.Resources.trash;
+            this.btnXoa.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(328, 328);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnXoa.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnXoa.Size = new System.Drawing.Size(100, 42);
+            this.btnXoa.TabIndex = 2;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnXoa.UseAccentColor = true;
+            this.btnXoa.UseMnemonic = false;
+            this.btnXoa.UseVisualStyleBackColor = false;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // mota
+            // lblEmployeeName
             // 
-            this.mota.HeaderText = "MÔ TẢ";
-            this.mota.MinimumWidth = 6;
-            this.mota.Name = "mota";
+            this.lblEmployeeName.AutoSize = true;
+            this.lblEmployeeName.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmployeeName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.lblEmployeeName.Location = new System.Drawing.Point(4, 54);
+            this.lblEmployeeName.Name = "lblEmployeeName";
+            this.lblEmployeeName.Size = new System.Drawing.Size(99, 30);
+            this.lblEmployeeName.TabIndex = 2;
+            this.lblEmployeeName.Text = "Phòng 1";
             // 
-            // colView
+            // lblRoomID
             // 
-            this.colView.HeaderText = "THAO TÁC";
-            this.colView.MinimumWidth = 6;
-            this.colView.Name = "colView";
-            this.colView.Text = "👁";
-            this.colView.UseColumnTextForButtonValue = true;
+            this.lblRoomID.AutoSize = true;
+            this.lblRoomID.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoomID.ForeColor = System.Drawing.Color.Brown;
+            this.lblRoomID.Location = new System.Drawing.Point(5, 13);
+            this.lblRoomID.Name = "lblRoomID";
+            this.lblRoomID.Size = new System.Drawing.Size(57, 23);
+            this.lblRoomID.TabIndex = 1;
+            this.lblRoomID.Text = "Room";
+            // 
+            // pictureBoxEmployee
+            // 
+            this.pictureBoxEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.pictureBoxEmployee.Location = new System.Drawing.Point(176, 10);
+            this.pictureBoxEmployee.Name = "pictureBoxEmployee";
+            this.pictureBoxEmployee.Size = new System.Drawing.Size(245, 180);
+            this.pictureBoxEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxEmployee.TabIndex = 0;
+            this.pictureBoxEmployee.TabStop = false;
             // 
             // paginationPanel
             // 
@@ -267,9 +293,9 @@
             this.paginationPanel.Controls.Add(this.btnNextPage);
             this.paginationPanel.Controls.Add(this.btnLastPage);
             this.paginationPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.paginationPanel.Location = new System.Drawing.Point(25, 650);
+            this.paginationPanel.Location = new System.Drawing.Point(25, 662);
             this.paginationPanel.Name = "paginationPanel";
-            this.paginationPanel.Size = new System.Drawing.Size(1287, 50);
+            this.paginationPanel.Size = new System.Drawing.Size(1326, 50);
             this.paginationPanel.TabIndex = 3;
             // 
             // btnFirstPage
@@ -426,13 +452,11 @@
             this.filterPanel.Location = new System.Drawing.Point(25, 25);
             this.filterPanel.Name = "filterPanel";
             this.filterPanel.Padding = new System.Windows.Forms.Padding(15);
-            this.filterPanel.Size = new System.Drawing.Size(1287, 149);
+            this.filterPanel.Size = new System.Drawing.Size(1326, 149);
             this.filterPanel.TabIndex = 0;
             // 
             // left_Panel
             // 
-            this.left_Panel.Controls.Add(this.lblBranch);
-            this.left_Panel.Controls.Add(this.cboBranch);
             this.left_Panel.Controls.Add(this.lblMovie);
             this.left_Panel.Controls.Add(this.cboRoomType);
             this.left_Panel.Controls.Add(this.lblPageSize);
@@ -443,46 +467,12 @@
             this.left_Panel.Size = new System.Drawing.Size(826, 84);
             this.left_Panel.TabIndex = 9;
             // 
-            // lblBranch
-            // 
-            this.lblBranch.AutoSize = true;
-            this.lblBranch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblBranch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.lblBranch.Location = new System.Drawing.Point(2, 5);
-            this.lblBranch.Name = "lblBranch";
-            this.lblBranch.Size = new System.Drawing.Size(77, 20);
-            this.lblBranch.TabIndex = 0;
-            this.lblBranch.Text = "Chi Nhánh";
-            // 
-            // cboBranch
-            // 
-            this.cboBranch.AutoResize = false;
-            this.cboBranch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cboBranch.Depth = 0;
-            this.cboBranch.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cboBranch.DropDownHeight = 174;
-            this.cboBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBranch.DropDownWidth = 121;
-            this.cboBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cboBranch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cboBranch.FormattingEnabled = true;
-            this.cboBranch.Hint = "-- Chọn chi nhánh --";
-            this.cboBranch.IntegralHeight = false;
-            this.cboBranch.ItemHeight = 43;
-            this.cboBranch.Location = new System.Drawing.Point(2, 28);
-            this.cboBranch.MaxDropDownItems = 4;
-            this.cboBranch.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            this.cboBranch.Name = "cboBranch";
-            this.cboBranch.Size = new System.Drawing.Size(230, 49);
-            this.cboBranch.StartIndex = 0;
-            this.cboBranch.TabIndex = 1;
-            // 
             // lblMovie
             // 
             this.lblMovie.AutoSize = true;
             this.lblMovie.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblMovie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.lblMovie.Location = new System.Drawing.Point(252, 5);
+            this.lblMovie.Location = new System.Drawing.Point(16, 5);
             this.lblMovie.Name = "lblMovie";
             this.lblMovie.Size = new System.Drawing.Size(84, 20);
             this.lblMovie.TabIndex = 2;
@@ -503,7 +493,7 @@
             this.cboRoomType.Hint = "-- Chọn loại phòng --";
             this.cboRoomType.IntegralHeight = false;
             this.cboRoomType.ItemHeight = 43;
-            this.cboRoomType.Location = new System.Drawing.Point(252, 28);
+            this.cboRoomType.Location = new System.Drawing.Point(16, 28);
             this.cboRoomType.MaxDropDownItems = 4;
             this.cboRoomType.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             this.cboRoomType.Name = "cboRoomType";
@@ -554,7 +544,7 @@
             // 
             this.right_Panel.Controls.Add(this.btnReset);
             this.right_Panel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.right_Panel.Location = new System.Drawing.Point(996, 15);
+            this.right_Panel.Location = new System.Drawing.Point(1035, 15);
             this.right_Panel.Name = "right_Panel";
             this.right_Panel.Size = new System.Drawing.Size(276, 84);
             this.right_Panel.TabIndex = 8;
@@ -574,7 +564,7 @@
             this.btnReset.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
             this.btnReset.HoverTextColor = System.Drawing.Color.White;
             this.btnReset.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnReset.Location = new System.Drawing.Point(147, 18);
+            this.btnReset.Location = new System.Drawing.Point(3, 5);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(120, 40);
             this.btnReset.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -592,24 +582,27 @@
             this.lblInfo.Location = new System.Drawing.Point(15, 99);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.lblInfo.Size = new System.Drawing.Size(1257, 35);
+            this.lblInfo.Size = new System.Drawing.Size(1296, 35);
             this.lblInfo.TabIndex = 0;
             this.lblInfo.Text = "Hiển thị 10 trong tổng số 25 phòng | Trang 1 / 3";
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // RoomManagementUC
+            // Room_homeUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelHeader);
-            this.Name = "RoomManagementUC";
-            this.Size = new System.Drawing.Size(1337, 785);
+            this.Name = "Room_homeUC";
+            this.Size = new System.Drawing.Size(1376, 797);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelMain.ResumeLayout(false);
-            this.panelDataGridView.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRoom)).EndInit();
+            this.panelRoomsList.ResumeLayout(false);
+            this.cardRoomSample.ResumeLayout(false);
+            this.panelCardContent.ResumeLayout(false);
+            this.panelCardContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).EndInit();
             this.paginationPanel.ResumeLayout(false);
             this.filterPanel.ResumeLayout(false);
             this.left_Panel.ResumeLayout(false);
@@ -625,8 +618,17 @@
         private System.Windows.Forms.Label lblTitle;
         private ReaLTaiizor.Controls.ParrotButton btnAddRoom;
         private System.Windows.Forms.Panel panelMain;
-        private System.Windows.Forms.Panel panelDataGridView;
-        private ReaLTaiizor.Controls.PoisonDataGridView dgvRoom;
+        private System.Windows.Forms.Panel panelRoomsList;
+        private ReaLTaiizor.Controls.MaterialCard cardRoomSample;
+        private System.Windows.Forms.Panel panelCardContent;
+        private System.Windows.Forms.Label lblSeatcount;
+        private ReaLTaiizor.Controls.MaterialButton btnSua;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Label lblRoomType;
+        private ReaLTaiizor.Controls.MaterialButton btnXoa;
+        private System.Windows.Forms.Label lblEmployeeName;
+        private System.Windows.Forms.Label lblRoomID;
+        private System.Windows.Forms.PictureBox pictureBoxEmployee;
         private System.Windows.Forms.Panel paginationPanel;
         private ReaLTaiizor.Controls.ParrotButton btnFirstPage;
         private ReaLTaiizor.Controls.ParrotButton btnPrevPage;
@@ -636,8 +638,6 @@
         private ReaLTaiizor.Controls.ParrotButton btnLastPage;
         private System.Windows.Forms.Panel filterPanel;
         private System.Windows.Forms.Panel left_Panel;
-        private System.Windows.Forms.Label lblBranch;
-        private ReaLTaiizor.Controls.MaterialComboBox cboBranch;
         private System.Windows.Forms.Label lblMovie;
         private ReaLTaiizor.Controls.MaterialComboBox cboRoomType;
         private System.Windows.Forms.Label lblPageSize;
@@ -645,13 +645,5 @@
         private System.Windows.Forms.Panel right_Panel;
         private ReaLTaiizor.Controls.ParrotButton btnReset;
         private System.Windows.Forms.Label lblInfo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colShowtimeId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCinema;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRoom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStartTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEndTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mota;
-        private System.Windows.Forms.DataGridViewButtonColumn colView;
     }
 }
