@@ -56,6 +56,7 @@
     <Compile Include="AccountDAL.cs" />
     <Compile Include="CinemaDBContext.cs" />
     <Compile Include="EmployeeDAL.cs" />
+    <Compile Include="MovieDAL.cs" />
     <Compile Include="ProductDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleDAL.cs" />
