@@ -30,15 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Movie_MainUC));
             this.panelHeader = new System.Windows.Forms.Panel();
-            this.lbl_MovieTitle = new System.Windows.Forms.Label();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
+            this.right_panel = new System.Windows.Forms.Panel();
             this.btnAddMovie = new ReaLTaiizor.Controls.ParrotButton();
+            this.lbl_MovieTitle = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.searchPanel = new System.Windows.Forms.Panel();
-            this.txtSearch = new ReaLTaiizor.Controls.MaterialTextBox();
-            this.cboFilter = new ReaLTaiizor.Controls.MaterialComboBox();
-            this.btnSearch = new ReaLTaiizor.Controls.ParrotButton();
-            this.lblInfo = new System.Windows.Forms.Label();
+            this.panel_movie = new System.Windows.Forms.Panel();
             this.moviesContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.movieCard1 = new ReaLTaiizor.Controls.MaterialCard();
             this.btnDelete1 = new ReaLTaiizor.Controls.ParrotButton();
@@ -84,29 +80,79 @@
             this.lblTitle4 = new System.Windows.Forms.Label();
             this.poster4 = new System.Windows.Forms.Panel();
             this.badge4 = new System.Windows.Forms.Label();
+            this.paginationPanel = new System.Windows.Forms.Panel();
+            this.btnFirstPage = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnPrevPage = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnPage2 = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnPage3 = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnNextPage = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnLastPage = new ReaLTaiizor.Controls.ParrotButton();
+            this.searchPanel = new System.Windows.Forms.Panel();
+            this.panelinfo_right = new System.Windows.Forms.Panel();
+            this.cboFilter = new ReaLTaiizor.Controls.MaterialComboBox();
+            this.btnSearch = new ReaLTaiizor.Controls.ParrotButton();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.txtSearch = new ReaLTaiizor.Controls.MaterialTextBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
+            this.right_panel.SuspendLayout();
             this.panelMain.SuspendLayout();
-            this.searchPanel.SuspendLayout();
+            this.panel_movie.SuspendLayout();
             this.moviesContainer.SuspendLayout();
             this.movieCard1.SuspendLayout();
             this.movieCard2.SuspendLayout();
             this.movieCard3.SuspendLayout();
             this.movieCard4.SuspendLayout();
+            this.paginationPanel.SuspendLayout();
+            this.searchPanel.SuspendLayout();
+            this.panelinfo_right.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.panelHeader.Controls.Add(this.right_panel);
             this.panelHeader.Controls.Add(this.lbl_MovieTitle);
-            this.panelHeader.Controls.Add(this.pictureBoxIcon);
-            this.panelHeader.Controls.Add(this.btnAddMovie);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1360, 60);
             this.panelHeader.TabIndex = 0;
             this.panelHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.panelHeader_Paint);
+            // 
+            // right_panel
+            // 
+            this.right_panel.Controls.Add(this.btnAddMovie);
+            this.right_panel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.right_panel.Location = new System.Drawing.Point(1163, 0);
+            this.right_panel.Name = "right_panel";
+            this.right_panel.Size = new System.Drawing.Size(197, 60);
+            this.right_panel.TabIndex = 3;
+            // 
+            // btnAddMovie
+            // 
+            this.btnAddMovie.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
+            this.btnAddMovie.ButtonImage = null;
+            this.btnAddMovie.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnAddMovie.ButtonText = "+ Thêm Phim Mới";
+            this.btnAddMovie.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnAddMovie.ClickTextColor = System.Drawing.Color.White;
+            this.btnAddMovie.CornerRadius = 5;
+            this.btnAddMovie.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddMovie.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAddMovie.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnAddMovie.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this.btnAddMovie.HoverTextColor = System.Drawing.Color.White;
+            this.btnAddMovie.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnAddMovie.Location = new System.Drawing.Point(15, 14);
+            this.btnAddMovie.Name = "btnAddMovie";
+            this.btnAddMovie.Size = new System.Drawing.Size(170, 36);
+            this.btnAddMovie.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnAddMovie.TabIndex = 2;
+            this.btnAddMovie.TextColor = System.Drawing.Color.White;
+            this.btnAddMovie.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnAddMovie.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnAddMovie.Click += new System.EventHandler(this.btnAddMovie_Click);
             // 
             // lbl_MovieTitle
             // 
@@ -119,46 +165,13 @@
             this.lbl_MovieTitle.TabIndex = 1;
             this.lbl_MovieTitle.Text = "📽 Quản Lý Phim";
             // 
-            // pictureBoxIcon
-            // 
-            this.pictureBoxIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxIcon.Location = new System.Drawing.Point(15, 15);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(30, 30);
-            this.pictureBoxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxIcon.TabIndex = 0;
-            this.pictureBoxIcon.TabStop = false;
-            // 
-            // btnAddMovie
-            // 
-            this.btnAddMovie.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
-            this.btnAddMovie.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnAddMovie.ButtonImage")));
-            this.btnAddMovie.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnAddMovie.ButtonText = "+ Thêm Phim Mới";
-            this.btnAddMovie.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.btnAddMovie.ClickTextColor = System.Drawing.Color.White;
-            this.btnAddMovie.CornerRadius = 5;
-            this.btnAddMovie.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddMovie.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnAddMovie.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnAddMovie.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
-            this.btnAddMovie.HoverTextColor = System.Drawing.Color.White;
-            this.btnAddMovie.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnAddMovie.Location = new System.Drawing.Point(1170, 12);
-            this.btnAddMovie.Name = "btnAddMovie";
-            this.btnAddMovie.Size = new System.Drawing.Size(170, 36);
-            this.btnAddMovie.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnAddMovie.TabIndex = 2;
-            this.btnAddMovie.TextColor = System.Drawing.Color.White;
-            this.btnAddMovie.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnAddMovie.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panelMain.Controls.Add(this.panel_movie);
+            this.panelMain.Controls.Add(this.paginationPanel);
             this.panelMain.Controls.Add(this.searchPanel);
-            this.panelMain.Controls.Add(this.lblInfo);
-            this.panelMain.Controls.Add(this.moviesContainer);
+            this.panelMain.Controls.Add(this.flowLayoutPanel1);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 60);
             this.panelMain.Name = "panelMain";
@@ -166,116 +179,28 @@
             this.panelMain.Size = new System.Drawing.Size(1360, 740);
             this.panelMain.TabIndex = 1;
             // 
-            // searchPanel
+            // panel_movie
             // 
-            this.searchPanel.BackColor = System.Drawing.Color.White;
-            this.searchPanel.Controls.Add(this.txtSearch);
-            this.searchPanel.Controls.Add(this.cboFilter);
-            this.searchPanel.Controls.Add(this.btnSearch);
-            this.searchPanel.Location = new System.Drawing.Point(25, 25);
-            this.searchPanel.Name = "searchPanel";
-            this.searchPanel.Padding = new System.Windows.Forms.Padding(10);
-            this.searchPanel.Size = new System.Drawing.Size(1310, 80);
-            this.searchPanel.TabIndex = 0;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.AnimateReadOnly = false;
-            this.txtSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSearch.Depth = 0;
-            this.txtSearch.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtSearch.Hint = "Tìm kiếm phim theo tên...";
-            this.txtSearch.LeadingIcon = null;
-            this.txtSearch.Location = new System.Drawing.Point(15, 15);
-            this.txtSearch.MaxLength = 32767;
-            this.txtSearch.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            this.txtSearch.Multiline = false;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtSearch.Size = new System.Drawing.Size(550, 50);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.TabStop = false;
-            this.txtSearch.Text = "";
-            this.txtSearch.TrailingIcon = null;
-            // 
-            // cboFilter
-            // 
-            this.cboFilter.AutoResize = false;
-            this.cboFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cboFilter.Depth = 0;
-            this.cboFilter.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cboFilter.DropDownHeight = 174;
-            this.cboFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFilter.DropDownWidth = 121;
-            this.cboFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cboFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cboFilter.FormattingEnabled = true;
-            this.cboFilter.Hint = "Lọc theo trạng thái";
-            this.cboFilter.IntegralHeight = false;
-            this.cboFilter.ItemHeight = 43;
-            this.cboFilter.Items.AddRange(new object[] {
-            "Tất cả phim",
-            "Đang chiếu",
-            "Sắp chiếu",
-            "Đã kết thúc"});
-            this.cboFilter.Location = new System.Drawing.Point(980, 15);
-            this.cboFilter.MaxDropDownItems = 4;
-            this.cboFilter.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            this.cboFilter.Name = "cboFilter";
-            this.cboFilter.Size = new System.Drawing.Size(180, 49);
-            this.cboFilter.StartIndex = 0;
-            this.cboFilter.TabIndex = 1;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnSearch.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.ButtonImage")));
-            this.btnSearch.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnSearch.ButtonText = "🔍 Tìm kiếm";
-            this.btnSearch.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.btnSearch.ClickTextColor = System.Drawing.Color.White;
-            this.btnSearch.CornerRadius = 5;
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnSearch.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
-            this.btnSearch.HoverTextColor = System.Drawing.Color.White;
-            this.btnSearch.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnSearch.Location = new System.Drawing.Point(1180, 20);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(120, 40);
-            this.btnSearch.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnSearch.TabIndex = 2;
-            this.btnSearch.TextColor = System.Drawing.Color.White;
-            this.btnSearch.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnSearch.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // lblInfo
-            // 
-            this.lblInfo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.lblInfo.Location = new System.Drawing.Point(35, 120);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(1290, 20);
-            this.lblInfo.TabIndex = 1;
-            this.lblInfo.Text = "Tìm thấy: 4 phim                                                                 " +
-    "                                                                                " +
-    "             Trang 1 / 1";
+            this.panel_movie.AutoScroll = true;
+            this.panel_movie.Controls.Add(this.moviesContainer);
+            this.panel_movie.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_movie.Location = new System.Drawing.Point(25, 146);
+            this.panel_movie.Name = "panel_movie";
+            this.panel_movie.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            this.panel_movie.Size = new System.Drawing.Size(1310, 519);
+            this.panel_movie.TabIndex = 5;
             // 
             // moviesContainer
             // 
-            this.moviesContainer.AutoScroll = true;
             this.moviesContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.moviesContainer.Controls.Add(this.movieCard1);
             this.moviesContainer.Controls.Add(this.movieCard2);
             this.moviesContainer.Controls.Add(this.movieCard3);
             this.moviesContainer.Controls.Add(this.movieCard4);
-            this.moviesContainer.Location = new System.Drawing.Point(25, 150);
+            this.moviesContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moviesContainer.Location = new System.Drawing.Point(0, 10);
             this.moviesContainer.Name = "moviesContainer";
-            this.moviesContainer.Padding = new System.Windows.Forms.Padding(5);
-            this.moviesContainer.Size = new System.Drawing.Size(1310, 560);
+            this.moviesContainer.Size = new System.Drawing.Size(1310, 499);
             this.moviesContainer.TabIndex = 2;
             // 
             // movieCard1
@@ -293,12 +218,12 @@
             this.movieCard1.Controls.Add(this.badge1);
             this.movieCard1.Depth = 0;
             this.movieCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.movieCard1.Location = new System.Drawing.Point(13, 13);
-            this.movieCard1.Margin = new System.Windows.Forms.Padding(8);
+            this.movieCard1.Location = new System.Drawing.Point(6, 6);
+            this.movieCard1.Margin = new System.Windows.Forms.Padding(6);
             this.movieCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.movieCard1.Name = "movieCard1";
             this.movieCard1.Padding = new System.Windows.Forms.Padding(5);
-            this.movieCard1.Size = new System.Drawing.Size(300, 380);
+            this.movieCard1.Size = new System.Drawing.Size(296, 380);
             this.movieCard1.TabIndex = 0;
             // 
             // btnDelete1
@@ -424,7 +349,7 @@
             this.lblTitle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblTitle1.Location = new System.Drawing.Point(10, 200);
             this.lblTitle1.Name = "lblTitle1";
-            this.lblTitle1.Size = new System.Drawing.Size(280, 45);
+            this.lblTitle1.Size = new System.Drawing.Size(276, 45);
             this.lblTitle1.TabIndex = 2;
             this.lblTitle1.Text = "GODZILLA MINUS ONE (T13)";
             // 
@@ -433,7 +358,7 @@
             this.poster1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.poster1.Location = new System.Drawing.Point(10, 10);
             this.poster1.Name = "poster1";
-            this.poster1.Size = new System.Drawing.Size(280, 180);
+            this.poster1.Size = new System.Drawing.Size(276, 180);
             this.poster1.TabIndex = 1;
             // 
             // badge1
@@ -463,12 +388,12 @@
             this.movieCard2.Controls.Add(this.badge2);
             this.movieCard2.Depth = 0;
             this.movieCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.movieCard2.Location = new System.Drawing.Point(329, 13);
-            this.movieCard2.Margin = new System.Windows.Forms.Padding(8);
+            this.movieCard2.Location = new System.Drawing.Point(314, 6);
+            this.movieCard2.Margin = new System.Windows.Forms.Padding(6);
             this.movieCard2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.movieCard2.Name = "movieCard2";
             this.movieCard2.Padding = new System.Windows.Forms.Padding(5);
-            this.movieCard2.Size = new System.Drawing.Size(300, 380);
+            this.movieCard2.Size = new System.Drawing.Size(296, 380);
             this.movieCard2.TabIndex = 1;
             // 
             // btnDelete2
@@ -594,7 +519,7 @@
             this.lblTitle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblTitle2.Location = new System.Drawing.Point(10, 200);
             this.lblTitle2.Name = "lblTitle2";
-            this.lblTitle2.Size = new System.Drawing.Size(280, 45);
+            this.lblTitle2.Size = new System.Drawing.Size(276, 45);
             this.lblTitle2.TabIndex = 2;
             this.lblTitle2.Text = "CƯỚI VỢ CHO CHA";
             // 
@@ -603,7 +528,7 @@
             this.poster2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.poster2.Location = new System.Drawing.Point(10, 10);
             this.poster2.Name = "poster2";
-            this.poster2.Size = new System.Drawing.Size(280, 180);
+            this.poster2.Size = new System.Drawing.Size(276, 180);
             this.poster2.TabIndex = 1;
             // 
             // badge2
@@ -633,12 +558,12 @@
             this.movieCard3.Controls.Add(this.badge3);
             this.movieCard3.Depth = 0;
             this.movieCard3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.movieCard3.Location = new System.Drawing.Point(645, 13);
-            this.movieCard3.Margin = new System.Windows.Forms.Padding(8);
+            this.movieCard3.Location = new System.Drawing.Point(622, 6);
+            this.movieCard3.Margin = new System.Windows.Forms.Padding(6);
             this.movieCard3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.movieCard3.Name = "movieCard3";
             this.movieCard3.Padding = new System.Windows.Forms.Padding(5);
-            this.movieCard3.Size = new System.Drawing.Size(300, 380);
+            this.movieCard3.Size = new System.Drawing.Size(296, 380);
             this.movieCard3.TabIndex = 2;
             // 
             // btnDelete3
@@ -764,7 +689,7 @@
             this.lblTitle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblTitle3.Location = new System.Drawing.Point(10, 200);
             this.lblTitle3.Name = "lblTitle3";
-            this.lblTitle3.Size = new System.Drawing.Size(280, 45);
+            this.lblTitle3.Size = new System.Drawing.Size(276, 45);
             this.lblTitle3.TabIndex = 2;
             this.lblTitle3.Text = "SƯ THẦY GẶP SƯ LÃY (T16)";
             // 
@@ -773,7 +698,7 @@
             this.poster3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.poster3.Location = new System.Drawing.Point(10, 10);
             this.poster3.Name = "poster3";
-            this.poster3.Size = new System.Drawing.Size(280, 180);
+            this.poster3.Size = new System.Drawing.Size(276, 180);
             this.poster3.TabIndex = 1;
             // 
             // badge3
@@ -803,12 +728,12 @@
             this.movieCard4.Controls.Add(this.badge4);
             this.movieCard4.Depth = 0;
             this.movieCard4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.movieCard4.Location = new System.Drawing.Point(961, 13);
-            this.movieCard4.Margin = new System.Windows.Forms.Padding(8);
+            this.movieCard4.Location = new System.Drawing.Point(930, 6);
+            this.movieCard4.Margin = new System.Windows.Forms.Padding(6);
             this.movieCard4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.movieCard4.Name = "movieCard4";
             this.movieCard4.Padding = new System.Windows.Forms.Padding(5);
-            this.movieCard4.Size = new System.Drawing.Size(300, 380);
+            this.movieCard4.Size = new System.Drawing.Size(296, 380);
             this.movieCard4.TabIndex = 3;
             // 
             // btnDelete4
@@ -934,7 +859,7 @@
             this.lblTitle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblTitle4.Location = new System.Drawing.Point(10, 200);
             this.lblTitle4.Name = "lblTitle4";
-            this.lblTitle4.Size = new System.Drawing.Size(280, 45);
+            this.lblTitle4.Size = new System.Drawing.Size(276, 45);
             this.lblTitle4.TabIndex = 2;
             this.lblTitle4.Text = "KHÔNG BÓNG TUYẾT NÀO TRONG SẠCH";
             // 
@@ -943,7 +868,7 @@
             this.poster4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.poster4.Location = new System.Drawing.Point(10, 10);
             this.poster4.Name = "poster4";
-            this.poster4.Size = new System.Drawing.Size(280, 180);
+            this.poster4.Size = new System.Drawing.Size(276, 180);
             this.poster4.TabIndex = 1;
             // 
             // badge4
@@ -958,10 +883,284 @@
             this.badge4.Text = "Sắp chiếu";
             this.badge4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // paginationPanel
+            // 
+            this.paginationPanel.BackColor = System.Drawing.Color.Transparent;
+            this.paginationPanel.Controls.Add(this.btnFirstPage);
+            this.paginationPanel.Controls.Add(this.btnPrevPage);
+            this.paginationPanel.Controls.Add(this.btnPage2);
+            this.paginationPanel.Controls.Add(this.btnPage3);
+            this.paginationPanel.Controls.Add(this.btnNextPage);
+            this.paginationPanel.Controls.Add(this.btnLastPage);
+            this.paginationPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.paginationPanel.Location = new System.Drawing.Point(25, 665);
+            this.paginationPanel.Name = "paginationPanel";
+            this.paginationPanel.Size = new System.Drawing.Size(1310, 50);
+            this.paginationPanel.TabIndex = 4;
+            // 
+            // btnFirstPage
+            // 
+            this.btnFirstPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnFirstPage.ButtonImage = null;
+            this.btnFirstPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnFirstPage.ButtonText = "1";
+            this.btnFirstPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnFirstPage.ClickTextColor = System.Drawing.Color.White;
+            this.btnFirstPage.CornerRadius = 3;
+            this.btnFirstPage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFirstPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnFirstPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnFirstPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this.btnFirstPage.HoverTextColor = System.Drawing.Color.White;
+            this.btnFirstPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnFirstPage.Location = new System.Drawing.Point(545, 10);
+            this.btnFirstPage.Name = "btnFirstPage";
+            this.btnFirstPage.Size = new System.Drawing.Size(35, 30);
+            this.btnFirstPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnFirstPage.TabIndex = 0;
+            this.btnFirstPage.TextColor = System.Drawing.Color.White;
+            this.btnFirstPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnFirstPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // btnPrevPage
+            // 
+            this.btnPrevPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnPrevPage.ButtonImage = null;
+            this.btnPrevPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnPrevPage.ButtonText = "2";
+            this.btnPrevPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
+            this.btnPrevPage.ClickTextColor = System.Drawing.Color.White;
+            this.btnPrevPage.CornerRadius = 3;
+            this.btnPrevPage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrevPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPrevPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPrevPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
+            this.btnPrevPage.HoverTextColor = System.Drawing.Color.White;
+            this.btnPrevPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnPrevPage.Location = new System.Drawing.Point(590, 10);
+            this.btnPrevPage.Name = "btnPrevPage";
+            this.btnPrevPage.Size = new System.Drawing.Size(35, 30);
+            this.btnPrevPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnPrevPage.TabIndex = 1;
+            this.btnPrevPage.TextColor = System.Drawing.Color.White;
+            this.btnPrevPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnPrevPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // btnPage2
+            // 
+            this.btnPage2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnPage2.ButtonImage = null;
+            this.btnPage2.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnPage2.ButtonText = "3";
+            this.btnPage2.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
+            this.btnPage2.ClickTextColor = System.Drawing.Color.White;
+            this.btnPage2.CornerRadius = 3;
+            this.btnPage2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPage2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPage2.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPage2.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
+            this.btnPage2.HoverTextColor = System.Drawing.Color.White;
+            this.btnPage2.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnPage2.Location = new System.Drawing.Point(635, 10);
+            this.btnPage2.Name = "btnPage2";
+            this.btnPage2.Size = new System.Drawing.Size(35, 30);
+            this.btnPage2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnPage2.TabIndex = 2;
+            this.btnPage2.TextColor = System.Drawing.Color.White;
+            this.btnPage2.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnPage2.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // btnPage3
+            // 
+            this.btnPage3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnPage3.ButtonImage = null;
+            this.btnPage3.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnPage3.ButtonText = "›";
+            this.btnPage3.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
+            this.btnPage3.ClickTextColor = System.Drawing.Color.White;
+            this.btnPage3.CornerRadius = 3;
+            this.btnPage3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPage3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPage3.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPage3.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
+            this.btnPage3.HoverTextColor = System.Drawing.Color.White;
+            this.btnPage3.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnPage3.Location = new System.Drawing.Point(680, 10);
+            this.btnPage3.Name = "btnPage3";
+            this.btnPage3.Size = new System.Drawing.Size(35, 30);
+            this.btnPage3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnPage3.TabIndex = 3;
+            this.btnPage3.TextColor = System.Drawing.Color.White;
+            this.btnPage3.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnPage3.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // btnNextPage
+            // 
+            this.btnNextPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnNextPage.ButtonImage = null;
+            this.btnNextPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnNextPage.ButtonText = "»";
+            this.btnNextPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
+            this.btnNextPage.ClickTextColor = System.Drawing.Color.White;
+            this.btnNextPage.CornerRadius = 3;
+            this.btnNextPage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNextPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnNextPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnNextPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
+            this.btnNextPage.HoverTextColor = System.Drawing.Color.White;
+            this.btnNextPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnNextPage.Location = new System.Drawing.Point(725, 10);
+            this.btnNextPage.Name = "btnNextPage";
+            this.btnNextPage.Size = new System.Drawing.Size(35, 30);
+            this.btnNextPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnNextPage.TabIndex = 4;
+            this.btnNextPage.TextColor = System.Drawing.Color.White;
+            this.btnNextPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnNextPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // btnLastPage
+            // 
+            this.btnLastPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnLastPage.ButtonImage = null;
+            this.btnLastPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnLastPage.ButtonText = "⟫";
+            this.btnLastPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
+            this.btnLastPage.ClickTextColor = System.Drawing.Color.White;
+            this.btnLastPage.CornerRadius = 3;
+            this.btnLastPage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLastPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnLastPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnLastPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
+            this.btnLastPage.HoverTextColor = System.Drawing.Color.White;
+            this.btnLastPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnLastPage.Location = new System.Drawing.Point(770, 10);
+            this.btnLastPage.Name = "btnLastPage";
+            this.btnLastPage.Size = new System.Drawing.Size(35, 30);
+            this.btnLastPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnLastPage.TabIndex = 5;
+            this.btnLastPage.TextColor = System.Drawing.Color.White;
+            this.btnLastPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnLastPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // searchPanel
+            // 
+            this.searchPanel.BackColor = System.Drawing.Color.White;
+            this.searchPanel.Controls.Add(this.panelinfo_right);
+            this.searchPanel.Controls.Add(this.lblInfo);
+            this.searchPanel.Controls.Add(this.txtSearch);
+            this.searchPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchPanel.Location = new System.Drawing.Point(25, 25);
+            this.searchPanel.Name = "searchPanel";
+            this.searchPanel.Padding = new System.Windows.Forms.Padding(10);
+            this.searchPanel.Size = new System.Drawing.Size(1310, 121);
+            this.searchPanel.TabIndex = 0;
+            // 
+            // panelinfo_right
+            // 
+            this.panelinfo_right.Controls.Add(this.cboFilter);
+            this.panelinfo_right.Controls.Add(this.btnSearch);
+            this.panelinfo_right.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelinfo_right.Location = new System.Drawing.Point(956, 10);
+            this.panelinfo_right.Name = "panelinfo_right";
+            this.panelinfo_right.Size = new System.Drawing.Size(344, 101);
+            this.panelinfo_right.TabIndex = 3;
+            // 
+            // cboFilter
+            // 
+            this.cboFilter.AutoResize = false;
+            this.cboFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cboFilter.Depth = 0;
+            this.cboFilter.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboFilter.DropDownHeight = 174;
+            this.cboFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboFilter.DropDownWidth = 121;
+            this.cboFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cboFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cboFilter.FormattingEnabled = true;
+            this.cboFilter.Hint = "Lọc theo trạng thái";
+            this.cboFilter.IntegralHeight = false;
+            this.cboFilter.ItemHeight = 43;
+            this.cboFilter.Items.AddRange(new object[] {
+            "Tất cả phim",
+            "Đang chiếu",
+            "Sắp chiếu",
+            "Đã kết thúc"});
+            this.cboFilter.Location = new System.Drawing.Point(15, 5);
+            this.cboFilter.MaxDropDownItems = 4;
+            this.cboFilter.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            this.cboFilter.Name = "cboFilter";
+            this.cboFilter.Size = new System.Drawing.Size(180, 49);
+            this.cboFilter.StartIndex = 0;
+            this.cboFilter.TabIndex = 1;
+            this.cboFilter.SelectedIndexChanged += new System.EventHandler(this.cboFilter_SelectedIndexChanged);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnSearch.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.ButtonImage")));
+            this.btnSearch.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnSearch.ButtonText = "🔍 Tìm kiếm";
+            this.btnSearch.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnSearch.ClickTextColor = System.Drawing.Color.White;
+            this.btnSearch.CornerRadius = 5;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnSearch.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this.btnSearch.HoverTextColor = System.Drawing.Color.White;
+            this.btnSearch.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnSearch.Location = new System.Drawing.Point(215, 10);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(120, 40);
+            this.btnSearch.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.TextColor = System.Drawing.Color.White;
+            this.btnSearch.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnSearch.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.lblInfo.Location = new System.Drawing.Point(10, 91);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(1290, 20);
+            this.lblInfo.TabIndex = 1;
+            this.lblInfo.Text = "Tìm thấy: 4 phim                                                                 " +
+    "                                                                                " +
+    "             Trang 1 / 1";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.AnimateReadOnly = false;
+            this.txtSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSearch.Depth = 0;
+            this.txtSearch.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtSearch.Hint = "Tìm kiếm phim theo tên...";
+            this.txtSearch.LeadingIcon = null;
+            this.txtSearch.Location = new System.Drawing.Point(15, 15);
+            this.txtSearch.MaxLength = 32767;
+            this.txtSearch.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            this.txtSearch.Multiline = false;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtSearch.Size = new System.Drawing.Size(550, 50);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TabStop = false;
+            this.txtSearch.Text = "";
+            this.txtSearch.TrailingIcon = null;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1232, 8);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(8, 8);
+            this.flowLayoutPanel1.TabIndex = 4;
+            // 
             // Movie_MainUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelHeader);
@@ -969,9 +1168,9 @@
             this.Size = new System.Drawing.Size(1360, 800);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
+            this.right_panel.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
-            this.searchPanel.ResumeLayout(false);
+            this.panel_movie.ResumeLayout(false);
             this.moviesContainer.ResumeLayout(false);
             this.movieCard1.ResumeLayout(false);
             this.movieCard1.PerformLayout();
@@ -981,6 +1180,9 @@
             this.movieCard3.PerformLayout();
             this.movieCard4.ResumeLayout(false);
             this.movieCard4.PerformLayout();
+            this.paginationPanel.ResumeLayout(false);
+            this.searchPanel.ResumeLayout(false);
+            this.panelinfo_right.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -989,7 +1191,6 @@
 
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Label lbl_MovieTitle;
-        private System.Windows.Forms.PictureBox pictureBoxIcon;
         private ReaLTaiizor.Controls.ParrotButton btnAddMovie;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel searchPanel;
@@ -1042,5 +1243,16 @@
         private ReaLTaiizor.Controls.ParrotButton btnView4;
         private ReaLTaiizor.Controls.ParrotButton btnEdit4;
         private ReaLTaiizor.Controls.ParrotButton btnDelete4;
+        private System.Windows.Forms.Panel right_panel;
+        private System.Windows.Forms.Panel paginationPanel;
+        private ReaLTaiizor.Controls.ParrotButton btnFirstPage;
+        private ReaLTaiizor.Controls.ParrotButton btnPrevPage;
+        private ReaLTaiizor.Controls.ParrotButton btnPage2;
+        private ReaLTaiizor.Controls.ParrotButton btnPage3;
+        private ReaLTaiizor.Controls.ParrotButton btnNextPage;
+        private ReaLTaiizor.Controls.ParrotButton btnLastPage;
+        private System.Windows.Forms.Panel panel_movie;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel panelinfo_right;
     }
 }
