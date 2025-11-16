@@ -1,4 +1,4 @@
-namespace DTO
+﻿namespace DTO
 {
     using System;
     using System.Collections.Generic;
@@ -27,6 +27,9 @@ namespace DTO
         public int RoomID { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public int pX { get; set; }   // vị trí cột
+        public int pY { get; set; }   // vị trí hàng
 
         public virtual Room Room { get; set; }
 

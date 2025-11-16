@@ -1,0 +1,99 @@
+﻿// File: DAL/RoomDAL.cs
+using DTO;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+
+namespace DAL
+{
+    public class RoomDAL
+    {
+        private readonly CinemaDBContext _context;
+
+        public RoomDAL()
+        {
+            _context = new CinemaDBContext();
+        }
+
+        // Lấy tất cả phòng (không bao gồm đã xóa)
+        public List<Room> GetAllRooms()
+        {
+            return _context.Rooms
+                           .Where(r => !r.IsDeleted)
+                           .Include(r => r.Seats)
+                           .Include(r => r.ShowTimes)
+                           .ToList();
+        }
+
+        // Lấy phòng theo ID
+        public Room GetRoomById(int roomId)
+        {
+            return _context.Rooms
+                           .Include(r => r.Seats)
+                           .Include(r => r.ShowTimes)
+                           .FirstOrDefault(r => r.RoomID == roomId && !r.IsDeleted);
+        }
+
+        // Thêm phòng mới
+        public bool AddRoom(Room room)
+        {
+            try
+            {
+                room.IsDeleted = false;
+                _context.Rooms.Add(room);
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // Cập nhật phòng
+        public bool EditRoom(Room room)
+        {
+            try
+            {
+                var existingRoom = _context.Rooms.Find(room.RoomID);
+                if (existingRoom == null || existingRoom.IsDeleted) return false;
+
+                _context.Entry(existingRoom).CurrentValues.SetValues(room);
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // Xóa mềm (soft delete)
+        public bool DeleteRoom(int roomId)
+        {
+            try
+            {
+                var room = _context.Rooms.Find(roomId);
+                if (room == null || room.IsDeleted) return false;
+
+                room.IsDeleted = true;
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // Kiểm tra tên phòng đã tồn tại chưa (tránh trùng)
+        public bool IsRoomNameExists(string roomName, int? excludeRoomId = null)
+        {
+            return _context.Rooms
+                           .Any(r => r.RoomName == roomName
+                                  && !r.IsDeleted
+                                  && (excludeRoomId == null || r.RoomID != excludeRoomId));
+        }
+    }
+}

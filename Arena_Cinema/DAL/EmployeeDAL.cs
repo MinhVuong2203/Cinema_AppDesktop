@@ -100,13 +100,13 @@ namespace DAL
             // Kiểm tra lỗi UNIQUE constraint (không phân biệt hoa thường)
             if (innerMessage.IndexOf("UNIQUE KEY constraint", StringComparison.OrdinalIgnoreCase) >= 0)
             {
-                if (innerMessage.IndexOf("UQ__Employee__A955A0AAB2147182", StringComparison.OrdinalIgnoreCase) >= 0)
+                if (innerMessage.IndexOf("UQ__Employee__A955A0AA3FE40B90", StringComparison.OrdinalIgnoreCase) >= 0)
                     return "Số CCCD đã tồn tại trong hệ thống!";
 
-                if (innerMessage.IndexOf("UQ__Employee__A9D10534AA23BF74", StringComparison.OrdinalIgnoreCase) >= 0)
+                if (innerMessage.IndexOf("UQ__Employee__A9D10534488B0752", StringComparison.OrdinalIgnoreCase) >= 0)
                     return "Email đã tồn tại trong hệ thống!";
 
-                if (innerMessage.IndexOf("UQ__Employee__5C7E359EE09330E1", StringComparison.OrdinalIgnoreCase) >= 0)
+                if (innerMessage.IndexOf("UQ__Employee__5C7E359E0518E096", StringComparison.OrdinalIgnoreCase) >= 0)
                     return "Số điện thoại đã tồn tại trong hệ thống!";
             }
 

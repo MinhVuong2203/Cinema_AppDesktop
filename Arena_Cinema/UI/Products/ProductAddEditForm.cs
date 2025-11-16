@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Common;
 using DTO;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace UI.Products
                 InitializeComponent();
                 productBLL = new ProductBLL();
                 isEditMode = false;
+                selectedImagePath = "Image\\Product\\productDefault.png";
                 lblTitle.Text = "THÊM SẢN PHẨM MỚI";
             }
 
@@ -48,60 +50,17 @@ namespace UI.Products
                     if (index >= 0)
                         cboType.SelectedIndex = index;
                 }
-
                 txtPrice.Text = _product.Price.HasValue ? _product.Price.Value.ToString() : "";
-                selectedImagePath = _product.ImageUrl;
-
-                // Load hình ảnh preview
-                LoadImagePreview();
-            }
-
-            private void LoadImagePreview()
-            {
-                try
-                {
-                    if (!string.IsNullOrEmpty(selectedImagePath) && File.Exists(selectedImagePath))
-                    {
-                        using (var stream = new FileStream(selectedImagePath, FileMode.Open, FileAccess.Read))
-                        {
-                            picPreview.Image = Image.FromStream(stream);
-                        }
-                    }
-                    else
-                    {
-                        picPreview.Image = CreateDefaultPreviewImage();
-                    }
-                }
-                catch
-                {
-                    picPreview.Image = CreateDefaultPreviewImage();
-                }
-            }
-
-            private Image CreateDefaultPreviewImage()
-            {
-                Bitmap bmp = new Bitmap(200, 150);
-                using (Graphics g = Graphics.FromImage(bmp))
-                {
-                    g.Clear(Color.FromArgb(245, 245, 245));
-                    using (Font font = new Font("Segoe UI", 12))
-                    {
-                        string text = "Chưa có hình ảnh";
-                        SizeF textSize = g.MeasureString(text, font);
-                        g.DrawString(text, font, Brushes.Gray,
-                            (200 - textSize.Width) / 2,
-                            (150 - textSize.Height) / 2);
-                    }
-                }
-                return bmp;
+                this.selectedImagePath = _product.ImageUrl;
+                ImgHelper.DisplayImageFromRelative(_product.ImageUrl, picPreview);
             }
 
             private void btnChooseImage_Click(object sender, EventArgs e)
             {
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                string selectedImagePath = ImgHelper.UploadImage("Product", picPreview);
+                if (!string.IsNullOrEmpty(selectedImagePath))
                 {
-                    selectedImagePath = openFileDialog.FileName;
-                    LoadImagePreview();
+                    this.selectedImagePath = selectedImagePath;
                 }
             }
 

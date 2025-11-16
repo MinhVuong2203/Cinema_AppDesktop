@@ -36,7 +36,7 @@
             this.btnAddRoom = new ReaLTaiizor.Controls.ParrotButton();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelDataGridView = new System.Windows.Forms.Panel();
-            this.dgvShowtimes = new ReaLTaiizor.Controls.PoisonDataGridView();
+            this.dgvRoom = new ReaLTaiizor.Controls.PoisonDataGridView();
             this.colShowtimeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCinema = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRoom = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +57,7 @@
             this.lblBranch = new System.Windows.Forms.Label();
             this.cboBranch = new ReaLTaiizor.Controls.MaterialComboBox();
             this.lblMovie = new System.Windows.Forms.Label();
-            this.cboMovie = new ReaLTaiizor.Controls.MaterialComboBox();
+            this.cboRoomType = new ReaLTaiizor.Controls.MaterialComboBox();
             this.lblPageSize = new System.Windows.Forms.Label();
             this.cboPageSize = new ReaLTaiizor.Controls.MaterialComboBox();
             this.right_Panel = new System.Windows.Forms.Panel();
@@ -66,7 +66,7 @@
             this.panelHeader.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelDataGridView.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowtimes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoom)).BeginInit();
             this.paginationPanel.SuspendLayout();
             this.filterPanel.SuspendLayout();
             this.left_Panel.SuspendLayout();
@@ -135,7 +135,7 @@
             // 
             // panelDataGridView
             // 
-            this.panelDataGridView.Controls.Add(this.dgvShowtimes);
+            this.panelDataGridView.Controls.Add(this.dgvRoom);
             this.panelDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDataGridView.Location = new System.Drawing.Point(25, 174);
             this.panelDataGridView.Margin = new System.Windows.Forms.Padding(10);
@@ -144,16 +144,16 @@
             this.panelDataGridView.Size = new System.Drawing.Size(1287, 476);
             this.panelDataGridView.TabIndex = 4;
             // 
-            // dgvShowtimes
+            // dgvRoom
             // 
-            this.dgvShowtimes.AllowUserToAddRows = false;
-            this.dgvShowtimes.AllowUserToDeleteRows = false;
-            this.dgvShowtimes.AllowUserToResizeRows = false;
-            this.dgvShowtimes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvShowtimes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvShowtimes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvShowtimes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvShowtimes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvRoom.AllowUserToAddRows = false;
+            this.dgvRoom.AllowUserToDeleteRows = false;
+            this.dgvRoom.AllowUserToResizeRows = false;
+            this.dgvRoom.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRoom.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvRoom.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvRoom.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvRoom.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -161,10 +161,10 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShowtimes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvShowtimes.ColumnHeadersHeight = 40;
-            this.dgvShowtimes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvShowtimes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvRoom.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvRoom.ColumnHeadersHeight = 40;
+            this.dgvRoom.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvRoom.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShowtimeId,
             this.colCinema,
             this.colRoom,
@@ -180,14 +180,14 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvShowtimes.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvShowtimes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvShowtimes.EnableHeadersVisualStyles = false;
-            this.dgvShowtimes.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgvShowtimes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvShowtimes.Location = new System.Drawing.Point(0, 10);
-            this.dgvShowtimes.Name = "dgvShowtimes";
-            this.dgvShowtimes.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvRoom.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvRoom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRoom.EnableHeadersVisualStyles = false;
+            this.dgvRoom.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvRoom.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvRoom.Location = new System.Drawing.Point(0, 10);
+            this.dgvRoom.Name = "dgvRoom";
+            this.dgvRoom.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -195,17 +195,17 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShowtimes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvShowtimes.RowHeadersVisible = false;
-            this.dgvShowtimes.RowHeadersWidth = 51;
-            this.dgvShowtimes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvShowtimes.RowTemplate.Height = 35;
-            this.dgvShowtimes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvShowtimes.Size = new System.Drawing.Size(1287, 456);
-            this.dgvShowtimes.TabIndex = 0;
-            this.dgvShowtimes.UseCustomBackColor = true;
-            this.dgvShowtimes.UseCustomForeColor = true;
-            this.dgvShowtimes.UseStyleColors = true;
+            this.dgvRoom.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvRoom.RowHeadersVisible = false;
+            this.dgvRoom.RowHeadersWidth = 51;
+            this.dgvRoom.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvRoom.RowTemplate.Height = 35;
+            this.dgvRoom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRoom.Size = new System.Drawing.Size(1287, 456);
+            this.dgvRoom.TabIndex = 0;
+            this.dgvRoom.UseCustomBackColor = true;
+            this.dgvRoom.UseCustomForeColor = true;
+            this.dgvRoom.UseStyleColors = true;
             // 
             // colShowtimeId
             // 
@@ -434,7 +434,7 @@
             this.left_Panel.Controls.Add(this.lblBranch);
             this.left_Panel.Controls.Add(this.cboBranch);
             this.left_Panel.Controls.Add(this.lblMovie);
-            this.left_Panel.Controls.Add(this.cboMovie);
+            this.left_Panel.Controls.Add(this.cboRoomType);
             this.left_Panel.Controls.Add(this.lblPageSize);
             this.left_Panel.Controls.Add(this.cboPageSize);
             this.left_Panel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -466,7 +466,7 @@
             this.cboBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboBranch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboBranch.FormattingEnabled = true;
-            this.cboBranch.Hint = "-- Tất cả chi nhánh --";
+            this.cboBranch.Hint = "-- Chọn chi nhánh --";
             this.cboBranch.IntegralHeight = false;
             this.cboBranch.ItemHeight = 43;
             this.cboBranch.Location = new System.Drawing.Point(2, 28);
@@ -488,28 +488,28 @@
             this.lblMovie.TabIndex = 2;
             this.lblMovie.Text = "Loại phòng";
             // 
-            // cboMovie
+            // cboRoomType
             // 
-            this.cboMovie.AutoResize = false;
-            this.cboMovie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cboMovie.Depth = 0;
-            this.cboMovie.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cboMovie.DropDownHeight = 174;
-            this.cboMovie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMovie.DropDownWidth = 121;
-            this.cboMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cboMovie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cboMovie.FormattingEnabled = true;
-            this.cboMovie.Hint = "-- Tất cả phim --";
-            this.cboMovie.IntegralHeight = false;
-            this.cboMovie.ItemHeight = 43;
-            this.cboMovie.Location = new System.Drawing.Point(252, 28);
-            this.cboMovie.MaxDropDownItems = 4;
-            this.cboMovie.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            this.cboMovie.Name = "cboMovie";
-            this.cboMovie.Size = new System.Drawing.Size(420, 49);
-            this.cboMovie.StartIndex = 0;
-            this.cboMovie.TabIndex = 3;
+            this.cboRoomType.AutoResize = false;
+            this.cboRoomType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cboRoomType.Depth = 0;
+            this.cboRoomType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboRoomType.DropDownHeight = 174;
+            this.cboRoomType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRoomType.DropDownWidth = 121;
+            this.cboRoomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cboRoomType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cboRoomType.FormattingEnabled = true;
+            this.cboRoomType.Hint = "-- Chọn loại phòng --";
+            this.cboRoomType.IntegralHeight = false;
+            this.cboRoomType.ItemHeight = 43;
+            this.cboRoomType.Location = new System.Drawing.Point(252, 28);
+            this.cboRoomType.MaxDropDownItems = 4;
+            this.cboRoomType.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            this.cboRoomType.Name = "cboRoomType";
+            this.cboRoomType.Size = new System.Drawing.Size(420, 49);
+            this.cboRoomType.StartIndex = 0;
+            this.cboRoomType.TabIndex = 3;
             // 
             // lblPageSize
             // 
@@ -609,7 +609,7 @@
             this.panelHeader.PerformLayout();
             this.panelMain.ResumeLayout(false);
             this.panelDataGridView.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShowtimes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRoom)).EndInit();
             this.paginationPanel.ResumeLayout(false);
             this.filterPanel.ResumeLayout(false);
             this.left_Panel.ResumeLayout(false);
@@ -626,7 +626,7 @@
         private ReaLTaiizor.Controls.ParrotButton btnAddRoom;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelDataGridView;
-        private ReaLTaiizor.Controls.PoisonDataGridView dgvShowtimes;
+        private ReaLTaiizor.Controls.PoisonDataGridView dgvRoom;
         private System.Windows.Forms.Panel paginationPanel;
         private ReaLTaiizor.Controls.ParrotButton btnFirstPage;
         private ReaLTaiizor.Controls.ParrotButton btnPrevPage;
@@ -639,7 +639,7 @@
         private System.Windows.Forms.Label lblBranch;
         private ReaLTaiizor.Controls.MaterialComboBox cboBranch;
         private System.Windows.Forms.Label lblMovie;
-        private ReaLTaiizor.Controls.MaterialComboBox cboMovie;
+        private ReaLTaiizor.Controls.MaterialComboBox cboRoomType;
         private System.Windows.Forms.Label lblPageSize;
         private ReaLTaiizor.Controls.MaterialComboBox cboPageSize;
         private System.Windows.Forms.Panel right_Panel;
