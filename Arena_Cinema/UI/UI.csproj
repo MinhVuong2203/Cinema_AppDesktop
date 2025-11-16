@@ -156,12 +156,6 @@
     <Compile Include="ShowTime\MNShowTimeUC.Designer.cs">
       <DependentUpon>MNShowTimeUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="EmployeeSale\SaleHomeUC.resx">
       <DependentUpon>SaleHomeUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -213,9 +207,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShowTime\MNShowTimeUC.resx">
       <DependentUpon>MNShowTimeUC.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Test.resx">
-      <DependentUpon>Test.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
