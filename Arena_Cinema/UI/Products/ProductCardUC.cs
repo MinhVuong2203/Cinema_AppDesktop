@@ -52,15 +52,13 @@ namespace UI.Products
         private void panelCard_MouseEnter(object sender, EventArgs e)
         {
             this.BorderStyle = BorderStyle.FixedSingle;
-            this.Width += 20;
-           
+            this.Width += 14;
         }
 
         private void panelCard_MouseLeave(object sender, EventArgs e)
         {
             this.BorderStyle = BorderStyle.None;
-            this.BackColor = Color.Azure;
-            this.Width -= 20;
+            this.Width -= 14;
            
         }
     }
