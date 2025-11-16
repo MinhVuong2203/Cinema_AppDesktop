@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using Common;
+using DTO;
 
 namespace UI.ScreeningRoom
 {
@@ -25,18 +26,20 @@ namespace UI.ScreeningRoom
             InitializeComponent();
             this._room = room;
             this._home = home;
-            
+            _roomBLL = new RoomBLL();
             LoadDataToForm();
         }
 
         private void LoadDataToForm()
         {
+            if (_room == null) _room = new Room();
             // Tiêu đề
             lblTitle.Text = _room.RoomID == 0 ? "Thêm phòng chiếu mới" : $"Sửa phòng - ID: {_room.RoomID}";
 
             // Dữ liệu hiện tại (nếu là sửa)
             txtRoomName.Text = _room.RoomName ?? "";
             txtSeatCount.Text = _room.SeatCount > 0 ? _room.SeatCount.ToString() : "";
+            txtDescription.Text = _room.Description ?? "";
             if (cboRoomType.Items.Count == 0)
             {
                 cboRoomType.Items.AddRange(new string[] { "2D", "3D", "IMAX", "VIP" });
@@ -52,20 +55,20 @@ namespace UI.ScreeningRoom
                 cboRoomType.SelectedIndex = 0; // mặc định là 2D
             }
 
-            // Ảnh phòng
-            //if (!string.IsNullOrEmpty(_room.ImageUrl))
-            //{
-            //    try
-            //    {
-            //        ImgHelper.DisplayImageFromRelative(_room.ImageUrl, ptbRoomImage);
-            //        _currentImagePath = _room.ImageUrl;
-            //    }
-            //    catch { ptbRoomImage.Image = Properties.Resources.roomDefault; }
-            //}
-            //else
-            //{
-            //    ptbRoomImage.Image = Properties.Resources.roomDefault;
-            //}
+            //Ảnh phòng
+            if (!string.IsNullOrEmpty(_room.ImageUrl))
+            {
+                try
+                {
+                    ImgHelper.DisplayImageFromRelative(_room.ImageUrl, ptbRoomImage);
+                    _currentImagePath = _room.ImageUrl;
+                    return; // Thành công
+                }
+                catch { }
+            }
+
+            // Luôn có ảnh
+            ptbRoomImage.Image = Properties.Resources.roomDefault;
         }
 
         private void btnUploadImage_Click(object sender, EventArgs e)
@@ -132,6 +135,7 @@ namespace UI.ScreeningRoom
             _room.RoomName = txtRoomName.Text.Trim();
             _room.RoomType = cboRoomType.Text.Trim();
             _room.SeatCount = seatCount;
+            _room.Description = txtDescription.Text.Trim();
             _room.ImageUrl = _currentImagePath;
 
             string result;

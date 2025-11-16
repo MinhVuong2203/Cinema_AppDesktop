@@ -21,27 +21,55 @@ namespace UI.ScreeningRoom
         private Home _home;
         private RoomBLL _roomBLL = new RoomBLL();
 
+        private List<Room> _allRooms = new List<Room>();
+        private string _filterType = "Tất cả"; // Lưu giá trị filter
+
         public Room_homeUC(Home form, Room room)
         {
             this._room = room;
             this._home = form;
             InitializeComponent();
-            LoadcboRoomType();
-            LoadCardRooms(_roomBLL.GetAllRooms());
+
+            cardRoomSample.Visible = false;
+            panelRoomsList.AutoScroll = true;
+
+            LoadRoomTypes();
+            LoadRoomsWithFilter();
         }
 
-        public void LoadcboRoomType()
+
+
+        private void LoadRoomTypes()
         {
             cboRoomType.Items.Clear();
             cboRoomType.Items.Add("Tất cả");
-            RoomDAL roomDAL = new RoomDAL();
-            var roomTypes = roomDAL.GetAllRoomType();
-            foreach (var type in roomTypes)
+            cboRoomType.Items.AddRange(new[] { "2D", "3D", "IMAX", "VIP" });
+            cboRoomType.SelectedIndex = 0;
+
+            cboRoomType.SelectedIndexChanged += (s, e) =>
             {
-                cboRoomType.Items.Add(type);
-            }
-            cboRoomType.SelectedIndex = 0; // Chọn mục đầu tiên làm mặc định
+                _filterType = cboRoomType.SelectedItem.ToString();
+                LoadRoomsWithFilter();
+            };
         }
+
+        private void LoadRoomsWithFilter()
+        {
+            panelRoomsList.Controls.Clear();
+
+            var rooms = _roomBLL.GetAllRooms();
+
+            if (_filterType != "Tất cả")
+                rooms = rooms.Where(r => r.RoomType == _filterType).ToList();
+
+            foreach (var room in rooms)
+            {
+                var card = CloneCard(cardRoomSample);
+                FillCard(card, room);
+                panelRoomsList.Controls.Add(card);
+            }
+        }
+
 
         private ReaLTaiizor.Controls.MaterialCard CloneCard(ReaLTaiizor.Controls.MaterialCard sample)
         {
@@ -50,25 +78,23 @@ namespace UI.ScreeningRoom
                 Size = sample.Size,
                 Margin = sample.Margin,
                 BackColor = sample.BackColor,
-                Padding = sample.Padding,
-                Depth = sample.Depth
+                Padding = sample.Padding
             };
 
-            var panelContent = new Panel { Dock = DockStyle.Fill };
+            var content = new Panel { Dock = DockStyle.Fill };
 
             foreach (Control c in sample.Controls[0].Controls)
             {
-                Control clone = CloneControl(c);
-                panelContent.Controls.Add(clone);
+                content.Controls.Add(CloneControl(c));
             }
 
-            card.Controls.Add(panelContent);
+            card.Controls.Add(content);
             return card;
         }
 
-        private Control CloneControl(Control original)
+        private Control CloneControl(Control ctrl)
         {
-            if (original is Label lbl) return new Label
+            if (ctrl is Label lbl) return new Label
             {
                 Name = lbl.Name,
                 Location = lbl.Location,
@@ -78,120 +104,85 @@ namespace UI.ScreeningRoom
                 BackColor = lbl.BackColor,
                 TextAlign = lbl.TextAlign,
                 AutoSize = lbl.AutoSize,
-                Padding = lbl.Padding,
-                MaximumSize = lbl.MaximumSize
+                Padding = lbl.Padding
             };
 
-            if (original is PictureBox pic) return new PictureBox
+            if (ctrl is PictureBox pic) return new PictureBox
             {
                 Name = pic.Name,
                 Location = pic.Location,
                 Size = pic.Size,
-                SizeMode = PictureBoxSizeMode.StretchImage,
-                BackColor = pic.BackColor,
-                BorderStyle = pic.BorderStyle,
-                TabStop = false
+                SizeMode = pic.SizeMode,
+                BorderStyle = pic.BorderStyle
             };
 
-            if (original is ReaLTaiizor.Controls.MaterialButton btn) return new ReaLTaiizor.Controls.MaterialButton
+            if (ctrl is ReaLTaiizor.Controls.MaterialButton btn) return new ReaLTaiizor.Controls.MaterialButton
             {
                 Name = btn.Name,
                 Text = btn.Text,
                 Location = btn.Location,
                 Size = btn.Size,
                 BackColor = btn.BackColor,
-                ForeColor = btn.ForeColor,
-                Icon = btn.Icon,
-                Type = btn.Type,
-                HighEmphasis = btn.HighEmphasis
+                ForeColor = btn.ForeColor
             };
 
-            return new Control { Location = original.Location, Size = original.Size };
+            return new Control { Location = ctrl.Location, Size = ctrl.Size };
         }
 
-        public void LoadCardRooms(List<Room> rooms)
+        private void FillCard(ReaLTaiizor.Controls.MaterialCard card, Room room)
         {
-            panelRoomsList.Controls.Clear();
-            if (cardRoomSample.Visible == false)
-                panelRoomsList.Controls.Add(cardRoomSample); // để clone
+            var p = (Panel)card.Controls[0];
 
-            foreach (var room in rooms)
+            // Ảnh
+            var pic = (PictureBox)p.Controls["ptbRoomImage"];
+
+            // ƯU TIÊN: Ảnh từ DB
+            if (!string.IsNullOrEmpty(room.ImageUrl))
             {
-                // Bỏ qua phòng đã xóa
-                if (room.IsDeleted) continue;
-
-                // Clone card mẫu
-                var card = CloneCard(cardRoomSample);
-                var panelContent = (Panel)card.Controls[0];
-
-                // === ẢNH PHÒNG ===
-                var pic = (PictureBox)panelContent.Controls["pictureBoxEmployee"];
-                string imgPath = string.IsNullOrEmpty(room.ImageUrl)
-                    ? "Image\\Room\\roomDefault.png"
-                    : room.ImageUrl;
-
                 try
                 {
-                    ImgHelper.DisplayImageFromRelative(imgPath, pic);
+                    ImgHelper.DisplayImageFromRelative(room.ImageUrl, pic);
+                    return; // Thành công → thoát
                 }
-                catch
-                {
-                    ImgHelper.DisplayImageFromRelative("Image\\Room\\roomDefault.png", pic);
-                }
-
-                // === ID PHÒNG ===
-                var lblId = (Label)panelContent.Controls["lblRoomID"];
-                lblId.Text = $"ID: {room.RoomID}";
-
-                // === TÊN PHÒNG ===
-                var lblName = (Label)panelContent.Controls["lblEmployeeName"];
-                lblName.Text = room.RoomName;
-                lblName.MaximumSize = new Size(300, 0);
-
-                // === LOẠI PHÒNG (dùng lại lblRole) ===
-                var lblType = (Label)panelContent.Controls["lblRoomType"];
-                lblType.Text = room.RoomType ?? "Standard";
-                lblType.BackColor = Color.FromArgb(33, 150, 243);
-                lblType.ForeColor = Color.White;
-                lblType.Padding = new Padding(8, 3, 8, 3);
-
-                // === SỐ GHẾ (dùng lại lblEmail) ===
-                var lblSeats = (Label)panelContent.Controls["lblSeatcount"];
-                lblSeats.Text = $"Số ghế: {room.SeatCount ?? 0}";
-
-                // === MÔ TẢ (dùng lại lblPhone) ===
-                var lblDesc = (Label)panelContent.Controls["lblDescription"];
-                lblDesc.Text = room.Description ?? "Không có mô tả";
-                lblDesc.MaximumSize = new Size(300, 0);
-
-                // === NÚT SỬA ===
-                var btnEdit = (ReaLTaiizor.Controls.MaterialButton)panelContent.Controls["btnSua"];
-                btnEdit.Tag = room.RoomID;
-                btnEdit.Click -= BtnEdit_Click;
-                btnEdit.Click += BtnEdit_Click;
-
-                // === NÚT XÓA ===
-                var btnDelete = (ReaLTaiizor.Controls.MaterialButton)panelContent.Controls["btnXoa"];
-                btnDelete.Tag = room.RoomID;
-                //btnDelete.Click -= BtnDelete_Click;
-                //btnDelete.Click += BtnDelete_Click;
-
-                // Thêm card vào panel
-                panelRoomsList.Controls.Add(card);
+                catch { } // Lỗi → dùng mặc định
             }
+
+            // DÙNG ẢNH NHÚNG TỪ RESOURCES
+            pic.Image = Properties.Resources.roomDefault;
+
+            // ID
+            ((Label)p.Controls["lblRoomID"]).Text = $"ID: {room.RoomID}";
+
+            // Tên phòng (dùng lại lblEmployeeName)
+            ((Label)p.Controls["lblEmployeeName"]).Text = room.RoomName;
+
+            // Loại phòng
+            ((Label)p.Controls["lblRoomType"]).Text = room.RoomType ?? "Standard";
+
+            // Số ghế
+            ((Label)p.Controls["lblSeatcount"]).Text = $"{room.SeatCount ?? 0} ghế";
+
+            // Mô tả
+            ((Label)p.Controls["lblDescription"]).Text = room.Description ?? "Không có mô tả";
+
+            // Nút Sửa
+            var btnSua = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnSua"];
+            btnSua.Tag = room.RoomID;
+            btnSua.Click -= BtnEdit_Click;
+            btnSua.Click += BtnEdit_Click;
+
+            // Nút Xóa
+            var btnXoa = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnXoa"];
+            btnXoa.Tag = room.RoomID;
+            btnXoa.Click -= btnXoa_Click;
+            btnXoa.Click += btnXoa_Click;
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-            //ReaLTaiizor.Controls.MaterialButton btn = sender as ReaLTaiizor.Controls.MaterialButton;
-            //if (btn != null && btn.Tag != null)
-            //{
-            //    Guid employeeId = (Guid)btn.Tag;
-            //    // Xử lý sửa nhân viên với employeeId
-            //    MessageBox.Show($"Sửa nhân viên ID: {employeeId}");
-
-            //    // TODO: Mở form sửa nhân viên hoặc xử lý logic khác
-            //}
+            int roomId = (int)((Control)sender).Tag;
+            var room = _roomBLL.GetRoomById(roomId);
+            _home.LoadControl(new AddRoom(_home, room));
         }
 
         private void btnAddRoom_Click(object sender, EventArgs e)
@@ -201,7 +192,20 @@ namespace UI.ScreeningRoom
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
+            int roomId = (int)((Control)sender).Tag;
 
+            if (MessageBox.Show("Xóa phòng này?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string result = _roomBLL.DeleteRoom(roomId);
+                MessageBox.Show(result);
+                LoadRoomsWithFilter();
+            }
         }
+
+        public void RefreshData()
+        {
+            LoadRoomsWithFilter();
+        }
+
     }
 }

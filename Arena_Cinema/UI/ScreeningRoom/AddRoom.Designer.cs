@@ -42,9 +42,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.left_Panel = new System.Windows.Forms.Panel();
+            this.btnUploadImage = new ReaLTaiizor.Controls.ParrotButton();
+            this.ptbRoomImage = new System.Windows.Forms.PictureBox();
             this.btnSave = new ReaLTaiizor.Controls.ParrotButton();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtSeatCount = new ReaLTaiizor.Controls.MaterialTextBox();
@@ -53,8 +55,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cboRoomType = new ReaLTaiizor.Controls.MaterialComboBox();
-            this.btnUploadImage = new ReaLTaiizor.Controls.ParrotButton();
-            this.ptbRoomImage = new System.Windows.Forms.PictureBox();
             this.panelHeader.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.filterPanel.SuspendLayout();
@@ -206,7 +206,7 @@
             this.left_Panel.Controls.Add(this.ptbRoomImage);
             this.left_Panel.Controls.Add(this.btnSave);
             this.left_Panel.Controls.Add(this.label14);
-            this.left_Panel.Controls.Add(this.textBox1);
+            this.left_Panel.Controls.Add(this.txtDescription);
             this.left_Panel.Controls.Add(this.label13);
             this.left_Panel.Controls.Add(this.label11);
             this.left_Panel.Controls.Add(this.txtSeatCount);
@@ -220,6 +220,41 @@
             this.left_Panel.Name = "left_Panel";
             this.left_Panel.Size = new System.Drawing.Size(1326, 703);
             this.left_Panel.TabIndex = 9;
+            // 
+            // btnUploadImage
+            // 
+            this.btnUploadImage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
+            this.btnUploadImage.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnUploadImage.ButtonImage")));
+            this.btnUploadImage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Dark;
+            this.btnUploadImage.ButtonText = "Tải ảnh lên";
+            this.btnUploadImage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.btnUploadImage.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
+            this.btnUploadImage.CornerRadius = 5;
+            this.btnUploadImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUploadImage.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadImage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnUploadImage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
+            this.btnUploadImage.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.btnUploadImage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnUploadImage.Location = new System.Drawing.Point(938, 372);
+            this.btnUploadImage.Name = "btnUploadImage";
+            this.btnUploadImage.Size = new System.Drawing.Size(128, 33);
+            this.btnUploadImage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnUploadImage.TabIndex = 22;
+            this.btnUploadImage.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
+            this.btnUploadImage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnUploadImage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // ptbRoomImage
+            // 
+            this.ptbRoomImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ptbRoomImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ptbRoomImage.Location = new System.Drawing.Point(849, 104);
+            this.ptbRoomImage.Name = "ptbRoomImage";
+            this.ptbRoomImage.Size = new System.Drawing.Size(306, 249);
+            this.ptbRoomImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ptbRoomImage.TabIndex = 21;
+            this.ptbRoomImage.TabStop = false;
             // 
             // btnSave
             // 
@@ -257,13 +292,13 @@
             this.label14.TabIndex = 16;
             this.label14.Text = "Ảnh phòng chiếu";
             // 
-            // textBox1
+            // txtDescription
             // 
-            this.textBox1.Location = new System.Drawing.Point(38, 358);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(767, 128);
-            this.textBox1.TabIndex = 15;
+            this.txtDescription.Location = new System.Drawing.Point(38, 358);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(767, 128);
+            this.txtDescription.TabIndex = 15;
             // 
             // label13
             // 
@@ -380,41 +415,6 @@
             this.cboRoomType.StartIndex = 0;
             this.cboRoomType.TabIndex = 3;
             // 
-            // btnUploadImage
-            // 
-            this.btnUploadImage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.btnUploadImage.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnUploadImage.ButtonImage")));
-            this.btnUploadImage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Dark;
-            this.btnUploadImage.ButtonText = "Tải ảnh lên";
-            this.btnUploadImage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.btnUploadImage.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.btnUploadImage.CornerRadius = 5;
-            this.btnUploadImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUploadImage.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUploadImage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnUploadImage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.btnUploadImage.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
-            this.btnUploadImage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnUploadImage.Location = new System.Drawing.Point(938, 372);
-            this.btnUploadImage.Name = "btnUploadImage";
-            this.btnUploadImage.Size = new System.Drawing.Size(128, 33);
-            this.btnUploadImage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnUploadImage.TabIndex = 22;
-            this.btnUploadImage.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
-            this.btnUploadImage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnUploadImage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // ptbRoomImage
-            // 
-            this.ptbRoomImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ptbRoomImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ptbRoomImage.Location = new System.Drawing.Point(849, 104);
-            this.ptbRoomImage.Name = "ptbRoomImage";
-            this.ptbRoomImage.Size = new System.Drawing.Size(306, 249);
-            this.ptbRoomImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ptbRoomImage.TabIndex = 21;
-            this.ptbRoomImage.TabStop = false;
-            // 
             // AddRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -453,7 +453,7 @@
         private System.Windows.Forms.Panel left_Panel;
         private ReaLTaiizor.Controls.ParrotButton btnSave;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
         private ReaLTaiizor.Controls.MaterialTextBox txtSeatCount;

@@ -32,7 +32,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnAddRoom = new ReaLTaiizor.Controls.ParrotButton();
             this.panelMain = new System.Windows.Forms.Panel();
-            this.panelRoomsList = new System.Windows.Forms.Panel();
+            this.panelRoomsList = new System.Windows.Forms.FlowLayoutPanel();
             this.cardRoomSample = new ReaLTaiizor.Controls.MaterialCard();
             this.panelCardContent = new System.Windows.Forms.Panel();
             this.lblSeatcount = new System.Windows.Forms.Label();
@@ -42,7 +42,7 @@
             this.btnXoa = new ReaLTaiizor.Controls.MaterialButton();
             this.lblEmployeeName = new System.Windows.Forms.Label();
             this.lblRoomID = new System.Windows.Forms.Label();
-            this.pictureBoxEmployee = new System.Windows.Forms.PictureBox();
+            this.ptbRoomImage = new System.Windows.Forms.PictureBox();
             this.paginationPanel = new System.Windows.Forms.Panel();
             this.btnFirstPage = new ReaLTaiizor.Controls.ParrotButton();
             this.btnPrevPage = new ReaLTaiizor.Controls.ParrotButton();
@@ -64,7 +64,7 @@
             this.panelRoomsList.SuspendLayout();
             this.cardRoomSample.SuspendLayout();
             this.panelCardContent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbRoomImage)).BeginInit();
             this.paginationPanel.SuspendLayout();
             this.filterPanel.SuspendLayout();
             this.left_Panel.SuspendLayout();
@@ -149,13 +149,13 @@
             this.cardRoomSample.Controls.Add(this.panelCardContent);
             this.cardRoomSample.Depth = 0;
             this.cardRoomSample.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cardRoomSample.Location = new System.Drawing.Point(15, 13);
+            this.cardRoomSample.Location = new System.Drawing.Point(3, 13);
             this.cardRoomSample.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
             this.cardRoomSample.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.cardRoomSample.Name = "cardRoomSample";
             this.cardRoomSample.Padding = new System.Windows.Forms.Padding(15);
             this.cardRoomSample.Size = new System.Drawing.Size(462, 406);
-            this.cardRoomSample.TabIndex = 1;
+            this.cardRoomSample.TabIndex = 0;
             // 
             // panelCardContent
             // 
@@ -166,7 +166,7 @@
             this.panelCardContent.Controls.Add(this.btnXoa);
             this.panelCardContent.Controls.Add(this.lblEmployeeName);
             this.panelCardContent.Controls.Add(this.lblRoomID);
-            this.panelCardContent.Controls.Add(this.pictureBoxEmployee);
+            this.panelCardContent.Controls.Add(this.ptbRoomImage);
             this.panelCardContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCardContent.Location = new System.Drawing.Point(15, 15);
             this.panelCardContent.Name = "panelCardContent";
@@ -273,15 +273,15 @@
             this.lblRoomID.TabIndex = 1;
             this.lblRoomID.Text = "Room";
             // 
-            // pictureBoxEmployee
+            // ptbRoomImage
             // 
-            this.pictureBoxEmployee.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pictureBoxEmployee.Location = new System.Drawing.Point(176, 10);
-            this.pictureBoxEmployee.Name = "pictureBoxEmployee";
-            this.pictureBoxEmployee.Size = new System.Drawing.Size(245, 180);
-            this.pictureBoxEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxEmployee.TabIndex = 0;
-            this.pictureBoxEmployee.TabStop = false;
+            this.ptbRoomImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ptbRoomImage.Location = new System.Drawing.Point(176, 10);
+            this.ptbRoomImage.Name = "ptbRoomImage";
+            this.ptbRoomImage.Size = new System.Drawing.Size(245, 180);
+            this.ptbRoomImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptbRoomImage.TabIndex = 0;
+            this.ptbRoomImage.TabStop = false;
             // 
             // paginationPanel
             // 
@@ -602,7 +602,7 @@
             this.cardRoomSample.ResumeLayout(false);
             this.panelCardContent.ResumeLayout(false);
             this.panelCardContent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmployee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ptbRoomImage)).EndInit();
             this.paginationPanel.ResumeLayout(false);
             this.filterPanel.ResumeLayout(false);
             this.left_Panel.ResumeLayout(false);
@@ -618,7 +618,7 @@
         private System.Windows.Forms.Label lblTitle;
         private ReaLTaiizor.Controls.ParrotButton btnAddRoom;
         private System.Windows.Forms.Panel panelMain;
-        private System.Windows.Forms.Panel panelRoomsList;
+        private System.Windows.Forms.FlowLayoutPanel panelRoomsList;
         private ReaLTaiizor.Controls.MaterialCard cardRoomSample;
         private System.Windows.Forms.Panel panelCardContent;
         private System.Windows.Forms.Label lblSeatcount;
@@ -628,7 +628,7 @@
         private ReaLTaiizor.Controls.MaterialButton btnXoa;
         private System.Windows.Forms.Label lblEmployeeName;
         private System.Windows.Forms.Label lblRoomID;
-        private System.Windows.Forms.PictureBox pictureBoxEmployee;
+        private System.Windows.Forms.PictureBox ptbRoomImage;
         private System.Windows.Forms.Panel paginationPanel;
         private ReaLTaiizor.Controls.ParrotButton btnFirstPage;
         private ReaLTaiizor.Controls.ParrotButton btnPrevPage;
