@@ -21,7 +21,7 @@ namespace Common
                 using (OpenFileDialog ofd = new OpenFileDialog())
                 {
                     ofd.Title = "Chọn ảnh";
-                    ofd.Filter = "Hình ảnh (*.jpg;*.jpeg;*.png;*.bmp;*.gif)|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+                    ofd.Filter = "Hình ảnh (*.jpg;*.jpeg;*.png;*.bmp;*.gif)|*.jpg;*.jpeg;*.png;*.bmp;*.gif, *.webp";
 
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
