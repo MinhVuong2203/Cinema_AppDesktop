@@ -29,7 +29,7 @@ namespace UI.ShowTime
 
         private void dgvShowtimes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            HandleCellClick(e);
+          
         }
 
         private void panelMain_Paint(object sender, PaintEventArgs e)

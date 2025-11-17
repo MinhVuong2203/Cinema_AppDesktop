@@ -320,6 +320,12 @@
     <Compile Include="ShowTime\AddShowTimeUC.Designer.cs">
       <DependentUpon>AddShowTimeUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowTime\EditShowTimeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShowTime\EditShowTimeUC.Designer.cs">
+      <DependentUpon>EditShowTimeUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowTime\MNShowTimeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>

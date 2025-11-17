@@ -38,11 +38,20 @@ namespace UI.ShowTime
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.head_Right_Panel = new System.Windows.Forms.Panel();
+            this.btnEdit = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnDelete = new ReaLTaiizor.Controls.ParrotButton();
             this.btnAddShowtime = new ReaLTaiizor.Controls.ParrotButton();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelDataGridView = new System.Windows.Forms.Panel();
             this.dgvShowtimes = new ReaLTaiizor.Controls.PoisonDataGridView();
+            this.colShowtimeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMovie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRoom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paginationPanel = new System.Windows.Forms.Panel();
             this.btnFirstPage = new ReaLTaiizor.Controls.ParrotButton();
             this.btnPrevPage = new ReaLTaiizor.Controls.ParrotButton();
@@ -62,13 +71,6 @@ namespace UI.ShowTime
             this.btnFilter = new ReaLTaiizor.Controls.ParrotButton();
             this.btnReset = new ReaLTaiizor.Controls.ParrotButton();
             this.lblInfo = new System.Windows.Forms.Label();
-            this.colShowtimeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMovie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colRoom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelHeader.SuspendLayout();
             this.head_Right_Panel.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -78,7 +80,6 @@ namespace UI.ShowTime
             this.filterPanel.SuspendLayout();
             this.left_Panel.SuspendLayout();
             this.right_Panel.SuspendLayout();
-            this.Load += new System.EventHandler(this.MNShowTimeUC_Load);
             this.SuspendLayout();
             // 
             // panelHeader
@@ -94,16 +95,70 @@ namespace UI.ShowTime
             // 
             // head_Right_Panel
             // 
+            this.head_Right_Panel.Controls.Add(this.btnEdit);
+            this.head_Right_Panel.Controls.Add(this.btnDelete);
             this.head_Right_Panel.Controls.Add(this.btnAddShowtime);
             this.head_Right_Panel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.head_Right_Panel.Location = new System.Drawing.Point(1180, 0);
+            this.head_Right_Panel.Location = new System.Drawing.Point(880, 0);
             this.head_Right_Panel.Name = "head_Right_Panel";
-            this.head_Right_Panel.Size = new System.Drawing.Size(180, 60);
+            this.head_Right_Panel.Size = new System.Drawing.Size(480, 60);
             this.head_Right_Panel.TabIndex = 3;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnEdit.ButtonImage = null;
+            this.btnEdit.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnEdit.ButtonText = "Sửa";
+            this.btnEdit.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnEdit.ClickTextColor = System.Drawing.Color.White;
+            this.btnEdit.CornerRadius = 5;
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnEdit.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnEdit.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this.btnEdit.HoverTextColor = System.Drawing.Color.White;
+            this.btnEdit.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnEdit.Location = new System.Drawing.Point(180, 9);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(130, 36);
+            this.btnEdit.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnEdit.TabIndex = 3;
+            this.btnEdit.TextColor = System.Drawing.Color.White;
+            this.btnEdit.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnEdit.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnDelete.ButtonImage = null;
+            this.btnDelete.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnDelete.ButtonText = "- Xóa";
+            this.btnDelete.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnDelete.ClickTextColor = System.Drawing.Color.White;
+            this.btnDelete.CornerRadius = 5;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnDelete.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this.btnDelete.HoverTextColor = System.Drawing.Color.White;
+            this.btnDelete.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnDelete.Location = new System.Drawing.Point(325, 9);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(130, 36);
+            this.btnDelete.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.TextColor = System.Drawing.Color.White;
+            this.btnDelete.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnDelete.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAddShowtime
             // 
-            this.btnAddShowtime.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
+            this.btnAddShowtime.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnAddShowtime.ButtonImage = null;
             this.btnAddShowtime.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
             this.btnAddShowtime.ButtonText = "+ Thêm Mới";
@@ -223,7 +278,57 @@ namespace UI.ShowTime
             this.dgvShowtimes.UseCustomBackColor = true;
             this.dgvShowtimes.UseCustomForeColor = true;
             this.dgvShowtimes.UseStyleColors = true;
-            this.dgvShowtimes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShowtimes_CellContentClick);
+            this.dgvShowtimes.SelectionChanged += new System.EventHandler(this.dgvShowtimes_SelectionChanged);
+            // 
+            // colShowtimeId
+            // 
+            this.colShowtimeId.HeaderText = "MÃ SUẤT CHIẾU";
+            this.colShowtimeId.MinimumWidth = 6;
+            this.colShowtimeId.Name = "colShowtimeId";
+            this.colShowtimeId.DataPropertyName="ShowTimeID";
+
+            // 
+            // colMovie
+            // 
+            this.colMovie.HeaderText = "PHIM";
+            this.colMovie.MinimumWidth = 6;
+            this.colMovie.Name = "colMovie";
+            this.colMovie.DataPropertyName="MovieTitle";
+            // 
+            // colRoom
+            // 
+            this.colRoom.HeaderText = "PHÒNG";
+            this.colRoom.MinimumWidth = 6;
+            this.colRoom.Name = "colRoom";
+            this.colRoom.DataPropertyName="RoomName";   
+            // 
+            // colStartTime
+            // 
+            this.colStartTime.HeaderText = "GIỜ BẮT ĐẦU";
+            this.colStartTime.MinimumWidth = 6;
+            this.colStartTime.Name = "colStartTime";
+            this.colStartTime.DataPropertyName= "StartTimeDisplay";
+            // 
+            // colEndTime
+            // 
+            this.colEndTime.HeaderText = "GIỜ KẾT THÚC";
+            this.colEndTime.MinimumWidth = 6;
+            this.colEndTime.Name = "colEndTime";
+            this.colEndTime.DataPropertyName="EndTimeDisplay";
+            // 
+            // colPrice
+            // 
+            this.colPrice.HeaderText = "GIÁ";
+            this.colPrice.MinimumWidth = 6;
+            this.colPrice.Name = "colPrice";
+            this.colPrice.DataPropertyName= "PriceDisplay";
+            // 
+            // colStatus
+            // 
+            this.colStatus.HeaderText = "TRẠNG THÁI";
+            this.colStatus.MinimumWidth = 6;
+            this.colStatus.Name = "colStatus";
+            this.colStatus.DataPropertyName="Status";
             // 
             // paginationPanel
             // 
@@ -590,48 +695,6 @@ namespace UI.ShowTime
             this.lblInfo.Text = "⚪ Hiển thị 10 trong tổng số 25 suất chiếu / Trang 1 / 3";
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // colShowtimeId
-            // 
-            this.colShowtimeId.HeaderText = "MÃ SUẤT CHIẾU";
-            this.colShowtimeId.MinimumWidth = 6;
-            this.colShowtimeId.Name = "colShowtimeId";
-            // 
-            // colMovie
-            // 
-            this.colMovie.HeaderText = "PHIM";
-            this.colMovie.MinimumWidth = 6;
-            this.colMovie.Name = "colMovie";
-            // 
-            // colRoom
-            // 
-            this.colRoom.HeaderText = "PHÒNG";
-            this.colRoom.MinimumWidth = 6;
-            this.colRoom.Name = "colRoom";
-            // 
-            // colStartTime
-            // 
-            this.colStartTime.HeaderText = "GIỜ BẮT ĐẦU";
-            this.colStartTime.MinimumWidth = 6;
-            this.colStartTime.Name = "colStartTime";
-            // 
-            // colEndTime
-            // 
-            this.colEndTime.HeaderText = "GIỜ KẾT THÚC";
-            this.colEndTime.MinimumWidth = 6;
-            this.colEndTime.Name = "colEndTime";
-            // 
-            // colPrice
-            // 
-            this.colPrice.HeaderText = "GIÁ";
-            this.colPrice.MinimumWidth = 6;
-            this.colPrice.Name = "colPrice";
-            // 
-            // colStatus
-            // 
-            this.colStatus.HeaderText = "TRẠNG THÁI";
-            this.colStatus.MinimumWidth = 6;
-            this.colStatus.Name = "colStatus";
-            // 
             // MNShowTimeUC
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -639,6 +702,7 @@ namespace UI.ShowTime
             this.Controls.Add(this.panelHeader);
             this.Name = "MNShowTimeUC";
             this.Size = new System.Drawing.Size(1360, 800);
+            this.Load += new System.EventHandler(this.MNShowTimeUC_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.head_Right_Panel.ResumeLayout(false);
@@ -664,6 +728,9 @@ namespace UI.ShowTime
         private int pageSize = 10;
         private int totalPages = 0;
         private int totalRecords = 0;
+
+        // Selected row
+        private Guid? selectedShowTimeId = null;
 
         #region Initialize Methods
 
@@ -698,109 +765,76 @@ namespace UI.ShowTime
             dgvShowtimes.MultiSelect = false;
             dgvShowtimes.RowTemplate.Height = 40;
 
-            // Xóa columns cũ
-            dgvShowtimes.Columns.Clear();
+             
+            //dgvShowtimes.Columns.Clear();
 
-            // Cột ID (ẩn)
-            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "colShowtimeId",
-                HeaderText = "ID",
-                DataPropertyName = "ShowTimeID",
-                Visible = false
-            });
+            //// Cột ID (ẩn)
+            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "colShowtimeId",
+            //    HeaderText = "ID",
+            //    DataPropertyName = "ShowTimeID",
+            //    Visible = false
+            //});
 
-            // Cột Phim
-            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "colMovie",
-                HeaderText = "PHIM",
-                DataPropertyName = "MovieTitle",
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
-                FillWeight = 35
-            });
+            //// Cột Phim
+            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "colMovie",
+            //    HeaderText = "PHIM",
+            //    DataPropertyName = "MovieTitle",
+            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+            //    FillWeight = 35
+            //});
 
-            // Cột Phòng
-            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "colRoom",
-                HeaderText = "PHÒNG",
-                DataPropertyName = "RoomName",
-                Width = 100
-            });
+            //// Cột Phòng
+            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "colRoom",
+            //    HeaderText = "PHÒNG",
+            //    DataPropertyName = "RoomName",
+            //    Width = 120
+            //});
 
-            // Cột Giờ Bắt Đầu
-            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "colStartTime",
-                HeaderText = "GIỜ BẮT ĐẦU",
-                DataPropertyName = "StartTimeDisplay",
-                Width = 140
-            });
+            //// Cột Giờ Bắt Đầu
+            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "colStartTime",
+            //    HeaderText = "GIỜ BẮT ĐẦU",
+            //    DataPropertyName = "StartTimeDisplay",
+            //    Width = 160
+            //});
 
-            // Cột Giờ Kết Thúc
-            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "colEndTime",
-                HeaderText = "GIỜ KẾT THÚC",
-                DataPropertyName = "EndTimeDisplay",
-                Width = 140
-            });
+            //// Cột Giờ Kết Thúc
+            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "colEndTime",
+            //    HeaderText = "GIỜ KẾT THÚC",
+            //    DataPropertyName = "EndTimeDisplay",
+            //    Width = 160
+            //});
 
-            // Cột Giá Vé
-            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "colPrice",
-                HeaderText = "GIÁ VÉ",
-                DataPropertyName = "PriceDisplay",
-                Width = 110,
-                DefaultCellStyle = new DataGridViewCellStyle
-                {
-                    Alignment = DataGridViewContentAlignment.MiddleRight
-                }
-            });
+            //// Cột Giá Vé
+            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "colPrice",
+            //    HeaderText = "GIÁ VÉ",
+            //    DataPropertyName = "PriceDisplay",
+            //    Width = 130,
+            //    DefaultCellStyle = new DataGridViewCellStyle
+            //    {
+            //        Alignment = DataGridViewContentAlignment.MiddleRight
+            //    }
+            //});
 
-            // Cột Trạng Thái
-            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "colStatus",
-                HeaderText = "TRẠNG THÁI",
-                DataPropertyName = "Status",
-                Width = 110
-            });
-
-            // Cột Sửa (nhỏ hơn)
-            var btnEdit = new DataGridViewButtonColumn
-            {
-                Name = "colEdit",
-                HeaderText = "SỬA",
-                Text = "✏️",
-                UseColumnTextForButtonValue = true,
-                Width = 60,
-                DefaultCellStyle = new DataGridViewCellStyle
-                {
-                    Font = new System.Drawing.Font("Segoe UI", 14F),
-                    Alignment = DataGridViewContentAlignment.MiddleCenter
-                }
-            };
-            dgvShowtimes.Columns.Add(btnEdit);
-
-            // Cột Xóa (nhỏ hơn)
-            var btnDelete = new DataGridViewButtonColumn
-            {
-                Name = "colDelete",
-                HeaderText = "XÓA",
-                Text = "🗑️",
-                UseColumnTextForButtonValue = true,
-                Width = 60,
-                DefaultCellStyle = new DataGridViewCellStyle
-                {
-                    Font = new System.Drawing.Font("Segoe UI", 14F),
-                    Alignment = DataGridViewContentAlignment.MiddleCenter,
-                    ForeColor = System.Drawing.Color.Red
-                }
-            };
-            dgvShowtimes.Columns.Add(btnDelete);
+            //// Cột Trạng Thái
+            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            //{
+            //    Name = "colStatus",
+            //    HeaderText = "TRẠNG THÁI",
+            //    DataPropertyName = "Status",
+            //    Width = 130
+            //});
         }
 
         private void LoadMoviesFilter()
@@ -904,6 +938,10 @@ namespace UI.ShowTime
                 UpdatePaginationInfo();
                 UpdatePaginationButtons();
                 ColorizeRows();
+
+                // Reset selection
+                selectedShowTimeId = null;
+                UpdateButtonStates();
             }
             catch (Exception ex)
             {
@@ -988,21 +1026,70 @@ namespace UI.ShowTime
 
         #region Event Handlers
 
-        private void HandleCellClick(DataGridViewCellEventArgs e)
+        private void dgvShowtimes_SelectionChanged(object sender, EventArgs e)
         {
-            if (e.RowIndex < 0) return;
-
-            var columnName = dgvShowtimes.Columns[e.ColumnIndex].Name;
-            var showTimeId = (Guid)dgvShowtimes.Rows[e.RowIndex].Cells["colShowtimeId"].Value;
-
-            if (columnName == "colEdit")
+            if (dgvShowtimes.SelectedRows.Count > 0)
             {
-                EditShowTime(showTimeId);
+                var row = dgvShowtimes.SelectedRows[0];
+                selectedShowTimeId = (Guid)row.Cells["colShowtimeId"].Value;
             }
-            else if (columnName == "colDelete")
+            else
             {
-                DeleteShowTime(showTimeId);
+                selectedShowTimeId = null;
             }
+            UpdateButtonStates();
+        }
+
+        private void UpdateButtonStates()
+        {
+            bool hasSelection = selectedShowTimeId.HasValue;
+            btnEdit.Enabled = hasSelection;
+            btnDelete.Enabled = hasSelection;
+
+            // Đổi màu button khi disable
+            if (!hasSelection)
+            {
+                btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(180, 180, 180);
+                btnDelete.BackgroundColor = System.Drawing.Color.FromArgb(180, 180, 180);
+            }
+            else
+            {
+                btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(0, 123, 255);
+                btnDelete.BackgroundColor = System.Drawing.Color.FromArgb(220, 53, 69);
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (!selectedShowTimeId.HasValue)
+            {
+                MessageBox.Show("Vui lòng chọn một suất chiếu để sửa!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+        
+            var showTime = showTimeBLL.GetShowTimeById(selectedShowTimeId.Value);
+            if (showTime == null)
+            {
+                MessageBox.Show("Không tìm thấy suất chiếu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // MỞ GIAO DIỆN SỬA
+            var editUC = new EditShowTimeUC(_home, _employee, showTime);
+            _home.LoadControl(editUC);
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (!selectedShowTimeId.HasValue)
+            {
+                MessageBox.Show("Vui lòng chọn một suất chiếu để xóa!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DeleteShowTime(selectedShowTimeId.Value);
         }
 
         private void EditShowTime(Guid showTimeId)
@@ -1086,6 +1173,8 @@ namespace UI.ShowTime
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Label lblTitle;
         private ReaLTaiizor.Controls.ParrotButton btnAddShowtime;
+        private ReaLTaiizor.Controls.ParrotButton btnEdit;
+        private ReaLTaiizor.Controls.ParrotButton btnDelete;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel filterPanel;
         private System.Windows.Forms.Label lblBranch;
