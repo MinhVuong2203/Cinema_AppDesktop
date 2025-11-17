@@ -98,7 +98,7 @@ namespace UI.ScreeningRoom
 
 
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtRoomName.Text.Trim()))
             {
@@ -139,24 +139,34 @@ namespace UI.ScreeningRoom
             _room.ImageUrl = _currentImagePath;
 
             string result;
-            if (_room.RoomID == 0)
-            {
-                // Thêm mới
+            bool isNewRoom = _room.RoomID == 0;
+
+            if (isNewRoom)
                 result = _roomBLL.AddRoom(_room);
-            }
             else
-            {
-                // Cập nhật
                 result = _roomBLL.UpdateRoom(_room);
-            }
 
             MessageBox.Show(result, "Thông báo", MessageBoxButtons.OK,
                 result.Contains("thành công") ? MessageBoxIcon.Information : MessageBoxIcon.Error);
 
+            if (result.Contains("thành công") && isNewRoom && _room.RoomID > 0)
+            {
+                // Tạo ghế bất đồng bộ – KHÔNG block UI
+                var seatBLL = new SeatBLL();
+                try
+                {
+                    await Task.Run(() => seatBLL.CreateDefaultSeats(_room.RoomID, seatCount));
+                    MessageBox.Show("Đã tạo tự động 250 ghế cho phòng!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Tạo ghế thất bại: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
             if (result.Contains("thành công"))
             {
-                // Quay lại trang danh sách phòng và refresh
-                _home.LoadControl(new Room_homeUC(_home, null)); // null hoặc employee nếu cần
+                _home.LoadControl(new Room_homeUC(_home, _room));
             }
         }
 

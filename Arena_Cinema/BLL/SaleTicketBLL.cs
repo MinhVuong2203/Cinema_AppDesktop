@@ -33,6 +33,12 @@ namespace BLL
             return saleTicketDAL.GetTicketsByShowTimeID(showTimeID);
         }
 
+        //lấy danh sách loại, số lượng vé theo showtimeID
+        public Dictionary<string, int> GetTicketTypesByShowTimeID(Guid showTimeID)
+        {
+            return saleTicketDAL.GetTicketTypesByShowTimeID(showTimeID);
+        }
+
         //danh sach sản phẩm
         public List<Product> GetAllProducts()
         {
@@ -51,6 +57,12 @@ namespace BLL
             saleTicketDAL.AddPayment(payment, ticketIDs);
             saleTicketDAL.UpdateTicketStatus(ticketIDs, "Đã bán");
 
+        }
+
+        //load danh sách ghế của phòng
+        public List<Seat> GetSeatsByRoomID(int roomID)
+        {
+            return saleTicketDAL.GetSeatsByRoomID(roomID);
         }
     }
 }

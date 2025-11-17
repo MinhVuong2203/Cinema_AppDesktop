@@ -49,6 +49,7 @@
     <Compile Include="roomBLL.cs" />
     <Compile Include="SaleTicketBLL.cs" />
     <Compile Include="ShowTimeBLL.cs" />
+    <Compile Include="SeatBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

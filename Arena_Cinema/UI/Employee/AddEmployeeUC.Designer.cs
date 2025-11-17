@@ -33,6 +33,7 @@ namespace UI.Employee
             this.cboRole = new ReaLTaiizor.Controls.MaterialComboBox();
             this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new ReaLTaiizor.Controls.GroupBox();
+            this.btnShowPass = new ReaLTaiizor.Controls.ParrotButton();
             this.lbCheckPassword = new System.Windows.Forms.Label();
             this.lbCheckUsername = new System.Windows.Forms.Label();
             this.lbCheckLuong = new System.Windows.Forms.Label();
@@ -245,6 +246,7 @@ namespace UI.Employee
             this.groupBox1.BaseColor = System.Drawing.Color.Transparent;
             this.groupBox1.BorderColorG = System.Drawing.Color.FromArgb(((int)(((byte)(159)))), ((int)(((byte)(159)))), ((int)(((byte)(161)))));
             this.groupBox1.BorderColorH = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(180)))), ((int)(((byte)(186)))));
+            this.groupBox1.Controls.Add(this.btnShowPass);
             this.groupBox1.Controls.Add(this.lbCheckPassword);
             this.groupBox1.Controls.Add(this.lbCheckUsername);
             this.groupBox1.Controls.Add(this.lbCheckLuong);
@@ -282,6 +284,30 @@ namespace UI.Employee
             this.groupBox1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.groupBox1.TabIndex = 16;
             this.groupBox1.Text = "Thông tin cá nhân";
+            // 
+            // btnShowPass
+            // 
+            this.btnShowPass.BackgroundColor = System.Drawing.Color.White;
+            this.btnShowPass.ButtonImage = global::UI.Properties.Resources.OpenEyes1;
+            this.btnShowPass.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnShowPass.ButtonText = "";
+            this.btnShowPass.ClickBackColor = System.Drawing.Color.White;
+            this.btnShowPass.ClickTextColor = System.Drawing.Color.White;
+            this.btnShowPass.CornerRadius = 5;
+            this.btnShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnShowPass.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnShowPass.HoverBackgroundColor = System.Drawing.Color.White;
+            this.btnShowPass.HoverTextColor = System.Drawing.Color.White;
+            this.btnShowPass.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnShowPass.Location = new System.Drawing.Point(784, 484);
+            this.btnShowPass.Name = "btnShowPass";
+            this.btnShowPass.Size = new System.Drawing.Size(33, 30);
+            this.btnShowPass.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnShowPass.TabIndex = 29;
+            this.btnShowPass.TextColor = System.Drawing.Color.Black;
+            this.btnShowPass.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnShowPass.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
             // 
             // lbCheckPassword
             // 
@@ -368,15 +394,16 @@ namespace UI.Employee
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Depth = 0;
             this.txtPassword.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtPassword.Hint = "Mật khẩu";
+           
             this.txtPassword.LeadingIcon = null;
             this.txtPassword.Location = new System.Drawing.Point(433, 462);
             this.txtPassword.MaxLength = 50;
             this.txtPassword.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             this.txtPassword.Multiline = false;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Password = true;
             this.txtPassword.Size = new System.Drawing.Size(350, 50);
-            this.txtPassword.TabIndex = 20;
+            this.txtPassword.TabIndex = 8;
             this.txtPassword.Text = "";
             this.txtPassword.TrailingIcon = null;
             this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
@@ -463,7 +490,7 @@ namespace UI.Employee
             this.btnCancel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.btnCancel.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.ButtonImage")));
             this.btnCancel.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
-            this.btnCancel.ButtonText = "Hủy";
+            this.btnCancel.ButtonText = "Đặt lại";
             this.btnCancel.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
             this.btnCancel.ClickTextColor = System.Drawing.Color.DodgerBlue;
             this.btnCancel.CornerRadius = 5;
@@ -599,5 +626,6 @@ namespace UI.Employee
         private System.Windows.Forms.Label lbCheckLuong;
         private System.Windows.Forms.Label lbCheckPassword;
         private System.Windows.Forms.Label lbCheckUsername;
+        private ReaLTaiizor.Controls.ParrotButton btnShowPass;
     }
 }

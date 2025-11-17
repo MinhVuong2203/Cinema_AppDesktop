@@ -35,6 +35,7 @@
             this.panelRoomsList = new System.Windows.Forms.FlowLayoutPanel();
             this.cardRoomSample = new ReaLTaiizor.Controls.MaterialCard();
             this.panelCardContent = new System.Windows.Forms.Panel();
+            this.btnSeatManagement = new ReaLTaiizor.Controls.MaterialButton();
             this.lblSeatcount = new System.Windows.Forms.Label();
             this.btnSua = new ReaLTaiizor.Controls.MaterialButton();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -48,8 +49,8 @@
             this.lblMovie = new System.Windows.Forms.Label();
             this.cboRoomType = new ReaLTaiizor.Controls.MaterialComboBox();
             this.right_Panel = new System.Windows.Forms.Panel();
-            this.lblInfo = new System.Windows.Forms.Label();
             this.btnDeletedRoom = new ReaLTaiizor.Controls.ParrotButton();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelRoomsList.SuspendLayout();
@@ -71,6 +72,7 @@
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1376, 60);
             this.panelHeader.TabIndex = 2;
+            this.panelHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.panelHeader_Paint);
             // 
             // lblTitle
             // 
@@ -148,6 +150,7 @@
             // 
             // panelCardContent
             // 
+            this.panelCardContent.Controls.Add(this.btnSeatManagement);
             this.panelCardContent.Controls.Add(this.lblSeatcount);
             this.panelCardContent.Controls.Add(this.btnSua);
             this.panelCardContent.Controls.Add(this.lblDescription);
@@ -161,6 +164,27 @@
             this.panelCardContent.Name = "panelCardContent";
             this.panelCardContent.Size = new System.Drawing.Size(432, 376);
             this.panelCardContent.TabIndex = 0;
+            // 
+            // btnSeatManagement
+            // 
+            this.btnSeatManagement.AutoSize = false;
+            this.btnSeatManagement.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSeatManagement.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnSeatManagement.Depth = 0;
+            this.btnSeatManagement.HighEmphasis = true;
+            this.btnSeatManagement.Icon = global::UI.Properties.Resources.armchair;
+            this.btnSeatManagement.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnSeatManagement.Location = new System.Drawing.Point(61, 328);
+            this.btnSeatManagement.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSeatManagement.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btnSeatManagement.Name = "btnSeatManagement";
+            this.btnSeatManagement.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnSeatManagement.Size = new System.Drawing.Size(147, 42);
+            this.btnSeatManagement.TabIndex = 8;
+            this.btnSeatManagement.Text = "Sắp xếp ghế";
+            this.btnSeatManagement.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnSeatManagement.UseAccentColor = false;
+            this.btnSeatManagement.UseVisualStyleBackColor = true;
             // 
             // lblSeatcount
             // 
@@ -338,20 +362,6 @@
             this.right_Panel.Size = new System.Drawing.Size(464, 84);
             this.right_Panel.TabIndex = 8;
             // 
-            // lblInfo
-            // 
-            this.lblInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.lblInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblInfo.ForeColor = System.Drawing.Color.White;
-            this.lblInfo.Location = new System.Drawing.Point(15, 99);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.lblInfo.Size = new System.Drawing.Size(1296, 35);
-            this.lblInfo.TabIndex = 0;
-            this.lblInfo.Text = "Hiển thị 10 trong tổng số 25 phòng | Trang 1 / 3";
-            this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // btnDeletedRoom
             // 
             this.btnDeletedRoom.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
@@ -377,6 +387,20 @@
             this.btnDeletedRoom.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnDeletedRoom.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnDeletedRoom.Click += new System.EventHandler(this.btnDeletedRoom_Click);
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.lblInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblInfo.ForeColor = System.Drawing.Color.White;
+            this.lblInfo.Location = new System.Drawing.Point(15, 99);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.lblInfo.Size = new System.Drawing.Size(1296, 35);
+            this.lblInfo.TabIndex = 0;
+            this.lblInfo.Text = "Hiển thị 10 trong tổng số 25 phòng | Trang 1 / 3";
+            this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Room_homeUC
             // 
@@ -423,8 +447,9 @@
         private System.Windows.Forms.Panel left_Panel;
         private System.Windows.Forms.Label lblMovie;
         private ReaLTaiizor.Controls.MaterialComboBox cboRoomType;
-        private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Panel right_Panel;
         private ReaLTaiizor.Controls.ParrotButton btnDeletedRoom;
+        private ReaLTaiizor.Controls.MaterialButton btnSeatManagement;
+        private System.Windows.Forms.Label lblInfo;
     }
 }

@@ -53,6 +53,9 @@
     <StartupObject>UI.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.10.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -302,11 +305,11 @@
     <Compile Include="ScreeningRoom\Room-homeUC.Designer.cs">
       <DependentUpon>Room-homeUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Seat\Seat_homeUC.cs">
+    <Compile Include="SeatManagement\SeatManagementUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Seat\Seat_homeUC.Designer.cs">
-      <DependentUpon>Seat_homeUC.cs</DependentUpon>
+    <Compile Include="SeatManagement\SeatManagementUC.Designer.cs">
+      <DependentUpon>SeatManagementUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Setting\SettingControl.cs">
       <SubType>UserControl</SubType>
@@ -396,8 +399,8 @@
     <EmbeddedResource Include="ScreeningRoom\Room-homeUC.resx">
       <DependentUpon>Room-homeUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Seat\Seat_homeUC.resx">
-      <DependentUpon>Seat_homeUC.cs</DependentUpon>
+    <EmbeddedResource Include="SeatManagement\SeatManagementUC.resx">
+      <DependentUpon>SeatManagementUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setting\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>

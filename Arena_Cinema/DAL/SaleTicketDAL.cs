@@ -47,6 +47,16 @@ namespace DAL
             return tickets;
         }
 
+        //lấy danh sách loại, số lượng vé theo showtimeID
+        public Dictionary<string, int> GetTicketTypesByShowTimeID(Guid showTimeID)
+        {
+            var ticketTypes = _context.Tickets
+                .Where(t => t.ShowTimeID == showTimeID && !t.IsDeleted)
+                .GroupBy(t => t.TicketType)
+                .ToDictionary(g => g.Key, g => g.Count());
+            return ticketTypes;
+        }
+
         //lấy danh sách các sản phẩm
         public List<Product> GetAllProducts()
         {
@@ -72,6 +82,14 @@ namespace DAL
         {
             _context.Payments.Add(payment);
             _context.SaveChanges();
+        }
+
+        //load danh sách ghế của phòng chiếu
+        public List<Seat> GetSeatsByRoomID(int roomID)
+        {
+            return _context.Seats
+                .Where(s => s.RoomID == roomID && !s.IsDeleted)
+                .ToList();
         }
     }
 }
