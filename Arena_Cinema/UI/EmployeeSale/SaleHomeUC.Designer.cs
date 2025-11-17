@@ -201,6 +201,7 @@
             this.btn_SaleTicket.TabIndex = 0;
             this.btn_SaleTicket.Text = "Vào bán vé";
             this.btn_SaleTicket.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btn_SaleTicket.Click += new System.EventHandler(this.btn_SaleTicket_Click);
             // 
             // panelSaleAreaHeader
             // 

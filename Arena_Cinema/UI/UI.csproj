@@ -71,6 +71,18 @@
     <Compile Include="EmployeeSale\SaleHomeUC.Designer.cs">
       <DependentUpon>SaleHomeUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeSale\SaleTicketUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmployeeSale\SaleTicketUC.Designer.cs">
+      <DependentUpon>SaleTicketUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeSale\SelectMovieUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmployeeSale\SelectMovieUC.Designer.cs">
+      <DependentUpon>SelectMovieUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employee\AddEmployeeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -188,6 +200,12 @@
     </Compile>
     <EmbeddedResource Include="EmployeeSale\SaleHomeUC.resx">
       <DependentUpon>SaleHomeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeSale\SaleTicketUC.resx">
+      <DependentUpon>SaleTicketUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeSale\SelectMovieUC.resx">
+      <DependentUpon>SelectMovieUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employee\AddEmployeeUC.resx">
       <DependentUpon>AddEmployeeUC.cs</DependentUpon>

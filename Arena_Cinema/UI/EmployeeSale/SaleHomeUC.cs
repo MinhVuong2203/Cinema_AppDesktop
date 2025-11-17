@@ -13,9 +13,13 @@ namespace UI.EmployeeSale
 {
     public partial class SaleHomeUC : UserControl
     {
-        public SaleHomeUC(DTO.Employee employee)
+        private Home _home;
+        private DTO.Employee _employee;
+        public SaleHomeUC(Home home, DTO.Employee employee)
         {
             InitializeComponent();
+            _home = home;
+            _employee = employee;
 
             //load dữ liệu nhân viên
             LoadEmployeeData(employee);
@@ -33,6 +37,11 @@ namespace UI.EmployeeSale
             lb_BthDayText.Text = employee.BirthDate?.ToString("dd/MM/yyyy") ?? "N/A";
             lb_SalaryText.Text = employee.HourWage?.ToString("C") ?? "N/A";
             lb_workDateText.Text = employee.RegisterDate?.ToString("dd/MM/yyyy") ?? "N/A";
+        }
+
+        private void btn_SaleTicket_Click(object sender, EventArgs e)
+        {
+            this._home.LoadControl(new SelectMovieUC(_home, this._employee));
         }
     }
 }

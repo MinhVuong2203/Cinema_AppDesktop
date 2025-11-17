@@ -62,6 +62,7 @@
     <Compile Include="RoleDAL.cs" />
     <Compile Include="roomDAL.cs" />
     <Compile Include="SeatDAL.cs" />
+    <Compile Include="SaleTicketDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
