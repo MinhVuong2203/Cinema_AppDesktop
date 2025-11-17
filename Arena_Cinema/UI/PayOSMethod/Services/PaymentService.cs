@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using PayOS;
+using PayOS.Models.Webhooks;
+//using Net.PayOS;
 
 namespace UI.PayOSMethod.Services
 {
@@ -16,113 +16,114 @@ namespace UI.PayOSMethod.Services
             _payOS = new PayOSClient(clientId, apiKey, checksumKey);
         }
 
-        //public async Task<createPaymentLinkResult> CreatePaymentLink(
+        //public class Item
+        //{
+        //    public string Name { get; set; }
+        //    public int Quantity { get; set; }
+        //    public int Price { get; set; }
+        //}
+
+        //// Sửa lại tên phương thức cho đúng với SDK
+        //public async Task<object> CreatePaymentLink(
         //    long orderCode,
         //    int amount,
         //    string description,
-        //    string returnUrl,
-        //    string cancelUrl)
+        //    string buyerName = "",
+        //    string buyerEmail = "",
+        //    string buyerPhone = "",
+        //    string returnUrl = "https://your-domain.com/success",
+        //    string cancelUrl = "https://your-domain.com/cancel")
         //{
         //    try
         //    {
-        //        var items = new List<itemData>
+        //        var paymentRequest = new
         //        {
-        //            new itemData("Đơn hàng #" + orderCode, 1, amount)
+        //            orderCode,
+        //            amount,
+        //            description,
+        //            buyerName,
+        //            buyerEmail,
+        //            buyerPhone,
+        //            returnUrl,
+        //            cancelUrl,
+        //            items = new List<Item>
+        //            {
+        //                new Item
+        //                {
+        //                    Name = $"Đơn hàng #{orderCode}",
+        //                    Quantity = 1,
+        //                    Price = amount
+        //                }
+        //            }
         //        };
-        //        var paymentData = new paymentData(
-        //            orderCode: orderCode,
-        //            amount: amount,
-        //            description: description,
-        //            items: items,
-        //            returnUrl: returnUrl,
-        //            cancelUrl: cancelUrl
-        //        );
-        //        createPaymentLinkResult result = await _payOS.createPaymentLink(paymentData);
+
+        //        // Sử dụng phương thức đúng của SDK, ví dụ: CreatePaymentLinkAsync
+        //        var result = await _payOS.CreatePaymentLinkAsync(paymentRequest);
         //        return result;
         //    }
         //    catch (Exception ex)
         //    {
-        //        throw new Exception($"Lỗi tạo link thanh toán: {ex.Message}");
-        //    }
-        //}
-        //Tạo link thanh toán
-        //public async Task<CreatePaymentResult> CreatePaymentLink(
-        //    long orderCode,
-        //    int amount,
-        //    string description,
-        //    string returnUrl,
-        //    string cancelUrl)
-        //{
-        //    try
-        //    {
-        //        var items = new List<ItemData>
-        //        {
-        //            new ItemData("Đơn hàng #" + orderCode, 1, amount)
-        //        };
-
-        //        var paymentData = new PaymentData(
-        //            orderCode: orderCode,
-        //            amount: amount,
-        //            description: description,
-        //            items: items,
-        //            returnUrl: returnUrl,
-        //            cancelUrl: cancelUrl
-        //        );
-
-        //        CreatePaymentResult result = await _payOS.createPaymentLink(paymentData);
-        //        return result;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception($"Lỗi tạo link thanh toán: {ex.Message}");
+        //        throw new Exception($"Lỗi tạo link thanh toán: {ex.Message}", ex);
         //    }
         //}
 
-        ///// <summary>
-        ///// Kiểm tra trạng thái thanh toán
-        ///// </summary>
-        //public async Task<PaymentLinkInformation> GetPaymentInfo(long orderCode)
+        //public async Task<object> GetPaymentInfo(long orderCode)
         //{
         //    try
         //    {
-        //        PaymentLinkInformation paymentInfo = await _payOS.getPaymentLinkInformation(orderCode);
+        //        // Sử dụng phương thức đúng của SDK, ví dụ: GetPaymentLinkInfoAsync
+        //        var paymentInfo = await _payOS.GetPaymentLinkInfoAsync(orderCode);
         //        return paymentInfo;
         //    }
         //    catch (Exception ex)
         //    {
-        //        throw new Exception($"Lỗi kiểm tra thanh toán: {ex.Message}");
+        //        throw new Exception($"Lỗi kiểm tra trạng thái: {ex.Message}", ex);
         //    }
         //}
 
-        ///// <summary>
-        ///// Hủy link thanh toán
-        ///// </summary>
-        //public async Task<PaymentLinkInformation> CancelPaymentLink(long orderCode, string reason = null)
+        //public async Task<object> CancelPaymentLink(long orderCode, string reason = "Khách hàng yêu cầu hủy")
         //{
         //    try
         //    {
-        //        PaymentLinkInformation result = await _payOS.cancelPaymentLink(orderCode, reason);
+        //        // Sử dụng phương thức đúng của SDK, ví dụ: CancelPaymentLinkAsync
+        //        var result = await _payOS.CancelPaymentLinkAsync(orderCode, reason);
         //        return result;
         //    }
         //    catch (Exception ex)
         //    {
-        //        throw new Exception($"Lỗi hủy thanh toán: {ex.Message}");
+        //        throw new Exception($"Lỗi hủy thanh toán: {ex.Message}", ex);
         //    }
         //}
 
-        ///// <summary>
-        ///// Xác thực webhook data
-        ///// </summary>
-        //public WebhookData VerifyWebhookData(string webhookUrl)
+        //public object VerifyWebhookData(string webhookDataJson)
         //{
         //    try
         //    {
-        //        WebhookData webhookData = _payOS.verifyPaymentWebhookData(webhookUrl);
+        //        // Sử dụng phương thức đúng của SDK, ví dụ: VerifyWebhookAsync
+        //        var webhookData = _payOS.VerifyWebhookAsync(webhookDataJson);
         //        return webhookData;
         //    }
         //    catch (Exception ex)
         //    {
-        //        throw new Exception($"Lỗi xác thực webhook: {ex.Message}");
+        //        throw new Exception($"Lỗi xác thực webhook: {ex.Message}", ex);
+        //    }
+        //}
+
+        //public string GetPaymentStatusText(string status)
+        //{
+        //    switch (status?.ToUpper())
+        //    {
+        //        case "PENDING":
+        //            return "Chờ thanh toán";
+        //        case "PAID":
+        //        case "PROCESSING":
+        //            return "Đã thanh toán";
+        //        case "CANCELLED":
+        //            return "Đã hủy";
+        //        case "EXPIRED":
+        //            return "Đã hết hạn";
+        //        default:
+        //            return status ?? "Không xác định";
         //    }
         //}
     }

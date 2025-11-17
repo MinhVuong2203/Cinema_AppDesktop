@@ -23,8 +23,8 @@ namespace DAL
 
             var showTimes = _context.ShowTimes
                 .Where(st => st.MovieID == movieID
-                             && st.StartTime <= today
-                             //&& st.StartTime < tomorrow
+                             && st.StartTime >= today
+                             && st.StartTime < tomorrow
                              && !st.IsDeleted)
                 .ToList();
             return showTimes;
