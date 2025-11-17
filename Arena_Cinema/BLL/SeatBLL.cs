@@ -54,31 +54,24 @@ namespace BLL
         {
             var seats = new List<Seat>();
             int count = 0;
-
-            var rowList = new List<char>();
-            for (char r = 'A'; count < totalSeatCount && r <= 'Z'; r++)
-                rowList.Add(r);
-
-            char coupleRow = rowList.Last(); // hàng cuối là ghế đôi
-
             int rowIndex = 1;
-            foreach (char row in rowList)
+
+            // Bước 1: Tạo ghế trước, lưu row cuối thực tế
+            char currentRow = 'A';
+            char actualLastRow = 'A'; // Biến lưu hàng cuối thực tế
+
+            while (count < totalSeatCount && currentRow <= 'Z')
             {
-                int seatsPerRow = (row >= 'G') ? 17 : 15;
-                if (count + seatsPerRow > totalSeatCount) seatsPerRow = totalSeatCount - count;
+                int seatsPerRow = (currentRow >= 'G') ? 17 : 15;
+                if (count + seatsPerRow > totalSeatCount)
+                    seatsPerRow = totalSeatCount - count;
 
                 for (int col = 1; col <= seatsPerRow && count < totalSeatCount; col++)
                 {
-                    string seatType = "Ghế thường";
-                    if (row == coupleRow)
-                        seatType = "Ghế đôi";
-                    else if ((row >= 'G' && row <= 'L' && col >= 4 && col <= 14) || (row == 'F' && col >= 3 && col <= 13))
-                        seatType = "Ghế VIP";
-
                     seats.Add(new Seat
                     {
-                        SeatName = $"{row}{col:D2}",
-                        SeatType = seatType,
+                        SeatName = $"{currentRow}{col:D2}",
+                        SeatType = "temp", // Tạm thời
                         RoomID = roomId,
                         IsDeleted = false,
                         pX = col,
@@ -86,31 +79,28 @@ namespace BLL
                     });
                     count++;
                 }
+
+                actualLastRow = currentRow; // Cập nhật hàng cuối
+                currentRow++;
                 rowIndex++;
             }
 
-            // Thêm hàng thừa nếu cần
-            char nextRow = (char)(rowList.Last() + 1);
-            while (count < totalSeatCount && nextRow <= 'Z')
+            // Bước 2: Gán lại SeatType dựa trên hàng cuối thực tế
+            foreach (var seat in seats)
             {
-                for (int col = 1; col <= 17 && count < totalSeatCount; col++)
-                {
-                    seats.Add(new Seat
-                    {
-                        SeatName = $"{nextRow}{col:D2}",
-                        SeatType = "Ghế thường",
-                        RoomID = roomId,
-                        IsDeleted = false,
-                        pX = col,
-                        pY = rowIndex
-                    });
-                    count++;
-                }
-                nextRow++;
-                rowIndex++;
+                char row = seat.SeatName[0];
+                int col = seat.pX;
+
+                if (row == actualLastRow)
+                    seat.SeatType = "Ghế đôi";
+                else if ((row >= 'G' && row <= 'L' && col >= 4 && col <= 14) ||
+                         (row == 'F' && col >= 3 && col <= 13))
+                    seat.SeatType = "Ghế VIP";
+                else
+                    seat.SeatType = "Ghế thường";
             }
 
-            _seatDAL.AddRangeSeats(seats); // dùng _seatDAL thay vì new
+            _seatDAL.AddRangeSeats(seats);
         }
 
         // CẬP NHẬT VỊ TRÍ GHẾ KHI KÉO THẢ

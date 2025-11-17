@@ -447,9 +447,9 @@
         private System.Windows.Forms.Panel left_Panel;
         private System.Windows.Forms.Label lblMovie;
         private ReaLTaiizor.Controls.MaterialComboBox cboRoomType;
-        private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Panel right_Panel;
         private ReaLTaiizor.Controls.ParrotButton btnDeletedRoom;
         private ReaLTaiizor.Controls.MaterialButton btnSeatManagement;
+        private System.Windows.Forms.Label lblInfo;
     }
 }
