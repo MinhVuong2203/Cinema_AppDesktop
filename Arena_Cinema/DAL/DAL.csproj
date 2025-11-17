@@ -63,6 +63,7 @@
     <Compile Include="roomDAL.cs" />
     <Compile Include="SeatDAL.cs" />
     <Compile Include="SaleTicketDAL.cs" />
+    <Compile Include="ShowTimeDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

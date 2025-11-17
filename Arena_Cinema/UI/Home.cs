@@ -119,7 +119,7 @@ namespace UI
                     break;
                 case "btnSuatChieu":
                     
-                    MNShowTimeUC st=new MNShowTimeUC(_employee);
+                    MNShowTimeUC st=new MNShowTimeUC(this,_employee);
                     LoadControl(st);
                     break;
                 case "btnPhim":

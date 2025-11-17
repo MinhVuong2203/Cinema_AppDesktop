@@ -180,6 +180,12 @@
     <Compile Include="Setting\SettingControl.Designer.cs">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowTime\AddShowTimeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShowTime\AddShowTimeUC.Designer.cs">
+      <DependentUpon>AddShowTimeUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShowTime\MNShowTimeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Setting\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowTime\AddShowTimeUC.resx">
+      <DependentUpon>AddShowTimeUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowTime\MNShowTimeUC.resx">
       <DependentUpon>MNShowTimeUC.cs</DependentUpon>

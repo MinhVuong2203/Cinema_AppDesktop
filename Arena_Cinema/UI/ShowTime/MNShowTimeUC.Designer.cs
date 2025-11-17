@@ -1,4 +1,9 @@
-﻿namespace UI.ShowTime
+﻿using BLL;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace UI.ShowTime
 {
     partial class MNShowTimeUC
     {
@@ -59,13 +64,11 @@
             this.lblInfo = new System.Windows.Forms.Label();
             this.colShowtimeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMovie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCinema = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRoom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStartTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEndTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colView = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panelHeader.SuspendLayout();
             this.head_Right_Panel.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -75,6 +78,7 @@
             this.filterPanel.SuspendLayout();
             this.left_Panel.SuspendLayout();
             this.right_Panel.SuspendLayout();
+            this.Load += new System.EventHandler(this.MNShowTimeUC_Load);
             this.SuspendLayout();
             // 
             // panelHeader
@@ -120,6 +124,7 @@
             this.btnAddShowtime.TextColor = System.Drawing.Color.White;
             this.btnAddShowtime.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnAddShowtime.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnAddShowtime.Click += new System.EventHandler(this.btnAddShowtime_Click);
             // 
             // lblTitle
             // 
@@ -180,13 +185,11 @@
             this.dgvShowtimes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShowtimeId,
             this.colMovie,
-            this.colCinema,
             this.colRoom,
             this.colStartTime,
             this.colEndTime,
             this.colPrice,
-            this.colStatus,
-            this.colView});
+            this.colStatus});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -599,12 +602,6 @@
             this.colMovie.MinimumWidth = 6;
             this.colMovie.Name = "colMovie";
             // 
-            // colCinema
-            // 
-            this.colCinema.HeaderText = "CHI NHÁNH";
-            this.colCinema.MinimumWidth = 6;
-            this.colCinema.Name = "colCinema";
-            // 
             // colRoom
             // 
             this.colRoom.HeaderText = "PHÒNG";
@@ -635,14 +632,6 @@
             this.colStatus.MinimumWidth = 6;
             this.colStatus.Name = "colStatus";
             // 
-            // colView
-            // 
-            this.colView.HeaderText = "THAO TÁC";
-            this.colView.MinimumWidth = 6;
-            this.colView.Name = "colView";
-            this.colView.Text = "👁";
-            this.colView.UseColumnTextForButtonValue = true;
-            // 
             // MNShowTimeUC
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -665,7 +654,434 @@
 
         }
 
+
+        private ShowTimeBLL showTimeBLL;
+        private MovieBLL movieBLL;
+        private RoomBLL roomBLL;
+
+        // Phân trang
+        private int currentPage = 1;
+        private int pageSize = 10;
+        private int totalPages = 0;
+        private int totalRecords = 0;
+
+        #region Initialize Methods
+
+        private void LoadInitialData()
+        {
+            try
+            {
+                showTimeBLL = new ShowTimeBLL();
+                movieBLL = new MovieBLL();
+                roomBLL = new RoomBLL();
+
+                ConfigureDataGridView();
+                LoadMoviesFilter();
+                LoadPageSizes();
+                LoadShowTimes();
+                SetupEvents();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi load dữ liệu: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ConfigureDataGridView()
+        {
+            dgvShowtimes.AutoGenerateColumns = false;
+            dgvShowtimes.AllowUserToAddRows = false;
+            dgvShowtimes.AllowUserToDeleteRows = false;
+            dgvShowtimes.ReadOnly = true;
+            dgvShowtimes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvShowtimes.MultiSelect = false;
+            dgvShowtimes.RowTemplate.Height = 40;
+
+            // Xóa columns cũ
+            dgvShowtimes.Columns.Clear();
+
+            // Cột ID (ẩn)
+            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colShowtimeId",
+                HeaderText = "ID",
+                DataPropertyName = "ShowTimeID",
+                Visible = false
+            });
+
+            // Cột Phim
+            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colMovie",
+                HeaderText = "PHIM",
+                DataPropertyName = "MovieTitle",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                FillWeight = 35
+            });
+
+            // Cột Phòng
+            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colRoom",
+                HeaderText = "PHÒNG",
+                DataPropertyName = "RoomName",
+                Width = 100
+            });
+
+            // Cột Giờ Bắt Đầu
+            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colStartTime",
+                HeaderText = "GIỜ BẮT ĐẦU",
+                DataPropertyName = "StartTimeDisplay",
+                Width = 140
+            });
+
+            // Cột Giờ Kết Thúc
+            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colEndTime",
+                HeaderText = "GIỜ KẾT THÚC",
+                DataPropertyName = "EndTimeDisplay",
+                Width = 140
+            });
+
+            // Cột Giá Vé
+            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colPrice",
+                HeaderText = "GIÁ VÉ",
+                DataPropertyName = "PriceDisplay",
+                Width = 110,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Alignment = DataGridViewContentAlignment.MiddleRight
+                }
+            });
+
+            // Cột Trạng Thái
+            dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "colStatus",
+                HeaderText = "TRẠNG THÁI",
+                DataPropertyName = "Status",
+                Width = 110
+            });
+
+            // Cột Sửa (nhỏ hơn)
+            var btnEdit = new DataGridViewButtonColumn
+            {
+                Name = "colEdit",
+                HeaderText = "SỬA",
+                Text = "✏️",
+                UseColumnTextForButtonValue = true,
+                Width = 60,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Font = new System.Drawing.Font("Segoe UI", 14F),
+                    Alignment = DataGridViewContentAlignment.MiddleCenter
+                }
+            };
+            dgvShowtimes.Columns.Add(btnEdit);
+
+            // Cột Xóa (nhỏ hơn)
+            var btnDelete = new DataGridViewButtonColumn
+            {
+                Name = "colDelete",
+                HeaderText = "XÓA",
+                Text = "🗑️",
+                UseColumnTextForButtonValue = true,
+                Width = 60,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Font = new System.Drawing.Font("Segoe UI", 14F),
+                    Alignment = DataGridViewContentAlignment.MiddleCenter,
+                    ForeColor = System.Drawing.Color.Red
+                }
+            };
+            dgvShowtimes.Columns.Add(btnDelete);
+        }
+
+        private void LoadMoviesFilter()
+        {
+            try
+            {
+                var movies = movieBLL.GetAllMovies();
+                cboMovie.Items.Clear();
+                cboMovie.Items.Add(new ComboBoxItem { Text = "-- Tất cả phim --", Value = 0 });
+
+                foreach (var movie in movies)
+                {
+                    cboMovie.Items.Add(new ComboBoxItem
+                    {
+                        Text = movie.Title,
+                        Value = movie.MovieID
+                    });
+                }
+
+                cboMovie.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi load phim: {ex.Message}");
+            }
+        }
+
+        private void LoadPageSizes()
+        {
+            cboPageSize.SelectedIndex = 0;
+        }
+
+        private void SetupEvents()
+        {
+            // Pagination
+            btnFirstPage.Click += (s, e) => { currentPage = 1; LoadShowTimes(); };
+            btnPrevPage.Click += (s, e) => { if (currentPage > 1) { currentPage--; LoadShowTimes(); } };
+            btnPage2.Click += (s, e) => LoadShowTimes();
+            btnPage3.Click += (s, e) => { if (currentPage < totalPages) { currentPage++; LoadShowTimes(); } };
+            btnNextPage.Click += (s, e) => { if (currentPage < totalPages) { currentPage++; LoadShowTimes(); } };
+            btnLastPage.Click += (s, e) => { currentPage = totalPages; LoadShowTimes(); };
+
+            // Filter
+            btnFilter.Click += (s, e) => { currentPage = 1; LoadShowTimes(); };
+            btnReset.Click += (s, e) => ResetFilters();
+            cboPageSize.SelectedIndexChanged += (s, e) => { currentPage = 1; LoadShowTimes(); };
+        }
+
         #endregion
+
+        #region Load Data
+
+        private void LoadShowTimes()
+        {
+            try
+            {
+                // Lấy filter
+                int? movieId = null;
+                if (cboMovie.SelectedIndex > 0 && cboMovie.SelectedItem is ComboBoxItem movieItem)
+                {
+                    movieId = (int)movieItem.Value;
+                }
+
+                // Page size
+                pageSize = int.Parse(cboPageSize.SelectedItem?.ToString() ?? "10");
+
+                // Lấy dữ liệu
+                var result = showTimeBLL.GetShowTimesFiltered(
+                    movieId: movieId,
+                    roomId: null,
+                    startDate: null,
+                    endDate: null,
+                    pageNumber: currentPage,
+                    pageSize: pageSize
+                );
+
+                totalRecords = result.totalCount;
+                totalPages = result.totalPages;
+
+                // Chuyển đổi sang model hiển thị
+                var displayData = new System.Collections.Generic.List<ShowTimeDisplayModel>();
+                foreach (var st in result.items)
+                {
+                    displayData.Add(new ShowTimeDisplayModel
+                    {
+                        ShowTimeID = st.ShowTimeID,
+                        MovieTitle = st.Movie?.Title ?? "N/A",
+                        RoomName = st.Room?.RoomName ?? "N/A",
+                        StartTimeDisplay = st.StartTime.ToString("dd/MM/yyyy HH:mm"),
+                        EndTimeDisplay = showTimeBLL.CalculateEndTime(st).ToString("dd/MM/yyyy HH:mm"),
+                        PriceDisplay = st.Price.ToString("N0") + " VNĐ",
+                        Status = showTimeBLL.GetShowTimeStatus(st),
+                        ShowTime = st
+                    });
+                }
+
+                // Bind data
+                dgvShowtimes.DataSource = displayData;
+
+                // Update UI
+                UpdatePaginationInfo();
+                UpdatePaginationButtons();
+                ColorizeRows();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi load dữ liệu: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ColorizeRows()
+        {
+            foreach (DataGridViewRow row in dgvShowtimes.Rows)
+            {
+                if (row.Cells["colStatus"].Value != null)
+                {
+                    string status = row.Cells["colStatus"].Value.ToString();
+
+                    switch (status)
+                    {
+                        case "Sắp chiếu":
+                            row.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(220, 252, 231);
+                            row.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(22, 101, 52);
+                            break;
+                        case "Đang chiếu":
+                            row.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(219, 234, 254);
+                            row.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(30, 64, 175);
+                            break;
+                        case "Đã chiếu":
+                            row.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(243, 244, 246);
+                            row.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(107, 114, 128);
+                            break;
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region Pagination
+
+        private void UpdatePaginationInfo()
+        {
+            int startRecord = (currentPage - 1) * pageSize + 1;
+            int endRecord = System.Math.Min(currentPage * pageSize, totalRecords);
+
+            lblInfo.Text = $"⚪ Hiển thị {startRecord}-{endRecord} trong tổng số {totalRecords} suất chiếu / Trang {currentPage} / {totalPages}";
+        }
+
+        private void UpdatePaginationButtons()
+        {
+            btnFirstPage.ButtonText = "1";
+            btnPrevPage.ButtonText = currentPage > 1 ? (currentPage - 1).ToString() : "1";
+            btnPage2.ButtonText = currentPage.ToString();
+            btnPage3.ButtonText = currentPage < totalPages ? (currentPage + 1).ToString() : currentPage.ToString();
+            btnNextPage.ButtonText = "›";
+            btnLastPage.ButtonText = "⟫";
+
+            btnFirstPage.Enabled = currentPage > 1;
+            btnPrevPage.Enabled = currentPage > 1;
+            btnPage3.Enabled = currentPage < totalPages;
+            btnNextPage.Enabled = currentPage < totalPages;
+            btnLastPage.Enabled = currentPage < totalPages;
+
+            btnPage2.BackgroundColor = System.Drawing.Color.FromArgb(220, 53, 69);
+            btnFirstPage.BackgroundColor = System.Drawing.Color.FromArgb(108, 117, 125);
+            btnPrevPage.BackgroundColor = System.Drawing.Color.FromArgb(108, 117, 125);
+            btnPage3.BackgroundColor = System.Drawing.Color.FromArgb(108, 117, 125);
+        }
+
+        #endregion
+
+        #region Filter
+
+        private void ResetFilters()
+        {
+            cboMovie.SelectedIndex = 0;
+            cboPageSize.SelectedIndex = 0;
+            currentPage = 1;
+            LoadShowTimes();
+        }
+
+        #endregion
+
+        #region Event Handlers
+
+        private void HandleCellClick(DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var columnName = dgvShowtimes.Columns[e.ColumnIndex].Name;
+            var showTimeId = (Guid)dgvShowtimes.Rows[e.RowIndex].Cells["colShowtimeId"].Value;
+
+            if (columnName == "colEdit")
+            {
+                EditShowTime(showTimeId);
+            }
+            else if (columnName == "colDelete")
+            {
+                DeleteShowTime(showTimeId);
+            }
+        }
+
+        private void EditShowTime(Guid showTimeId)
+        {
+            MessageBox.Show($"Chức năng sửa đang phát triển!\nID: {showTimeId}",
+                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void DeleteShowTime(Guid showTimeId)
+        {
+            try
+            {
+                var showTime = showTimeBLL.GetShowTimeById(showTimeId);
+                if (showTime == null)
+                {
+                    MessageBox.Show("Không tìm thấy suất chiếu!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var confirmResult = MessageBox.Show(
+                    $"Xác nhận xóa suất chiếu:\n\n" +
+                    $"📽️ Phim: {showTime.Movie?.Title}\n" +
+                    $"🎭 Phòng: {showTime.Room?.RoomName}\n" +
+                    $"⏰ Thời gian: {showTime.StartTime:dd/MM/yyyy HH:mm}\n" +
+                    $"💰 Giá: {showTime.Price:N0} VNĐ",
+                    "⚠️ Xác nhận xóa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    var result = showTimeBLL.DeleteShowTime(showTimeId);
+                    MessageBox.Show(result.message,
+                        result.success ? "✓ Thành công" : "✗ Lỗi",
+                        MessageBoxButtons.OK,
+                        result.success ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+
+                    if (result.success)
+                    {
+                        LoadShowTimes();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi xóa: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        #endregion
+
+        #region Helper Classes
+
+        private class ComboBoxItem
+        {
+            public string Text { get; set; }
+            public object Value { get; set; }
+            public override string ToString() => Text;
+        }
+
+        private class ShowTimeDisplayModel
+        {
+            public Guid ShowTimeID { get; set; }
+            public string MovieTitle { get; set; }
+            public string RoomName { get; set; }
+            public string StartTimeDisplay { get; set; }
+            public string EndTimeDisplay { get; set; }
+            public string PriceDisplay { get; set; }
+            public string Status { get; set; }
+            public DTO.ShowTime ShowTime { get; set; }
+        }
+
+        #endregion
+
+        #endregion
+
 
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Label lblTitle;
@@ -695,12 +1111,10 @@
         private System.Windows.Forms.Panel panelDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShowtimeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMovie;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCinema;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRoom;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStartTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEndTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
-        private System.Windows.Forms.DataGridViewButtonColumn colView;
     }
 }
