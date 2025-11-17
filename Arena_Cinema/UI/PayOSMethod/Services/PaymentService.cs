@@ -3,19 +3,48 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using PayOS;
+using PayOS;
 
 namespace UI.PayOSMethod.Services
 {
     public class PaymentService
     {
-        //private readonly PayOSClient _payOS;
+        private readonly PayOSClient _payOS;
 
-        //public PaymentService(string clientId, string apiKey, string checksumKey)
+        public PaymentService(string clientId, string apiKey, string checksumKey)
+        {
+            _payOS = new PayOSClient(clientId, apiKey, checksumKey);
+        }
+
+        //public async Task<createPaymentLinkResult> CreatePaymentLink(
+        //    long orderCode,
+        //    int amount,
+        //    string description,
+        //    string returnUrl,
+        //    string cancelUrl)
         //{
-        //    _payOS = new PayOSClient(clientId, apiKey, checksumKey);
+        //    try
+        //    {
+        //        var items = new List<itemData>
+        //        {
+        //            new itemData("Đơn hàng #" + orderCode, 1, amount)
+        //        };
+        //        var paymentData = new paymentData(
+        //            orderCode: orderCode,
+        //            amount: amount,
+        //            description: description,
+        //            items: items,
+        //            returnUrl: returnUrl,
+        //            cancelUrl: cancelUrl
+        //        );
+        //        createPaymentLinkResult result = await _payOS.createPaymentLink(paymentData);
+        //        return result;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception($"Lỗi tạo link thanh toán: {ex.Message}");
+        //    }
         //}
-
         //Tạo link thanh toán
         //public async Task<CreatePaymentResult> CreatePaymentLink(
         //    long orderCode,
