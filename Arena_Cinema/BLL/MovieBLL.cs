@@ -37,6 +37,12 @@ namespace BLL
             if (string.IsNullOrWhiteSpace(movie.AgeLimit))
                 return "Vui lòng chọn giới hạn độ tuổi!";
 
+            if (string.IsNullOrWhiteSpace(movie.Genre))
+                return "Vui lòng nhập thể loại phim!";
+
+            if (string.IsNullOrWhiteSpace(movie.MovieType))
+                return "Vui lòng chọn loại phim!";
+
             if (movie.StartTime.HasValue && movie.EndTime.HasValue)
             {
                 if (movie.EndTime.Value < movie.StartTime.Value)
@@ -63,7 +69,10 @@ namespace BLL
 
                 // Set default values
                 movie.IsDeleted = false;
-                movie.MovieType = "Phim"; // Default value
+
+                // Nếu không có Sub thì dùng Genre
+                if (string.IsNullOrWhiteSpace(movie.Sub))
+                    movie.Sub = movie.Genre;
 
                 // Thêm vào database
                 bool result = movieDAL.AddMovie(movie);
@@ -143,12 +152,12 @@ namespace BLL
             {
                 int totalRecords;
                 var movies = movieDAL.SearchAndFilterMovies(searchText, filterStatus, pageNumber, pageSize, out totalRecords);
-                totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+                totalPages = totalRecords > 0 ? (int)Math.Ceiling((double)totalRecords / pageSize) : 1;
                 return movies;
             }
             catch (Exception)
             {
-                totalPages = 0;
+                totalPages = 1;
                 return new List<Movie>();
             }
         }
@@ -203,6 +212,10 @@ namespace BLL
                 if (!string.IsNullOrEmpty(validationError))
                     return new Tuple<bool, string>(false, validationError);
 
+                // Nếu không có Sub thì dùng Genre
+                if (string.IsNullOrWhiteSpace(movie.Sub))
+                    movie.Sub = movie.Genre;
+
                 // Cập nhật
                 bool result = movieDAL.UpdateMovie(movie);
 
@@ -217,11 +230,24 @@ namespace BLL
             }
         }
 
-        // Xóa phim
+        // Xóa phim (soft delete)
         public Tuple<bool, string> DeleteMovie(int movieId)
         {
             try
             {
+                // Kiểm tra xem phim có tồn tại không
+                var movie = movieDAL.GetMovieById(movieId);
+                if (movie == null)
+                    return new Tuple<bool, string>(false, "Không tìm thấy phim!");
+
+                // Kiểm tra xem phim có đang được sử dụng trong lịch chiếu không
+                if (movieDAL.IsMovieInUse(movieId))
+                    return new Tuple<bool, string>(false, "Không thể xóa phim đang có lịch chiếu!");
+
+                // Kiểm tra xem phim có trong MovieProducts không
+                if (movieDAL.IsMovieInMovieProducts(movieId))
+                    return new Tuple<bool, string>(false, "Không thể xóa phim đã có sản phẩm liên kết!");
+
                 bool result = movieDAL.DeleteMovie(movieId);
 
                 if (result)
@@ -242,12 +268,12 @@ namespace BLL
             {
                 int totalRecords;
                 var movies = movieDAL.GetMoviesWithPaging(pageNumber, pageSize, out totalRecords);
-                totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+                totalPages = totalRecords > 0 ? (int)Math.Ceiling((double)totalRecords / pageSize) : 1;
                 return movies;
             }
             catch (Exception)
             {
-                totalPages = 0;
+                totalPages = 1;
                 return new List<Movie>();
             }
         }
@@ -255,7 +281,16 @@ namespace BLL
         // Format thời lượng để hiển thị
         public string FormatDuration(int durationMinutes)
         {
-            return $"{durationMinutes} phút";
+            if (durationMinutes < 60)
+                return $"{durationMinutes} phút";
+
+            int hours = durationMinutes / 60;
+            int minutes = durationMinutes % 60;
+
+            if (minutes == 0)
+                return $"{hours} giờ";
+
+            return $"{hours} giờ {minutes} phút";
         }
 
         // Format ngày tháng để hiển thị
@@ -280,6 +315,192 @@ namespace BLL
                 return $"Khởi chiếu: {startDate}";
 
             return $"Khởi chiếu: {startDate}\nKết thúc: {endDate}";
+        }
+
+        // Lấy danh sách ngôn ngữ
+        public List<string> GetLanguages()
+        {
+            return new List<string>
+            {
+                "Tiếng Việt",
+                "Tiếng Anh",
+                "Tiếng Nhật",
+                "Tiếng Hàn",
+                "Tiếng Trung",
+                "Tiếng Thái",
+                "Tiếng Pháp",
+                "Tiếng Tây Ban Nha"
+            };
+        }
+
+        // Lấy danh sách giới hạn tuổi
+        public List<string> GetAgeRatings()
+        {
+            return new List<string>
+            {
+                "P - Mọi lứa tuổi",
+                "K - Dưới 13 tuổi",
+                "T13 - Từ 13 tuổi",
+                "T16 - Từ 16 tuổi",
+                "T18 - Từ 18 tuổi",
+                "C - Cấm chiếu"
+            };
+        }
+
+        // Lấy danh sách loại phim
+        public List<string> GetMovieTypes()
+        {
+            return new List<string>
+            {
+                "2D",
+                "3D",
+                "4D",
+                "IMAX"
+            };
+        }
+
+        // Kiểm tra phim có đang được chiếu không
+        public bool IsMovieCurrentlyShowing(int movieId)
+        {
+            try
+            {
+                var movie = movieDAL.GetMovieById(movieId);
+                if (movie == null)
+                    return false;
+
+                string status = GetMovieStatus(movie);
+                return status == "Đang chiếu";
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        // Lấy số lượng phim theo trạng thái
+        public Dictionary<string, int> GetMovieCountByStatus()
+        {
+            try
+            {
+                var allMovies = movieDAL.GetAllMovies();
+                var result = new Dictionary<string, int>
+                {
+                    { "Tất cả phim", allMovies.Count },
+                    { "Đang chiếu", 0 },
+                    { "Sắp chiếu", 0 },
+                    { "Đã kết thúc", 0 }
+                };
+
+                foreach (var movie in allMovies)
+                {
+                    string status = GetMovieStatus(movie);
+                    if (result.ContainsKey(status))
+                        result[status]++;
+                }
+
+                return result;
+            }
+            catch (Exception)
+            {
+                return new Dictionary<string, int>();
+            }
+        }
+
+        // Kiểm tra phim có thể xóa không
+        public Tuple<bool, string> CanDeleteMovie(int movieId)
+        {
+            try
+            {
+                var movie = movieDAL.GetMovieById(movieId);
+                if (movie == null)
+                    return new Tuple<bool, string>(false, "Không tìm thấy phim!");
+
+                if (movieDAL.IsMovieInUse(movieId))
+                    return new Tuple<bool, string>(false, "Phim đang có lịch chiếu!");
+
+                if (movieDAL.IsMovieInMovieProducts(movieId))
+                    return new Tuple<bool, string>(false, "Phim đã có sản phẩm liên kết!");
+
+                return new Tuple<bool, string>(true, "Có thể xóa phim");
+            }
+            catch (Exception ex)
+            {
+                return new Tuple<bool, string>(false, $"Lỗi: {ex.Message}");
+            }
+        }
+        // Thêm vào class MovieBLL
+
+        // Lấy danh sách phim đã xóa
+        public List<Movie> GetDeletedMovies()
+        {
+            try
+            {
+                return movieDAL.GetDeletedMovies();
+            }
+            catch (Exception)
+            {
+                return new List<Movie>();
+            }
+        }
+
+        // Khôi phục phim
+        public Tuple<bool, string> RestoreMovie(int movieId)
+        {
+            try
+            {
+                var movie = movieDAL.GetMovieById(movieId);
+                if (movie == null)
+                {
+                    // Thử tìm trong phim đã xóa
+                    var deletedMovies = movieDAL.GetDeletedMovies();
+                    movie = deletedMovies.FirstOrDefault(m => m.MovieID == movieId);
+
+                    if (movie == null)
+                        return new Tuple<bool, string>(false, "Không tìm thấy phim!");
+                }
+
+                bool result = movieDAL.RestoreMovie(movieId);
+
+                if (result)
+                    return new Tuple<bool, string>(true, "Khôi phục phim thành công!");
+                else
+                    return new Tuple<bool, string>(false, "Có lỗi xảy ra khi khôi phục phim!");
+            }
+            catch (Exception ex)
+            {
+                return new Tuple<bool, string>(false, $"Lỗi: {ex.Message}");
+            }
+        }
+
+        // Xóa vĩnh viễn phim
+        public Tuple<bool, string> PermanentDeleteMovie(int movieId)
+        {
+            try
+            {
+                // Kiểm tra phim có đang được sử dụng không
+                if (movieDAL.IsMovieInUse(movieId))
+                    return new Tuple<bool, string>(false, "Không thể xóa vĩnh viễn phim đang có lịch chiếu!");
+
+                if (movieDAL.IsMovieInMovieProducts(movieId))
+                    return new Tuple<bool, string>(false, "Không thể xóa vĩnh viễn phim đã có sản phẩm liên kết!");
+
+                bool result = movieDAL.PermanentDeleteMovie(movieId);
+
+                if (result)
+                    return new Tuple<bool, string>(true, "Xóa vĩnh viễn phim thành công!");
+                else
+                    return new Tuple<bool, string>(false, "Không tìm thấy phim hoặc có lỗi xảy ra!");
+            }
+            catch (Exception ex)
+            {
+                return new Tuple<bool, string>(false, $"Lỗi: {ex.Message}");
+            }
+        }
+
+        // Dispose
+        public void Dispose()
+        {
+            movieDAL?.Dispose();
         }
     }
 }

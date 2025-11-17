@@ -1,6 +1,6 @@
 ﻿namespace UI.Movie
 {
-    partial class AddMovieUC
+    partial class EditMovieUC
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddMovieUC));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.btnBack = new ReaLTaiizor.Controls.ParrotButton();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -115,9 +114,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(20, 15);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(222, 32);
+            this.lblTitle.Size = new System.Drawing.Size(234, 32);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "⊕ Thêm Phim Mới";
+            this.lblTitle.Text = "✏ Chỉnh Sửa Phim";
             // 
             // panelMain
             // 
@@ -130,6 +129,7 @@
             this.panelMain.Padding = new System.Windows.Forms.Padding(50, 30, 50, 30);
             this.panelMain.Size = new System.Drawing.Size(1360, 720);
             this.panelMain.TabIndex = 1;
+            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // grb_Movie
             // 
@@ -182,11 +182,12 @@
             // 
             // lblDuration
             // 
+            this.lblDuration.AutoSize = true;
             this.lblDuration.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblDuration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.lblDuration.Location = new System.Drawing.Point(57, 145);
+            this.lblDuration.Location = new System.Drawing.Point(66, 145);
             this.lblDuration.Name = "lblDuration";
-            this.lblDuration.Size = new System.Drawing.Size(197, 20);
+            this.lblDuration.Size = new System.Drawing.Size(164, 20);
             this.lblDuration.TabIndex = 36;
             this.lblDuration.Text = "⏱️ Thời Lượng (phút)";
             // 
@@ -209,7 +210,7 @@
             "2D",
             "3D",
             "4D",
-            "IMax"});
+            "IMAX"});
             this.cbotype.Location = new System.Drawing.Point(590, 276);
             this.cbotype.MaxDropDownItems = 4;
             this.cbotype.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
@@ -368,13 +369,14 @@
             this.btnCancel.TextColor = System.Drawing.Color.White;
             this.btnCancel.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnCancel.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // btnSave
             // 
             this.btnSave.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             this.btnSave.ButtonImage = null;
             this.btnSave.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnSave.ButtonText = "💾 Lưu Phim";
+            this.btnSave.ButtonText = "💾 Cập Nhật";
             this.btnSave.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(137)))), ((int)(((byte)(55)))));
             this.btnSave.ClickTextColor = System.Drawing.Color.White;
             this.btnSave.CornerRadius = 5;
@@ -392,6 +394,7 @@
             this.btnSave.TextColor = System.Drawing.Color.White;
             this.btnSave.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnSave.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // lblPoster
             // 
@@ -406,9 +409,9 @@
             // btnUploadImage
             // 
             this.btnUploadImage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.btnUploadImage.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnUploadImage.ButtonImage")));
+            this.btnUploadImage.ButtonImage = null;
             this.btnUploadImage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Dark;
-            this.btnUploadImage.ButtonText = "Tải ảnh lên";
+            this.btnUploadImage.ButtonText = "Đổi ảnh";
             this.btnUploadImage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
             this.btnUploadImage.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
             this.btnUploadImage.CornerRadius = 5;
@@ -426,6 +429,7 @@
             this.btnUploadImage.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
             this.btnUploadImage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnUploadImage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnUploadImage.Click += new System.EventHandler(this.BtnUploadImage_Click);
             // 
             // txtPreview
             // 
@@ -638,14 +642,14 @@
             this.txtDuration.Text = "";
             this.txtDuration.TrailingIcon = null;
             // 
-            // AddMovieUC
+            // EditMovieUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelHeader);
-            this.Name = "AddMovieUC";
+            this.Name = "EditMovieUC";
             this.Size = new System.Drawing.Size(1360, 780);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();

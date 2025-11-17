@@ -7,17 +7,21 @@ using Common;
 
 namespace UI.Movie
 {
-    public partial class AddMovieUC : UserControl
+    public partial class EditMovieUC : UserControl
     {
         private Home _home;
         private DTO.Employee _employee;
         private MovieBLL movieBLL;
         private string selectedImagePath = "";
+        private DTO.Movie _editingMovie;
+        private bool isDataChanged = false;
 
-        public AddMovieUC(Home home, DTO.Employee employee)
+        public EditMovieUC(Home home, DTO.Employee employee, DTO.Movie movieToEdit)
         {
             _home = home;
             _employee = employee;
+            _editingMovie = movieToEdit;
+
             InitializeComponent();
 
             movieBLL = new MovieBLL();
@@ -31,36 +35,140 @@ namespace UI.Movie
             btnCancel.Click += BtnCancel_Click;
             btnUploadImage.Click += BtnUploadImage_Click;
 
-            // Set default values
-            InitializeDefaultValues();
+            // Track changes
+            SetupChangeTracking();
+
+            // Load dữ liệu phim vào form
+            LoadMovieData();
         }
 
-        private void InitializeDefaultValues()
+        private void SetupChangeTracking()
+        {
+            // Track text changes
+            txtMovieName.TextChanged += (s, e) => isDataChanged = true;
+            txtDuration.TextChanged += (s, e) => isDataChanged = true;
+            txtCategory.TextChanged += (s, e) => isDataChanged = true;
+            txtDescription.TextChanged += (s, e) => isDataChanged = true;
+            txtPreview.TextChanged += (s, e) => isDataChanged = true;
+            txtTrailer.TextChanged += (s, e) => isDataChanged = true;
+
+            // Track combobox changes
+            cboLanguage.SelectedIndexChanged += (s, e) => isDataChanged = true;
+            cboGenre.SelectedIndexChanged += (s, e) => isDataChanged = true;
+            cbotype.SelectedIndexChanged += (s, e) => isDataChanged = true;
+
+            // Track checkbox changes
+            chkSubtitle.CheckedChanged += (s, e) => isDataChanged = true;
+
+            // Track date changes
+            dtpStartDate.ValueChanged += (s, e) => isDataChanged = true;
+            dtpEndDate.ValueChanged += (s, e) => isDataChanged = true;
+        }
+
+        private void LoadMovieData()
         {
             try
             {
-                // Set ngày mặc định
-                dtpStartDate.Value = DateTime.Today;
-                dtpEndDate.Value = DateTime.Today.AddMonths(1);
+                if (_editingMovie == null)
+                {
+                    MessageBox.Show("Không tìm thấy thông tin phim!", "✗ Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    BackToMovieList();
+                    return;
+                }
 
-                // Set default cho combobox Language
-                if (cboLanguage.Items.Count > 0)
+                // Tạm dừng tracking changes
+                isDataChanged = false;
+
+                // Fill data vào các control
+                txtMovieName.Text = _editingMovie.Title ?? "";
+                txtDuration.Text = _editingMovie.DurationMinutes.ToString();
+                txtCategory.Text = _editingMovie.Genre ?? ""; // Sử dụng Genre thay vì Sub
+                txtDescription.Text = _editingMovie.Description ?? "";
+                txtPreview.Text = _editingMovie.Preview ?? "";
+                txtTrailer.Text = _editingMovie.LinkTrailer ?? "";
+                chkSubtitle.Checked = _editingMovie.Dub ?? false;
+
+                // Set date
+                if (_editingMovie.StartTime.HasValue)
+                    dtpStartDate.Value = _editingMovie.StartTime.Value;
+                else
+                    dtpStartDate.Value = DateTime.Today;
+
+                if (_editingMovie.EndTime.HasValue)
+                    dtpEndDate.Value = _editingMovie.EndTime.Value;
+                else
+                    dtpEndDate.Value = DateTime.Today.AddMonths(1);
+
+                // Set combobox Language
+                if (!string.IsNullOrEmpty(_editingMovie.Language))
+                {
+                    int langIndex = cboLanguage.FindStringExact(_editingMovie.Language);
+                    if (langIndex >= 0)
+                        cboLanguage.SelectedIndex = langIndex;
+                    else if (cboLanguage.Items.Count > 0)
+                        cboLanguage.SelectedIndex = 0;
+                }
+                else if (cboLanguage.Items.Count > 0)
+                {
                     cboLanguage.SelectedIndex = 0;
+                }
 
-                // Set default cho combobox Genre (Age Limit)
-                if (cboGenre.Items.Count > 0)
+                // Set combobox Age Limit
+                if (!string.IsNullOrEmpty(_editingMovie.AgeLimit))
+                {
+                    bool found = false;
+                    for (int i = 0; i < cboGenre.Items.Count; i++)
+                    {
+                        string item = cboGenre.Items[i].ToString();
+                        if (item.StartsWith(_editingMovie.AgeLimit))
+                        {
+                            cboGenre.SelectedIndex = i;
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (!found && cboGenre.Items.Count > 0)
+                        cboGenre.SelectedIndex = 0;
+                }
+                else if (cboGenre.Items.Count > 0)
+                {
                     cboGenre.SelectedIndex = 0;
+                }
 
-                // Set default cho combobox Movie Type
-                if (cbotype.Items.Count > 0)
+                // Set combobox Movie Type
+                if (!string.IsNullOrEmpty(_editingMovie.MovieType))
+                {
+                    int typeIndex = cbotype.FindStringExact(_editingMovie.MovieType);
+                    if (typeIndex >= 0)
+                        cbotype.SelectedIndex = typeIndex;
+                    else if (cbotype.Items.Count > 0)
+                        cbotype.SelectedIndex = 0;
+                }
+                else if (cbotype.Items.Count > 0)
+                {
                     cbotype.SelectedIndex = 0;
+                }
 
-                // Đặt placeholder image
-                picImage.BackColor = Color.FromArgb(200, 200, 200);
+                // Load image
+                selectedImagePath = _editingMovie.ImageUrl ?? "";
+                if (!string.IsNullOrEmpty(selectedImagePath))
+                {
+                    ImgHelper.DisplayImageFromRelative(selectedImagePath, picImage);
+                }
+                else
+                {
+                    picImage.BackColor = Color.FromArgb(200, 200, 200);
+                    picImage.Image = null;
+                }
+
+                // Reset tracking sau khi load xong
+                isDataChanged = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi khởi tạo: {ex.Message}", "Lỗi",
+                MessageBox.Show($"Lỗi khi tải dữ liệu phim: {ex.Message}", "✗ Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -74,13 +182,14 @@ namespace UI.Movie
                 if (!string.IsNullOrEmpty(relativePath))
                 {
                     selectedImagePath = relativePath;
-                    MessageBox.Show("Tải ảnh thành công!", "Thông báo",
+                    isDataChanged = true;
+                    MessageBox.Show("Tải ảnh thành công!", "✓ Thông báo",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải ảnh: {ex.Message}", "Lỗi",
+                MessageBox.Show($"Lỗi khi tải ảnh: {ex.Message}", "✗ Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -94,7 +203,7 @@ namespace UI.Movie
 
                 // Hiển thị xác nhận
                 var confirmResult = MessageBox.Show(
-                    $"Bạn có chắc muốn thêm phim '{txtMovieName.Text.Trim()}'?",
+                    $"Bạn có chắc muốn cập nhật thông tin phim '{txtMovieName.Text.Trim()}'?",
                     "Xác nhận",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
@@ -102,9 +211,10 @@ namespace UI.Movie
                 if (confirmResult != DialogResult.Yes)
                     return;
 
-                // Tạo object Movie với tất cả các trường từ model
+                // Tạo object Movie với dữ liệu mới
                 DTO.Movie movie = new DTO.Movie
                 {
+                    MovieID = _editingMovie.MovieID, // Giữ nguyên ID
                     Title = txtMovieName.Text.Trim(),
                     DurationMinutes = int.Parse(txtDuration.Text.Trim()),
                     Genre = txtCategory.Text.Trim(), // Thể loại phim
@@ -119,14 +229,15 @@ namespace UI.Movie
                     Description = txtDescription.Text.Trim(),
                     Preview = txtPreview.Text.Trim(),
                     ImageUrl = selectedImagePath,
-                    IsDeleted = false
+                    IsDeleted = _editingMovie.IsDeleted // Giữ nguyên trạng thái xóa
                 };
 
-                // Gọi BLL để thêm phim
-                var result = movieBLL.AddMovie(movie);
+                // Gọi BLL để update phim
+                var result = movieBLL.UpdateMovie(movie);
 
                 if (result.Item1)
                 {
+                    isDataChanged = false; // Reset flag
                     MessageBox.Show(result.Item2, "✓ Thành công",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     BackToMovieList();
@@ -145,7 +256,7 @@ namespace UI.Movie
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Lỗi",
+                MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "✗ Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -239,35 +350,6 @@ namespace UI.Movie
                 return false;
             }
 
-            // Validate ngày khởi chiếu
-            if (dtpStartDate.Value < DateTime.Today.AddDays(-1))
-            {
-                var result = MessageBox.Show(
-                    "Ngày khởi chiếu đã qua. Bạn có muốn tiếp tục không?",
-                    "Cảnh báo",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (result == DialogResult.No)
-                {
-                    dtpStartDate.Focus();
-                    return false;
-                }
-            }
-
-            // Validate ảnh
-            if (string.IsNullOrEmpty(selectedImagePath))
-            {
-                var result = MessageBox.Show(
-                    "Bạn chưa chọn ảnh poster. Bạn có muốn tiếp tục không?",
-                    "Cảnh báo",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (result == DialogResult.No)
-                    return false;
-            }
-
             return true;
         }
 
@@ -287,13 +369,20 @@ namespace UI.Movie
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show(
-                "Bạn có chắc muốn hủy? Dữ liệu chưa lưu sẽ bị mất!",
-                "⚠ Xác nhận",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+            if (isDataChanged)
+            {
+                var confirmResult = MessageBox.Show(
+                    "Bạn có chắc muốn hủy? Các thay đổi sẽ không được lưu!",
+                    "⚠ Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
-            if (confirmResult == DialogResult.Yes)
+                if (confirmResult == DialogResult.Yes)
+                {
+                    BackToMovieList();
+                }
+            }
+            else
             {
                 BackToMovieList();
             }
@@ -308,23 +397,35 @@ namespace UI.Movie
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi quay lại danh sách: {ex.Message}", "Lỗi",
+                MessageBox.Show($"Lỗi khi quay lại danh sách: {ex.Message}", "✗ Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            var confirmResult = MessageBox.Show(
-                "Bạn có chắc muốn quay lại? Dữ liệu chưa lưu sẽ bị mất!",
-                "⚠ Xác nhận",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+            if (isDataChanged)
+            {
+                var confirmResult = MessageBox.Show(
+                    "Bạn có chắc muốn quay lại? Các thay đổi sẽ không được lưu!",
+                    "⚠ Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
-            if (confirmResult == DialogResult.Yes)
+                if (confirmResult == DialogResult.Yes)
+                {
+                    BackToMovieList();
+                }
+            }
+            else
             {
                 BackToMovieList();
             }
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

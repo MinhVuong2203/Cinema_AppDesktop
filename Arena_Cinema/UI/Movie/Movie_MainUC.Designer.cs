@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Movie_MainUC));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.right_panel = new System.Windows.Forms.Panel();
+            this.btnDeletedMovies = new ReaLTaiizor.Controls.ParrotButton();
             this.btnAddMovie = new ReaLTaiizor.Controls.ParrotButton();
             this.lbl_MovieTitle = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
@@ -122,12 +123,38 @@
             // 
             // right_panel
             // 
+            this.right_panel.Controls.Add(this.btnDeletedMovies);
             this.right_panel.Controls.Add(this.btnAddMovie);
             this.right_panel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.right_panel.Location = new System.Drawing.Point(1163, 0);
+            this.right_panel.Location = new System.Drawing.Point(996, 0);
             this.right_panel.Name = "right_panel";
-            this.right_panel.Size = new System.Drawing.Size(197, 60);
+            this.right_panel.Size = new System.Drawing.Size(364, 60);
             this.right_panel.TabIndex = 3;
+            // 
+            // btnDeletedMovies
+            // 
+            this.btnDeletedMovies.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
+            this.btnDeletedMovies.ButtonImage = null;
+            this.btnDeletedMovies.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnDeletedMovies.ButtonText = "- Phim đã xóa";
+            this.btnDeletedMovies.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnDeletedMovies.ClickTextColor = System.Drawing.Color.White;
+            this.btnDeletedMovies.CornerRadius = 5;
+            this.btnDeletedMovies.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDeletedMovies.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDeletedMovies.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnDeletedMovies.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
+            this.btnDeletedMovies.HoverTextColor = System.Drawing.Color.White;
+            this.btnDeletedMovies.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnDeletedMovies.Location = new System.Drawing.Point(210, 14);
+            this.btnDeletedMovies.Name = "btnDeletedMovies";
+            this.btnDeletedMovies.Size = new System.Drawing.Size(145, 36);
+            this.btnDeletedMovies.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnDeletedMovies.TabIndex = 3;
+            this.btnDeletedMovies.TextColor = System.Drawing.Color.White;
+            this.btnDeletedMovies.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnDeletedMovies.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnDeletedMovies.Click += new System.EventHandler(this.btnDeletedMovies_Click);
             // 
             // btnAddMovie
             // 
@@ -223,7 +250,7 @@
             this.movieCard1.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.movieCard1.Name = "movieCard1";
             this.movieCard1.Padding = new System.Windows.Forms.Padding(5);
-            this.movieCard1.Size = new System.Drawing.Size(296, 380);
+            this.movieCard1.Size = new System.Drawing.Size(296, 407);
             this.movieCard1.TabIndex = 0;
             // 
             // btnDelete1
@@ -231,7 +258,7 @@
             this.btnDelete1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnDelete1.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnDelete1.ButtonImage")));
             this.btnDelete1.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnDelete1.ButtonText = "🗑";
+            this.btnDelete1.ButtonText = "Xóa";
             this.btnDelete1.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnDelete1.ClickTextColor = System.Drawing.Color.White;
             this.btnDelete1.CornerRadius = 3;
@@ -241,9 +268,9 @@
             this.btnDelete1.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
             this.btnDelete1.HoverTextColor = System.Drawing.Color.White;
             this.btnDelete1.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnDelete1.Location = new System.Drawing.Point(245, 350);
+            this.btnDelete1.Location = new System.Drawing.Point(223, 374);
             this.btnDelete1.Name = "btnDelete1";
-            this.btnDelete1.Size = new System.Drawing.Size(40, 25);
+            this.btnDelete1.Size = new System.Drawing.Size(65, 25);
             this.btnDelete1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnDelete1.TabIndex = 9;
             this.btnDelete1.TextColor = System.Drawing.Color.White;
@@ -255,7 +282,7 @@
             this.btnEdit1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
             this.btnEdit1.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnEdit1.ButtonImage")));
             this.btnEdit1.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnEdit1.ButtonText = "✏";
+            this.btnEdit1.ButtonText = "Sửa";
             this.btnEdit1.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
             this.btnEdit1.ClickTextColor = System.Drawing.Color.White;
             this.btnEdit1.CornerRadius = 3;
@@ -265,9 +292,9 @@
             this.btnEdit1.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(210)))), ((int)(((byte)(50)))));
             this.btnEdit1.HoverTextColor = System.Drawing.Color.White;
             this.btnEdit1.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnEdit1.Location = new System.Drawing.Point(125, 350);
+            this.btnEdit1.Location = new System.Drawing.Point(131, 374);
             this.btnEdit1.Name = "btnEdit1";
-            this.btnEdit1.Size = new System.Drawing.Size(40, 25);
+            this.btnEdit1.Size = new System.Drawing.Size(65, 25);
             this.btnEdit1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnEdit1.TabIndex = 8;
             this.btnEdit1.TextColor = System.Drawing.Color.White;
@@ -279,7 +306,7 @@
             this.btnView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
             this.btnView1.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnView1.ButtonImage")));
             this.btnView1.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnView1.ButtonText = "👁";
+            this.btnView1.ButtonText = "Chi Tiết";
             this.btnView1.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(140)))), ((int)(((byte)(160)))));
             this.btnView1.ClickTextColor = System.Drawing.Color.White;
             this.btnView1.CornerRadius = 3;
@@ -289,9 +316,9 @@
             this.btnView1.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(180)))), ((int)(((byte)(200)))));
             this.btnView1.HoverTextColor = System.Drawing.Color.White;
             this.btnView1.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnView1.Location = new System.Drawing.Point(12, 350);
+            this.btnView1.Location = new System.Drawing.Point(12, 374);
             this.btnView1.Name = "btnView1";
-            this.btnView1.Size = new System.Drawing.Size(40, 25);
+            this.btnView1.Size = new System.Drawing.Size(89, 25);
             this.btnView1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnView1.TabIndex = 7;
             this.btnView1.TextColor = System.Drawing.Color.White;
@@ -304,7 +331,7 @@
             this.lblDates1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.lblDates1.Location = new System.Drawing.Point(12, 320);
             this.lblDates1.Name = "lblDates1";
-            this.lblDates1.Size = new System.Drawing.Size(275, 30);
+            this.lblDates1.Size = new System.Drawing.Size(275, 39);
             this.lblDates1.TabIndex = 6;
             this.lblDates1.Text = "Khởi chiếu:         28/11/2025\r\nKết thúc:            06/12/2025";
             // 
@@ -393,7 +420,7 @@
             this.movieCard2.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.movieCard2.Name = "movieCard2";
             this.movieCard2.Padding = new System.Windows.Forms.Padding(5);
-            this.movieCard2.Size = new System.Drawing.Size(296, 380);
+            this.movieCard2.Size = new System.Drawing.Size(296, 407);
             this.movieCard2.TabIndex = 1;
             // 
             // btnDelete2
@@ -401,7 +428,7 @@
             this.btnDelete2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnDelete2.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnDelete2.ButtonImage")));
             this.btnDelete2.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnDelete2.ButtonText = "🗑";
+            this.btnDelete2.ButtonText = "Xóa";
             this.btnDelete2.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnDelete2.ClickTextColor = System.Drawing.Color.White;
             this.btnDelete2.CornerRadius = 3;
@@ -411,9 +438,9 @@
             this.btnDelete2.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
             this.btnDelete2.HoverTextColor = System.Drawing.Color.White;
             this.btnDelete2.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnDelete2.Location = new System.Drawing.Point(245, 350);
+            this.btnDelete2.Location = new System.Drawing.Point(223, 374);
             this.btnDelete2.Name = "btnDelete2";
-            this.btnDelete2.Size = new System.Drawing.Size(40, 25);
+            this.btnDelete2.Size = new System.Drawing.Size(65, 25);
             this.btnDelete2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnDelete2.TabIndex = 9;
             this.btnDelete2.TextColor = System.Drawing.Color.White;
@@ -425,7 +452,7 @@
             this.btnEdit2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
             this.btnEdit2.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnEdit2.ButtonImage")));
             this.btnEdit2.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnEdit2.ButtonText = "✏";
+            this.btnEdit2.ButtonText = "Sửa";
             this.btnEdit2.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
             this.btnEdit2.ClickTextColor = System.Drawing.Color.White;
             this.btnEdit2.CornerRadius = 3;
@@ -435,9 +462,9 @@
             this.btnEdit2.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(210)))), ((int)(((byte)(50)))));
             this.btnEdit2.HoverTextColor = System.Drawing.Color.White;
             this.btnEdit2.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnEdit2.Location = new System.Drawing.Point(125, 350);
+            this.btnEdit2.Location = new System.Drawing.Point(131, 374);
             this.btnEdit2.Name = "btnEdit2";
-            this.btnEdit2.Size = new System.Drawing.Size(40, 25);
+            this.btnEdit2.Size = new System.Drawing.Size(65, 25);
             this.btnEdit2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnEdit2.TabIndex = 8;
             this.btnEdit2.TextColor = System.Drawing.Color.White;
@@ -449,7 +476,7 @@
             this.btnView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
             this.btnView2.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnView2.ButtonImage")));
             this.btnView2.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnView2.ButtonText = "👁";
+            this.btnView2.ButtonText = "Chi Tiết";
             this.btnView2.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(140)))), ((int)(((byte)(160)))));
             this.btnView2.ClickTextColor = System.Drawing.Color.White;
             this.btnView2.CornerRadius = 3;
@@ -459,9 +486,9 @@
             this.btnView2.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(180)))), ((int)(((byte)(200)))));
             this.btnView2.HoverTextColor = System.Drawing.Color.White;
             this.btnView2.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnView2.Location = new System.Drawing.Point(12, 350);
+            this.btnView2.Location = new System.Drawing.Point(11, 374);
             this.btnView2.Name = "btnView2";
-            this.btnView2.Size = new System.Drawing.Size(40, 25);
+            this.btnView2.Size = new System.Drawing.Size(89, 25);
             this.btnView2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnView2.TabIndex = 7;
             this.btnView2.TextColor = System.Drawing.Color.White;
@@ -474,7 +501,7 @@
             this.lblDates2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.lblDates2.Location = new System.Drawing.Point(12, 320);
             this.lblDates2.Name = "lblDates2";
-            this.lblDates2.Size = new System.Drawing.Size(275, 30);
+            this.lblDates2.Size = new System.Drawing.Size(275, 39);
             this.lblDates2.TabIndex = 6;
             this.lblDates2.Text = "Khởi chiếu:         21/11/2025\r\nKết thúc:            21/12/2025";
             // 
@@ -563,7 +590,7 @@
             this.movieCard3.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.movieCard3.Name = "movieCard3";
             this.movieCard3.Padding = new System.Windows.Forms.Padding(5);
-            this.movieCard3.Size = new System.Drawing.Size(296, 380);
+            this.movieCard3.Size = new System.Drawing.Size(296, 407);
             this.movieCard3.TabIndex = 2;
             // 
             // btnDelete3
@@ -571,7 +598,7 @@
             this.btnDelete3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnDelete3.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnDelete3.ButtonImage")));
             this.btnDelete3.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnDelete3.ButtonText = "🗑";
+            this.btnDelete3.ButtonText = "Xóa";
             this.btnDelete3.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnDelete3.ClickTextColor = System.Drawing.Color.White;
             this.btnDelete3.CornerRadius = 3;
@@ -581,9 +608,9 @@
             this.btnDelete3.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
             this.btnDelete3.HoverTextColor = System.Drawing.Color.White;
             this.btnDelete3.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnDelete3.Location = new System.Drawing.Point(245, 350);
+            this.btnDelete3.Location = new System.Drawing.Point(221, 374);
             this.btnDelete3.Name = "btnDelete3";
-            this.btnDelete3.Size = new System.Drawing.Size(40, 25);
+            this.btnDelete3.Size = new System.Drawing.Size(65, 25);
             this.btnDelete3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnDelete3.TabIndex = 9;
             this.btnDelete3.TextColor = System.Drawing.Color.White;
@@ -595,7 +622,7 @@
             this.btnEdit3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
             this.btnEdit3.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnEdit3.ButtonImage")));
             this.btnEdit3.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnEdit3.ButtonText = "✏";
+            this.btnEdit3.ButtonText = "Sửa";
             this.btnEdit3.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
             this.btnEdit3.ClickTextColor = System.Drawing.Color.White;
             this.btnEdit3.CornerRadius = 3;
@@ -605,9 +632,9 @@
             this.btnEdit3.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(210)))), ((int)(((byte)(50)))));
             this.btnEdit3.HoverTextColor = System.Drawing.Color.White;
             this.btnEdit3.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnEdit3.Location = new System.Drawing.Point(125, 350);
+            this.btnEdit3.Location = new System.Drawing.Point(131, 374);
             this.btnEdit3.Name = "btnEdit3";
-            this.btnEdit3.Size = new System.Drawing.Size(40, 25);
+            this.btnEdit3.Size = new System.Drawing.Size(65, 25);
             this.btnEdit3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnEdit3.TabIndex = 8;
             this.btnEdit3.TextColor = System.Drawing.Color.White;
@@ -619,7 +646,7 @@
             this.btnView3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
             this.btnView3.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnView3.ButtonImage")));
             this.btnView3.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnView3.ButtonText = "👁";
+            this.btnView3.ButtonText = "Chi Tiết";
             this.btnView3.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(140)))), ((int)(((byte)(160)))));
             this.btnView3.ClickTextColor = System.Drawing.Color.White;
             this.btnView3.CornerRadius = 3;
@@ -629,9 +656,9 @@
             this.btnView3.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(180)))), ((int)(((byte)(200)))));
             this.btnView3.HoverTextColor = System.Drawing.Color.White;
             this.btnView3.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnView3.Location = new System.Drawing.Point(12, 350);
+            this.btnView3.Location = new System.Drawing.Point(11, 374);
             this.btnView3.Name = "btnView3";
-            this.btnView3.Size = new System.Drawing.Size(40, 25);
+            this.btnView3.Size = new System.Drawing.Size(89, 25);
             this.btnView3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnView3.TabIndex = 7;
             this.btnView3.TextColor = System.Drawing.Color.White;
@@ -644,7 +671,7 @@
             this.lblDates3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.lblDates3.Location = new System.Drawing.Point(12, 320);
             this.lblDates3.Name = "lblDates3";
-            this.lblDates3.Size = new System.Drawing.Size(275, 30);
+            this.lblDates3.Size = new System.Drawing.Size(275, 39);
             this.lblDates3.TabIndex = 6;
             this.lblDates3.Text = "Khởi chiếu:         14/11/2025\r\nKết thúc:            ";
             // 
@@ -733,7 +760,7 @@
             this.movieCard4.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.movieCard4.Name = "movieCard4";
             this.movieCard4.Padding = new System.Windows.Forms.Padding(5);
-            this.movieCard4.Size = new System.Drawing.Size(296, 380);
+            this.movieCard4.Size = new System.Drawing.Size(296, 407);
             this.movieCard4.TabIndex = 3;
             // 
             // btnDelete4
@@ -741,7 +768,7 @@
             this.btnDelete4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnDelete4.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnDelete4.ButtonImage")));
             this.btnDelete4.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnDelete4.ButtonText = "🗑";
+            this.btnDelete4.ButtonText = "Xóa";
             this.btnDelete4.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnDelete4.ClickTextColor = System.Drawing.Color.White;
             this.btnDelete4.CornerRadius = 3;
@@ -751,9 +778,9 @@
             this.btnDelete4.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
             this.btnDelete4.HoverTextColor = System.Drawing.Color.White;
             this.btnDelete4.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnDelete4.Location = new System.Drawing.Point(245, 350);
+            this.btnDelete4.Location = new System.Drawing.Point(223, 374);
             this.btnDelete4.Name = "btnDelete4";
-            this.btnDelete4.Size = new System.Drawing.Size(40, 25);
+            this.btnDelete4.Size = new System.Drawing.Size(65, 25);
             this.btnDelete4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnDelete4.TabIndex = 9;
             this.btnDelete4.TextColor = System.Drawing.Color.White;
@@ -765,7 +792,7 @@
             this.btnEdit4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
             this.btnEdit4.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnEdit4.ButtonImage")));
             this.btnEdit4.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnEdit4.ButtonText = "✏";
+            this.btnEdit4.ButtonText = "Sửa";
             this.btnEdit4.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
             this.btnEdit4.ClickTextColor = System.Drawing.Color.White;
             this.btnEdit4.CornerRadius = 3;
@@ -775,9 +802,9 @@
             this.btnEdit4.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(210)))), ((int)(((byte)(50)))));
             this.btnEdit4.HoverTextColor = System.Drawing.Color.White;
             this.btnEdit4.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnEdit4.Location = new System.Drawing.Point(125, 350);
+            this.btnEdit4.Location = new System.Drawing.Point(127, 374);
             this.btnEdit4.Name = "btnEdit4";
-            this.btnEdit4.Size = new System.Drawing.Size(40, 25);
+            this.btnEdit4.Size = new System.Drawing.Size(65, 25);
             this.btnEdit4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnEdit4.TabIndex = 8;
             this.btnEdit4.TextColor = System.Drawing.Color.White;
@@ -789,7 +816,7 @@
             this.btnView4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
             this.btnView4.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnView4.ButtonImage")));
             this.btnView4.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnView4.ButtonText = "👁";
+            this.btnView4.ButtonText = "Chi Tiết";
             this.btnView4.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(140)))), ((int)(((byte)(160)))));
             this.btnView4.ClickTextColor = System.Drawing.Color.White;
             this.btnView4.CornerRadius = 3;
@@ -799,9 +826,9 @@
             this.btnView4.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(180)))), ((int)(((byte)(200)))));
             this.btnView4.HoverTextColor = System.Drawing.Color.White;
             this.btnView4.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnView4.Location = new System.Drawing.Point(12, 350);
+            this.btnView4.Location = new System.Drawing.Point(8, 374);
             this.btnView4.Name = "btnView4";
-            this.btnView4.Size = new System.Drawing.Size(40, 25);
+            this.btnView4.Size = new System.Drawing.Size(89, 25);
             this.btnView4.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnView4.TabIndex = 7;
             this.btnView4.TextColor = System.Drawing.Color.White;
@@ -814,7 +841,7 @@
             this.lblDates4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
             this.lblDates4.Location = new System.Drawing.Point(12, 320);
             this.lblDates4.Name = "lblDates4";
-            this.lblDates4.Size = new System.Drawing.Size(275, 30);
+            this.lblDates4.Size = new System.Drawing.Size(275, 39);
             this.lblDates4.TabIndex = 6;
             this.lblDates4.Text = "Khởi chiếu:         14/11/2025\r\nKết thúc:            30/12/2025";
             // 
@@ -1254,5 +1281,6 @@
         private System.Windows.Forms.Panel panel_movie;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panelinfo_right;
+        private ReaLTaiizor.Controls.ParrotButton btnDeletedMovies;
     }
 }

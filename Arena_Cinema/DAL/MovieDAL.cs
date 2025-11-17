@@ -26,8 +26,9 @@ namespace DAL
             }
             catch (Exception ex)
             {
-                // Log exception nếu cần
                 System.Diagnostics.Debug.WriteLine($"Error in AddMovie: {ex.Message}");
+                if (ex.InnerException != null)
+                    System.Diagnostics.Debug.WriteLine($"Inner Exception: {ex.InnerException.Message}");
                 return false;
             }
         }
@@ -153,6 +154,8 @@ namespace DAL
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error in UpdateMovie: {ex.Message}");
+                if (ex.InnerException != null)
+                    System.Diagnostics.Debug.WriteLine($"Inner Exception: {ex.InnerException.Message}");
                 return false;
             }
         }
@@ -258,6 +261,126 @@ namespace DAL
                 System.Diagnostics.Debug.WriteLine($"Error in SearchAndFilterMovies: {ex.Message}");
                 totalRecords = 0;
                 return new List<Movie>();
+            }
+        }
+
+        // Kiểm tra phim có đang được sử dụng trong ShowTime không
+        public bool IsMovieInUse(int movieId)
+        {
+            try
+            {
+                return db.ShowTimes.Any(st => st.MovieID == movieId);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in IsMovieInUse: {ex.Message}");
+                return false;
+            }
+        }
+
+        // Kiểm tra phim có đang được sử dụng trong MovieProduct không
+        public bool IsMovieInMovieProducts(int movieId)
+        {
+            try
+            {
+                return db.MovieProducts.Any(mp => mp.MovieID == movieId);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in IsMovieInMovieProducts: {ex.Message}");
+                return false;
+            }
+        }
+
+        // Lấy phim theo ngôn ngữ
+        public List<Movie> GetMoviesByLanguage(string language)
+        {
+            try
+            {
+                return db.Movies
+                    .Where(m => !m.IsDeleted && m.Language == language)
+                    .OrderByDescending(m => m.MovieID)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in GetMoviesByLanguage: {ex.Message}");
+                return new List<Movie>();
+            }
+        }
+
+        // Lấy phim theo giới hạn tuổi
+        public List<Movie> GetMoviesByAgeLimit(string ageLimit)
+        {
+            try
+            {
+                return db.Movies
+                    .Where(m => !m.IsDeleted && m.AgeLimit == ageLimit)
+                    .OrderByDescending(m => m.MovieID)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in GetMoviesByAgeLimit: {ex.Message}");
+                return new List<Movie>();
+            }
+        }
+        // Thêm vào class MovieDAL
+
+        // Lấy tất cả phim đã xóa
+        public List<Movie> GetDeletedMovies()
+        {
+            try
+            {
+                return db.Movies
+                    .Where(m => m.IsDeleted)
+                    .OrderByDescending(m => m.MovieID)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in GetDeletedMovies: {ex.Message}");
+                return new List<Movie>();
+            }
+        }
+
+        // Khôi phục phim (đặt IsDeleted = false)
+        public bool RestoreMovie(int movieId)
+        {
+            try
+            {
+                var movie = db.Movies.Find(movieId);
+                if (movie == null)
+                    return false;
+
+                movie.IsDeleted = false;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in RestoreMovie: {ex.Message}");
+                return false;
+            }
+        }
+
+        // Xóa vĩnh viễn phim
+        public bool PermanentDeleteMovie(int movieId)
+        {
+            try
+            {
+                var movie = db.Movies.Find(movieId);
+                if (movie == null)
+                    return false;
+
+                db.Movies.Remove(movie);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in PermanentDeleteMovie: {ex.Message}");
+                return false;
             }
         }
 

@@ -107,6 +107,18 @@
     <Compile Include="Movie\AddMovieUC.Designer.cs">
       <DependentUpon>AddMovieUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Movie\DeletedMoviesUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Movie\DeletedMoviesUC.Designer.cs">
+      <DependentUpon>DeletedMoviesUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movie\EditMovieUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Movie\EditMovieUC.Designer.cs">
+      <DependentUpon>EditMovieUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Movie\Movie_MainUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -182,6 +194,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Movie\AddMovieUC.resx">
       <DependentUpon>AddMovieUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movie\DeletedMoviesUC.resx">
+      <DependentUpon>DeletedMoviesUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movie\EditMovieUC.resx">
+      <DependentUpon>EditMovieUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Movie\Movie_MainUC.resx">
       <DependentUpon>Movie_MainUC.cs</DependentUpon>
