@@ -137,7 +137,7 @@ namespace UI
                     break;
                 case "btnBanVe":
                     //MessageBox.Show("Chức năng bán vé đang chờ bạn code");
-                    SaleHomeUC saleHomeUC = new SaleHomeUC(_employee);
+                    SaleHomeUC saleHomeUC = new SaleHomeUC(this, _employee);
                     LoadControl(saleHomeUC);
                     break;
                 case "btnSanPham":
