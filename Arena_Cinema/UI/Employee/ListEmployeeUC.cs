@@ -206,19 +206,19 @@ namespace UI.Employee
             }
         }
 
-        
-
         // Sự kiện nút Sửa
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             ReaLTaiizor.Controls.MaterialButton btn = sender as ReaLTaiizor.Controls.MaterialButton;
             if (btn != null && btn.Tag != null)
             {
-                Guid employeeId = (Guid)btn.Tag;
-                // Xử lý sửa nhân viên với employeeId
-                MessageBox.Show($"Sửa nhân viên ID: {employeeId}");
-
-                // TODO: Mở form sửa nhân viên hoặc xử lý logic khác
+                Guid employeeId = (Guid)btn.Tag;    
+                DialogResult rs = MessageBox.Show($"Nhấn OK để sửa thông tin nhân viên ID: {employeeId}", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (rs == DialogResult.OK)
+                {
+                    DTO.Employee employeeEdit = _employeeBLL.GetEmployeeById(employeeId);
+                    this._home.LoadControl(new AddEmployeeUC(_home, _employee, employeeEdit));
+                }
             }
         }
 
@@ -252,13 +252,15 @@ namespace UI.Employee
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            _home.LoadControl(new AddEmployeeUC(_home, _employee, this));
+            _home.LoadControl(new AddEmployeeUC(_home, _employee));
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
 
         }
+
+        
 
 
 

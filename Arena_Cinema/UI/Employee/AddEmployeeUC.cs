@@ -20,24 +20,44 @@ namespace UI.Employee
     {
         private Home _home;
         private DTO.Employee _employee;
-        private ListEmployeeUC listEmployeeUC;
 
         private EmployeeBLL _employeesBLL;
 
         private string pathImg = "Image\\Employee\\emloyeeDefault.png";
-        public AddEmployeeUC(Home home, DTO.Employee employee, ListEmployeeUC listEmployeeUC)
+        public AddEmployeeUC(Home home, DTO.Employee employee) 
         {
             this._home = home;
-            this._employee = employee;
-            this.listEmployeeUC = listEmployeeUC;
+            this._employee = employee; 
             InitializeComponent();
             LoadCboRoles();
             LoadImage();
         }
 
+        public AddEmployeeUC(Home home, DTO.Employee employee, DTO.Employee employeeEdit)
+        { 
+            this._home = home;            
+            this.pathImg = employeeEdit.ImageUrl;
+            string gender = employeeEdit.Gender;
+            InitializeComponent();
+            this.txtFullName.Text = employeeEdit.FullName;
+            this.txtCCCD.Text = employeeEdit.CCCD;
+            this.txtPhone.Text = employeeEdit.Phone;
+            this.cboGender.SelectedIndex = (string.IsNullOrEmpty(gender)) ? 0 : (gender == "Nam" ? 1 : 2);
+            this.txtEmail.Text = employeeEdit.Email;
+            this.txtHourWage.Text = employeeEdit.HourWage.ToString();
+            this.txtEmail.Text = employeeEdit.Email;
+            this.txtAddress.Text = employeeEdit.Address;
+            this.dtpBirthDate.Value = employeeEdit.BirthDate.HasValue ? employeeEdit.BirthDate.Value : DateTime.Now;
+            this.txtUsername.Text = employeeEdit.Account.Username;
+            //this.txtPassword.Text = employeeEdit.Account.PasswordHash;
+            LoadCboRoles(employeeEdit);
+            LoadImage();
+            Reset();
+        }
+
         private void btnPrev_Click(object sender, EventArgs e)
         {
-            _home.LoadControl(listEmployeeUC);
+            _home.LoadControl(new ListEmployeeUC(_home, _employee));
         }
 
         public void LoadCboRoles()
@@ -58,10 +78,36 @@ namespace UI.Employee
             cboRole.ValueMember = "RoleID";      // Giá trị thực
             cboRole.SelectedIndex = 0;
         }
-
+        public void LoadCboRoles(DTO.Employee employeeEdit)
+        {
+            RoleDAL roleDAL = new RoleDAL();
+            var roles = roleDAL.GetAllRoles();
+            var defaultItem = new Role { RoleID = 0, RoleName = "--- Chọn chức vụ ---" };         
+            var roleList = new List<Role> { defaultItem };
+            roleList.AddRange(roles);
+            cboRole.DataSource = roleList;
+            cboRole.DisplayMember = "RoleName";  // Hiển thị tên
+            cboRole.ValueMember = "RoleID";      // Giá trị thực
+            int index = cboRole.Items.IndexOf(employeeEdit.RoleId);
+            if (index >= 0)
+                cboRole.SelectedIndex = index;
+            else
+                cboRole.SelectedIndex = 0;
+        }
         public void LoadImage()
         {
             ImgHelper.DisplayImageFromRelative(this.pathImg, this.picImage);
+        }
+        
+        public void Reset()
+        {
+            this.lbCheckCCCD.Text = "";
+            this.lbCheckEmail.Text = "";
+            this.lbCheckLuong.Text = "";
+            this.lbCheckPassword.Text = "";
+            this.lbCheckPhone.Text = ""; ;
+            this.lbCheckUsername.Text = "";
+            this.lbCheckPassword.Text = "";
         }
 
         public void setDefaltInfo()

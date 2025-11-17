@@ -58,6 +58,17 @@ namespace DAL
                 .Property(e => e.PasswordHash)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<Account>()
+            .HasRequired(a => a.Employee)
+            .WithOptional(e => e.Account);
+
+
+            modelBuilder.Entity<Employee>()
+            .HasOptional(e => e.Account)
+            .WithRequired(a => a.Employee)
+            .WillCascadeOnDelete(true);
+
+
             modelBuilder.Entity<Customer>()
                 .Property(e => e.Phone)
                 .IsUnicode(false);
