@@ -103,7 +103,7 @@ namespace UI.EmployeeSale
                     ForeColor = System.Drawing.Color.White,
                     Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold)
                 };
-                btnBook.Click += (s, e) => MessageBox.Show($"Đặt vé cho phim: {movie.Title}");
+                btnBook.Click += (s, e) => _home.LoadControl(new SaleTicketUC(movie));
 
                 panel.Controls.Add(picPoster);
                 panel.Controls.Add(lbTitle);
