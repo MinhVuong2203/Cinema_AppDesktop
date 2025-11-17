@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddRoom));
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.btnBack = new ReaLTaiizor.Controls.ParrotButton();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.filterPanel = new System.Windows.Forms.Panel();
@@ -66,12 +67,39 @@
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.panelHeader.Controls.Add(this.btnBack);
             this.panelHeader.Controls.Add(this.lblTitle);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1406, 60);
             this.panelHeader.TabIndex = 3;
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnBack.ButtonImage = null;
+            this.btnBack.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnBack.ButtonText = "← Quay lại";
+            this.btnBack.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
+            this.btnBack.ClickTextColor = System.Drawing.Color.White;
+            this.btnBack.CornerRadius = 5;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnBack.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this.btnBack.HoverTextColor = System.Drawing.Color.White;
+            this.btnBack.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnBack.Location = new System.Drawing.Point(1269, 0);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(137, 60);
+            this.btnBack.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnBack.TabIndex = 2;
+            this.btnBack.TextColor = System.Drawing.Color.White;
+            this.btnBack.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnBack.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // lblTitle
             // 
@@ -244,6 +272,8 @@
             this.btnUploadImage.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(200)))), ((int)(((byte)(185)))));
             this.btnUploadImage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnUploadImage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
+            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click_1);
             // 
             // ptbRoomImage
             // 
@@ -464,5 +494,6 @@
         private ReaLTaiizor.Controls.MaterialComboBox cboRoomType;
         private ReaLTaiizor.Controls.ParrotButton btnUploadImage;
         private System.Windows.Forms.PictureBox ptbRoomImage;
+        private ReaLTaiizor.Controls.ParrotButton btnBack;
     }
 }

@@ -166,5 +166,15 @@ namespace UI.ScreeningRoom
             cboRoomType.Items.Clear();
             cboRoomType.Items.AddRange(types.ToArray());
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            _home.LoadControl(new Room_homeUC(_home, _room));
+        }
+
+        private void btnUploadImage_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

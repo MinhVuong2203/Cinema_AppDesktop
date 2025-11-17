@@ -27,7 +27,10 @@ namespace DAL
 
         public Employee GetEmployeeById(Guid employeeId)
         {
-            return _context.Employees.FirstOrDefault(e => e.EmployeeID == employeeId);
+            return _context.Employees
+                .Include(e => e.Account)
+                .Include(e => e.Role)
+                .FirstOrDefault(e => e.EmployeeID == employeeId);
         }
 
         public void UpdateEmployeeSettingById(Guid employeeId, Setting newSetting)

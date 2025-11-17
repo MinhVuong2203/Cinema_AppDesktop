@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,11 @@ namespace BLL
 
         public bool AddEmployee(DTO.Employee employee) { 
             return _employeeDAL.AddEmployee(employee);
+        }
+
+        public Employee GetEmployeeById(Guid id)
+        {
+            return _employeeDAL.GetEmployeeById(id);
         }
 
     }
