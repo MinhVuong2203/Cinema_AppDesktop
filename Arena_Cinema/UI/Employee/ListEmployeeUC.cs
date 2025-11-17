@@ -255,6 +255,11 @@ namespace UI.Employee
             _home.LoadControl(new AddEmployeeUC(_home, _employee, this));
         }
 
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 

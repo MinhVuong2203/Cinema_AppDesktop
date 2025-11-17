@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -133,27 +134,49 @@ namespace UI.ScreeningRoom
         {
             var p = (Panel)card.Controls[0];
 
-            // Ảnh
+            // ===== ẢNH =====
             var pic = (PictureBox)p.Controls["ptbRoomImage"];
 
-            // ƯU TIÊN: Ảnh từ DB
             if (!string.IsNullOrEmpty(room.ImageUrl))
             {
                 try
                 {
-                    ImgHelper.DisplayImageFromRelative(room.ImageUrl, pic);
-                    return; // Thành công → thoát
+                    string fullPath = Path.Combine(Application.StartupPath, room.ImageUrl);
+
+                    if (File.Exists(fullPath))
+                    {
+                        // Dispose ảnh cũ nếu có
+                        if (pic.Image != null && pic.Image != Properties.Resources.roomDefault)
+                        {
+                            pic.Image.Dispose();
+                        }
+
+                        // Load ảnh mới
+                        using (var img = Image.FromFile(fullPath))
+                        {
+                            pic.Image = new Bitmap(img);
+                        }
+                    }
+                    else
+                    {
+                        pic.Image = Properties.Resources.roomDefault;
+                    }
                 }
-                catch { } // Lỗi → dùng mặc định
+                catch
+                {
+                    pic.Image = Properties.Resources.roomDefault;
+                }
+            }
+            else
+            {
+                pic.Image = Properties.Resources.roomDefault;
             }
 
-            // DÙNG ẢNH NHÚNG TỪ RESOURCES
-            pic.Image = Properties.Resources.roomDefault;
-
+            // ===== CÁC LABEL KHÁC =====
             // ID
             ((Label)p.Controls["lblRoomID"]).Text = $"ID: {room.RoomID}";
 
-            // Tên phòng (dùng lại lblEmployeeName)
+            // Tên phòng
             ((Label)p.Controls["lblEmployeeName"]).Text = room.RoomName;
 
             // Loại phòng
@@ -165,13 +188,13 @@ namespace UI.ScreeningRoom
             // Mô tả
             ((Label)p.Controls["lblDescription"]).Text = room.Description ?? "Không có mô tả";
 
-            // Nút Sửa
+            // ===== NÚT SỬA =====
             var btnSua = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnSua"];
             btnSua.Tag = room.RoomID;
             btnSua.Click -= BtnEdit_Click;
             btnSua.Click += BtnEdit_Click;
 
-            // Nút Xóa
+            // ===== NÚT XÓA =====
             var btnXoa = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnXoa"];
             btnXoa.Tag = room.RoomID;
             btnXoa.Click -= btnXoa_Click;
@@ -207,5 +230,9 @@ namespace UI.ScreeningRoom
             LoadRoomsWithFilter();
         }
 
+        private void btnDeletedRoom_Click(object sender, EventArgs e)
+        {
+            this._home.LoadControl(new Deleted_room(_home, this._room));
+        }
     }
 }

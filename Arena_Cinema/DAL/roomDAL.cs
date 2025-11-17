@@ -105,5 +105,23 @@ namespace DAL
                            .OrderBy(t => t)
                            .ToList();
         }
+
+        public List<Room> GetDeletedRooms()
+        {
+            return _context.Rooms
+                           .Where(r => r.IsDeleted)
+                           .Include(r => r.Seats)
+                           .Include(r => r.ShowTimes)
+                           .ToList();
+        }
+
+        public Room GetRoomByIdIncludeDeleted(int roomId)
+        {
+            return _context.Rooms
+                           .Where(r => r.RoomID == roomId) // KHÔNG LỌC IsDeleted
+                           .Include(r => r.Seats)
+                           .Include(r => r.ShowTimes)
+                           .FirstOrDefault();
+        }
     }
 }

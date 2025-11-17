@@ -84,11 +84,32 @@ namespace BLL
                 return "Xóa thất bại. Phòng không tồn tại hoặc đã bị xóa.";
         }
 
-        //// Kiểm tra phòng có đang được sử dụng trong lịch chiếu không
-        //public bool IsRoomInUse(int roomId)
-        //{
-        //    var room = _roomDAL.GetRoomById(roomId);
-        //    return room?.ShowTimes?.Any(st => st.EndTime > DateTime.Now) == true;
-        //}
+        public string RestoreRoom(int roomId)
+        {
+            if (roomId <= 0) return "ID không hợp lệ.";
+
+            var room = _roomDAL.GetRoomByIdIncludeDeleted(roomId);
+
+            if (room == null)
+                return "Phòng không tồn tại.";
+
+            if (!room.IsDeleted)
+                return "Phòng chưa bị xóa.";
+
+            room.IsDeleted = false;
+            return _roomDAL.EditRoom(room)
+                ? "Khôi phục phòng thành công!"
+                : "Khôi phục thất bại!";
+        }
+
+        public List<Room> GetDeletedRooms()
+        {
+            return _roomDAL.GetDeletedRooms();
+        }
+
+        public Room GetRoomByIdIncludeDeleted(int roomId)
+        {
+            return _roomDAL.GetRoomByIdIncludeDeleted(roomId);
+        }
     }
 }
