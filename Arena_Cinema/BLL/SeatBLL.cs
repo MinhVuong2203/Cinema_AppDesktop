@@ -1,96 +1,55 @@
-﻿using System;
+﻿using DAL;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL;
-using DTO;
 
 namespace BLL
 {
     public class SeatBLL
     {
-        private readonly SeatDAL _seatDAL;
-        public SeatBLL()
-        {
-            _seatDAL = new SeatDAL();
-        }
+        private readonly SeatDAL _seatDAL = new SeatDAL();
 
-        public List<Seat> GetSeatsByRoomId(int roomId)
-        {
-            return _seatDAL.GetSeatsByRoomId(roomId);
-        }
+        public List<Seat> GetSeatsByRoomId(int roomId) => _seatDAL.GetSeatsByRoomId(roomId);
 
-        public List<Seat> GetAllSeatsIncludeDeleted(int roomId)
-        {
-            return _seatDAL.GetAllSeatsIncludeDeleted(roomId);
-        }
+        public List<Seat> GetAllSeatsIncludeDeleted(int roomId) => _seatDAL.GetAllSeatsIncludeDeleted(roomId);
 
-        public Seat GetSeatById(int seatId)
-        {
-            return _seatDAL.GetSeatById(seatId);
-        }
+        public Seat GetSeatById(int seatId) => _seatDAL.GetSeatById(seatId);
 
-        public Seat GetSeatByIdIncludeDeleted(int seatId)
-        {
-            return _seatDAL.GetSeatByIdIncludeDeleted(seatId);
-        }
+        public Seat GetSeatByIdIncludeDeleted(int seatId) => _seatDAL.GetSeatByIdIncludeDeleted(seatId);
 
-        // Thêm ghế mới
         public string AddSeat(Seat seat)
         {
-            if (string.IsNullOrWhiteSpace(seat.SeatName))
-                return "Tên ghế không được để trống.";
+            if (string.IsNullOrWhiteSpace(seat.SeatName)) return "Tên ghế không được để trống.";
+            if (seat.RoomID <= 0) return "Phòng không hợp lệ.";
 
-            if (seat.RoomID <= 0)
-                return "Phòng không hợp lệ.";
-
-            return _seatDAL.AddSeat(seat)
-                ? "Thêm ghế thành công!"
-                : "Thêm ghế thất bại!";
+            return _seatDAL.AddSeat(seat) ? "Thêm ghế thành công!" : "Thêm thất bại!";
         }
 
-        // Cập nhật ghế
         public string UpdateSeat(Seat seat)
         {
             if (seat.SeatID <= 0) return "ID ghế không hợp lệ.";
             if (string.IsNullOrWhiteSpace(seat.SeatName)) return "Tên ghế không được để trống.";
 
-            return _seatDAL.UpdateSeat(seat)
-                ? "Cập nhật ghế thành công!"
-                : "Cập nhật thất bại!";
+            return _seatDAL.UpdateSeat(seat) ? "Cập nhật thành công!" : "Cập nhật thất bại!";
         }
 
-        // Xóa mềm ghế
         public string SoftDeleteSeat(int seatId)
         {
-            return _seatDAL.SoftDeleteSeat(seatId)
-                ? "Xóa ghế thành công!"
-                : "Không tìm thấy ghế để xóa.";
+            return _seatDAL.SoftDeleteSeat(seatId) ? "Xóa thành công!" : "Không tìm thấy ghế.";
         }
 
-        // Khôi phục ghế
         public string RestoreSeat(int seatId)
         {
-            return _seatDAL.RestoreSeat(seatId)
-                ? "Khôi phục ghế thành công!"
-                : "Không thể khôi phục ghế (có thể chưa bị xóa).";
+            return _seatDAL.RestoreSeat(seatId) ? "Khôi phục thành công!" : "Không thể khôi phục.";
         }
 
-        // Xóa vĩnh viễn
         public string DeleteSeatPermanently(int seatId)
         {
-            return _seatDAL.DeleteSeatPermanently(seatId)
-                ? "Xóa vĩnh viễn ghế thành công!"
-                : "Xóa thất bại!";
+            return _seatDAL.DeleteSeatPermanently(seatId) ? "Xóa vĩnh viễn thành công!" : "Xóa thất bại!";
         }
 
-        // Lấy ghế theo loại
-        public List<Seat> GetSeatsByType(int roomId, string seatType)
-        {
-            return _seatDAL.GetSeatsByType(roomId, seatType);
-        }
-
+        // TỰ ĐỘNG TẠO GHẾ KHI THÊM PHÒNG MỚI
         public void CreateDefaultSeats(int roomId, int totalSeatCount = 250)
         {
             var seats = new List<Seat>();
@@ -106,17 +65,14 @@ namespace BLL
             foreach (char row in rowList)
             {
                 int seatsPerRow = (row >= 'G') ? 17 : 15;
-                if (count + seatsPerRow > totalSeatCount)
-                    seatsPerRow = totalSeatCount - count;
+                if (count + seatsPerRow > totalSeatCount) seatsPerRow = totalSeatCount - count;
 
                 for (int col = 1; col <= seatsPerRow && count < totalSeatCount; col++)
                 {
                     string seatType = "Ghế thường";
-
                     if (row == coupleRow)
                         seatType = "Ghế đôi";
-                    else if ((row >= 'G' && row <= 'L' && col >= 4 && col <= 14) ||
-                             (row == 'F' && col >= 3 && col <= 13))
+                    else if ((row >= 'G' && row <= 'L' && col >= 4 && col <= 14) || (row == 'F' && col >= 3 && col <= 13))
                         seatType = "Ghế VIP";
 
                     seats.Add(new Seat
@@ -128,13 +84,12 @@ namespace BLL
                         pX = col,
                         pY = rowIndex
                     });
-
                     count++;
                 }
                 rowIndex++;
             }
 
-            // Nếu vẫn chưa đủ → thêm hàng tiếp theo
+            // Thêm hàng thừa nếu cần
             char nextRow = (char)(rowList.Last() + 1);
             while (count < totalSeatCount && nextRow <= 'Z')
             {
@@ -155,8 +110,45 @@ namespace BLL
                 rowIndex++;
             }
 
-            // Gọi DAL để thêm hàng loạt
-            new SeatDAL().AddRangeSeats(seats); // bạn thêm method này dưới đây
+            _seatDAL.AddRangeSeats(seats); // dùng _seatDAL thay vì new
+        }
+
+        // CẬP NHẬT VỊ TRÍ GHẾ KHI KÉO THẢ
+        public bool UpdateSeatPosition(int seatId, int newPX, int newPY, int roomId, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+            try
+            {
+                var movingSeat = _seatDAL.GetSeatByIdIncludeDeleted(seatId);
+                if (movingSeat == null)
+                {
+                    errorMessage = "Không tìm thấy ghế!";
+                    return false;
+                }
+
+                // Kiểm tra xem vị trí mới có bị ghế khác chiếm không
+                var occupiedSeat = _seatDAL.GetAllSeatsIncludeDeleted(roomId)
+                    .FirstOrDefault(s => s.pX == newPX && s.pY == newPY && s.SeatID != seatId);
+
+                if (occupiedSeat != null)
+                {
+                    // Đẩy ghế đang chiếm chỗ về vị trí cũ của ghế đang kéo (HOÁN ĐỔI VỊ TRÍ)
+                    occupiedSeat.pX = movingSeat.pX;
+                    occupiedSeat.pY = movingSeat.pY;
+                    _seatDAL.UpdateSeat(occupiedSeat);
+                }
+
+                // Di chuyển ghế đang kéo đến vị trí mới
+                movingSeat.pX = newPX;
+                movingSeat.pY = newPY;
+
+                return _seatDAL.UpdateSeat(movingSeat);
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+                return false;
+            }
         }
     }
 }
