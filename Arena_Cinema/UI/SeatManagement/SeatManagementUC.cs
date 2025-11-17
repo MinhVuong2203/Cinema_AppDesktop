@@ -7,13 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO;
+using BLL;
 
-namespace UI.Seat
+namespace UI.SeatManagement
 {
-    public partial class Seat_homeUC : UserControl
+    public partial class SeatManagementUC : UserControl
     {
-        public Seat_homeUC()
+        private int _roomId;
+        private SeatBLL _seatBLL = new SeatBLL();
+        public SeatManagementUC(int roomID)
         {
+            _roomId = roomID;
             InitializeComponent();
         }
     }

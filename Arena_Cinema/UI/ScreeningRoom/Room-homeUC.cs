@@ -13,6 +13,7 @@ using Common;
 using DAL;
 using DTO;
 using UI.Employee;
+using UI.SeatManagement;
 
 namespace UI.ScreeningRoom
 {
@@ -199,6 +200,19 @@ namespace UI.ScreeningRoom
             btnXoa.Tag = room.RoomID;
             btnXoa.Click -= btnXoa_Click;
             btnXoa.Click += btnXoa_Click;
+
+            var btnSeat = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnSeatManagement"];
+            btnSeat.Tag = room.RoomID;
+            btnSeat.Click -= BtnSeatManagement_Click;  // Gỡ sự kiện cũ (tránh lỗi clone)
+            btnSeat.Click += BtnSeatManagement_Click;
+        }
+
+        private void BtnSeatManagement_Click(object sender, EventArgs e)
+        {
+            int roomId = (int)((Control)sender).Tag;
+
+            // Chuyển sang trang quản lý ghế của phòng này
+            _home.LoadControl(new SeatManagementUC(roomId));
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -233,6 +247,11 @@ namespace UI.ScreeningRoom
         private void btnDeletedRoom_Click(object sender, EventArgs e)
         {
             this._home.LoadControl(new Deleted_room(_home, this._room));
+        }
+
+        private void panelHeader_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

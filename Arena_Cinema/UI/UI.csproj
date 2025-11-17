@@ -302,11 +302,11 @@
     <Compile Include="ScreeningRoom\Room-homeUC.Designer.cs">
       <DependentUpon>Room-homeUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Seat\Seat_homeUC.cs">
+    <Compile Include="SeatManagement\SeatManagementUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Seat\Seat_homeUC.Designer.cs">
-      <DependentUpon>Seat_homeUC.cs</DependentUpon>
+    <Compile Include="SeatManagement\SeatManagementUC.Designer.cs">
+      <DependentUpon>SeatManagementUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Setting\SettingControl.cs">
       <SubType>UserControl</SubType>
@@ -390,8 +390,8 @@
     <EmbeddedResource Include="ScreeningRoom\Room-homeUC.resx">
       <DependentUpon>Room-homeUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Seat\Seat_homeUC.resx">
-      <DependentUpon>Seat_homeUC.cs</DependentUpon>
+    <EmbeddedResource Include="SeatManagement\SeatManagementUC.resx">
+      <DependentUpon>SeatManagementUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setting\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>

@@ -48,7 +48,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="roomBLL.cs" />
     <Compile Include="SaleTicketBLL.cs" />
+<<<<<<< Updated upstream
     <Compile Include="ShowTimeBLL.cs" />
+=======
+    <Compile Include="SeatBLL.cs" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
