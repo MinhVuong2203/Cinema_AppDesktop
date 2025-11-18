@@ -157,7 +157,7 @@ CREATE TABLE Room (
 CREATE TABLE Seat (
     SeatID INT PRIMARY KEY IDENTITY (1,1),
     SeatName NVARCHAR(50) NOT NULL,
-    SeatType NVARCHAR(50), -- 'Thường','Vip','Đôi'
+    SeatType NVARCHAR(50), -- 'Thường','VIP','Đôi'
     RoomID INT NOT NULL,
     IsDeleted BIT DEFAULT 0 NOT NULL,
 	pX INT NOT NULL DEFAULT 0,
@@ -419,6 +419,28 @@ VALUES
 (N'Ngô Thị F', '0967890123', 'ngothif@company.com', N'90 Lý Thường Kiệt, Huế', '2000-01-12', 20000, '012345678906', N'Nữ', 'Employee', 'staffF', '123456', N'/images/staffF.jpg', GETDATE(), 0);
 
 
+-- Tự động tạo vé khi có 
+CREATE OR ALTER TRIGGER trg_UpdateTicketPrice
+ON ShowTime
+AFTER UPDATE
+AS
+BEGIN
+    -- Chỉ update khi giá hoặc phòng chiếu thay đổi
+    IF UPDATE(Price)
+    BEGIN
+        UPDATE t
+        SET Price =
+            CASE 
+                WHEN s.SeatType = N'Ghế VIP' THEN i.Price + 20000
+                WHEN s.SeatType = N'Ghế đôi' THEN 2*i.Price + 20000
+                ELSE i.Price
+            END
+        FROM Ticket t
+        JOIN inserted i ON t.ShowTimeID = i.ShowTimeID
+        JOIN Seat s ON s.SeatID = t.SeatID;
+    END
+END;
+GO
 
 
 

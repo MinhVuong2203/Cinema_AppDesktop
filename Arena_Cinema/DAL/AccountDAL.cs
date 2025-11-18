@@ -17,12 +17,9 @@ namespace DAL
         }
         public bool Login(string username, string password)
         {
-            return _context.Accounts
-                .FirstOrDefault(a =>
-                a.Username == username &&
-                a.PasswordHash != null &&
-                a.PasswordHash == password) != null;
-
+                var account = _context.Accounts.FirstOrDefault(a => a.Username == username);
+                if (account == null || string.IsNullOrEmpty(account.PasswordHash)) return false;
+                return BCrypt.Net.BCrypt.Verify(password, account.PasswordHash);
         }
 
         public Employee GetEmployeeByUsername(string username)

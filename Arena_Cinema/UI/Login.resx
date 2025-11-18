@@ -117,11 +117,179 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>UI.Controls.RoundedPanel, UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 93</value>
+  </data>
+  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>909, 428</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;panel.Name" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;panel.Type" xml:space="preserve">
+    <value>UI.Controls.RoundedPanel, UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;panel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;btnShowPass.Name" xml:space="preserve">
+    <value>btnShowPass</value>
+  </data>
+  <data name="&gt;&gt;btnShowPass.Type" xml:space="preserve">
+    <value>ReaLTaiizor.Controls.ParrotButton, ReaLTaiizor, Version=3.8.1.4, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnShowPass.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnShowPass.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;btnForgotPassword.Name" xml:space="preserve">
+    <value>btnForgotPassword</value>
+  </data>
+  <data name="&gt;&gt;btnForgotPassword.Type" xml:space="preserve">
+    <value>ReaLTaiizor.Controls.MetroButton, ReaLTaiizor, Version=3.8.1.4, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnForgotPassword.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnForgotPassword.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;btnLogin.Name" xml:space="preserve">
+    <value>btnLogin</value>
+  </data>
+  <data name="&gt;&gt;btnLogin.Type" xml:space="preserve">
+    <value>ReaLTaiizor.Controls.SkyButton, ReaLTaiizor, Version=3.8.1.4, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;btnLogin.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;btnLogin.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;skyButton1.Name" xml:space="preserve">
+    <value>skyButton1</value>
+  </data>
+  <data name="&gt;&gt;skyButton1.Type" xml:space="preserve">
+    <value>ReaLTaiizor.Controls.SkyButton, ReaLTaiizor, Version=3.8.1.4, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;skyButton1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;skyButton1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;tbPassword.Name" xml:space="preserve">
+    <value>tbPassword</value>
+  </data>
+  <data name="&gt;&gt;tbPassword.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbPassword.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;tbPassword.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;tbUsername.Name" xml:space="preserve">
+    <value>tbUsername</value>
+  </data>
+  <data name="&gt;&gt;tbUsername.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tbUsername.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;tbUsername.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 10.8pt, style=Italic</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>29, 38</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>516, 366</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>ARENA CIMENA LOGIN</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>panel</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 13.2000008pt</value>
   </data>
@@ -166,7 +334,7 @@
     <value>btnShowPass</value>
   </data>
   <data name="&gt;&gt;btnShowPass.Type" xml:space="preserve">
-    <value>ReaLTaiizor.Controls.ParrotButton, ReaLTaiizor, Version=3.8.1.3, Culture=neutral, PublicKeyToken=null</value>
+    <value>ReaLTaiizor.Controls.ParrotButton, ReaLTaiizor, Version=3.8.1.4, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnShowPass.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -190,7 +358,7 @@
     <value>btnForgotPassword</value>
   </data>
   <data name="&gt;&gt;btnForgotPassword.Type" xml:space="preserve">
-    <value>ReaLTaiizor.Controls.MetroButton, ReaLTaiizor, Version=3.8.1.3, Culture=neutral, PublicKeyToken=null</value>
+    <value>ReaLTaiizor.Controls.MetroButton, ReaLTaiizor, Version=3.8.1.4, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnForgotPassword.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -217,7 +385,7 @@
     <value>btnLogin</value>
   </data>
   <data name="&gt;&gt;btnLogin.Type" xml:space="preserve">
-    <value>ReaLTaiizor.Controls.SkyButton, ReaLTaiizor, Version=3.8.1.3, Culture=neutral, PublicKeyToken=null</value>
+    <value>ReaLTaiizor.Controls.SkyButton, ReaLTaiizor, Version=3.8.1.4, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;btnLogin.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -244,7 +412,7 @@
     <value>skyButton1</value>
   </data>
   <data name="&gt;&gt;skyButton1.Type" xml:space="preserve">
-    <value>ReaLTaiizor.Controls.SkyButton, ReaLTaiizor, Version=3.8.1.3, Culture=neutral, PublicKeyToken=null</value>
+    <value>ReaLTaiizor.Controls.SkyButton, ReaLTaiizor, Version=3.8.1.4, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;skyButton1.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -265,7 +433,7 @@
     <value>4</value>
   </data>
   <data name="tbPassword.Text" xml:space="preserve">
-    <value>admin123</value>
+    <value>Minhvuong@123</value>
   </data>
   <data name="&gt;&gt;tbPassword.Name" xml:space="preserve">
     <value>tbPassword</value>
@@ -325,7 +493,7 @@
     <value>6</value>
   </data>
   <data name="tbUsername.Text" xml:space="preserve">
-    <value>admin</value>
+    <value>MinhVuong</value>
   </data>
   <data name="&gt;&gt;tbUsername.Name" xml:space="preserve">
     <value>tbUsername</value>
@@ -338,33 +506,6 @@
   </data>
   <data name="&gt;&gt;tbUsername.ZOrder" xml:space="preserve">
     <value>7</value>
-  </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10.8pt, style=Italic</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 38</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>516, 366</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>ARENA CIMENA LOGIN</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>552, 20</value>
@@ -386,27 +527,6 @@
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="panel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>87, 93</value>
-  </data>
-  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>909, 428</value>
-  </data>
-  <data name="panel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panel.Name" xml:space="preserve">
-    <value>panel</value>
-  </data>
-  <data name="&gt;&gt;panel.Type" xml:space="preserve">
-    <value>UI.Controls.RoundedPanel, UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;panel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

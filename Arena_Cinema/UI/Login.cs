@@ -26,7 +26,7 @@ namespace UI
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (tbPassword.Text == "" || tbUsername.Text == "") return;
-            DTO.Employee em = _accountBLL.Login(tbUsername.Text, tbPassword.Text);
+            DTO.Employee em = _accountBLL.Login(tbUsername.Text, tbPassword.Text.Trim());
 
             if (em != null)
             {

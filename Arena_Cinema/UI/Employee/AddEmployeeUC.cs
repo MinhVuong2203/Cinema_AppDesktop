@@ -21,6 +21,8 @@ namespace UI.Employee
         private Home _home;
         private DTO.Employee _employee;
         private bool isEdit = false;
+        private Guid EmployeeId;
+        private string passOld;
 
         private EmployeeBLL _employeesBLL;
 
@@ -31,7 +33,8 @@ namespace UI.Employee
             this._employee = employee; 
             isEdit = false;
             InitializeComponent();
-            //this.txtPassword.Hint = "Mật khẩu";
+            this.txtPassword.Hint = "Mật khẩu";
+            pathImg = "Image\\Employee\\emloyeeDefault.png";
             LoadCboRoles();
             LoadImage();
         }
@@ -44,8 +47,11 @@ namespace UI.Employee
             string gender = employeeEdit.Gender;
             InitializeComponent();
             this.lblTitle.Text = "CẬP NHẬT NHÂN SỰ";
-            //this.txtPassword.Hint = "Mật khẩu mới";
+            this.txtPassword.Hint = "Mật khẩu mới";
+            this.EmployeeId = employeeEdit.EmployeeID;
+            this.passOld = employeeEdit.Account.PasswordHash;
 
+            this.pathImg = employeeEdit.ImageUrl;
             this.txtFullName.Text = employeeEdit.FullName;
             this.txtCCCD.Text = employeeEdit.CCCD;
             this.txtPhone.Text = employeeEdit.Phone;
@@ -240,13 +246,12 @@ namespace UI.Employee
             {
                 if (!this.isEdit)
                 {
+                    // Chức năng add 
                     string hashedPassword = null;
                     if (!string.IsNullOrEmpty(txtPassword.Text.Trim()))
                     {
                         hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text.Trim());
-                    }
-                   
-                    // Chức năng add 
+                    }                      
                     try
                     {
                         Guid newEmployeeId = Guid.NewGuid();
@@ -296,7 +301,59 @@ namespace UI.Employee
                 else
                 {
                     // Chức năng Edit
+                    string hashedPassword;
+                    if (!string.IsNullOrEmpty(txtPassword.Text.Trim()))
+                    {
+                        hashedPassword = BCrypt.Net.BCrypt.HashPassword(txtPassword.Text.Trim());
+                    }
+                    else
+                    {
+                        hashedPassword = this.passOld;
+                    }
+                        try
+                        {
+                            DTO.Employee employee = new DTO.Employee
+                            {
+                                EmployeeID = this.EmployeeId,
+                                FullName = txtFullName.Text.Trim(),
+                                CCCD = txtCCCD.Text.Trim(),
+                                Phone = txtPhone.Text.Trim(),
+                                Email = txtEmail.Text.Trim().ToLower(),
+                                Address = txtAddress.Text.Trim(),
+                                BirthDate = dtpBirthDate.Value,
+                                HourWage = int.Parse(txtHourWage.Text.Trim()),
+                                Gender = string.IsNullOrEmpty(cboGender.SelectedItem?.ToString()) ? "Nam" : cboGender.SelectedItem.ToString(),
+                                ImageUrl = this.pathImg,
+                                RoleId = (int.Parse(cboRole.SelectedValue.ToString()) == 0) ? 2 : int.Parse(cboRole.SelectedValue.ToString()),
+                                RegisterDate = DateTime.Now,
+                                IsDeleted = false,
+                                // Gán Account luôn
+                                Account = new DTO.Account
+                                {
+                                    EmployeeID = this.EmployeeId,
+                                    Username = txtUsername.Text.Trim(),
+                                    PasswordHash = hashedPassword,
+                                    RoleId = (int.Parse(cboRole.SelectedValue.ToString()) == 0) ? 2 : int.Parse(cboRole.SelectedValue.ToString())
+                                }
+                            };
 
+                            _employeesBLL = new EmployeeBLL();
+                            bool rs = _employeesBLL.UpdateEmployee(employee);
+                            if (rs)
+                            {
+                                MessageBox.Show("Cập nhật thông tin công dân thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                this.setDefaltInfo();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ôi hỏng có lỗi xảy ra!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Lỗi: {ex.Message}",
+                                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                 }
             }
         }

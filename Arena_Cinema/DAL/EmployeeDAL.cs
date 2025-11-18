@@ -57,19 +57,15 @@ namespace DAL
             var query = _context.Employees.AsQueryable();
 
             query = query.Where(e => e.IsDeleted == isDelete);
-
             if (!string.IsNullOrWhiteSpace(name))
             {
                 string lowerName = name.ToLower();
                 query = query.Where(e => e.FullName.ToLower().Contains(lowerName));
             }
-
             if (!string.IsNullOrWhiteSpace(gender) && gender != "Tất cả")
                 query = query.Where(e => e.Gender == gender);
-
             if (!string.IsNullOrWhiteSpace(role) && role != "Tất cả")
                 query = query.Where(e => e.Role != null && e.Role.RoleName == role);
-
             return query.Include("Role").OrderBy(e => e.FullName).ToList();
         }
 
@@ -93,6 +89,43 @@ namespace DAL
             }
 
         }
+
+        public bool UpdateEmployee(Employee input)
+        {
+            try
+            {
+                Employee existing = _context.Employees.Find(input.EmployeeID);
+                if (existing == null)
+                return false;
+
+                existing.FullName = input.FullName;
+                existing.CCCD = input.CCCD;
+                existing.Phone = input.Phone;
+                existing.Email = input.Email;
+                existing.Address = input.Address;
+                existing.BirthDate = input.BirthDate;
+                existing.HourWage = input.HourWage;
+                existing.Gender = input.Gender;
+                existing.ImageUrl = input.ImageUrl;
+                existing.RoleId = input.RoleId;
+                existing.Account.Username = input.Account.Username;
+                existing.Account.PasswordHash = input.Account.PasswordHash;
+                existing.Account.RoleId = input.Account.RoleId;
+                _context.SaveChanges();
+                return true;
+            }
+            catch (DbUpdateException ex)
+            {
+                string errorMessage = GetFriendlyErrorMessage(ex);
+                throw new Exception(errorMessage);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi: " + ex.Message);
+            }
+        }
+
+
         // để kiểm tra trùng
         private string GetFriendlyErrorMessage(DbUpdateException ex)
         {

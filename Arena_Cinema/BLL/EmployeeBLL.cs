@@ -27,6 +27,10 @@ namespace BLL
         public bool AddEmployee(DTO.Employee employee) { 
             return _employeeDAL.AddEmployee(employee);
         }
+        public bool UpdateEmployee(DTO.Employee employee)
+        {
+            return _employeeDAL.UpdateEmployee(employee);
+        }
 
         public Employee GetEmployeeById(Guid id)
         {
