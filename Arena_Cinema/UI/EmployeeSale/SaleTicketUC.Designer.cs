@@ -460,6 +460,7 @@
             this.btnPayment.TabIndex = 5;
             this.btnPayment.Text = "THANH TOÁN";
             this.btnPayment.UseVisualStyleBackColor = false;
+            //this.btnPayment.Click += new System.EventHandler(this.btnPayment_Click_1);
             // 
             // SaleTicketUC
             // 

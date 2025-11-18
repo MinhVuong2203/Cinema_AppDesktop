@@ -107,7 +107,7 @@
             // 
             this.lb_SaleProduct_Title.AutoSize = true;
             this.lb_SaleProduct_Title.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_SaleProduct_Title.Location = new System.Drawing.Point(125, 90);
+            this.lb_SaleProduct_Title.Location = new System.Drawing.Point(121, 90);
             this.lb_SaleProduct_Title.Name = "lb_SaleProduct_Title";
             this.lb_SaleProduct_Title.Size = new System.Drawing.Size(118, 28);
             this.lb_SaleProduct_Title.TabIndex = 2;
@@ -116,8 +116,8 @@
             // hopePictureBox_
             // 
             this.hopePictureBox_.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(196)))), ((int)(((byte)(204)))));
-            this.hopePictureBox_.Image = global::UI.Properties.Resources.popcorn__1_;
-            this.hopePictureBox_.Location = new System.Drawing.Point(133, 26);
+            this.hopePictureBox_.Image = global::UI.Properties.Resources.popcorn;
+            this.hopePictureBox_.Location = new System.Drawing.Point(139, 26);
             this.hopePictureBox_.Name = "hopePictureBox_";
             this.hopePictureBox_.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.hopePictureBox_.Size = new System.Drawing.Size(83, 61);
