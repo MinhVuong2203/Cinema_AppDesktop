@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.panelTop = new System.Windows.Forms.Panel();
+            this.btnDasc = new ReaLTaiizor.Controls.MaterialButton();
+            this.btnAsc = new ReaLTaiizor.Controls.MaterialButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cboType = new ReaLTaiizor.Controls.MaterialComboBox();
+            this.btnDaNgung = new ReaLTaiizor.Controls.DungeonToggleButton();
             this.btnAdd = new ReaLTaiizor.Controls.MaterialButton();
             this.txtSearch = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             this.lblTitle = new ReaLTaiizor.Controls.BigLabel();
@@ -41,15 +47,143 @@
             // panelTop
             // 
             this.panelTop.BackColor = System.Drawing.Color.White;
+            this.panelTop.Controls.Add(this.btnDasc);
+            this.panelTop.Controls.Add(this.btnAsc);
+            this.panelTop.Controls.Add(this.label2);
+            this.panelTop.Controls.Add(this.label1);
+            this.panelTop.Controls.Add(this.cboType);
+            this.panelTop.Controls.Add(this.btnDaNgung);
             this.panelTop.Controls.Add(this.btnAdd);
             this.panelTop.Controls.Add(this.txtSearch);
             this.panelTop.Controls.Add(this.lblTitle);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Size = new System.Drawing.Size(1200, 100);
+            this.panelTop.Size = new System.Drawing.Size(1630, 100);
             this.panelTop.TabIndex = 0;
-            this.panelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTop_Paint);
+            // 
+            // btnDasc
+            // 
+            this.btnDasc.AutoSize = false;
+            this.btnDasc.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDasc.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnDasc.Depth = 0;
+            this.btnDasc.HighEmphasis = true;
+            this.btnDasc.Icon = global::UI.Properties.Resources.sort;
+            this.btnDasc.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnDasc.Location = new System.Drawing.Point(954, 53);
+            this.btnDasc.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnDasc.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btnDasc.Name = "btnDasc";
+            this.btnDasc.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnDasc.Size = new System.Drawing.Size(44, 38);
+            this.btnDasc.TabIndex = 9;
+            this.btnDasc.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnDasc.UseAccentColor = false;
+            this.btnDasc.UseVisualStyleBackColor = true;
+            this.btnDasc.Click += new System.EventHandler(this.btnDasc_Click);
+            // 
+            // btnAsc
+            // 
+            this.btnAsc.AutoSize = false;
+            this.btnAsc.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAsc.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAsc.Depth = 0;
+            this.btnAsc.HighEmphasis = true;
+            this.btnAsc.Icon = global::UI.Properties.Resources.sort_descending__1_;
+            this.btnAsc.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnAsc.Location = new System.Drawing.Point(902, 53);
+            this.btnAsc.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAsc.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btnAsc.Name = "btnAsc";
+            this.btnAsc.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAsc.Size = new System.Drawing.Size(44, 38);
+            this.btnAsc.TabIndex = 8;
+            this.btnAsc.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAsc.UseAccentColor = false;
+            this.btnAsc.UseVisualStyleBackColor = true;
+            this.btnAsc.Click += new System.EventHandler(this.btnAsc_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(853, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 28);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Giá:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(1270, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 28);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Ngưng bán";
+            // 
+            // cboType
+            // 
+            this.cboType.AutoResize = false;
+            this.cboType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cboType.Depth = 0;
+            this.cboType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboType.DropDownHeight = 174;
+            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboType.DropDownWidth = 121;
+            this.cboType.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cboType.FormattingEnabled = true;
+            this.cboType.Hint = "Loại sản phẩm";
+            this.cboType.IntegralHeight = false;
+            this.cboType.ItemHeight = 43;
+            this.cboType.Items.AddRange(new object[] {
+            "Tất cả",
+            "Combo 2 ngăn",
+            "Nước ngọt",
+            "Nước đóng chai",
+            "Snack - kẹo",
+            "Poca",
+            "Bắp rang vùng",
+            "Combo"});
+            this.cboType.Location = new System.Drawing.Point(436, 49);
+            this.cboType.MaxDropDownItems = 4;
+            this.cboType.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            this.cboType.Name = "cboType";
+            this.cboType.Size = new System.Drawing.Size(373, 49);
+            this.cboType.StartIndex = 0;
+            this.cboType.TabIndex = 5;
+            this.cboType.SelectedIndexChanged += new System.EventHandler(this.cboRole_SelectedIndexChanged);
+            // 
+            // btnDaNgung
+            // 
+            this.btnDaNgung.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDaNgung.Location = new System.Drawing.Point(1388, 59);
+            this.btnDaNgung.Name = "btnDaNgung";
+            this.btnDaNgung.Size = new System.Drawing.Size(79, 27);
+            this.btnDaNgung.TabIndex = 5;
+            this.btnDaNgung.Text = "dungeonToggleButton1";
+            this.btnDaNgung.Toggled = false;
+            this.btnDaNgung.ToggledBackColorA = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.btnDaNgung.ToggledBackColorB = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(238)))), ((int)(((byte)(237)))));
+            this.btnDaNgung.ToggledBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(89)))), ((int)(((byte)(55)))));
+            this.btnDaNgung.ToggledBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(89)))), ((int)(((byte)(55)))));
+            this.btnDaNgung.ToggledBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(181)))), ((int)(((byte)(181)))));
+            this.btnDaNgung.ToggledBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(181)))), ((int)(((byte)(181)))));
+            this.btnDaNgung.ToggledColorA = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(108)))), ((int)(((byte)(58)))));
+            this.btnDaNgung.ToggledColorB = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(113)))), ((int)(((byte)(63)))));
+            this.btnDaNgung.ToggledColorC = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.btnDaNgung.ToggledColorD = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.btnDaNgung.ToggledIOColorA = System.Drawing.Color.WhiteSmoke;
+            this.btnDaNgung.ToggledIOColorB = System.Drawing.Color.DimGray;
+            this.btnDaNgung.ToggledOnOffColorA = System.Drawing.Color.WhiteSmoke;
+            this.btnDaNgung.ToggledOnOffColorB = System.Drawing.Color.DimGray;
+            this.btnDaNgung.ToggledYesNoColorA = System.Drawing.Color.WhiteSmoke;
+            this.btnDaNgung.ToggledYesNoColorB = System.Drawing.Color.DimGray;
+            this.btnDaNgung.Type = ReaLTaiizor.Controls.DungeonToggleButton._Type.OnOff;
+            this.btnDaNgung.ToggledChanged += new ReaLTaiizor.Controls.DungeonToggleButton.ToggledChangedEventHandler(this.btnDaNgung_ToggledChanged);
             // 
             // btnAdd
             // 
@@ -60,7 +194,7 @@
             this.btnAdd.HighEmphasis = true;
             this.btnAdd.Icon = null;
             this.btnAdd.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btnAdd.Location = new System.Drawing.Point(1087, 50);
+            this.btnAdd.Location = new System.Drawing.Point(1517, 50);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnAdd.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnAdd.Name = "btnAdd";
@@ -124,7 +258,7 @@
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 100);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1200, 600);
+            this.panelMain.Size = new System.Drawing.Size(1630, 600);
             this.panelMain.TabIndex = 1;
             // 
             // flowLayoutProducts
@@ -136,7 +270,7 @@
             this.flowLayoutProducts.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutProducts.Name = "flowLayoutProducts";
             this.flowLayoutProducts.Padding = new System.Windows.Forms.Padding(20);
-            this.flowLayoutProducts.Size = new System.Drawing.Size(1200, 600);
+            this.flowLayoutProducts.Size = new System.Drawing.Size(1630, 600);
             this.flowLayoutProducts.TabIndex = 0;
             this.flowLayoutProducts.WrapContents = false;
             // 
@@ -148,7 +282,7 @@
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelTop);
             this.Name = "ProductMainUC";
-            this.Size = new System.Drawing.Size(1200, 700);
+            this.Size = new System.Drawing.Size(1630, 700);
             this.Load += new System.EventHandler(this.ProductMainUCcs_Load);
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
@@ -165,6 +299,12 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutProducts;
 
 
-    #endregion
-}
+        #endregion
+        private ReaLTaiizor.Controls.DungeonToggleButton btnDaNgung;
+        private ReaLTaiizor.Controls.MaterialComboBox cboType;
+        private System.Windows.Forms.Label label1;
+        private ReaLTaiizor.Controls.MaterialButton btnDasc;
+        private ReaLTaiizor.Controls.MaterialButton btnAsc;
+        private System.Windows.Forms.Label label2;
+    }
 }

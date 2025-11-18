@@ -1,6 +1,8 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,26 @@ namespace DAL
             {
                 throw new Exception($"Lỗi khi lấy danh sách sản phẩm: {ex.Message}");
             }
+        }
+
+        public List<Product> FilterlProduct(string name, string type, bool? sortPrice, bool isDelete)
+        {
+            var query = _context.Products.AsQueryable();
+
+            query = query.Where(e => e.IsDeleted == isDelete);
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                string lowerName = name.ToLower();
+                query = query.Where(e => e.ProductName.ToLower().Contains(lowerName));
+            }
+            if (!string.IsNullOrWhiteSpace(type) && type != "Tất cả")
+                query = query.Where(e => e.ProductType == type);
+            if (sortPrice == null)
+                return query.OrderBy(e => e.ProductName).ToList();
+            else if (sortPrice == true)
+                return query.OrderBy(e => e.Price).ToList();
+            else
+                return query.OrderByDescending(e => e.Price).ToList();
         }
 
         // Lấy sản phẩm theo ID
@@ -152,6 +174,22 @@ namespace DAL
             }
         }
 
-
+        public void RestoreProduct(int productID)
+        {
+            try
+            {
+                var product = _context.Products.FirstOrDefault(p => p.ProductID == productID);
+                if (product == null)
+                {
+                    throw new Exception("Không tìm thấy sản phẩm!");
+                }
+                product.IsDeleted = false;
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi xóa sản phẩm: {ex.Message}");
+            }
+        }
     }
 }

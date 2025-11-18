@@ -353,7 +353,6 @@
             this.btnSua.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnSua.UseAccentColor = false;
             this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // lblEmployeePhone
             // 
@@ -460,7 +459,6 @@
             this.panelHeader.PerformLayout();
             this.panelFilter.ResumeLayout(false);
             this.parrotGroupBox1.ResumeLayout(false);
-            this.parrotGroupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panelEmployeeList.ResumeLayout(false);
             this.cardEmployeeSample.ResumeLayout(false);

@@ -150,7 +150,34 @@ namespace DAL
             return "Lỗi cơ sở dữ liệu: " + innerMessage;
         }
 
+        public bool DeleteEmployeeById(Guid employeeId)
+        {
+            try
+            {
+                Employee employee = _context.Employees.Find(employeeId);
+                employee.IsDeleted = true;
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi: " + ex.Message);
+            }
+        }
 
-
+        public bool RestoreEmployeeById(Guid employeeId)
+        {
+            try
+            {
+                Employee employee = _context.Employees.Find(employeeId);
+                employee.IsDeleted = false;
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi: " + ex.Message);
+            }
+        }
     }
 }
