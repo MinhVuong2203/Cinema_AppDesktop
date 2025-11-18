@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using DTO;
 
@@ -264,6 +265,108 @@ namespace DAL
             }
         }
 
+        // =====================================================
+        // PHƯƠNG THỨC MỚI: Sử dụng Stored Procedure phân trang
+        // =====================================================
+        // FIXED: Đổi thứ tự tham số - tham số bắt buộc trước, tham số optional sau
+        public List<Movie> GetMoviesPaginatedWithSP(
+     int pageNumber,
+     int pageSize,
+     out int totalRecords,
+     out int totalPages,
+     string searchKeyword = null,
+     string genre = null,
+     string ageLimit = null,
+     bool isDeleted = false)
+        {
+            try
+            {
+                var moviesList = new List<Movie>();
+                totalRecords = 0;
+                totalPages = 1;
+
+                using (var command = db.Database.Connection.CreateCommand())
+                {
+                    command.CommandText = "sp_GetMoviesPaginated";
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandTimeout = 30;
+
+                    // Parameters
+                    var param1 = new SqlParameter("@PageNumber", pageNumber);
+                    var param2 = new SqlParameter("@PageSize", pageSize);
+                    var param3 = new SqlParameter("@SearchKeyword", searchKeyword ?? (object)DBNull.Value);
+                    var param4 = new SqlParameter("@Genre", genre ?? (object)DBNull.Value);
+                    var param5 = new SqlParameter("@AgeLimit", ageLimit ?? (object)DBNull.Value);
+                    var param6 = new SqlParameter("@MovieType", DBNull.Value);
+                    var param7 = new SqlParameter("@Language", DBNull.Value);
+                    var param8 = new SqlParameter("@IsDeleted", isDeleted);
+                    var param9 = new SqlParameter("@SortBy", "MovieID");
+                    var param10 = new SqlParameter("@SortOrder", "DESC");
+
+                    command.Parameters.AddRange(new[] { param1, param2, param3, param4, param5, param6, param7, param8, param9, param10 });
+
+                    System.Diagnostics.Debug.WriteLine($"[DAL] Executing SP with: Page={pageNumber}, Size={pageSize}, Keyword={searchKeyword}, Genre={genre}, Age={ageLimit}, IsDeleted={isDeleted}");
+
+                    if (command.Connection.State != System.Data.ConnectionState.Open)
+                        command.Connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var movie = new Movie
+                            {
+                                MovieID = reader.GetInt32(reader.GetOrdinal("MovieID")),
+                                Title = reader.GetString(reader.GetOrdinal("Title")),
+                                DurationMinutes = reader.GetInt32(reader.GetOrdinal("DurationMinutes")),
+                                Genre = reader.IsDBNull(reader.GetOrdinal("Genre")) ? null : reader.GetString(reader.GetOrdinal("Genre")),
+                                Language = reader.IsDBNull(reader.GetOrdinal("Language")) ? null : reader.GetString(reader.GetOrdinal("Language")),
+                                Sub = reader.IsDBNull(reader.GetOrdinal("Sub")) ? null : reader.GetString(reader.GetOrdinal("Sub")),
+                                Dub = reader.IsDBNull(reader.GetOrdinal("Dub")) ? (bool?)null : reader.GetBoolean(reader.GetOrdinal("Dub")),
+                                AgeLimit = reader.IsDBNull(reader.GetOrdinal("AgeLimit")) ? null : reader.GetString(reader.GetOrdinal("AgeLimit")),
+                                MovieType = reader.IsDBNull(reader.GetOrdinal("MovieType")) ? null : reader.GetString(reader.GetOrdinal("MovieType")),
+                                StartTime = reader.IsDBNull(reader.GetOrdinal("StartTime")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("StartTime")),
+                                EndTime = reader.IsDBNull(reader.GetOrdinal("EndTime")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("EndTime")),
+                                Description = reader.IsDBNull(reader.GetOrdinal("Description")) ? null : reader.GetString(reader.GetOrdinal("Description")),
+                                Preview = reader.IsDBNull(reader.GetOrdinal("Preview")) ? null : reader.GetString(reader.GetOrdinal("Preview")),
+                                ImageUrl = reader.IsDBNull(reader.GetOrdinal("ImageUrl")) ? null : reader.GetString(reader.GetOrdinal("ImageUrl")),
+                                LinkTrailer = reader.IsDBNull(reader.GetOrdinal("LinkTrailer")) ? null : reader.GetString(reader.GetOrdinal("LinkTrailer")),
+                                IsDeleted = reader.GetBoolean(reader.GetOrdinal("IsDeleted"))
+                            };
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("TotalRecords")))
+                                totalRecords = reader.GetInt32(reader.GetOrdinal("TotalRecords"));
+
+                            if (!reader.IsDBNull(reader.GetOrdinal("TotalPages")))
+                                totalPages = reader.GetInt32(reader.GetOrdinal("TotalPages"));
+
+                            moviesList.Add(movie);
+                        }
+                    }
+                }
+
+                System.Diagnostics.Debug.WriteLine($"[DAL] SP returned: {moviesList.Count} movies, TotalRecords={totalRecords}, TotalPages={totalPages}");
+
+                if (moviesList.Count == 0 && totalRecords > 0)
+                {
+                    System.Diagnostics.Debug.WriteLine("[DAL] WARNING: TotalRecords > 0 nhưng không có data trả về!");
+                }
+
+                return moviesList;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"[DAL ERROR] {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[DAL ERROR] {ex.StackTrace}");
+                if (ex.InnerException != null)
+                    System.Diagnostics.Debug.WriteLine($"[DAL ERROR Inner] {ex.InnerException.Message}");
+
+                totalRecords = 0;
+                totalPages = 1;
+                return new List<Movie>();
+            }
+        }
+
         // Kiểm tra phim có đang được sử dụng trong ShowTime không
         public bool IsMovieInUse(int movieId)
         {
@@ -325,7 +428,6 @@ namespace DAL
                 return new List<Movie>();
             }
         }
-        // Thêm vào class MovieDAL
 
         // Lấy tất cả phim đã xóa
         public List<Movie> GetDeletedMovies()
@@ -381,6 +483,44 @@ namespace DAL
             {
                 System.Diagnostics.Debug.WriteLine($"Error in PermanentDeleteMovie: {ex.Message}");
                 return false;
+            }
+        }
+
+        // Lấy danh sách thể loại phim (từ DB trực tiếp)
+        public List<string> GetMovieGenres()
+        {
+            try
+            {
+                return db.Movies
+                    .Where(m => !m.IsDeleted && !string.IsNullOrEmpty(m.Genre))
+                    .Select(m => m.Genre)
+                    .Distinct()
+                    .OrderBy(g => g)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in GetMovieGenres: {ex.Message}");
+                return new List<string>();
+            }
+        }
+
+        // Lấy danh sách độ tuổi (từ DB trực tiếp)
+        public List<string> GetAgeRatings()
+        {
+            try
+            {
+                return db.Movies
+                    .Where(m => !m.IsDeleted && !string.IsNullOrEmpty(m.AgeLimit))
+                    .Select(m => m.AgeLimit)
+                    .Distinct()
+                    .OrderBy(a => a)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in GetAgeRatings: {ex.Message}");
+                return new List<string>();
             }
         }
 

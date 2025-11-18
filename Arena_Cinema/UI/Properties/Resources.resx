@@ -139,6 +139,9 @@
   <data name="noButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\noButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="next" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,14 +160,11 @@
   <data name="next1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\next1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="teamwork1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\teamwork1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="calendar (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\calendar (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="list-symbol-of-three-items-with-dots" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\list-symbol-of-three-items-with-dots.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="business-and-finance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\business-and-finance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,8 +199,8 @@
   <data name="chevrons" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\chevrons.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="popcorn (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Image\Product\popcorn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Search2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="armchair" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\armchair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,14 +208,20 @@
   <data name="clapperboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clapperboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Search1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="showtime (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\showtime (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="popcorn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\popcorn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CoVietNam1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CoVietNam1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="no-photo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\no-photo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="popcorn (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Image\Product\popcorn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="coupon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Image\SaleEmp\coupon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,8 +229,11 @@
   <data name="cinema" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cinema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="next" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="calendar (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\calendar (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OpenEyes1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OpenEyes1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CloseEyes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CloseEyes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -235,8 +244,8 @@
   <data name="employee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\employee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="list-symbol-of-three-items-with-dots" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\list-symbol-of-three-items-with-dots.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="absent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\absent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,22 +259,25 @@
   <data name="ellipsis" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ellipsis.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="CoVietNam1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CoVietNam1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="gear" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sign" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\sign.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OpenEyes1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OpenEyes1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="no-photo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\no-photo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="roomDefault" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\roomDefault.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sign" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sign.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

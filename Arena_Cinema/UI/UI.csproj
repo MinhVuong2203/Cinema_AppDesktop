@@ -581,6 +581,10 @@
     <Content Include="Image\Employee\Gai4.jpeg" />
     <Content Include="Image\Product\popcorn %281%29.png" />
     <Content Include="Resources\roomDefault.png" />
+    <None Include="Resources\Search3.png" />
+    <None Include="Resources\Search2.png" />
+    <None Include="Resources\Search1.png" />
+    <None Include="Resources\Search.png" />
     <None Include="Resources\no-photo.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\diskette.png" />

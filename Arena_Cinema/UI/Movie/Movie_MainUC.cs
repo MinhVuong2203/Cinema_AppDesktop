@@ -17,103 +17,176 @@ namespace UI.Movie
         private MovieBLL movieBLL;
 
         private int currentPage = 1;
-        private int pageSize = 8;
+        private int pageSize = 4;
         private int totalPages = 1;
         private List<DTO.Movie> currentMovies = new List<DTO.Movie>();
 
         public Movie_MainUC(Home form, DTO.Employee employee)
         {
             InitializeComponent();
-            this.Load += Movie_MainUC_Load;
+            movieCardTemplate.Visible = false;
+
             this._home = form;
             this._employee = employee;
 
             movieBLL = new MovieBLL();
 
-            // Setup events
-            btnSearch.Click += BtnSearch_Click;
-            cboFilter.SelectedIndexChanged += CboFilter_SelectedIndexChanged;
-            btnAddMovie.Click += BtnAddMovie_Click;
-            btnDeletedMovies.Click += btnDeletedMovies_Click;
+            // Setup keyboard events
             txtSearch.KeyDown += TxtSearch_KeyDown;
 
-            // Pagination events - SỬA LỖI
+            // Pagination events
             btnFirstPage.Click += (s, e) => NavigateToPage(1);
-
             btnPrevPage.Click += (s, e) => {
-                if (int.TryParse(btnPrevPage.Text, out int page))
-                    NavigateToPage(page);
-                else
+                if (currentPage > 1)
                     NavigateToPage(currentPage - 1);
             };
-
             btnPage2.Click += (s, e) => {
                 if (int.TryParse(btnPage2.Text, out int page))
                     NavigateToPage(page);
             };
-
             btnPage3.Click += (s, e) => {
                 if (int.TryParse(btnPage3.Text, out int page))
                     NavigateToPage(page);
-                else
+            };
+            btnNextPage.Click += (s, e) => {
+                if (currentPage < totalPages)
                     NavigateToPage(currentPage + 1);
             };
-
-            btnNextPage.Click += (s, e) => NavigateToPage(currentPage + 1);
             btnLastPage.Click += (s, e) => NavigateToPage(totalPages);
+
+            // Load event
+            this.Load += Movie_MainUC_Load;
         }
 
         private void TxtSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                e.SuppressKeyPress = true; // Ngăn âm beep
-                BtnSearch_Click(sender, e);
+                e.SuppressKeyPress = true;
+                btnSearch_Click(sender, e);
             }
         }
 
         private void Movie_MainUC_Load(object sender, EventArgs e)
         {
-            this.SizeChanged += (s, ev) => AdjustCardMargins();
-            panel_movie.SizeChanged += (s, ev) => AdjustCardMargins();
-
-            // Set default filter
-            if (cboFilter.Items.Count > 0)
-                cboFilter.SelectedIndex = 0;
-
-            LoadMovies();
-
-            System.Threading.Timer timer = null;
-            timer = new System.Threading.Timer((state) =>
+            try
             {
-                if (this.IsHandleCreated)
+                // Setup resize events
+                this.SizeChanged += (s, ev) => AdjustCardMargins();
+                panel_movie.SizeChanged += (s, ev) => AdjustCardMargins();
+
+                // Initialize filters
+                if (cboFilter.Items.Count > 0)
+                    cboFilter.SelectedIndex = 0;
+
+                // Load genres and age limits from database
+                LoadGenres();
+                LoadAgeLimits();
+
+                // Load movies
+                LoadMovies();
+
+                // Adjust layout after a short delay
+                System.Threading.Timer timer = null;
+                timer = new System.Threading.Timer((state) =>
                 {
-                    this.BeginInvoke(new Action(() =>
+                    if (this.IsHandleCreated)
                     {
-                        AdjustCardMargins();
-                        isFirstLoad = false;
-                    }));
-                    timer?.Dispose();
+                        this.BeginInvoke(new Action(() =>
+                        {
+                            AdjustCardMargins();
+                            isFirstLoad = false;
+                        }));
+                        timer?.Dispose();
+                    }
+                }, null, 100, System.Threading.Timeout.Infinite);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi khởi tạo: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadGenres()
+        {
+            try
+            {
+                cboGenre.Items.Clear();
+                var genres = movieBLL.GetGenresFromDB();
+
+                // GetGenresFromDB đã có "Tất cả" ở đầu rồi
+                foreach (var genre in genres)
+                {
+                    cboGenre.Items.Add(genre);
                 }
-            }, null, 100, System.Threading.Timeout.Infinite);
+
+                if (cboGenre.Items.Count > 0)
+                    cboGenre.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading genres: {ex.Message}");
+                cboGenre.Items.Add("Tất cả");
+                cboGenre.SelectedIndex = 0;
+            }
+        }
+
+        private void LoadAgeLimits()
+        {
+            try
+            {
+                cboAgeLimit.Items.Clear();
+                var ageLimits = movieBLL.GetAgeRatingsFromDB();
+
+                // GetAgeRatingsFromDB đã có "Tất cả" ở đầu rồi
+                foreach (var age in ageLimits)
+                {
+                    cboAgeLimit.Items.Add(age);
+                }
+
+                if (cboAgeLimit.Items.Count > 0)
+                    cboAgeLimit.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading age limits: {ex.Message}");
+                cboAgeLimit.Items.Add("Tất cả");
+                cboAgeLimit.SelectedIndex = 0;
+            }
         }
 
         private void LoadMovies()
         {
             try
             {
-                // Hiển thị loading cursor
                 this.Cursor = Cursors.WaitCursor;
 
                 string searchText = txtSearch.Text.Trim();
                 string filterStatus = cboFilter.SelectedItem?.ToString() ?? "Tất cả phim";
+                string filterGenre = cboGenre.SelectedItem?.ToString() ?? "Tất cả";
+                string filterAge = cboAgeLimit.SelectedItem?.ToString() ?? "Tất cả";
 
-                currentMovies = movieBLL.SearchMoviesWithPaging(
+                // DEBUG
+                System.Diagnostics.Debug.WriteLine($"=== LoadMovies ===");
+                System.Diagnostics.Debug.WriteLine($"Search: '{searchText}'");
+                System.Diagnostics.Debug.WriteLine($"Status: '{filterStatus}'");
+                System.Diagnostics.Debug.WriteLine($"Genre: '{filterGenre}'");
+                System.Diagnostics.Debug.WriteLine($"Age: '{filterAge}'");
+                System.Diagnostics.Debug.WriteLine($"Page: {currentPage}, Size: {pageSize}");
+
+                // Gọi BLL với stored procedure
+                currentMovies = movieBLL.SearchMoviesWithPagingSP(
                     searchText,
                     filterStatus,
+                    filterGenre,
+                    filterAge,
                     currentPage,
                     pageSize,
                     out totalPages);
+
+                System.Diagnostics.Debug.WriteLine($"Movies loaded: {currentMovies?.Count ?? 0}");
+                System.Diagnostics.Debug.WriteLine($"Total pages: {totalPages}");
 
                 DisplayMovies(currentMovies);
                 UpdateInfoLabel();
@@ -121,8 +194,13 @@ namespace UI.Movie
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}", "✗ Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Diagnostics.Debug.WriteLine($"ERROR in LoadMovies: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Stack: {ex.StackTrace}");
+                if (ex.InnerException != null)
+                    System.Diagnostics.Debug.WriteLine($"Inner: {ex.InnerException.Message}");
+
+                MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}\n\nChi tiết: {ex.InnerException?.Message}",
+                    "✗ Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -135,7 +213,17 @@ namespace UI.Movie
             moviesContainer.SuspendLayout();
             try
             {
-                moviesContainer.Controls.Clear();
+                // Clear existing controls except template
+                var controlsToRemove = moviesContainer.Controls
+                    .Cast<Control>()
+                    .Where(c => c != movieCardTemplate)
+                    .ToList();
+
+                foreach (var control in controlsToRemove)
+                {
+                    moviesContainer.Controls.Remove(control);
+                    control.Dispose();
+                }
 
                 if (movies == null || movies.Count == 0)
                 {
@@ -150,12 +238,13 @@ namespace UI.Movie
                         Text = "📭 Không tìm thấy phim nào!",
                         Font = new Font("Segoe UI", 14, FontStyle.Bold),
                         ForeColor = Color.Gray,
-                        AutoSize = true,
-                        Location = new Point(
-                            (noDataPanel.Width - 250) / 2,
-                            (noDataPanel.Height - 30) / 2
-                        )
+                        AutoSize = true
                     };
+
+                    lblNoData.Location = new Point(
+                        Math.Max(0, (noDataPanel.Width - lblNoData.PreferredWidth) / 2),
+                        Math.Max(0, (noDataPanel.Height - lblNoData.PreferredHeight) / 2)
+                    );
 
                     noDataPanel.Controls.Add(lblNoData);
                     moviesContainer.Controls.Add(noDataPanel);
@@ -179,157 +268,219 @@ namespace UI.Movie
         {
             var card = new ReaLTaiizor.Controls.MaterialCard
             {
-                BackColor = Color.FromArgb(255, 255, 255),
-                Size = new Size(296, 407),
-                Margin = new Padding(6)
+                BackColor = movieCardTemplate.BackColor,
+                Size = movieCardTemplate.Size,
+                Margin = movieCardTemplate.Margin,
+                Depth = movieCardTemplate.Depth,
+                Padding = movieCardTemplate.Padding,
+                Visible = true
             };
 
             string status = movieBLL.GetMovieStatus(movie);
 
-            // Badge trạng thái
-            Label badge = new Label
+            foreach (Control templateControl in movieCardTemplate.Controls)
             {
-                BackColor = GetStatusColor(status),
-                Font = new Font("Segoe UI", 7F, FontStyle.Bold),
-                ForeColor = status == "Sắp chiếu" ? Color.Black : Color.White,
-                Location = new Point(8, 8),
-                Size = new Size(75, 18),
-                Text = status,
-                TextAlign = ContentAlignment.MiddleCenter
-            };
+                Control clonedControl = null;
 
-            // Poster
-            Panel posterPanel = new Panel
-            {
-                Location = new Point(10, 10),
-                Size = new Size(276, 180),
-                BackColor = Color.FromArgb(200, 200, 200)
-            };
-
-            PictureBox posterPicBox = new PictureBox
-            {
-                Dock = DockStyle.Fill,
-                SizeMode = PictureBoxSizeMode.Zoom,
-                BackColor = Color.FromArgb(200, 200, 200)
-            };
-
-            if (!string.IsNullOrEmpty(movie.ImageUrl))
-            {
-                ImgHelper.DisplayImageFromRelative(movie.ImageUrl, posterPicBox);
-            }
-            else
-            {
-                // Placeholder nếu không có ảnh
-                Label lblNoImage = new Label
+                if (templateControl.Name == "badgeTemplate")
                 {
-                    Text = "📷\nChưa có ảnh",
-                    Font = new Font("Segoe UI", 10F, FontStyle.Italic),
-                    ForeColor = Color.Gray,
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Dock = DockStyle.Fill
-                };
-                posterPicBox.Controls.Add(lblNoImage);
+                    var badge = new Label
+                    {
+                        BackColor = GetStatusColor(status),
+                        Font = (templateControl as Label).Font,
+                        ForeColor = status == "Sắp chiếu" ? Color.Black : Color.White,
+                        Location = templateControl.Location,
+                        Size = templateControl.Size,
+                        Text = status,
+                        TextAlign = (templateControl as Label).TextAlign
+                    };
+                    clonedControl = badge;
+                }
+                else if (templateControl.Name == "posterTemplate")
+                {
+                    var posterPanel = new System.Windows.Forms.Panel
+                    {
+                        Location = templateControl.Location,
+                        Size = templateControl.Size,
+                        BackColor = templateControl.BackColor
+                    };
+
+                    PictureBox posterPicBox = new PictureBox
+                    {
+                        Dock = DockStyle.Fill,
+                        SizeMode = PictureBoxSizeMode.Zoom,
+                        BackColor = Color.FromArgb(200, 200, 200)
+                    };
+
+                    if (!string.IsNullOrEmpty(movie.ImageUrl))
+                    {
+                        ImgHelper.DisplayImageFromRelative(movie.ImageUrl, posterPicBox);
+                    }
+                    else
+                    {
+                        Label lblNoImage = new Label
+                        {
+                            Text = "📷\nChưa có ảnh",
+                            Font = new Font("Segoe UI", 10F, FontStyle.Italic),
+                            ForeColor = Color.Gray,
+                            TextAlign = ContentAlignment.MiddleCenter,
+                            Dock = DockStyle.Fill
+                        };
+                        posterPicBox.Controls.Add(lblNoImage);
+                    }
+                    posterPanel.Controls.Add(posterPicBox);
+                    clonedControl = posterPanel;
+                }
+                else if (templateControl.Name == "lblTitleTemplate")
+                {
+                    clonedControl = new Label
+                    {
+                        Font = (templateControl as Label).Font,
+                        ForeColor = (templateControl as Label).ForeColor,
+                        Location = templateControl.Location,
+                        Size = templateControl.Size,
+                        Text = movie.Title,
+                        AutoEllipsis = true
+                    };
+                }
+                else if (templateControl.Name == "lblDurationTemplate")
+                {
+                    clonedControl = new Label
+                    {
+                        AutoSize = (templateControl as Label).AutoSize,
+                        Font = (templateControl as Label).Font,
+                        ForeColor = (templateControl as Label).ForeColor,
+                        Location = templateControl.Location,
+                        Text = $"⏱ {movieBLL.FormatDuration(movie.DurationMinutes)}"
+                    };
+                }
+                else if (templateControl.Name == "lblLanguageTemplate")
+                {
+                    clonedControl = new Label
+                    {
+                        AutoSize = (templateControl as Label).AutoSize,
+                        Font = (templateControl as Label).Font,
+                        ForeColor = (templateControl as Label).ForeColor,
+                        Location = templateControl.Location,
+                        Text = $"🎭 {movie.Genre ?? "Chưa xác định"}"
+                    };
+                }
+                else if (templateControl.Name == "lblSubtitleTemplate")
+                {
+                    clonedControl = new Label
+                    {
+                        AutoSize = (templateControl as Label).AutoSize,
+                        BackColor = (templateControl as Label).BackColor,
+                        Font = (templateControl as Label).Font,
+                        ForeColor = (templateControl as Label).ForeColor,
+                        Location = templateControl.Location,
+                        Padding = (templateControl as Label).Padding,
+                        Text = $"🎬 {movie.Language}"
+                    };
+                }
+                else if (templateControl.Name == "lblDatesTemplate")
+                {
+                    clonedControl = new Label
+                    {
+                        Font = (templateControl as Label).Font,
+                        ForeColor = (templateControl as Label).ForeColor,
+                        Location = templateControl.Location,
+                        Size = templateControl.Size,
+                        Text = movieBLL.FormatMovieDates(movie)
+                    };
+                }
+                else if (templateControl.Name == "btnViewTemplate")
+                {
+                    var btn = templateControl as ReaLTaiizor.Controls.ParrotButton;
+                    var newBtn = new ReaLTaiizor.Controls.ParrotButton
+                    {
+                        BackgroundColor = btn.BackgroundColor,
+                        ButtonStyle = btn.ButtonStyle,
+                        ButtonText = btn.ButtonText,
+                        ClickBackColor = btn.ClickBackColor,
+                        ClickTextColor = btn.ClickTextColor,
+                        CornerRadius = btn.CornerRadius,
+                        Cursor = btn.Cursor,
+                        Font = btn.Font,
+                        Horizontal_Alignment = btn.Horizontal_Alignment,
+                        HoverBackgroundColor = btn.HoverBackgroundColor,
+                        HoverTextColor = btn.HoverTextColor,
+                        Location = btn.Location,
+                        Size = btn.Size,
+                        TextColor = btn.TextColor,
+                        ButtonImage = btn.ButtonImage,
+                        ImagePosition = btn.ImagePosition,
+                        SmoothingType = btn.SmoothingType,
+                        TextRenderingType = btn.TextRenderingType,
+                        Vertical_Alignment = btn.Vertical_Alignment
+                    };
+                    newBtn.Click += (s, e) => ViewMovieDetail(movie);
+                    clonedControl = newBtn;
+                }
+                else if (templateControl.Name == "btnEditTemplate")
+                {
+                    var btn = templateControl as ReaLTaiizor.Controls.ParrotButton;
+                    var newBtn = new ReaLTaiizor.Controls.ParrotButton
+                    {
+                        BackgroundColor = btn.BackgroundColor,
+                        ButtonStyle = btn.ButtonStyle,
+                        ButtonText = btn.ButtonText,
+                        ClickBackColor = btn.ClickBackColor,
+                        ClickTextColor = btn.ClickTextColor,
+                        CornerRadius = btn.CornerRadius,
+                        Cursor = btn.Cursor,
+                        Font = btn.Font,
+                        Horizontal_Alignment = btn.Horizontal_Alignment,
+                        HoverBackgroundColor = btn.HoverBackgroundColor,
+                        HoverTextColor = btn.HoverTextColor,
+                        Location = btn.Location,
+                        Size = btn.Size,
+                        TextColor = btn.TextColor,
+                        ButtonImage = btn.ButtonImage,
+                        ImagePosition = btn.ImagePosition,
+                        SmoothingType = btn.SmoothingType,
+                        TextRenderingType = btn.TextRenderingType,
+                        Vertical_Alignment = btn.Vertical_Alignment
+                    };
+                    newBtn.Click += (s, e) => EditMovie(movie);
+                    clonedControl = newBtn;
+                }
+                else if (templateControl.Name == "btnDeleteTemplate")
+                {
+                    var btn = templateControl as ReaLTaiizor.Controls.ParrotButton;
+                    var newBtn = new ReaLTaiizor.Controls.ParrotButton
+                    {
+                        BackgroundColor = btn.BackgroundColor,
+                        ButtonStyle = btn.ButtonStyle,
+                        ButtonText = btn.ButtonText,
+                        ClickBackColor = btn.ClickBackColor,
+                        ClickTextColor = btn.ClickTextColor,
+                        CornerRadius = btn.CornerRadius,
+                        Cursor = btn.Cursor,
+                        Font = btn.Font,
+                        Horizontal_Alignment = btn.Horizontal_Alignment,
+                        HoverBackgroundColor = btn.HoverBackgroundColor,
+                        HoverTextColor = btn.HoverTextColor,
+                        Location = btn.Location,
+                        Size = btn.Size,
+                        TextColor = btn.TextColor,
+                        ButtonImage = btn.ButtonImage,
+                        ImagePosition = btn.ImagePosition,
+                        SmoothingType = btn.SmoothingType,
+                        TextRenderingType = btn.TextRenderingType,
+                        Vertical_Alignment = btn.Vertical_Alignment
+                    };
+                    newBtn.Click += (s, e) => DeleteMovie(movie);
+                    clonedControl = newBtn;
+                }
+
+                if (clonedControl != null)
+                {
+                    card.Controls.Add(clonedControl);
+                }
             }
-
-            posterPanel.Controls.Add(posterPicBox);
-
-            // Tiêu đề phim
-            Label lblTitle = new Label
-            {
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                ForeColor = Color.FromArgb(50, 50, 50),
-                Location = new Point(10, 200),
-                Size = new Size(276, 45),
-                Text = movie.Title,
-                AutoEllipsis = true
-            };
-
-            // Thời lượng
-            Label lblDuration = new Label
-            {
-                AutoSize = true,
-                Font = new Font("Segoe UI", 8F),
-                ForeColor = Color.FromArgb(100, 100, 100),
-                Location = new Point(12, 250),
-                Text = $"⏱ {movieBLL.FormatDuration(movie.DurationMinutes)}"
-            };
-
-            // Thể loại
-            Label lblCategory = new Label
-            {
-                AutoSize = true,
-                Font = new Font("Segoe UI", 8F),
-                ForeColor = Color.FromArgb(100, 100, 100),
-                Location = new Point(12, 270),
-                Size = new Size(260, 20),
-                Text = $"🎭 {movie.Genre ?? "Chưa xác định"}",
-                AutoEllipsis = true
-            };
-
-            // Ngôn ngữ
-            Label lblLanguage = new Label
-            {
-                AutoSize = true,
-                BackColor = Color.FromArgb(220, 53, 69),
-                Font = new Font("Segoe UI", 7F, FontStyle.Bold),
-                ForeColor = Color.White,
-                Location = new Point(12, 292),
-                Padding = new Padding(4),
-                Text = $"🎬 {movie.Language}"
-            };
-
-            // Ngày chiếu
-            Label lblDates = new Label
-            {
-                Font = new Font("Segoe UI", 7.5F),
-                ForeColor = Color.FromArgb(100, 100, 100),
-                Location = new Point(12, 320),
-                Size = new Size(275, 39),
-                Text = movieBLL.FormatMovieDates(movie)
-            };
-
-            // Buttons
-            var btnView = CreateActionButton("👁 Chi tiết", Color.FromArgb(23, 162, 184), new Point(12, 374), new Size(89, 25));
-            btnView.Click += (s, e) => ViewMovieDetail(movie);
-
-            var btnEdit = CreateActionButton("✏ Sửa", Color.FromArgb(255, 193, 7), new Point(131, 374), new Size(65, 25));
-            btnEdit.Click += (s, e) => EditMovie(movie);
-
-            var btnDelete = CreateActionButton("🗑 Xóa", Color.FromArgb(220, 53, 69), new Point(223, 374), new Size(65, 25));
-            btnDelete.Click += (s, e) => DeleteMovie(movie);
-
-            card.Controls.AddRange(new Control[] {
-                posterPanel, badge, lblTitle, lblDuration, lblCategory,
-                lblLanguage, lblDates, btnView, btnEdit, btnDelete
-            });
 
             return card;
-        }
-
-        private ReaLTaiizor.Controls.ParrotButton CreateActionButton(string text, Color bgColor, Point location, Size size)
-        {
-            return new ReaLTaiizor.Controls.ParrotButton
-            {
-                BackgroundColor = bgColor,
-                ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded,
-                ButtonText = text,
-                ClickBackColor = Color.FromArgb(
-                    Math.Max(0, bgColor.R - 40),
-                    Math.Max(0, bgColor.G - 40),
-                    Math.Max(0, bgColor.B - 40)
-                ),
-                HoverBackgroundColor = Color.FromArgb(
-                    Math.Min(255, bgColor.R + 20),
-                    Math.Min(255, bgColor.G + 20),
-                    Math.Min(255, bgColor.B + 20)
-                ),
-                CornerRadius = 3,
-                Cursor = Cursors.Hand,
-                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
-                Location = location,
-                Size = size,
-                TextColor = Color.White
-            };
         }
 
         private Color GetStatusColor(string status)
@@ -337,13 +488,13 @@ namespace UI.Movie
             switch (status)
             {
                 case "Đang chiếu":
-                    return Color.FromArgb(40, 167, 69); // Green
+                    return Color.FromArgb(40, 167, 69);
                 case "Sắp chiếu":
-                    return Color.FromArgb(255, 193, 7); // Yellow
+                    return Color.FromArgb(255, 193, 7);
                 case "Đã kết thúc":
-                    return Color.FromArgb(108, 117, 125); // Gray
+                    return Color.FromArgb(108, 117, 125);
                 default:
-                    return Color.FromArgb(23, 162, 184); // Blue
+                    return Color.FromArgb(23, 162, 184);
             }
         }
 
@@ -375,7 +526,6 @@ namespace UI.Movie
         {
             try
             {
-                // Chuyển sang form Edit với movie data
                 EditMovieUC editForm = new EditMovieUC(_home, _employee, movie);
                 _home.LoadControl(editForm);
             }
@@ -390,7 +540,6 @@ namespace UI.Movie
         {
             try
             {
-                // Kiểm tra xem phim có thể xóa không
                 var canDelete = movieBLL.CanDeleteMovie(movie.MovieID);
 
                 string message = $"Bạn có chắc muốn xóa phim '{movie.Title}'?";
@@ -419,10 +568,8 @@ namespace UI.Movie
                         MessageBox.Show(result.Item2, "✓ Thành công",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Reload lại trang hiện tại
                         if (currentMovies.Count == 1 && currentPage > 1)
                         {
-                            // Nếu xóa phim cuối cùng của trang, quay về trang trước
                             currentPage--;
                         }
 
@@ -446,17 +593,21 @@ namespace UI.Movie
         {
             try
             {
-                int totalMovies = currentMovies.Count;
+                int totalMovies = currentMovies?.Count ?? 0;
                 string searchText = txtSearch.Text.Trim();
                 string filterStatus = cboFilter.SelectedItem?.ToString() ?? "Tất cả phim";
+                string filterGenre = cboGenre.SelectedItem?.ToString() ?? "Tất cả";
+                string filterAge = cboAgeLimit.SelectedItem?.ToString() ?? "Tất cả";
 
-                string searchInfo = string.IsNullOrEmpty(searchText)
-                    ? ""
-                    : $" (Tìm kiếm: '{searchText}')";
+                string searchInfo = string.IsNullOrEmpty(searchText) ? "" : $" | Tìm: '{searchText}'";
+                string filterInfo = "";
 
-                string filterInfo = filterStatus == "Tất cả phim"
-                    ? ""
-                    : $" - Lọc: {filterStatus}";
+                if (filterStatus != "Tất cả phim")
+                    filterInfo += $" | {filterStatus}";
+                if (filterGenre != "Tất cả")
+                    filterInfo += $" | {filterGenre}";
+                if (filterAge != "Tất cả")
+                    filterInfo += $" | {filterAge}";
 
                 lblInfo.Text = $"📊 Hiển thị: {totalMovies} phim{searchInfo}{filterInfo}" +
                              $"                                                                                                                                                                                 " +
@@ -472,58 +623,91 @@ namespace UI.Movie
         {
             try
             {
-                // Enable/Disable buttons
+                // Enable/Disable navigation buttons
                 btnFirstPage.Enabled = currentPage > 1;
                 btnPrevPage.Enabled = currentPage > 1;
                 btnNextPage.Enabled = currentPage < totalPages;
                 btnLastPage.Enabled = currentPage < totalPages;
 
-                // Update button text
-                btnFirstPage.Text = "1";
+                // Colors
+                Color activeColor = Color.FromArgb(220, 53, 69);    // Red for current page
+                Color inactiveColor = Color.FromArgb(108, 117, 125); // Gray for other pages
+                Color disabledColor = Color.FromArgb(180, 180, 180); // Lighter gray for disabled
 
-                if (currentPage > 1)
+                // Calculate which pages to show
+                int startPage = 1;
+                int middlePage = 2;
+                int endPage = 3;
+
+                if (totalPages <= 3)
                 {
-                    btnPrevPage.Text = (currentPage - 1).ToString();
+                    // Ít hơn hoặc bằng 3 trang: hiển thị tất cả
+                    startPage = 1;
+                    middlePage = totalPages >= 2 ? 2 : 1;
+                    endPage = totalPages >= 3 ? 3 : (totalPages >= 2 ? 2 : 1);
                 }
                 else
                 {
-                    btnPrevPage.Text = "‹";
+                    // Nhiều hơn 3 trang
+                    if (currentPage == 1)
+                    {
+                        startPage = 1;
+                        middlePage = 2;
+                        endPage = 3;
+                    }
+                    else if (currentPage == totalPages)
+                    {
+                        startPage = totalPages - 2;
+                        middlePage = totalPages - 1;
+                        endPage = totalPages;
+                    }
+                    else
+                    {
+                        startPage = currentPage - 1;
+                        middlePage = currentPage;
+                        endPage = currentPage + 1;
+                    }
                 }
 
-                btnPage2.Text = currentPage.ToString();
+                // Set button texts
+                btnFirstPage.Text = startPage.ToString();
+                btnPrevPage.Text = middlePage.ToString();
+                btnPage2.Text = endPage.ToString();
+                btnPage3.Text = "›";
+                btnLastPage.Text = "››";
 
-                if (currentPage < totalPages)
-                {
-                    btnPage3.Text = (currentPage + 1).ToString();
-                }
-                else
-                {
-                    btnPage3.Text = "›";
-                }
+                // Set colors based on current page
+                btnFirstPage.BackgroundColor = currentPage == startPage ? activeColor : inactiveColor;
+                btnPrevPage.BackgroundColor = currentPage == middlePage ? activeColor : inactiveColor;
+                btnPage2.BackgroundColor = currentPage == endPage ? activeColor : inactiveColor;
+                btnPage3.BackgroundColor = inactiveColor;
+                btnLastPage.BackgroundColor = inactiveColor;
 
-                // Update colors
-                Color activeColor = Color.FromArgb(220, 53, 69);
-                Color inactiveColor = Color.FromArgb(108, 117, 125);
-                Color disabledColor = Color.FromArgb(180, 180, 180);
-
-                btnFirstPage.BackgroundColor = currentPage == 1 ? activeColor : inactiveColor;
-                btnPage2.BackgroundColor = activeColor; // Current page always active
-
-                // Disabled color
+                // Apply disabled colors
                 if (!btnFirstPage.Enabled)
                     btnFirstPage.BackgroundColor = disabledColor;
                 if (!btnPrevPage.Enabled)
                     btnPrevPage.BackgroundColor = disabledColor;
+                if (!btnPage2.Enabled)
+                    btnPage2.BackgroundColor = disabledColor;
                 if (!btnNextPage.Enabled)
-                    btnNextPage.BackgroundColor = disabledColor;
+                    btnPage3.BackgroundColor = disabledColor;
                 if (!btnLastPage.Enabled)
                     btnLastPage.BackgroundColor = disabledColor;
+
+                // Hide buttons if not enough pages
+                btnFirstPage.Visible = totalPages >= 1;
+                btnPrevPage.Visible = totalPages >= 2;
+                btnPage2.Visible = totalPages >= 3;
+                btnPage3.Visible = totalPages > 3;
+                btnLastPage.Visible = totalPages > 3;
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error updating pagination: {ex.Message}");
             }
         }
+
 
         private void NavigateToPage(int page)
         {
@@ -534,31 +718,6 @@ namespace UI.Movie
             LoadMovies();
         }
 
-        private void BtnSearch_Click(object sender, EventArgs e)
-        {
-            currentPage = 1; // Reset về trang 1 khi tìm kiếm
-            LoadMovies();
-        }
-
-        private void CboFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            currentPage = 1; // Reset về trang 1 khi lọc
-            LoadMovies();
-        }
-
-        private void BtnAddMovie_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this._home.LoadControl(new AddMovieUC(this._home, this._employee));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi mở form thêm phim: {ex.Message}", "✗ Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void AdjustCardMargins()
         {
             if (moviesContainer == null || !moviesContainer.IsHandleCreated)
@@ -566,6 +725,7 @@ namespace UI.Movie
 
             var cards = moviesContainer.Controls
                 .OfType<ReaLTaiizor.Controls.MaterialCard>()
+                .Where(c => c.Visible && c != movieCardTemplate)
                 .ToList();
 
             if (cards.Count == 0)
@@ -578,7 +738,7 @@ namespace UI.Movie
             int flowPadding = moviesContainer.Padding.Left + moviesContainer.Padding.Right;
             int availableWidth = containerWidth - panelPadding - flowPadding - 25;
 
-            int cardWidth = cards[0].Width;
+            int cardWidth = 296;
             int cardsPerRow = 4;
             int minMargin = 6;
 
@@ -621,24 +781,43 @@ namespace UI.Movie
             }
         }
 
-        private void panelHeader_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            BtnSearch_Click(sender, e);
+            currentPage = 1;
+            LoadMovies();
         }
 
         private void cboFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CboFilter_SelectedIndexChanged(sender, e);
+            currentPage = 1;
+            LoadMovies();
+        }
+
+        private void cboGenre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            LoadMovies();
+        }
+
+        private void cboAgeLimit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            LoadMovies();
         }
 
         private void btnAddMovie_Click(object sender, EventArgs e)
         {
-            BtnAddMovie_Click(sender, e);
+            try
+            {
+                _home.LoadControl(new AddMovieUC(_home, _employee));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi mở form thêm phim: {ex.Message}", "✗ Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         private void btnDeletedMovies_Click(object sender, EventArgs e)
         {
             try

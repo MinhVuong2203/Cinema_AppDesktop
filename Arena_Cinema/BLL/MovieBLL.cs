@@ -114,7 +114,7 @@ namespace BLL
             }
         }
 
-        // Tìm kiếm phim
+        // Tìm kiếm phim (phương thức cũ - giữ lại cho tương thích)
         public List<Movie> SearchMovies(string searchText, string filterStatus = "Tất cả phim")
         {
             try
@@ -145,7 +145,60 @@ namespace BLL
             }
         }
 
-        // Tìm kiếm và lọc với phân trang
+        // Tìm kiếm và lọc phim với phân trang sử dụng stored procedure
+        // FIXED: Đổi thứ tự tham số để khớp với MovieDAL
+        public List<Movie> SearchMoviesWithPagingSP(
+            string searchText,
+            string filterStatus,
+            string genre,
+            string ageLimit,
+            int pageNumber,
+            int pageSize,
+            out int totalPages)
+        {
+            try
+            {
+                int totalRecords;
+
+                // FIXED: Gọi stored procedure với thứ tự tham số đúng
+                var movies = movieDAL.GetMoviesPaginatedWithSP(
+                    pageNumber: pageNumber,
+                    pageSize: pageSize,
+                    totalRecords: out totalRecords,
+                    totalPages: out totalPages,
+                    searchKeyword: string.IsNullOrWhiteSpace(searchText) ? null : searchText,
+                    genre: string.IsNullOrWhiteSpace(genre) || genre == "Tất cả" ? null : genre,
+                    ageLimit: string.IsNullOrWhiteSpace(ageLimit) || ageLimit == "Tất cả" ? null : ageLimit,
+                    isDeleted: false
+                );
+
+                // Lọc thêm theo trạng thái chiếu (xử lý ở BLL vì logic phức tạp)
+                if (filterStatus != "Tất cả phim" && movies.Count > 0)
+                {
+                    DateTime today = DateTime.Today;
+
+                    movies = movies.Where(m =>
+                    {
+                        string status = GetMovieStatus(m);
+                        return status == filterStatus;
+                    }).ToList();
+
+                    // Sau khi lọc theo status, cần tính lại tổng số trang
+                    // Nhưng vì đã phân trang trước nên kết quả có thể không chính xác 100%
+                    // Đây là trade-off khi không muốn tạo thêm stored procedure
+                }
+
+                return movies;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in SearchMoviesWithPagingSP: {ex.Message}");
+                totalPages = 1;
+                return new List<Movie>();
+            }
+        }
+
+        // Tìm kiếm và lọc với phân trang (phương thức cũ - giữ lại cho tương thích)
         public List<Movie> SearchMoviesWithPaging(string searchText, string filterStatus, int pageNumber, int pageSize, out int totalPages)
         {
             try
@@ -261,7 +314,7 @@ namespace BLL
             }
         }
 
-        // Lấy phim với phân trang
+        // Lấy phim với phân trang (phương thức cũ)
         public List<Movie> GetMoviesWithPaging(int pageNumber, int pageSize, out int totalPages)
         {
             try
@@ -428,7 +481,6 @@ namespace BLL
                 return new Tuple<bool, string>(false, $"Lỗi: {ex.Message}");
             }
         }
-        // Thêm vào class MovieBLL
 
         // Lấy danh sách phim đã xóa
         public List<Movie> GetDeletedMovies()
@@ -494,6 +546,36 @@ namespace BLL
             catch (Exception ex)
             {
                 return new Tuple<bool, string>(false, $"Lỗi: {ex.Message}");
+            }
+        }
+
+        // Lấy danh sách thể loại từ database
+        public List<string> GetGenresFromDB()
+        {
+            try
+            {
+                var genres = movieDAL.GetMovieGenres();
+                genres.Insert(0, "Tất cả"); // Thêm option "Tất cả" ở đầu
+                return genres;
+            }
+            catch (Exception)
+            {
+                return new List<string> { "Tất cả" };
+            }
+        }
+
+        // Lấy danh sách độ tuổi từ database
+        public List<string> GetAgeRatingsFromDB()
+        {
+            try
+            {
+                var ratings = movieDAL.GetAgeRatings();
+                ratings.Insert(0, "Tất cả"); // Thêm option "Tất cả" ở đầu
+                return ratings;
+            }
+            catch (Exception)
+            {
+                return new List<string> { "Tất cả" };
             }
         }
 
