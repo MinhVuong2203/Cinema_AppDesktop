@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Common;
 using DAL;
 using DTO;
+using UI.PayOSMethod.Services;
 
 namespace UI.EmployeeSale
 {
@@ -18,6 +19,7 @@ namespace UI.EmployeeSale
         private Home _home;
         private DTO.Employee _employee;
         private SaleTicketDAL _saleTicketDAL = new SaleTicketDAL();
+        private SaleProductDAL _saleProductDAL = new SaleProductDAL();
         private List<DTO.ShowTime> _showTimes = new List<DTO.ShowTime>();
         private List<Ticket> _tickets = new List<Ticket>();
         private List<Seat> _seats = new List<Seat>();
@@ -27,12 +29,14 @@ namespace UI.EmployeeSale
         private List<int> _selectedProductIds = new List<int>();
         private Dictionary<int, int> _selectedProductQuantities = new Dictionary<int, int>();
         private Guid _selectedShowTimeId = Guid.Empty;
+
         public SaleProductUC(Home home, DTO.Employee employee)
         {
             InitializeComponent();
             _home = home;
             _employee = employee;
             btn_back.Click += btn_back_Click;
+            btnPayment.Click += BtnPayment_Click;
             LoadProducts();
         }
 
@@ -192,7 +196,7 @@ namespace UI.EmployeeSale
                     var lbl = productPanel.Controls.Find($"lblQty_{productId}", false).FirstOrDefault() as Label;
                     if (lbl != null) lbl.Text = _selectedProductQuantities[productId].ToString();
 
-                    // Thêm vào danh sách đã chọn nếu chưa có, nếu đã có thì tính lại tiền của sản phẩm
+                    // Thêm vào danh sách đã chọn nếu chưa có
                     if (!_selectedProductIds.Contains(productId))
                     {
                         _selectedProductIds.Add(productId);
@@ -216,34 +220,131 @@ namespace UI.EmployeeSale
 
         private void BtnPayment_Click(object sender, EventArgs e)
         {
-            if (_selectedShowTimeId == Guid.Empty)
+            try
             {
-                MessageBox.Show("Vui lòng chọn suất chiếu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                // Lấy danh sách sản phẩm đã chọn và số lượng
+                var selectedProducts = _products.Where(p => _selectedProductIds.Contains(p.ProductID)).ToList();
+                if (selectedProducts.Count == 0)
+                {
+                    MessageBox.Show("Vui lòng chọn sản phẩm để thanh toán.", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Hiển thị dialog xác nhận
+                var confirmResult = MessageBox.Show(
+                    $"Bạn có chắc chắn muốn tạo hóa đơn cho {selectedProducts.Count} sản phẩm?",
+                    "Xác nhận tạo hóa đơn",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirmResult != DialogResult.Yes)
+                {
+                    return;
+                }
+
+                // Tạo hóa đơn cho từng sản phẩm
+                int successCount = 0;
+                foreach (var product in selectedProducts)
+                {
+                    int qty = _selectedProductQuantities.ContainsKey(product.ProductID)
+                        ? _selectedProductQuantities[product.ProductID] : 0;
+
+                    if (qty <= 0) continue;
+
+                    var invoice = new DTO.Invoice();
+                    var invoiceProduct = new DTO.InvoiceProduct();
+
+                    // Lấy hoặc tạo khách hàng mặc định
+                    var customer = GetOrCreateDefaultCustomer();
+                    //nếu customer null thì lưu customerID là null
+                    if (customer == null)
+                    {
+                        customer = null;
+                    }
+
+                    decimal totalAmount = (product.Price ?? 0) * qty;
+                    decimal discount = 0; // Giảm giá mặc định
+
+                    try
+                    {
+                        _saleProductDAL.AddProductInvoice(
+                            product,
+                            invoiceProduct,
+                            invoice,
+                            qty,
+                            _employee,
+                            customer,
+                            totalAmount,
+                            discount);
+                        successCount++;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log chi tiết lỗi
+                        string errorDetail = $"Sản phẩm: {product.ProductName}\n" +
+                                           $"Số lượng: {qty}\n" +
+                                           $"Lỗi: {ex.Message}\n";
+
+                        if (ex.InnerException != null)
+                        {
+                            errorDetail += $"Chi tiết: {ex.InnerException.Message}\n";
+
+                            if (ex.InnerException.InnerException != null)
+                            {
+                                errorDetail += $"Chi tiết sâu hơn: {ex.InnerException.InnerException.Message}";
+                            }
+                        }
+
+                        MessageBox.Show(
+                            errorDetail,
+                            "Lỗi chi tiết",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+
+                if (successCount > 0)
+                {
+                    MessageBox.Show(
+                        $"Đã tạo thành công {successCount}/{selectedProducts.Count} hóa đơn!",
+                        "Thông báo",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    // Chuyển sang trang thông tin hóa đơn
+                    var paymentInforUC = new ProductPaymentInfor(_home, _employee);
+                    _home.LoadControl(paymentInforUC);
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "Không thể tạo hóa đơn nào. Vui lòng thử lại.",
+                        "Lỗi",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
-            if (_selectedSeatIds.Count == 0)
+            catch (Exception ex)
             {
-                MessageBox.Show("Vui lòng chọn ít nhất một ghế!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show(
+                    $"Lỗi khi xử lý thanh toán: {ex.Message}",
+                    "Lỗi",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-            if (_selectedTicketTypeCounts.Values.Sum() != _selectedSeatIds.Count)
-            {
-                MessageBox.Show("Vui lòng phân bổ loại vé cho tất cả ghế đã chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void UpdateInvoice()
         {
-
             // Hiển thị sản phẩm đã chọn và số lượng
             var selectedProducts = _products.Where(p => _selectedProductIds.Contains(p.ProductID)).ToList();
             lbInvoiceProducts.Text = "Sản phẩm đã chọn:\n" + (selectedProducts.Count > 0
                 ? string.Join("\n", selectedProducts.Select(p =>
                 {
-                    int qty = _selectedProductQuantities.ContainsKey(p.ProductID) ? _selectedProductQuantities[p.ProductID] : 0;
-                    return $"{p.ProductName} x{qty} - {(p.Price ?? 0) * qty:C0}";
+                    int qty = _selectedProductQuantities.ContainsKey(p.ProductID)
+                        ? _selectedProductQuantities[p.ProductID] : 0;
+                    return $"{p.ProductName} x{qty} - {((p.Price ?? 0) * qty).ToString("#,##0")} ₫";
                 }))
                 : "Chưa chọn");
 
@@ -251,7 +352,9 @@ namespace UI.EmployeeSale
             decimal totalTickets = 0;
             foreach (var kv in _selectedTicketTypeCounts)
             {
-                var price = _tickets.Where(t => t.TicketType == kv.Key).Select(t => t.Price ?? 0).FirstOrDefault();
+                var price = _tickets.Where(t => t.TicketType == kv.Key)
+                    .Select(t => t.Price ?? 0)
+                    .FirstOrDefault();
                 totalTickets += price * kv.Value;
             }
 
@@ -259,11 +362,33 @@ namespace UI.EmployeeSale
             decimal totalProducts = 0;
             foreach (var p in selectedProducts)
             {
-                int qty = _selectedProductQuantities.ContainsKey(p.ProductID) ? _selectedProductQuantities[p.ProductID] : 0;
+                int qty = _selectedProductQuantities.ContainsKey(p.ProductID)
+                    ? _selectedProductQuantities[p.ProductID] : 0;
                 totalProducts += (p.Price ?? 0) * qty;
             }
 
-            lbInvoiceTotal.Text = $"Tổng tiền: {(totalTickets + totalProducts).ToString("C0")}";
+            lbInvoiceTotal.Text = $"Tổng tiền: {(totalTickets + totalProducts).ToString("#,##0")} ₫";
+        }
+
+        // Lấy hoặc tạo khách hàng mặc định
+        private DTO.Customer GetOrCreateDefaultCustomer()
+        {
+            try
+            {
+                using (var context = new CinemaDBContext())
+                {
+                    // Tìm khách hàng mặc định (ví dụ: có tên "Khách lẻ")
+                    var defaultCustomer = context.Customers
+                        .FirstOrDefault(c => c.FullName == "Khách lẻ" && !c.IsDeleted);
+
+
+                    return defaultCustomer;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi lấy khách hàng mặc định: {ex.Message}");
+            }
         }
     }
 }
