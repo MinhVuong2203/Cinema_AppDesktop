@@ -195,6 +195,12 @@
     <Compile Include="Controls\RoundedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="EmployeeSale\CreatCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeSale\CreatCustomer.Designer.cs">
+      <DependentUpon>CreatCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeSale\ProductPaymentInfor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -354,6 +360,9 @@
     <Compile Include="ShowTime\MNShowTimeUC.Designer.cs">
       <DependentUpon>MNShowTimeUC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="EmployeeSale\CreatCustomer.resx">
+      <DependentUpon>CreatCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeSale\ProductPaymentInfor.resx">
       <DependentUpon>ProductPaymentInfor.cs</DependentUpon>
     </EmbeddedResource>

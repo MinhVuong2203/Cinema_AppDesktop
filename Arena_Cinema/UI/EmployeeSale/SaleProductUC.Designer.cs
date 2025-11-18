@@ -30,10 +30,15 @@
         {
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlLeft = new System.Windows.Forms.Panel();
+            this.txt_Phone = new System.Windows.Forms.TextBox();
             this.btn_back = new ReaLTaiizor.Controls.ParrotButton();
             this.pnlProducts = new System.Windows.Forms.Panel();
             this.lbProducts = new System.Windows.Forms.Label();
             this.flpProducts = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnCheckCustomer = new System.Windows.Forms.Button();
+            this.lbCustomerName = new System.Windows.Forms.Label();
+            this.lbCustomerPhone = new System.Windows.Forms.Label();
+            this.lbCustomerEmail = new System.Windows.Forms.Label();
             this.pnlRight = new System.Windows.Forms.Panel();
             this.pnlInvoice = new System.Windows.Forms.Panel();
             this.lbInvoiceTitle = new System.Windows.Forms.Label();
@@ -67,13 +72,26 @@
             // 
             this.pnlLeft.AutoScroll = true;
             this.pnlLeft.BackColor = System.Drawing.Color.Transparent;
+            this.pnlLeft.Controls.Add(this.txt_Phone);
             this.pnlLeft.Controls.Add(this.btn_back);
             this.pnlLeft.Controls.Add(this.pnlProducts);
+            this.pnlLeft.Controls.Add(this.btnCheckCustomer);
+            this.pnlLeft.Controls.Add(this.lbCustomerName);
+            this.pnlLeft.Controls.Add(this.lbCustomerPhone);
+            this.pnlLeft.Controls.Add(this.lbCustomerEmail);
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlLeft.Location = new System.Drawing.Point(20, 20);
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(1200, 960);
             this.pnlLeft.TabIndex = 0;
+            // 
+            // txt_Phone
+            // 
+            this.txt_Phone.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Phone.Location = new System.Drawing.Point(131, 25);
+            this.txt_Phone.Name = "txt_Phone";
+            this.txt_Phone.Size = new System.Drawing.Size(238, 30);
+            this.txt_Phone.TabIndex = 7;
             // 
             // btn_back
             // 
@@ -126,6 +144,49 @@
             this.flpProducts.Name = "flpProducts";
             this.flpProducts.Size = new System.Drawing.Size(1141, 780);
             this.flpProducts.TabIndex = 1;
+            // 
+            // btnCheckCustomer
+            // 
+            this.btnCheckCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
+            this.btnCheckCustomer.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCheckCustomer.ForeColor = System.Drawing.Color.White;
+            this.btnCheckCustomer.Location = new System.Drawing.Point(380, 25);
+            this.btnCheckCustomer.Name = "btnCheckCustomer";
+            this.btnCheckCustomer.Size = new System.Drawing.Size(100, 30);
+            this.btnCheckCustomer.TabIndex = 8;
+            this.btnCheckCustomer.Text = "Kiểm tra";
+            this.btnCheckCustomer.UseVisualStyleBackColor = false;
+            this.btnCheckCustomer.Click += new System.EventHandler(this.btnCheckCustomer_Click);
+            // 
+            // lbCustomerName
+            // 
+            this.lbCustomerName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lbCustomerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            this.lbCustomerName.Location = new System.Drawing.Point(511, 25);
+            this.lbCustomerName.Name = "lbCustomerName";
+            this.lbCustomerName.Size = new System.Drawing.Size(350, 30);
+            this.lbCustomerName.TabIndex = 9;
+            this.lbCustomerName.Text = "Tên khách hàng: ";
+            // 
+            // lbCustomerPhone
+            // 
+            this.lbCustomerPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbCustomerPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            this.lbCustomerPhone.Location = new System.Drawing.Point(511, 60);
+            this.lbCustomerPhone.Name = "lbCustomerPhone";
+            this.lbCustomerPhone.Size = new System.Drawing.Size(350, 30);
+            this.lbCustomerPhone.TabIndex = 10;
+            this.lbCustomerPhone.Text = "SĐT: ";
+            // 
+            // lbCustomerEmail
+            // 
+            this.lbCustomerEmail.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbCustomerEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            this.lbCustomerEmail.Location = new System.Drawing.Point(400, 95);
+            this.lbCustomerEmail.Name = "lbCustomerEmail";
+            this.lbCustomerEmail.Size = new System.Drawing.Size(350, 30);
+            this.lbCustomerEmail.TabIndex = 11;
+            this.lbCustomerEmail.Text = "Email: ";
             // 
             // pnlRight
             // 
@@ -233,6 +294,7 @@
             this.Size = new System.Drawing.Size(1800, 1000);
             this.pnlMain.ResumeLayout(false);
             this.pnlLeft.ResumeLayout(false);
+            this.pnlLeft.PerformLayout();
             this.pnlProducts.ResumeLayout(false);
             this.pnlRight.ResumeLayout(false);
             this.pnlInvoice.ResumeLayout(false);
@@ -259,5 +321,10 @@
         private System.Windows.Forms.Panel pnlInvoiceTotal;
         private System.Windows.Forms.Label lbInvoiceTotal;
         private System.Windows.Forms.Button btnPayment;
+        private System.Windows.Forms.TextBox txt_Phone;
+        private System.Windows.Forms.Button btnCheckCustomer;
+        private System.Windows.Forms.Label lbCustomerName;
+        private System.Windows.Forms.Label lbCustomerPhone;
+        private System.Windows.Forms.Label lbCustomerEmail;
     }
 }

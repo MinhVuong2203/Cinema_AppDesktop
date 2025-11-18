@@ -12,6 +12,8 @@ namespace UI.EmployeeSale
     {
         private Home _home;
         private DTO.Employee _employee;
+        //private Invoice _invoice;
+        private Guid _invoiceID;
         private List<Invoice> _invoices;
         private CinemaDBContext _context;
 
@@ -21,10 +23,12 @@ namespace UI.EmployeeSale
             _context = new CinemaDBContext();
         }
 
-        public ProductPaymentInfor(Home home, DTO.Employee employee) : this()
+        public ProductPaymentInfor(Home home, DTO.Employee employee, Guid invoiceID) : this()
         {
             _home = home;
             _employee = employee;
+            //_invoice = invoice;
+            _invoiceID = invoiceID;
 
             // Khởi tạo sự kiện
             btnBack.Click += BtnBack_Click;
@@ -67,6 +71,7 @@ namespace UI.EmployeeSale
                 _invoices = _context.Invoices
                     .Where(i => i.EmployeeID == _employee.EmployeeID &&
                                i.Status == "Chờ thanh toán" &&
+                               i.InvoiceID == _invoiceID &&
                                !i.IsDeleted)
                     .OrderByDescending(i => i.IssueDate)
                     .Take(10) // Lấy tối đa 10 hóa đơn gần nhất

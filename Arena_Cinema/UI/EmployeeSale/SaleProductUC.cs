@@ -243,6 +243,7 @@ namespace UI.EmployeeSale
                     return;
                 }
 
+                var invoice = new DTO.Invoice();
                 // Tạo hóa đơn cho từng sản phẩm
                 int successCount = 0;
                 foreach (var product in selectedProducts)
@@ -252,11 +253,11 @@ namespace UI.EmployeeSale
 
                     if (qty <= 0) continue;
 
-                    var invoice = new DTO.Invoice();
+                    
                     var invoiceProduct = new DTO.InvoiceProduct();
 
                     // Lấy hoặc tạo khách hàng mặc định
-                    var customer = GetOrCreateDefaultCustomer();
+                    var customer = GetCustomerByPhone(txt_Phone.Text.Trim());
                     //nếu customer null thì lưu customerID là null
                     if (customer == null)
                     {
@@ -313,7 +314,7 @@ namespace UI.EmployeeSale
                         MessageBoxIcon.Information);
 
                     // Chuyển sang trang thông tin hóa đơn
-                    var paymentInforUC = new ProductPaymentInfor(_home, _employee);
+                    var paymentInforUC = new ProductPaymentInfor(_home, _employee, invoice.InvoiceID);
                     _home.LoadControl(paymentInforUC);
                 }
                 else
@@ -370,24 +371,82 @@ namespace UI.EmployeeSale
             lbInvoiceTotal.Text = $"Tổng tiền: {(totalTickets + totalProducts).ToString("#,##0")} ₫";
         }
 
+        private void txt_Phone_TextChanged(object sender, EventArgs e)
+        {
+            var phone = txt_Phone.Text.Trim();
+            var customer = GetCustomerByPhone(phone);
+            if (customer != null)
+            {
+                lbCustomerName.Text = $"Tên khách hàng: {customer.FullName}";
+                lbCustomerPhone.Text = $"SĐT: {customer.Phone}";
+                lbCustomerEmail.Text = $"Email: {customer.Email}";
+            }
+            else
+            {
+                lbCustomerName.Text = "Tên khách hàng: ---";
+                lbCustomerPhone.Text = "SĐT: ---";
+                lbCustomerEmail.Text = "Email: ---";
+            }
+        }
+
         // Lấy hoặc tạo khách hàng mặc định
-        private DTO.Customer GetOrCreateDefaultCustomer()
+        private DTO.Customer GetCustomerByPhone(string phone)
         {
             try
             {
                 using (var context = new CinemaDBContext())
                 {
-                    // Tìm khách hàng mặc định (ví dụ: có tên "Khách lẻ")
-                    var defaultCustomer = context.Customers
-                        .FirstOrDefault(c => c.FullName == "Khách lẻ" && !c.IsDeleted);
+                    // Tìm khách hàng theo số điện thoại
+                    var customer = context.Customers
+                        .FirstOrDefault(c => c.Phone == phone && !c.IsDeleted);
+                    //nếu không có mở cửa sổ tạo khách hàng mới và txt_phone không được trống
+                    if (customer == null && !string.IsNullOrWhiteSpace(phone))
+                    {
+                        CreatCustomer creatCustomer = new CreatCustomer(phone);
+                        var result = creatCustomer.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            // Lấy khách hàng mới tạo
+                            var customernew = context.Customers
+                                    .FirstOrDefault(c => c.Phone == phone && !c.IsDeleted);
+                            return customernew;
+                        }
+                        else
+                        {
+                            return null; // Người dùng hủy tạo khách hàng
+                        }
+                    }
 
-
-                    return defaultCustomer;
+                    return customer;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Lỗi khi lấy khách hàng mặc định: {ex.Message}");
+                throw new Exception($"Lỗi khi lấy khách hàng: {ex.Message}");
+            }
+        }
+
+        private void btnCheckCustomer_Click(object sender, EventArgs e)
+        {
+            var phone = txt_Phone.Text.Trim();
+            if (string.IsNullOrEmpty(phone))
+            {
+                MessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var customer = GetCustomerByPhone(phone);
+            if (customer != null)
+            {
+                lbCustomerName.Text = $"Tên khách hàng: {customer.FullName}";
+                lbCustomerPhone.Text = $"SĐT: {customer.Phone}";
+                lbCustomerEmail.Text = $"Email: {customer.Email}";
+            }
+            else
+            {
+                lbCustomerName.Text = "Tên khách hàng: ---";
+                lbCustomerPhone.Text = "SĐT: ---";
+                lbCustomerEmail.Text = "Email: ---";
+                MessageBox.Show("Không tìm thấy khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
