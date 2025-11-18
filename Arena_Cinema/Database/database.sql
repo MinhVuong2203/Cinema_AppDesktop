@@ -269,7 +269,10 @@ CREATE TABLE ShowTime (
     FOREIGN KEY (MovieID) REFERENCES Movie(MovieID) ON DELETE CASCADE,
     FOREIGN KEY (RoomID) REFERENCES Room(RoomID) ON DELETE CASCADE
 );
-CREATE OR ALTER PROCEDURE sp_GetShowTimesPaginated
+GO
+
+-- Tạo stored procedure mới
+CREATE PROCEDURE sp_GetShowTimesPaginated
     @PageNumber INT = 1,
     @PageSize INT = 10,
     @MovieID INT = NULL,
@@ -279,8 +282,8 @@ CREATE OR ALTER PROCEDURE sp_GetShowTimesPaginated
     @MinPrice DECIMAL(18,2) = NULL,
     @MaxPrice DECIMAL(18,2) = NULL,
     @IsDeleted BIT = 0,
-    @SortBy NVARCHAR(50) = 'StartTime', -- StartTime, Price, MovieID, RoomID
-    @SortOrder NVARCHAR(4) = 'ASC' -- ASC, DESC
+    @SortBy NVARCHAR(50) = 'StartTime',
+    @SortOrder NVARCHAR(4) = 'ASC'
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -288,85 +291,69 @@ BEGIN
     -- Tính offset
     DECLARE @Offset INT = (@PageNumber - 1) * @PageSize;
     
-    -- CTE để lọc và đếm
-    ;WITH FilteredShowTimes AS (
-        SELECT 
-            st.ShowTimeID,
-            st.StartTime,
-            st.Price,
-            st.MovieID,
-            st.RoomID,
-            st.IsDeleted,
-            m.Title AS MovieTitle,
-            m.DurationMinutes,
-            m.ImageUrl AS MovieImage,
-            r.RoomName,
-            r.RoomType,
-            r.SeatCount
-        FROM ShowTime st
-        INNER JOIN Movie m ON st.MovieID = m.MovieID
-        INNER JOIN Room r ON st.RoomID = r.RoomID
-        WHERE st.IsDeleted = @IsDeleted
-            AND (@MovieID IS NULL OR st.MovieID = @MovieID)
-            AND (@RoomID IS NULL OR st.RoomID = @RoomID)
-            AND (@StartDate IS NULL OR st.StartTime >= @StartDate)
-            AND (@EndDate IS NULL OR st.StartTime <= @EndDate)
-            AND (@MinPrice IS NULL OR st.Price >= @MinPrice)
-            AND (@MaxPrice IS NULL OR st.Price <= @MaxPrice)
-    ),
-    TotalCount AS (
-        SELECT COUNT(*) AS Total FROM FilteredShowTimes
-    )
+    -- Đếm tổng số bản ghi
+    DECLARE @TotalRecords INT;
+    SELECT @TotalRecords = COUNT(*)
+    FROM ShowTime s
+    INNER JOIN Movie m ON s.MovieID = m.MovieID
+    INNER JOIN Room r ON s.RoomID = r.RoomID
+    WHERE s.IsDeleted = @IsDeleted
+        AND (@MovieID IS NULL OR s.MovieID = @MovieID)
+        AND (@RoomID IS NULL OR s.RoomID = @RoomID)
+        AND (@StartDate IS NULL OR s.StartTime >= @StartDate)
+        AND (@EndDate IS NULL OR s.StartTime <= @EndDate)
+        AND (@MinPrice IS NULL OR s.Price >= @MinPrice)
+        AND (@MaxPrice IS NULL OR s.Price <= @MaxPrice)
     
-    -- Truy vấn phân trang với sắp xếp động
-    SELECT 
-        st.*,
-        -- Thêm thông tin số ghế đã bán
-        (SELECT COUNT(*) FROM Ticket t WHERE t.ShowTimeID = st.ShowTimeID AND t.Status = N'Đã bán') AS SoldSeats,
-        st.SeatCount - (SELECT COUNT(*) FROM Ticket t WHERE t.ShowTimeID = st.ShowTimeID AND t.Status = N'Đã bán') AS AvailableSeats,
-        tc.Total AS TotalRecords,
-        CEILING(CAST(tc.Total AS FLOAT) / @PageSize) AS TotalPages,
-        @PageNumber AS CurrentPage
-    FROM FilteredShowTimes st
-    CROSS JOIN TotalCount tc
-    ORDER BY 
-        CASE WHEN @SortBy = 'StartTime' AND @SortOrder = 'ASC' THEN st.StartTime END ASC,
-        CASE WHEN @SortBy = 'StartTime' AND @SortOrder = 'DESC' THEN st.StartTime END DESC,
-        CASE WHEN @SortBy = 'Price' AND @SortOrder = 'ASC' THEN st.Price END ASC,
-        CASE WHEN @SortBy = 'Price' AND @SortOrder = 'DESC' THEN st.Price END DESC,
-        CASE WHEN @SortBy = 'MovieID' AND @SortOrder = 'ASC' THEN st.MovieID END ASC,
-        CASE WHEN @SortBy = 'MovieID' AND @SortOrder = 'DESC' THEN st.MovieID END DESC,
-        CASE WHEN @SortBy = 'RoomID' AND @SortOrder = 'ASC' THEN st.RoomID END ASC,
-        CASE WHEN @SortBy = 'RoomID' AND @SortOrder = 'DESC' THEN st.RoomID END DESC
-    OFFSET @Offset ROWS
-    FETCH NEXT @PageSize ROWS ONLY;
-END;
-GO
-
-CREATE OR ALTER PROCEDURE sp_GetShowTimesByMovieAndDate
-    @MovieID INT,
-    @ShowDate DATE
-AS
-BEGIN
-    SET NOCOUNT ON;
+    -- Tính tổng số trang
+    DECLARE @TotalPages INT = CAST(CEILING(CAST(@TotalRecords AS FLOAT) / @PageSize) AS INT)
     
+    -- Lấy dữ liệu phân trang
     SELECT 
-        st.ShowTimeID,
-        st.StartTime,
-        st.Price,
-        st.RoomID,
+        s.ShowTimeID,
+        s.StartTime,
+        s.Price,
+        s.MovieID,
+        s.RoomID,
+        s.IsDeleted,
+        m.Title AS MovieTitle,
+        m.DurationMinutes,
+        m.ImageUrl AS MovieImage,
         r.RoomName,
         r.RoomType,
         r.SeatCount,
-        (SELECT COUNT(*) FROM Ticket t WHERE t.ShowTimeID = st.ShowTimeID AND t.Status = N'Đã bán') AS SoldSeats,
-        r.SeatCount - (SELECT COUNT(*) FROM Ticket t WHERE t.ShowTimeID = st.ShowTimeID AND t.Status = N'Đã bán') AS AvailableSeats
-    FROM ShowTime st
-    INNER JOIN Room r ON st.RoomID = r.RoomID
-    WHERE st.MovieID = @MovieID
-        AND CAST(st.StartTime AS DATE) = @ShowDate
-        AND st.IsDeleted = 0
-    ORDER BY st.StartTime ASC;
-END;
+        @TotalRecords AS TotalRecords,
+        @TotalPages AS TotalPages,
+        @PageNumber AS CurrentPage
+    FROM ShowTime s
+    INNER JOIN Movie m ON s.MovieID = m.MovieID
+    INNER JOIN Room r ON s.RoomID = r.RoomID
+    WHERE s.IsDeleted = @IsDeleted
+        AND (@MovieID IS NULL OR s.MovieID = @MovieID)
+        AND (@RoomID IS NULL OR s.RoomID = @RoomID)
+        AND (@StartDate IS NULL OR s.StartTime >= @StartDate)
+        AND (@EndDate IS NULL OR s.StartTime <= @EndDate)
+        AND (@MinPrice IS NULL OR s.Price >= @MinPrice)
+        AND (@MaxPrice IS NULL OR s.Price <= @MaxPrice)
+    ORDER BY 
+        CASE WHEN @SortBy = 'StartTime' AND @SortOrder = 'ASC' THEN s.StartTime END ASC,
+        CASE WHEN @SortBy = 'StartTime' AND @SortOrder = 'DESC' THEN s.StartTime END DESC,
+        CASE WHEN @SortBy = 'Price' AND @SortOrder = 'ASC' THEN s.Price END ASC,
+        CASE WHEN @SortBy = 'Price' AND @SortOrder = 'DESC' THEN s.Price END DESC,
+        CASE WHEN @SortBy = 'MovieTitle' AND @SortOrder = 'ASC' THEN m.Title END ASC,
+        CASE WHEN @SortBy = 'MovieTitle' AND @SortOrder = 'DESC' THEN m.Title END DESC,
+        s.StartTime DESC -- mặc định
+    OFFSET @Offset ROWS
+    FETCH NEXT @PageSize ROWS ONLY;
+END
+GO
+
+
+
+DROP PROC sp_GetShowTimesPaginated
+SELECT * 
+FROM sys.procedures 
+WHERE name = 'sp_GetShowTimesPaginated'
 
 -- TICKET
 CREATE TABLE Ticket (

@@ -365,7 +365,53 @@ namespace BLL
                 throw new Exception("Lỗi: " + ex.Message);
             }
         }
+        // ========== LẤY SUẤT CHIẾU PHÂN TRANG BẰNG STORED PROCEDURE ==========
+        public (List<ShowTime> items, int totalCount, int totalPages, int currentPage) GetShowTimesPaginated(
+         int pageNumber = 1,
+         int pageSize = 10,
+         int? movieId = null,
+         int? roomId = null,
+         DateTime? startDate = null,
+         DateTime? endDate = null,
+         decimal? minPrice = null,
+         decimal? maxPrice = null,
+         string sortBy = "StartTime",
+         string sortOrder = "ASC")
+        {
+            try
+            {
+                // THÊM LOG ĐỂ DEBUG
+                System.Diagnostics.Debug.WriteLine($"BLL - Calling GetShowTimesPaginated");
+                System.Diagnostics.Debug.WriteLine($"PageNumber: {pageNumber}, PageSize: {pageSize}");
+                System.Diagnostics.Debug.WriteLine($"MovieId: {movieId}, RoomId: {roomId}");
 
+                var result = _showTimeDAL.GetShowTimesPaginated(
+                    pageNumber,
+                    pageSize,
+                    movieId,
+                    roomId,
+                    startDate,
+                    endDate,
+                    minPrice,
+                    maxPrice,
+                    false, // isDeleted = false
+                    sortBy,
+                    sortOrder
+                );
+
+                System.Diagnostics.Debug.WriteLine($"BLL - Result count: {result.items?.Count ?? 0}");
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                // LOG CHI TIẾT LỖI
+                System.Diagnostics.Debug.WriteLine($"BLL Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"BLL StackTrace: {ex.StackTrace}");
+
+                throw new Exception("Lỗi khi gọi stored procedure GetShowTimesPaginated: " + ex.Message, ex);
+            }
+        }
         public void Dispose()
         {
             _showTimeDAL?.Dispose();

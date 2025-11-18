@@ -311,6 +311,174 @@ namespace DAL
                 throw new Exception("Lỗi khi lấy suất chiếu hôm nay: " + ex.Message);
             }
         }
+        // ========== LẤY SUẤT CHIẾU PHÂN TRANG BẰNG STORED PROCEDURE ==========
+        public (List<ShowTime> items, int totalCount, int totalPages, int currentPage) GetShowTimesPaginated(
+     int pageNumber = 1,
+     int pageSize = 10,
+     int? movieId = null,
+     int? roomId = null,
+     DateTime? startDate = null,
+     DateTime? endDate = null,
+     decimal? minPrice = null,
+     decimal? maxPrice = null,
+     bool isDeleted = false,
+     string sortBy = "StartTime",
+     string sortOrder = "ASC")
+        {
+            try
+            {
+                var showtimes = new List<ShowTime>();
+                int totalRecords = 0;
+                int totalPages = 0;
+                int currentPageResult = 0;
+
+                // Đảm bảo connection được mở
+                if (_context.Database.Connection.State != System.Data.ConnectionState.Open)
+                {
+                    _context.Database.Connection.Open();
+                }
+
+                using (var command = _context.Database.Connection.CreateCommand())
+                {
+                    command.CommandText = "sp_GetShowTimesPaginated";
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandTimeout = 60; // Tăng timeout
+
+                    // Thêm parameters với kiểm tra kỹ
+                    var paramPageNumber = command.CreateParameter();
+                    paramPageNumber.ParameterName = "@PageNumber";
+                    paramPageNumber.Value = pageNumber;
+                    paramPageNumber.DbType = System.Data.DbType.Int32;
+                    command.Parameters.Add(paramPageNumber);
+
+                    var paramPageSize = command.CreateParameter();
+                    paramPageSize.ParameterName = "@PageSize";
+                    paramPageSize.Value = pageSize;
+                    paramPageSize.DbType = System.Data.DbType.Int32;
+                    command.Parameters.Add(paramPageSize);
+
+                    var paramMovieID = command.CreateParameter();
+                    paramMovieID.ParameterName = "@MovieID";
+                    paramMovieID.Value = movieId.HasValue ? (object)movieId.Value : DBNull.Value;
+                    paramMovieID.DbType = System.Data.DbType.Int32;
+                    command.Parameters.Add(paramMovieID);
+
+                    var paramRoomID = command.CreateParameter();
+                    paramRoomID.ParameterName = "@RoomID";
+                    paramRoomID.Value = roomId.HasValue ? (object)roomId.Value : DBNull.Value;
+                    paramRoomID.DbType = System.Data.DbType.Int32;
+                    command.Parameters.Add(paramRoomID);
+
+                    var paramStartDate = command.CreateParameter();
+                    paramStartDate.ParameterName = "@StartDate";
+                    paramStartDate.Value = startDate.HasValue ? (object)startDate.Value : DBNull.Value;
+                    paramStartDate.DbType = System.Data.DbType.DateTime;
+                    command.Parameters.Add(paramStartDate);
+
+                    var paramEndDate = command.CreateParameter();
+                    paramEndDate.ParameterName = "@EndDate";
+                    paramEndDate.Value = endDate.HasValue ? (object)endDate.Value : DBNull.Value;
+                    paramEndDate.DbType = System.Data.DbType.DateTime;
+                    command.Parameters.Add(paramEndDate);
+
+                    var paramMinPrice = command.CreateParameter();
+                    paramMinPrice.ParameterName = "@MinPrice";
+                    paramMinPrice.Value = minPrice.HasValue ? (object)minPrice.Value : DBNull.Value;
+                    paramMinPrice.DbType = System.Data.DbType.Decimal;
+                    command.Parameters.Add(paramMinPrice);
+
+                    var paramMaxPrice = command.CreateParameter();
+                    paramMaxPrice.ParameterName = "@MaxPrice";
+                    paramMaxPrice.Value = maxPrice.HasValue ? (object)maxPrice.Value : DBNull.Value;
+                    paramMaxPrice.DbType = System.Data.DbType.Decimal;
+                    command.Parameters.Add(paramMaxPrice);
+
+                    var paramIsDeleted = command.CreateParameter();
+                    paramIsDeleted.ParameterName = "@IsDeleted";
+                    paramIsDeleted.Value = isDeleted;
+                    paramIsDeleted.DbType = System.Data.DbType.Boolean;
+                    command.Parameters.Add(paramIsDeleted);
+
+                    var paramSortBy = command.CreateParameter();
+                    paramSortBy.ParameterName = "@SortBy";
+                    paramSortBy.Value = sortBy ?? "StartTime";
+                    paramSortBy.DbType = System.Data.DbType.String;
+                    paramSortBy.Size = 50;
+                    command.Parameters.Add(paramSortBy);
+
+                    var paramSortOrder = command.CreateParameter();
+                    paramSortOrder.ParameterName = "@SortOrder";
+                    paramSortOrder.Value = sortOrder ?? "ASC";
+                    paramSortOrder.DbType = System.Data.DbType.String;
+                    paramSortOrder.Size = 4;
+                    command.Parameters.Add(paramSortOrder);
+
+                    // LOG ĐỂ DEBUG
+                    System.Diagnostics.Debug.WriteLine($"DAL - Executing stored procedure...");
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            try
+                            {
+                                var showtime = new ShowTime
+                                {
+                                    ShowTimeID = reader.GetGuid(reader.GetOrdinal("ShowTimeID")),
+                                    StartTime = reader.GetDateTime(reader.GetOrdinal("StartTime")),
+                                    Price = reader.GetDecimal(reader.GetOrdinal("Price")),
+                                    MovieID = reader.GetInt32(reader.GetOrdinal("MovieID")),
+                                    RoomID = reader.GetInt32(reader.GetOrdinal("RoomID")),
+                                    IsDeleted = reader.GetBoolean(reader.GetOrdinal("IsDeleted")),
+                                    Movie = new Movie
+                                    {
+                                        MovieID = reader.GetInt32(reader.GetOrdinal("MovieID")),
+                                        Title = reader.GetString(reader.GetOrdinal("MovieTitle")),
+                                        DurationMinutes = reader.GetInt32(reader.GetOrdinal("DurationMinutes")),
+                                        ImageUrl = reader.IsDBNull(reader.GetOrdinal("MovieImage"))
+                                            ? null
+                                            : reader.GetString(reader.GetOrdinal("MovieImage"))
+                                    },
+                                    Room = new Room
+                                    {
+                                        RoomID = reader.GetInt32(reader.GetOrdinal("RoomID")),
+                                        RoomName = reader.GetString(reader.GetOrdinal("RoomName")),
+                                        RoomType = reader.GetString(reader.GetOrdinal("RoomType")),
+                                        SeatCount = reader.GetInt32(reader.GetOrdinal("SeatCount"))
+                                    }
+                                };
+
+                                // Lấy thông tin phân trang từ dòng đầu tiên
+                                if (showtimes.Count == 0)
+                                {
+                                    totalRecords = reader.GetInt32(reader.GetOrdinal("TotalRecords"));
+                                    totalPages = reader.GetInt32(reader.GetOrdinal("TotalPages"));
+                                    currentPageResult = reader.GetInt32(reader.GetOrdinal("CurrentPage"));
+                                }
+
+                                showtimes.Add(showtime);
+                            }
+                            catch (Exception ex)
+                            {
+                                System.Diagnostics.Debug.WriteLine($"Error reading row: {ex.Message}");
+                                throw;
+                            }
+                        }
+                    }
+
+                    System.Diagnostics.Debug.WriteLine($"DAL - Read {showtimes.Count} records");
+                }
+
+                return (showtimes, totalRecords, totalPages, currentPageResult);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"DAL Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"DAL StackTrace: {ex.StackTrace}");
+
+                throw new Exception("Lỗi khi lấy danh sách suất chiếu phân trang: " + ex.Message, ex);
+            }
+        }
 
         public void Dispose()
         {

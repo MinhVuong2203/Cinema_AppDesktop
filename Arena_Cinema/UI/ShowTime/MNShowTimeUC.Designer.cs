@@ -1,5 +1,6 @@
 ﻿using BLL;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -734,6 +735,7 @@ namespace UI.ShowTime
 
         #region Initialize Methods
 
+
         private void LoadInitialData()
         {
             try
@@ -745,15 +747,23 @@ namespace UI.ShowTime
                 ConfigureDataGridView();
                 LoadMoviesFilter();
                 LoadPageSizes();
-                LoadShowTimes();
+
+                // FIX: Đảm bảo cboPageSize có giá trị mặc định
+                if (cboPageSize.SelectedIndex < 0)
+                {
+                    cboPageSize.SelectedIndex = 0; // Chọn "10"
+                }
+
                 SetupEvents();
+                LoadShowTimes(); // Load data sau khi setup xong
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi load dữ liệu: {ex.Message}", "Lỗi",
+                MessageBox.Show($"Lỗi khi load dữ liệu: {ex.Message}\n\n{ex.StackTrace}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void ConfigureDataGridView()
         {
@@ -864,23 +874,25 @@ namespace UI.ShowTime
 
         private void LoadPageSizes()
         {
+           
+            if (cboPageSize.Items.Count == 0)
+            {
+                cboPageSize.Items.AddRange(new object[] { "10", "25", "50", "100" });
+            }
+
             cboPageSize.SelectedIndex = 0;
         }
+
+       
 
         private void SetupEvents()
         {
             // Pagination
-            btnFirstPage.Click += (s, e) => { currentPage = 1; LoadShowTimes(); };
+            btnFirstPage.Click += (s, e) => { if (currentPage != 1) { currentPage = 1; LoadShowTimes(); } };
             btnPrevPage.Click += (s, e) => { if (currentPage > 1) { currentPage--; LoadShowTimes(); } };
-            btnPage2.Click += (s, e) => LoadShowTimes();
-            btnPage3.Click += (s, e) => { if (currentPage < totalPages) { currentPage++; LoadShowTimes(); } };
+            // btnPage2 bỏ không dùng click, hoặc chỉ cho label/disable
             btnNextPage.Click += (s, e) => { if (currentPage < totalPages) { currentPage++; LoadShowTimes(); } };
-            btnLastPage.Click += (s, e) => { currentPage = totalPages; LoadShowTimes(); };
-
-            // Filter
-            btnFilter.Click += (s, e) => { currentPage = 1; LoadShowTimes(); };
-            btnReset.Click += (s, e) => ResetFilters();
-            cboPageSize.SelectedIndexChanged += (s, e) => { currentPage = 1; LoadShowTimes(); };
+            btnLastPage.Click += (s, e) => { if (currentPage != totalPages) { currentPage = totalPages; LoadShowTimes(); } };
         }
 
         #endregion
@@ -898,24 +910,55 @@ namespace UI.ShowTime
                     movieId = (int)movieItem.Value;
                 }
 
-                // Page size
-                pageSize = int.Parse(cboPageSize.SelectedItem?.ToString() ?? "10");
+                // Xử lý page size an toàn hơn
+                if (cboPageSize.SelectedItem != null)
+                {
+                    string pageSizeText = cboPageSize.SelectedItem.ToString();
+                    if (int.TryParse(pageSizeText, out int parsedPageSize))
+                    {
+                        pageSize = parsedPageSize;
+                    }
+                    else
+                    {
+                        pageSize = 10; // Mặc định
+                    }
+                }
+                else
+                {
+                    pageSize = 10; // Mặc định nếu chưa chọn
+                }
 
-                // Lấy dữ liệu
-                var result = showTimeBLL.GetShowTimesFiltered(
+                // Gọi stored procedure với tham số đúng
+                var result = showTimeBLL.GetShowTimesPaginated(
+                    pageNumber: currentPage,
+                    pageSize: pageSize,
                     movieId: movieId,
                     roomId: null,
                     startDate: null,
                     endDate: null,
-                    pageNumber: currentPage,
-                    pageSize: pageSize
+                    minPrice: null,
+                    maxPrice: null,
+                    sortBy: "StartTime",
+                    sortOrder: "DESC"
                 );
+
+                // Kiểm tra kết quả trước khi xử lý
+                if (result.items == null)
+                {
+                    MessageBox.Show("Không có dữ liệu trả về!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dgvShowtimes.DataSource = null;
+                    totalRecords = 0;
+                    totalPages = 0;
+                    UpdatePaginationInfo();
+                    return;
+                }
 
                 totalRecords = result.totalCount;
                 totalPages = result.totalPages;
 
                 // Chuyển đổi sang model hiển thị
-                var displayData = new System.Collections.Generic.List<ShowTimeDisplayModel>();
+                var displayData = new List<ShowTimeDisplayModel>();
                 foreach (var st in result.items)
                 {
                     displayData.Add(new ShowTimeDisplayModel
@@ -932,9 +975,10 @@ namespace UI.ShowTime
                 }
 
                 // Bind data
+                dgvShowtimes.DataSource = null;
                 dgvShowtimes.DataSource = displayData;
 
-                // Update UI
+                // Cập nhật UI
                 UpdatePaginationInfo();
                 UpdatePaginationButtons();
                 ColorizeRows();
@@ -945,8 +989,18 @@ namespace UI.ShowTime
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi load dữ liệu: {ex.Message}", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string errorMessage = $"Lỗi load dữ liệu: {ex.Message}\n\n" +
+                                     $"Chi tiết: {ex.StackTrace}";
+
+                if (ex.InnerException != null)
+                {
+                    errorMessage += $"\n\nLỗi bên trong: {ex.InnerException.Message}";
+                }
+
+                MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Log để debug
+                System.Diagnostics.Debug.WriteLine($"Error details: {ex}");
             }
         }
 
@@ -991,23 +1045,31 @@ namespace UI.ShowTime
 
         private void UpdatePaginationButtons()
         {
-            btnFirstPage.ButtonText = "1";
-            btnPrevPage.ButtonText = currentPage > 1 ? (currentPage - 1).ToString() : "1";
+            // Số trang là totalPages, trang hiện tại là currentPage
+            btnFirstPage.ButtonText = "<<";
+            btnPrevPage.ButtonText = "<";
             btnPage2.ButtonText = currentPage.ToString();
-            btnPage3.ButtonText = currentPage < totalPages ? (currentPage + 1).ToString() : currentPage.ToString();
-            btnNextPage.ButtonText = "›";
-            btnLastPage.ButtonText = "⟫";
+            btnNextPage.ButtonText = ">";
+            btnLastPage.ButtonText = ">>";
 
+            // Enabled/disabled đúng logic
             btnFirstPage.Enabled = currentPage > 1;
             btnPrevPage.Enabled = currentPage > 1;
-            btnPage3.Enabled = currentPage < totalPages;
             btnNextPage.Enabled = currentPage < totalPages;
             btnLastPage.Enabled = currentPage < totalPages;
 
-            btnPage2.BackgroundColor = System.Drawing.Color.FromArgb(220, 53, 69);
-            btnFirstPage.BackgroundColor = System.Drawing.Color.FromArgb(108, 117, 125);
-            btnPrevPage.BackgroundColor = System.Drawing.Color.FromArgb(108, 117, 125);
-            btnPage3.BackgroundColor = System.Drawing.Color.FromArgb(108, 117, 125);
+            // Chỉ rõ màu cho trang hiện tại (btnPage2, nên disable click)
+            btnPage2.Enabled = false;
+            btnPage2.BackgroundColor = Color.FromArgb(220, 53, 69);
+
+            // Đặt màu cho các nút phân trang phụ
+            btnFirstPage.BackgroundColor = btnFirstPage.Enabled ? Color.Gray : Color.LightGray;
+            btnPrevPage.BackgroundColor = btnPrevPage.Enabled ? Color.Gray : Color.LightGray;
+            btnNextPage.BackgroundColor = btnNextPage.Enabled ? Color.Gray : Color.LightGray;
+            btnLastPage.BackgroundColor = btnLastPage.Enabled ? Color.Gray : Color.LightGray;
+
+            // Nếu không dùng btnPage3 => ẩn luôn
+            btnPage3.Visible = false;
         }
 
         #endregion
@@ -1054,7 +1116,8 @@ namespace UI.ShowTime
             }
             else
             {
-                btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(0, 123, 255);
+                // Giữ nguyên màu đỏ như thiết kế
+                btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(220, 53, 69);
                 btnDelete.BackgroundColor = System.Drawing.Color.FromArgb(220, 53, 69);
             }
         }

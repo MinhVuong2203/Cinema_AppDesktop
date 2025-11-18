@@ -35,5 +35,6 @@ namespace UI.ShowTime
         private void panelMain_Paint(object sender, PaintEventArgs e)
         {
         }
+
     }
 }
