@@ -37,10 +37,12 @@ namespace UI.EmployeeSale
             // Tạo đối tượng khách hàng mới
             var customer = new Customer
             {
+                CustomerID = Guid.NewGuid(),
                 Phone = phone,
                 FullName = name,
                 Email = email,
                 BirthDate = bthDate.ToString(),
+                Gender = gender,
             };
 
             // Thêm khách hàng vào cơ sở dữ liệu
