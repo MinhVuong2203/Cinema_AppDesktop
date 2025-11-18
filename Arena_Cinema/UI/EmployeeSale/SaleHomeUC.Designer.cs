@@ -146,6 +146,7 @@
             this.btn_SaleProduct.TabIndex = 0;
             this.btn_SaleProduct.Text = "Vào bán combo";
             this.btn_SaleProduct.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.btn_SaleProduct.Click += new System.EventHandler(this.btn_SaleProduct_Click);
             // 
             // panel_SaleTicket
             // 

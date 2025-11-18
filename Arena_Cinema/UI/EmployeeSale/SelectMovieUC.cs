@@ -21,22 +21,22 @@ namespace UI.EmployeeSale
             InitializeComponent();
             _home = form;
             _employee = employee;
-            LoadEmployeeData();
+            LoadEmployeeData(employee);
             LoadMoviesShowingToday();
         }
 
-        private void LoadEmployeeData()
+        private void LoadEmployeeData(DTO.Employee employee)
         {
-            if (_employee == null) return;
-            ImgHelper.DisplayImageFromRelative(_employee.ImageUrl, picAVT);
-            lb_EmName.Text = _employee.FullName;
-            lb_EmpIDText.Text = $"Mã NV: {_employee.EmployeeID}";
-            lb_BranchText.Text = $"Chi nhánh: {_employee.Address}";
-            lb_EmailText.Text = $"Email: {_employee.Email}";
-            lb_PhoneText.Text = $"SĐT: {_employee.Phone}";
-            lb_BthDayText.Text = $"Ngày sinh: {_employee.BirthDate?.ToString("dd/MM/yyyy") ?? "N/A"}";
-            lb_SalaryText.Text = $"Lương: {_employee.HourWage?.ToString("C") ?? "N/A"}";
-            lb_workDateText.Text = $"Ngày vào làm: {_employee.RegisterDate?.ToString("dd/MM/yyyy") ?? "N/A"}";
+            if (employee == null) return;
+            ImgHelper.DisplayImageFromRelative(employee.ImageUrl, picAVT);
+            lb_EmName.Text = employee.FullName;
+            lb_EmpIDText.Text = $"Mã NV: {employee.EmployeeID}";
+            lb_BranchText.Text = $"Chi nhánh: {employee.Address}";
+            lb_EmailText.Text = $"Email: {employee.Email}";
+            lb_PhoneText.Text = $"SĐT: {employee.Phone}";
+            lb_BthDayText.Text = $"Ngày sinh: {employee.BirthDate?.ToString("dd/MM/yyyy") ?? "N/A"}";
+            lb_SalaryText.Text = $"Lương: {employee.HourWage?.ToString("C") ?? "N/A"}";
+            lb_workDateText.Text = $"Ngày vào làm: {employee.RegisterDate?.ToString("dd/MM/yyyy") ?? "N/A"}";
         }
 
         private void LoadMoviesShowingToday()
@@ -103,7 +103,7 @@ namespace UI.EmployeeSale
                     ForeColor = System.Drawing.Color.White,
                     Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold)
                 };
-                btnBook.Click += (s, e) => _home.LoadControl(new SaleTicketUC(movie));
+                btnBook.Click += (s, e) => _home.LoadControl(new SaleTicketUC(movie, _home, _employee));
 
                 panel.Controls.Add(picPoster);
                 panel.Controls.Add(lbTitle);
@@ -113,6 +113,11 @@ namespace UI.EmployeeSale
 
                 flpMovies.Controls.Add(panel);
             }
+        }
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            _home.LoadControl(new SaleHomeUC(_home, _employee));
         }
     }
 }

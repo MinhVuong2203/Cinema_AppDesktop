@@ -39,6 +39,7 @@
             this.lb_workDateText = new System.Windows.Forms.Label();
             this.lbMovieListTitle = new System.Windows.Forms.Label();
             this.flpMovies = new System.Windows.Forms.FlowLayoutPanel();
+            this.btn_back = new ReaLTaiizor.Controls.ParrotButton();
             this.grpEmployeeInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAVT)).BeginInit();
             this.SuspendLayout();
@@ -54,9 +55,9 @@
             this.grpEmployeeInfo.Controls.Add(this.lb_BthDayText);
             this.grpEmployeeInfo.Controls.Add(this.lb_SalaryText);
             this.grpEmployeeInfo.Controls.Add(this.lb_workDateText);
-            this.grpEmployeeInfo.Location = new System.Drawing.Point(20, 20);
+            this.grpEmployeeInfo.Location = new System.Drawing.Point(20, 96);
             this.grpEmployeeInfo.Name = "grpEmployeeInfo";
-            this.grpEmployeeInfo.Size = new System.Drawing.Size(400, 353);
+            this.grpEmployeeInfo.Size = new System.Drawing.Size(441, 353);
             this.grpEmployeeInfo.TabIndex = 0;
             this.grpEmployeeInfo.TabStop = false;
             this.grpEmployeeInfo.Text = "Thông tin nhân viên";
@@ -75,7 +76,7 @@
             this.lb_EmName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_EmName.Location = new System.Drawing.Point(120, 30);
             this.lb_EmName.Name = "lb_EmName";
-            this.lb_EmName.Size = new System.Drawing.Size(250, 20);
+            this.lb_EmName.Size = new System.Drawing.Size(315, 31);
             this.lb_EmName.TabIndex = 1;
             this.lb_EmName.Text = "Tên nhân viên";
             // 
@@ -84,7 +85,7 @@
             this.lb_EmpIDText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_EmpIDText.Location = new System.Drawing.Point(120, 61);
             this.lb_EmpIDText.Name = "lb_EmpIDText";
-            this.lb_EmpIDText.Size = new System.Drawing.Size(250, 26);
+            this.lb_EmpIDText.Size = new System.Drawing.Size(315, 26);
             this.lb_EmpIDText.TabIndex = 2;
             this.lb_EmpIDText.Text = "Mã NV";
             // 
@@ -93,7 +94,7 @@
             this.lb_BranchText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_BranchText.Location = new System.Drawing.Point(120, 93);
             this.lb_BranchText.Name = "lb_BranchText";
-            this.lb_BranchText.Size = new System.Drawing.Size(250, 30);
+            this.lb_BranchText.Size = new System.Drawing.Size(315, 30);
             this.lb_BranchText.TabIndex = 3;
             this.lb_BranchText.Text = "Chi nhánh";
             // 
@@ -102,7 +103,7 @@
             this.lb_EmailText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_EmailText.Location = new System.Drawing.Point(120, 130);
             this.lb_EmailText.Name = "lb_EmailText";
-            this.lb_EmailText.Size = new System.Drawing.Size(250, 28);
+            this.lb_EmailText.Size = new System.Drawing.Size(315, 28);
             this.lb_EmailText.TabIndex = 4;
             this.lb_EmailText.Text = "Email";
             // 
@@ -138,31 +139,56 @@
             this.lb_workDateText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_workDateText.Location = new System.Drawing.Point(120, 274);
             this.lb_workDateText.Name = "lb_workDateText";
-            this.lb_workDateText.Size = new System.Drawing.Size(250, 27);
+            this.lb_workDateText.Size = new System.Drawing.Size(315, 27);
             this.lb_workDateText.TabIndex = 8;
             this.lb_workDateText.Text = "Ngày vào làm";
             // 
             // lbMovieListTitle
             // 
             this.lbMovieListTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lbMovieListTitle.Location = new System.Drawing.Point(450, 20);
+            this.lbMovieListTitle.Location = new System.Drawing.Point(476, 20);
             this.lbMovieListTitle.Name = "lbMovieListTitle";
             this.lbMovieListTitle.Size = new System.Drawing.Size(400, 30);
             this.lbMovieListTitle.TabIndex = 1;
-            this.lbMovieListTitle.Text = "Danh sách phim đang chiếu hôm nay";
+            this.lbMovieListTitle.Text = "Danh sách phim đang chiếu ";
             // 
             // flpMovies
             // 
             this.flpMovies.AutoScroll = true;
-            this.flpMovies.Location = new System.Drawing.Point(450, 60);
+            this.flpMovies.Location = new System.Drawing.Point(467, 60);
             this.flpMovies.Name = "flpMovies";
             this.flpMovies.Size = new System.Drawing.Size(1150, 700);
             this.flpMovies.TabIndex = 2;
+            // 
+            // btn_back
+            // 
+            this.btn_back.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btn_back.ButtonImage = global::UI.Properties.Resources.chevrons;
+            this.btn_back.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btn_back.ButtonText = "";
+            this.btn_back.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.btn_back.ClickTextColor = System.Drawing.Color.DodgerBlue;
+            this.btn_back.CornerRadius = 5;
+            this.btn_back.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_back.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btn_back.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btn_back.HoverTextColor = System.Drawing.Color.DodgerBlue;
+            this.btn_back.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btn_back.Location = new System.Drawing.Point(40, 20);
+            this.btn_back.Name = "btn_back";
+            this.btn_back.Size = new System.Drawing.Size(57, 50);
+            this.btn_back.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btn_back.TabIndex = 3;
+            this.btn_back.TextColor = System.Drawing.Color.DodgerBlue;
+            this.btn_back.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btn_back.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
             // SelectMovieUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btn_back);
             this.Controls.Add(this.grpEmployeeInfo);
             this.Controls.Add(this.lbMovieListTitle);
             this.Controls.Add(this.flpMovies);
@@ -173,5 +199,7 @@
             this.ResumeLayout(false);
 
         }
+
+        private ReaLTaiizor.Controls.ParrotButton btn_back;
     }
 }

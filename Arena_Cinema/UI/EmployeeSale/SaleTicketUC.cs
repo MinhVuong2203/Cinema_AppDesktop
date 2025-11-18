@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using BLL;
@@ -13,6 +14,8 @@ namespace UI.EmployeeSale
     public partial class SaleTicketUC : UserControl
     {
         private DTO.Movie _movie;
+        private DTO.Employee _employee; 
+        private Home _parentForm; 
         private SaleTicketDAL _saleTicketDAL = new SaleTicketDAL();
         private List<DTO.ShowTime> _showTimes = new List<DTO.ShowTime>();
         private List<Ticket> _tickets = new List<Ticket>();
@@ -21,8 +24,10 @@ namespace UI.EmployeeSale
         private List<int> _selectedSeatIds = new List<int>();
         private Dictionary<string, int> _selectedTicketTypeCounts = new Dictionary<string, int>();
         private List<int> _selectedProductIds = new List<int>();
+        private Dictionary<int, int> _selectedProductQuantities = new Dictionary<int, int>();
         private Guid _selectedShowTimeId = Guid.Empty;
 
+        // Constructor
         public SaleTicketUC(DTO.Movie movie)
         {
             InitializeComponent();
@@ -33,9 +38,45 @@ namespace UI.EmployeeSale
             btnPayment.Click += BtnPayment_Click;
         }
 
+        
+        public SaleTicketUC(DTO.Movie movie, Home parent, DTO.Employee employee) : this(movie)
+        {
+            _parentForm = parent;
+            _employee = employee;
+
+            // Đăng ký sự kiện cho nút back nếu có
+            if (this.Controls.Find("btnBack", true).Length > 0)
+            {
+                var btnBack = this.Controls.Find("btnBack", true)[0] as Button;
+                if (btnBack != null)
+                {
+                    btnBack.Click += btn_back_Click;
+                }
+            }
+            ImgHelper.DisplayImageFromRelative(movie.ImageUrl, picPoster);
+
+        }
+
+        // Hàm quay lại trang chọn phim
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            if (_parentForm != null && _employee != null)
+            {
+                _parentForm.LoadControl(new SelectMovieUC(_parentForm, _employee));
+            }
+            else
+            {
+                // Fallback nếu không có parent
+                var parent = this.Parent as Home;
+                if (parent != null && _employee != null)
+                {
+                    parent.LoadControl(new SelectMovieUC(parent, _employee));
+                }
+            }
+        }
+
         private void LoadMovieInfo()
         {
-            ImgHelper.DisplayImageFromRelative(_movie.ImageUrl, picPoster);
             lbTitle.Text = $"{_movie.Title} ({_movie.AgeLimit})";
             lbInfo.Text = $"{_movie.Genre} • {_movie.DurationMinutes} phút • {_movie.AgeLimit}";
         }
@@ -86,7 +127,6 @@ namespace UI.EmployeeSale
             UpdateInvoice();
         }
 
-        // Hiển thị danh sách ghế của phòng
         private void LoadSeatsByRoom(int roomId)
         {
             flpTickets.Controls.Clear();
@@ -115,7 +155,6 @@ namespace UI.EmployeeSale
             }
         }
 
-        // Chọn/bỏ chọn ghế
         private void BtnSeat_Click(object sender, EventArgs e)
         {
             var btn = sender as Button;
@@ -134,7 +173,6 @@ namespace UI.EmployeeSale
             UpdateInvoice();
         }
 
-        // Hiển thị các loại vé và số lượng (tăng/giảm)
         private void LoadTicketTypes(Guid showTimeId)
         {
             flpTicketTypes.Controls.Clear();
@@ -197,12 +235,10 @@ namespace UI.EmployeeSale
 
         private void UpdateTicketTypePanel()
         {
-            // Tự động phân bổ số lượng loại vé theo số ghế đã chọn (mặc định gán loại đầu tiên)
             var totalSelected = _selectedSeatIds.Count;
             var ticketTypePanels = flpTicketTypes.Controls.OfType<Panel>().ToList();
             var ticketTypes = ticketTypePanels.Select(p => ((Label)p.Controls[0]).Text.Split('\n')[0]).ToList();
 
-            // Reset số lượng
             foreach (var panel in ticketTypePanels)
             {
                 var lblCount = panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.StartsWith("lblTypeCount_"));
@@ -210,7 +246,6 @@ namespace UI.EmployeeSale
             }
             _selectedTicketTypeCounts.Clear();
 
-            // Gán số lượng loại vé (mặc định loại đầu tiên)
             if (ticketTypes.Count > 0 && totalSelected > 0)
             {
                 _selectedTicketTypeCounts[ticketTypes[0]] = totalSelected;
@@ -256,12 +291,10 @@ namespace UI.EmployeeSale
 
         private void UpdateTotalTicketTypeCount()
         {
-            // Đảm bảo tổng số loại vé không vượt quá số ghế đã chọn
             int totalSelected = _selectedSeatIds.Count;
             int totalAssigned = _selectedTicketTypeCounts.Values.Sum();
             if (totalAssigned > totalSelected)
             {
-                // Giảm loại vé cuối cùng
                 var lastType = _selectedTicketTypeCounts.Keys.LastOrDefault();
                 if (lastType != null && _selectedTicketTypeCounts[lastType] > 0)
                 {
@@ -278,35 +311,171 @@ namespace UI.EmployeeSale
         {
             flpProducts.Controls.Clear();
             _products = _saleTicketDAL.GetAllProducts();
+
             foreach (var product in _products)
             {
-                var chkProduct = new CheckBox
+                // Panel chính cho mỗi sản phẩm
+                var productPanel = new Panel
                 {
-                    Text = $"{product.ProductName} ({product.Price?.ToString("C0") ?? "0đ"})",
-                    Tag = product.ProductID,
-                    Width = 200,
-                    Height = 30,
-                    Margin = new Padding(5)
+                    Width = 900,
+                    Height = 150,
+                    Margin = new Padding(5),
+                    BackColor = Color.FromArgb(248, 250, 252),
+                    BorderStyle = BorderStyle.None
                 };
-                chkProduct.CheckedChanged += ChkProduct_CheckedChanged;
-                flpProducts.Controls.Add(chkProduct);
-            }
-            UpdateInvoice();
-        }
 
-        private void ChkProduct_CheckedChanged(object sender, EventArgs e)
-        {
-            var chk = sender as CheckBox;
-            var productId = (int)chk.Tag;
-            if (chk.Checked)
-            {
-                if (!_selectedProductIds.Contains(productId))
-                    _selectedProductIds.Add(productId);
-            }
-            else
-            {
-                if (_selectedProductIds.Contains(productId))
-                    _selectedProductIds.Remove(productId);
+                // PictureBox cho hình ảnh sản phẩm
+                var picProduct = new PictureBox
+                {
+                    Location = new Point(20, 25),
+                    Size = new Size(100, 100),
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    BackColor = Color.White
+                };
+
+                // Load hình ảnh
+                if (!string.IsNullOrEmpty(product.ImageUrl))
+                {
+                    ImgHelper.DisplayImageFromRelative(product.ImageUrl, picProduct);
+                }
+
+                // Label tên sản phẩm
+                var lblName = new Label
+                {
+                    Text = product.ProductName,
+                    Location = new Point(140, 30),
+                    Size = new Size(350, 35),
+                    Font = new Font("Segoe UI", 16F, FontStyle.Bold),
+                    ForeColor = Color.FromArgb(31, 41, 55),
+                    AutoSize = false
+                };
+
+                // Label mã/loại sản phẩm (nếu có)
+                var lblCategory = new Label
+                {
+                    Text = product.ProductType ?? "SẢN PHẨM",
+                    Location = new Point(140, 70),
+                    Size = new Size(350, 25),
+                    Font = new Font("Segoe UI", 10F),
+                    ForeColor = Color.FromArgb(156, 163, 175),
+                    AutoSize = false
+                };
+
+                // Label giá tiền
+                var lblPrice = new Label
+                {
+                    Text = (product.Price ?? 0).ToString("#,##0.00") + " ₫",
+                    Location = new Point(630, 30),
+                    Size = new Size(170, 35),
+                    Font = new Font("Segoe UI", 16F, FontStyle.Bold),
+                    ForeColor = Color.FromArgb(220, 38, 38),
+                    TextAlign = ContentAlignment.TopRight,
+                    AutoSize = false
+                };
+
+                // Nút giảm số lượng
+                var btnMinus = new ReaLTaiizor.Controls.ParrotButton
+                {
+                    Width = 45,
+                    Height = 45,
+                    Location = new Point(630, 80),
+                    ButtonText = "-",
+                    ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded,
+                    CornerRadius = 8,
+                    BackgroundColor = Color.White,
+                    HoverBackgroundColor = Color.FromArgb(254, 226, 226),
+                    ClickBackColor = Color.FromArgb(252, 165, 165),
+                    TextColor = Color.FromArgb(220, 38, 38),
+                    HoverTextColor = Color.FromArgb(220, 38, 38),
+                    ClickTextColor = Color.FromArgb(220, 38, 38),
+                    Font = new Font("Segoe UI", 18F, FontStyle.Bold),
+                    Cursor = Cursors.Hand,
+                    Tag = product.ProductID
+                };
+
+                // Label hiển thị số lượng
+                var lblQuantity = new Label
+                {
+                    Text = "0",
+                    Location = new Point(685, 80),
+                    Size = new Size(50, 45),
+                    Font = new Font("Segoe UI", 18F, FontStyle.Bold),
+                    ForeColor = Color.FromArgb(31, 41, 55),
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Name = $"lblQty_{product.ProductID}"
+                };
+
+                // Nút tăng số lượng
+                var btnPlus = new ReaLTaiizor.Controls.ParrotButton
+                {
+                    Width = 45,
+                    Height = 45,
+                    Location = new Point(745, 80),
+                    ButtonText = "+",
+                    ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded,
+                    CornerRadius = 8,
+                    BackgroundColor = Color.White,
+                    HoverBackgroundColor = Color.FromArgb(254, 226, 226),
+                    ClickBackColor = Color.FromArgb(252, 165, 165),
+                    TextColor = Color.FromArgb(220, 38, 38),
+                    HoverTextColor = Color.FromArgb(220, 38, 38),
+                    ClickTextColor = Color.FromArgb(220, 38, 38),
+                    Font = new Font("Segoe UI", 18F, FontStyle.Bold),
+                    Cursor = Cursors.Hand,
+                    Tag = product.ProductID
+                };
+
+                // Dictionary lưu số lượng từng sản phẩm
+                if (!_selectedProductQuantities.ContainsKey(product.ProductID))
+                {
+                    _selectedProductQuantities[product.ProductID] = 0;
+                }
+
+                // Sự kiện click nút giảm
+                btnMinus.Click += (s, e) =>
+                {
+                    int productId = (int)((ReaLTaiizor.Controls.ParrotButton)s).Tag;
+                    if (_selectedProductQuantities[productId] > 0)
+                    {
+                        _selectedProductQuantities[productId]--;
+                        var lbl = productPanel.Controls.Find($"lblQty_{productId}", false).FirstOrDefault() as Label;
+                        if (lbl != null) lbl.Text = _selectedProductQuantities[productId].ToString();
+
+                        // Cập nhật danh sách sản phẩm đã chọn
+                        if (_selectedProductQuantities[productId] == 0)
+                        {
+                            _selectedProductIds.Remove(productId);
+                        }
+                        UpdateInvoice();
+                    }
+                };
+
+                // Sự kiện click nút tăng
+                btnPlus.Click += (s, e) =>
+                {
+                    int productId = (int)((ReaLTaiizor.Controls.ParrotButton)s).Tag;
+                    _selectedProductQuantities[productId]++;
+                    var lbl = productPanel.Controls.Find($"lblQty_{productId}", false).FirstOrDefault() as Label;
+                    if (lbl != null) lbl.Text = _selectedProductQuantities[productId].ToString();
+
+                    // Thêm vào danh sách đã chọn nếu chưa có, nếu đã có thì tính lại tiền của sản phẩm
+                    if (!_selectedProductIds.Contains(productId))
+                    {
+                        _selectedProductIds.Add(productId);
+                    }
+                    UpdateInvoice();
+                };
+
+                // Thêm controls vào panel
+                productPanel.Controls.Add(picProduct);
+                productPanel.Controls.Add(lblName);
+                productPanel.Controls.Add(lblCategory);
+                productPanel.Controls.Add(lblPrice);
+                productPanel.Controls.Add(btnMinus);
+                productPanel.Controls.Add(lblQuantity);
+                productPanel.Controls.Add(btnPlus);
+
+                flpProducts.Controls.Add(productPanel);
             }
             UpdateInvoice();
         }
@@ -328,29 +497,24 @@ namespace UI.EmployeeSale
                 MessageBox.Show("Vui lòng phân bổ loại vé cho tất cả ghế đã chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            // Xử lý thanh toán ở đây (ví dụ: mở form Payment, lưu vào DB, ...)
             MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void UpdateInvoice()
         {
-            // Movie info
             lbInvoiceMovie.Text = _movie != null
                 ? $"Phim: {_movie.Title} ({_movie.Genre}, {_movie.DurationMinutes} phút, {_movie.AgeLimit})"
                 : "Phim:";
 
-            // ShowTime info
             var showTime = _showTimes.FirstOrDefault(st => st.ShowTimeID == _selectedShowTimeId);
             lbInvoiceShowTime.Text = showTime != null
                 ? $"Suất chiếu: {showTime.StartTime:dd/MM/yyyy HH:mm} - Phòng {showTime.RoomID} - Giá vé {showTime.Price.ToString("C0")}"
                 : "Suất chiếu:";
 
-            // Selected seats
             lbInvoiceTickets.Text = "Ghế đã chọn:\n" + (_selectedSeatIds.Count > 0
                 ? string.Join(", ", _seats.Where(s => _selectedSeatIds.Contains(s.SeatID)).Select(s => s.SeatName))
                 : "Chưa chọn");
 
-            // Ticket type quantities
             if (_selectedTicketTypeCounts.Count > 0)
             {
                 lbInvoiceTicketTypes.Text = "Số lượng từng loại vé:\n" +
@@ -361,21 +525,50 @@ namespace UI.EmployeeSale
                 lbInvoiceTicketTypes.Text = "Số lượng từng loại vé: Chưa chọn";
             }
 
-            // Selected products
+            // Hiển thị sản phẩm đã chọn và số lượng
             var selectedProducts = _products.Where(p => _selectedProductIds.Contains(p.ProductID)).ToList();
             lbInvoiceProducts.Text = "Sản phẩm đã chọn:\n" + (selectedProducts.Count > 0
-                ? string.Join("\n", selectedProducts.Select(p => $"{p.ProductName} - {p.Price?.ToString("C0") ?? "0đ"}"))
+                ? string.Join("\n", selectedProducts.Select(p =>
+                {
+                    int qty = _selectedProductQuantities.ContainsKey(p.ProductID) ? _selectedProductQuantities[p.ProductID] : 0;
+                    return $"{p.ProductName} x{qty} - {(p.Price ?? 0) * qty:C0}";
+                }))
                 : "Chưa chọn");
 
-            // Total
+            // Tính tổng tiền vé
             decimal totalTickets = 0;
             foreach (var kv in _selectedTicketTypeCounts)
             {
                 var price = _tickets.Where(t => t.TicketType == kv.Key).Select(t => t.Price ?? 0).FirstOrDefault();
                 totalTickets += price * kv.Value;
             }
-            decimal totalProducts = selectedProducts.Sum(p => p.Price ?? 0);
+
+            // Tính tổng tiền sản phẩm theo số lượng từng sản phẩm
+            decimal totalProducts = 0;
+            foreach (var p in selectedProducts)
+            {
+                int qty = _selectedProductQuantities.ContainsKey(p.ProductID) ? _selectedProductQuantities[p.ProductID] : 0;
+                totalProducts += (p.Price ?? 0) * qty;
+            }
+
             lbInvoiceTotal.Text = $"Tổng tiền: {(totalTickets + totalProducts).ToString("C0")}";
+        }
+
+        private void btn_back_Click_1(object sender, EventArgs e)
+        {
+            if (_parentForm != null && _employee != null)
+            {
+                _parentForm.LoadControl(new SelectMovieUC(_parentForm, _employee));
+            }
+            else
+            {
+                // Fallback nếu không có parent
+                var parent = this.Parent as Home;
+                if (parent != null && _employee != null)
+                {
+                    parent.LoadControl(new SelectMovieUC(parent, _employee));
+                }
+            }
         }
     }
 }
