@@ -16,8 +16,10 @@ namespace UI.Products
     {
         private Home home;
         private DTO.Employee employee;
+        private bool? isAsc = null;
 
         private List<Product> allProducts;
+
         private ProductBLL productBLL = new ProductBLL();
         public ProductMainUC(Home home, DTO.Employee employee)
         {
@@ -36,8 +38,11 @@ namespace UI.Products
         {
             try
             {
-                // Lấy tất cả sản phẩm chưa bị xóa
-                allProducts = productBLL.GetAllProducts().Where(p => !p.IsDeleted).ToList();
+                bool isNgungBan = this.btnDaNgung.Toggled;
+                bool? SortPrice = this.isAsc;
+                string name = txtSearch.Text;
+                string type = cboType.Text;
+                allProducts = productBLL.FilterlProduct(name, type, SortPrice, isNgungBan);
                 DisplayProducts(allProducts);
             }
             catch (Exception ex)
@@ -47,6 +52,7 @@ namespace UI.Products
             }
         }
 
+       
         private void DisplayProducts(List<Product> products)
         {
             flowLayoutProducts.Controls.Clear();
@@ -67,9 +73,10 @@ namespace UI.Products
 
             foreach (var product in products)
             {
-                var productCard = new ProductCardUC(product);
+                var productCard = new ProductCardUC(product, this.btnDaNgung.Toggled);
                 productCard.OnEdit += ProductCard_OnEdit;
                 productCard.OnDelete += ProductCard_OnDelete;
+                productCard.OnRestore += ProductCard_OnRestore;
                 productCard.Width = flowLayoutProducts.Width - 60;
                 flowLayoutProducts.Controls.Add(productCard);
             }
@@ -77,16 +84,7 @@ namespace UI.Products
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (allProducts == null) return;
-
-            string searchText = txtSearch.Text.Trim().ToLower();
-
-            var filteredProducts = allProducts.Where(p =>
-                p.ProductName.ToLower().Contains(searchText) ||
-                (p.ProductType != null && p.ProductType.ToLower().Contains(searchText))
-            ).ToList();
-
-            DisplayProducts(filteredProducts);
+            LoadProducts();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -107,6 +105,32 @@ namespace UI.Products
             }
         }
 
+        private void ProductCard_OnRestore(object sender, Product product)
+        {
+            DialogResult result = MessageBox.Show(
+                $"Bạn có chắc chắn muốn khôi phục sản phẩm '{product.ProductName}'?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    product.IsDeleted = false;
+                    productBLL.RestoreProduct(product.ProductID);
+                    MessageBox.Show("Đã khôi phục sản phẩm thành công!", "Thành công",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadProducts();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi khôi phục sản phẩm: {ex.Message}", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         private void ProductCard_OnDelete(object sender, Product product)
         {
             var result = MessageBox.Show(
@@ -121,9 +145,9 @@ namespace UI.Products
                 try
                 {
                     product.IsDeleted = true;
-                    productBLL.UpdateProduct(product);
+                    productBLL.DeleteProduct(product.ProductID);
                     MessageBox.Show("Đã ngưng bán sản phẩm thành công!", "Thành công",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadProducts();
                 }
                 catch (Exception ex)
@@ -134,9 +158,49 @@ namespace UI.Products
             }
         }
 
-        private void panelTop_Paint(object sender, PaintEventArgs e)
+        //private 
+        private void btnDaNgung_ToggledChanged()
         {
+            LoadProducts();
+        }
 
+        private void cboRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadProducts();
+        }
+
+        private void btnAsc_Click(object sender, EventArgs e)
+        {
+            if (isAsc == null || isAsc == false)
+            {
+                this.btnAsc.UseAccentColor = true;
+                this.btnDasc.UseAccentColor = false;
+                this.isAsc = true;
+            }
+            else
+            {
+                this.btnAsc.UseAccentColor = false;
+                this.btnDasc.UseAccentColor = false;
+                this.isAsc = null;
+            }  
+                LoadProducts();
+        }
+
+        private void btnDasc_Click(object sender, EventArgs e)
+        {
+            if (isAsc == null || isAsc == true)
+            {
+                this.btnAsc.UseAccentColor = false;
+                this.btnDasc.UseAccentColor = true;
+                this.isAsc = false;
+            }
+            else
+            {
+                this.btnAsc.UseAccentColor = false;
+                this.btnDasc.UseAccentColor = false;
+                this.isAsc = null;
+            }
+            LoadProducts();
         }
     }
 }

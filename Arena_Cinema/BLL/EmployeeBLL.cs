@@ -37,5 +37,14 @@ namespace BLL
             return _employeeDAL.GetEmployeeById(id);
         }
 
+        public bool DeleteSoftwareById(Guid employeeId)
+        {
+            return _employeeDAL.DeleteEmployeeById(employeeId);
+        }
+
+        public bool RestoreEmployeeById(Guid employeeId)
+        {
+            return _employeeDAL.RestoreEmployeeById(employeeId);
+        }
     }
 }

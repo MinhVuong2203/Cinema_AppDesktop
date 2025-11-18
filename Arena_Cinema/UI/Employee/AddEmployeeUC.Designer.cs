@@ -33,7 +33,6 @@ namespace UI.Employee
             this.cboRole = new ReaLTaiizor.Controls.MaterialComboBox();
             this.dtpBirthDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new ReaLTaiizor.Controls.GroupBox();
-            this.btnShowPass = new ReaLTaiizor.Controls.ParrotButton();
             this.lbCheckPassword = new System.Windows.Forms.Label();
             this.lbCheckUsername = new System.Windows.Forms.Label();
             this.lbCheckLuong = new System.Windows.Forms.Label();
@@ -44,14 +43,15 @@ namespace UI.Employee
             this.label2 = new System.Windows.Forms.Label();
             this.txtPassword = new ReaLTaiizor.Controls.MaterialTextBox();
             this.txtUsername = new ReaLTaiizor.Controls.MaterialTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnPrev = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnShowPass = new ReaLTaiizor.Controls.ParrotButton();
             this.parrotButton2 = new ReaLTaiizor.Controls.ParrotButton();
             this.parrotButton1 = new ReaLTaiizor.Controls.ParrotButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new ReaLTaiizor.Controls.ParrotButton();
             this.btnSave = new ReaLTaiizor.Controls.ParrotButton();
             this.btnUploadImage = new ReaLTaiizor.Controls.ParrotButton();
             this.picImage = new System.Windows.Forms.PictureBox();
-            this.btnPrev = new ReaLTaiizor.Controls.ParrotButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.SuspendLayout();
@@ -285,30 +285,6 @@ namespace UI.Employee
             this.groupBox1.TabIndex = 16;
             this.groupBox1.Text = "Thông tin cá nhân";
             // 
-            // btnShowPass
-            // 
-            this.btnShowPass.BackgroundColor = System.Drawing.Color.White;
-            this.btnShowPass.ButtonImage = global::UI.Properties.Resources.OpenEyes1;
-            this.btnShowPass.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnShowPass.ButtonText = "";
-            this.btnShowPass.ClickBackColor = System.Drawing.Color.White;
-            this.btnShowPass.ClickTextColor = System.Drawing.Color.White;
-            this.btnShowPass.CornerRadius = 5;
-            this.btnShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnShowPass.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnShowPass.HoverBackgroundColor = System.Drawing.Color.White;
-            this.btnShowPass.HoverTextColor = System.Drawing.Color.White;
-            this.btnShowPass.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnShowPass.Location = new System.Drawing.Point(784, 484);
-            this.btnShowPass.Name = "btnShowPass";
-            this.btnShowPass.Size = new System.Drawing.Size(33, 30);
-            this.btnShowPass.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnShowPass.TabIndex = 29;
-            this.btnShowPass.TextColor = System.Drawing.Color.Black;
-            this.btnShowPass.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnShowPass.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
-            // 
             // lbCheckPassword
             // 
             this.lbCheckPassword.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -394,7 +370,6 @@ namespace UI.Employee
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.Depth = 0;
             this.txtPassword.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-           
             this.txtPassword.LeadingIcon = null;
             this.txtPassword.Location = new System.Drawing.Point(433, 462);
             this.txtPassword.MaxLength = 50;
@@ -426,6 +401,64 @@ namespace UI.Employee
             this.txtUsername.Text = "";
             this.txtUsername.TrailingIcon = null;
             this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(48, 483);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(112, 28);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Ngày sinh:";
+            // 
+            // btnPrev
+            // 
+            this.btnPrev.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnPrev.ButtonImage = global::UI.Properties.Resources.chevrons;
+            this.btnPrev.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnPrev.ButtonText = "";
+            this.btnPrev.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.btnPrev.ClickTextColor = System.Drawing.Color.DodgerBlue;
+            this.btnPrev.CornerRadius = 5;
+            this.btnPrev.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrev.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPrev.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.btnPrev.HoverTextColor = System.Drawing.Color.DodgerBlue;
+            this.btnPrev.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnPrev.Location = new System.Drawing.Point(3, 3);
+            this.btnPrev.Name = "btnPrev";
+            this.btnPrev.Size = new System.Drawing.Size(44, 38);
+            this.btnPrev.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnPrev.TabIndex = 14;
+            this.btnPrev.TextColor = System.Drawing.Color.DodgerBlue;
+            this.btnPrev.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnPrev.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
+            // 
+            // btnShowPass
+            // 
+            this.btnShowPass.BackgroundColor = System.Drawing.Color.White;
+            this.btnShowPass.ButtonImage = global::UI.Properties.Resources.OpenEyes1;
+            this.btnShowPass.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnShowPass.ButtonText = "";
+            this.btnShowPass.ClickBackColor = System.Drawing.Color.White;
+            this.btnShowPass.ClickTextColor = System.Drawing.Color.White;
+            this.btnShowPass.CornerRadius = 5;
+            this.btnShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnShowPass.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnShowPass.HoverBackgroundColor = System.Drawing.Color.White;
+            this.btnShowPass.HoverTextColor = System.Drawing.Color.White;
+            this.btnShowPass.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnShowPass.Location = new System.Drawing.Point(784, 484);
+            this.btnShowPass.Name = "btnShowPass";
+            this.btnShowPass.Size = new System.Drawing.Size(33, 30);
+            this.btnShowPass.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnShowPass.TabIndex = 29;
+            this.btnShowPass.TextColor = System.Drawing.Color.Black;
+            this.btnShowPass.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnShowPass.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
             // 
             // parrotButton2
             // 
@@ -474,16 +507,6 @@ namespace UI.Employee
             this.parrotButton1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.parrotButton1.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.parrotButton1.Click += new System.EventHandler(this.parrotButton1_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(48, 483);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 28);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Ngày sinh:";
             // 
             // btnCancel
             // 
@@ -570,30 +593,6 @@ namespace UI.Employee
             this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picImage.TabIndex = 10;
             this.picImage.TabStop = false;
-            // 
-            // btnPrev
-            // 
-            this.btnPrev.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnPrev.ButtonImage = global::UI.Properties.Resources.chevrons;
-            this.btnPrev.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnPrev.ButtonText = "";
-            this.btnPrev.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
-            this.btnPrev.ClickTextColor = System.Drawing.Color.DodgerBlue;
-            this.btnPrev.CornerRadius = 5;
-            this.btnPrev.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrev.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPrev.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btnPrev.HoverTextColor = System.Drawing.Color.DodgerBlue;
-            this.btnPrev.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnPrev.Location = new System.Drawing.Point(3, 3);
-            this.btnPrev.Name = "btnPrev";
-            this.btnPrev.Size = new System.Drawing.Size(44, 38);
-            this.btnPrev.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnPrev.TabIndex = 14;
-            this.btnPrev.TextColor = System.Drawing.Color.DodgerBlue;
-            this.btnPrev.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnPrev.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPrev.Click += new System.EventHandler(this.btnPrev_Click);
             // 
             // AddEmployeeUC
             // 

@@ -18,10 +18,23 @@ namespace UI.Products
         private Product _product;
         public event EventHandler<Product> OnEdit;
         public event EventHandler<Product> OnDelete;
+        public event EventHandler<Product> OnRestore;
 
-        public ProductCardUC(Product product)
+        public ProductCardUC(Product product, bool isDelete)
         {
             InitializeComponent();
+            if (isDelete)
+            {
+                btnEdit.Visible = false;
+                btnNgungBan.Visible = false;
+                btnKhoiPhuc.Visible = true;
+            }
+            else
+            {
+                btnEdit.Visible = true;
+                btnNgungBan.Visible = true;
+                btnKhoiPhuc.Visible = false;
+            }
             _product = product;
             LoadProductData();
         }
@@ -49,6 +62,11 @@ namespace UI.Products
             OnDelete?.Invoke(this, _product);
         }
 
+        private void btnKhoiPhuc_Click(object sender, EventArgs e)
+        {
+            OnRestore?.Invoke(this, _product);
+        }
+
         private void panelCard_MouseEnter(object sender, EventArgs e)
         {
             this.BorderStyle = BorderStyle.FixedSingle;
@@ -61,5 +79,7 @@ namespace UI.Products
             this.Width -= 14;
            
         }
+
+     
     }
 }

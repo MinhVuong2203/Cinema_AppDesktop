@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Common;
 using DTO;
+using Microsoft.VisualBasic.Devices;
 
 namespace UI.EmployeeSale
 {
@@ -28,7 +30,8 @@ namespace UI.EmployeeSale
         //Load dữ liệu nhân viên
         public void LoadEmployeeData(DTO.Employee employee)
         {
-            picAVT.ImageLocation = employee.ImageUrl;
+            //picAVT.ImageLocation = employee.ImageUrl;
+            ImgHelper.DisplayImageFromRelative(employee.ImageUrl, picAVT);
             lb_EmName.Text = employee.FullName;
             lb_EmpIDText.Text = employee.EmployeeID.ToString();
             lb_BranchText.Text = employee.Address;
@@ -42,6 +45,11 @@ namespace UI.EmployeeSale
         private void btn_SaleTicket_Click(object sender, EventArgs e)
         {
             this._home.LoadControl(new SelectMovieUC(_home, this._employee));
+        }
+
+        private void btn_SaleProduct_Click(object sender, EventArgs e)
+        {
+            _home.LoadControl(new SaleProductUC(_home, _employee));
         }
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,7 @@ namespace UI.Employee
             this._home = home;
             InitializeComponent();
             LoadCboRoles();
-            LoadCardEmployees(_employeeBLL.GetAllEmployees());
+            FilterEmployees();
         }
 
         private void btnPrev_Click(object sender, EventArgs e)
@@ -53,14 +54,10 @@ namespace UI.Employee
         {
             // Xóa tất cả card cũ (trừ card mẫu nếu muốn giữ)
             panelEmployeeList.Controls.Clear();
-
+            bool isWork = !this.btnWorking.Toggled;
             // Lặp qua danh sách nhân viên và tạo card
             foreach (var emp in employees)
             {
-                // Bỏ qua nhân viên đã bị xóa
-                if (emp.IsDeleted)
-                    continue;
-
                 // Tạo card mới
                 ReaLTaiizor.Controls.MaterialCard card = new ReaLTaiizor.Controls.MaterialCard();
                 card.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
@@ -146,24 +143,27 @@ namespace UI.Employee
                 lblPhone.Text = $"SĐT: {emp.Phone ?? "Chưa có"}";
 
                 // Nút Sửa
-                ReaLTaiizor.Controls.MaterialButton btnEdit = new ReaLTaiizor.Controls.MaterialButton();
-                btnEdit.AutoSize = false;
-                btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-                btnEdit.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-                btnEdit.Depth = 0;
-                btnEdit.HighEmphasis = true;
-                btnEdit.Icon = UI.Properties.Resources.edit;
-                btnEdit.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-                btnEdit.Location = new System.Drawing.Point(223, 164);
-                btnEdit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-                btnEdit.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-                btnEdit.Size = new System.Drawing.Size(100, 42);
-                btnEdit.Text = "Sửa";
-                btnEdit.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-                btnEdit.UseAccentColor = false;
-                btnEdit.UseVisualStyleBackColor = true;
-                btnEdit.Tag = emp.EmployeeID; // Lưu ID để xử lý sự kiện
-                btnEdit.Click += BtnEdit_Click; // Gắn sự kiện
+                if (isWork) { 
+                    ReaLTaiizor.Controls.MaterialButton btnEdit = new ReaLTaiizor.Controls.MaterialButton();
+                    btnEdit.AutoSize = false;
+                    btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+                    btnEdit.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+                    btnEdit.Depth = 0;
+                    btnEdit.HighEmphasis = true;
+                    btnEdit.Icon = UI.Properties.Resources.edit;
+                    btnEdit.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+                    btnEdit.Location = new System.Drawing.Point(223, 164);
+                    btnEdit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+                    btnEdit.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+                    btnEdit.Size = new System.Drawing.Size(100, 42);
+                    btnEdit.Text = "Sửa";
+                    btnEdit.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+                    btnEdit.UseAccentColor = false;
+                    btnEdit.UseVisualStyleBackColor = true;
+                    btnEdit.Tag = emp.EmployeeID; // Lưu ID để xử lý sự kiện
+                    btnEdit.Click += BtnEdit_Click; // Gắn sự kiện
+                    panelContent.Controls.Add(btnEdit);
+                }
 
                 // Nút Xóa
                 ReaLTaiizor.Controls.MaterialButton btnDelete = new ReaLTaiizor.Controls.MaterialButton();
@@ -173,20 +173,31 @@ namespace UI.Employee
                 btnDelete.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
                 btnDelete.Depth = 0;
                 btnDelete.HighEmphasis = true;
-                btnDelete.Icon = UI.Properties.Resources.trash;
+                
                 btnDelete.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
                 btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 btnDelete.Location = new System.Drawing.Point(327, 163);
                 btnDelete.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
                 btnDelete.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
                 btnDelete.Size = new System.Drawing.Size(100, 42);
-                btnDelete.Text = "Xóa";
                 btnDelete.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
                 btnDelete.UseAccentColor = true;
                 btnDelete.UseMnemonic = false;
                 btnDelete.UseVisualStyleBackColor = false;
                 btnDelete.Tag = emp.EmployeeID; // Lưu ID để xử lý sự kiện
-                //btnDelete.Click += BtnDelete_Click; // Gắn sự kiện
+
+                if (isWork)
+                {
+                    btnDelete.Text = "Xóa";
+                    btnDelete.Click += BtnDelete_Click; // Gắn sự kiện
+                    btnDelete.Icon = UI.Properties.Resources.trash;
+                }
+                else
+                {
+                    btnDelete.Text = "Khôi phục";
+                    btnDelete.Click += BtnRestore_Click; // Gắn sự kiện
+                    btnDelete.Icon = UI.Properties.Resources.reset;
+                }
 
                 // Thêm các control vào panel
                 panelContent.Controls.Add(picEmployee);
@@ -195,7 +206,7 @@ namespace UI.Employee
                 panelContent.Controls.Add(lblRole);
                 panelContent.Controls.Add(lblEmail);
                 panelContent.Controls.Add(lblPhone);
-                panelContent.Controls.Add(btnEdit);
+               
                 panelContent.Controls.Add(btnDelete);
 
                 // Thêm panel vào card
@@ -255,12 +266,54 @@ namespace UI.Employee
             _home.LoadControl(new AddEmployeeUC(_home, _employee));
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
+            ReaLTaiizor.Controls.MaterialButton btn = sender as ReaLTaiizor.Controls.MaterialButton;
+            if (btn != null && btn.Tag != null)
+            {
+                Guid employeeId = (Guid)btn.Tag;
+                DialogResult rs = MessageBox.Show($"Bạn muốn cho nhân viên {employeeId} nghỉ việc?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (rs == DialogResult.OK)
+                {
+                    bool re = _employeeBLL.DeleteSoftwareById(employeeId);
+                    if (re)
+                    {
+                        FilterEmployees();
+                        MessageBox.Show("Đã cho nhân viên nghỉ việc!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thao tác thất bại, vui lòng thử lại!", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
 
         }
 
-        
+        private void BtnRestore_Click(object sender, EventArgs e)
+        {
+            ReaLTaiizor.Controls.MaterialButton btn = sender as ReaLTaiizor.Controls.MaterialButton;
+            if (btn != null && btn.Tag != null)
+            {
+                Guid employeeId = (Guid)btn.Tag;
+                DialogResult rs = MessageBox.Show($"Bạn muốn khôi phục nhân viên {employeeId}?", "Xác nhận", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (rs == DialogResult.OK)
+                {
+                    bool re = _employeeBLL.RestoreEmployeeById(employeeId);
+                    if (re)
+                    {
+                        FilterEmployees();
+                        MessageBox.Show("Đã khôi phục nhân viên!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thao tác thất bại, vui lòng thử lại!", "Thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+
 
 
 

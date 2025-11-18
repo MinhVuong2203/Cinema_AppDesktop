@@ -94,5 +94,14 @@ namespace BLL
             }
         }
 
+        public List<Product> FilterlProduct(string name, string type, bool? sortPrice, bool isNgungBan)
+        {
+            return _productDAL.FilterlProduct(name, type, sortPrice, isNgungBan);
+        }
+
+        public void RestoreProduct(int productID)
+        {
+            _productDAL.RestoreProduct(productID);
+        }
     }
 }

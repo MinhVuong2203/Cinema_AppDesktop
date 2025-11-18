@@ -194,6 +194,12 @@
     <Compile Include="EmployeeSale\SaleHomeUC.Designer.cs">
       <DependentUpon>SaleHomeUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeSale\SaleProductUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmployeeSale\SaleProductUC.Designer.cs">
+      <DependentUpon>SaleProductUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeSale\SaleTicketUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -337,6 +343,9 @@
     </Compile>
     <EmbeddedResource Include="EmployeeSale\SaleHomeUC.resx">
       <DependentUpon>SaleHomeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeSale\SaleProductUC.resx">
+      <DependentUpon>SaleProductUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeeSale\SaleTicketUC.resx">
       <DependentUpon>SaleTicketUC.cs</DependentUpon>
@@ -580,6 +589,11 @@
     <Content Include="Image\Employee\emloyeeDefault.png" />
     <Content Include="Image\Employee\Gai4.jpeg" />
     <Content Include="Image\Product\popcorn %281%29.png" />
+    <None Include="Resources\sort.png" />
+    <None Include="Resources\sort-descending %281%29.png" />
+    <None Include="Resources\reset.png" />
+    <None Include="Resources\ban.png" />
+    <None Include="Resources\reset1.png" />
     <Content Include="Resources\roomDefault.png" />
     <None Include="Resources\Search3.png" />
     <None Include="Resources\Search2.png" />
