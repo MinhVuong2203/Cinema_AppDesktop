@@ -37,12 +37,6 @@
             this.posterTemplate = new System.Windows.Forms.Panel();
             this.badgeTemplate = new System.Windows.Forms.Label();
             this.paginationPanel = new System.Windows.Forms.Panel();
-            this.btnFirstPage = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnPrevPage = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnPage2 = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnPage3 = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnNextPage = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnLastPage = new ReaLTaiizor.Controls.ParrotButton();
             this.searchPanel = new System.Windows.Forms.Panel();
             this.panelinfo_right = new System.Windows.Forms.Panel();
             this.cboAgeLimit = new ReaLTaiizor.Controls.MaterialComboBox();
@@ -51,15 +45,19 @@
             this.btnSearch = new ReaLTaiizor.Controls.ParrotButton();
             this.lblInfo = new System.Windows.Forms.Label();
             this.txtSearch = new ReaLTaiizor.Controls.MaterialTextBox();
+            this.btnPageNumberTemplate = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnNavTemplate = new ReaLTaiizor.Controls.ParrotButton();
+
             this.panelHeader.SuspendLayout();
             this.right_panel.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panel_movie.SuspendLayout();
             this.moviesContainer.SuspendLayout();
             this.movieCardTemplate.SuspendLayout();
-            this.paginationPanel.SuspendLayout();
             this.searchPanel.SuspendLayout();
             this.panelinfo_right.SuspendLayout();
+            this.paginationPanel.SuspendLayout();
+            this.paginationPanel.ResumeLayout(false);
             this.SuspendLayout();
             // 
             // panelHeader
@@ -201,6 +199,8 @@
             this.movieCardTemplate.Size = new System.Drawing.Size(296, 407);
             this.movieCardTemplate.TabIndex = 0;
             this.movieCardTemplate.Visible = false;
+            this.movieCardTemplate.MouseEnter += new System.EventHandler(this.movieCardTemplate_MouseEnter);
+            this.movieCardTemplate.MouseLeave += new System.EventHandler(this.movieCardTemplate_MouseLeave);
             // 
             // btnDeleteTemplate
             // 
@@ -352,161 +352,14 @@
             // paginationPanel
             // 
             this.paginationPanel.BackColor = System.Drawing.Color.Transparent;
-            this.paginationPanel.Controls.Add(this.btnFirstPage);
-            this.paginationPanel.Controls.Add(this.btnPrevPage);
-            this.paginationPanel.Controls.Add(this.btnPage2);
-            this.paginationPanel.Controls.Add(this.btnPage3);
-            this.paginationPanel.Controls.Add(this.btnNextPage);
-            this.paginationPanel.Controls.Add(this.btnLastPage);
             this.paginationPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.paginationPanel.Controls.Add(this.btnPageNumberTemplate);
+            this.paginationPanel.Controls.Add(this.btnNavTemplate);
+
             this.paginationPanel.Location = new System.Drawing.Point(25, 665);
             this.paginationPanel.Name = "paginationPanel";
             this.paginationPanel.Size = new System.Drawing.Size(1310, 50);
             this.paginationPanel.TabIndex = 4;
-            // 
-            // btnFirstPage
-            // 
-            this.btnFirstPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnFirstPage.ButtonImage = null;
-            this.btnFirstPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnFirstPage.ButtonText = "1";
-            this.btnFirstPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.btnFirstPage.ClickTextColor = System.Drawing.Color.White;
-            this.btnFirstPage.CornerRadius = 3;
-            this.btnFirstPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFirstPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnFirstPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnFirstPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
-            this.btnFirstPage.HoverTextColor = System.Drawing.Color.White;
-            this.btnFirstPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnFirstPage.Location = new System.Drawing.Point(590, 10);
-            this.btnFirstPage.Name = "btnFirstPage";
-            this.btnFirstPage.Size = new System.Drawing.Size(35, 30);
-            this.btnFirstPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnFirstPage.TabIndex = 0;
-            this.btnFirstPage.TextColor = System.Drawing.Color.White;
-            this.btnFirstPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnFirstPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnPrevPage
-            // 
-            this.btnPrevPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnPrevPage.ButtonImage = null;
-            this.btnPrevPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnPrevPage.ButtonText = "‹";
-            this.btnPrevPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
-            this.btnPrevPage.ClickTextColor = System.Drawing.Color.White;
-            this.btnPrevPage.CornerRadius = 3;
-            this.btnPrevPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrevPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnPrevPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPrevPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
-            this.btnPrevPage.HoverTextColor = System.Drawing.Color.White;
-            this.btnPrevPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnPrevPage.Location = new System.Drawing.Point(540, 10);
-            this.btnPrevPage.Name = "btnPrevPage";
-            this.btnPrevPage.Size = new System.Drawing.Size(35, 30);
-            this.btnPrevPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnPrevPage.TabIndex = 1;
-            this.btnPrevPage.TextColor = System.Drawing.Color.White;
-            this.btnPrevPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnPrevPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnPage2
-            // 
-            this.btnPage2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnPage2.ButtonImage = null;
-            this.btnPage2.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnPage2.ButtonText = "2";
-            this.btnPage2.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
-            this.btnPage2.ClickTextColor = System.Drawing.Color.White;
-            this.btnPage2.CornerRadius = 3;
-            this.btnPage2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPage2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnPage2.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPage2.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
-            this.btnPage2.HoverTextColor = System.Drawing.Color.White;
-            this.btnPage2.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnPage2.Location = new System.Drawing.Point(635, 10);
-            this.btnPage2.Name = "btnPage2";
-            this.btnPage2.Size = new System.Drawing.Size(35, 30);
-            this.btnPage2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnPage2.TabIndex = 2;
-            this.btnPage2.TextColor = System.Drawing.Color.White;
-            this.btnPage2.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnPage2.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnPage3
-            // 
-            this.btnPage3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnPage3.ButtonImage = null;
-            this.btnPage3.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnPage3.ButtonText = "›";
-            this.btnPage3.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
-            this.btnPage3.ClickTextColor = System.Drawing.Color.White;
-            this.btnPage3.CornerRadius = 3;
-            this.btnPage3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPage3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnPage3.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPage3.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
-            this.btnPage3.HoverTextColor = System.Drawing.Color.White;
-            this.btnPage3.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnPage3.Location = new System.Drawing.Point(680, 10);
-            this.btnPage3.Name = "btnPage3";
-            this.btnPage3.Size = new System.Drawing.Size(35, 30);
-            this.btnPage3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnPage3.TabIndex = 3;
-            this.btnPage3.TextColor = System.Drawing.Color.White;
-            this.btnPage3.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnPage3.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnNextPage
-            // 
-            this.btnNextPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnNextPage.ButtonImage = null;
-            this.btnNextPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnNextPage.ButtonText = "›";
-            this.btnNextPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
-            this.btnNextPage.ClickTextColor = System.Drawing.Color.White;
-            this.btnNextPage.CornerRadius = 3;
-            this.btnNextPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNextPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnNextPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnNextPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
-            this.btnNextPage.HoverTextColor = System.Drawing.Color.White;
-            this.btnNextPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnNextPage.Location = new System.Drawing.Point(725, 10);
-            this.btnNextPage.Name = "btnNextPage";
-            this.btnNextPage.Size = new System.Drawing.Size(35, 30);
-            this.btnNextPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnNextPage.TabIndex = 4;
-            this.btnNextPage.TextColor = System.Drawing.Color.White;
-            this.btnNextPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnNextPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnLastPage
-            // 
-            this.btnLastPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnLastPage.ButtonImage = null;
-            this.btnLastPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnLastPage.ButtonText = "»";
-            this.btnLastPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
-            this.btnLastPage.ClickTextColor = System.Drawing.Color.White;
-            this.btnLastPage.CornerRadius = 3;
-            this.btnLastPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLastPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLastPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnLastPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
-            this.btnLastPage.HoverTextColor = System.Drawing.Color.White;
-            this.btnLastPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnLastPage.Location = new System.Drawing.Point(770, 10);
-            this.btnLastPage.Name = "btnLastPage";
-            this.btnLastPage.Size = new System.Drawing.Size(35, 30);
-            this.btnLastPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnLastPage.TabIndex = 5;
-            this.btnLastPage.TextColor = System.Drawing.Color.White;
-            this.btnLastPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnLastPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             // 
             // searchPanel
             // 
@@ -665,6 +518,54 @@
             this.txtSearch.TabStop = false;
             this.txtSearch.Text = "";
             this.txtSearch.TrailingIcon = null;
+
+            this.btnPageNumberTemplate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnPageNumberTemplate.ButtonImage = null;
+            this.btnPageNumberTemplate.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnPageNumberTemplate.ButtonText = "1";
+            this.btnPageNumberTemplate.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnPageNumberTemplate.ClickTextColor = System.Drawing.Color.White;
+            this.btnPageNumberTemplate.CornerRadius = 3;
+            this.btnPageNumberTemplate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPageNumberTemplate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPageNumberTemplate.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPageNumberTemplate.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this.btnPageNumberTemplate.HoverTextColor = System.Drawing.Color.White;
+            this.btnPageNumberTemplate.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnPageNumberTemplate.Location = new System.Drawing.Point(10, 10);
+            this.btnPageNumberTemplate.Name = "btnPageNumberTemplate";
+            this.btnPageNumberTemplate.Size = new System.Drawing.Size(35, 30);
+            this.btnPageNumberTemplate.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnPageNumberTemplate.TabIndex = 0;
+            this.btnPageNumberTemplate.TextColor = System.Drawing.Color.White;
+            this.btnPageNumberTemplate.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnPageNumberTemplate.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPageNumberTemplate.Visible = false;
+            // 
+            // btnNavTemplate (NÚT ĐIỀU HƯỚNG MẪU - Màu XÁM)
+            // 
+            this.btnNavTemplate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnNavTemplate.ButtonImage = null;
+            this.btnNavTemplate.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnNavTemplate.ButtonText = "‹";
+            this.btnNavTemplate.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
+            this.btnNavTemplate.ClickTextColor = System.Drawing.Color.White;
+            this.btnNavTemplate.CornerRadius = 3;
+            this.btnNavTemplate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNavTemplate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnNavTemplate.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnNavTemplate.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
+            this.btnNavTemplate.HoverTextColor = System.Drawing.Color.White;
+            this.btnNavTemplate.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnNavTemplate.Location = new System.Drawing.Point(55, 10);
+            this.btnNavTemplate.Name = "btnNavTemplate";
+            this.btnNavTemplate.Size = new System.Drawing.Size(35, 30);
+            this.btnNavTemplate.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnNavTemplate.TabIndex = 1;
+            this.btnNavTemplate.TextColor = System.Drawing.Color.White;
+            this.btnNavTemplate.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnNavTemplate.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnNavTemplate.Visible = false;
             // 
             // Movie_MainUC
             // 
@@ -681,7 +582,6 @@
             this.moviesContainer.ResumeLayout(false);
             this.movieCardTemplate.ResumeLayout(false);
             this.movieCardTemplate.PerformLayout();
-            this.paginationPanel.ResumeLayout(false);
             this.searchPanel.ResumeLayout(false);
             this.panelinfo_right.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -704,12 +604,6 @@
         private System.Windows.Forms.FlowLayoutPanel moviesContainer;
         private System.Windows.Forms.Panel right_panel;
         private System.Windows.Forms.Panel paginationPanel;
-        private ReaLTaiizor.Controls.ParrotButton btnFirstPage;
-        private ReaLTaiizor.Controls.ParrotButton btnPrevPage;
-        private ReaLTaiizor.Controls.ParrotButton btnPage2;
-        private ReaLTaiizor.Controls.ParrotButton btnPage3;
-        private ReaLTaiizor.Controls.ParrotButton btnNextPage;
-        private ReaLTaiizor.Controls.ParrotButton btnLastPage;
         private System.Windows.Forms.Panel panel_movie;
         private System.Windows.Forms.Panel panelinfo_right;
         private ReaLTaiizor.Controls.ParrotButton btnDeletedMovies;
@@ -726,5 +620,7 @@
         private ReaLTaiizor.Controls.ParrotButton btnViewTemplate;
         private ReaLTaiizor.Controls.ParrotButton btnEditTemplate;
         private ReaLTaiizor.Controls.ParrotButton btnDeleteTemplate;
+        private ReaLTaiizor.Controls.ParrotButton btnPageNumberTemplate;
+        private ReaLTaiizor.Controls.ParrotButton btnNavTemplate;
     }
 }

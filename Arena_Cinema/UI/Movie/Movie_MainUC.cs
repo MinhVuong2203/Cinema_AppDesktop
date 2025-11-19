@@ -34,25 +34,8 @@ namespace UI.Movie
             // Setup keyboard events
             txtSearch.KeyDown += TxtSearch_KeyDown;
 
-            // Pagination events
-            btnFirstPage.Click += (s, e) => NavigateToPage(1);
-            btnPrevPage.Click += (s, e) => {
-                if (currentPage > 1)
-                    NavigateToPage(currentPage - 1);
-            };
-            btnPage2.Click += (s, e) => {
-                if (int.TryParse(btnPage2.Text, out int page))
-                    NavigateToPage(page);
-            };
-            btnPage3.Click += (s, e) => {
-                if (int.TryParse(btnPage3.Text, out int page))
-                    NavigateToPage(page);
-            };
-            btnNextPage.Click += (s, e) => {
-                if (currentPage < totalPages)
-                    NavigateToPage(currentPage + 1);
-            };
-            btnLastPage.Click += (s, e) => NavigateToPage(totalPages);
+            // NOTE: Pagination events được tạo động trong UpdatePaginationButtons()
+            // Không cần gắn event ở đây nữa
 
             // Load event
             this.Load += Movie_MainUC_Load;
@@ -619,88 +602,28 @@ namespace UI.Movie
             }
         }
 
+        // ============================================
+        // PHƯƠNG THỨC MỚI - TẠO NÚT PAGINATION ĐỘNG
+        // ============================================
         private void UpdatePaginationButtons()
         {
             try
             {
-                // Enable/Disable navigation buttons
-                btnFirstPage.Enabled = currentPage > 1;
-                btnPrevPage.Enabled = currentPage > 1;
-                btnNextPage.Enabled = currentPage < totalPages;
-                btnLastPage.Enabled = currentPage < totalPages;
+                // Xóa tất cả nút cũ trừ template
+                var buttonsToRemove = paginationPanel.Controls
+                    .OfType<ReaLTaiizor.Controls.ParrotButton>()
+                    .Where(btn => btn != btnPageNumberTemplate && btn != btnNavTemplate)
+                    .ToList();
 
-                // Colors
-                Color activeColor = Color.FromArgb(220, 53, 69);    // Red for current page
-                Color inactiveColor = Color.FromArgb(108, 117, 125); // Gray for other pages
-                Color disabledColor = Color.FromArgb(180, 180, 180); // Lighter gray for disabled
-
-                // Calculate which pages to show
-                int startPage = 1;
-                int middlePage = 2;
-                int endPage = 3;
-
-                if (totalPages <= 3)
+                foreach (var btn in buttonsToRemove)
                 {
-                    // Ít hơn hoặc bằng 3 trang: hiển thị tất cả
-                    startPage = 1;
-                    middlePage = totalPages >= 2 ? 2 : 1;
-                    endPage = totalPages >= 3 ? 3 : (totalPages >= 2 ? 2 : 1);
-                }
-                else
-                {
-                    // Nhiều hơn 3 trang
-                    if (currentPage == 1)
-                    {
-                        startPage = 1;
-                        middlePage = 2;
-                        endPage = 3;
-                    }
-                    else if (currentPage == totalPages)
-                    {
-                        startPage = totalPages - 2;
-                        middlePage = totalPages - 1;
-                        endPage = totalPages;
-                    }
-                    else
-                    {
-                        startPage = currentPage - 1;
-                        middlePage = currentPage;
-                        endPage = currentPage + 1;
-                    }
+                    paginationPanel.Controls.Remove(btn);
+                    btn.Dispose();
                 }
 
-                // Set button texts
-                btnFirstPage.Text = startPage.ToString();
-                btnPrevPage.Text = middlePage.ToString();
-                btnPage2.Text = endPage.ToString();
-                btnPage3.Text = "›";
-                btnLastPage.Text = "››";
-
-                // Set colors based on current page
-                btnFirstPage.BackgroundColor = currentPage == startPage ? activeColor : inactiveColor;
-                btnPrevPage.BackgroundColor = currentPage == middlePage ? activeColor : inactiveColor;
-                btnPage2.BackgroundColor = currentPage == endPage ? activeColor : inactiveColor;
-                btnPage3.BackgroundColor = inactiveColor;
-                btnLastPage.BackgroundColor = inactiveColor;
-
-                // Apply disabled colors
-                if (!btnFirstPage.Enabled)
-                    btnFirstPage.BackgroundColor = disabledColor;
-                if (!btnPrevPage.Enabled)
-                    btnPrevPage.BackgroundColor = disabledColor;
-                if (!btnPage2.Enabled)
-                    btnPage2.BackgroundColor = disabledColor;
-                if (!btnNextPage.Enabled)
-                    btnPage3.BackgroundColor = disabledColor;
-                if (!btnLastPage.Enabled)
-                    btnLastPage.BackgroundColor = disabledColor;
-
-                // Hide buttons if not enough pages
-                btnFirstPage.Visible = totalPages >= 1;
-                btnPrevPage.Visible = totalPages >= 2;
-                btnPage2.Visible = totalPages >= 3;
-                btnPage3.Visible = totalPages > 3;
-                btnLastPage.Visible = totalPages > 3;
+                // Tạo lại các nút navigation và page number
+                CreateNavigationButtons();
+                CreatePageNumberButtons();
             }
             catch (Exception ex)
             {
@@ -708,6 +631,165 @@ namespace UI.Movie
             }
         }
 
+        // Tạo các nút điều hướng (First, Prev, Next, Last) từ TEMPLATE
+        private void CreateNavigationButtons()
+        {
+            Color disabledColor = Color.FromArgb(180, 180, 180);
+
+            // Nút First (««)
+            var btnNavFirst = CloneNavButton("btnNavFirst", "««", 490);
+            btnNavFirst.Click += (s, e) => NavigateToPage(1);
+            btnNavFirst.Enabled = currentPage > 1;
+            if (!btnNavFirst.Enabled) btnNavFirst.BackgroundColor = disabledColor;
+            paginationPanel.Controls.Add(btnNavFirst);
+
+            // Nút Previous (‹)
+            var btnNavPrev = CloneNavButton("btnNavPrev", "‹", 540);
+            btnNavPrev.Click += (s, e) => { if (currentPage > 1) NavigateToPage(currentPage - 1); };
+            btnNavPrev.Enabled = currentPage > 1;
+            if (!btnNavPrev.Enabled) btnNavPrev.BackgroundColor = disabledColor;
+            paginationPanel.Controls.Add(btnNavPrev);
+
+            // Tính vị trí Next button (động)
+            int nextButtonX = 590 + (Math.Min(totalPages, 5) * 45);
+
+            // Nút Next (›)
+            var btnNavNext = CloneNavButton("btnNavNext", "›", nextButtonX);
+            btnNavNext.Click += (s, e) => { if (currentPage < totalPages) NavigateToPage(currentPage + 1); };
+            btnNavNext.Enabled = currentPage < totalPages;
+            if (!btnNavNext.Enabled) btnNavNext.BackgroundColor = disabledColor;
+            paginationPanel.Controls.Add(btnNavNext);
+
+            // Nút Last (»)
+            var btnNavLast = CloneNavButton("btnNavLast", "»", nextButtonX + 50);
+            btnNavLast.Click += (s, e) => NavigateToPage(totalPages);
+            btnNavLast.Enabled = currentPage < totalPages;
+            if (!btnNavLast.Enabled) btnNavLast.BackgroundColor = disabledColor;
+            paginationPanel.Controls.Add(btnNavLast);
+        }
+
+        // Clone nút navigation từ TEMPLATE
+        private ReaLTaiizor.Controls.ParrotButton CloneNavButton(string name, string text, int x)
+        {
+            var btn = new ReaLTaiizor.Controls.ParrotButton
+            {
+                Name = name,
+                // CLONE TẤT CẢ THUỘC TÍNH TỪ TEMPLATE
+                BackgroundColor = btnNavTemplate.BackgroundColor,
+                ButtonImage = btnNavTemplate.ButtonImage,
+                ButtonStyle = btnNavTemplate.ButtonStyle,
+                ButtonText = text,
+                ClickBackColor = btnNavTemplate.ClickBackColor,
+                ClickTextColor = btnNavTemplate.ClickTextColor,
+                CornerRadius = btnNavTemplate.CornerRadius,
+                Cursor = btnNavTemplate.Cursor,
+                Font = btnNavTemplate.Font,
+                Horizontal_Alignment = btnNavTemplate.Horizontal_Alignment,
+                HoverBackgroundColor = btnNavTemplate.HoverBackgroundColor,
+                HoverTextColor = btnNavTemplate.HoverTextColor,
+                ImagePosition = btnNavTemplate.ImagePosition,
+                Location = new Point(x, 10),
+                Size = btnNavTemplate.Size,
+                SmoothingType = btnNavTemplate.SmoothingType,
+                TextColor = btnNavTemplate.TextColor,
+                TextRenderingType = btnNavTemplate.TextRenderingType,
+                Vertical_Alignment = btnNavTemplate.Vertical_Alignment
+            };
+            return btn;
+        }
+
+        // Tạo các nút số trang từ TEMPLATE
+        private void CreatePageNumberButtons()
+        {
+            Color activeColor = Color.FromArgb(220, 53, 69);    // Đỏ - trang hiện tại
+            Color inactiveColor = Color.FromArgb(108, 117, 125); // Xám - các trang khác
+
+            List<int> pagesToShow = CalculatePagesToShow();
+            int startX = 590;
+            int buttonWidth = 35;
+            int spacing = 10;
+
+            for (int i = 0; i < pagesToShow.Count; i++)
+            {
+                int pageNum = pagesToShow[i];
+                bool isCurrentPage = pageNum == currentPage;
+
+                var btnPage = new ReaLTaiizor.Controls.ParrotButton
+                {
+                    Name = $"btnDynamicPage{pageNum}",
+                    // CLONE TẤT CẢ THUỘC TÍNH TỪ TEMPLATE
+                    BackgroundColor = isCurrentPage ? activeColor : inactiveColor, // ✅ FIX: Dùng inactiveColor thay vì template color
+                    ButtonImage = btnPageNumberTemplate.ButtonImage,
+                    ButtonStyle = btnPageNumberTemplate.ButtonStyle,
+                    ButtonText = pageNum.ToString(),
+                    ClickBackColor = btnPageNumberTemplate.ClickBackColor,
+                    ClickTextColor = btnPageNumberTemplate.ClickTextColor,
+                    CornerRadius = btnPageNumberTemplate.CornerRadius,
+                    Cursor = btnPageNumberTemplate.Cursor,
+                    Font = btnPageNumberTemplate.Font,
+                    Horizontal_Alignment = btnPageNumberTemplate.Horizontal_Alignment,
+                    HoverBackgroundColor = isCurrentPage ? activeColor : Color.FromArgb(128, 137, 145), // ✅ FIX: Hover cũng phân biệt
+                    HoverTextColor = btnPageNumberTemplate.HoverTextColor,
+                    ImagePosition = btnPageNumberTemplate.ImagePosition,
+                    Location = new Point(startX + (i * (buttonWidth + spacing)), 10),
+                    Size = btnPageNumberTemplate.Size,
+                    SmoothingType = btnPageNumberTemplate.SmoothingType,
+                    TextColor = btnPageNumberTemplate.TextColor,
+                    TextRenderingType = btnPageNumberTemplate.TextRenderingType,
+                    Vertical_Alignment = btnPageNumberTemplate.Vertical_Alignment,
+                    Tag = pageNum
+                };
+
+                // Gắn sự kiện click
+                btnPage.Click += (s, e) =>
+                {
+                    var btn = s as ReaLTaiizor.Controls.ParrotButton;
+                    if (btn != null && btn.Tag is int page)
+                    {
+                        NavigateToPage(page);
+                    }
+                };
+
+                paginationPanel.Controls.Add(btnPage);
+            }
+        }
+
+        // Tính toán các trang cần hiển thị (GIỮ NGUYÊN)
+        private List<int> CalculatePagesToShow()
+        {
+            List<int> pages = new List<int>();
+
+            if (totalPages <= 5)
+            {
+                for (int i = 1; i <= totalPages; i++)
+                {
+                    pages.Add(i);
+                }
+            }
+            else
+            {
+                if (currentPage <= 3)
+                {
+                    pages.AddRange(new[] { 1, 2, 3, 4, 5 });
+                }
+                else if (currentPage >= totalPages - 2)
+                {
+                    for (int i = totalPages - 4; i <= totalPages; i++)
+                    {
+                        pages.Add(i);
+                    }
+                }
+                else
+                {
+                    for (int i = currentPage - 2; i <= currentPage + 2; i++)
+                    {
+                        pages.Add(i);
+                    }
+                }
+            }
+
+            return pages;
+        }
 
         private void NavigateToPage(int page)
         {
@@ -829,6 +911,16 @@ namespace UI.Movie
                 MessageBox.Show($"Lỗi khi mở danh sách phim đã xóa: {ex.Message}", "✗ Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void movieCardTemplate_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void movieCardTemplate_MouseLeave(object sender, EventArgs e)
+        {
+
         }
     }
 }
