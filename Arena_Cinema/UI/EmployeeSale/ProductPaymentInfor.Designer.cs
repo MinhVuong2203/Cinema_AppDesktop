@@ -45,6 +45,7 @@
             this.panelHeader = new System.Windows.Forms.Panel();
             this.picSuccess = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.parrotbtn_payCash = new ReaLTaiizor.Controls.ParrotButton();
             this.panelMain.SuspendLayout();
             this.panelButtons.SuspendLayout();
             this.panelContent.SuspendLayout();
@@ -71,6 +72,7 @@
             // 
             // panelButtons
             // 
+            this.panelButtons.Controls.Add(this.parrotbtn_payCash);
             this.panelButtons.Controls.Add(this.btnBack);
             this.panelButtons.Controls.Add(this.btnPay);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -391,6 +393,31 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "TẠO HÓA ĐƠN THÀNH CÔNG";
             // 
+            // parrotbtn_payCash
+            // 
+            this.parrotbtn_payCash.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
+            this.parrotbtn_payCash.ButtonImage = ((System.Drawing.Image)(resources.GetObject("parrotbtn_payCash.ButtonImage")));
+            this.parrotbtn_payCash.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.parrotbtn_payCash.ButtonText = "Thanh toán tiền mặt";
+            this.parrotbtn_payCash.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.parrotbtn_payCash.ClickTextColor = System.Drawing.Color.White;
+            this.parrotbtn_payCash.CornerRadius = 5;
+            this.parrotbtn_payCash.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.parrotbtn_payCash.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parrotbtn_payCash.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.parrotbtn_payCash.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.parrotbtn_payCash.HoverTextColor = System.Drawing.Color.White;
+            this.parrotbtn_payCash.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.parrotbtn_payCash.Location = new System.Drawing.Point(922, 10);
+            this.parrotbtn_payCash.Name = "parrotbtn_payCash";
+            this.parrotbtn_payCash.Size = new System.Drawing.Size(200, 50);
+            this.parrotbtn_payCash.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.parrotbtn_payCash.TabIndex = 2;
+            this.parrotbtn_payCash.TextColor = System.Drawing.Color.White;
+            this.parrotbtn_payCash.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.parrotbtn_payCash.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.parrotbtn_payCash.Click += new System.EventHandler(this.parrotbtn_payCash_Click);
+            // 
             // ProductPaymentInfor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -443,5 +470,6 @@
         private System.Windows.Forms.Label lblCustomerName;
         private System.Windows.Forms.Label lblCustomerPhone;
         private System.Windows.Forms.Label lblCustomerEmail;
+        private ReaLTaiizor.Controls.ParrotButton parrotbtn_payCash;
     }
 }
