@@ -306,33 +306,63 @@ namespace UI.EmployeeSale
                     return;
                 }
 
-                // Tạo mô tả đơn hàng
-                string description = $"Thanh toán hóa đơn {invoice.InvoiceID.ToString().Substring(0, 8).ToUpper()}";
+                // Tạo orderCode từ timestamp (số nguyên duy nhất)
+                // Lấy 9 chữ số cuối của timestamp để tránh quá lớn
+                int orderCode = (int)(DateTimeOffset.UtcNow.ToUnixTimeSeconds() % 1000000000);
+
+                // HOẶC dùng Random number 6-9 chữ số
+                // int orderCode = new Random().Next(100000, 999999999);
+
+                // Tạo mô tả ngắn gọn
+                string description = $"HD {invoice.InvoiceID.ToString().Substring(0, 8).ToUpper()}";
                 if (description.Length > 25)
                 {
                     description = description.Substring(0, 25);
                 }
-                // Tạo orderCode duy nhất (có thể dùng mã hóa đơn)
-                int orderCode = Math.Abs((_invoiceID.GetHashCode() + DateTime.Now.Ticks.GetHashCode()));
 
-                // URL trả về sau khi thanh toán (có thể sửa lại cho phù hợp)
+                // URL trả về
                 string returnUrl = "https://localhost:3000/success";
                 string cancelUrl = "https://localhost:3000/cancel";
 
-                // Tạo link thanh toán qua PayOS
-                var paymentService = new PaymentService();
-                string paymentUrl = await paymentService.CreatePaymentLinkAsync(orderCode, amount, description, returnUrl, cancelUrl);
+                Console.WriteLine($"Creating payment with orderCode: {orderCode}");
 
-                // Mở link thanh toán trên trình duyệt mặc định
+                // Tạo link thanh toán
+                var paymentService = new PaymentService();
+                string paymentUrl = await paymentService.CreatePaymentLinkAsync(
+                    orderCode,
+                    amount,
+                    description,
+                    returnUrl,
+                    cancelUrl
+                );
+
+                // Lưu orderCode vào database để tracking sau này
+                // TODO: Thêm field OrderCode vào bảng Invoice hoặc tạo bảng mới PaymentTransaction
+                // invoice.PaymentOrderCode = orderCode;
+                // _context.SaveChanges();
+
+                // Mở trình duyệt
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
                 {
                     FileName = paymentUrl,
                     UseShellExecute = true
                 });
+
+                MessageBox.Show(
+                    $"Đã tạo link thanh toán!\nMã giao dịch: {orderCode}",
+                    "Thành công",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tạo trang thanh toán: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    $"Lỗi khi tạo trang thanh toán:\n{ex.Message}",
+                    "Lỗi",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
     }

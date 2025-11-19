@@ -54,16 +54,11 @@ namespace UI.ShowTime
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paginationPanel = new System.Windows.Forms.Panel();
-            this.btnFirstPage = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnPrevPage = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnPage2 = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnPage3 = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnNextPage = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnLastPage = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnPageSample = new ReaLTaiizor.Controls.ParrotButton();
             this.filterPanel = new System.Windows.Forms.Panel();
             this.left_Panel = new System.Windows.Forms.Panel();
-            this.lblBranch = new System.Windows.Forms.Label();
-            this.cboBranch = new ReaLTaiizor.Controls.MaterialComboBox();
+            this.lblRoom = new System.Windows.Forms.Label();
+            this.cboRoom = new ReaLTaiizor.Controls.MaterialComboBox();
             this.lblMovie = new System.Windows.Forms.Label();
             this.cboMovie = new ReaLTaiizor.Controls.MaterialComboBox();
             this.lblPageSize = new System.Windows.Forms.Label();
@@ -283,212 +278,88 @@ namespace UI.ShowTime
             // 
             // colShowtimeId
             // 
+            this.colShowtimeId.DataPropertyName = "ShowTimeID";
             this.colShowtimeId.HeaderText = "MÃ SUẤT CHIẾU";
             this.colShowtimeId.MinimumWidth = 6;
             this.colShowtimeId.Name = "colShowtimeId";
-            this.colShowtimeId.DataPropertyName="ShowTimeID";
-
+            this.colShowtimeId.Visible = false;
             // 
             // colMovie
             // 
+            this.colMovie.DataPropertyName = "MovieTitle";
             this.colMovie.HeaderText = "PHIM";
             this.colMovie.MinimumWidth = 6;
             this.colMovie.Name = "colMovie";
-            this.colMovie.DataPropertyName="MovieTitle";
             // 
             // colRoom
             // 
+            this.colRoom.DataPropertyName = "RoomName";
             this.colRoom.HeaderText = "PHÒNG";
             this.colRoom.MinimumWidth = 6;
             this.colRoom.Name = "colRoom";
-            this.colRoom.DataPropertyName="RoomName";   
             // 
             // colStartTime
             // 
+            this.colStartTime.DataPropertyName = "StartTimeDisplay";
             this.colStartTime.HeaderText = "GIỜ BẮT ĐẦU";
             this.colStartTime.MinimumWidth = 6;
             this.colStartTime.Name = "colStartTime";
-            this.colStartTime.DataPropertyName= "StartTimeDisplay";
             // 
             // colEndTime
             // 
+            this.colEndTime.DataPropertyName = "EndTimeDisplay";
             this.colEndTime.HeaderText = "GIỜ KẾT THÚC";
             this.colEndTime.MinimumWidth = 6;
             this.colEndTime.Name = "colEndTime";
-            this.colEndTime.DataPropertyName="EndTimeDisplay";
             // 
             // colPrice
             // 
+            this.colPrice.DataPropertyName = "PriceDisplay";
             this.colPrice.HeaderText = "GIÁ";
             this.colPrice.MinimumWidth = 6;
             this.colPrice.Name = "colPrice";
-            this.colPrice.DataPropertyName= "PriceDisplay";
             // 
             // colStatus
             // 
+            this.colStatus.DataPropertyName = "Status";
             this.colStatus.HeaderText = "TRẠNG THÁI";
             this.colStatus.MinimumWidth = 6;
             this.colStatus.Name = "colStatus";
-            this.colStatus.DataPropertyName="Status";
             // 
             // paginationPanel
             // 
             this.paginationPanel.BackColor = System.Drawing.Color.Transparent;
-            this.paginationPanel.Controls.Add(this.btnFirstPage);
-            this.paginationPanel.Controls.Add(this.btnPrevPage);
-            this.paginationPanel.Controls.Add(this.btnPage2);
-            this.paginationPanel.Controls.Add(this.btnPage3);
-            this.paginationPanel.Controls.Add(this.btnNextPage);
-            this.paginationPanel.Controls.Add(this.btnLastPage);
+            this.paginationPanel.Controls.Add(this.btnPageSample);
             this.paginationPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.paginationPanel.Location = new System.Drawing.Point(25, 665);
             this.paginationPanel.Name = "paginationPanel";
             this.paginationPanel.Size = new System.Drawing.Size(1310, 50);
             this.paginationPanel.TabIndex = 3;
             // 
-            // btnFirstPage
+            // btnPageSample
             // 
-            this.btnFirstPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnFirstPage.ButtonImage = null;
-            this.btnFirstPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnFirstPage.ButtonText = "1";
-            this.btnFirstPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.btnFirstPage.ClickTextColor = System.Drawing.Color.White;
-            this.btnFirstPage.CornerRadius = 3;
-            this.btnFirstPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFirstPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnFirstPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnFirstPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
-            this.btnFirstPage.HoverTextColor = System.Drawing.Color.White;
-            this.btnFirstPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnFirstPage.Location = new System.Drawing.Point(545, 10);
-            this.btnFirstPage.Name = "btnFirstPage";
-            this.btnFirstPage.Size = new System.Drawing.Size(35, 30);
-            this.btnFirstPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnFirstPage.TabIndex = 0;
-            this.btnFirstPage.TextColor = System.Drawing.Color.White;
-            this.btnFirstPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnFirstPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnPrevPage
-            // 
-            this.btnPrevPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnPrevPage.ButtonImage = null;
-            this.btnPrevPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnPrevPage.ButtonText = "2";
-            this.btnPrevPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
-            this.btnPrevPage.ClickTextColor = System.Drawing.Color.White;
-            this.btnPrevPage.CornerRadius = 3;
-            this.btnPrevPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrevPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnPrevPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPrevPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
-            this.btnPrevPage.HoverTextColor = System.Drawing.Color.White;
-            this.btnPrevPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnPrevPage.Location = new System.Drawing.Point(590, 10);
-            this.btnPrevPage.Name = "btnPrevPage";
-            this.btnPrevPage.Size = new System.Drawing.Size(35, 30);
-            this.btnPrevPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnPrevPage.TabIndex = 1;
-            this.btnPrevPage.TextColor = System.Drawing.Color.White;
-            this.btnPrevPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnPrevPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnPage2
-            // 
-            this.btnPage2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnPage2.ButtonImage = null;
-            this.btnPage2.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnPage2.ButtonText = "3";
-            this.btnPage2.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
-            this.btnPage2.ClickTextColor = System.Drawing.Color.White;
-            this.btnPage2.CornerRadius = 3;
-            this.btnPage2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPage2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnPage2.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPage2.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
-            this.btnPage2.HoverTextColor = System.Drawing.Color.White;
-            this.btnPage2.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnPage2.Location = new System.Drawing.Point(635, 10);
-            this.btnPage2.Name = "btnPage2";
-            this.btnPage2.Size = new System.Drawing.Size(35, 30);
-            this.btnPage2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnPage2.TabIndex = 2;
-            this.btnPage2.TextColor = System.Drawing.Color.White;
-            this.btnPage2.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnPage2.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnPage3
-            // 
-            this.btnPage3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnPage3.ButtonImage = null;
-            this.btnPage3.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnPage3.ButtonText = "›";
-            this.btnPage3.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
-            this.btnPage3.ClickTextColor = System.Drawing.Color.White;
-            this.btnPage3.CornerRadius = 3;
-            this.btnPage3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPage3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnPage3.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPage3.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
-            this.btnPage3.HoverTextColor = System.Drawing.Color.White;
-            this.btnPage3.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnPage3.Location = new System.Drawing.Point(680, 10);
-            this.btnPage3.Name = "btnPage3";
-            this.btnPage3.Size = new System.Drawing.Size(35, 30);
-            this.btnPage3.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnPage3.TabIndex = 3;
-            this.btnPage3.TextColor = System.Drawing.Color.White;
-            this.btnPage3.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnPage3.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnNextPage
-            // 
-            this.btnNextPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnNextPage.ButtonImage = null;
-            this.btnNextPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnNextPage.ButtonText = "»";
-            this.btnNextPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
-            this.btnNextPage.ClickTextColor = System.Drawing.Color.White;
-            this.btnNextPage.CornerRadius = 3;
-            this.btnNextPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNextPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnNextPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnNextPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
-            this.btnNextPage.HoverTextColor = System.Drawing.Color.White;
-            this.btnNextPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnNextPage.Location = new System.Drawing.Point(725, 10);
-            this.btnNextPage.Name = "btnNextPage";
-            this.btnNextPage.Size = new System.Drawing.Size(35, 30);
-            this.btnNextPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnNextPage.TabIndex = 4;
-            this.btnNextPage.TextColor = System.Drawing.Color.White;
-            this.btnNextPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnNextPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // btnLastPage
-            // 
-            this.btnLastPage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnLastPage.ButtonImage = null;
-            this.btnLastPage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnLastPage.ButtonText = "⟫";
-            this.btnLastPage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
-            this.btnLastPage.ClickTextColor = System.Drawing.Color.White;
-            this.btnLastPage.CornerRadius = 3;
-            this.btnLastPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLastPage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLastPage.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnLastPage.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
-            this.btnLastPage.HoverTextColor = System.Drawing.Color.White;
-            this.btnLastPage.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnLastPage.Location = new System.Drawing.Point(770, 10);
-            this.btnLastPage.Name = "btnLastPage";
-            this.btnLastPage.Size = new System.Drawing.Size(35, 30);
-            this.btnLastPage.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnLastPage.TabIndex = 5;
-            this.btnLastPage.TextColor = System.Drawing.Color.White;
-            this.btnLastPage.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnLastPage.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPageSample.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnPageSample.ButtonImage = null;
+            this.btnPageSample.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnPageSample.ButtonText = "1";
+            this.btnPageSample.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
+            this.btnPageSample.ClickTextColor = System.Drawing.Color.White;
+            this.btnPageSample.CornerRadius = 3;
+            this.btnPageSample.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPageSample.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnPageSample.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPageSample.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
+            this.btnPageSample.HoverTextColor = System.Drawing.Color.White;
+            this.btnPageSample.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnPageSample.Location = new System.Drawing.Point(10, 10);
+            this.btnPageSample.Name = "btnPageSample";
+            this.btnPageSample.Size = new System.Drawing.Size(40, 30);
+            this.btnPageSample.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnPageSample.TabIndex = 0;
+            this.btnPageSample.TextColor = System.Drawing.Color.White;
+            this.btnPageSample.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnPageSample.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPageSample.Visible = false;
             // 
             // filterPanel
             // 
@@ -505,8 +376,8 @@ namespace UI.ShowTime
             // 
             // left_Panel
             // 
-            this.left_Panel.Controls.Add(this.lblBranch);
-            this.left_Panel.Controls.Add(this.cboBranch);
+            this.left_Panel.Controls.Add(this.lblRoom);
+            this.left_Panel.Controls.Add(this.cboRoom);
             this.left_Panel.Controls.Add(this.lblMovie);
             this.left_Panel.Controls.Add(this.cboMovie);
             this.left_Panel.Controls.Add(this.lblPageSize);
@@ -517,39 +388,39 @@ namespace UI.ShowTime
             this.left_Panel.Size = new System.Drawing.Size(826, 84);
             this.left_Panel.TabIndex = 9;
             // 
-            // lblBranch
+            // lblRoom
             // 
-            this.lblBranch.AutoSize = true;
-            this.lblBranch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblBranch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.lblBranch.Location = new System.Drawing.Point(2, 5);
-            this.lblBranch.Name = "lblBranch";
-            this.lblBranch.Size = new System.Drawing.Size(77, 20);
-            this.lblBranch.TabIndex = 0;
-            this.lblBranch.Text = "Chi Nhánh";
+            this.lblRoom.AutoSize = true;
+            this.lblRoom.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.lblRoom.Location = new System.Drawing.Point(2, 5);
+            this.lblRoom.Name = "lblRoom";
+            this.lblRoom.Size = new System.Drawing.Size(51, 20);
+            this.lblRoom.TabIndex = 0;
+            this.lblRoom.Text = "Phòng";
             // 
-            // cboBranch
+            // cboRoom
             // 
-            this.cboBranch.AutoResize = false;
-            this.cboBranch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.cboBranch.Depth = 0;
-            this.cboBranch.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.cboBranch.DropDownHeight = 174;
-            this.cboBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBranch.DropDownWidth = 121;
-            this.cboBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.cboBranch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cboBranch.FormattingEnabled = true;
-            this.cboBranch.Hint = "-- Tất cả chi nhánh --";
-            this.cboBranch.IntegralHeight = false;
-            this.cboBranch.ItemHeight = 43;
-            this.cboBranch.Location = new System.Drawing.Point(2, 28);
-            this.cboBranch.MaxDropDownItems = 4;
-            this.cboBranch.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
-            this.cboBranch.Name = "cboBranch";
-            this.cboBranch.Size = new System.Drawing.Size(230, 49);
-            this.cboBranch.StartIndex = 0;
-            this.cboBranch.TabIndex = 1;
+            this.cboRoom.AutoResize = false;
+            this.cboRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.cboRoom.Depth = 0;
+            this.cboRoom.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboRoom.DropDownHeight = 174;
+            this.cboRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRoom.DropDownWidth = 121;
+            this.cboRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.cboRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cboRoom.FormattingEnabled = true;
+            this.cboRoom.Hint = "-- Tất cả Phòng--";
+            this.cboRoom.IntegralHeight = false;
+            this.cboRoom.ItemHeight = 43;
+            this.cboRoom.Location = new System.Drawing.Point(2, 28);
+            this.cboRoom.MaxDropDownItems = 4;
+            this.cboRoom.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            this.cboRoom.Name = "cboRoom";
+            this.cboRoom.Size = new System.Drawing.Size(230, 49);
+            this.cboRoom.StartIndex = 0;
+            this.cboRoom.TabIndex = 1;
             // 
             // lblMovie
             // 
@@ -746,6 +617,7 @@ namespace UI.ShowTime
 
                 ConfigureDataGridView();
                 LoadMoviesFilter();
+                LoadRoomsFilter();
                 LoadPageSizes();
 
                 // FIX: Đảm bảo cboPageSize có giá trị mặc định
@@ -774,77 +646,12 @@ namespace UI.ShowTime
             dgvShowtimes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvShowtimes.MultiSelect = false;
             dgvShowtimes.RowTemplate.Height = 40;
+            if (dgvShowtimes.Columns["colShowtimeId"] != null)
+            {
+                dgvShowtimes.Columns["colShowtimeId"].Visible = false;
+            }
 
-             
-            //dgvShowtimes.Columns.Clear();
 
-            //// Cột ID (ẩn)
-            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "colShowtimeId",
-            //    HeaderText = "ID",
-            //    DataPropertyName = "ShowTimeID",
-            //    Visible = false
-            //});
-
-            //// Cột Phim
-            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "colMovie",
-            //    HeaderText = "PHIM",
-            //    DataPropertyName = "MovieTitle",
-            //    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
-            //    FillWeight = 35
-            //});
-
-            //// Cột Phòng
-            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "colRoom",
-            //    HeaderText = "PHÒNG",
-            //    DataPropertyName = "RoomName",
-            //    Width = 120
-            //});
-
-            //// Cột Giờ Bắt Đầu
-            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "colStartTime",
-            //    HeaderText = "GIỜ BẮT ĐẦU",
-            //    DataPropertyName = "StartTimeDisplay",
-            //    Width = 160
-            //});
-
-            //// Cột Giờ Kết Thúc
-            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "colEndTime",
-            //    HeaderText = "GIỜ KẾT THÚC",
-            //    DataPropertyName = "EndTimeDisplay",
-            //    Width = 160
-            //});
-
-            //// Cột Giá Vé
-            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "colPrice",
-            //    HeaderText = "GIÁ VÉ",
-            //    DataPropertyName = "PriceDisplay",
-            //    Width = 130,
-            //    DefaultCellStyle = new DataGridViewCellStyle
-            //    {
-            //        Alignment = DataGridViewContentAlignment.MiddleRight
-            //    }
-            //});
-
-            //// Cột Trạng Thái
-            //dgvShowtimes.Columns.Add(new DataGridViewTextBoxColumn
-            //{
-            //    Name = "colStatus",
-            //    HeaderText = "TRẠNG THÁI",
-            //    DataPropertyName = "Status",
-            //    Width = 130
-            //});
         }
 
         private void LoadMoviesFilter()
@@ -871,7 +678,30 @@ namespace UI.ShowTime
                 MessageBox.Show($"Lỗi load phim: {ex.Message}");
             }
         }
+        private void LoadRoomsFilter()
+        {
+            try
+            {
+                var rooms = roomBLL.GetAllRooms();
+                cboRoom.Items.Clear();
+                cboRoom.Items.Add(new ComboBoxItem { Text = "-- Tất cả phòng --", Value = 0 });
 
+                foreach (var room in rooms)
+                {
+                    cboRoom.Items.Add(new ComboBoxItem
+                    {
+                        Text = room.RoomName,
+                        Value = room.RoomID
+                    });
+                }
+
+                cboRoom.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi load phòng: {ex.Message}");
+            }
+        }
         private void LoadPageSizes()
         {
            
@@ -888,11 +718,22 @@ namespace UI.ShowTime
         private void SetupEvents()
         {
             // Pagination
-            btnFirstPage.Click += (s, e) => { if (currentPage != 1) { currentPage = 1; LoadShowTimes(); } };
-            btnPrevPage.Click += (s, e) => { if (currentPage > 1) { currentPage--; LoadShowTimes(); } };
-            // btnPage2 bỏ không dùng click, hoặc chỉ cho label/disable
-            btnNextPage.Click += (s, e) => { if (currentPage < totalPages) { currentPage++; LoadShowTimes(); } };
-            btnLastPage.Click += (s, e) => { if (currentPage != totalPages) { currentPage = totalPages; LoadShowTimes(); } };
+            btnFilter.Click += (s, e) =>
+            {
+                currentPage = 1;
+                LoadShowTimes();
+            };
+
+            btnReset.Click += (s, e) => ResetFilters();
+
+            cboPageSize.SelectedIndexChanged += (s, e) =>
+            {
+                if (cboPageSize.SelectedItem != null)
+                {
+                    currentPage = 1;
+                    LoadShowTimes();
+                }
+            };
         }
 
         #endregion
@@ -903,14 +744,21 @@ namespace UI.ShowTime
         {
             try
             {
-                // Lấy filter
+                // Lấy filter Movie
                 int? movieId = null;
                 if (cboMovie.SelectedIndex > 0 && cboMovie.SelectedItem is ComboBoxItem movieItem)
                 {
                     movieId = (int)movieItem.Value;
                 }
 
-                // Xử lý page size an toàn hơn
+                // Lấy filter Room
+                int? roomId = null;
+                if (cboRoom.SelectedIndex > 0 && cboRoom.SelectedItem is ComboBoxItem roomItem)
+                {
+                    roomId = (int)roomItem.Value;
+                }
+
+                // Xử lý page size
                 if (cboPageSize.SelectedItem != null)
                 {
                     string pageSizeText = cboPageSize.SelectedItem.ToString();
@@ -920,20 +768,20 @@ namespace UI.ShowTime
                     }
                     else
                     {
-                        pageSize = 10; // Mặc định
+                        pageSize = 10;
                     }
                 }
                 else
                 {
-                    pageSize = 10; // Mặc định nếu chưa chọn
+                    pageSize = 10;
                 }
 
-                // Gọi stored procedure với tham số đúng
+                // Gọi stored procedure
                 var result = showTimeBLL.GetShowTimesPaginated(
                     pageNumber: currentPage,
                     pageSize: pageSize,
                     movieId: movieId,
-                    roomId: null,
+                    roomId: roomId,  // ← THÊM FILTER ROOM
                     startDate: null,
                     endDate: null,
                     minPrice: null,
@@ -942,7 +790,6 @@ namespace UI.ShowTime
                     sortOrder: "DESC"
                 );
 
-                // Kiểm tra kết quả trước khi xử lý
                 if (result.items == null)
                 {
                     MessageBox.Show("Không có dữ liệu trả về!", "Thông báo",
@@ -957,7 +804,6 @@ namespace UI.ShowTime
                 totalRecords = result.totalCount;
                 totalPages = result.totalPages;
 
-                // Chuyển đổi sang model hiển thị
                 var displayData = new List<ShowTimeDisplayModel>();
                 foreach (var st in result.items)
                 {
@@ -974,16 +820,13 @@ namespace UI.ShowTime
                     });
                 }
 
-                // Bind data
                 dgvShowtimes.DataSource = null;
                 dgvShowtimes.DataSource = displayData;
 
-                // Cập nhật UI
                 UpdatePaginationInfo();
                 UpdatePaginationButtons();
                 ColorizeRows();
 
-                // Reset selection
                 selectedShowTimeId = null;
                 UpdateButtonStates();
             }
@@ -998,8 +841,6 @@ namespace UI.ShowTime
                 }
 
                 MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                // Log để debug
                 System.Diagnostics.Debug.WriteLine($"Error details: {ex}");
             }
         }
@@ -1043,34 +884,245 @@ namespace UI.ShowTime
             lblInfo.Text = $"⚪ Hiển thị {startRecord}-{endRecord} trong tổng số {totalRecords} suất chiếu / Trang {currentPage} / {totalPages}";
         }
 
+
+        private ReaLTaiizor.Controls.ParrotButton CreateButtonFromSample(string text, int xPosition)
+        {
+            var btn = new ReaLTaiizor.Controls.ParrotButton
+            {
+                ButtonText = text,
+                Size = btnPageSample.Size,
+                Location = new Point(xPosition, btnPageSample.Location.Y),
+                CornerRadius = btnPageSample.CornerRadius,
+                Font = btnPageSample.Font,
+                ButtonStyle = btnPageSample.ButtonStyle,
+                Horizontal_Alignment = btnPageSample.Horizontal_Alignment,
+                Vertical_Alignment = btnPageSample.Vertical_Alignment,
+                TextRenderingType = btnPageSample.TextRenderingType,
+                SmoothingType = btnPageSample.SmoothingType,
+                ImagePosition = btnPageSample.ImagePosition,
+                ButtonImage = null  // Không dùng image
+            };
+
+            return btn;
+        }
         private void UpdatePaginationButtons()
         {
-            // Số trang là totalPages, trang hiện tại là currentPage
-            btnFirstPage.ButtonText = "<<";
-            btnPrevPage.ButtonText = "<";
-            btnPage2.ButtonText = currentPage.ToString();
-            btnNextPage.ButtonText = ">";
-            btnLastPage.ButtonText = ">>";
+            // Xóa tất cả các nút trang cũ
+            ClearPageButtons();
 
-            // Enabled/disabled đúng logic
-            btnFirstPage.Enabled = currentPage > 1;
-            btnPrevPage.Enabled = currentPage > 1;
-            btnNextPage.Enabled = currentPage < totalPages;
-            btnLastPage.Enabled = currentPage < totalPages;
+            if (totalPages == 0)
+            {
+                UpdatePaginationInfo();
+                return;
+            }
 
-            // Chỉ rõ màu cho trang hiện tại (btnPage2, nên disable click)
-            btnPage2.Enabled = false;
-            btnPage2.BackgroundColor = Color.FromArgb(220, 53, 69);
+            // Tính toán phạm vi trang cần hiển thị
+            int startPage, endPage;
+            CalculatePageRange(out startPage, out endPage);
 
-            // Đặt màu cho các nút phân trang phụ
-            btnFirstPage.BackgroundColor = btnFirstPage.Enabled ? Color.Gray : Color.LightGray;
-            btnPrevPage.BackgroundColor = btnPrevPage.Enabled ? Color.Gray : Color.LightGray;
-            btnNextPage.BackgroundColor = btnNextPage.Enabled ? Color.Gray : Color.LightGray;
-            btnLastPage.BackgroundColor = btnLastPage.Enabled ? Color.Gray : Color.LightGray;
+            // Tính tổng chiều rộng của các nút
+            int buttonCount = 2; // First, Previous
+            if (startPage > 1) buttonCount++; // Ellipsis đầu
+            buttonCount += (endPage - startPage + 1); // Các nút trang
+            if (endPage < totalPages) buttonCount++; // Ellipsis cuối
+            buttonCount += 2; // Next, Last
 
-            // Nếu không dùng btnPage3 => ẩn luôn
-            btnPage3.Visible = false;
+            int totalWidth = buttonCount * 40 + (buttonCount - 1) * 5; // 40px mỗi nút + 5px khoảng cách
+            int startX = (paginationPanel.Width - totalWidth) / 2;
+
+            // Tạo nút "First" (<<)
+            CreateNavigationButton("<<", 1, currentPage > 1, startX);
+            startX += 45;
+
+            // Tạo nút "Previous" (<)
+            CreateNavigationButton("<", currentPage - 1, currentPage > 1, startX);
+            startX += 45;
+
+            // Hiển thị "..." nếu startPage > 1
+            if (startPage > 1)
+            {
+                CreateEllipsisLabel(startX);
+                startX += 45;
+            }
+
+            // Tạo các nút trang
+            for (int i = startPage; i <= endPage; i++)
+            {
+                CreatePageButton(i, startX);
+                startX += 45;
+            }
+
+            // Hiển thị "..." nếu endPage < totalPages
+            if (endPage < totalPages)
+            {
+                CreateEllipsisLabel(startX);
+                startX += 45;
+            }
+
+            // Tạo nút "Next" (>)
+            CreateNavigationButton(">", currentPage + 1, currentPage < totalPages, startX);
+            startX += 45;
+
+            // Tạo nút "Last" (>>)
+            CreateNavigationButton(">>", totalPages, currentPage < totalPages, startX);
+
+            // Cập nhật thông tin phân trang
+            UpdatePaginationInfo();
         }
+
+        private void CalculatePageRange(out int startPage, out int endPage)
+        {
+            if (totalPages <= MAX_VISIBLE_PAGES)
+            {
+                // Hiển thị tất cả các trang
+                startPage = 1;
+                endPage = totalPages;
+            }
+            else
+            {
+                // Tính toán phạm vi hiển thị
+                int halfVisible = MAX_VISIBLE_PAGES / 2;
+
+                if (currentPage <= halfVisible + 1)
+                {
+                    // Gần đầu
+                    startPage = 1;
+                    endPage = MAX_VISIBLE_PAGES;
+                }
+                else if (currentPage >= totalPages - halfVisible)
+                {
+                    // Gần cuối
+                    startPage = totalPages - MAX_VISIBLE_PAGES + 1;
+                    endPage = totalPages;
+                }
+                else
+                {
+                    // Ở giữa
+                    startPage = currentPage - halfVisible;
+                    endPage = currentPage + halfVisible;
+                }
+            }
+        }
+
+        private void CreatePageButton(int pageNumber, int xPosition)
+        {
+            var btn = CreateButtonFromSample(pageNumber.ToString(), xPosition);
+            btn.Cursor = Cursors.Hand;
+
+            if (pageNumber == currentPage)
+            {
+                btn.BackgroundColor = Color.FromArgb(220, 53, 69);
+                btn.TextColor = Color.White;
+                btn.Enabled = false;
+            }
+            else
+            {
+                btn.BackgroundColor = btnPageSample.BackgroundColor;
+                btn.TextColor = btnPageSample.TextColor;
+                btn.HoverBackgroundColor = btnPageSample.HoverBackgroundColor;
+                btn.ClickBackColor = btnPageSample.ClickBackColor;
+                btn.HoverTextColor = btnPageSample.HoverTextColor;
+                btn.ClickTextColor = btnPageSample.ClickTextColor;
+
+                int page = pageNumber;
+                btn.Click += (s, e) => NavigateToPage(page);
+            }
+
+            paginationPanel.Controls.Add(btn);
+            pageButtons.Add(btn);
+        
+        }
+
+        private void CreateNavigationButton(string text, int targetPage, bool enabled, int xPosition)
+        {
+            var btn = new ReaLTaiizor.Controls.ParrotButton
+            {
+                ButtonText = text,
+                Size = new Size(40, 30),
+                Location = new Point(xPosition, 10),
+                CornerRadius = 3,
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                Cursor = enabled ? Cursors.Hand : Cursors.Default,
+                ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded,
+                Horizontal_Alignment = StringAlignment.Center,
+                Vertical_Alignment = StringAlignment.Center,
+                TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit,
+                SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality,
+                Enabled = enabled,
+                ButtonImage = null
+            };
+
+            if (enabled)
+            {
+                btn.BackgroundColor = Color.FromArgb(108, 117, 125);
+                btn.TextColor = Color.White;
+                btn.HoverBackgroundColor = Color.FromArgb(128, 137, 145);
+                btn.ClickBackColor = Color.FromArgb(88, 97, 105);
+                btn.HoverTextColor = Color.White;
+                btn.ClickTextColor = Color.White;
+
+                int page = targetPage;
+                btn.Click += (s, e) => NavigateToPage(page);
+            }
+            else
+            {
+                btn.BackgroundColor = Color.FromArgb(180, 180, 180);
+                btn.TextColor = Color.FromArgb(220, 220, 220);
+            }
+
+            paginationPanel.Controls.Add(btn);
+            pageButtons.Add(btn);
+        }
+
+        private void CreateEllipsisLabel(int xPosition)
+        {
+            var lbl = new Label
+            {
+                Text = "...",
+                Size = new Size(40, 30),
+                Location = new Point(xPosition, 10),
+                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                ForeColor = Color.FromArgb(108, 117, 125),
+                TextAlign = ContentAlignment.MiddleCenter
+            };
+
+            paginationPanel.Controls.Add(lbl);
+        }
+
+        private void ClearPageButtons()
+        {
+            foreach (var btn in pageButtons)
+            {
+                paginationPanel.Controls.Remove(btn);
+                btn.Dispose();
+            }
+            pageButtons.Clear();
+
+            var controlsToRemove = new List<Control>();
+            foreach (Control ctrl in paginationPanel.Controls)
+            {
+                if (ctrl is Label)
+                {
+                    controlsToRemove.Add(ctrl);
+                }
+            }
+
+            foreach (var ctrl in controlsToRemove)
+            {
+                paginationPanel.Controls.Remove(ctrl);
+                ctrl.Dispose();
+            }
+        }
+
+        private void NavigateToPage(int pageNumber)
+        {
+            if (pageNumber >= 1 && pageNumber <= totalPages && pageNumber != currentPage)
+            {
+                currentPage = pageNumber;
+                LoadShowTimes();
+            }
+        }
+
 
         #endregion
 
@@ -1079,6 +1131,7 @@ namespace UI.ShowTime
         private void ResetFilters()
         {
             cboMovie.SelectedIndex = 0;
+            cboRoom.SelectedIndex = 0;
             cboPageSize.SelectedIndex = 0;
             currentPage = 1;
             LoadShowTimes();
@@ -1240,8 +1293,8 @@ namespace UI.ShowTime
         private ReaLTaiizor.Controls.ParrotButton btnDelete;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel filterPanel;
-        private System.Windows.Forms.Label lblBranch;
-        private ReaLTaiizor.Controls.MaterialComboBox cboBranch;
+        private System.Windows.Forms.Label lblRoom;
+        private ReaLTaiizor.Controls.MaterialComboBox cboRoom;
         private System.Windows.Forms.Label lblMovie;
         private ReaLTaiizor.Controls.MaterialComboBox cboMovie;
         private System.Windows.Forms.Label lblPageSize;
@@ -1249,12 +1302,7 @@ namespace UI.ShowTime
         private ReaLTaiizor.Controls.ParrotButton btnFilter;
         private ReaLTaiizor.Controls.ParrotButton btnReset;
         private System.Windows.Forms.Panel paginationPanel;
-        private ReaLTaiizor.Controls.ParrotButton btnFirstPage;
-        private ReaLTaiizor.Controls.ParrotButton btnPrevPage;
-        private ReaLTaiizor.Controls.ParrotButton btnPage2;
-        private ReaLTaiizor.Controls.ParrotButton btnPage3;
-        private ReaLTaiizor.Controls.ParrotButton btnNextPage;
-        private ReaLTaiizor.Controls.ParrotButton btnLastPage;
+        private ReaLTaiizor.Controls.ParrotButton btnPageSample;
         private System.Windows.Forms.Panel right_Panel;
         private System.Windows.Forms.Panel head_Right_Panel;
         private System.Windows.Forms.Panel left_Panel;

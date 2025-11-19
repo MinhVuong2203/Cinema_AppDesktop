@@ -1,7 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using BLL;
+﻿using BLL;
 using DTO;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace UI.ShowTime
 {
@@ -9,6 +10,8 @@ namespace UI.ShowTime
     {
         private Home _home;
         private DTO.Employee _employee;
+        private List<ReaLTaiizor.Controls.ParrotButton> pageButtons = new List<ReaLTaiizor.Controls.ParrotButton>();
+        private const int MAX_VISIBLE_PAGES = 10;
 
         public MNShowTimeUC(Home home, DTO.Employee employee)
         {

@@ -29,30 +29,50 @@ namespace UI.PayOSMethod.Services
         {
             try
             {
-                // Format theo đúng PayOS V2 API documentation
+                if (amount <= 0) throw new ArgumentException("amount phải là số nguyên dương.");
+                if (string.IsNullOrWhiteSpace(description)) description = "Thanh toan";
+                if (description.Length > 25) description = description.Substring(0, 25);
+                if (string.IsNullOrWhiteSpace(returnUrl)) returnUrl = "https://example.com/success";
+                if (string.IsNullOrWhiteSpace(cancelUrl)) cancelUrl = "https://example.com/cancel";
+
+                // Thử thêm các trường có thể bắt buộc
                 var payloadDict = new Dictionary<string, object>
                 {
                     { "orderCode", orderCode },
                     { "amount", amount },
-                    { "description", description ?? "Thanh toan" },
-                    { "returnUrl", returnUrl ?? "https://example.com/success" },
-                    { "cancelUrl", cancelUrl ?? "https://example.com/cancel" }
+                    { "description", description },
+                    { "buyerName", "" },          // Thêm field này
+                    { "buyerEmail", "" },         // Thêm field này
+                    { "buyerPhone", "" },         // Thêm field này
+                    { "buyerAddress", "" },       // Thêm field này
+                    { "items", new List<Dictionary<string, object>>  // Thêm items
+                        {
+                            new Dictionary<string, object>
+                            {
+                                { "name", description },
+                                { "quantity", 1 },
+                                { "price", amount }
+                            }
+                        }
+                    },
+                    { "returnUrl", returnUrl },
+                    { "cancelUrl", cancelUrl },
+                    { "expiredAt", (int)(DateTimeOffset.UtcNow.AddMinutes(15).ToUnixTimeSeconds()) } // Thêm expiry
                 };
 
                 var jsonContent = Newtonsoft.Json.JsonConvert.SerializeObject(payloadDict);
+                var signature = GenerateSignatureV2(payloadDict);
 
-                Console.WriteLine($"=== PayOS Request ===");
-                Console.WriteLine($"Payload: {jsonContent}");
-
-                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
-
-                // Tạo signature từ sorted payload
-                var signature = GenerateSignature(payloadDict);
-                content.Headers.Add("x-signature", signature);
-
+                Console.WriteLine($"Full Payload: {jsonContent}");
                 Console.WriteLine($"Signature: {signature}");
 
-                var response = await _httpClient.PostAsync("/v2/payment-requests", content);
+                var request = new HttpRequestMessage(HttpMethod.Post, "/v2/payment-requests")
+                {
+                    Content = new StringContent(jsonContent, Encoding.UTF8, "application/json")
+                };
+                request.Headers.Add("x-signature", signature);
+
+                var response = await _httpClient.SendAsync(request);
                 var responseBody = await response.Content.ReadAsStringAsync();
 
                 Console.WriteLine($"Status: {response.StatusCode}");
@@ -77,7 +97,7 @@ namespace UI.PayOSMethod.Services
                 }
 
                 var errorDesc = jsonResponse["desc"]?.ToString() ?? "Unknown error";
-                throw new Exception($"PayOS error (code {code}): {errorDesc}\nResponse: {responseBody}");
+                throw new Exception($"PayOS error (code {code}): {errorDesc}");
             }
             catch (Exception ex)
             {
@@ -86,29 +106,39 @@ namespace UI.PayOSMethod.Services
             }
         }
 
-        private string GenerateSignature(Dictionary<string, object> data)
+        // Signature generator mới cho format phức tạp hơn
+        private string GenerateSignatureV2(Dictionary<string, object> data)
         {
-            // Sort keys alphabetically và tạo string
-            var sortedKeys = new List<string>(data.Keys);
+            // Chỉ sign các field cần thiết, không sign nested objects
+            var dataToSign = new Dictionary<string, object>();
+
+            foreach (var key in data.Keys)
+            {
+                // Bỏ qua items và các nested objects
+                if (key != "items" && !(data[key] is Dictionary<string, object>) && !(data[key] is List<Dictionary<string, object>>))
+                {
+                    dataToSign[key] = data[key];
+                }
+            }
+
+            var sortedKeys = new List<string>(dataToSign.Keys);
             sortedKeys.Sort();
 
             var signatureData = new StringBuilder();
             foreach (var key in sortedKeys)
             {
-                if (data[key] != null)
+                if (dataToSign[key] != null && !string.IsNullOrEmpty(dataToSign[key].ToString()))
                 {
-                    signatureData.Append($"{key}={data[key]}&");
+                    signatureData.Append($"{key}={dataToSign[key]}&");
                 }
             }
 
-            // Remove trailing &
-            var dataToSign = signatureData.ToString().TrimEnd('&');
-
-            Console.WriteLine($"Data to sign: {dataToSign}");
+            var stringToSign = signatureData.ToString().TrimEnd('&');
+            Console.WriteLine($"String to sign: {stringToSign}");
 
             using (var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(_checksumKey)))
             {
-                var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(dataToSign));
+                var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign));
                 return BitConverter.ToString(hash).Replace("-", "").ToLower();
             }
         }
