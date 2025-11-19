@@ -91,5 +91,54 @@ namespace DAL
                 .Where(s => s.RoomID == roomID && !s.IsDeleted)
                 .ToList();
         }
+
+        public Guid CreateInvoice(Invoice invoice, List<Guid> ticketIds, Dictionary<int, int> productQuantities)
+        {
+            // Thêm hóa đơn
+            invoice.InvoiceID = Guid.NewGuid();
+            invoice.IssueDate = DateTime.Now;
+            invoice.Status = "Chờ thanh toán";
+            invoice.IsDeleted = false;
+            _context.Invoices.Add(invoice);
+
+            // Thêm các vé vào InvoiceTicket
+            foreach (var ticketId in ticketIds)
+            {
+                var ticket = _context.Tickets.FirstOrDefault(t => t.TicketID == ticketId);
+                if (ticket != null)
+                {
+                    var invoiceTicket = new InvoiceTicket
+                    {
+                        InvoiceTicketID = Guid.NewGuid(),
+                        InvoiceID = invoice.InvoiceID,
+                        TicketID = ticketId
+                    };
+                    _context.InvoiceTickets.Add(invoiceTicket);
+                }
+            }
+
+            // Thêm các sản phẩm vào InvoiceProduct
+            foreach (var kv in productQuantities)
+            {
+                int productId = kv.Key;
+                int quantity = kv.Value;
+                var product = _context.Products.FirstOrDefault(p => p.ProductID == productId);
+                if (product != null && quantity > 0)
+                {
+                    var invoiceProduct = new InvoiceProduct
+                    {
+                        InvoiceProductID = Guid.NewGuid(),
+                        InvoiceID = invoice.InvoiceID,
+                        ProductID = productId,
+                        Quantity = quantity,
+                        UnitPrice = product.Price
+                    };
+                    _context.InvoiceProducts.Add(invoiceProduct);
+                }
+            }
+
+            _context.SaveChanges();
+            return invoice.InvoiceID;
+        }
     }
 }

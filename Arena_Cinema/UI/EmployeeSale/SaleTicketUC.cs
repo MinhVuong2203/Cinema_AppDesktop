@@ -482,22 +482,52 @@ namespace UI.EmployeeSale
 
         private void BtnPayment_Click(object sender, EventArgs e)
         {
-            if (_selectedShowTimeId == Guid.Empty)
+            
+
+            // Tính tổng tiền
+            decimal totalTickets = 0;
+            foreach (var kv in _selectedTicketTypeCounts)
             {
-                MessageBox.Show("Vui lòng chọn suất chiếu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                var price = _tickets.Where(t => t.TicketType == kv.Key).Select(t => t.Price ?? 0).FirstOrDefault();
+                totalTickets += price * kv.Value;
             }
-            if (_selectedSeatIds.Count == 0)
+            decimal totalProducts = 0;
+            foreach (var productId in _selectedProductIds)
             {
-                MessageBox.Show("Vui lòng chọn ít nhất một ghế!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                var product = _products.FirstOrDefault(p => p.ProductID == productId);
+                int qty = _selectedProductQuantities[productId];
+                totalProducts += (product?.Price ?? 0) * qty;
             }
-            if (_selectedTicketTypeCounts.Values.Sum() != _selectedSeatIds.Count)
+
+            // Tạo hóa đơn
+            var invoice = new DTO.Invoice
             {
-                MessageBox.Show("Vui lòng phân bổ loại vé cho tất cả ghế đã chọn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                EmployeeID = _employee?.EmployeeID,
+                TotalAmount = totalTickets + totalProducts,
+                Status = "Chờ thanh toán",
+                IsDeleted = false
+            };
+
+            // Lấy danh sách ticketId
+            var ticketIds = _tickets
+                .Where(t => _selectedSeatIds.Contains(t.SeatID))
+                .Select(t => t.TicketID)
+                .ToList();
+
+            // Lấy danh sách sản phẩm và số lượng
+            var productQuantities = new Dictionary<int, int>();
+            foreach (var productId in _selectedProductIds)
+            {
+                productQuantities[productId] = _selectedProductQuantities[productId];
             }
-            MessageBox.Show("Thanh toán thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            var bll = new SaleTicketBLL();
+            Guid invoiceId = bll.CreateInvoice(invoice, ticketIds, productQuantities);
+
+            MessageBox.Show("Đã tạo hóa đơn, vui lòng thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Hiển thị thông tin hóa đơn (có thể chuyển sang TicketPaymentInfo)
+            _parentForm?.LoadControl(new TicketPaymentInfo(invoiceId));
         }
 
         private void UpdateInvoice()

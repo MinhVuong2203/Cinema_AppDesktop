@@ -20,13 +20,29 @@ namespace BLL
             return saleProductDAL.GetAllProducts();
         }
         //lưu hóa đơn sản phẩm với trạng thái "Chờ thanh toán"
-        public void AddProductInvoice(DTO.Product product, DTO.InvoiceProduct invoiceProduct, DTO.Invoice invoice,
-            int Quantity, DTO.Employee employee, DTO.Customer customer,
-            decimal totalAmount, decimal disCount)
+        //public void AddProductInvoice(DTO.Product product, DTO.InvoiceProduct invoiceProduct, DTO.Invoice invoice,
+        //    int Quantity, DTO.Employee employee, DTO.Customer customer,
+        //    decimal totalAmount, decimal disCount)
+        //{
+        //    saleProductDAL.AddProductInvoice(product, invoiceProduct, invoice,
+        //        Quantity, employee, customer,
+        //        totalAmount, disCount);
+        //}
+        public Guid AddProductInvoice(
+                List<DTO.Product> products,
+                Dictionary<int, int> productQuantities,
+                DTO.Employee employee,
+                DTO.Customer customer,
+                decimal totalAmount,
+                decimal discount)
         {
-            saleProductDAL.AddProductInvoice(product, invoiceProduct, invoice,
-                Quantity, employee, customer,
-                totalAmount, disCount);
+            return saleProductDAL.AddProductInvoice(
+                products,
+                productQuantities,
+                employee,
+                customer,
+                totalAmount,
+                discount);
         }
     }
 }

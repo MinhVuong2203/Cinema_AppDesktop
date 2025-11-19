@@ -243,88 +243,37 @@ namespace UI.EmployeeSale
                     return;
                 }
 
-                var invoice = new DTO.Invoice();
-                // Tạo hóa đơn cho từng sản phẩm
-                int successCount = 0;
-                foreach (var product in selectedProducts)
+                // Lấy thông tin khách hàng
+                var customer = GetCustomerByPhone(txt_Phone.Text.Trim());
+
+                // Tính tổng tiền sản phẩm
+                decimal totalProducts = 0;
+                foreach (var p in selectedProducts)
                 {
-                    int qty = _selectedProductQuantities.ContainsKey(product.ProductID)
-                        ? _selectedProductQuantities[product.ProductID] : 0;
-
-                    if (qty <= 0) continue;
-
-                    
-                    var invoiceProduct = new DTO.InvoiceProduct();
-
-                    // Lấy hoặc tạo khách hàng mặc định
-                    var customer = GetCustomerByPhone(txt_Phone.Text.Trim());
-                    //nếu customer null thì lưu customerID là null
-                    if (customer == null)
-                    {
-                        customer = null;
-                    }
-
-                    decimal totalAmount = (product.Price ?? 0) * qty;
-                    decimal discount = 0; // Giảm giá mặc định
-
-                    try
-                    {
-                        _saleProductDAL.AddProductInvoice(
-                            product,
-                            invoiceProduct,
-                            invoice,
-                            qty,
-                            _employee,
-                            customer,
-                            totalAmount,
-                            discount);
-                        successCount++;
-                    }
-                    catch (Exception ex)
-                    {
-                        // Log chi tiết lỗi
-                        string errorDetail = $"Sản phẩm: {product.ProductName}\n" +
-                                           $"Số lượng: {qty}\n" +
-                                           $"Lỗi: {ex.Message}\n";
-
-                        if (ex.InnerException != null)
-                        {
-                            errorDetail += $"Chi tiết: {ex.InnerException.Message}\n";
-
-                            if (ex.InnerException.InnerException != null)
-                            {
-                                errorDetail += $"Chi tiết sâu hơn: {ex.InnerException.InnerException.Message}";
-                            }
-                        }
-
-                        MessageBox.Show(
-                            errorDetail,
-                            "Lỗi chi tiết",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error);
-                    }
+                    int qty = _selectedProductQuantities.ContainsKey(p.ProductID) ? _selectedProductQuantities[p.ProductID] : 0;
+                    totalProducts += (p.Price ?? 0) * qty;
                 }
+                decimal discount = 0; // Giảm giá mặc định
 
-                if (successCount > 0)
-                {
-                    MessageBox.Show(
-                        $"Đã tạo thành công {successCount}/{selectedProducts.Count} hóa đơn!",
-                        "Thông báo",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                // Tạo hóa đơn và chi tiết hóa đơn
+                var invoiceId = _saleProductDAL.AddProductInvoice(
+                    selectedProducts,
+                    _selectedProductQuantities,
+                    _employee,
+                    customer,
+                    totalProducts,
+                    discount);
 
-                    // Chuyển sang trang thông tin hóa đơn
-                    var paymentInforUC = new ProductPaymentInfor(_home, _employee, invoice.InvoiceID);
-                    _home.LoadControl(paymentInforUC);
-                }
-                else
-                {
-                    MessageBox.Show(
-                        "Không thể tạo hóa đơn nào. Vui lòng thử lại.",
-                        "Lỗi",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                }
+                MessageBox.Show(
+                    $"Đã tạo thành công hóa đơn!",
+                    "Thông báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                // Chuyển sang trang thông tin hóa đơn
+                var paymentInforUC = new ProductPaymentInfor(_home, _employee, invoiceId);
+                paymentInforUC.SetCustomerInfo(customer);
+                _home.LoadControl(paymentInforUC);
             }
             catch (Exception ex)
             {

@@ -97,6 +97,9 @@
       <HintPath>..\packages\Microsoft.Extensions.Primitives.10.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PayOS, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\payOS.2.0.1\lib\netstandard2.0\PayOS.dll</HintPath>
     </Reference>
@@ -230,6 +233,12 @@
     </Compile>
     <Compile Include="EmployeeSale\SelectMovieUC.Designer.cs">
       <DependentUpon>SelectMovieUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeSale\TicketPaymentInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EmployeeSale\TicketPaymentInfo.Designer.cs">
+      <DependentUpon>TicketPaymentInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Employee\AddEmployeeUC.cs">
       <SubType>UserControl</SubType>

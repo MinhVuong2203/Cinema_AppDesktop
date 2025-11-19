@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using DAL;
 using DTO;
+using UI.PayOSMethod.Services;
 
 namespace UI.EmployeeSale
 {
@@ -32,7 +34,7 @@ namespace UI.EmployeeSale
 
             // Khởi tạo sự kiện
             btnBack.Click += BtnBack_Click;
-            btnPrint.Click += BtnPrint_Click;
+            //btnPay.Click += BtnPrint_Click;
 
             // Load thông tin hóa đơn vừa tạo
             LoadLatestInvoices();
@@ -61,6 +63,22 @@ namespace UI.EmployeeSale
             dgvProducts.Columns["colQuantity"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvProducts.Columns["colUnitPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProducts.Columns["colTotalPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
+
+        public void SetCustomerInfo(DTO.Customer customer)
+        {
+            if (customer != null)
+            {
+                lblCustomerName.Text = $"Tên khách hàng: {customer.FullName}";
+                lblCustomerPhone.Text = $"SĐT: {customer.Phone}";
+                lblCustomerEmail.Text = $"Email: {customer.Email}";
+            }
+            else
+            {
+                lblCustomerName.Text = "Tên khách hàng: Khách vãng lai";
+                lblCustomerPhone.Text = "SĐT: ";
+                lblCustomerEmail.Text = "Email: ";
+            }
         }
 
         private void LoadLatestInvoices()
@@ -265,6 +283,56 @@ namespace UI.EmployeeSale
             {
                 MessageBox.Show($"Lỗi khi in hóa đơn: {ex.Message}",
                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void btnPay_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Lấy hóa đơn hiện tại
+                var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID && !i.IsDeleted);
+                if (invoice == null)
+                {
+                    MessageBox.Show("Không tìm thấy hóa đơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Tính tổng tiền
+                int amount = (int)(invoice.TotalAmount ?? 0);
+                if (amount <= 0)
+                {
+                    MessageBox.Show("Tổng tiền phải lớn hơn 0!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Tạo mô tả đơn hàng
+                string description = $"Thanh toán hóa đơn {invoice.InvoiceID.ToString().Substring(0, 8).ToUpper()}";
+                if (description.Length > 25)
+                {
+                    description = description.Substring(0, 25);
+                }
+                // Tạo orderCode duy nhất (có thể dùng mã hóa đơn)
+                int orderCode = Math.Abs((_invoiceID.GetHashCode() + DateTime.Now.Ticks.GetHashCode()));
+
+                // URL trả về sau khi thanh toán (có thể sửa lại cho phù hợp)
+                string returnUrl = "https://localhost:3000/success";
+                string cancelUrl = "https://localhost:3000/cancel";
+
+                // Tạo link thanh toán qua PayOS
+                var paymentService = new PaymentService();
+                string paymentUrl = await paymentService.CreatePaymentLinkAsync(orderCode, amount, description, returnUrl, cancelUrl);
+
+                // Mở link thanh toán trên trình duyệt mặc định
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = paymentUrl,
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tạo trang thanh toán: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
