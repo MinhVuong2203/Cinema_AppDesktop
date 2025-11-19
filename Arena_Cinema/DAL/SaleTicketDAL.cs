@@ -94,7 +94,6 @@ namespace DAL
 
         public Guid CreateInvoice(Invoice invoice, List<Guid> ticketIds, Dictionary<int, int> productQuantities)
         {
-            // Thêm hóa đơn
             invoice.InvoiceID = Guid.NewGuid();
             invoice.IssueDate = DateTime.Now;
             invoice.Status = "Chờ thanh toán";
@@ -111,7 +110,9 @@ namespace DAL
                     {
                         InvoiceTicketID = Guid.NewGuid(),
                         InvoiceID = invoice.InvoiceID,
-                        TicketID = ticketId
+                        TicketID = ticket.TicketID,
+                        Quantity = 1, // Số lượng vé luôn là 1 cho mỗi ticket
+                        UnitPrice = ticket.Price
                     };
                     _context.InvoiceTickets.Add(invoiceTicket);
                 }
