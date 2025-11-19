@@ -102,7 +102,7 @@ namespace UI.ShowTime
             // 
             // btnEdit
             // 
-            this.btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnEdit.BackgroundColor = System.Drawing.Color.MediumBlue;
             this.btnEdit.ButtonImage = null;
             this.btnEdit.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
             this.btnEdit.ButtonText = "Sửa";
@@ -128,7 +128,7 @@ namespace UI.ShowTime
             // 
             // btnDelete
             // 
-            this.btnDelete.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnDelete.BackgroundColor = System.Drawing.Color.Coral;
             this.btnDelete.ButtonImage = null;
             this.btnDelete.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
             this.btnDelete.ButtonText = "- Xóa";
@@ -154,7 +154,7 @@ namespace UI.ShowTime
             // 
             // btnAddShowtime
             // 
-            this.btnAddShowtime.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnAddShowtime.BackgroundColor = System.Drawing.Color.LimeGreen;
             this.btnAddShowtime.ButtonImage = null;
             this.btnAddShowtime.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
             this.btnAddShowtime.ButtonText = "+ Thêm Mới";
@@ -287,6 +287,7 @@ namespace UI.ShowTime
             // colMovie
             // 
             this.colMovie.DataPropertyName = "MovieTitle";
+            this.colMovie.FillWeight = 34.8F;
             this.colMovie.HeaderText = "PHIM";
             this.colMovie.MinimumWidth = 6;
             this.colMovie.Name = "colMovie";
@@ -294,6 +295,7 @@ namespace UI.ShowTime
             // colRoom
             // 
             this.colRoom.DataPropertyName = "RoomName";
+            this.colRoom.FillWeight = 13.8F;
             this.colRoom.HeaderText = "PHÒNG";
             this.colRoom.MinimumWidth = 6;
             this.colRoom.Name = "colRoom";
@@ -301,6 +303,7 @@ namespace UI.ShowTime
             // colStartTime
             // 
             this.colStartTime.DataPropertyName = "StartTimeDisplay";
+            this.colStartTime.FillWeight = 13.8F;
             this.colStartTime.HeaderText = "GIỜ BẮT ĐẦU";
             this.colStartTime.MinimumWidth = 6;
             this.colStartTime.Name = "colStartTime";
@@ -308,6 +311,7 @@ namespace UI.ShowTime
             // colEndTime
             // 
             this.colEndTime.DataPropertyName = "EndTimeDisplay";
+            this.colEndTime.FillWeight = 13.8F;
             this.colEndTime.HeaderText = "GIỜ KẾT THÚC";
             this.colEndTime.MinimumWidth = 6;
             this.colEndTime.Name = "colEndTime";
@@ -315,6 +319,7 @@ namespace UI.ShowTime
             // colPrice
             // 
             this.colPrice.DataPropertyName = "PriceDisplay";
+            this.colPrice.FillWeight = 13.8F;
             this.colPrice.HeaderText = "GIÁ";
             this.colPrice.MinimumWidth = 6;
             this.colPrice.Name = "colPrice";
@@ -322,6 +327,7 @@ namespace UI.ShowTime
             // colStatus
             // 
             this.colStatus.DataPropertyName = "Status";
+            this.colStatus.FillWeight = 13.8F;
             this.colStatus.HeaderText = "TRẠNG THÁI";
             this.colStatus.MinimumWidth = 6;
             this.colStatus.Name = "colStatus";
@@ -510,7 +516,7 @@ namespace UI.ShowTime
             this.btnFilter.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnFilter.ButtonImage = null;
             this.btnFilter.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnFilter.ButtonText = "🔍 Lọc";
+            this.btnFilter.ButtonText = "Lọc";
             this.btnFilter.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnFilter.ClickTextColor = System.Drawing.Color.White;
             this.btnFilter.CornerRadius = 5;
@@ -534,7 +540,7 @@ namespace UI.ShowTime
             this.btnReset.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.btnReset.ButtonImage = null;
             this.btnReset.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnReset.ButtonText = "🔄 Reset";
+            this.btnReset.ButtonText = "Reset";
             this.btnReset.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
             this.btnReset.ClickTextColor = System.Drawing.Color.White;
             this.btnReset.CornerRadius = 5;
@@ -717,6 +723,10 @@ namespace UI.ShowTime
 
         private void SetupEvents()
         {
+            dgvShowtimes.DataBindingComplete += (s, e) =>
+            {
+                ColorizeRows();
+            };
             // Pagination
             btnFilter.Click += (s, e) =>
             {
@@ -1170,8 +1180,8 @@ namespace UI.ShowTime
             else
             {
                 // Giữ nguyên màu đỏ như thiết kế
-                btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(220, 53, 69);
-                btnDelete.BackgroundColor = System.Drawing.Color.FromArgb(220, 53, 69);
+                btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(0, 0, 185);
+                btnDelete.BackgroundColor = System.Drawing.Color.FromArgb(139,0,0);
             }
         }
 
@@ -1309,12 +1319,12 @@ namespace UI.ShowTime
         private System.Windows.Forms.Label lblInfo;
         private ReaLTaiizor.Controls.PoisonDataGridView dgvShowtimes;
         private System.Windows.Forms.Panel panelDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colShowtimeId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMovie;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colRoom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStartTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colEndTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
+        private DataGridViewTextBoxColumn colShowtimeId;
+        private DataGridViewTextBoxColumn colMovie;
+        private DataGridViewTextBoxColumn colRoom;
+        private DataGridViewTextBoxColumn colStartTime;
+        private DataGridViewTextBoxColumn colEndTime;
+        private DataGridViewTextBoxColumn colPrice;
+        private DataGridViewTextBoxColumn colStatus;
     }
 }
