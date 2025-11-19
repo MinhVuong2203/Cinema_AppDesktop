@@ -18,7 +18,7 @@ namespace UI.PayOSMethod
         //private Home _home;
         //private DTO.Employee _employee;
 
-        public PaymentCancelForm(/*Guid invoiceID, Home home, DTO.Employee employee*/)
+        public PaymentCancelForm(Guid invoiceID, Home home, DTO.Employee employee)
         {
             InitializeComponent();
             //_context = new CinemaDBContext();

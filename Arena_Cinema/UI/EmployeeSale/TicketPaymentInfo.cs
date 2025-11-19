@@ -277,6 +277,8 @@ namespace UI.EmployeeSale
 
                 MessageBox.Show($"Đã tạo link thanh toán!\nMã giao dịch: {orderCode}",
                     "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _currentOrderCode = orderCode;
+                StartPaymentStatusPolling(_invoiceID);
             }
             catch (Exception ex)
             {
@@ -296,7 +298,7 @@ namespace UI.EmployeeSale
             _paymentTimer = new System.Windows.Forms.Timer();
             _paymentTimer.Interval = 3000; // Check mỗi 3 giây
             int checkCount = 0;
-            int maxChecks = 40; // 40 * 3s = 2 phút
+            int maxChecks = 120; // 120 * 3s = 6 phút
 
             _paymentTimer.Tick += (s, e) =>
             {
@@ -326,6 +328,9 @@ namespace UI.EmployeeSale
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
                         );
+
+                        var successForm = new UI.PayOSMethod.PaymentSuccessForm(invoiceID, _home, _employee);
+                        successForm.ShowDialog();
 
                         // Reload thông tin hóa đơn
                         LoadInvoiceInfo();
@@ -470,7 +475,34 @@ namespace UI.EmployeeSale
             }
         }
 
-        
+        private void btnCancelPayment_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show(
+                "Bạn có chắc chắn muốn hủy thanh toán này?",
+                "Xác nhận hủy",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                var paymentService = new PaymentService();
+                bool success = paymentService.ProcessCancelPayment(_invoiceID, "Khách hàng hủy");
+
+                if (success)
+                {
+                    // Hiển thị giao diện thanh toán bị hủy
+                    var cancelForm = new PayOSMethod.PaymentCancelForm(_invoiceID, _home, _employee);
+                    cancelForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi khi hủy thanh toán!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
 
         //protected override void Dispose(bool disposing)
         //{

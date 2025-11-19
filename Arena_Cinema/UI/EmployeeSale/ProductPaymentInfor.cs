@@ -201,9 +201,27 @@ namespace UI.EmployeeSale
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            if (_home != null)
+            if (_home != null && _employee != null)
             {
-                _home.LoadControl(new SaleHomeUC(_home, _employee));
+                var confirmResult = MessageBox.Show(
+                    "Xác nhận hủy hóa đơn này?",
+                    "Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // ✅ XỬ LÝ HỦY VÀ LƯU VÀO PAYMENT
+                    var paymentService = new PaymentService();
+                    bool success = paymentService.ProcessCancelPayment(_invoiceID, "Nhân viên hủy");
+
+                    if (success)
+                    {
+                        MessageBox.Show("Hóa đơn đã được hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _home.LoadControl(new SaleHomeUC(_home, _employee));
+                    }
+                }
             }
         }
 

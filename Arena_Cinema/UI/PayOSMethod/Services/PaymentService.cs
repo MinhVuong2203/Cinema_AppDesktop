@@ -177,15 +177,15 @@ namespace UI.PayOSMethod.Services
                 invoice.Status = "Đã hủy";
 
                 // Có thể tạo record Payment với status failed để tracking
-                var payment = new Payment
-                {
-                    PaymentID = Guid.NewGuid(),
-                    InvoiceID = invoiceID,
-                    Method = "PayOS",
-                    Amount = 0,
-                    PaymentTime = DateTime.Now,
-                };
-                _context.Payments.Add(payment);
+                //var payment = new Payment
+                //{
+                //    PaymentID = Guid.NewGuid(),
+                //    InvoiceID = invoiceID,
+                //    Method = "PayOS",
+                //    Amount = 0,
+                //    PaymentTime = DateTime.Now,
+                //};
+                //_context.Payments.Add(payment);
 
                 _context.SaveChanges();
 
