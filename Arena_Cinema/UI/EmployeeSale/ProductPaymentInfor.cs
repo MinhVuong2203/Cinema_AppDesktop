@@ -442,6 +442,10 @@ namespace UI.EmployeeSale
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
+                // Lưu orderCode hiện tại để polling
+                _currentOrderCode = orderCode;
+                // Bắt đầu polling trạng thái thanh toán
+                StartPaymentStatusPolling(_invoiceID);
             }
             catch (Exception ex)
             {
@@ -465,7 +469,7 @@ namespace UI.EmployeeSale
             _paymentTimer = new System.Windows.Forms.Timer();
             _paymentTimer.Interval = 3000; // Check mỗi 3 giây
             int checkCount = 0;
-            int maxChecks = 40; // 40 * 3s = 2 phút
+            int maxChecks = 120; // 120 * 3s = 6 phút
 
             _paymentTimer.Tick += (s, e) =>
             {
@@ -495,6 +499,10 @@ namespace UI.EmployeeSale
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
                         );
+
+                        var successForm = new PayOSMethod.PaymentSuccessForm(invoiceID, _home, _employee);
+                        successForm.ShowDialog();
+
 
                         // Reload thông tin hóa đơn
                         LoadLatestInvoices();

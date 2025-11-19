@@ -128,6 +128,57 @@ namespace DAL
             }
         }
 
+        //private bool HandleSuccessfulPayment(long orderCode, decimal amount)
+        //{
+        //    try
+        //    {
+        //        // Tìm hóa đơn theo orderCode
+        //        var invoice = _context.Invoices
+        //            .Where(i => i.Status == "Chờ thanh toán"
+        //                        && !i.IsDeleted
+        //                        && i.InvoiceID == orderCode)
+        //            .OrderByDescending(i => i.IssueDate)
+        //            .FirstOrDefault();
+
+        //        if (invoice == null)
+        //        {
+        //            Console.WriteLine($"❌ Invoice not found for orderCode: {orderCode}");
+        //            return false;
+        //        }
+
+        //        // Cập nhật trạng thái hóa đơn
+        //        invoice.Status = "Đã thanh toán";
+
+        //        // Nếu là hóa đơn bán vé, cập nhật trạng thái vé
+        //        var invoiceTickets = _context.InvoiceTickets
+        //            .Where(it => it.InvoiceID == invoice.InvoiceID)
+        //            .ToList();
+
+        //        if (invoiceTickets.Any())
+        //        {
+        //            var ticketIds = invoiceTickets.Select(it => it.TicketID).ToList();
+        //            var tickets = _context.Tickets.Where(t => ticketIds.Contains(t.TicketID)).ToList();
+
+        //            foreach (var ticket in tickets)
+        //            {
+        //                ticket.Status = "Đã bán";
+        //            }
+
+        //            Console.WriteLine($"✅ Updated {tickets.Count} tickets to 'Đã bán'");
+        //        }
+
+        //        _context.SaveChanges();
+        //        Console.WriteLine($"✅ Invoice {invoice.InvoiceID} marked as paid");
+
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"❌ Error handling successful payment: {ex.Message}");
+        //        return false;
+        //    }
+        //}
+
         /// <summary>
         /// Xử lý hủy thanh toán
         /// </summary>

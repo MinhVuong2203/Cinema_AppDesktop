@@ -352,6 +352,20 @@ namespace UI.EmployeeSale
             _paymentTimer.Start();
         }
 
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        if (_paymentTimer != null)
+        //        {
+        //            _paymentTimer.Stop();
+        //            _paymentTimer.Dispose();
+        //        }
+        //        _context?.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
+
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
