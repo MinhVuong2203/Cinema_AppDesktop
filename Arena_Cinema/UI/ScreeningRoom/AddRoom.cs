@@ -33,10 +33,8 @@ namespace UI.ScreeningRoom
         private void LoadDataToForm()
         {
             if (_room == null) _room = new Room();
-            // Tiêu đề
             lblTitle.Text = _room.RoomID == 0 ? "Thêm phòng chiếu mới" : $"Sửa phòng - ID: {_room.RoomID}";
 
-            // Dữ liệu hiện tại (nếu là sửa)
             txtRoomName.Text = _room.RoomName ?? "";
             txtSeatCount.Text = _room.SeatCount > 0 ? _room.SeatCount.ToString() : "";
             txtDescription.Text = _room.Description ?? "";
@@ -45,14 +43,13 @@ namespace UI.ScreeningRoom
                 cboRoomType.Items.AddRange(new string[] { "2D", "3D", "IMAX", "VIP" });
             }
 
-            // Nếu đang sửa → chọn loại hiện tại
             if (!string.IsNullOrEmpty(_room.RoomType) && cboRoomType.Items.Contains(_room.RoomType))
             {
                 cboRoomType.SelectedItem = _room.RoomType;
             }
             else
             {
-                cboRoomType.SelectedIndex = 0; // mặc định là 2D
+                cboRoomType.SelectedIndex = 0; 
             }
 
             //Ảnh phòng
@@ -62,12 +59,11 @@ namespace UI.ScreeningRoom
                 {
                     ImgHelper.DisplayImageFromRelative(_room.ImageUrl, ptbRoomImage);
                     _currentImagePath = _room.ImageUrl;
-                    return; // Thành công
+                    return;
                 }
                 catch { }
             }
 
-            // Luôn có ảnh
             ptbRoomImage.Image = Properties.Resources.roomDefault;
         }
 
@@ -112,7 +108,7 @@ namespace UI.ScreeningRoom
                 return;
             }
 
-            // Kiểm tra trùng tên phòng (trừ chính nó khi sửa)
+            // Kiểm tra trùng tên phòng
             bool nameExists = _roomBLL.IsRoomNameExists(txtRoomName.Text.Trim(), _room.RoomID > 0 ? _room.RoomID : (int?)null);
             if (nameExists)
             {
@@ -120,7 +116,7 @@ namespace UI.ScreeningRoom
                 return;
             }
 
-            // Số ghế: nếu không nhập → mặc định 250
+            // Số ghế (mặc định 250 nếu không nhập)
             int seatCount = 250;
             if (!string.IsNullOrWhiteSpace(txtSeatCount.Text))
             {
@@ -131,7 +127,7 @@ namespace UI.ScreeningRoom
                 }
             }
 
-            // Gán dữ liệu vào đối tượng Room
+            // Gán dữ liệu vào table room
             _room.RoomName = txtRoomName.Text.Trim();
             _room.RoomType = cboRoomType.Text.Trim();
             _room.SeatCount = seatCount;

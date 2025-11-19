@@ -5,11 +5,14 @@ using System.Linq;
 using System.Windows.Forms;
 using BLL;
 using DTO;
+using UI.ScreeningRoom;
 
 namespace UI.SeatManagement
 {
     public partial class SeatManagementUC : UserControl
     {
+        private DTO.Room _room;
+        private Home _home;
         private int _roomId;
         private SeatBLL _seatBLL = new SeatBLL();
         private List<Seat> _seats;
@@ -17,45 +20,34 @@ namespace UI.SeatManagement
         private Point _dragOffset;
 
         private const int CELL_SIZE = 58;
-        private const int OFFSET_Y = 120;
-        private const int OFFSET_X = 60; // Thêm offset cho cột chữ cái
+        private const int OFFSET_Y = 80; // Giảm xuống để giao diện gần đầu hơn
+        private const int OFFSET_X = 60;
         private const int SNAP_GRID = 58;
 
-        private const int MAX_COLS = 17; // Số cột tối đa
-        private const int MAX_ROWS = 20; // Số hàng tối đa
+        private const int MAX_COLS = 17; // Cố định 17 cột
+        private int _maxRows = 20; // Sẽ được tính lại từ dữ liệu
 
-        public SeatManagementUC(int roomId)
+        public SeatManagementUC(Home home, int roomId)
         {
             _roomId = roomId;
+            _home = home;
             InitializeComponent();
 
             pnlCanvas.AutoScroll = true;
+            pnlCanvas.AutoScrollPosition = new Point(0, 0); // Reset scroll về đầu
             pnlCanvas.MouseWheel += (s, e) => { ((HandledMouseEventArgs)e).Handled = true; };
 
-            DrawGridLabels(); // Vẽ lưới tọa độ
             LoadSeatMap();
         }
 
         private void DrawGridLabels()
         {
-            // === VẼ HÀNG SỐ (1, 2, 3...) - TRÊN CÙNG ===
-            for (int col = 0; col < MAX_COLS; col++)
-            {
-                var lblCol = new Label
-                {
-                    Text = (col + 1).ToString(),
-                    Location = new Point(col * SNAP_GRID + OFFSET_X, OFFSET_Y - 40),
-                    Size = new Size(SNAP_GRID, 30),
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                    ForeColor = Color.White,
-                    BackColor = Color.FromArgb(220, 53, 69)
-                };
-                pnlCanvas.Controls.Add(lblCol);
-            }
+            // Xóa labels cũ
+            var oldLabels = pnlCanvas.Controls.OfType<Label>().ToList();
+            foreach (var lbl in oldLabels) pnlCanvas.Controls.Remove(lbl);
 
-            // === VẼ CỘT CHỮ CÁI (A, B, C...) - BÊN TRÁI ===
-            for (int row = 0; row < MAX_ROWS; row++)
+            // === VẼ CỘT CHỮ CÁI (A, B, C...) - CHỈ VẼ ĐỦ SỐ HÀNG THỰC TẾ ===
+            for (int row = 0; row < _maxRows; row++)
             {
                 var lblRow = new Label
                 {
@@ -76,16 +68,39 @@ namespace UI.SeatManagement
             _seats = _seatBLL.GetSeatsByRoomId(_roomId);
             lblTitle.Text = $"SƠ ĐỒ GHẾ - PHÒNG {_roomId}";
 
-            // Xóa ghế cũ (GIỮ LẠI label grid và picScreen, pnlLegend)
+            // Tính số hàng thực tế từ dữ liệu
+            if (_seats.Any())
+            {
+                _maxRows = _seats.Max(s => s.pY) + 1;
+            }
+            else
+            {
+                _maxRows = 1;
+            }
+
+            // Reset scroll về (0,0) trước khi vẽ
+            pnlCanvas.AutoScrollPosition = new Point(0, 0);
+
+            // Vẽ lại labels với số hàng đúng
+            DrawGridLabels();
+
+            // Xóa các button ghế cũ
             var oldButtons = pnlCanvas.Controls.OfType<Button>().ToList();
             foreach (var b in oldButtons) pnlCanvas.Controls.Remove(b);
 
+            // Tạo button ghế mới
             foreach (var seat in _seats)
             {
                 var btn = CreateSeatButton(seat);
                 pnlCanvas.Controls.Add(btn);
-                btn.BringToFront(); // Ghế hiện trên label
+                btn.BringToFront();
             }
+
+            // Set kích thước canvas để chỉ hiển thị vùng cần thiết
+            pnlCanvas.AutoScrollMinSize = new Size(
+                MAX_COLS * SNAP_GRID + OFFSET_X + 60,
+                _maxRows * SNAP_GRID + OFFSET_Y + 60
+            );
         }
 
         private Button CreateSeatButton(Seat seat)
@@ -122,7 +137,7 @@ namespace UI.SeatManagement
                     break;
             }
 
-            // === SỰ KIỆN KÉO THẢ ===
+            // Kéo thả ghế
             btn.MouseDown += (s, e) =>
             {
                 if (e.Button == MouseButtons.Left)
@@ -137,21 +152,23 @@ namespace UI.SeatManagement
             {
                 if (_draggingButton == btn && e.Button == MouseButtons.Left)
                 {
+                    // FIX: Tính toán vị trí chính xác với scroll
+                    Point scrollPos = pnlCanvas.AutoScrollPosition;
                     int newX = btn.Left + e.X - _dragOffset.X;
                     int newY = btn.Top + e.Y - _dragOffset.Y;
 
-                    newX += Math.Abs(pnlCanvas.AutoScrollPosition.X);
-                    newY += Math.Abs(pnlCanvas.AutoScrollPosition.Y);
-
                     // Giới hạn vùng kéo
-                    newX = Math.Max(OFFSET_X, newX);
-                    newY = Math.Max(OFFSET_Y, newY);
+                    newX = Math.Max(OFFSET_X + scrollPos.X, newX);
+                    newY = Math.Max(OFFSET_Y + scrollPos.Y, newY);
 
-                    // KÉO MƯỢT - không bám lưới khi đang kéo
-                    btn.Location = new Point(
-                        newX - Math.Abs(pnlCanvas.AutoScrollPosition.X),
-                        newY - Math.Abs(pnlCanvas.AutoScrollPosition.Y)
-                    );
+                    // Giới hạn không vượt quá MAX_COLS và _maxRows
+                    int maxX = (MAX_COLS - 1) * SNAP_GRID + OFFSET_X + scrollPos.X;
+                    int maxY = (_maxRows - 1) * SNAP_GRID + OFFSET_Y + scrollPos.Y;
+
+                    newX = Math.Min(maxX, newX);
+                    newY = Math.Min(maxY, newY);
+
+                    btn.Location = new Point(newX, newY);
                 }
             };
 
@@ -159,52 +176,82 @@ namespace UI.SeatManagement
             {
                 if (_draggingButton == btn)
                 {
-                    int actualX = btn.Left + Math.Abs(pnlCanvas.AutoScrollPosition.X);
-                    int actualY = btn.Top + Math.Abs(pnlCanvas.AutoScrollPosition.Y);
+                    // FIX: Tính toán chính xác với scroll position
+                    Point scrollPos = pnlCanvas.AutoScrollPosition;
+
+                    // Vị trí tuyệt đối (không bị ảnh hưởng bởi scroll)
+                    int absoluteX = btn.Left - scrollPos.X;
+                    int absoluteY = btn.Top - scrollPos.Y;
 
                     // BÁM LƯỚI khi thả
-                    int gridX = (int)(Math.Round((double)(actualX - OFFSET_X) / SNAP_GRID) * SNAP_GRID) + OFFSET_X;
-                    int gridY = (int)(Math.Round((double)(actualY - OFFSET_Y) / SNAP_GRID) * SNAP_GRID) + OFFSET_Y;
+                    int gridX = (int)Math.Round((double)(absoluteX - OFFSET_X) / SNAP_GRID) * SNAP_GRID + OFFSET_X;
+                    int gridY = (int)Math.Round((double)(absoluteY - OFFSET_Y) / SNAP_GRID) * SNAP_GRID + OFFSET_Y;
 
                     // Tính tọa độ logic (pX, pY)
                     int newPX = (gridX - OFFSET_X) / SNAP_GRID;
                     int newPY = (gridY - OFFSET_Y) / SNAP_GRID;
 
+                    // Giới hạn không vượt quá MAX_COLS và _maxRows
+                    newPX = Math.Max(0, Math.Min(MAX_COLS - 1, newPX));
+                    newPY = Math.Max(0, Math.Min(_maxRows - 1, newPY));
+
                     var currentSeat = (Seat)btn.Tag;
 
-                    // === KIỂM TRA VA CHẠM VỚI GHẾ KHÁC ===
                     if (currentSeat.pX != newPX || currentSeat.pY != newPY)
                     {
-                        // Kiểm tra có ghế nào ở vị trí (newPX, newPY) không
-                        var conflictSeat = _seats.FirstOrDefault(st =>
-                        st.SeatID != currentSeat.SeatID &&
-                        st.pX == newPX &&
-                        st.pY == newPY
-                    );
+                        // Kiểm tra trùng vị trí - Xử lý đặc biệt cho ghế đôi
+                        List<Seat> conflictSeats = new List<Seat>();
 
-
-                        if (conflictSeat != null)
+                        if (currentSeat.SeatType == "Ghế đôi")
                         {
-                            // Tính tên hàng/cột để hiển thị
+                            // Ghế đôi chiếm 2 vị trí: (newPX, newPY) và (newPX+1, newPY)
+                            var conflict1 = _seats.FirstOrDefault(st =>
+                                st.SeatID != currentSeat.SeatID &&
+                                st.pX == newPX &&
+                                st.pY == newPY
+                            );
+                            var conflict2 = _seats.FirstOrDefault(st =>
+                                st.SeatID != currentSeat.SeatID &&
+                                st.pX == newPX + 1 &&
+                                st.pY == newPY
+                            );
+
+                            if (conflict1 != null) conflictSeats.Add(conflict1);
+                            if (conflict2 != null) conflictSeats.Add(conflict2);
+                        }
+                        else
+                        {
+                            // Ghế thường chỉ kiểm tra 1 vị trí
+                            var conflict = _seats.FirstOrDefault(st =>
+                                st.SeatID != currentSeat.SeatID &&
+                                st.pX == newPX &&
+                                st.pY == newPY
+                            );
+                            if (conflict != null) conflictSeats.Add(conflict);
+                        }
+
+                        if (conflictSeats.Any())
+                        {
                             string colName = (newPX + 1).ToString();
                             string rowName = ((char)('A' + newPY)).ToString();
 
+                            string conflictNames = string.Join(", ", conflictSeats.Select(st => st.SeatName));
+
                             MessageBox.Show(
-                                $"Vị trí [{rowName}{colName}] đã có ghế: {conflictSeat.SeatName}\n" +
+                                $"Vị trí [{rowName}{colName}] đã có ghế: {conflictNames}\n" +
                                 $"Vui lòng chọn vị trí khác!",
                                 "Trùng vị trí",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
 
-                            // Trả ghế về vị trí cũ
+                            // Trả về vị trí cũ
                             btn.Location = new Point(
-                                currentSeat.pX * SNAP_GRID + OFFSET_X - Math.Abs(pnlCanvas.AutoScrollPosition.X),
-                                currentSeat.pY * SNAP_GRID + OFFSET_Y - Math.Abs(pnlCanvas.AutoScrollPosition.Y)
+                                currentSeat.pX * SNAP_GRID + OFFSET_X + scrollPos.X,
+                                currentSeat.pY * SNAP_GRID + OFFSET_Y + scrollPos.Y
                             );
                         }
                         else
                         {
-                            // Không trùng → Lưu vào DB
                             string errorMsg;
                             bool saved = _seatBLL.UpdateSeatPosition(currentSeat.SeatID, newPX, newPY, _roomId, out errorMsg);
 
@@ -232,10 +279,10 @@ namespace UI.SeatManagement
                     }
                     else
                     {
-                        // Vị trí không đổi, chỉ bám lưới lại
+                        // Snap lại vị trí nếu không di chuyển
                         btn.Location = new Point(
-                            gridX - Math.Abs(pnlCanvas.AutoScrollPosition.X),
-                            gridY - Math.Abs(pnlCanvas.AutoScrollPosition.Y)
+                            gridX + scrollPos.X,
+                            gridY + scrollPos.Y
                         );
                     }
 
@@ -244,6 +291,13 @@ namespace UI.SeatManagement
             };
 
             return btn;
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            var roomBLL = new RoomBLL();
+            var room = roomBLL.GetRoomById(_roomId);
+            _home.LoadControl(new Room_homeUC(_home, room));
         }
     }
 }

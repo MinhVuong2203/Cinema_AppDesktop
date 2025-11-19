@@ -212,7 +212,7 @@ namespace UI.ScreeningRoom
             int roomId = (int)((Control)sender).Tag;
 
             // Chuyển sang trang quản lý ghế của phòng này
-            _home.LoadControl(new SeatManagementUC(roomId));
+            _home.LoadControl(new SeatManagementUC(_home, roomId));
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
