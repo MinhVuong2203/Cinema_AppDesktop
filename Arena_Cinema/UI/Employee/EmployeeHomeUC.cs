@@ -30,8 +30,12 @@ namespace UI.Employee
 
         private void btnQuanLyNhanVien_Click(object sender, EventArgs e)
         {
-            this._home.LoadControl(new ListEmployeeUC(_home, this._employee));
-            
+            this._home.LoadControl(new ListEmployeeUC(_home, this._employee));    
+        }
+
+        private void btnWorkShift_Click(object sender, EventArgs e)
+        {
+            this._home.LoadControl(new WorkShiftUC(_home, this._employee));
         }
     }
 }

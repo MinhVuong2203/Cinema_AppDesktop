@@ -81,6 +81,7 @@
     <Compile Include="SeatDAL.cs" />
     <Compile Include="SaleTicketDAL.cs" />
     <Compile Include="ShowTimeDAL.cs" />
+    <Compile Include="WorkShiftDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

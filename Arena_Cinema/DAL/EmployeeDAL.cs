@@ -27,10 +27,17 @@ namespace DAL
 
         public Employee GetEmployeeById(Guid employeeId)
         {
-            return _context.Employees
-                .Include(e => e.Account)
-                .Include(e => e.Role)
-                .FirstOrDefault(e => e.EmployeeID == employeeId);
+            try
+            {
+                return _context.Employees
+                    .Include(e => e.Account)
+                    .Include(e => e.Role)
+                    .FirstOrDefault(e => e.EmployeeID == employeeId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi lấy thông tin nhân viên: {ex.Message}");
+            }
         }
 
         public void UpdateEmployeeSettingById(Guid employeeId, Setting newSetting)
@@ -177,6 +184,118 @@ namespace DAL
             catch (Exception ex)
             {
                 throw new Exception("Lỗi: " + ex.Message);
+            }
+        }
+
+        public List<Employee> GetAllEmployeesIsDelete()
+        {
+            try
+            {
+                return _context.Employees
+                    .Include(e => e.Role)
+                    .Where(e => !e.IsDeleted)
+                    .OrderBy(e => e.FullName)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi lấy danh sách nhân viên: {ex.Message}");
+            }
+        }
+
+        public List<Employee> FilterEmployees(string name, string roleName, bool includeDeleted)
+        {
+            try
+            {
+                var query = _context.Employees.Include(e => e.Role).Where(e => e.Role.RoleName != "Admin").AsQueryable();
+                if (!includeDeleted)
+                {
+                    query = query.Where(e => !e.IsDeleted);
+                }
+                if (!string.IsNullOrWhiteSpace(name))
+                {
+                    name = name.ToLower().Trim();
+                    query = query.Where(e => e.FullName.ToLower().Contains(name));
+                }
+                if (!string.IsNullOrWhiteSpace(roleName) && roleName != "-- Tất cả --")
+                {
+                    query = query.Where(e => e.Role != null && e.Role.RoleName == roleName);
+                }
+                return query.OrderBy(e => e.FullName).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi lọc nhân viên: {ex.Message}");
+            }
+        }
+
+        public List<Employee> GetEmployeesByRole(string roleName)
+        {
+            try
+            {
+                return _context.Employees
+                    .Include(e => e.Role)
+                    .Where(e => !e.IsDeleted && e.Role != null && e.Role.RoleName == roleName)
+                    .OrderBy(e => e.FullName)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi lấy nhân viên theo chức vụ: {ex.Message}");
+            }
+        }
+
+        public List<Employee> GetAvailableEmployees(DateTime startTime, DateTime endTime)
+        {
+            try
+            {
+                // Get all employees
+                var allEmployees = _context.Employees
+                    .Include(e => e.Role)
+                    .Where(e => !e.IsDeleted)
+                    .ToList();
+
+                var busyEmployeeIds = _context.WorkShifts
+                    .Where(ws => ws.StartTime < endTime && ws.EndTime > startTime)
+                    .Select(ws => ws.EmployeeID)
+                    .Distinct()
+                    .ToList();
+
+                return allEmployees
+                    .Where(e => !busyEmployeeIds.Contains(e.EmployeeID))
+                    .OrderBy(e => e.FullName)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi lấy nhân viên khả dụng: {ex.Message}");
+            }
+        }
+
+        public int GetActiveEmployeeCount()
+        {
+            try
+            {
+                return _context.Employees.Count(e => !e.IsDeleted);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi đếm số nhân viên: {ex.Message}");
+            }
+        }
+
+        public Dictionary<string, int> GetEmployeeCountByRole()
+        {
+            try
+            {
+                return _context.Employees
+                    .Where(e => !e.IsDeleted && e.Role != null)
+                    .GroupBy(e => e.Role.RoleName)
+                    .ToDictionary(g => g.Key, g => g.Count());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi đếm nhân viên theo chức vụ: {ex.Message}");
             }
         }
     }

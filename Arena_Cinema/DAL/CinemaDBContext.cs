@@ -19,9 +19,9 @@ namespace DAL
               "persist security info=False;" +
               "user id=arenaapp;" +
               "password=Minh@212005;" +
-              "trustservercertificate=False;" +
+              "trustservercertificate=True;" +
               "Encrypt=True;" +
-              "MultipleActiveResultSets=False;";
+              "MultipleActiveResultSets=True;";
              
         public CinemaDBContext() : base(conn)
         {

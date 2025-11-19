@@ -124,6 +124,8 @@ CREATE TABLE WorkShift (
     FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID) ON DELETE CASCADE
 );
 
+
+
 -- MOVIE GROUP
 CREATE TABLE Movie (
     MovieID INT PRIMARY KEY IDENTITY(1,1),
@@ -256,6 +258,26 @@ CREATE TABLE Seat (
     CONSTRAINT UQ_Seat UNIQUE (SeatName, RoomID),
 	CONSTRAINT UQ_Seat_Position UNIQUE (RoomID, pX, pY)
 );
+
+-- Tự động cập nhật tên
+CREATE OR ALTER TRIGGER TRG_Seat_AutoGenerateName
+ON Seat
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE s
+    SET s.SeatName =
+        CHAR(65 + i.pY) +  -- 65 = 'A'
+        RIGHT('00' + CAST(i.pX AS VARCHAR(2)), 2)
+    FROM Seat s
+    INNER JOIN inserted i ON s.SeatID = i.SeatID;
+END;
+GO
+
+
+
 
 
 
@@ -592,8 +614,31 @@ VALUES
 
 (N'Ngô Thị F', '0967890123', 'ngothif@company.com', N'90 Lý Thường Kiệt, Huế', '2000-01-12', 20000, '012345678906', N'Nữ', 'Employee', 'staffF', '123456', N'/images/staffF.jpg', GETDATE(), 0);
 
+ -- Trigger tự động tạo ticket cho TẤT CẢ ghế trong 
+CREATE OR ALTER TRIGGER trg_AutoCreateTickets
+ON ShowTime
+AFTER INSERT
+AS
+BEGIN
+    INSERT INTO Ticket (ShowTimeID, SeatID, TicketType, Price, Status)
+    SELECT 
+        i.ShowTimeID,
+        s.SeatID,
+        s.SeatType,  -- 'Standard', 'VIP', 'Couple'
+		CASE 
+            WHEN s.SeatType = N'Ghế VIP' THEN i.Price + 20000
+            WHEN s.SeatType = N'Ghế đôi' THEN 2*i.Price + 20000
+            ELSE i.Price
+        END,
+        N'Trống'  -- Trạng thái ban đầu
+    FROM inserted i
+    JOIN Seat s ON s.RoomID = i.RoomID
+    WHERE s.IsDeleted = 0;
+END;
+GO
 
--- Tự động tạo vé khi có 
+
+-- Tự động tạo lại giá vé khi có Update
 CREATE OR ALTER TRIGGER trg_UpdateTicketPrice
 ON ShowTime
 AFTER UPDATE

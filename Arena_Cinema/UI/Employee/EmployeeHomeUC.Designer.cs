@@ -20,7 +20,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.materialCard1 = new ReaLTaiizor.Controls.MaterialCard();
-            this.parrotButton1 = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnWorkShift = new ReaLTaiizor.Controls.ParrotButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -237,7 +237,7 @@
             // materialCard1
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard1.Controls.Add(this.parrotButton1);
+            this.materialCard1.Controls.Add(this.btnWorkShift);
             this.materialCard1.Controls.Add(this.label1);
             this.materialCard1.Controls.Add(this.label2);
             this.materialCard1.Controls.Add(this.pictureBox1);
@@ -251,29 +251,30 @@
             this.materialCard1.Size = new System.Drawing.Size(473, 276);
             this.materialCard1.TabIndex = 3;
             // 
-            // parrotButton1
+            // btnWorkShift
             // 
-            this.parrotButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.parrotButton1.ButtonImage = global::UI.Properties.Resources.next;
-            this.parrotButton1.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.parrotButton1.ButtonText = "XEM CA LÀM";
-            this.parrotButton1.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.parrotButton1.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.parrotButton1.CornerRadius = 5;
-            this.parrotButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.parrotButton1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parrotButton1.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.parrotButton1.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.parrotButton1.HoverTextColor = System.Drawing.Color.Silver;
-            this.parrotButton1.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.parrotButton1.Location = new System.Drawing.Point(112, 206);
-            this.parrotButton1.Name = "parrotButton1";
-            this.parrotButton1.Size = new System.Drawing.Size(269, 50);
-            this.parrotButton1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.parrotButton1.TabIndex = 1;
-            this.parrotButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.parrotButton1.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.parrotButton1.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnWorkShift.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnWorkShift.ButtonImage = global::UI.Properties.Resources.next;
+            this.btnWorkShift.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnWorkShift.ButtonText = "XEM CA LÀM";
+            this.btnWorkShift.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnWorkShift.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnWorkShift.CornerRadius = 5;
+            this.btnWorkShift.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnWorkShift.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWorkShift.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnWorkShift.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnWorkShift.HoverTextColor = System.Drawing.Color.Silver;
+            this.btnWorkShift.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnWorkShift.Location = new System.Drawing.Point(112, 206);
+            this.btnWorkShift.Name = "btnWorkShift";
+            this.btnWorkShift.Size = new System.Drawing.Size(269, 50);
+            this.btnWorkShift.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnWorkShift.TabIndex = 1;
+            this.btnWorkShift.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.btnWorkShift.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnWorkShift.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnWorkShift.Click += new System.EventHandler(this.btnWorkShift_Click);
             // 
             // label1
             // 
@@ -430,7 +431,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox3;
         private ReaLTaiizor.Controls.MaterialCard materialCard1;
-        private ReaLTaiizor.Controls.ParrotButton parrotButton1;
+        private ReaLTaiizor.Controls.ParrotButton btnWorkShift;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;

@@ -258,6 +258,13 @@
     <Compile Include="Employee\ListEmployeeUC.Designer.cs">
       <DependentUpon>ListEmployeeUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Employee\WorkShiftUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Employee\WorkShiftUC.Designer.cs">
+      <DependentUpon>WorkShiftUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\WorkShiftVirtualRenderer.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -395,6 +402,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Employee\ListEmployeeUC.resx">
       <DependentUpon>ListEmployeeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee\WorkShiftUC.resx">
+      <DependentUpon>WorkShiftUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -628,6 +638,8 @@
     <None Include="Resources\reset.png" />
     <None Include="Resources\ban.png" />
     <None Include="Resources\reset1.png" />
+    <None Include="Resources\imgClock.png" />
+    <None Include="Resources\imgCalender.png" />
     <Content Include="Resources\roomDefault.png" />
     <None Include="Resources\Search3.png" />
     <None Include="Resources\Search2.png" />

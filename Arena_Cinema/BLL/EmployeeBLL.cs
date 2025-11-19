@@ -18,7 +18,17 @@ namespace BLL
         {
             return _employeeDAL.GetAllEmployees();
         }
-        
+
+        public List<DTO.Employee> GetAllEmployeesIsDelete()
+        {
+            return _employeeDAL.GetAllEmployeesIsDelete();
+        }
+
+        public List<DTO.Employee> FilterEmployees(string name, string roleName, bool includeDeleted = false)
+        {
+            return _employeeDAL.FilterEmployees(name, roleName, includeDeleted);
+        }
+
         public List<DTO.Employee> GetEmployeeBy(string Name, string Role, string Gender, bool isDelete)
         {
             return _employeeDAL.GetEmployeeBy(Name, Role, Gender, isDelete);
@@ -37,6 +47,21 @@ namespace BLL
             return _employeeDAL.GetEmployeeById(id);
         }
 
+        public List<DTO.Employee> GetEmployeesByRole(string roleName)
+        {
+            return _employeeDAL.GetEmployeesByRole(roleName);
+        }
+
+        public List<DTO.Employee> GetAvailableEmployees(DateTime startTime, DateTime endTime)
+        {
+            return _employeeDAL.GetAvailableEmployees(startTime, endTime);
+        }
+
+        public int GetActiveEmployeeCount()
+        {
+              return _employeeDAL.GetActiveEmployeeCount();
+        }
+
         public bool DeleteSoftwareById(Guid employeeId)
         {
             return _employeeDAL.DeleteEmployeeById(employeeId);
@@ -45,6 +70,11 @@ namespace BLL
         public bool RestoreEmployeeById(Guid employeeId)
         {
             return _employeeDAL.RestoreEmployeeById(employeeId);
+        }
+
+        public Dictionary<string, int> GetEmployeeCountByRole()
+        {
+            return _employeeDAL.GetEmployeeCountByRole();
         }
     }
 }

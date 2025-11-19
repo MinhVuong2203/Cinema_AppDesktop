@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using UI.Resources;
 
@@ -34,6 +35,10 @@ namespace UI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.PanelTop = new ReaLTaiizor.Controls.ParrotGradientPanel();
+            this.lbDate = new System.Windows.Forms.Label();
+            this.lbTime = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMenu = new ReaLTaiizor.Controls.ParrotButton();
             this.PanelMain = new ReaLTaiizor.Controls.ParrotGradientPanel();
             this.pnMenuBottom = new System.Windows.Forms.FlowLayoutPanel();
@@ -50,10 +55,14 @@ namespace UI
             this.btnSanPham = new ReaLTaiizor.Controls.ParrotButton();
             this.btnThongKe = new ReaLTaiizor.Controls.ParrotButton();
             this.pnMenu = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.PanelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnMenuBottom.SuspendLayout();
             this.pnMenuTop.SuspendLayout();
             this.pnMenu.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelTop
@@ -61,6 +70,7 @@ namespace UI
             this.PanelTop.BottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
             this.PanelTop.BottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.PanelTop.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.PanelTop.Controls.Add(this.panel1);
             this.PanelTop.Controls.Add(this.btnMenu);
             this.PanelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelTop.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
@@ -69,13 +79,57 @@ namespace UI
             this.PanelTop.Name = "PanelTop";
             this.PanelTop.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.PanelTop.PrimerColor = System.Drawing.Color.White;
-            this.PanelTop.Size = new System.Drawing.Size(1315, 70);
+            this.PanelTop.Size = new System.Drawing.Size(1612, 70);
             this.PanelTop.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.PanelTop.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
             this.PanelTop.TabIndex = 0;
             this.PanelTop.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.PanelTop.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
             this.PanelTop.TopRight = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
+            // 
+            // lbDate
+            // 
+            this.lbDate.AutoSize = true;
+            this.lbDate.BackColor = System.Drawing.Color.Transparent;
+            this.lbDate.Font = new System.Drawing.Font("Monotype Corsiva", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDate.Location = new System.Drawing.Point(69, 42);
+            this.lbDate.Name = "lbDate";
+            this.lbDate.Size = new System.Drawing.Size(55, 21);
+            this.lbDate.TabIndex = 18;
+            this.lbDate.Text = "label1";
+            // 
+            // lbTime
+            // 
+            this.lbTime.AutoSize = true;
+            this.lbTime.BackColor = System.Drawing.Color.Transparent;
+            this.lbTime.Font = new System.Drawing.Font("Monotype Corsiva", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTime.Location = new System.Drawing.Point(68, 11);
+            this.lbTime.Name = "lbTime";
+            this.lbTime.Size = new System.Drawing.Size(55, 21);
+            this.lbTime.TabIndex = 17;
+            this.lbTime.Text = "label1";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::UI.Properties.Resources.imgCalender;
+            this.pictureBox2.Location = new System.Drawing.Point(21, 37);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(35, 32);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::UI.Properties.Resources.imgClock;
+            this.pictureBox1.Location = new System.Drawing.Point(11, -7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(56, 49);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
             // 
             // btnMenu
             // 
@@ -115,7 +169,7 @@ namespace UI
             this.PanelMain.Name = "PanelMain";
             this.PanelMain.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.PanelMain.PrimerColor = System.Drawing.Color.White;
-            this.PanelMain.Size = new System.Drawing.Size(1015, 847);
+            this.PanelMain.Size = new System.Drawing.Size(1312, 847);
             this.PanelMain.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.PanelMain.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
             this.PanelMain.TabIndex = 2;
@@ -458,11 +512,24 @@ namespace UI
             this.pnMenu.Size = new System.Drawing.Size(300, 847);
             this.pnMenu.TabIndex = 1;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.lbTime);
+            this.panel1.Controls.Add(this.lbDate);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(1386, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(226, 70);
+            this.panel1.TabIndex = 19;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1315, 917);
+            this.ClientSize = new System.Drawing.Size(1612, 917);
             this.Controls.Add(this.PanelMain);
             this.Controls.Add(this.pnMenu);
             this.Controls.Add(this.PanelTop);
@@ -471,13 +538,30 @@ namespace UI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.PanelTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnMenuBottom.ResumeLayout(false);
             this.pnMenuTop.ResumeLayout(false);
             this.pnMenu.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
+        private void StartClock()
+        {
+            // Khởi tạo Timer
+            timerClock = new System.Windows.Forms.Timer();
+            timerClock.Interval = 1000; // cập nhật mỗi 1 giây
+            // Gán sự kiện Tick
+            timerClock.Tick += (s, e) =>
+            {
+                this.lbTime.Text = DateTime.Now.ToString("HH:mm:ss");
+                this.lbDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            };
+            timerClock.Start(); // Bắt đầu chạy
+        }
         public void LoadControl(UserControl uc)
         {
             this.PanelMain.Controls.Clear();
@@ -504,5 +588,11 @@ namespace UI
         private ReaLTaiizor.Controls.ParrotButton btnBanVe;
         private ReaLTaiizor.Controls.ParrotButton btnThongKe;
         private ReaLTaiizor.Controls.ParrotButton btnSanPham;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private Label lbDate;
+        private Label lbTime;
+        private System.Windows.Forms.Timer timerClock;
+        private Panel panel1;
     }
 }

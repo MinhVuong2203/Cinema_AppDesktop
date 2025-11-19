@@ -35,7 +35,7 @@ namespace UI
             LanguageHelper.ChangeLanguage(employee.Setting.LanguageCode);
             InitializeComponent();
             InitializeSidebarAnimation();
-
+            StartClock();
         }
 
         private void InitializeSidebarAnimation()
