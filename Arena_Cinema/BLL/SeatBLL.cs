@@ -255,8 +255,17 @@ namespace BLL
                 // Di chuyển ghế đang kéo đến vị trí mới
                 movingSeat.pX = newPX;
                 movingSeat.pY = newPY;
+                bool success = _seatDAL.UpdateSeat(movingSeat);
 
-                return _seatDAL.UpdateSeat(movingSeat);
+                // ✅ RELOAD LẠI TÊN TỪ DATABASE (sau khi trigger đã chạy)
+                if (success)
+                {
+                    // Reload các ghế đã thay đổi để lấy tên mới từ trigger
+                    var updatedSeats = new List<int> { seatId };
+                    updatedSeats.AddRange(occupiedSeats.Select(s => s.SeatID));
+                }
+
+                return success;
             }
             catch (Exception ex)
             {

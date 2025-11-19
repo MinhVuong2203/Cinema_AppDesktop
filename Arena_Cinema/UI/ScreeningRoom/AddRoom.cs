@@ -142,8 +142,10 @@ namespace UI.ScreeningRoom
             else
                 result = _roomBLL.UpdateRoom(_room);
 
-            MessageBox.Show(result, "Thông báo", MessageBoxButtons.OK,
-                result.Contains("thành công") ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+            if (!result.Contains("thành công"))
+            {
+                MessageBox.Show(result, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             if (result.Contains("thành công") && isNewRoom && _room.RoomID > 0)
             {
@@ -152,7 +154,7 @@ namespace UI.ScreeningRoom
                 try
                 {
                     await Task.Run(() => seatBLL.CreateDefaultSeats(_room.RoomID, seatCount));
-                    MessageBox.Show("Đã tạo tự động 250 ghế cho phòng!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Đã tạo ghế cho phòng!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {

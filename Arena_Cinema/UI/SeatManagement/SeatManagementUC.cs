@@ -20,12 +20,12 @@ namespace UI.SeatManagement
         private Point _dragOffset;
 
         private const int CELL_SIZE = 58;
-        private const int OFFSET_Y = 80; // Giảm xuống để giao diện gần đầu hơn
+        private const int OFFSET_Y = 80; 
         private const int OFFSET_X = 60;
         private const int SNAP_GRID = 58;
 
-        private const int MAX_COLS = 17; // Cố định 17 cột
-        private int _maxRows = 20; // Sẽ được tính lại từ dữ liệu
+        private const int MAX_COLS = 17; 
+        private int _maxRows = 20;
 
         public SeatManagementUC(Home home, int roomId)
         {
@@ -34,7 +34,7 @@ namespace UI.SeatManagement
             InitializeComponent();
 
             pnlCanvas.AutoScroll = true;
-            pnlCanvas.AutoScrollPosition = new Point(0, 0); // Reset scroll về đầu
+            pnlCanvas.AutoScrollPosition = new Point(0, 0); // Reset về đầu trang
             pnlCanvas.MouseWheel += (s, e) => { ((HandledMouseEventArgs)e).Handled = true; };
 
             LoadSeatMap();
@@ -42,11 +42,10 @@ namespace UI.SeatManagement
 
         private void DrawGridLabels()
         {
-            // Xóa labels cũ
             var oldLabels = pnlCanvas.Controls.OfType<Label>().ToList();
             foreach (var lbl in oldLabels) pnlCanvas.Controls.Remove(lbl);
 
-            // === VẼ CỘT CHỮ CÁI (A, B, C...) - CHỈ VẼ ĐỦ SỐ HÀNG THỰC TẾ ===
+            // Cột tên hàng (A, B, C...)
             for (int row = 0; row < _maxRows; row++)
             {
                 var lblRow = new Label
@@ -68,7 +67,7 @@ namespace UI.SeatManagement
             _seats = _seatBLL.GetSeatsByRoomId(_roomId);
             lblTitle.Text = $"SƠ ĐỒ GHẾ - PHÒNG {_roomId}";
 
-            // Tính số hàng thực tế từ dữ liệu
+            // tính sồ hàng tối đa của phòng
             if (_seats.Any())
             {
                 _maxRows = _seats.Max(s => s.pY) + 1;
@@ -78,17 +77,11 @@ namespace UI.SeatManagement
                 _maxRows = 1;
             }
 
-            // Reset scroll về (0,0) trước khi vẽ
             pnlCanvas.AutoScrollPosition = new Point(0, 0);
 
-            // Vẽ lại labels với số hàng đúng
+            pnlCanvas.Controls.Clear();
             DrawGridLabels();
-
-            // Xóa các button ghế cũ
-            var oldButtons = pnlCanvas.Controls.OfType<Button>().ToList();
-            foreach (var b in oldButtons) pnlCanvas.Controls.Remove(b);
-
-            // Tạo button ghế mới
+            // Tạo button
             foreach (var seat in _seats)
             {
                 var btn = CreateSeatButton(seat);
@@ -96,7 +89,7 @@ namespace UI.SeatManagement
                 btn.BringToFront();
             }
 
-            // Set kích thước canvas để chỉ hiển thị vùng cần thiết
+            // Set kích thước thực của panel ghế
             pnlCanvas.AutoScrollMinSize = new Size(
                 MAX_COLS * SNAP_GRID + OFFSET_X + 60,
                 _maxRows * SNAP_GRID + OFFSET_Y + 60
@@ -137,7 +130,7 @@ namespace UI.SeatManagement
                     break;
             }
 
-            // Kéo thả ghế
+            // Di chuyển ghế
             btn.MouseDown += (s, e) =>
             {
                 if (e.Button == MouseButtons.Left)
@@ -257,17 +250,24 @@ namespace UI.SeatManagement
 
                             if (saved)
                             {
-                                string colName = (newPX + 1).ToString();
-                                string rowName = ((char)('A' + newPY)).ToString();
-
-                                MessageBox.Show(
-                                    $"✓ Đã lưu vị trí ghế {currentSeat.SeatName}\n" +
-                                    $"Vị trí mới: [{rowName}{colName}] → ({newPX}, {newPY})",
-                                    "Thành công",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
-
+                                // ✅ RELOAD LẠI DỮ LIỆU ĐỂ LẤY TÊN MỚI TỪ TRIGGER
+                                _seats = _seatBLL.GetSeatsByRoomId(_roomId);
                                 LoadSeatMap();
+                                var updatedSeat = _seatBLL.GetSeatByIdIncludeDeleted(currentSeat.SeatID);
+                                if (updatedSeat != null)
+                                {
+                                    string colName = (newPX + 1).ToString();
+                                    string rowName = ((char)('A' + newPY)).ToString();
+
+                                    MessageBox.Show(
+                                        $"✓ Đã lưu vị trí ghế\n" +
+                                        $"Tên mới: {updatedSeat.SeatName}\n" +
+                                        $"Vị trí: [{rowName}{colName}] → ({newPX}, {newPY})",
+                                        "Thành công",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Information);
+                                }
+                                
                             }
                             else
                             {
@@ -277,6 +277,8 @@ namespace UI.SeatManagement
                             }
                         }
                     }
+
+
                     else
                     {
                         // Snap lại vị trí nếu không di chuyển
@@ -292,6 +294,8 @@ namespace UI.SeatManagement
 
             return btn;
         }
+
+
 
         private void btnBack_Click(object sender, EventArgs e)
         {
