@@ -1,182 +1,134 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
-using PayOS;
-using PayOS.Models.V2.PaymentRequests;
-using PayOS.Models.Webhooks;
-//using Net.PayOS;
+using System.Security.Cryptography;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace UI.PayOSMethod.Services
 {
     public class PaymentService
     {
-        private readonly PayOSClient _client;
+        private readonly string _clientId = "fbfb511c-099a-4a58-b147-9149e5554475";
+        private readonly string _apiKey = "0436f5b4-f241-4862-8df9-53f80d89d826";
+        private readonly string _checksumKey = "3771898fb26288d7d994ea962f229c3ce279580006278858d244047697b9a9cf";
+        private readonly HttpClient _httpClient;
 
         public PaymentService()
         {
-            // Khởi tạo PayOSClient với ClientId và ApiKey từ cấu hình
-            _client = new PayOSClient(new PayOSOptions
+            _httpClient = new HttpClient
             {
-                ClientId = Config.PayOSConfig.ClientId,
-                ApiKey = Config.PayOSConfig.ApiKey,
-                ChecksumKey = Config.PayOSConfig.ChecksumKey
-            });
+                BaseAddress = new Uri("https://api-merchant.payos.vn")
+            };
+            _httpClient.DefaultRequestHeaders.Add("x-client-id", _clientId);
+            _httpClient.DefaultRequestHeaders.Add("x-api-key", _apiKey);
         }
 
-        // Tạo payment link (giữ nguyên, nhưng thêm error handling)
         public async Task<string> CreatePaymentLinkAsync(int orderCode, int amount, string description, string returnUrl, string cancelUrl)
         {
             try
             {
-                var request = new CreatePaymentLinkRequest
+                // Format theo đúng PayOS V2 API documentation
+                var payloadDict = new Dictionary<string, object>
                 {
-                    OrderCode = orderCode,
-                    Amount = amount,  // Đơn vị VND
-                    Description = description,
-                    ReturnUrl = returnUrl,
-                    CancelUrl = cancelUrl
+                    { "orderCode", orderCode },
+                    { "amount", amount },
+                    { "description", description ?? "Thanh toan" },
+                    { "returnUrl", returnUrl ?? "https://example.com/success" },
+                    { "cancelUrl", cancelUrl ?? "https://example.com/cancel" }
                 };
 
-                var response = await _client.PaymentRequests.CreateAsync(request);
-                if (response != null && !string.IsNullOrEmpty(response.CheckoutUrl))
+                var jsonContent = Newtonsoft.Json.JsonConvert.SerializeObject(payloadDict);
+
+                Console.WriteLine($"=== PayOS Request ===");
+                Console.WriteLine($"Payload: {jsonContent}");
+
+                var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+                // Tạo signature từ sorted payload
+                var signature = GenerateSignature(payloadDict);
+                content.Headers.Add("x-signature", signature);
+
+                Console.WriteLine($"Signature: {signature}");
+
+                var response = await _httpClient.PostAsync("/v2/payment-requests", content);
+                var responseBody = await response.Content.ReadAsStringAsync();
+
+                Console.WriteLine($"Status: {response.StatusCode}");
+                Console.WriteLine($"Response: {responseBody}");
+
+                if (!response.IsSuccessStatusCode)
                 {
-                    return response.CheckoutUrl;
+                    throw new Exception($"HTTP {response.StatusCode}: {responseBody}");
                 }
-                else
+
+                var jsonResponse = JObject.Parse(responseBody);
+                var code = jsonResponse["code"]?.ToString();
+
+                if (code == "00")
                 {
-                    throw new Exception("Không tạo được payment link: Unknown error");
+                    var checkoutUrl = jsonResponse["data"]?["checkoutUrl"]?.ToString();
+                    if (!string.IsNullOrEmpty(checkoutUrl))
+                    {
+                        Console.WriteLine($"✅ Success: {checkoutUrl}");
+                        return checkoutUrl;
+                    }
                 }
+
+                var errorDesc = jsonResponse["desc"]?.ToString() ?? "Unknown error";
+                throw new Exception($"PayOS error (code {code}): {errorDesc}\nResponse: {responseBody}");
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi tạo payment: " + ex.Message);
+                Console.WriteLine($"❌ Error: {ex.Message}");
+                throw;
             }
         }
 
-        // Query trạng thái payment (cho polling trong WinForms)
+        private string GenerateSignature(Dictionary<string, object> data)
+        {
+            // Sort keys alphabetically và tạo string
+            var sortedKeys = new List<string>(data.Keys);
+            sortedKeys.Sort();
+
+            var signatureData = new StringBuilder();
+            foreach (var key in sortedKeys)
+            {
+                if (data[key] != null)
+                {
+                    signatureData.Append($"{key}={data[key]}&");
+                }
+            }
+
+            // Remove trailing &
+            var dataToSign = signatureData.ToString().TrimEnd('&');
+
+            Console.WriteLine($"Data to sign: {dataToSign}");
+
+            using (var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(_checksumKey)))
+            {
+                var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(dataToSign));
+                return BitConverter.ToString(hash).Replace("-", "").ToLower();
+            }
+        }
+
         public async Task<string> GetPaymentStatusAsync(int orderCode)
         {
             try
             {
-                var response = await _client.PaymentRequests.GetAsync(orderCode);
-                // Convert nullable PaymentLinkStatus to string, fallback to "UNKNOWN" if null
-                return response?.Status != null ? response.Status.ToString().ToUpper() : "UNKNOWN";  // Ví dụ: "PAID", "PENDING", "CANCELLED"
+                var response = await _httpClient.GetAsync($"/v2/payment-requests/{orderCode}");
+                var responseBody = await response.Content.ReadAsStringAsync();
+
+                if (!response.IsSuccessStatusCode) return "ERROR";
+
+                var jsonResponse = JObject.Parse(responseBody);
+                return jsonResponse["data"]?["status"]?.ToString()?.ToUpper() ?? "UNKNOWN";
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception("Lỗi query status: " + ex.Message);
+                return "ERROR";
             }
         }
-
-        //public class Item
-        //{
-        //    public string Name { get; set; }
-        //    public int Quantity { get; set; }
-        //    public int Price { get; set; }
-        //}
-
-        //// Sửa lại tên phương thức cho đúng với SDK
-        //public async Task<object> CreatePaymentLink(
-        //    long orderCode,
-        //    int amount,
-        //    string description,
-        //    string buyerName = "",
-        //    string buyerEmail = "",
-        //    string buyerPhone = "",
-        //    string returnUrl = "https://your-domain.com/success",
-        //    string cancelUrl = "https://your-domain.com/cancel")
-        //{
-        //    try
-        //    {
-        //        var paymentRequest = new
-        //        {
-        //            orderCode,
-        //            amount,
-        //            description,
-        //            buyerName,
-        //            buyerEmail,
-        //            buyerPhone,
-        //            returnUrl,
-        //            cancelUrl,
-        //            items = new List<Item>
-        //            {
-        //                new Item
-        //                {
-        //                    Name = $"Đơn hàng #{orderCode}",
-        //                    Quantity = 1,
-        //                    Price = amount
-        //                }
-        //            }
-        //        };
-
-        //        // Sử dụng phương thức đúng của SDK, ví dụ: CreatePaymentLinkAsync
-        //        var result = await _payOS.CreatePaymentLinkAsync(paymentRequest);
-        //        return result;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception($"Lỗi tạo link thanh toán: {ex.Message}", ex);
-        //    }
-        //}
-
-        //public async Task<object> GetPaymentInfo(long orderCode)
-        //{
-        //    try
-        //    {
-        //        // Sử dụng phương thức đúng của SDK, ví dụ: GetPaymentLinkInfoAsync
-        //        var paymentInfo = await _payOS.GetPaymentLinkInfoAsync(orderCode);
-        //        return paymentInfo;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception($"Lỗi kiểm tra trạng thái: {ex.Message}", ex);
-        //    }
-        //}
-
-        //public async Task<object> CancelPaymentLink(long orderCode, string reason = "Khách hàng yêu cầu hủy")
-        //{
-        //    try
-        //    {
-        //        // Sử dụng phương thức đúng của SDK, ví dụ: CancelPaymentLinkAsync
-        //        var result = await _payOS.CancelPaymentLinkAsync(orderCode, reason);
-        //        return result;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception($"Lỗi hủy thanh toán: {ex.Message}", ex);
-        //    }
-        //}
-
-        //public object VerifyWebhookData(string webhookDataJson)
-        //{
-        //    try
-        //    {
-        //        // Sử dụng phương thức đúng của SDK, ví dụ: VerifyWebhookAsync
-        //        var webhookData = _payOS.VerifyWebhookAsync(webhookDataJson);
-        //        return webhookData;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception($"Lỗi xác thực webhook: {ex.Message}", ex);
-        //    }
-        //}
-
-        //public string GetPaymentStatusText(string status)
-        //{
-        //    switch (status?.ToUpper())
-        //    {
-        //        case "PENDING":
-        //            return "Chờ thanh toán";
-        //        case "PAID":
-        //        case "PROCESSING":
-        //            return "Đã thanh toán";
-        //        case "CANCELLED":
-        //            return "Đã hủy";
-        //        case "EXPIRED":
-        //            return "Đã hết hạn";
-        //        default:
-        //            return status ?? "Không xác định";
-        //    }
-        //}
     }
 }

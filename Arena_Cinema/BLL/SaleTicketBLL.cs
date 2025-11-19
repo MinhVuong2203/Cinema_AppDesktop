@@ -7,7 +7,7 @@ using DAL;
 
 namespace BLL
 {
-    internal class SaleTicketBLL
+    public class SaleTicketBLL
     {
         private readonly SaleTicketDAL saleTicketDAL;
         public SaleTicketBLL()
@@ -63,6 +63,11 @@ namespace BLL
         public List<Seat> GetSeatsByRoomID(int roomID)
         {
             return saleTicketDAL.GetSeatsByRoomID(roomID);
+        }
+
+        public Guid CreateInvoice(Invoice invoice, List<Guid> ticketIds, Dictionary<int, int> productQuantities)
+        {
+            return saleTicketDAL.CreateInvoice(invoice, ticketIds, productQuantities);
         }
     }
 }

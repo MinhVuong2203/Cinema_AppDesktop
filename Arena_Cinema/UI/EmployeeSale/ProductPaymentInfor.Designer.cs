@@ -21,7 +21,7 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelButtons = new System.Windows.Forms.Panel();
             this.btnBack = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnPrint = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnPay = new ReaLTaiizor.Controls.ParrotButton();
             this.panelContent = new System.Windows.Forms.Panel();
             this.panelSummary = new System.Windows.Forms.Panel();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -39,6 +39,9 @@
             this.lblEmployee = new System.Windows.Forms.Label();
             this.lblInvoiceDate = new System.Windows.Forms.Label();
             this.lblInvoiceTitle = new System.Windows.Forms.Label();
+            this.lblCustomerName = new System.Windows.Forms.Label();
+            this.lblCustomerPhone = new System.Windows.Forms.Label();
+            this.lblCustomerEmail = new System.Windows.Forms.Label();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.picSuccess = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -69,7 +72,7 @@
             // panelButtons
             // 
             this.panelButtons.Controls.Add(this.btnBack);
-            this.panelButtons.Controls.Add(this.btnPrint);
+            this.panelButtons.Controls.Add(this.btnPay);
             this.panelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelButtons.Location = new System.Drawing.Point(30, 800);
             this.panelButtons.Name = "panelButtons";
@@ -79,7 +82,7 @@
             // btnBack
             // 
             this.btnBack.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(231)))), ((int)(((byte)(235)))));
-            this.btnBack.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnBack.ButtonImage")));
+            this.btnBack.ButtonImage = global::UI.Properties.Resources.chevrons;
             this.btnBack.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
             this.btnBack.ButtonText = "Quay lại";
             this.btnBack.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(213)))), ((int)(((byte)(219)))));
@@ -91,7 +94,7 @@
             this.btnBack.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(213)))), ((int)(((byte)(219)))));
             this.btnBack.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnBack.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnBack.Location = new System.Drawing.Point(1570, 10);
+            this.btnBack.Location = new System.Drawing.Point(1412, 10);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(150, 50);
             this.btnBack.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -100,29 +103,30 @@
             this.btnBack.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnBack.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             // 
-            // btnPrint
+            // btnPay
             // 
-            this.btnPrint.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
-            this.btnPrint.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.ButtonImage")));
-            this.btnPrint.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnPrint.ButtonText = "In hóa đơn";
-            this.btnPrint.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.btnPrint.ClickTextColor = System.Drawing.Color.White;
-            this.btnPrint.CornerRadius = 8;
-            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnPrint.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPrint.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
-            this.btnPrint.HoverTextColor = System.Drawing.Color.White;
-            this.btnPrint.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnPrint.Location = new System.Drawing.Point(1400, 10);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(150, 50);
-            this.btnPrint.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnPrint.TabIndex = 0;
-            this.btnPrint.TextColor = System.Drawing.Color.White;
-            this.btnPrint.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnPrint.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPay.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
+            this.btnPay.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnPay.ButtonImage")));
+            this.btnPay.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnPay.ButtonText = "Xác nhận thanh toán";
+            this.btnPay.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.btnPay.ClickTextColor = System.Drawing.Color.White;
+            this.btnPay.CornerRadius = 8;
+            this.btnPay.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnPay.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPay.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.btnPay.HoverTextColor = System.Drawing.Color.White;
+            this.btnPay.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnPay.Location = new System.Drawing.Point(1154, 10);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(203, 50);
+            this.btnPay.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnPay.TabIndex = 0;
+            this.btnPay.TextColor = System.Drawing.Color.White;
+            this.btnPay.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnPay.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // panelContent
             // 
@@ -155,7 +159,7 @@
             // 
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.lblTotal.Location = new System.Drawing.Point(1200, 110);
+            this.lblTotal.Location = new System.Drawing.Point(1078, 110);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(450, 40);
             this.lblTotal.TabIndex = 2;
@@ -166,7 +170,7 @@
             // 
             this.lblDiscount.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lblDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
-            this.lblDiscount.Location = new System.Drawing.Point(1200, 60);
+            this.lblDiscount.Location = new System.Drawing.Point(1072, 63);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(450, 30);
             this.lblDiscount.TabIndex = 1;
@@ -177,7 +181,7 @@
             // 
             this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.lblSubtotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
-            this.lblSubtotal.Location = new System.Drawing.Point(1200, 20);
+            this.lblSubtotal.Location = new System.Drawing.Point(1072, 20);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(450, 30);
             this.lblSubtotal.TabIndex = 0;
@@ -268,6 +272,9 @@
             this.panelInvoiceInfo.Controls.Add(this.lblEmployee);
             this.panelInvoiceInfo.Controls.Add(this.lblInvoiceDate);
             this.panelInvoiceInfo.Controls.Add(this.lblInvoiceTitle);
+            this.panelInvoiceInfo.Controls.Add(this.lblCustomerName);
+            this.panelInvoiceInfo.Controls.Add(this.lblCustomerPhone);
+            this.panelInvoiceInfo.Controls.Add(this.lblCustomerEmail);
             this.panelInvoiceInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelInvoiceInfo.Location = new System.Drawing.Point(30, 30);
             this.panelInvoiceInfo.Name = "panelInvoiceInfo";
@@ -319,6 +326,39 @@
             this.lblInvoiceTitle.Size = new System.Drawing.Size(271, 32);
             this.lblInvoiceTitle.TabIndex = 0;
             this.lblInvoiceTitle.Text = "Mã hóa đơn: HD00001";
+            // 
+            // lblCustomerName
+            // 
+            this.lblCustomerName.AutoSize = true;
+            this.lblCustomerName.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.lblCustomerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.lblCustomerName.Location = new System.Drawing.Point(400, 15);
+            this.lblCustomerName.Name = "lblCustomerName";
+            this.lblCustomerName.Size = new System.Drawing.Size(177, 25);
+            this.lblCustomerName.TabIndex = 4;
+            this.lblCustomerName.Text = "Tên khách hàng: ---";
+            // 
+            // lblCustomerPhone
+            // 
+            this.lblCustomerPhone.AutoSize = true;
+            this.lblCustomerPhone.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.lblCustomerPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.lblCustomerPhone.Location = new System.Drawing.Point(400, 55);
+            this.lblCustomerPhone.Name = "lblCustomerPhone";
+            this.lblCustomerPhone.Size = new System.Drawing.Size(78, 25);
+            this.lblCustomerPhone.TabIndex = 5;
+            this.lblCustomerPhone.Text = "SĐT: ---";
+            // 
+            // lblCustomerEmail
+            // 
+            this.lblCustomerEmail.AutoSize = true;
+            this.lblCustomerEmail.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.lblCustomerEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.lblCustomerEmail.Location = new System.Drawing.Point(400, 85);
+            this.lblCustomerEmail.Name = "lblCustomerEmail";
+            this.lblCustomerEmail.Size = new System.Drawing.Size(91, 25);
+            this.lblCustomerEmail.TabIndex = 6;
+            this.lblCustomerEmail.Text = "Email: ---";
             // 
             // panelHeader
             // 
@@ -398,7 +438,10 @@
         private System.Windows.Forms.Label lblDiscount;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Panel panelButtons;
-        private ReaLTaiizor.Controls.ParrotButton btnPrint;
+        private ReaLTaiizor.Controls.ParrotButton btnPay;
         private ReaLTaiizor.Controls.ParrotButton btnBack;
+        private System.Windows.Forms.Label lblCustomerName;
+        private System.Windows.Forms.Label lblCustomerPhone;
+        private System.Windows.Forms.Label lblCustomerEmail;
     }
 }
