@@ -148,19 +148,19 @@ namespace BLL
         // Tìm kiếm và lọc phim với phân trang sử dụng stored procedure
         // FIXED: Đổi thứ tự tham số để khớp với MovieDAL
         public List<Movie> SearchMoviesWithPagingSP(
-            string searchText,
-            string filterStatus,
-            string genre,
-            string ageLimit,
-            int pageNumber,
-            int pageSize,
-            out int totalPages)
+    string searchText,
+    string filterStatus,
+    string genre,
+    string ageLimit,
+    int pageNumber,
+    int pageSize,
+    out int totalPages)
         {
             try
             {
                 int totalRecords;
 
-                // FIXED: Gọi stored procedure với thứ tự tham số đúng
+                // Gọi stored procedure
                 var movies = movieDAL.GetMoviesPaginatedWithSP(
                     pageNumber: pageNumber,
                     pageSize: pageSize,
@@ -172,7 +172,24 @@ namespace BLL
                     isDeleted: false
                 );
 
-                // Lọc thêm theo trạng thái chiếu (xử lý ở BLL vì logic phức tạp)
+                // ✅ LỌC LẠI CLIENT-SIDE nếu genre được chọn
+                // Vì DB lưu "Tình Cảm, Hài" nhưng user chọn "Hài"
+                //if (!string.IsNullOrWhiteSpace(genre) && genre != "Tất cả")
+                //{
+                //    movies = movies.Where(m =>
+                //    {
+                //        if (string.IsNullOrWhiteSpace(m.Genre))
+                //            return false;
+
+                //        string[] movieGenres = m.Genre.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
+                //                                      .Select(g => g.Trim())
+                //                                      .ToArray();
+
+                //        return movieGenres.Any(g => g.Equals(genre, StringComparison.OrdinalIgnoreCase));
+                //    }).ToList();
+                //}
+
+                // Lọc theo trạng thái
                 if (filterStatus != "Tất cả phim" && movies.Count > 0)
                 {
                     DateTime today = DateTime.Today;
@@ -182,10 +199,6 @@ namespace BLL
                         string status = GetMovieStatus(m);
                         return status == filterStatus;
                     }).ToList();
-
-                    // Sau khi lọc theo status, cần tính lại tổng số trang
-                    // Nhưng vì đã phân trang trước nên kết quả có thể không chính xác 100%
-                    // Đây là trade-off khi không muốn tạo thêm stored procedure
                 }
 
                 return movies;

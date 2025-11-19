@@ -181,7 +181,10 @@ BEGIN
         FROM Movie
         WHERE IsDeleted = @IsDeleted
             AND (@SearchKeyword IS NULL OR @SearchKeyword = '' OR Title LIKE N'%' + @SearchKeyword + '%')
-            AND (@Genre IS NULL OR @Genre = '' OR @Genre = N'Tất cả' OR Genre = @Genre)
+            -- ✅ THAY ĐỔI: Dùng LIKE để tìm thể loại chứa chuỗi con
+            AND (@Genre IS NULL OR @Genre = '' OR @Genre = N'Tất cả' 
+                 OR Genre LIKE N'%' + @Genre + '%'  -- Tìm thể loại có chứa giá trị đã chọn
+                 OR N',' + REPLACE(Genre, ' ', '') + ',' LIKE N'%,' + REPLACE(@Genre, ' ', '') + ',%') -- Tìm chính xác trong danh sách
             AND (@AgeLimit IS NULL OR @AgeLimit = '' OR @AgeLimit = N'Tất cả' OR AgeLimit = @AgeLimit)
             AND (@MovieType IS NULL OR @MovieType = '' OR MovieType = @MovieType)
             AND (@Language IS NULL OR @Language = '' OR Language = @Language)
@@ -208,7 +211,6 @@ BEGIN
         m.LinkTrailer,
         m.IsDeleted,
         tc.Total AS TotalRecords,
-        -- FIX: Đổi CEILING thành CAST INT
         CAST(CEILING(CAST(tc.Total AS FLOAT) / @PageSize) AS INT) AS TotalPages,
         @PageNumber AS CurrentPage
     FROM FilteredMovies m
@@ -224,7 +226,7 @@ BEGIN
         CASE WHEN @SortBy = 'EndTime' AND @SortOrder = 'DESC' THEN m.EndTime END DESC,
         CASE WHEN @SortBy = 'DurationMinutes' AND @SortOrder = 'ASC' THEN m.DurationMinutes END ASC,
         CASE WHEN @SortBy = 'DurationMinutes' AND @SortOrder = 'DESC' THEN m.DurationMinutes END DESC,
-        m.MovieID DESC -- Default fallback
+        m.MovieID DESC
     OFFSET @Offset ROWS
     FETCH NEXT @PageSize ROWS ONLY;
 END;

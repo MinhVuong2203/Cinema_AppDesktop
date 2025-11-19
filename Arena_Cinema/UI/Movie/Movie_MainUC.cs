@@ -90,16 +90,73 @@ namespace UI.Movie
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            try
+            {
+             
+                txtSearch.Text = "";
 
+                if (cboFilter.Items.Count > 0)
+                    cboFilter.SelectedIndex = 0; // "Tất cả phim"
+
+                if (cboGenre.Items.Count > 0)
+                    cboGenre.SelectedIndex = 0; // "Tất cả"
+
+                if (cboAgeLimit.Items.Count > 0)
+                    cboAgeLimit.SelectedIndex = 0; // "Tất cả"
+
+                currentPage = 1;
+
+                LoadMovies();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi reset bộ lọc: {ex.Message}", "✗ Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void LoadGenres()
         {
             try
             {
                 cboGenre.Items.Clear();
-                var genres = movieBLL.GetGenresFromDB();
 
-                // GetGenresFromDB đã có "Tất cả" ở đầu rồi
-                foreach (var genre in genres)
+                // Lấy danh sách thể loại từ BLL (trả về list có thể chứa giá trị ghép)
+                var genresFromDB = movieBLL.GetGenresFromDB();
+
+                // Tạo HashSet để tự động loại bỏ duplicate
+                HashSet<string> uniqueGenres = new HashSet<string>();
+
+                foreach (var genreString in genresFromDB)
+                {
+                    // Bỏ qua "Tất cả" (sẽ thêm sau)
+                    if (genreString == "Tất cả")
+                        continue;
+
+                    // Tách chuỗi theo dấu phẩy
+                    if (!string.IsNullOrWhiteSpace(genreString))
+                    {
+                        string[] genres = genreString.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
+
+                        foreach (var genre in genres)
+                        {
+                            string trimmedGenre = genre.Trim();
+                            if (!string.IsNullOrWhiteSpace(trimmedGenre))
+                            {
+                                uniqueGenres.Add(trimmedGenre);
+                            }
+                        }
+                    }
+                }
+
+                // Thêm "Tất cả" đầu tiên
+                cboGenre.Items.Add("Tất cả");
+
+                // Sắp xếp và thêm các thể loại vào ComboBox
+                var sortedGenres = uniqueGenres.OrderBy(g => g).ToList();
+                foreach (var genre in sortedGenres)
                 {
                     cboGenre.Items.Add(genre);
                 }
@@ -113,6 +170,21 @@ namespace UI.Movie
                 cboGenre.Items.Add("Tất cả");
                 cboGenre.SelectedIndex = 0;
             }
+        }
+        private bool MovieMatchesGenre(DTO.Movie movie, string selectedGenre)
+        {
+            if (string.IsNullOrWhiteSpace(selectedGenre) || selectedGenre == "Tất cả")
+                return true;
+
+            if (string.IsNullOrWhiteSpace(movie.Genre))
+                return false;
+
+            // Tách thể loại của phim và kiểm tra xem có chứa thể loại được chọn không
+            string[] movieGenres = movie.Genre.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
+                                              .Select(g => g.Trim())
+                                              .ToArray();
+
+            return movieGenres.Any(g => g.Equals(selectedGenre, StringComparison.OrdinalIgnoreCase));
         }
 
         private void LoadAgeLimits()
@@ -921,6 +993,12 @@ namespace UI.Movie
         private void movieCardTemplate_MouseLeave(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            LoadMovies();
         }
     }
 }
