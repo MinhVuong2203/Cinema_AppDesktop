@@ -424,5 +424,66 @@ namespace UI.EmployeeSale
                 }
             }
         }
+
+        // Lấy hoặc tạo khách hàng mặc định
+        private DTO.Customer GetCustomerByPhone(string phone)
+        {
+            try
+            {
+                using (var context = new CinemaDBContext())
+                {
+                    // Tìm khách hàng theo số điện thoại
+                    var customer = context.Customers
+                        .FirstOrDefault(c => c.Phone == phone && !c.IsDeleted);
+                    //nếu không có mở cửa sổ tạo khách hàng mới và txt_phone không được trống
+                    if (customer == null && !string.IsNullOrWhiteSpace(phone))
+                    {
+                        CreatCustomer creatCustomer = new CreatCustomer(phone);
+                        var result = creatCustomer.ShowDialog();
+                        if (result == DialogResult.OK)
+                        {
+                            // Lấy khách hàng mới tạo
+                            var customernew = context.Customers
+                                    .FirstOrDefault(c => c.Phone == phone && !c.IsDeleted);
+                            return customernew;
+                        }
+                        else
+                        {
+                            return null; // Người dùng hủy tạo khách hàng
+                        }
+                    }
+
+                    return customer;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi lấy khách hàng: {ex.Message}");
+            }
+        }
+
+        private void btnCheckCustomer_Click(object sender, EventArgs e)
+        {
+            var phone = txt_Phone.Text.Trim();
+            if (string.IsNullOrEmpty(phone))
+            {
+                MessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var customer = GetCustomerByPhone(phone);
+            if (customer != null)
+            {
+                lbCustomerName.Text = $"Tên khách hàng: {customer.FullName}";
+                lbCustomerPhone.Text = $"SĐT: {customer.Phone}";
+                //lbCustomerEmail.Text = $"Email: {customer.Email}";
+            }
+            else
+            {
+                lbCustomerName.Text = "Tên khách hàng: ---";
+                lbCustomerPhone.Text = "SĐT: ---";
+                //lbCustomerEmail.Text = "Email: ---";
+                MessageBox.Show("Không tìm thấy khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
