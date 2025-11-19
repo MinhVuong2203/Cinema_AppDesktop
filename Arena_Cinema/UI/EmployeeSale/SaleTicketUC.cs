@@ -347,10 +347,12 @@ namespace UI.EmployeeSale
                 int qty = _selectedProductQuantities[productId];
                 totalProducts += (product?.Price ?? 0) * qty;
             }
+            var customer = GetCustomerByPhone(txt_Phone.Text.Trim());
 
             var invoice = new DTO.Invoice
             {
                 EmployeeID = _employee?.EmployeeID,
+                CustomerID = customer?.CustomerID,
                 TotalAmount = totalTickets + totalProducts,
                 Status = "Chờ thanh toán",
                 IsDeleted = false
