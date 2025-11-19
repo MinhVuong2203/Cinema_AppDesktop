@@ -365,5 +365,40 @@ namespace UI.EmployeeSale
                 );
             }
         }
+
+        private void parrotbtn_payCash_Click(object sender, EventArgs e)
+        {
+            // Lấy hóa đơn
+            var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID && !i.IsDeleted);
+            if (invoice == null)
+            {
+                MessageBox.Show("Không tìm thấy hóa đơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (invoice.Status == "Đã thanh toán")
+            {
+                MessageBox.Show("Hóa đơn đã được thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Cập nhật trạng thái hóa đơn
+            invoice.Status = "Đã thanh toán";
+
+
+            // Lưu thay đổi
+            _context.SaveChanges();
+
+            // Hiển thị giao diện/thông báo thành công
+            MessageBox.Show("Thanh toán thành công!\nTrạng thái hóa đơn đã được cập nhật.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Reload lại thông tin hóa đơn để cập nhật trạng thái trên UI
+            //LoadInvoiceInfo();
+            // Quay lại trang SaleHome
+            if (_home != null && _employee != null)
+            {
+                _home.LoadControl(new SaleHomeUC(_home, _employee));
+            }
+        }
     }
 }
