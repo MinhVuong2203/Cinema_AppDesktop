@@ -201,6 +201,7 @@
             this.parrotButton3.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.parrotButton3.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.parrotButton3.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.parrotButton3.Click += new System.EventHandler(this.parrotButton3_Click);
             // 
             // label5
             // 

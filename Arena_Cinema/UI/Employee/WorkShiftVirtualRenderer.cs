@@ -412,7 +412,7 @@ namespace UI.Employee
                 ws.StartTime >= start &&
                 ws.StartTime < end);
 
-            if (date.Date <= DateTime.Today)
+            if (shift == null && date.Date <= DateTime.Today)
                 return;
 
             if (CellClicked != null)

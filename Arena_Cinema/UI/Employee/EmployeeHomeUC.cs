@@ -37,5 +37,10 @@ namespace UI.Employee
         {
             this._home.LoadControl(new WorkShiftUC(_home, this._employee));
         }
+
+        private void parrotButton3_Click(object sender, EventArgs e)
+        {
+            this._home.LoadControl(new SalaryReportUC());
+        }
     }
 }
