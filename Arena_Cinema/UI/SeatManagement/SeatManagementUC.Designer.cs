@@ -35,9 +35,11 @@
             this.pnlCanvas = new System.Windows.Forms.Panel();
             this.pnlLegend = new System.Windows.Forms.Panel();
             this.picScreen = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.pnlCanvas.SuspendLayout();
+            this.picScreen.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -75,6 +77,7 @@
             this.btnBack.TextColor = System.Drawing.Color.White;
             this.btnBack.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnBack.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // lblTitle
             // 
@@ -122,11 +125,24 @@
             // picScreen
             // 
             this.picScreen.BackColor = System.Drawing.Color.Black;
+            this.picScreen.Controls.Add(this.label1);
             this.picScreen.Dock = System.Windows.Forms.DockStyle.Top;
             this.picScreen.Location = new System.Drawing.Point(0, 0);
             this.picScreen.Name = "picScreen";
             this.picScreen.Size = new System.Drawing.Size(1640, 100);
             this.picScreen.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(424, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(333, 69);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "MÀN HÌNH";
             // 
             // SeatManagementUC
             // 
@@ -140,6 +156,8 @@
             this.panelHeader.PerformLayout();
             this.panelMain.ResumeLayout(false);
             this.pnlCanvas.ResumeLayout(false);
+            this.picScreen.ResumeLayout(false);
+            this.picScreen.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -153,5 +171,6 @@
         private System.Windows.Forms.Panel pnlCanvas;
         private System.Windows.Forms.Panel pnlLegend;
         private System.Windows.Forms.Panel picScreen;
+        private System.Windows.Forms.Label label1;
     }
 }

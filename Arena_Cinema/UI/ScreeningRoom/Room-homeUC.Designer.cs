@@ -174,7 +174,7 @@
             this.btnSeatManagement.HighEmphasis = true;
             this.btnSeatManagement.Icon = global::UI.Properties.Resources.armchair;
             this.btnSeatManagement.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btnSeatManagement.Location = new System.Drawing.Point(61, 328);
+            this.btnSeatManagement.Location = new System.Drawing.Point(42, 328);
             this.btnSeatManagement.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSeatManagement.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnSeatManagement.Name = "btnSeatManagement";
