@@ -57,7 +57,6 @@ namespace UI.EmployeeSale
         // Buttons
         private Button btnBack;
         private Button btnPayOS;
-        private Button btnPrint;
 
         protected override void Dispose(bool disposing)
         {
@@ -115,7 +114,7 @@ namespace UI.EmployeeSale
             this.lblGrandTotal = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnPayOS = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
+            this.btn_payCash = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.panelCustomer.SuspendLayout();
             this.panelTickets.SuspendLayout();
@@ -196,7 +195,7 @@ namespace UI.EmployeeSale
             this.panelHeader.Controls.Add(this.lblStatus);
             this.panelHeader.Location = new System.Drawing.Point(20, 20);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1160, 150);
+            this.panelHeader.Size = new System.Drawing.Size(1587, 150);
             this.panelHeader.TabIndex = 0;
             // 
             // lblTitle
@@ -253,7 +252,7 @@ namespace UI.EmployeeSale
             // 
             this.lblEmployeeLabel.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblEmployeeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
-            this.lblEmployeeLabel.Location = new System.Drawing.Point(400, 65);
+            this.lblEmployeeLabel.Location = new System.Drawing.Point(800, 65);
             this.lblEmployeeLabel.Name = "lblEmployeeLabel";
             this.lblEmployeeLabel.Size = new System.Drawing.Size(120, 25);
             this.lblEmployeeLabel.TabIndex = 5;
@@ -263,7 +262,7 @@ namespace UI.EmployeeSale
             // 
             this.lblEmployee.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lblEmployee.Location = new System.Drawing.Point(530, 65);
+            this.lblEmployee.Location = new System.Drawing.Point(930, 65);
             this.lblEmployee.Name = "lblEmployee";
             this.lblEmployee.Size = new System.Drawing.Size(250, 25);
             this.lblEmployee.TabIndex = 6;
@@ -273,7 +272,7 @@ namespace UI.EmployeeSale
             // 
             this.lblStatusLabel.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
-            this.lblStatusLabel.Location = new System.Drawing.Point(400, 100);
+            this.lblStatusLabel.Location = new System.Drawing.Point(800, 100);
             this.lblStatusLabel.Name = "lblStatusLabel";
             this.lblStatusLabel.Size = new System.Drawing.Size(120, 25);
             this.lblStatusLabel.TabIndex = 7;
@@ -284,7 +283,7 @@ namespace UI.EmployeeSale
             this.lblStatus.BackColor = System.Drawing.Color.LightGray;
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblStatus.Location = new System.Drawing.Point(530, 95);
+            this.lblStatus.Location = new System.Drawing.Point(930, 95);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(150, 35);
             this.lblStatus.TabIndex = 8;
@@ -304,7 +303,7 @@ namespace UI.EmployeeSale
             this.panelCustomer.Controls.Add(this.lblCustomerEmail);
             this.panelCustomer.Location = new System.Drawing.Point(20, 190);
             this.panelCustomer.Name = "panelCustomer";
-            this.panelCustomer.Size = new System.Drawing.Size(560, 150);
+            this.panelCustomer.Size = new System.Drawing.Size(781, 150);
             this.panelCustomer.TabIndex = 1;
             // 
             // lblCustomerTitle
@@ -387,7 +386,7 @@ namespace UI.EmployeeSale
             this.panelTickets.Controls.Add(this.lblTicketTotal);
             this.panelTickets.Location = new System.Drawing.Point(20, 360);
             this.panelTickets.Name = "panelTickets";
-            this.panelTickets.Size = new System.Drawing.Size(560, 350);
+            this.panelTickets.Size = new System.Drawing.Size(781, 350);
             this.panelTickets.TabIndex = 2;
             // 
             // lblTicketsTitle
@@ -418,7 +417,7 @@ namespace UI.EmployeeSale
             this.dgvTickets.ReadOnly = true;
             this.dgvTickets.RowHeadersVisible = false;
             this.dgvTickets.RowHeadersWidth = 51;
-            this.dgvTickets.Size = new System.Drawing.Size(520, 230);
+            this.dgvTickets.Size = new System.Drawing.Size(745, 230);
             this.dgvTickets.TabIndex = 1;
             // 
             // lblTicketTotalLabel
@@ -427,7 +426,7 @@ namespace UI.EmployeeSale
             this.lblTicketTotalLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.lblTicketTotalLabel.Location = new System.Drawing.Point(20, 305);
             this.lblTicketTotalLabel.Name = "lblTicketTotalLabel";
-            this.lblTicketTotalLabel.Size = new System.Drawing.Size(120, 25);
+            this.lblTicketTotalLabel.Size = new System.Drawing.Size(314, 25);
             this.lblTicketTotalLabel.TabIndex = 2;
             this.lblTicketTotalLabel.Text = "Tổng tiền vé:";
             // 
@@ -435,9 +434,9 @@ namespace UI.EmployeeSale
             // 
             this.lblTicketTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblTicketTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.lblTicketTotal.Location = new System.Drawing.Point(350, 305);
+            this.lblTicketTotal.Location = new System.Drawing.Point(453, 305);
             this.lblTicketTotal.Name = "lblTicketTotal";
-            this.lblTicketTotal.Size = new System.Drawing.Size(190, 25);
+            this.lblTicketTotal.Size = new System.Drawing.Size(312, 25);
             this.lblTicketTotal.TabIndex = 3;
             this.lblTicketTotal.Text = "0 ₫";
             this.lblTicketTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -450,9 +449,9 @@ namespace UI.EmployeeSale
             this.panelProducts.Controls.Add(this.dgvProducts);
             this.panelProducts.Controls.Add(this.lblProductTotalLabel);
             this.panelProducts.Controls.Add(this.lblProductTotal);
-            this.panelProducts.Location = new System.Drawing.Point(600, 190);
+            this.panelProducts.Location = new System.Drawing.Point(824, 190);
             this.panelProducts.Name = "panelProducts";
-            this.panelProducts.Size = new System.Drawing.Size(580, 377);
+            this.panelProducts.Size = new System.Drawing.Size(779, 377);
             this.panelProducts.TabIndex = 3;
             // 
             // lblProductsTitle
@@ -483,7 +482,7 @@ namespace UI.EmployeeSale
             this.dgvProducts.ReadOnly = true;
             this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.RowHeadersWidth = 51;
-            this.dgvProducts.Size = new System.Drawing.Size(540, 195);
+            this.dgvProducts.Size = new System.Drawing.Size(728, 195);
             this.dgvProducts.TabIndex = 1;
             // 
             // lblProductTotalLabel
@@ -492,7 +491,7 @@ namespace UI.EmployeeSale
             this.lblProductTotalLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.lblProductTotalLabel.Location = new System.Drawing.Point(20, 322);
             this.lblProductTotalLabel.Name = "lblProductTotalLabel";
-            this.lblProductTotalLabel.Size = new System.Drawing.Size(180, 25);
+            this.lblProductTotalLabel.Size = new System.Drawing.Size(221, 25);
             this.lblProductTotalLabel.TabIndex = 2;
             this.lblProductTotalLabel.Text = "Tổng tiền sản phẩm:";
             // 
@@ -500,7 +499,7 @@ namespace UI.EmployeeSale
             // 
             this.lblProductTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblProductTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.lblProductTotal.Location = new System.Drawing.Point(350, 322);
+            this.lblProductTotal.Location = new System.Drawing.Point(538, 322);
             this.lblProductTotal.Name = "lblProductTotal";
             this.lblProductTotal.Size = new System.Drawing.Size(210, 25);
             this.lblProductTotal.TabIndex = 3;
@@ -517,16 +516,16 @@ namespace UI.EmployeeSale
             this.panelTotal.Controls.Add(this.lblDiscount);
             this.panelTotal.Controls.Add(this.lblGrandTotalLabel);
             this.panelTotal.Controls.Add(this.lblGrandTotal);
-            this.panelTotal.Location = new System.Drawing.Point(600, 590);
+            this.panelTotal.Location = new System.Drawing.Point(824, 590);
             this.panelTotal.Name = "panelTotal";
-            this.panelTotal.Size = new System.Drawing.Size(580, 120);
+            this.panelTotal.Size = new System.Drawing.Size(779, 120);
             this.panelTotal.TabIndex = 4;
             // 
             // lblSubtotalLabel
             // 
             this.lblSubtotalLabel.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblSubtotalLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lblSubtotalLabel.Location = new System.Drawing.Point(300, 15);
+            this.lblSubtotalLabel.Location = new System.Drawing.Point(30, 12);
             this.lblSubtotalLabel.Name = "lblSubtotalLabel";
             this.lblSubtotalLabel.Size = new System.Drawing.Size(100, 25);
             this.lblSubtotalLabel.TabIndex = 0;
@@ -536,7 +535,7 @@ namespace UI.EmployeeSale
             // 
             this.lblSubtotal.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblSubtotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lblSubtotal.Location = new System.Drawing.Point(410, 15);
+            this.lblSubtotal.Location = new System.Drawing.Point(598, 12);
             this.lblSubtotal.Name = "lblSubtotal";
             this.lblSubtotal.Size = new System.Drawing.Size(150, 25);
             this.lblSubtotal.TabIndex = 1;
@@ -547,7 +546,7 @@ namespace UI.EmployeeSale
             // 
             this.lblDiscountLabel.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblDiscountLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lblDiscountLabel.Location = new System.Drawing.Point(300, 45);
+            this.lblDiscountLabel.Location = new System.Drawing.Point(30, 42);
             this.lblDiscountLabel.Name = "lblDiscountLabel";
             this.lblDiscountLabel.Size = new System.Drawing.Size(100, 25);
             this.lblDiscountLabel.TabIndex = 2;
@@ -557,7 +556,7 @@ namespace UI.EmployeeSale
             // 
             this.lblDiscount.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblDiscount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.lblDiscount.Location = new System.Drawing.Point(410, 45);
+            this.lblDiscount.Location = new System.Drawing.Point(598, 42);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(150, 25);
             this.lblDiscount.TabIndex = 3;
@@ -568,7 +567,7 @@ namespace UI.EmployeeSale
             // 
             this.lblGrandTotalLabel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblGrandTotalLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lblGrandTotalLabel.Location = new System.Drawing.Point(300, 80);
+            this.lblGrandTotalLabel.Location = new System.Drawing.Point(30, 77);
             this.lblGrandTotalLabel.Name = "lblGrandTotalLabel";
             this.lblGrandTotalLabel.Size = new System.Drawing.Size(150, 30);
             this.lblGrandTotalLabel.TabIndex = 4;
@@ -578,7 +577,7 @@ namespace UI.EmployeeSale
             // 
             this.lblGrandTotal.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblGrandTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.lblGrandTotal.Location = new System.Drawing.Point(410, 80);
+            this.lblGrandTotal.Location = new System.Drawing.Point(598, 77);
             this.lblGrandTotal.Name = "lblGrandTotal";
             this.lblGrandTotal.Size = new System.Drawing.Size(150, 30);
             this.lblGrandTotal.TabIndex = 5;
@@ -599,6 +598,7 @@ namespace UI.EmployeeSale
             this.btnBack.TabIndex = 5;
             this.btnBack.Text = "← Quay lại";
             this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click_1);
             // 
             // btnPayOS
             // 
@@ -608,27 +608,28 @@ namespace UI.EmployeeSale
             this.btnPayOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPayOS.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnPayOS.ForeColor = System.Drawing.Color.White;
-            this.btnPayOS.Location = new System.Drawing.Point(190, 730);
+            this.btnPayOS.Location = new System.Drawing.Point(1256, 719);
             this.btnPayOS.Name = "btnPayOS";
-            this.btnPayOS.Size = new System.Drawing.Size(200, 50);
+            this.btnPayOS.Size = new System.Drawing.Size(257, 50);
             this.btnPayOS.TabIndex = 6;
             this.btnPayOS.Text = "💳 Thanh toán PayOS";
             this.btnPayOS.UseVisualStyleBackColor = false;
             // 
-            // btnPrint
+            // btn_payCash
             // 
-            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(197)))), ((int)(((byte)(94)))));
-            this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPrint.FlatAppearance.BorderSize = 0;
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnPrint.ForeColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(410, 730);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(150, 50);
-            this.btnPrint.TabIndex = 7;
-            this.btnPrint.Text = "🖨️ In hóa đơn";
-            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btn_payCash.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
+            this.btn_payCash.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_payCash.FlatAppearance.BorderSize = 0;
+            this.btn_payCash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_payCash.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btn_payCash.ForeColor = System.Drawing.Color.White;
+            this.btn_payCash.Location = new System.Drawing.Point(960, 719);
+            this.btn_payCash.Name = "btn_payCash";
+            this.btn_payCash.Size = new System.Drawing.Size(249, 50);
+            this.btn_payCash.TabIndex = 6;
+            this.btn_payCash.Text = "💳 Thanh toán tiền mặt";
+            this.btn_payCash.UseVisualStyleBackColor = false;
+            this.btn_payCash.Click += new System.EventHandler(this.btn_payCash_Click);
             // 
             // TicketPaymentInfo
             // 
@@ -642,11 +643,11 @@ namespace UI.EmployeeSale
             this.Controls.Add(this.panelProducts);
             this.Controls.Add(this.panelTotal);
             this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.btn_payCash);
             this.Controls.Add(this.btnPayOS);
-            this.Controls.Add(this.btnPrint);
             this.Name = "TicketPaymentInfo";
             this.Padding = new System.Windows.Forms.Padding(20);
-            this.Size = new System.Drawing.Size(1158, 758);
+            this.Size = new System.Drawing.Size(1630, 800);
             this.panelHeader.ResumeLayout(false);
             this.panelCustomer.ResumeLayout(false);
             this.panelTickets.ResumeLayout(false);
@@ -666,5 +667,6 @@ namespace UI.EmployeeSale
         private DataGridViewTextBoxColumn colQty;
         private DataGridViewTextBoxColumn colUnitPrice;
         private DataGridViewTextBoxColumn colTotal;
+        private Button btn_payCash;
     }
 }

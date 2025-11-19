@@ -119,29 +119,99 @@ namespace UI.EmployeeSale
 
         private void LoadSeatsByRoom(int roomId)
         {
+            //flpTickets.Controls.Clear();
+            //_seats = _saleTicketDAL.GetSeatsByRoomID(roomId);
+            //_tickets = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId);
+
+            //foreach (var seat in _seats)
+            //{
+            //    var ticket = _tickets.FirstOrDefault(t => t.SeatID == seat.SeatID);
+            //    var isSold = ticket != null && ticket.Status == "Đã bán";
+            //    var isSelected = _selectedTickets.Any(t => t.SeatID == seat.SeatID);
+
+            //    var btnSeat = new Button
+            //    {
+            //        Text = seat.SeatName,
+            //        Tag = seat.SeatID,
+            //        Width = 40,
+            //        Height = 40,
+            //        Margin = new Padding(2),
+            //        BackColor = isSold ? Color.Gray : (isSelected ? Color.Yellow : Color.White),
+            //        Enabled = !isSold && ticket != null,
+            //        Font = new Font("Segoe UI", 9F)
+            //    };
+            //    btnSeat.Click += BtnSeat_Click;
+            //    flpTickets.Controls.Add(btnSeat);
+            //}
             flpTickets.Controls.Clear();
             _seats = _saleTicketDAL.GetSeatsByRoomID(roomId);
             _tickets = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId);
 
-            foreach (var seat in _seats)
-            {
-                var ticket = _tickets.FirstOrDefault(t => t.SeatID == seat.SeatID);
-                var isSold = ticket != null && ticket.Status == "Đã bán";
-                var isSelected = _selectedTickets.Any(t => t.SeatID == seat.SeatID);
+            var seatRows = _seats.GroupBy(s => s.SeatName.Substring(0, 1))
+                                 .OrderBy(g => g.Key)
+                                 .ToList();
 
-                var btnSeat = new Button
+            var lblScreen = new Label
+            {
+                Text = "MÀN HÌNH",
+                Font = new Font("Segoe UI", 28F, FontStyle.Bold),
+                ForeColor = Color.White,
+                BackColor = Color.Black,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Top,
+                Height = 80,
+                Width = flpTickets.Width
+            };
+            flpTickets.Controls.Add(lblScreen);
+
+            foreach (var row in seatRows)
+            {
+                var rowPanel = new FlowLayoutPanel
                 {
-                    Text = seat.SeatName,
-                    Tag = seat.SeatID,
+                    FlowDirection = FlowDirection.LeftToRight,
+                    AutoSize = true,
+                    Margin = new Padding(0, 5, 0, 5)
+                };
+
+                var lblRow = new Label
+                {
+                    Text = row.Key,
+                    Font = new Font("Segoe UI", 16F, FontStyle.Bold),
+                    ForeColor = Color.White,
+                    BackColor = Color.FromArgb(239, 68, 68),
+                    TextAlign = ContentAlignment.MiddleCenter,
                     Width = 40,
                     Height = 40,
-                    Margin = new Padding(2),
-                    BackColor = isSold ? Color.Gray : (isSelected ? Color.Yellow : Color.White),
-                    Enabled = !isSold && ticket != null,
-                    Font = new Font("Segoe UI", 9F)
+                    Margin = new Padding(5, 0, 5, 0)
                 };
-                btnSeat.Click += BtnSeat_Click;
-                flpTickets.Controls.Add(btnSeat);
+                rowPanel.Controls.Add(lblRow);
+
+                foreach (var seat in row.OrderBy(s => s.SeatName))
+                {
+                    Color seatColor = Color.DodgerBlue;
+                    if (seat.SeatType == "Ghế VIP") seatColor = Color.Gold;
+                    else if (seat.SeatType == "Ghế Đôi") seatColor = Color.HotPink;
+
+                    var ticket = _tickets.FirstOrDefault(t => t.SeatID == seat.SeatID);
+                    bool isLocked = ticket != null && ticket.Status != "Trống";
+
+                    var btnSeat = new Button
+                    {
+                        Text = seat.SeatName,
+                        Tag = seat.SeatID,
+                        Width = 60,
+                        Height = 40,
+                        Margin = new Padding(2),
+                        BackColor = isLocked ? Color.Gray : seatColor,
+                        ForeColor = Color.White,
+                        Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                        Enabled = !isLocked // Không chọn được nếu đã đặt/bán
+                    };
+                    btnSeat.Click += BtnSeat_Click;
+                    rowPanel.Controls.Add(btnSeat);
+                }
+
+                flpTickets.Controls.Add(rowPanel);
             }
         }
 
@@ -150,6 +220,7 @@ namespace UI.EmployeeSale
             var btn = sender as Button;
             var seatId = (int)btn.Tag;
             var ticket = _tickets.FirstOrDefault(t => t.SeatID == seatId);
+            var seat = _seats.FirstOrDefault(s => s.SeatID == seatId);
 
             if (ticket == null || ticket.Status == "Đã bán") return;
 
@@ -157,12 +228,14 @@ namespace UI.EmployeeSale
             if (selected != null)
             {
                 _selectedTickets.Remove(selected);
-                btn.BackColor = Color.White;
+                if (seat.SeatType == "Ghế VIP") btn.BackColor = Color.Gold;
+                else if (seat.SeatType == "Ghế Đôi") btn.BackColor = Color.HotPink;
+                else btn.BackColor = Color.DodgerBlue;
             }
             else
             {
                 _selectedTickets.Add(ticket);
-                btn.BackColor = Color.Yellow;
+                btn.BackColor = Color.LimeGreen;
             }
             UpdateInvoice();
         }
@@ -371,7 +444,7 @@ namespace UI.EmployeeSale
 
             MessageBox.Show("Đã tạo hóa đơn, vui lòng thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            _parentForm?.LoadControl(new TicketPaymentInfo(invoiceId));
+            _parentForm?.LoadControl(new TicketPaymentInfo(invoiceId, _employee, _parentForm));
         }
 
         private void UpdateInvoice()

@@ -15,16 +15,18 @@ namespace UI.EmployeeSale
         private Home _home;
         private DTO.Employee _employee;
 
-        public TicketPaymentInfo(Guid invoiceID)
+        public TicketPaymentInfo(Guid invoiceID, DTO.Employee employee, Home home)
         {
             InitializeComponent();
             _invoiceID = invoiceID;
+            _employee = employee;
+            _home = home;
             _context = new CinemaDBContext();
             LoadInvoiceInfo();
             CustomizeUI();
         }
 
-        public TicketPaymentInfo(Guid invoiceID, Home home, DTO.Employee employee) : this(invoiceID)
+        public TicketPaymentInfo(Guid invoiceID, Home home, DTO.Employee employee) : this(invoiceID, employee, home)
         {
             _home = home;
             _employee = employee;
@@ -212,6 +214,68 @@ namespace UI.EmployeeSale
         {
             MessageBox.Show("Chức năng in hóa đơn đang được phát triển!",
                 "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //thanh toán tiền mặt
+        private void btn_payCash_Click(object sender, EventArgs e)
+        {
+            // Lấy hóa đơn
+            var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID && !i.IsDeleted);
+            if (invoice == null)
+            {
+                MessageBox.Show("Không tìm thấy hóa đơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (invoice.Status == "Đã thanh toán")
+            {
+                MessageBox.Show("Hóa đơn đã được thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Cập nhật trạng thái hóa đơn
+            invoice.Status = "Đã thanh toán";
+
+            // Lấy danh sách vé của hóa đơn
+            var invoiceTickets = _context.InvoiceTickets.Where(it => it.InvoiceID == _invoiceID).ToList();
+            var ticketIds = invoiceTickets.Select(it => it.TicketID).ToList();
+
+            // Cập nhật trạng thái vé
+            var tickets = _context.Tickets.Where(t => ticketIds.Contains(t.TicketID)).ToList();
+            foreach (var ticket in tickets)
+            {
+                ticket.Status = "Đã bán";
+            }
+
+            // Lưu thay đổi
+            _context.SaveChanges();
+
+            // Hiển thị giao diện/thông báo thành công
+            MessageBox.Show("Thanh toán thành công!\nTrạng thái hóa đơn và vé đã được cập nhật.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Reload lại thông tin hóa đơn để cập nhật trạng thái trên UI
+            //LoadInvoiceInfo();
+            // Quay lại trang SaleHome
+            if (_home != null && _employee != null)
+            {
+                _home.LoadControl(new SaleHomeUC(_home, _employee));
+            }
+        }
+
+        private void btnBack_Click_1(object sender, EventArgs e)
+        {
+            if (_home != null && _employee != null)
+            {
+                //cập nhật trạng thái hóa đơn là đã hủy
+                var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID);
+                if (invoice != null)
+                {
+                    invoice.Status = "Đã hủy";
+                    _context.SaveChanges();
+                }
+                MessageBox.Show("Hóa đơn đã được hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _home.LoadControl(new SaleHomeUC(_home, _employee));
+            }
         }
     }
 }
