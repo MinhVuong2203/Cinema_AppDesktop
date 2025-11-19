@@ -5,6 +5,8 @@ using System.Windows.Forms;
 using DTO;
 using DAL;
 using UI.PayOSMethod.Services;
+using UI.Helpers;
+using System.Threading.Tasks;
 
 namespace UI.EmployeeSale
 {
@@ -14,6 +16,8 @@ namespace UI.EmployeeSale
         private CinemaDBContext _context;
         private Home _home;
         private DTO.Employee _employee;
+        private long _currentOrderCode = 0;
+        private Timer _paymentTimer;
 
         public TicketPaymentInfo(Guid invoiceID, DTO.Employee employee, Home home)
         {
@@ -162,6 +166,72 @@ namespace UI.EmployeeSale
             }
         }
 
+        //private async void btnPayOS_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID && !i.IsDeleted);
+        //        if (invoice == null || invoice.Status != "Chờ thanh toán")
+        //        {
+        //            MessageBox.Show("Hóa đơn không hợp lệ hoặc đã thanh toán!", "Lỗi",
+        //                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return;
+        //        }
+
+        //        int amount = (int)(invoice.TotalAmount ?? 0);
+        //        if (amount <= 0)
+        //        {
+        //            MessageBox.Show("Tổng tiền phải lớn hơn 0!", "Lỗi",
+        //                MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //            return;
+        //        }
+
+        //        // Tạo orderCode unique và lưu lại
+        //        _currentOrderCode = long.Parse(DateTime.Now.ToString("yyyyMMddHHmmssfff"));
+        //        string description = $"HD {invoice.InvoiceID.ToString().Substring(0, 8).ToUpper()}";
+
+        //        string baseUrl = "http://localhost:5000";
+        //        string returnUrl = $"{baseUrl}/payment/success?invoiceId={_invoiceID}";
+        //        string cancelUrl = $"{baseUrl}/payment/cancel?invoiceId={_invoiceID}";
+
+        //        var paymentService = new PaymentService();
+        //        string paymentUrl = await paymentService.CreatePaymentLink(
+        //            //_invoiceID,
+        //            //_currentOrderCode,
+        //            _currentOrderCode,
+        //            amount,
+        //            description,
+        //            returnUrl,
+        //            cancelUrl
+        //        );
+
+        //        // Mở trình duyệt
+        //        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+        //        {
+        //            FileName = paymentUrl,
+        //            UseShellExecute = true
+        //        });
+
+        //        // Bắt đầu polling
+        //        //StartPaymentStatusPolling(_invoiceID);
+
+        //        MessageBox.Show(
+        //            $"Đã tạo link thanh toán!\n" +
+        //            $"Mã giao dịch: {_currentOrderCode}\n\n" +
+        //            $"Vui lòng quét mã QR và thanh toán.\n" +
+        //            $"Hệ thống sẽ tự động cập nhật khi thanh toán thành công.",
+        //            "Thông báo",
+        //            MessageBoxButtons.OK,
+        //            MessageBoxIcon.Information
+        //        );
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Lỗi khi tạo thanh toán:\n{ex.Message}",
+        //            "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+
         private async void btnPayOS_Click(object sender, EventArgs e)
         {
             try
@@ -182,11 +252,15 @@ namespace UI.EmployeeSale
                     return;
                 }
 
-                int orderCode = (int)(DateTimeOffset.UtcNow.ToUnixTimeSeconds() % 1000000000);
+                // ✅ SỬA: orderCode phải là long, dùng timestamp đầy đủ
+                long orderCode = long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss"));
+
                 string description = $"HD {invoice.InvoiceID.ToString().Substring(0, 8).ToUpper()}";
 
                 var paymentService = new PaymentService();
-                string paymentUrl = await paymentService.CreatePaymentLinkAsync(
+
+                // ✅ SỬA: Thêm await và nhận giá trị trả về
+                string paymentUrl = await paymentService.CreatePaymentLink(
                     orderCode,
                     amount,
                     description,
@@ -194,6 +268,7 @@ namespace UI.EmployeeSale
                     "https://localhost:3000/cancel"
                 );
 
+                // ✅ Mở trình duyệt với URL nhận được
                 System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
                 {
                     FileName = paymentUrl,
@@ -210,16 +285,112 @@ namespace UI.EmployeeSale
             }
         }
 
+        private void StartPaymentStatusPolling(Guid invoiceID)
+        {
+            if (_paymentTimer != null)
+            {
+                _paymentTimer.Stop();
+                _paymentTimer.Dispose();
+            }
+
+            _paymentTimer = new System.Windows.Forms.Timer();
+            _paymentTimer.Interval = 3000; // Check mỗi 3 giây
+            int checkCount = 0;
+            int maxChecks = 40; // 40 * 3s = 2 phút
+
+            _paymentTimer.Tick += (s, e) =>
+            {
+                checkCount++;
+
+                // Refresh context
+                _context.Dispose();
+                _context = new CinemaDBContext();
+
+                var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == invoiceID);
+
+                if (invoice?.Status == "Đã thanh toán")
+                {
+                    _paymentTimer.Stop();
+
+                    // ✅ XỬ LÝ THANH TOÁN THÀNH CÔNG
+                    var paymentService = new PaymentService();
+                    bool success = paymentService.ProcessSuccessPayment(invoiceID, _currentOrderCode, "PayOS");
+
+                    if (success)
+                    {
+                        MessageBox.Show(
+                            "✓ Thanh toán thành công!\n\n" +
+                            $"Mã giao dịch: {_currentOrderCode}\n" +
+                            "Hóa đơn và vé đã được cập nhật.",
+                            "Thành công",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+
+                        // Reload thông tin hóa đơn
+                        LoadInvoiceInfo();
+                    }
+                }
+                else if (checkCount >= maxChecks)
+                {
+                    _paymentTimer.Stop();
+                    MessageBox.Show(
+                        "⏱ Hết thời gian chờ thanh toán.\n\n" +
+                        "Vui lòng kiểm tra lại trạng thái hóa đơn sau.",
+                        "Thông báo",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
+            };
+
+            _paymentTimer.Start();
+        }
+
+
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chức năng in hóa đơn đang được phát triển!",
-                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                // Kiểm tra xem hóa đơn đã thanh toán chưa
+                var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID);
+                if (invoice == null)
+                {
+                    MessageBox.Show("Không tìm thấy hóa đơn!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (invoice.Status != "Đã thanh toán")
+                {
+                    var result = MessageBox.Show(
+                        "Hóa đơn chưa được thanh toán!\n\n" +
+                        "Bạn có muốn in hóa đơn tạm không?",
+                        "Cảnh báo",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+
+                    if (result != DialogResult.Yes)
+                    {
+                        return;
+                    }
+                }
+
+                // Sử dụng InvoicePrintHelper để in
+                var printHelper = new InvoicePrintHelper(_invoiceID);
+                printHelper.Print();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi in hóa đơn: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //thanh toán tiền mặt
         private void btn_payCash_Click(object sender, EventArgs e)
         {
-            // Lấy hóa đơn
             var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID && !i.IsDeleted);
             if (invoice == null)
             {
@@ -233,32 +404,43 @@ namespace UI.EmployeeSale
                 return;
             }
 
-            // Cập nhật trạng thái hóa đơn
-            invoice.Status = "Đã thanh toán";
+            // Xác nhận thanh toán tiền mặt
+            var confirmResult = MessageBox.Show(
+                $"Xác nhận thanh toán tiền mặt?\n\n" +
+                $"Số tiền: {(invoice.TotalAmount ?? 0).ToString("#,##0")} ₫",
+                "Xác nhận thanh toán",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
-            // Lấy danh sách vé của hóa đơn
-            var invoiceTickets = _context.InvoiceTickets.Where(it => it.InvoiceID == _invoiceID).ToList();
-            var ticketIds = invoiceTickets.Select(it => it.TicketID).ToList();
-
-            // Cập nhật trạng thái vé
-            var tickets = _context.Tickets.Where(t => ticketIds.Contains(t.TicketID)).ToList();
-            foreach (var ticket in tickets)
+            if (confirmResult != DialogResult.Yes)
             {
-                ticket.Status = "Đã bán";
+                return;
             }
 
-            // Lưu thay đổi
-            _context.SaveChanges();
+            // ✅ XỬ LÝ THANH TOÁN TIỀN MẶT VÀ LƯU VÀO PAYMENT
+            var paymentService = new PaymentService();
+            bool success = paymentService.ProcessCashPayment(_invoiceID);
 
-            // Hiển thị giao diện/thông báo thành công
-            MessageBox.Show("Thanh toán thành công!\nTrạng thái hóa đơn và vé đã được cập nhật.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Reload lại thông tin hóa đơn để cập nhật trạng thái trên UI
-            //LoadInvoiceInfo();
-            // Quay lại trang SaleHome
-            if (_home != null && _employee != null)
+            if (success)
             {
-                _home.LoadControl(new SaleHomeUC(_home, _employee));
+                MessageBox.Show(
+                    "✓ Thanh toán tiền mặt thành công!\n\n" +
+                    "Hóa đơn và vé đã được cập nhật.",
+                    "Thành công",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                // Quay về trang chủ
+                if (_home != null && _employee != null)
+                {
+                    _home.LoadControl(new SaleHomeUC(_home, _employee));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lỗi khi xử lý thanh toán!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -266,16 +448,42 @@ namespace UI.EmployeeSale
         {
             if (_home != null && _employee != null)
             {
-                //cập nhật trạng thái hóa đơn là đã hủy
-                var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID);
-                if (invoice != null)
+                var confirmResult = MessageBox.Show(
+                    "Xác nhận hủy hóa đơn này?",
+                    "Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (confirmResult == DialogResult.Yes)
                 {
-                    invoice.Status = "Đã hủy";
-                    _context.SaveChanges();
+                    // ✅ XỬ LÝ HỦY VÀ LƯU VÀO PAYMENT
+                    var paymentService = new PaymentService();
+                    bool success = paymentService.ProcessCancelPayment(_invoiceID, "Nhân viên hủy");
+
+                    if (success)
+                    {
+                        MessageBox.Show("Hóa đơn đã được hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _home.LoadControl(new SaleHomeUC(_home, _employee));
+                    }
                 }
-                MessageBox.Show("Hóa đơn đã được hủy.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _home.LoadControl(new SaleHomeUC(_home, _employee));
             }
         }
+
+        
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    if (disposing)
+        //    {
+        //        if (_paymentTimer != null)
+        //        {
+        //            _paymentTimer.Stop();
+        //            _paymentTimer.Dispose();
+        //        }
+        //        _context?.Dispose();
+        //    }
+        //    base.Dispose(disposing);
+        //}
     }
 }

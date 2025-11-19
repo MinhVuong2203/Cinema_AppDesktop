@@ -20,6 +20,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductPaymentInfor));
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelButtons = new System.Windows.Forms.Panel();
+            this.parrotbtn_payCash = new ReaLTaiizor.Controls.ParrotButton();
             this.btnBack = new ReaLTaiizor.Controls.ParrotButton();
             this.btnPay = new ReaLTaiizor.Controls.ParrotButton();
             this.panelContent = new System.Windows.Forms.Panel();
@@ -45,7 +46,7 @@
             this.panelHeader = new System.Windows.Forms.Panel();
             this.picSuccess = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.parrotbtn_payCash = new ReaLTaiizor.Controls.ParrotButton();
+            this.parrotBtn_printInvoice = new ReaLTaiizor.Controls.ParrotButton();
             this.panelMain.SuspendLayout();
             this.panelButtons.SuspendLayout();
             this.panelContent.SuspendLayout();
@@ -72,6 +73,7 @@
             // 
             // panelButtons
             // 
+            this.panelButtons.Controls.Add(this.parrotBtn_printInvoice);
             this.panelButtons.Controls.Add(this.parrotbtn_payCash);
             this.panelButtons.Controls.Add(this.btnBack);
             this.panelButtons.Controls.Add(this.btnPay);
@@ -80,6 +82,31 @@
             this.panelButtons.Name = "panelButtons";
             this.panelButtons.Size = new System.Drawing.Size(1740, 70);
             this.panelButtons.TabIndex = 2;
+            // 
+            // parrotbtn_payCash
+            // 
+            this.parrotbtn_payCash.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
+            this.parrotbtn_payCash.ButtonImage = ((System.Drawing.Image)(resources.GetObject("parrotbtn_payCash.ButtonImage")));
+            this.parrotbtn_payCash.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.parrotbtn_payCash.ButtonText = "Thanh toán tiền mặt";
+            this.parrotbtn_payCash.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.parrotbtn_payCash.ClickTextColor = System.Drawing.Color.White;
+            this.parrotbtn_payCash.CornerRadius = 5;
+            this.parrotbtn_payCash.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.parrotbtn_payCash.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parrotbtn_payCash.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.parrotbtn_payCash.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.parrotbtn_payCash.HoverTextColor = System.Drawing.Color.White;
+            this.parrotbtn_payCash.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.parrotbtn_payCash.Location = new System.Drawing.Point(922, 10);
+            this.parrotbtn_payCash.Name = "parrotbtn_payCash";
+            this.parrotbtn_payCash.Size = new System.Drawing.Size(200, 50);
+            this.parrotbtn_payCash.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.parrotbtn_payCash.TabIndex = 2;
+            this.parrotbtn_payCash.TextColor = System.Drawing.Color.White;
+            this.parrotbtn_payCash.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.parrotbtn_payCash.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.parrotbtn_payCash.Click += new System.EventHandler(this.parrotbtn_payCash_Click);
             // 
             // btnBack
             // 
@@ -96,7 +123,7 @@
             this.btnBack.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(213)))), ((int)(((byte)(219)))));
             this.btnBack.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.btnBack.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnBack.Location = new System.Drawing.Point(1412, 10);
+            this.btnBack.Location = new System.Drawing.Point(30, 10);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(150, 50);
             this.btnBack.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -110,7 +137,7 @@
             this.btnPay.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.btnPay.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnPay.ButtonImage")));
             this.btnPay.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnPay.ButtonText = "Xác nhận thanh toán";
+            this.btnPay.ButtonText = "Thanh toán PayOS";
             this.btnPay.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnPay.ClickTextColor = System.Drawing.Color.White;
             this.btnPay.CornerRadius = 8;
@@ -393,30 +420,30 @@
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "TẠO HÓA ĐƠN THÀNH CÔNG";
             // 
-            // parrotbtn_payCash
+            // parrotBtn_printInvoice
             // 
-            this.parrotbtn_payCash.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
-            this.parrotbtn_payCash.ButtonImage = ((System.Drawing.Image)(resources.GetObject("parrotbtn_payCash.ButtonImage")));
-            this.parrotbtn_payCash.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.parrotbtn_payCash.ButtonText = "Thanh toán tiền mặt";
-            this.parrotbtn_payCash.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
-            this.parrotbtn_payCash.ClickTextColor = System.Drawing.Color.White;
-            this.parrotbtn_payCash.CornerRadius = 5;
-            this.parrotbtn_payCash.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.parrotbtn_payCash.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parrotbtn_payCash.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.parrotbtn_payCash.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.parrotbtn_payCash.HoverTextColor = System.Drawing.Color.White;
-            this.parrotbtn_payCash.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.parrotbtn_payCash.Location = new System.Drawing.Point(922, 10);
-            this.parrotbtn_payCash.Name = "parrotbtn_payCash";
-            this.parrotbtn_payCash.Size = new System.Drawing.Size(200, 50);
-            this.parrotbtn_payCash.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.parrotbtn_payCash.TabIndex = 2;
-            this.parrotbtn_payCash.TextColor = System.Drawing.Color.White;
-            this.parrotbtn_payCash.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.parrotbtn_payCash.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.parrotbtn_payCash.Click += new System.EventHandler(this.parrotbtn_payCash_Click);
+            this.parrotBtn_printInvoice.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.parrotBtn_printInvoice.ButtonImage = ((System.Drawing.Image)(resources.GetObject("parrotBtn_printInvoice.ButtonImage")));
+            this.parrotBtn_printInvoice.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.parrotBtn_printInvoice.ButtonText = "In hóa đơn";
+            this.parrotBtn_printInvoice.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
+            this.parrotBtn_printInvoice.ClickTextColor = System.Drawing.Color.DodgerBlue;
+            this.parrotBtn_printInvoice.CornerRadius = 5;
+            this.parrotBtn_printInvoice.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.parrotBtn_printInvoice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parrotBtn_printInvoice.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.parrotBtn_printInvoice.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.parrotBtn_printInvoice.HoverTextColor = System.Drawing.Color.DodgerBlue;
+            this.parrotBtn_printInvoice.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.parrotBtn_printInvoice.Location = new System.Drawing.Point(1453, 10);
+            this.parrotBtn_printInvoice.Name = "parrotBtn_printInvoice";
+            this.parrotBtn_printInvoice.Size = new System.Drawing.Size(200, 50);
+            this.parrotBtn_printInvoice.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.parrotBtn_printInvoice.TabIndex = 3;
+            this.parrotBtn_printInvoice.TextColor = System.Drawing.Color.DodgerBlue;
+            this.parrotBtn_printInvoice.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.parrotBtn_printInvoice.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.parrotBtn_printInvoice.Click += new System.EventHandler(this.parrotBtn_printInvoice_Click);
             // 
             // ProductPaymentInfor
             // 
@@ -471,5 +498,6 @@
         private System.Windows.Forms.Label lblCustomerPhone;
         private System.Windows.Forms.Label lblCustomerEmail;
         private ReaLTaiizor.Controls.ParrotButton parrotbtn_payCash;
+        private ReaLTaiizor.Controls.ParrotButton parrotBtn_printInvoice;
     }
 }

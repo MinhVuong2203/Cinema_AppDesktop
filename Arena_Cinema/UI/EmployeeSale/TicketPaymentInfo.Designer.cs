@@ -614,6 +614,7 @@ namespace UI.EmployeeSale
             this.btnPayOS.TabIndex = 6;
             this.btnPayOS.Text = "💳 Thanh toán PayOS";
             this.btnPayOS.UseVisualStyleBackColor = false;
+            this.btnPayOS.Click += new System.EventHandler(this.btnPayOS_Click);
             // 
             // btn_payCash
             // 

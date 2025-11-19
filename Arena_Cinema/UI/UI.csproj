@@ -265,6 +265,7 @@
       <DependentUpon>WorkShiftUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Employee\WorkShiftVirtualRenderer.cs" />
+    <Compile Include="Helpers\InvoicePrintHelper.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,6 +303,18 @@
       <DependentUpon>Movie_MainUC.cs</DependentUpon>
     </Compile>
     <Compile Include="PayOSMethod\Config\PayOSConfig.cs" />
+    <Compile Include="PayOSMethod\PaymentCancelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayOSMethod\PaymentCancelForm.Designer.cs">
+      <DependentUpon>PaymentCancelForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PayOSMethod\PaymentSuccessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayOSMethod\PaymentSuccessForm.Designer.cs">
+      <DependentUpon>PaymentSuccessForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PayOSMethod\Services\PaymentService.cs" />
     <Compile Include="Products\ProductAddEditForm.cs">
       <SubType>Form</SubType>
