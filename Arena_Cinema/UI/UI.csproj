@@ -387,6 +387,9 @@
     <EmbeddedResource Include="EmployeeSale\SelectMovieUC.resx">
       <DependentUpon>SelectMovieUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeSale\TicketPaymentInfo.resx">
+      <DependentUpon>TicketPaymentInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Employee\AddEmployeeUC.resx">
       <DependentUpon>AddEmployeeUC.cs</DependentUpon>
     </EmbeddedResource>
