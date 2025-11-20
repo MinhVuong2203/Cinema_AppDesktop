@@ -89,7 +89,7 @@
             this.panel_SaleArea.Controls.Add(this.panelSaleAreaHeader);
             this.panel_SaleArea.Location = new System.Drawing.Point(715, 28);
             this.panel_SaleArea.Name = "panel_SaleArea";
-            this.panel_SaleArea.Size = new System.Drawing.Size(848, 684);
+            this.panel_SaleArea.Size = new System.Drawing.Size(848, 368);
             this.panel_SaleArea.TabIndex = 1;
             // 
             // panel_SaleProduct
@@ -111,7 +111,8 @@
             this.lb_SaleProduct_Title.Name = "lb_SaleProduct_Title";
             this.lb_SaleProduct_Title.Size = new System.Drawing.Size(118, 28);
             this.lb_SaleProduct_Title.TabIndex = 2;
-            this.lb_SaleProduct_Title.Text = "Bán combo";
+            //this.lb_SaleProduct_Title.Text = "Bán combo";
+            this.lb_SaleProduct_Title.Text = global::UI.Resources.Lang.BANSP;
             // 
             // hopePictureBox_
             // 
@@ -144,7 +145,8 @@
             this.btn_SaleProduct.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btn_SaleProduct.Size = new System.Drawing.Size(171, 40);
             this.btn_SaleProduct.TabIndex = 0;
-            this.btn_SaleProduct.Text = "Vào bán combo";
+            //this.btn_SaleProduct.Text = "Bán combo";
+            this.btn_SaleProduct.Text = global::UI.Resources.Lang.SANPHAM;
             this.btn_SaleProduct.TextAlignment = System.Drawing.StringAlignment.Center;
             this.btn_SaleProduct.Click += new System.EventHandler(this.btn_SaleProduct_Click);
             // 
@@ -163,11 +165,12 @@
             // 
             this.lb_SaleTicket_Title.AutoSize = true;
             this.lb_SaleTicket_Title.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_SaleTicket_Title.Location = new System.Drawing.Point(133, 90);
+            this.lb_SaleTicket_Title.Location = new System.Drawing.Point(125, 90);
             this.lb_SaleTicket_Title.Name = "lb_SaleTicket_Title";
-            this.lb_SaleTicket_Title.Size = new System.Drawing.Size(76, 28);
+            this.lb_SaleTicket_Title.Size = new System.Drawing.Size(85, 28);
             this.lb_SaleTicket_Title.TabIndex = 2;
-            this.lb_SaleTicket_Title.Text = "Bán vé";
+            //this.lb_SaleTicket_Title.Text = "BÁN VÉ";
+            this.lb_SaleTicket_Title.Text = global::UI.Resources.Lang.BanVe;
             // 
             // hopePictureBox_Icon
             // 
@@ -200,7 +203,8 @@
             this.btn_SaleTicket.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(37)))), ((int)(((byte)(37)))));
             this.btn_SaleTicket.Size = new System.Drawing.Size(141, 40);
             this.btn_SaleTicket.TabIndex = 0;
-            this.btn_SaleTicket.Text = "Vào bán vé";
+            //this.btn_SaleTicket.Text = "BÁN VÉ";
+            this.btn_SaleTicket.Text = global::UI.Resources.Lang.BanVe;
             this.btn_SaleTicket.TextAlignment = System.Drawing.StringAlignment.Center;
             this.btn_SaleTicket.Click += new System.EventHandler(this.btn_SaleTicket_Click);
             // 
@@ -221,9 +225,10 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(74, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(215, 31);
+            this.label2.Size = new System.Drawing.Size(207, 31);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Khu Vực Bán Hàng";
+            //this.label2.Text = "Khu vực bán hàng";
+            this.label2.Text = global::UI.Resources.Lang.KVBH;
             // 
             // panelEmployeeInfor
             // 
@@ -254,9 +259,10 @@
             this.lb_workDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_workDate.Location = new System.Drawing.Point(58, 500);
             this.lb_workDate.Name = "lb_workDate";
-            this.lb_workDate.Size = new System.Drawing.Size(148, 28);
+            this.lb_workDate.Size = new System.Drawing.Size(143, 28);
             this.lb_workDate.TabIndex = 3;
-            this.lb_workDate.Text = "Ngày vào làm:";
+            //this.lb_workDate.Text = "Ngày vào làm";
+            this.lb_workDate.Text = global::UI.Resources.Lang.NGAYVAOLAM;
             // 
             // lb_Salary
             // 
@@ -264,9 +270,10 @@
             this.lb_Salary.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Salary.Location = new System.Drawing.Point(58, 453);
             this.lb_Salary.Name = "lb_Salary";
-            this.lb_Salary.Size = new System.Drawing.Size(117, 28);
+            this.lb_Salary.Size = new System.Drawing.Size(109, 28);
             this.lb_Salary.TabIndex = 3;
-            this.lb_Salary.Text = "Lương/giờ:";
+            //this.lb_Salary.Text = "Lương giờ";
+            this.lb_Salary.Text = global::UI.Resources.Lang.LuongGio;
             // 
             // lb_BthDay
             // 
@@ -274,9 +281,10 @@
             this.lb_BthDay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_BthDay.Location = new System.Drawing.Point(58, 405);
             this.lb_BthDay.Name = "lb_BthDay";
-            this.lb_BthDay.Size = new System.Drawing.Size(112, 28);
+            this.lb_BthDay.Size = new System.Drawing.Size(107, 28);
             this.lb_BthDay.TabIndex = 3;
-            this.lb_BthDay.Text = "Ngày sinh:";
+            //this.lb_BthDay.Text = "Ngày sinh";
+            this.lb_BthDay.Text = global::UI.Resources.Lang.NgaySinh;
             // 
             // lb_Phone
             // 
@@ -284,9 +292,10 @@
             this.lb_Phone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Phone.Location = new System.Drawing.Point(58, 358);
             this.lb_Phone.Name = "lb_Phone";
-            this.lb_Phone.Size = new System.Drawing.Size(55, 28);
+            this.lb_Phone.Size = new System.Drawing.Size(138, 28);
             this.lb_Phone.TabIndex = 3;
-            this.lb_Phone.Text = "SĐT:";
+            //this.lb_Phone.Text = "Số điện thoại";
+            this.lb_Phone.Text = global::UI.Resources.Lang.SoDienThoai;
             // 
             // lb_Email
             // 
@@ -304,9 +313,10 @@
             this.lb_Branch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_Branch.Location = new System.Drawing.Point(58, 268);
             this.lb_Branch.Name = "lb_Branch";
-            this.lb_Branch.Size = new System.Drawing.Size(83, 28);
+            this.lb_Branch.Size = new System.Drawing.Size(78, 28);
             this.lb_Branch.TabIndex = 3;
-            this.lb_Branch.Text = "Địa chỉ:";
+            //this.lb_Branch.Text = "Địa chỉ";
+            this.lb_Branch.Text = global::UI.Resources.Lang.DiaChi;
             // 
             // lb_EmpID
             // 
@@ -314,9 +324,10 @@
             this.lb_EmpID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_EmpID.Location = new System.Drawing.Point(58, 220);
             this.lb_EmpID.Name = "lb_EmpID";
-            this.lb_EmpID.Size = new System.Drawing.Size(82, 28);
+            this.lb_EmpID.Size = new System.Drawing.Size(77, 28);
             this.lb_EmpID.TabIndex = 3;
-            this.lb_EmpID.Text = "Mã NV:";
+            //this.lb_EmpID.Text = "Mã NV";
+            this.lb_EmpID.Text = global::UI.Resources.Lang.MaNV;
             // 
             // picAVT
             // 
@@ -360,7 +371,7 @@
             // 
             this.lb_PhoneText.AutoSize = true;
             this.lb_PhoneText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_PhoneText.Location = new System.Drawing.Point(119, 358);
+            this.lb_PhoneText.Location = new System.Drawing.Point(207, 358);
             this.lb_PhoneText.Name = "lb_PhoneText";
             this.lb_PhoneText.Size = new System.Drawing.Size(174, 28);
             this.lb_PhoneText.TabIndex = 1;
