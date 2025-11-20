@@ -276,8 +276,9 @@
   <data name="NGAYVAOLAM" xml:space="preserve">
     <value>Ngày vào làm</value>
   </data>
-  <data name="MaNV" xml:space="preserve">
+	<data name="MaNV" xml:space="preserve">
     <value>Mã NV</value>
+	  </data>
   <data name="ThemGhe" xml:space="preserve">
     <value>Thêm ghế mới</value>
   </data>

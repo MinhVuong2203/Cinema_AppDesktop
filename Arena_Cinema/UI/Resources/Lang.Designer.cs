@@ -210,6 +210,10 @@ namespace UI.Resources {
         public static string KVBH {
             get {
                 return ResourceManager.GetString("KVBH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loại ghế.
         /// </summary>
         public static string LoaiGhe {
