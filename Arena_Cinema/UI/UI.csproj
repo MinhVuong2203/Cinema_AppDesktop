@@ -395,6 +395,12 @@
     <Compile Include="ScreeningRoom\Room-homeUC.Designer.cs">
       <DependentUpon>Room-homeUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="SeatManagement\AddSeatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeatManagement\EditSeatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SeatManagement\SeatManagementUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -488,6 +494,9 @@
     <EmbeddedResource Include="Movie\Movie_MainUC.resx">
       <DependentUpon>Movie_MainUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PayOSMethod\PaymentSuccessForm.resx">
+      <DependentUpon>PaymentSuccessForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Products\ProductAddEditForm.resx">
       <DependentUpon>ProductAddEditForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -515,6 +524,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScreeningRoom\Room-homeUC.resx">
       <DependentUpon>Room-homeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeatManagement\AddSeatForm.resx">
+      <DependentUpon>AddSeatForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SeatManagement\SeatManagementUC.resx">
       <DependentUpon>SeatManagementUC.cs</DependentUpon>

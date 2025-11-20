@@ -257,15 +257,20 @@ namespace UI.EmployeeSale
 
                 string description = $"HD {invoice.InvoiceID.ToString().Substring(0, 8).ToUpper()}";
 
+                string returnUrl = $"https://localhost:3000/success?invoiceId={_invoiceID}";
+                string cancelUrl = $"https://localhost:3000/cancel?invoiceId={_invoiceID}";
+
+
                 var paymentService = new PaymentService();
 
                 // ✅ SỬA: Thêm await và nhận giá trị trả về
                 string paymentUrl = await paymentService.CreatePaymentLink(
+                    _invoiceID,
                     orderCode,
                     amount,
                     description,
-                    "https://localhost:3000/success",
-                    "https://localhost:3000/cancel"
+                    returnUrl,
+                    cancelUrl
                 );
 
                 // ✅ Mở trình duyệt với URL nhận được
@@ -275,10 +280,11 @@ namespace UI.EmployeeSale
                     UseShellExecute = true
                 });
 
-                MessageBox.Show($"Đã tạo link thanh toán!\nMã giao dịch: {orderCode}",
-                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show($"Đã tạo link thanh toán!\nMã giao dịch: {orderCode}",
+                //    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _currentOrderCode = orderCode;
-                StartPaymentStatusPolling(_invoiceID);
+                //StartPaymentStatusPolling(_invoiceID);
+                StartPaymentStatusPollingWithAPI(_invoiceID, orderCode);
             }
             catch (Exception ex)
             {
@@ -350,6 +356,116 @@ namespace UI.EmployeeSale
             };
 
             _paymentTimer.Start();
+        }
+
+        /// <summary>
+        /// ✅ POLLING với PayOS Query API (Không cần webhook)
+        /// </summary>
+        private void StartPaymentStatusPollingWithAPI(Guid invoiceID, long orderCode)
+        {
+            if (_paymentTimer != null)
+            {
+                _paymentTimer.Stop();
+                _paymentTimer.Dispose();
+            }
+
+            _paymentTimer = new System.Windows.Forms.Timer();
+            _paymentTimer.Interval = 5000; // ✅ Check mỗi 5 giây (tránh spam API)
+            int checkCount = 0;
+            int maxChecks = 60; // 60 * 5s = 5 phút
+
+            _paymentTimer.Tick += async (s, e) =>
+            {
+                checkCount++;
+                Console.WriteLine($"🔄 Checking payment status... (Attempt {checkCount}/{maxChecks})");
+
+                try
+                {
+                    var paymentService = new PaymentService();
+
+                    // ✅ QUERY PayOS API
+                    var result = await paymentService.CheckAndProcessPayment(orderCode);
+
+                    Console.WriteLine($"📊 Status: {result.Status} - {result.Message}");
+
+                    if (result.Status == "PAID" && result.Success)
+                    {
+                        _paymentTimer.Stop();
+
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            MessageBox.Show(
+                                "✓ Thanh toán thành công!\n\n" +
+                                $"Mã giao dịch: {orderCode}\n" +
+                                "Hóa đơn và vé đã được cập nhật.",
+                                "Thành công",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information
+                            );
+
+                            var successForm = new PayOSMethod.PaymentSuccessForm(invoiceID, _home, _employee);
+                            successForm.ShowDialog();
+
+                            LoadInvoiceInfo();
+                        });
+                    }
+                    else if (result.Status == "CANCELLED")
+                    {
+                        _paymentTimer.Stop();
+
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            MessageBox.Show(
+                                "❌ Thanh toán đã bị hủy.\n\nVui lòng thử lại.",
+                                "Thông báo",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+                        });
+                    }
+                    else if (result.Status == "ERROR")
+                    {
+                        _paymentTimer.Stop();
+
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            MessageBox.Show(
+                                $"❌ Lỗi kiểm tra thanh toán:\n{result.Message}",
+                                "Lỗi",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error
+                            );
+                        });
+                    }
+                    else if (checkCount >= maxChecks)
+                    {
+                        _paymentTimer.Stop();
+
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            MessageBox.Show(
+                                "⏱ Hết thời gian chờ thanh toán.\n\n" +
+                                "Vui lòng kiểm tra lại trạng thái hóa đơn sau.",
+                                "Thông báo",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"❌ Polling error: {ex.Message}");
+
+                    if (checkCount >= maxChecks)
+                    {
+                        _paymentTimer.Stop();
+                    }
+                }
+            };
+
+            _paymentTimer.Start();
+            Console.WriteLine("✅ Started payment polling with PayOS Query API");
         }
 
         //protected override void Dispose(bool disposing)
