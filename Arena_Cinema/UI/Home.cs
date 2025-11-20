@@ -158,7 +158,8 @@ namespace UI
                     LoadControl(settingControl);
                     break;
                 case "btnCaNhan":
-                    MessageBox.Show("Chức năng cá nhân đanng chờ bạn code");
+                    ProfileUC profileUC = new ProfileUC(this._employee);
+                    LoadControl(profileUC);
                     break;
                 default:
                     break;
