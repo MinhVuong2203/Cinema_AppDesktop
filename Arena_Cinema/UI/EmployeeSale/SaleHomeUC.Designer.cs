@@ -146,7 +146,7 @@
             this.btn_SaleProduct.Size = new System.Drawing.Size(171, 40);
             this.btn_SaleProduct.TabIndex = 0;
             //this.btn_SaleProduct.Text = "Bán combo";
-            this.btn_SaleProduct.Text = global::UI.Resources.Lang.BANSP;
+            this.btn_SaleProduct.Text = global::UI.Resources.Lang.SANPHAM;
             this.btn_SaleProduct.TextAlignment = System.Drawing.StringAlignment.Center;
             this.btn_SaleProduct.Click += new System.EventHandler(this.btn_SaleProduct_Click);
             // 
@@ -371,7 +371,7 @@
             // 
             this.lb_PhoneText.AutoSize = true;
             this.lb_PhoneText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_PhoneText.Location = new System.Drawing.Point(119, 358);
+            this.lb_PhoneText.Location = new System.Drawing.Point(207, 358);
             this.lb_PhoneText.Name = "lb_PhoneText";
             this.lb_PhoneText.Size = new System.Drawing.Size(174, 28);
             this.lb_PhoneText.TabIndex = 1;
