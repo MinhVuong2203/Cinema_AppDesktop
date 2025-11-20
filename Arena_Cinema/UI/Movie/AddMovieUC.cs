@@ -239,6 +239,14 @@ namespace UI.Movie
                 return false;
             }
 
+            if (dtpEndDate.Value < DateTime.Today.AddDays(-1))
+            {
+                MessageBox.Show("Ngày kết thúc phải sau ngày hôm nay!", "⚠ Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpEndDate.Focus();
+                return false;
+            }
+
             // Validate ngày khởi chiếu
             if (dtpStartDate.Value < DateTime.Today.AddDays(-1))
             {

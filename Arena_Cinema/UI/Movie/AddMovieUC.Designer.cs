@@ -231,23 +231,21 @@
             // 
             // lblTrailer
             // 
-            this.lblTrailer.AutoSize = true;
             this.lblTrailer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblTrailer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.lblTrailer.Location = new System.Drawing.Point(54, 438);
             this.lblTrailer.Name = "lblTrailer";
-            this.lblTrailer.Size = new System.Drawing.Size(112, 20);
+            this.lblTrailer.Size = new System.Drawing.Size(132, 20);
             this.lblTrailer.TabIndex = 33;
             this.lblTrailer.Text = "🎬 Link Trailer";
             // 
             // lblGenre
             // 
-            this.lblGenre.AutoSize = true;
             this.lblGenre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblGenre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.lblGenre.Location = new System.Drawing.Point(57, 253);
             this.lblGenre.Name = "lblGenre";
-            this.lblGenre.Size = new System.Drawing.Size(129, 20);
+            this.lblGenre.Size = new System.Drawing.Size(151, 20);
             this.lblGenre.TabIndex = 25;
             this.lblGenre.Text = "🎭 Giới Hạn Tuổi";
             // 
@@ -293,12 +291,11 @@
             // 
             // lblEndDate
             // 
-            this.lblEndDate.AutoSize = true;
             this.lblEndDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblEndDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.lblEndDate.Location = new System.Drawing.Point(412, 352);
             this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(138, 20);
+            this.lblEndDate.Size = new System.Drawing.Size(160, 20);
             this.lblEndDate.TabIndex = 31;
             this.lblEndDate.Text = "🗓️ Ngày Kết Thúc";
             // 
@@ -336,12 +333,11 @@
             // 
             // lblStartDate
             // 
-            this.lblStartDate.AutoSize = true;
             this.lblStartDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblStartDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.lblStartDate.Location = new System.Drawing.Point(57, 352);
             this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(151, 20);
+            this.lblStartDate.Size = new System.Drawing.Size(181, 20);
             this.lblStartDate.TabIndex = 29;
             this.lblStartDate.Text = "🗓️ Ngày Khởi Chiếu";
             // 
@@ -350,7 +346,7 @@
             this.btnCancel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnCancel.ButtonImage = null;
             this.btnCancel.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnCancel.ButtonText = "✖ Hủy Bỏ";
+            this.btnCancel.ButtonText = "Hủy Bỏ";
             this.btnCancel.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnCancel.ClickTextColor = System.Drawing.Color.White;
             this.btnCancel.CornerRadius = 5;
@@ -374,7 +370,7 @@
             this.btnSave.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             this.btnSave.ButtonImage = null;
             this.btnSave.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnSave.ButtonText = "💾 Lưu Phim";
+            this.btnSave.ButtonText = "Lưu Phim";
             this.btnSave.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(137)))), ((int)(((byte)(55)))));
             this.btnSave.ClickTextColor = System.Drawing.Color.White;
             this.btnSave.CornerRadius = 5;
@@ -458,12 +454,11 @@
             // 
             // lblPreview
             // 
-            this.lblPreview.AutoSize = true;
             this.lblPreview.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.lblPreview.Location = new System.Drawing.Point(56, 664);
             this.lblPreview.Name = "lblPreview";
-            this.lblPreview.Size = new System.Drawing.Size(102, 20);
+            this.lblPreview.Size = new System.Drawing.Size(152, 20);
             this.lblPreview.TabIndex = 23;
             this.lblPreview.Text = "📝 Nội Dung";
             // 
@@ -558,34 +553,31 @@
             // 
             // lblMovieName
             // 
-            this.lblMovieName.AutoSize = true;
             this.lblMovieName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblMovieName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.lblMovieName.Location = new System.Drawing.Point(66, 44);
             this.lblMovieName.Name = "lblMovieName";
-            this.lblMovieName.Size = new System.Drawing.Size(100, 20);
+            this.lblMovieName.Size = new System.Drawing.Size(120, 20);
             this.lblMovieName.TabIndex = 0;
             this.lblMovieName.Text = "🎬 Tên Phim";
             // 
             // lblDescription
             // 
-            this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.lblDescription.Location = new System.Drawing.Point(57, 550);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(119, 20);
+            this.lblDescription.Size = new System.Drawing.Size(151, 20);
             this.lblDescription.TabIndex = 17;
             this.lblDescription.Text = "📝 Mô Tả Phim";
             // 
             // lblLanguage
             // 
-            this.lblLanguage.AutoSize = true;
             this.lblLanguage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblLanguage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.lblLanguage.Location = new System.Drawing.Point(412, 145);
             this.lblLanguage.Name = "lblLanguage";
-            this.lblLanguage.Size = new System.Drawing.Size(109, 20);
+            this.lblLanguage.Size = new System.Drawing.Size(138, 20);
             this.lblLanguage.TabIndex = 5;
             this.lblLanguage.Text = "🗣️ Ngôn Ngữ";
             // 
@@ -610,12 +602,11 @@
             // 
             // lblCategory
             // 
-            this.lblCategory.AutoSize = true;
             this.lblCategory.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblCategory.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.lblCategory.Location = new System.Drawing.Point(416, 44);
             this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(94, 20);
+            this.lblCategory.Size = new System.Drawing.Size(122, 20);
             this.lblCategory.TabIndex = 3;
             this.lblCategory.Text = "🎭 Thể Loại";
             // 

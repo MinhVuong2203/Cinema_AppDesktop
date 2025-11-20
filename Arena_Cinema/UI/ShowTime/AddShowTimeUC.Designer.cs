@@ -521,6 +521,34 @@ namespace UI.ShowTime
             {
                 DateTime selectedStartTime = dtpStartTime.Value;
 
+                // ✅ THÊM: Kiểm tra ngày khởi chiếu của phim
+                if (cboMovie.SelectedIndex > 0 && cboMovie.SelectedItem is ComboBoxItem movieItem)
+                {
+                    var movie = movieBLL.GetMovieById((int)movieItem.Value);
+                    if (movie != null && movie.StartTime.HasValue)
+                    {
+                        DateTime movieStartDate = movie.StartTime.Value.Date;
+                        DateTime showTimeDate = selectedStartTime.Date;
+
+                        if (showTimeDate < movieStartDate)
+                        {
+                            MessageBox.Show(
+                                $"⚠️ Suất chiếu không thể trước ngày khởi chiếu của phim!\n\n" +
+                                $"Phim: {movie.Title}\n" +
+                                $"Ngày khởi chiếu: {movieStartDate:dd/MM/yyyy}\n\n" +
+                                $"Vui lòng chọn ngày từ {movieStartDate:dd/MM/yyyy} trở đi.",
+                                "Kiểm tra ngày khởi chiếu",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+
+                            // Tự động đặt về ngày khởi chiếu của phim
+                            dtpStartTime.Value = movieStartDate.AddHours(selectedStartTime.Hour);
+                            return;
+                        }
+                    }
+                }
+
                 // Kiểm tra giờ mở cửa: 8h - 23h
                 if (selectedStartTime.Hour < 8 || selectedStartTime.Hour >= 23)
                 {
@@ -596,7 +624,7 @@ namespace UI.ShowTime
                         }
                     }
                 }
-                
+
                 // Refresh timeline khi đổi thời gian
                 panelTimeline.Invalidate();
             }

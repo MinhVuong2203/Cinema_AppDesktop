@@ -16,6 +16,7 @@
         private void InitializeComponent()
         {
             this.panelHeader = new System.Windows.Forms.Panel();
+            this.right_Panel = new System.Windows.Forms.Panel();
             this.btnBack = new ReaLTaiizor.Controls.ParrotButton();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
@@ -23,12 +24,11 @@
             this.moviesContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.infoPanel = new System.Windows.Forms.Panel();
             this.lblInfo = new System.Windows.Forms.Label();
-            this.right_Panel = new System.Windows.Forms.Panel();
             this.panelHeader.SuspendLayout();
+            this.right_Panel.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panel_movie.SuspendLayout();
             this.infoPanel.SuspendLayout();
-            this.right_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -41,6 +41,15 @@
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1360, 60);
             this.panelHeader.TabIndex = 0;
+            // 
+            // right_Panel
+            // 
+            this.right_Panel.Controls.Add(this.btnBack);
+            this.right_Panel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.right_Panel.Location = new System.Drawing.Point(1160, 0);
+            this.right_Panel.Name = "right_Panel";
+            this.right_Panel.Size = new System.Drawing.Size(200, 60);
+            this.right_Panel.TabIndex = 2;
             // 
             // btnBack
             // 
@@ -69,12 +78,11 @@
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(50, 14);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(202, 32);
+            this.lblTitle.Size = new System.Drawing.Size(254, 32);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "🗑️ Phim Đã Xóa";
             // 
@@ -133,15 +141,6 @@
             this.lblInfo.Text = "🗑️ Tổng số phim đã xóa: 0";
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // right_Panel
-            // 
-            this.right_Panel.Controls.Add(this.btnBack);
-            this.right_Panel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.right_Panel.Location = new System.Drawing.Point(1160, 0);
-            this.right_Panel.Name = "right_Panel";
-            this.right_Panel.Size = new System.Drawing.Size(200, 60);
-            this.right_Panel.TabIndex = 2;
-            // 
             // DeletedMoviesUC
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -150,11 +149,10 @@
             this.Name = "DeletedMoviesUC";
             this.Size = new System.Drawing.Size(1360, 800);
             this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
+            this.right_Panel.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
             this.panel_movie.ResumeLayout(false);
             this.infoPanel.ResumeLayout(false);
-            this.right_Panel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
