@@ -34,9 +34,13 @@ namespace UI.Setting
             InitializeComponent();
             setCboLang();
             setColor();
-
+            setFont();
         }
         
+        private void setFont()
+        {
+            this.textFont.Text = this.font + ", " + this.size; 
+        }
         private void setColor()
         {
             if (!string.IsNullOrEmpty(color))

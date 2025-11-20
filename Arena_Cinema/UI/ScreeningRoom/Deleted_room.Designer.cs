@@ -66,7 +66,7 @@
             this.btnBack.BackgroundColor = System.Drawing.Color.Transparent;
             this.btnBack.ButtonImage = null;
             this.btnBack.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnBack.ButtonText = "← Quay lại";
+            this.btnBack.ButtonText = global::UI.Resources.Lang.QuayLai;
             this.btnBack.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
             this.btnBack.ClickTextColor = System.Drawing.Color.White;
             this.btnBack.CornerRadius = 5;
@@ -96,7 +96,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(171, 32);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "Phòng đã xóa";
+            this.lblTitle.Text = global::UI.Resources.Lang.PhongDaXoa;
             // 
             // panelMain
             // 
@@ -158,7 +158,7 @@
             this.lblSeatcount.Name = "lblSeatcount";
             this.lblSeatcount.Size = new System.Drawing.Size(134, 28);
             this.lblSeatcount.TabIndex = 7;
-            this.lblSeatcount.Text = "Số lượng ghế:";
+            this.lblSeatcount.Text = global::UI.Resources.Lang.SoLuongGhe;
             // 
             // lblDescription
             // 
@@ -199,7 +199,7 @@
             this.btnKhoiphuc.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnKhoiphuc.Size = new System.Drawing.Size(122, 42);
             this.btnKhoiphuc.TabIndex = 2;
-            this.btnKhoiphuc.Text = "Khôi phục";
+            this.btnKhoiphuc.Text = global::UI.Resources.Lang.KhoiPhuc;
             this.btnKhoiphuc.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnKhoiphuc.UseAccentColor = true;
             this.btnKhoiphuc.UseMnemonic = false;

@@ -79,8 +79,6 @@ namespace UI.Employee
             // 
             // panelMain
             // 
-            
-          
             this.panelMain.Controls.Add(this.materialCard2);
             this.panelMain.Controls.Add(this.materialCard3);
             this.panelMain.Controls.Add(this.materialCard1);
@@ -91,6 +89,7 @@ namespace UI.Employee
             this.panelMain.Padding = new System.Windows.Forms.Padding(25);
             this.panelMain.Size = new System.Drawing.Size(1360, 740);
             this.panelMain.TabIndex = 1;
+            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // materialCard2
             // 

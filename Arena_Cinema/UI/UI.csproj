@@ -544,9 +544,12 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Lang.en.resx" />
+    <EmbeddedResource Include="Resources\Lang.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Lang.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ScreeningRoom\AddRoom.resx">
