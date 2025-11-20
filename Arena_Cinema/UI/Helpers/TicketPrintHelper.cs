@@ -18,6 +18,7 @@ namespace UI.Helpers
         private readonly CinemaDBContext _context;
         private Ticket _ticket;
         private ShowTimeDTO _showTime;
+
         private MovieDTO _movie;
         private Seat _seat;
         private Room _room;
