@@ -257,15 +257,20 @@ namespace UI.EmployeeSale
 
                 string description = $"HD {invoice.InvoiceID.ToString().Substring(0, 8).ToUpper()}";
 
+                string returnUrl = $"https://localhost:3000/success?invoiceId={_invoiceID}";
+                string cancelUrl = $"https://localhost:3000/cancel?invoiceId={_invoiceID}";
+
+
                 var paymentService = new PaymentService();
 
                 // ✅ SỬA: Thêm await và nhận giá trị trả về
                 string paymentUrl = await paymentService.CreatePaymentLink(
+                    _invoiceID,
                     orderCode,
                     amount,
                     description,
-                    "https://localhost:3000/success",
-                    "https://localhost:3000/cancel"
+                    returnUrl,
+                    cancelUrl
                 );
 
                 // ✅ Mở trình duyệt với URL nhận được
