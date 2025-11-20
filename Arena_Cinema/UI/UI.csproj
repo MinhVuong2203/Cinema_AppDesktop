@@ -494,6 +494,9 @@
     <EmbeddedResource Include="Movie\Movie_MainUC.resx">
       <DependentUpon>Movie_MainUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PayOSMethod\PaymentSuccessForm.resx">
+      <DependentUpon>PaymentSuccessForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Products\ProductAddEditForm.resx">
       <DependentUpon>ProductAddEditForm.cs</DependentUpon>
     </EmbeddedResource>
