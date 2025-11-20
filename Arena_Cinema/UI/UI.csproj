@@ -753,6 +753,8 @@
     <None Include="Resources\imgClock.png" />
     <None Include="Resources\imgCalender.png" />
     <None Include="Resources\bg21.jpg" />
+    <None Include="Resources\invoice123.png" />
+    <None Include="Resources\invoice213.png" />
     <Content Include="Resources\roomDefault.png" />
     <None Include="Resources\Search3.png" />
     <None Include="Resources\Search2.png" />
