@@ -73,8 +73,7 @@ namespace UI.ShowTime
 
             if (result == DialogResult.Yes)
             {
-                Movie_MainUC movieMain = new Movie_MainUC(_home, _employee);
-                _home.LoadControl(movieMain);
+                _home.LoadControl(new MNShowTimeUC(_home, _employee));
             }
         }
 

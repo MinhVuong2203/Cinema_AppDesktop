@@ -1000,5 +1000,11 @@ namespace UI.Movie
             currentPage = 1;
             LoadMovies();
         }
+
+        private void btnRP_Click(object sender, EventArgs e)
+        {
+            MovieReportUC movieReportUC = new MovieReportUC();
+           _home.LoadControl(movieReportUC);
+        }
     }
 }

@@ -179,12 +179,11 @@ namespace UI.ShowTime
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(50, 14);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(275, 32);
+            this.lblTitle.Size = new System.Drawing.Size(364, 32);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "🎬 Quản Lý Suất Chiếu";
             // 
@@ -582,7 +581,6 @@ namespace UI.ShowTime
             this.Size = new System.Drawing.Size(1360, 800);
             this.Load += new System.EventHandler(this.MNShowTimeUC_Load);
             this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
             this.head_Right_Panel.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
             this.panelDataGridView.ResumeLayout(false);

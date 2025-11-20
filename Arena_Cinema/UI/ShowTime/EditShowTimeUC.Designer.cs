@@ -33,7 +33,6 @@ namespace UI.ShowTime
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditShowTimeUC));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.right_panel = new System.Windows.Forms.Panel();
             this.btnBack = new ReaLTaiizor.Controls.ParrotButton();
@@ -63,16 +62,6 @@ namespace UI.ShowTime
             this.lblStatusLabel = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblWarning = new System.Windows.Forms.Label();
-
-            // Wire up events
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            this.cboMovie.SelectedIndexChanged += new System.EventHandler(this.cboMovie_SelectedIndexChanged);
-            this.dtpStartTime.ValueChanged += new System.EventHandler(this.dtpStartTime_ValueChanged);
-            this.panelForm.Resize += new System.EventHandler(this.panelForm_Resize);
-            this.Load += new System.EventHandler(this.EditShowTimeUC_Load);
-
             this.panelHeader.SuspendLayout();
             this.right_panel.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -125,15 +114,15 @@ namespace UI.ShowTime
             this.btnBack.TextColor = System.Drawing.Color.White;
             this.btnBack.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnBack.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(50, 14);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(239, 32);
+            this.lblTitle.Size = new System.Drawing.Size(330, 32);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "✏️ Sửa Suất Chiếu";
             // 
@@ -163,6 +152,7 @@ namespace UI.ShowTime
             this.panelForm.Padding = new System.Windows.Forms.Padding(40);
             this.panelForm.Size = new System.Drawing.Size(1260, 660);
             this.panelForm.TabIndex = 0;
+            this.panelForm.Resize += new System.EventHandler(this.panelForm_Resize);
             // 
             // btnCancel
             // 
@@ -187,6 +177,7 @@ namespace UI.ShowTime
             this.btnCancel.TextColor = System.Drawing.Color.White;
             this.btnCancel.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnCancel.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnUpdate
             // 
@@ -211,6 +202,7 @@ namespace UI.ShowTime
             this.btnUpdate.TextColor = System.Drawing.Color.White;
             this.btnUpdate.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnUpdate.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // groupBoxInfo
             // 
@@ -238,7 +230,7 @@ namespace UI.ShowTime
             this.lblShowTimeID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblShowTimeID.Location = new System.Drawing.Point(30, 35);
             this.lblShowTimeID.Name = "lblShowTimeID";
-            this.lblShowTimeID.Size = new System.Drawing.Size(106, 20);
+            this.lblShowTimeID.Size = new System.Drawing.Size(109, 20);
             this.lblShowTimeID.TabIndex = 0;
             this.lblShowTimeID.Text = "Mã Suất Chiếu";
             // 
@@ -286,6 +278,7 @@ namespace UI.ShowTime
             this.cboMovie.Size = new System.Drawing.Size(426, 49);
             this.cboMovie.StartIndex = 0;
             this.cboMovie.TabIndex = 3;
+            this.cboMovie.SelectedIndexChanged += new System.EventHandler(this.cboMovie_SelectedIndexChanged);
             // 
             // lblRoom
             // 
@@ -384,6 +377,7 @@ namespace UI.ShowTime
             this.dtpStartTime.Name = "dtpStartTime";
             this.dtpStartTime.Size = new System.Drawing.Size(426, 30);
             this.dtpStartTime.TabIndex = 1;
+            this.dtpStartTime.ValueChanged += new System.EventHandler(this.dtpStartTime_ValueChanged);
             // 
             // lblEndTime
             // 
@@ -440,7 +434,7 @@ namespace UI.ShowTime
             this.lblTicketsSoldLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblTicketsSoldLabel.Location = new System.Drawing.Point(30, 35);
             this.lblTicketsSoldLabel.Name = "lblTicketsSoldLabel";
-            this.lblTicketsSoldLabel.Size = new System.Drawing.Size(91, 20);
+            this.lblTicketsSoldLabel.Size = new System.Drawing.Size(101, 20);
             this.lblTicketsSoldLabel.TabIndex = 0;
             this.lblTicketsSoldLabel.Text = "Số vé đã bán:";
             // 
@@ -462,7 +456,7 @@ namespace UI.ShowTime
             this.lblStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblStatusLabel.Location = new System.Drawing.Point(350, 35);
             this.lblStatusLabel.Name = "lblStatusLabel";
-            this.lblStatusLabel.Size = new System.Drawing.Size(80, 20);
+            this.lblStatusLabel.Size = new System.Drawing.Size(84, 20);
             this.lblStatusLabel.TabIndex = 2;
             this.lblStatusLabel.Text = "Trạng thái:";
             // 
@@ -473,7 +467,7 @@ namespace UI.ShowTime
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             this.lblStatus.Location = new System.Drawing.Point(436, 35);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(82, 20);
+            this.lblStatus.Size = new System.Drawing.Size(75, 20);
             this.lblStatus.TabIndex = 3;
             this.lblStatus.Text = "Sắp chiếu";
             // 
@@ -494,8 +488,8 @@ namespace UI.ShowTime
             this.Controls.Add(this.panelHeader);
             this.Name = "EditShowTimeUC";
             this.Size = new System.Drawing.Size(1360, 780);
+            this.Load += new System.EventHandler(this.EditShowTimeUC_Load);
             this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
             this.right_panel.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
             this.panelForm.ResumeLayout(false);
@@ -506,6 +500,7 @@ namespace UI.ShowTime
             this.groupBoxStatus.ResumeLayout(false);
             this.groupBoxStatus.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion

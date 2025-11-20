@@ -47,6 +47,7 @@
             this.btnReset = new ReaLTaiizor.Controls.ParrotButton();
             this.lblInfo = new System.Windows.Forms.Label();
             this.txtSearch = new ReaLTaiizor.Controls.MaterialTextBox();
+            this.btnRP = new ReaLTaiizor.Controls.ParrotButton();
             this.panelHeader.SuspendLayout();
             this.right_panel.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -423,6 +424,7 @@
             // 
             // panelinfo_right
             // 
+            this.panelinfo_right.Controls.Add(this.btnRP);
             this.panelinfo_right.Controls.Add(this.cboAgeLimit);
             this.panelinfo_right.Controls.Add(this.cboGenre);
             this.panelinfo_right.Controls.Add(this.cboFilter);
@@ -567,6 +569,31 @@
             this.txtSearch.TrailingIcon = null;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // btnRP
+            // 
+            this.btnRP.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnRP.ButtonImage = null;
+            this.btnRP.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnRP.ButtonText = "Xem Thống  Kê";
+            this.btnRP.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            this.btnRP.ClickTextColor = System.Drawing.Color.White;
+            this.btnRP.CornerRadius = 5;
+            this.btnRP.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnRP.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnRP.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
+            this.btnRP.HoverTextColor = System.Drawing.Color.White;
+            this.btnRP.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnRP.Location = new System.Drawing.Point(597, 60);
+            this.btnRP.Name = "btnRP";
+            this.btnRP.Size = new System.Drawing.Size(120, 38);
+            this.btnRP.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnRP.TabIndex = 6;
+            this.btnRP.TextColor = System.Drawing.Color.White;
+            this.btnRP.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnRP.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnRP.Click += new System.EventHandler(this.btnRP_Click);
+            // 
             // Movie_MainUC
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -623,5 +650,6 @@
         private ReaLTaiizor.Controls.ParrotButton btnDeleteTemplate;
         private ReaLTaiizor.Controls.ParrotButton btnPageNumberTemplate;
         private ReaLTaiizor.Controls.ParrotButton btnNavTemplate;
+        private ReaLTaiizor.Controls.ParrotButton btnRP;
     }
 }
