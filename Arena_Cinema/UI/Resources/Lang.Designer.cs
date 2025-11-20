@@ -138,6 +138,7 @@ namespace UI.Resources {
         public static string HinhCoTheTrong {
             get {
                 return ResourceManager.GetString("HinhCoTheTrong", resourceCulture);
+        ///   Looks up a localized string similar to Địa chỉ.
         /// </summary>
         public static string DiaChi {
             get {
@@ -154,6 +155,7 @@ namespace UI.Resources {
                 return ResourceManager.GetString("HuongDan", resourceCulture);
         ///   Looks up a localized string similar to Họ và tên.
         /// </summary>
+        public static string HoVaTen {
             get {
                 return ResourceManager.GetString("HoVaTen", resourceCulture);
             }
@@ -176,6 +178,7 @@ namespace UI.Resources {
                 return ResourceManager.GetString("LoaiPhong", resourceCulture);
         ///   Looks up a localized string similar to Lương giờ.
         /// </summary>
+        public static string LuongGio {
             get {
                 return ResourceManager.GetString("LuongGio", resourceCulture);
             }
@@ -209,6 +212,7 @@ namespace UI.Resources {
         /// </summary>
         public static string LuuThayDoi {
             get {
+                return ResourceManager.GetString("LuuThayDoi", resourceCulture);
             }
         }
         
@@ -230,6 +234,7 @@ namespace UI.Resources {
         ///   Looks up a localized string similar to Ngày sinh.
         /// </summary>
         public static string NgaySinh {
+            get {
                 return ResourceManager.GetString("NgaySinh", resourceCulture);
             }
         }
@@ -318,6 +323,7 @@ namespace UI.Resources {
             get {
                 return ResourceManager.GetString("TaiAnh", resourceCulture);
         ///   Looks up a localized string similar to Tên đăng nhập.
+        /// </summary>
         public static string TenDangNhap {
             get {
                 return ResourceManager.GetString("TenDangNhap", resourceCulture);
@@ -340,6 +346,7 @@ namespace UI.Resources {
             get {
                 return ResourceManager.GetString("TenPhongChieuLaDuyNhat", resourceCulture);
         ///   Looks up a localized string similar to THÊM NHÂN SỰ.
+        /// </summary>
         public static string ThemNhanSu {
             get {
                 return ResourceManager.GetString("ThemNhanSu", resourceCulture);
