@@ -496,7 +496,7 @@
             // picCover
             // 
             this.picCover.BackColor = System.Drawing.Color.Transparent;
-            this.picCover.BackgroundImage = global::UI.Properties.Resources.bg21;
+            //this.picCover.BackgroundImage = global::UI.Properties.Resources.bg21;
             this.picCover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.picCover.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picCover.Location = new System.Drawing.Point(0, 0);
