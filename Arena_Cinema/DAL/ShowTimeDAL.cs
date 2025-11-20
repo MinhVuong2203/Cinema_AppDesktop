@@ -249,7 +249,9 @@ namespace DAL
             try
             {
                 return _context.Tickets
-                    .Count(t => t.ShowTimeID == showTimeId && !t.IsDeleted);
+                    .Count(t => t.ShowTimeID == showTimeId
+                             && !t.IsDeleted
+                             && t.Status == "Đã bán");
             }
             catch (Exception ex)
             {

@@ -62,6 +62,8 @@ namespace UI.ShowTime
             this.lblStatusLabel = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.lblWarning = new System.Windows.Forms.Label();
+            this.groupBoxTimeline = new System.Windows.Forms.GroupBox();
+            this.panelTimeline = new System.Windows.Forms.Panel();
             this.panelHeader.SuspendLayout();
             this.right_panel.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -69,6 +71,7 @@ namespace UI.ShowTime
             this.groupBoxInfo.SuspendLayout();
             this.groupBoxTime.SuspendLayout();
             this.groupBoxStatus.SuspendLayout();
+            this.groupBoxTimeline.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -114,7 +117,6 @@ namespace UI.ShowTime
             this.btnBack.TextColor = System.Drawing.Color.White;
             this.btnBack.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnBack.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // lblTitle
             // 
@@ -146,13 +148,13 @@ namespace UI.ShowTime
             this.panelForm.Controls.Add(this.groupBoxInfo);
             this.panelForm.Controls.Add(this.groupBoxTime);
             this.panelForm.Controls.Add(this.groupBoxStatus);
+            this.panelForm.Controls.Add(this.groupBoxTimeline);
             this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelForm.Location = new System.Drawing.Point(50, 30);
             this.panelForm.Name = "panelForm";
             this.panelForm.Padding = new System.Windows.Forms.Padding(40);
             this.panelForm.Size = new System.Drawing.Size(1260, 660);
             this.panelForm.TabIndex = 0;
-            this.panelForm.Resize += new System.EventHandler(this.panelForm_Resize);
             // 
             // btnCancel
             // 
@@ -169,7 +171,7 @@ namespace UI.ShowTime
             this.btnCancel.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
             this.btnCancel.HoverTextColor = System.Drawing.Color.DodgerBlue;
             this.btnCancel.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnCancel.Location = new System.Drawing.Point(419, 652);
+            this.btnCancel.Location = new System.Drawing.Point(419, 852);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(150, 45);
             this.btnCancel.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -177,7 +179,6 @@ namespace UI.ShowTime
             this.btnCancel.TextColor = System.Drawing.Color.White;
             this.btnCancel.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnCancel.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnUpdate
             // 
@@ -194,7 +195,7 @@ namespace UI.ShowTime
             this.btnUpdate.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(187)))), ((int)(((byte)(79)))));
             this.btnUpdate.HoverTextColor = System.Drawing.Color.White;
             this.btnUpdate.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnUpdate.Location = new System.Drawing.Point(113, 652);
+            this.btnUpdate.Location = new System.Drawing.Point(113, 852);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(200, 45);
             this.btnUpdate.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -202,7 +203,6 @@ namespace UI.ShowTime
             this.btnUpdate.TextColor = System.Drawing.Color.White;
             this.btnUpdate.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnUpdate.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // groupBoxInfo
             // 
@@ -278,7 +278,6 @@ namespace UI.ShowTime
             this.cboMovie.Size = new System.Drawing.Size(426, 49);
             this.cboMovie.StartIndex = 0;
             this.cboMovie.TabIndex = 3;
-            this.cboMovie.SelectedIndexChanged += new System.EventHandler(this.cboMovie_SelectedIndexChanged);
             // 
             // lblRoom
             // 
@@ -377,7 +376,6 @@ namespace UI.ShowTime
             this.dtpStartTime.Name = "dtpStartTime";
             this.dtpStartTime.Size = new System.Drawing.Size(426, 30);
             this.dtpStartTime.TabIndex = 1;
-            this.dtpStartTime.ValueChanged += new System.EventHandler(this.dtpStartTime_ValueChanged);
             // 
             // lblEndTime
             // 
@@ -481,6 +479,26 @@ namespace UI.ShowTime
             this.lblWarning.Size = new System.Drawing.Size(0, 19);
             this.lblWarning.TabIndex = 4;
             // 
+            // groupBoxTimeline
+            // 
+            this.groupBoxTimeline.Controls.Add(this.panelTimeline);
+            this.groupBoxTimeline.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.groupBoxTimeline.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            this.groupBoxTimeline.Location = new System.Drawing.Point(113, 650);
+            this.groupBoxTimeline.Name = "groupBoxTimeline";
+            this.groupBoxTimeline.Size = new System.Drawing.Size(1035, 180);
+            this.groupBoxTimeline.TabIndex = 5;
+            this.groupBoxTimeline.TabStop = false;
+            this.groupBoxTimeline.Text = "📅 Lịch Chiếu Trong Ngày";
+            // 
+            // panelTimeline
+            // 
+            this.panelTimeline.BackColor = System.Drawing.Color.White;
+            this.panelTimeline.Location = new System.Drawing.Point(30, 35);
+            this.panelTimeline.Name = "panelTimeline";
+            this.panelTimeline.Size = new System.Drawing.Size(975, 130);
+            this.panelTimeline.TabIndex = 0;
+            // 
             // EditShowTimeUC
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -488,7 +506,6 @@ namespace UI.ShowTime
             this.Controls.Add(this.panelHeader);
             this.Name = "EditShowTimeUC";
             this.Size = new System.Drawing.Size(1360, 780);
-            this.Load += new System.EventHandler(this.EditShowTimeUC_Load);
             this.panelHeader.ResumeLayout(false);
             this.right_panel.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
@@ -499,14 +516,25 @@ namespace UI.ShowTime
             this.groupBoxTime.PerformLayout();
             this.groupBoxStatus.ResumeLayout(false);
             this.groupBoxStatus.PerformLayout();
+            this.groupBoxTimeline.ResumeLayout(false);
             this.ResumeLayout(false);
 
+            // Event handlers
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.cboMovie.SelectedIndexChanged += new System.EventHandler(this.cboMovie_SelectedIndexChanged);
+            this.cboRoom.SelectedIndexChanged += new System.EventHandler(this.cboRoom_SelectedIndexChanged);
+            this.dtpStartTime.ValueChanged += new System.EventHandler(this.dtpStartTime_ValueChanged);
+            this.panelTimeline.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTimeline_Paint);
+            this.panelForm.Resize += new System.EventHandler(this.panelForm_Resize);
+            this.Load += new System.EventHandler(this.EditShowTimeUC_Load);
         }
 
         #endregion
 
         private Panel panelHeader, panelMain, panelForm, right_panel;
-        private GroupBox groupBoxInfo, groupBoxTime, groupBoxStatus;
+        private GroupBox groupBoxInfo, groupBoxTime, groupBoxStatus, groupBoxTimeline;
         private Label lblTitle, lblShowTimeID, lblMovie, lblRoom, lblPrice;
         private Label lblStartTime, lblEndTime, lblNote;
         private Label lblTicketsSoldLabel, lblTicketsSold, lblStatusLabel, lblStatus, lblWarning;
@@ -515,6 +543,7 @@ namespace UI.ShowTime
         private ReaLTaiizor.Controls.MaterialTextBox txtPrice;
         private DateTimePicker dtpStartTime, dtpEndTime;
         private ReaLTaiizor.Controls.ParrotButton btnUpdate, btnCancel, btnBack;
+        private Panel panelTimeline;
 
         #region Logic Functions
 
@@ -576,12 +605,10 @@ namespace UI.ShowTime
         {
             if (_currentShowTime == null) return;
 
-            // Load thông tin cơ bản
             txtShowTimeID.Text = _currentShowTime.ShowTimeID.ToString();
             dtpStartTime.Value = _currentShowTime.StartTime;
             txtPrice.Text = _currentShowTime.Price.ToString();
 
-            // Chọn phim
             for (int i = 1; i < cboMovie.Items.Count; i++)
             {
                 if (cboMovie.Items[i] is ComboBoxItem item &&
@@ -592,7 +619,6 @@ namespace UI.ShowTime
                 }
             }
 
-            // Chọn phòng
             for (int i = 1; i < cboRoom.Items.Count; i++)
             {
                 if (cboRoom.Items[i] is ComboBoxItem item &&
@@ -603,7 +629,6 @@ namespace UI.ShowTime
                 }
             }
 
-            // Cập nhật thời gian kết thúc
             UpdateEndTime();
         }
 
@@ -611,14 +636,12 @@ namespace UI.ShowTime
         {
             if (_currentShowTime == null) return;
 
-            // Đếm số vé đã bán
             int ticketsSold = showTimeBLL.CountTicketsSold(_currentShowTime.ShowTimeID);
             lblTicketsSold.Text = ticketsSold.ToString();
             lblTicketsSold.ForeColor = ticketsSold > 0
                 ? Color.FromArgb(220, 53, 69)
                 : Color.FromArgb(40, 167, 69);
 
-            // Hiển thị trạng thái
             string status = showTimeBLL.GetShowTimeStatus(_currentShowTime);
             lblStatus.Text = status;
 
@@ -669,11 +692,99 @@ namespace UI.ShowTime
         private void cboMovie_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateEndTime();
+            panelTimeline?.Invalidate();
+        }
+
+        private void cboRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            panelTimeline?.Invalidate();
         }
 
         private void dtpStartTime_ValueChanged(object sender, EventArgs e)
         {
-            UpdateEndTime();
+            try
+            {
+                DateTime selectedStartTime = dtpStartTime.Value;
+
+                // Kiểm tra giờ mở cửa: 8h - 23h
+                if (selectedStartTime.Hour < 8 || selectedStartTime.Hour >= 23)
+                {
+                    MessageBox.Show(
+                        "⚠️ Suất chiếu phải trong khung giờ 8:00 - 23:00!",
+                        "Kiểm tra giờ mở cửa",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    dtpStartTime.Value = _currentShowTime.StartTime;
+                    return;
+                }
+
+                if (cboMovie.SelectedIndex > 0 && cboMovie.SelectedItem is ComboBoxItem item)
+                {
+                    var movie = movieBLL.GetMovieById((int)item.Value);
+                    if (movie != null)
+                    {
+                        DateTime endTime = selectedStartTime.AddMinutes(movie.DurationMinutes);
+
+                        // Kiểm tra endTime không vượt quá 23:00
+                        if (endTime.Hour > 23 || (endTime.Hour == 23 && endTime.Minute > 0))
+                        {
+                            MessageBox.Show(
+                                $"⚠️ Suất chiếu kết thúc lúc {endTime:HH:mm} vượt quá 23:00!\n" +
+                                $"Vui lòng chọn thời gian khác.",
+                                "Kiểm tra giờ kết thúc",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning
+                            );
+                            dtpStartTime.Value = _currentShowTime.StartTime;
+                            return;
+                        }
+
+                        dtpEndTime.Value = endTime;
+
+                        // Kiểm tra khoảng cách 15 phút với các suất chiếu khác
+                        if (cboRoom.SelectedIndex > 0 && cboRoom.SelectedItem is ComboBoxItem roomItem)
+                        {
+                            int roomId = (int)roomItem.Value;
+                            var otherShowTimes = showTimeBLL.GetShowTimesByRoom(roomId);
+
+                            foreach (var showTime in otherShowTimes)
+                            {
+                                // Bỏ qua suất chiếu hiện tại
+                                if (showTime.ShowTimeID == _currentShowTime.ShowTimeID)
+                                    continue;
+
+                                DateTime existingEndTime = showTime.StartTime.AddMinutes(showTime.Movie.DurationMinutes);
+
+                                if (selectedStartTime < existingEndTime.AddMinutes(15))
+                                {
+                                    if (endTime > showTime.StartTime.AddMinutes(-15))
+                                    {
+                                        MessageBox.Show(
+                                            $"⚠️ Lịch chiếu trùng lặp!\n\n" +
+                                            $"Phim: {showTime.Movie.Title}\n" +
+                                            $"Thời gian: {showTime.StartTime:dd/MM/yyyy HH:mm} - {existingEndTime:HH:mm}\n\n" +
+                                            $"Các suất chiếu phải cách nhau tối thiểu 15 phút.\n" +
+                                            $"Vui lòng chọn thời gian khác.",
+                                            "Cảnh báo lịch chiếu",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Warning
+                                        );
+                                        dtpStartTime.Value = _currentShowTime.StartTime;
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                panelTimeline?.Invalidate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private bool ValidateInput()
@@ -699,19 +810,6 @@ namespace UI.ShowTime
                 return false;
             }
 
-            if (dtpStartTime.Value < DateTime.Now.AddHours(-1))
-            {
-                var result = MessageBox.Show(
-                    "Giờ bắt đầu trong quá khứ. Bạn có chắc chắn muốn tiếp tục?",
-                    "Cảnh báo",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-
-                if (result != DialogResult.Yes)
-                    return false;
-            }
-
-            // Kiểm tra nếu đã có vé bán
             int ticketsSold = showTimeBLL.CountTicketsSold(_currentShowTime.ShowTimeID);
             if (ticketsSold > 0)
             {
@@ -730,62 +828,51 @@ namespace UI.ShowTime
             return true;
         }
 
-        private void SaveShowTime()
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (!ValidateInput()) return;
+
             try
             {
-                if (!ValidateInput()) return;
-
-                // Lấy dữ liệu từ form
                 var movieItem = cboMovie.SelectedItem as ComboBoxItem;
                 var roomItem = cboRoom.SelectedItem as ComboBoxItem;
                 decimal price = decimal.Parse(txtPrice.Text);
 
-                // Cập nhật thông tin
                 _currentShowTime.MovieID = (int)movieItem.Value;
                 _currentShowTime.RoomID = (int)roomItem.Value;
                 _currentShowTime.StartTime = dtpStartTime.Value;
                 _currentShowTime.Price = price;
 
-                // Gọi BLL để cập nhật
                 var result = showTimeBLL.UpdateShowTime(_currentShowTime);
 
-                if (result.success)
-                {
-                    MessageBox.Show(result.message, "Thành công",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(result.message, result.success ? "Thành công" : "Lỗi",
+                    MessageBoxButtons.OK, result.success ? MessageBoxIcon.Information : MessageBoxIcon.Error);
 
-                    // Quay lại trang danh sách
-                    Movie_MainUC movieMain = new Movie_MainUC(_home, _employee);
-                    _home.LoadControl(movieMain);
-                }
-                else
-                {
-                    MessageBox.Show(result.message, "Lỗi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                if (result.success)
+                    _home?.LoadControl(new MNShowTimeUC(_home, _employee));
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi cập nhật: {ex.Message}", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-      
-
-        private class ComboBoxItem
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            public string Text { get; set; }
-            public object Value { get; set; }
-            public override string ToString() => Text;
+            if (MessageBox.Show("Hủy thao tác?", "Xác nhận", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.Yes)
+                _home?.LoadControl(new MNShowTimeUC(_home, _employee));
         }
 
-        #endregion
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            _home?.LoadControl(new MNShowTimeUC(_home, _employee));
+        }
 
-        #region Auto Center Layout
-
-        
+        private void EditShowTimeUC_Load(object sender, EventArgs e)
+        {
+            CenterControlsInPanel();
+        }
 
         private void panelForm_Resize(object sender, EventArgs e)
         {
@@ -798,31 +885,193 @@ namespace UI.ShowTime
 
             int panelWidth = panelForm.ClientSize.Width;
             int groupBoxWidth = 1035;
-            int centerX = (panelWidth - groupBoxWidth) / 2;
-            if (centerX < 40) centerX = 40;
+            int centerX = Math.Max(40, (panelWidth - groupBoxWidth) / 2);
 
-            // Căn giữa các GroupBox
-            if (groupBoxInfo != null)
-                groupBoxInfo.Location = new Point(centerX, groupBoxInfo.Location.Y);
+            groupBoxInfo.Location = new Point(centerX, groupBoxInfo.Location.Y);
+            groupBoxTime.Location = new Point(centerX, groupBoxTime.Location.Y);
+            groupBoxStatus.Location = new Point(centerX, groupBoxStatus.Location.Y);
+            groupBoxTimeline.Location = new Point(centerX, groupBoxTimeline.Location.Y);
 
-            if (groupBoxTime != null)
-                groupBoxTime.Location = new Point(centerX, groupBoxTime.Location.Y);
-
-            if (groupBoxStatus != null)
-                groupBoxStatus.Location = new Point(centerX, groupBoxStatus.Location.Y);
-
-            // Căn giữa các nút
             int buttonAreaWidth = 200 + 150 + 106;
-            int buttonStartX = (panelWidth - buttonAreaWidth) / 2;
-            if (buttonStartX < 40) buttonStartX = 40;
+            int buttonStartX = Math.Max(40, (panelWidth - buttonAreaWidth) / 2);
 
-            if (btnUpdate != null)
-                btnUpdate.Location = new Point(buttonStartX, btnUpdate.Location.Y);
-
-            if (btnCancel != null)
-                btnCancel.Location = new Point(buttonStartX + 200 + 106, btnCancel.Location.Y);
+            btnUpdate.Location = new Point(buttonStartX, btnUpdate.Location.Y);
+            btnCancel.Location = new Point(buttonStartX + 306, btnCancel.Location.Y);
         }
 
         #endregion
+
+        #region Timeline Drawing
+
+        private void panelTimeline_Paint(object sender, PaintEventArgs e)
+        {
+            if (cboRoom.SelectedIndex <= 0)
+            {
+                DrawEmptyTimeline(e.Graphics);
+                return;
+            }
+
+            DrawTimeline(e.Graphics);
+        }
+
+        private void DrawEmptyTimeline(Graphics g)
+        {
+            string message = "Vui lòng chọn phòng để xem lịch chiếu";
+            Font font = new Font("Segoe UI", 10F, FontStyle.Italic);
+            SizeF size = g.MeasureString(message, font);
+
+            float x = (panelTimeline.Width - size.Width) / 2;
+            float y = (panelTimeline.Height - size.Height) / 2;
+
+            g.DrawString(message, font, Brushes.Gray, x, y);
+        }
+
+        private void DrawTimeline(Graphics g)
+        {
+            try
+            {
+                int width = panelTimeline.Width;
+                int height = panelTimeline.Height;
+
+                g.Clear(Color.FromArgb(250, 250, 250));
+
+                int startHour = 8;
+                int endHour = 23;
+                int totalHours = endHour - startHour;
+
+                float timelineY = 30;
+                float timelineHeight = height - 60;
+                float hourWidth = (width - 60) / (float)totalHours;
+
+                Pen axisPen = new Pen(Color.FromArgb(200, 200, 200), 2);
+                g.DrawLine(axisPen, 30, timelineY, width - 30, timelineY);
+
+                Font hourFont = new Font("Segoe UI", 8F);
+                for (int i = 0; i <= totalHours; i++)
+                {
+                    float x = 30 + (i * hourWidth);
+                    int hour = startHour + i;
+
+                    g.DrawLine(axisPen, x, timelineY - 5, x, timelineY + 5);
+
+                    string hourLabel = $"{hour:00}:00";
+                    SizeF labelSize = g.MeasureString(hourLabel, hourFont);
+                    g.DrawString(hourLabel, hourFont, Brushes.Black, x - labelSize.Width / 2, timelineY - 20);
+                }
+
+                if (cboRoom.SelectedItem is ComboBoxItem roomItem)
+                {
+                    int roomId = (int)roomItem.Value;
+                    DateTime today = dtpStartTime.Value.Date;
+                    DateTime tomorrow = today.AddDays(1);
+
+                    var showTimes = showTimeBLL.GetShowTimesByRoom(roomId)
+                        .Where(st => st.StartTime >= today && st.StartTime < tomorrow && st.ShowTimeID != _currentShowTime.ShowTimeID)
+                        .OrderBy(st => st.StartTime)
+                        .ToList();
+
+                    float blockY = timelineY + 15;
+                    float blockHeight = 40;
+
+                    foreach (var showTime in showTimes)
+                    {
+                        var movie = movieBLL.GetMovieById(showTime.MovieID);
+                        if (movie == null) continue;
+
+                        DateTime endTime = showTime.StartTime.AddMinutes(movie.DurationMinutes);
+
+                        float startX = 30 + ((float)(showTime.StartTime.Hour - startHour) + (showTime.StartTime.Minute / 60f)) * hourWidth;
+                        float blockWidth = ((movie.DurationMinutes / 60f) * hourWidth);
+
+                        Color blockColor = Color.FromArgb(220, 53, 69);
+                        Color borderColor = Color.FromArgb(180, 40, 55);
+
+                        using (SolidBrush brush = new SolidBrush(blockColor))
+                        using (Pen pen = new Pen(borderColor, 2))
+                        {
+                            RectangleF rect = new RectangleF(startX, blockY, blockWidth, blockHeight);
+                            g.FillRectangle(brush, rect);
+                            g.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
+                        }
+
+                        Font titleFont = new Font("Segoe UI", 7F, FontStyle.Bold);
+                        Font timeFont = new Font("Segoe UI", 6.5F);
+
+                        string title = movie.Title.Length > 18 ? movie.Title.Substring(0, 15) + "..." : movie.Title;
+                        string timeText = $"{showTime.StartTime:HH:mm} - {endTime:HH:mm}";
+
+                        SizeF titleSize = g.MeasureString(title, titleFont);
+                        SizeF timeSize = g.MeasureString(timeText, timeFont);
+
+                        g.DrawString(title, titleFont, Brushes.White,
+                            startX + (blockWidth - titleSize.Width) / 2, blockY + 8);
+                        g.DrawString(timeText, timeFont, Brushes.White,
+                            startX + (blockWidth - timeSize.Width) / 2, blockY + 23);
+                    }
+
+                    // Vẽ suất chiếu đang edit (màu xanh)
+                    if (cboMovie.SelectedIndex > 0 && cboMovie.SelectedItem is ComboBoxItem movieItem)
+                    {
+                        var movie = movieBLL.GetMovieById((int)movieItem.Value);
+                        if (movie != null)
+                        {
+                            DateTime editStart = dtpStartTime.Value;
+                            DateTime editEnd = editStart.AddMinutes(movie.DurationMinutes);
+
+                            if (editStart.Date == today)
+                            {
+                                float startX = 30 + ((float)(editStart.Hour - startHour) + (editStart.Minute / 60f)) * hourWidth;
+                                float blockWidth = ((movie.DurationMinutes / 60f) * hourWidth);
+
+                                using (Pen pen = new Pen(Color.FromArgb(40, 167, 69), 2))
+                                {
+                                    pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+                                    RectangleF rect = new RectangleF(startX, blockY, blockWidth, blockHeight);
+
+                                    using (SolidBrush brush = new SolidBrush(Color.FromArgb(120, 40, 167, 69)))
+                                    {
+                                        g.FillRectangle(brush, rect);
+                                    }
+
+                                    g.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
+
+                                    Font titleFont = new Font("Segoe UI", 7F, FontStyle.Bold);
+                                    Font timeFont = new Font("Segoe UI", 6.5F);
+
+                                    string title = "(Sửa) " + (movie.Title.Length > 13 ? movie.Title.Substring(0, 10) + "..." : movie.Title);
+                                    string timeText = $"{editStart:HH:mm} - {editEnd:HH:mm}";
+
+                                    SizeF titleSize = g.MeasureString(title, titleFont);
+                                    SizeF timeSize = g.MeasureString(timeText, timeFont);
+
+                                    g.DrawString(title, titleFont, Brushes.DarkGreen,
+                                        startX + (blockWidth - titleSize.Width) / 2, blockY + 8);
+                                    g.DrawString(timeText, timeFont, Brushes.DarkGreen,
+                                        startX + (blockWidth - timeSize.Width) / 2, blockY + 23);
+                                }
+                            }
+                        }
+                    }
+
+                    Font legendFont = new Font("Segoe UI", 7F);
+                    g.DrawString("■ Suất chiếu hiện tại", legendFont, new SolidBrush(Color.FromArgb(220, 53, 69)), 30, height - 20);
+                    g.DrawString("▪ Đang chỉnh sửa", legendFont, new SolidBrush(Color.FromArgb(40, 167, 69)), 160, height - 20);
+                }
+            }
+            catch (Exception ex)
+            {
+                Font errorFont = new Font("Segoe UI", 9F);
+                g.DrawString("Lỗi: " + ex.Message, errorFont, Brushes.Red, 10, 10);
+            }
+        }
+
+        #endregion
+
+        private class ComboBoxItem
+        {
+            public string Text { get; set; }
+            public object Value { get; set; }
+            public override string ToString() => Text;
+        }
     }
 }

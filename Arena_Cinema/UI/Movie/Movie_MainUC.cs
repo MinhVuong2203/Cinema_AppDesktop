@@ -331,7 +331,6 @@ namespace UI.Movie
                 Visible = true
             };
 
-
             cardOriginalSizes[card] = card.Size;
 
             card.MouseEnter += MovieCard_MouseEnter;
@@ -387,6 +386,7 @@ namespace UI.Movie
                         };
                         posterPicBox.Controls.Add(lblNoImage);
                     }
+
                     posterPanel.Controls.Add(posterPicBox);
                     clonedControl = posterPanel;
                 }
@@ -986,123 +986,76 @@ namespace UI.Movie
         }
 
 
-        private System.Collections.Generic.Dictionary<Control, System.Drawing.Size> cardOriginalSizes =
-            new System.Collections.Generic.Dictionary<Control, System.Drawing.Size>();
-
-
-        private System.Collections.Generic.Dictionary<Control, System.Windows.Forms.Timer> cardTimers =
-            new System.Collections.Generic.Dictionary<Control, System.Windows.Forms.Timer>();
+        private Dictionary<ReaLTaiizor.Controls.MaterialCard, Size> cardOriginalSizes = new Dictionary<ReaLTaiizor.Controls.MaterialCard, Size>();
+        private Dictionary<Panel, Size> posterOriginalSizes = new Dictionary<Panel, Size>();
+        private Dictionary<Panel, Point> posterOriginalLocations = new Dictionary<Panel, Point>();
 
         private void MovieCard_MouseEnter(object sender, EventArgs e)
         {
-            try
+            var card = sender as ReaLTaiizor.Controls.MaterialCard;
+            if (card != null)
             {
-                var card = sender as ReaLTaiizor.Controls.MaterialCard;
-                if (card == null || cardOriginalSizes == null || !cardOriginalSizes.ContainsKey(card))
-                    return;
-
-            
-                if (cardTimers.ContainsKey(card) && cardTimers[card] != null)
+                Panel posterPanel = FindPosterPanelInCard(card);
+                if (posterPanel != null)
                 {
-                    cardTimers[card].Stop();
-                    cardTimers[card].Dispose();
-                    cardTimers.Remove(card);
-                }
+                    posterPanel.Cursor = Cursors.Hand;
 
-            
-                var originalSize = cardOriginalSizes[card];
-                card.Size = new Size(
-                    (int)(originalSize.Width * 1.08),
-                    (int)(originalSize.Height * 1.08)
-                );
-
-                // 2️⃣ Tăng độ sâu (shadow)
-                card.Depth = 5;
-
-                // 3️⃣ Đổi màu nền nhẹ
-                card.BackColor = Color.FromArgb(250, 250, 250);
-
-                // 4️⃣ Đổi cursor thành hand
-                card.Cursor = Cursors.Hand;
-
-                // 5️⃣ Làm nổi bật buttons
-                foreach (Control ctrl in card.Controls)
-                {
-                    if (ctrl is ReaLTaiizor.Controls.ParrotButton btn)
+                    if (!posterOriginalSizes.ContainsKey(posterPanel))
                     {
-                        btn.Visible = true;
-                        btn.BringToFront();
+                        posterOriginalSizes[posterPanel] = posterPanel.Size;
+                        posterOriginalLocations[posterPanel] = posterPanel.Location;
                     }
+
+                    int newWidth = (int)(posterOriginalSizes[posterPanel].Width * 1.1);
+                    int newHeight = (int)(posterOriginalSizes[posterPanel].Height * 1.1);
+                    int offsetX = (posterOriginalSizes[posterPanel].Width - newWidth) / 2;
+                    int offsetY = (posterOriginalSizes[posterPanel].Height - newHeight) / 2;
+
+                    posterPanel.Size = new Size(newWidth, newHeight);
+                    posterPanel.Location = new Point(
+                        posterOriginalLocations[posterPanel].X + offsetX,
+                        posterOriginalLocations[posterPanel].Y + offsetY
+                    );
                 }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error in MovieCard_MouseEnter: {ex.Message}");
             }
         }
 
         private void MovieCard_MouseLeave(object sender, EventArgs e)
         {
-            try
+            var card = sender as ReaLTaiizor.Controls.MaterialCard;
+            if (card != null)
             {
-                var card = sender as ReaLTaiizor.Controls.MaterialCard;
-                if (card == null || cardOriginalSizes == null || !cardOriginalSizes.ContainsKey(card))
-                    return;
-
-             
-                if (cardTimers.ContainsKey(card) && cardTimers[card] != null)
+                Panel posterPanel = FindPosterPanelInCard(card);
+                if (posterPanel != null)
                 {
-                    cardTimers[card].Stop();
-                    cardTimers[card].Dispose();
-                    cardTimers.Remove(card);
+                    posterPanel.Cursor = Cursors.Default;
+
+                    if (posterOriginalSizes.ContainsKey(posterPanel))
+                    {
+                        posterPanel.Size = posterOriginalSizes[posterPanel];
+                        posterPanel.Location = posterOriginalLocations[posterPanel];
+                    }
                 }
-
-          
-                var timer = new System.Windows.Forms.Timer();
-                cardTimers[card] = timer;
-                timer.Interval = 100; 
-                timer.Tick += (s, ev) =>
-                {
-                    try
-                    {
-                        if (card == null || !card.IsHandleCreated)
-                        {
-                            timer.Stop();
-                            return;
-                        }
-
-                        var originalSize = cardOriginalSizes.ContainsKey(card) ? cardOriginalSizes[card] : card.Size;
-
-                   
-                        card.Size = originalSize;
-
-                     
-                        card.Depth = 1;
-
-                        card.BackColor = movieCardTemplate.BackColor;
-
-      
-                        card.Cursor = Cursors.Default;
-
-                   
-                        timer.Stop();
-                        if (cardTimers.ContainsKey(card))
-                            cardTimers.Remove(card);
-                    }
-                    catch (Exception ex)
-                    {
-                        System.Diagnostics.Debug.WriteLine($"Error in MouseLeave animation: {ex.Message}");
-                    }
-                };
-                timer.Start();
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Error in MovieCard_MouseLeave: {ex.Message}");
             }
         }
 
+        private Panel FindPosterPanelInCard(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (control is Panel panel)
+                    return panel;
+
+                Panel result = FindPosterPanelInCard(control);
+                if (result != null)
+                    return result;
+            }
+            return null;
+        }
+
+        // Helper method để tìm Panel poster trong card
        
+
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             currentPage = 1;
