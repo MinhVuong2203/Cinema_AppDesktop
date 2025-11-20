@@ -51,5 +51,10 @@ namespace UI.Employee
         {
             this._home.LoadControl(new SalaryReportUC());
         }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

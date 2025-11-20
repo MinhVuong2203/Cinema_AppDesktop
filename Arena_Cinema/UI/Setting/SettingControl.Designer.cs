@@ -84,7 +84,7 @@ namespace UI.Setting
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(426, 60);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "CÀI ĐẶT HỆ THỐNG";
+            this.lblTitle.Text = global::UI.Resources.Lang.CaiDatHeThong;
             // 
             // cardLang
             // 
@@ -108,7 +108,7 @@ namespace UI.Setting
             this.lblLang.Name = "lblLang";
             this.lblLang.Size = new System.Drawing.Size(123, 32);
             this.lblLang.TabIndex = 0;
-            this.lblLang.Text = "Ngôn ngữ";
+            this.lblLang.Text = global::UI.Resources.Lang.NgonNgu;
             // 
             // cbLang
             // 
@@ -161,7 +161,7 @@ namespace UI.Setting
             this.lblFont.Name = "lblFont";
             this.lblFont.Size = new System.Drawing.Size(107, 32);
             this.lblFont.TabIndex = 0;
-            this.lblFont.Text = "Kiểu chữ";
+            this.lblFont.Text = global::UI.Resources.Lang.KieuChu;
             // 
             // textFont
             // 
@@ -191,7 +191,7 @@ namespace UI.Setting
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(155, 32);
             this.lblColor.TabIndex = 3;
-            this.lblColor.Text = "Màu chủ đạo";
+            this.lblColor.Text = global::UI.Resources.Lang.MauSac;
             // 
             // colorPicker
             // 
@@ -263,7 +263,7 @@ namespace UI.Setting
             this.skyButton1.Size = new System.Drawing.Size(240, 53);
             this.skyButton1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.skyButton1.TabIndex = 4;
-            this.skyButton1.Text = "Đăng xuất";
+            this.skyButton1.Text = global::UI.Resources.Lang.DangXuat;
             // 
             // btnOk
             // 
@@ -300,7 +300,7 @@ namespace UI.Setting
             this.btnOk.Size = new System.Drawing.Size(240, 53);
             this.btnOk.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnOk.TabIndex = 3;
-            this.btnOk.Text = "Lưu thay đổi";
+            this.btnOk.Text = global::UI.Resources.Lang.LuuThayDoi;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // SettingControl
