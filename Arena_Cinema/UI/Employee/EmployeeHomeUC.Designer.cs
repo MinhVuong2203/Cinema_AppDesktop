@@ -1,4 +1,7 @@
-﻿namespace UI.Employee
+﻿using Common;
+using DTO;
+
+namespace UI.Employee
 {
     partial class EmployeeHomeUC
     {
@@ -76,7 +79,6 @@
             // 
             // panelMain
             // 
-            this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
             this.panelMain.Controls.Add(this.materialCard2);
             this.panelMain.Controls.Add(this.materialCard3);
             this.panelMain.Controls.Add(this.materialCard1);
@@ -87,6 +89,7 @@
             this.panelMain.Padding = new System.Windows.Forms.Padding(25);
             this.panelMain.Size = new System.Drawing.Size(1360, 740);
             this.panelMain.TabIndex = 1;
+            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // materialCard2
             // 

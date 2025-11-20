@@ -350,8 +350,15 @@ namespace UI.Movie
                 dtpEndDate.Focus();
                 return false;
             }
+            if (dtpEndDate.Value < DateTime.Today.AddDays(-1))
+            {
+                MessageBox.Show("Ngày kết thúc phải sau ngày hôm nay!", "⚠ Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                dtpEndDate.Focus();
+                return false;
+            }
 
-            return true;
+                return true;
         }
 
         private string GetAgeLimit(string genreText)

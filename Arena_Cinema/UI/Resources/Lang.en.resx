@@ -215,5 +215,34 @@
   </data>
   <data name="ThemPhong" xml:space="preserve">
     <value>Add new screening room</value>
+  <data name="CaiDatHeThong" xml:space="preserve">
+    <value>Setting system</value>
+  </data>
+  <data name="LuuThayDoi" xml:space="preserve">
+    <value>Save change</value>
+  </data>
+  <data name="ThemNhanSu" xml:space="preserve">
+    <value>ADD EMPLOYEE</value>
+  </data>
+  <data name="ThongTinCaNhan" xml:space="preserve">
+    <value>INFOMATION</value>
+  </data>
+  <data name="NgaySinh" xml:space="preserve">
+    <value>Birthday</value>
+  </data>
+  <data name="HoVaTen" xml:space="preserve">
+    <value>Fullname</value>
+  </data>
+  <data name="SoDienThoai" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="DiaChi" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="LuongGio" xml:space="preserve">
+    <value>HourWage</value>
+  </data>
+  <data name="TenDangNhap" xml:space="preserve">
+    <value>Username</value>
   </data>
 </root>

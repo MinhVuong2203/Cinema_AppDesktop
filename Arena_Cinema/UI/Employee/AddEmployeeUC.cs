@@ -35,8 +35,16 @@ namespace UI.Employee
             InitializeComponent();
             this.txtPassword.Hint = "Mật khẩu";
             pathImg = "Image\\Employee\\emloyeeDefault.png";
+
+            LoadThem();
             LoadCboRoles();
             LoadImage();
+        }
+
+        private void LoadThem()
+        {
+            Color c = ColorHelper.Parse(_employee.Setting.MainColor);
+            this.groupBox1.BackColor = c;
         }
 
         public AddEmployeeUC(Home home, DTO.Employee employee, DTO.Employee employeeEdit)
@@ -378,6 +386,11 @@ namespace UI.Employee
                 this.btnShowPass.ButtonImage = global::UI.Properties.Resources.CloseEyes;
             }
            
+        }
+
+        private void AddEmployeeUC_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

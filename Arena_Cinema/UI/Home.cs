@@ -6,13 +6,15 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using UI.Employee;
-using UI.Setting;
-using UI.Movie;
 using UI.EmployeeSale;
-using UI.ScreeningRoom;
-using UI.ShowTime;
-using UI.Products;
+using UI.Movie;
 using UI.PayOSMethod;
+using UI.Products;
+using UI.ScreeningRoom;
+using UI.Setting;
+using UI.ShowTime;
+
+
 
 using UI.Helpers;
 
@@ -46,6 +48,7 @@ namespace UI
             StartSeatLockService();
         }
 
+      
         private void Decentralization()
         {
             btnBanVe.Visible = false;

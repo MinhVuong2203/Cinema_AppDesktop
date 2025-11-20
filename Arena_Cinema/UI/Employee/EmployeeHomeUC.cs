@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using Common;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,15 @@ namespace UI.Employee
         {
             this._home = form;
             this._employee = employee;
+            
             InitializeComponent();
+            LoadThem();
+        }
+
+        private void LoadThem()
+        {
+            Color c = ColorHelper.Parse(_employee.Setting.MainColor);
+            this.panelMain.BackColor = c;
         }
 
         private void lblNhanVien_Click(object sender, EventArgs e)
@@ -41,6 +50,11 @@ namespace UI.Employee
         private void parrotButton3_Click(object sender, EventArgs e)
         {
             this._home.LoadControl(new SalaryReportUC());
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

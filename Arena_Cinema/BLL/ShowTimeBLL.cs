@@ -343,9 +343,23 @@ namespace BLL
             if (showTime.StartTime < DateTime.Now.AddDays(-1))
                 return (false, "✗ Thời gian bắt đầu quá xa trong quá khứ!");
 
+            // ✅ THÊM: Kiểm tra ngày khởi chiếu của phim
+            var movie = _movieBLL.GetMovieById(showTime.MovieID);
+            if (movie != null && movie.StartTime.HasValue)
+            {
+                // Chỉ so sánh ngày, bỏ qua giờ
+                DateTime movieStartDate = movie.StartTime.Value.Date;
+                DateTime showTimeDate = showTime.StartTime.Date;
+
+                if (showTimeDate < movieStartDate)
+                {
+                    return (false, $"✗ Suất chiếu không thể trước ngày khởi chiếu của phim!\n" +
+                                  $"Phim \"{movie.Title}\" khởi chiếu từ ngày {movieStartDate:dd/MM/yyyy}");
+                }
+            }
+
             return (true, string.Empty);
         }
-
         // ========== ĐẾM SỐ VÉ ĐÃ BÁN ==========
         public int CountTicketsSold(Guid showTimeId)
         {
