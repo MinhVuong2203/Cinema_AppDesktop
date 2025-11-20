@@ -733,6 +733,7 @@
     <Folder Include="Image\Customer\" />
     <Folder Include="Image\Movie\" />
     <Folder Include="Image\Room\" />
+    <Folder Include="InvoiceFolder\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Image\Employee\emloyeeDefault.png" />
