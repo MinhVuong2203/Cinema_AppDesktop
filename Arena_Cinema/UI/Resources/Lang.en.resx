@@ -270,4 +270,16 @@
   <data name="Xoa" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="BANSP" xml:space="preserve">
+    <value>SALE COMBO</value>
+  </data>
+  <data name="KVBH" xml:space="preserve">
+    <value>Sale area</value>
+  </data>
+  <data name="NGAYVAOLAM" xml:space="preserve">
+    <value>Day of work</value>
+  </data>
+  <data name="MaNV" xml:space="preserve">
+    <value>ID</value>
+  </data>
 </root>

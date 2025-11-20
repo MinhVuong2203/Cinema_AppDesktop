@@ -70,6 +70,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bán combo.
+        /// </summary>
+        public static string BANSP {
+            get {
+                return ResourceManager.GetString("BANSP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BÁN VÉ.
         /// </summary>
         public static string BanVe {
@@ -187,6 +196,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Khu vực bán hàng.
+        /// </summary>
+        public static string KVBH {
+            get {
+                return ResourceManager.GetString("KVBH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loại phòng.
         /// </summary>
         public static string LoaiPhong {
@@ -232,6 +250,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mã NV.
+        /// </summary>
+        public static string MaNV {
+            get {
+                return ResourceManager.GetString("MaNV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MÃ phòng sẽ tự động được tạo.
         /// </summary>
         public static string MaPhongTuTao {
@@ -273,6 +300,15 @@ namespace UI.Resources {
         public static string NgaySinh {
             get {
                 return ResourceManager.GetString("NgaySinh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ngày vào làm.
+        /// </summary>
+        public static string NGAYVAOLAM {
+            get {
+                return ResourceManager.GetString("NGAYVAOLAM", resourceCulture);
             }
         }
         
