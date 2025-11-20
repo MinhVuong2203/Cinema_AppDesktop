@@ -202,9 +202,9 @@ namespace UI.EmployeeSale
             // 
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lblTitle.Location = new System.Drawing.Point(20, 15);
+            this.lblTitle.Location = new System.Drawing.Point(20, 8);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(400, 35);
+            this.lblTitle.Size = new System.Drawing.Size(400, 50);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "THÔNG TIN HÓA ĐƠN";
             // 
@@ -285,7 +285,7 @@ namespace UI.EmployeeSale
             this.lblStatus.ForeColor = System.Drawing.Color.Black;
             this.lblStatus.Location = new System.Drawing.Point(930, 95);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(150, 35);
+            this.lblStatus.Size = new System.Drawing.Size(404, 35);
             this.lblStatus.TabIndex = 8;
             this.lblStatus.Text = "---";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
