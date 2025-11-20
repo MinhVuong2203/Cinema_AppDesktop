@@ -197,5 +197,11 @@ namespace UI.PayOSMethod
         {
             _home.LoadControl(new SaleHomeUC(_home, _employee));
         }
+
+        private void parrotButton_print_Click(object sender, EventArgs e)
+        {
+            var printHelper = new InvoicePrintHelper(_invoiceID);
+            printHelper.Print();
+        }
     }
 }

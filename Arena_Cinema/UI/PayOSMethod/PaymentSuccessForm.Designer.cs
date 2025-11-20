@@ -68,6 +68,7 @@
             this.parrotButton_print.TextColor = System.Drawing.Color.DodgerBlue;
             this.parrotButton_print.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.parrotButton_print.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.parrotButton_print.Click += new System.EventHandler(this.parrotButton_print_Click);
             // 
             // parrotButton_home
             // 
@@ -98,7 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 306);
             this.Controls.Add(this.parrotButton_home);
             this.Controls.Add(this.parrotButton_print);
             this.Controls.Add(this.lb_successTitle);
