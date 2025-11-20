@@ -133,6 +133,7 @@ namespace UI.Setting
             this.cbLang.Size = new System.Drawing.Size(350, 49);
             this.cbLang.StartIndex = 0;
             this.cbLang.TabIndex = 1;
+            this.cbLang.SelectedIndexChanged += new System.EventHandler(this.cbLang_SelectedIndexChanged);
             // 
             // cardAppearance
             // 
@@ -196,13 +197,14 @@ namespace UI.Setting
             // 
             this.colorPicker.BackColor = System.Drawing.Color.Transparent;
             this.colorPicker.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.colorPicker.Location = new System.Drawing.Point(150, 120);
+            this.colorPicker.Location = new System.Drawing.Point(168, 120);
             this.colorPicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.colorPicker.Name = "colorPicker";
             this.colorPicker.SelectedColor = System.Drawing.Color.Empty;
             this.colorPicker.Size = new System.Drawing.Size(300, 196);
             this.colorPicker.TabIndex = 4;
             this.colorPicker.Tag = "Cyber";
+            this.colorPicker.ColorChanged += new ReaLTaiizor.Controls.CyberColorPicker.EventHandler(this.colorPicker_ColorChanged);
             // 
             // lblPreview
             // 
@@ -211,7 +213,6 @@ namespace UI.Setting
             this.lblPreview.Name = "lblPreview";
             this.lblPreview.Size = new System.Drawing.Size(137, 69);
             this.lblPreview.TabIndex = 5;
-            this.lblPreview.Text = "Preview";
             // 
             // cardAccount
             // 
@@ -300,6 +301,7 @@ namespace UI.Setting
             this.btnOk.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnOk.TabIndex = 3;
             this.btnOk.Text = "Lưu thay đổi";
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // SettingControl
             // 
