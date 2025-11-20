@@ -198,8 +198,8 @@
             this.movieCardTemplate.Size = new System.Drawing.Size(296, 407);
             this.movieCardTemplate.TabIndex = 0;
             this.movieCardTemplate.Visible = false;
-            this.movieCardTemplate.MouseEnter += new System.EventHandler(this.movieCardTemplate_MouseEnter);
-            this.movieCardTemplate.MouseLeave += new System.EventHandler(this.movieCardTemplate_MouseLeave);
+            //this.movieCardTemplate.MouseEnter += new System.EventHandler(this.movieCardTemplate_MouseEnter);
+            //this.movieCardTemplate.MouseLeave += new System.EventHandler(this.movieCardTemplate_MouseLeave);
             // 
             // btnDeleteTemplate
             // 

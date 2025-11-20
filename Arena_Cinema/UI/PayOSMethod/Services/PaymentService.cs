@@ -52,33 +52,146 @@ namespace UI.PayOSMethod.Services
             string paymentLink = await _payOS.CreatePaymentUrl(paymentData);
             return paymentLink;
         }
+        /// <summary>
+        /// ✅ Tạo payment link - Truyền InvoiceID
+        /// </summary>
         public async Task<string> CreatePaymentLink(Guid invoiceID, long orderCode, int amount,
             string description, string returnUrl, string cancelUrl)
         {
-            var items = new List<PaymentItem>
+            try
             {
-                new PaymentItem()
+                // ✅ 1. LƯU MAPPING vào memory
+                PaymentMappingManager.Instance.AddMapping(orderCode, invoiceID, amount);
+
+                var items = new List<PaymentItem>
                 {
-                    name = description,
-                    price = amount,
-                    quantity = 1
-                }
-            };
+                    new PaymentItem()
+                    {
+                        name = description,
+                        price = amount,
+                        quantity = 1
+                    }
+                };
 
-            PaymentData paymentData = new PaymentData()
+                PaymentData paymentData = new PaymentData()
+                {
+                    orderCode = orderCode,
+                    amount = amount,
+                    description = description, // Giữ ngắn gọn
+                    returnUrl = returnUrl,
+                    cancelUrl = cancelUrl,
+                    items = items
+                };
+
+                // ✅ Truyền InvoiceID vào hàm CreatePaymentUrl
+                string paymentLink = await _payOS.CreatePaymentUrl(paymentData, invoiceID);
+
+                Console.WriteLine($"✅ Created payment link for Invoice: {invoiceID}");
+                return paymentLink;
+            }
+            catch (Exception ex)
             {
-                orderCode = orderCode,
-                amount = amount,
-                description = description,
-                returnUrl = returnUrl,
-                cancelUrl = cancelUrl,
-                items = items
-            };
+                Console.WriteLine($"❌ Error creating payment link: {ex.Message}");
+                throw;
+            }
+        }
 
+        /// <summary>
+        /// ✅ QUERY và xử lý - Lấy InvoiceID từ memory mapping
+        /// </summary>
+        public async Task<PaymentCheckResult> CheckAndProcessPayment(long orderCode)
+        {
+            try
+            {
+                // ✅ 1. LẤY InvoiceID từ memory mapping
+                Guid? invoiceID = PaymentMappingManager.Instance.GetInvoiceID(orderCode);
 
-            // Tạo URL thanh toán
-            string paymentLink = await _payOS.CreatePaymentUrl(paymentData);
-            return paymentLink;
+                if (!invoiceID.HasValue)
+                {
+                    Console.WriteLine($"❌ No mapping found for OrderCode: {orderCode}");
+                    return new PaymentCheckResult
+                    {
+                        Status = "ERROR",
+                        Message = "Không tìm thấy thông tin giao dịch trong bộ nhớ"
+                    };
+                }
+
+                Console.WriteLine($"✅ Found mapping: OrderCode {orderCode} → InvoiceID {invoiceID.Value}");
+
+                // 2. Query PayOS API
+                var queryResult = await _payOS.GetPaymentStatus(orderCode);
+
+                if (!queryResult.Success)
+                {
+                    Console.WriteLine($"⚠️ Query failed: {queryResult.ErrorMessage}");
+                    return new PaymentCheckResult
+                    {
+                        Status = "ERROR",
+                        Message = queryResult.ErrorMessage
+                    };
+                }
+
+                Console.WriteLine($"📊 Payment status: {queryResult.Status}");
+
+                // 3. Xử lý theo status
+                if (queryResult.Status == "PAID")
+                {
+                    bool success = ProcessSuccessPayment(invoiceID.Value, orderCode, "PayOS");
+
+                    // ✅ XÓA mapping sau khi xử lý xong
+                    if (success)
+                    {
+                        PaymentMappingManager.Instance.RemoveMapping(orderCode);
+                    }
+
+                    return new PaymentCheckResult
+                    {
+                        Status = "PAID",
+                        InvoiceID = invoiceID.Value,
+                        Success = success,
+                        Message = success ? "Thanh toán thành công" : "Lỗi xử lý thanh toán"
+                    };
+                }
+                else if (queryResult.Status == "CANCELLED")
+                {
+                    ProcessCancelPayment(invoiceID.Value, "Đã hủy trên PayOS");
+
+                    // ✅ XÓA mapping
+                    PaymentMappingManager.Instance.RemoveMapping(orderCode);
+
+                    return new PaymentCheckResult
+                    {
+                        Status = "CANCELLED",
+                        InvoiceID = invoiceID.Value,
+                        Message = "Thanh toán đã bị hủy"
+                    };
+                }
+                else if (queryResult.Status == "PENDING" || queryResult.Status == "PROCESSING")
+                {
+                    return new PaymentCheckResult
+                    {
+                        Status = queryResult.Status,
+                        InvoiceID = invoiceID.Value,
+                        Message = "Đang chờ thanh toán"
+                    };
+                }
+
+                return new PaymentCheckResult
+                {
+                    Status = "UNKNOWN",
+                    Message = $"Unknown status: {queryResult.Status}"
+                };
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error checking payment: {ex.Message}");
+                Console.WriteLine($"Stack trace: {ex.StackTrace}");
+                return new PaymentCheckResult
+                {
+                    Status = "ERROR",
+                    Message = ex.Message
+                };
+            }
         }
 
         /// <summary>
@@ -97,17 +210,27 @@ namespace UI.PayOSMethod.Services
                         return false;
                     }
 
-                    // Kiểm tra xem đã thanh toán chưa
+                    // Kiểm tra đã thanh toán chưa
                     if (invoice.Status == "Đã thanh toán")
                     {
-                        Console.WriteLine($"⚠️ Invoice already paid: {invoiceID}");
-                        return true; // Đã xử lý rồi
+                        Console.WriteLine($"⚠️ Invoice {invoiceID} already paid");
+                        return true;
                     }
 
-                    // 1. Cập nhật trạng thái hóa đơn
+                    // Kiểm tra duplicate payment
+                    var existingPayment = _context.Payments
+                        .FirstOrDefault(p => p.InvoiceID == invoiceID);
+
+                    if (existingPayment != null)
+                    {
+                        Console.WriteLine($"⚠️ Payment already exists for Invoice: {invoiceID}");
+                        return true;
+                    }
+
+                    // 1. Cập nhật hóa đơn
                     invoice.Status = "Đã thanh toán";
 
-                    // 2. Tạo record Payment
+                    // 2. ✅ TẠO PAYMENT
                     var payment = new Payment
                     {
                         PaymentID = Guid.NewGuid(),
@@ -118,7 +241,7 @@ namespace UI.PayOSMethod.Services
                     };
                     _context.Payments.Add(payment);
 
-                    // 3. Nếu là hóa đơn bán vé, cập nhật trạng thái vé
+                    // 3. Cập nhật vé
                     var invoiceTickets = _context.InvoiceTickets
                         .Where(it => it.InvoiceID == invoiceID)
                         .ToList();
@@ -132,15 +255,13 @@ namespace UI.PayOSMethod.Services
                         {
                             ticket.Status = "Đã bán";
                         }
-
-                        Console.WriteLine($"✅ Updated {tickets.Count} tickets to 'Đã bán'");
                     }
 
-                    // 4. Lưu tất cả thay đổi
+                    // 4. Lưu
                     _context.SaveChanges();
                     transaction.Commit();
 
-                    Console.WriteLine($"✅ Payment processed successfully for Invoice: {invoiceID}");
+                    Console.WriteLine($"✅ Payment processed - Invoice: {invoiceID}, Payment: {payment.PaymentID}");
                     return true;
                 }
                 catch (Exception ex)
@@ -314,5 +435,15 @@ namespace UI.PayOSMethod.Services
         //        throw new Exception($"Lỗi hủy thanh toán: {ex.Message}", ex);
         //    }
         //}
+    }
+    /// <summary>
+    /// ✅ DTO cho kết quả check payment
+    /// </summary>
+    public class PaymentCheckResult
+    {
+        public string Status { get; set; } // PENDING, PROCESSING, PAID, CANCELLED, ERROR
+        public Guid InvoiceID { get; set; }
+        public bool Success { get; set; }
+        public string Message { get; set; }
     }
 }

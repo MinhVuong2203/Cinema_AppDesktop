@@ -195,6 +195,9 @@
     <Reference Include="System.Web.Http, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.3.0\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Http.SelfHost, Version=5.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.SelfHost.5.3.0\lib\net45\System.Web.Http.SelfHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -339,6 +342,7 @@
     <Compile Include="PayOSMethod\PaymentCancelForm.Designer.cs">
       <DependentUpon>PaymentCancelForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="PayOSMethod\PaymentMappingManager.cs" />
     <Compile Include="PayOSMethod\PaymentSuccessForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -346,6 +350,7 @@
       <DependentUpon>PaymentSuccessForm.cs</DependentUpon>
     </Compile>
     <Compile Include="PayOSMethod\PayOSWebhookController.cs" />
+    <Compile Include="PayOSMethod\PayOSWebhookServer.cs" />
     <Compile Include="PayOSMethod\Services\PaymentService.cs" />
     <Compile Include="Products\ProductAddEditForm.cs">
       <SubType>Form</SubType>
