@@ -200,8 +200,92 @@ namespace UI.PayOSMethod
 
         private void parrotButton_print_Click(object sender, EventArgs e)
         {
-            var printHelper = new InvoicePrintHelper(_invoiceID);
-            printHelper.Print();
+            try
+            {
+                // Tạo form tùy chọn in
+                var printOptionsForm = new Form
+                {
+                    Text = "Tùy chọn in",
+                    Size = new Size(400, 250),
+                    StartPosition = FormStartPosition.CenterParent,
+                    FormBorderStyle = FormBorderStyle.FixedDialog,
+                    MaximizeBox = false,
+                    MinimizeBox = false
+                };
+
+                var label = new Label
+                {
+                    Text = "Bạn muốn in gì?",
+                    Location = new Point(20, 20),
+                    Size = new Size(350, 30),
+                    Font = new Font("Segoe UI", 12, FontStyle.Bold)
+                };
+
+                var btnInvoice = new Button
+                {
+                    Text = "📄 Hóa đơn tổng",
+                    Location = new Point(50, 60),
+                    Size = new Size(280, 40),
+                    Font = new Font("Segoe UI", 11),
+                    BackColor = Color.FromArgb(59, 130, 246),
+                    ForeColor = Color.White,
+                    FlatStyle = FlatStyle.Flat
+                };
+
+                var btnTickets = new Button
+                {
+                    Text = "🎫 Tất cả vé xem phim",
+                    Location = new Point(50, 110),
+                    Size = new Size(280, 40),
+                    Font = new Font("Segoe UI", 11),
+                    BackColor = Color.FromArgb(34, 197, 94),
+                    ForeColor = Color.White,
+                    FlatStyle = FlatStyle.Flat
+                };
+
+                var btnAll = new Button
+                {
+                    Text = "📄🎫 Cả hóa đơn và vé",
+                    Location = new Point(50, 160),
+                    Size = new Size(280, 40),
+                    Font = new Font("Segoe UI", 11, FontStyle.Bold),
+                    BackColor = Color.FromArgb(168, 85, 247),
+                    ForeColor = Color.White,
+                    FlatStyle = FlatStyle.Flat
+                };
+
+                var printManager = new PrintManager(_invoiceID);
+
+                btnInvoice.Click += (s, ev) =>
+                {
+                    printManager.PrintInvoice();
+                    printOptionsForm.Close();
+                };
+
+                btnTickets.Click += (s, ev) =>
+                {
+                    printManager.PrintAllTickets();
+                    printOptionsForm.Close();
+                };
+
+                btnAll.Click += (s, ev) =>
+                {
+                    printManager.PrintAll();
+                    printOptionsForm.Close();
+                };
+
+                printOptionsForm.Controls.Add(label);
+                printOptionsForm.Controls.Add(btnInvoice);
+                printOptionsForm.Controls.Add(btnTickets);
+                printOptionsForm.Controls.Add(btnAll);
+
+                printOptionsForm.ShowDialog(this);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi in: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
