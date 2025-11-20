@@ -451,6 +451,8 @@ namespace UI.EmployeeSale
                 // Bắt đầu polling trạng thái thanh toán
                 //StartPaymentStatusPolling(_invoiceID);
                 StartPaymentStatusPollingWithAPI(_invoiceID, orderCode);
+
+                _home.LoadControl(new SaleHomeUC(_home, _employee));
             }
             catch (Exception ex)
             {
@@ -678,6 +680,9 @@ namespace UI.EmployeeSale
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
+
+                var successForm = new PayOSMethod.PaymentSuccessForm(_invoiceID, _home, _employee);
+                successForm.ShowDialog();
 
                 if (_home != null && _employee != null)
                 {
