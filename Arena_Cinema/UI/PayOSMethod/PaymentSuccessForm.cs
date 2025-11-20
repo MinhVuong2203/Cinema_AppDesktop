@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DAL;
+using UI.EmployeeSale;
 using UI.Helpers;
 
 namespace UI.PayOSMethod
@@ -27,7 +28,7 @@ namespace UI.PayOSMethod
             _home = home;
             _employee = employee;
 
-            InitializeUI();
+            //InitializeUI();
             ProcessPaymentSuccess();
         }
 
@@ -188,8 +189,13 @@ namespace UI.PayOSMethod
             this.Close();
             if (_home != null)
             {
-                _home.LoadControl(new EmployeeSale.SaleHomeUC(_home, _employee));
+                _home.LoadControl(new SaleHomeUC(_home, _employee));
             }
+        }
+
+        private void parrotButton_home_Click(object sender, EventArgs e)
+        {
+            _home.LoadControl(new SaleHomeUC(_home, _employee));
         }
     }
 }
