@@ -39,6 +39,7 @@
             this.btnChonMau = new System.Windows.Forms.Button();
             this.lblPreview = new System.Windows.Forms.Label();
             this.btnOk = new ReaLTaiizor.Controls.SkyButton();
+            this.cyberColorPicker1 = new ReaLTaiizor.Controls.CyberColorPicker();
             this.SuspendLayout();
             // 
             // label1
@@ -121,7 +122,7 @@
             // btnChonMau
             // 
             this.btnChonMau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChonMau.Location = new System.Drawing.Point(273, 278);
+            this.btnChonMau.Location = new System.Drawing.Point(95, 460);
             this.btnChonMau.Name = "btnChonMau";
             this.btnChonMau.Size = new System.Drawing.Size(171, 30);
             this.btnChonMau.TabIndex = 7;
@@ -159,7 +160,7 @@
             this.btnOk.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
             this.btnOk.HoverForeColor = System.Drawing.Color.Black;
             this.btnOk.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnOk.Location = new System.Drawing.Point(297, 434);
+            this.btnOk.Location = new System.Drawing.Point(311, 503);
             this.btnOk.Name = "btnOk";
             this.btnOk.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
             this.btnOk.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
@@ -175,10 +176,23 @@
             this.btnOk.Text = "OK";
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // cyberColorPicker1
+            // 
+            this.cyberColorPicker1.BackColor = System.Drawing.Color.Transparent;
+            this.cyberColorPicker1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cyberColorPicker1.Location = new System.Drawing.Point(322, 262);
+            this.cyberColorPicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cyberColorPicker1.Name = "cyberColorPicker1";
+            this.cyberColorPicker1.SelectedColor = System.Drawing.Color.Empty;
+            this.cyberColorPicker1.Size = new System.Drawing.Size(260, 206);
+            this.cyberColorPicker1.TabIndex = 10;
+            this.cyberColorPicker1.Tag = "Cyber";
+            // 
             // SettingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cyberColorPicker1);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.lblPreview);
             this.Controls.Add(this.btnChonMau);
@@ -209,5 +223,6 @@
         private System.Windows.Forms.Button btnChonMau;
         private System.Windows.Forms.Label lblPreview;
         private ReaLTaiizor.Controls.SkyButton btnOk;
+        private ReaLTaiizor.Controls.CyberColorPicker cyberColorPicker1;
     }
 }

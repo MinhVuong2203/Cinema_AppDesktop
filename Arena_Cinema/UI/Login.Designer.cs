@@ -34,8 +34,9 @@ namespace UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.panel = new UI.Controls.RoundedPanel();
+            this.pnLogin = new UI.Controls.RoundedPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbForgot = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnShowPass = new ReaLTaiizor.Controls.ParrotButton();
             this.btnForgotPassword = new ReaLTaiizor.Controls.MetroButton();
@@ -45,23 +46,24 @@ namespace UI
             this.label2 = new System.Windows.Forms.Label();
             this.tbUsername = new System.Windows.Forms.TextBox();
             this.panel1 = new UI.Controls.RoundedPanel();
-            this.panel.SuspendLayout();
+            this.pnLogin.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel
+            // pnLogin
             // 
-            this.panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
-            this.panel.BorderColor = System.Drawing.Color.LightGray;
-            this.panel.BorderRadius = 20;
-            this.panel.BorderThickness = 3F;
-            this.panel.Controls.Add(this.groupBox1);
-            this.panel.Controls.Add(this.panel1);
-            resources.ApplyResources(this.panel, "panel");
-            this.panel.Name = "panel";
+            this.pnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(252)))), ((int)(((byte)(255)))));
+            this.pnLogin.BorderColor = System.Drawing.Color.LightGray;
+            this.pnLogin.BorderRadius = 20;
+            this.pnLogin.BorderThickness = 3F;
+            this.pnLogin.Controls.Add(this.groupBox1);
+            this.pnLogin.Controls.Add(this.panel1);
+            resources.ApplyResources(this.pnLogin, "pnLogin");
+            this.pnLogin.Name = "pnLogin";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbForgot);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnShowPass);
             this.groupBox1.Controls.Add(this.btnForgotPassword);
@@ -74,6 +76,15 @@ namespace UI
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // lbForgot
+            // 
+            resources.ApplyResources(this.lbForgot, "lbForgot");
+            this.lbForgot.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbForgot.Name = "lbForgot";
+            this.lbForgot.Click += new System.EventHandler(this.lbForgot_Click);
+            this.lbForgot.MouseEnter += new System.EventHandler(this.lbForgot_MouseEnter);
+            this.lbForgot.MouseLeave += new System.EventHandler(this.lbForgot_MouseLeave);
             // 
             // label3
             // 
@@ -228,12 +239,12 @@ namespace UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = global::UI.Properties.Resources.bg2;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.panel);
+            this.Controls.Add(this.pnLogin);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Login";
-            this.panel.ResumeLayout(false);
+            this.pnLogin.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -248,9 +259,10 @@ namespace UI
         private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbUsername;
-        private RoundedPanel panel;
+        private RoundedPanel pnLogin;
         private ReaLTaiizor.Controls.MetroButton btnForgotPassword;
         private ReaLTaiizor.Controls.ParrotButton btnShowPass;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbForgot;
     }
 }

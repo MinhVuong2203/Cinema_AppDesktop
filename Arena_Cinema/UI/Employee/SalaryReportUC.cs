@@ -10,7 +10,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace UI.Employee
 {
-    public partial class SalaryReportUC : UserControl
+    public partial class SalaryReportUC : UserControl 
     {
         private readonly SalaryReportBLL _reportBLL;
         private List<SalaryReportBLL.ReportItem> _currentData;

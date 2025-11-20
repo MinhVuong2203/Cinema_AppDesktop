@@ -210,6 +210,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CircularPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\CustomMaterialButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -279,6 +282,12 @@
     <Compile Include="Employee\ListEmployeeUC.Designer.cs">
       <DependentUpon>ListEmployeeUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Employee\ProfileUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Employee\ProfileUC.Designer.cs">
+      <DependentUpon>ProfileUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employee\SalaryReportUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -292,6 +301,12 @@
       <DependentUpon>WorkShiftUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Employee\WorkShiftVirtualRenderer.cs" />
+    <Compile Include="Forgot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forgot.Designer.cs">
+      <DependentUpon>Forgot.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\InvoicePrintHelper.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>
@@ -467,11 +482,17 @@
     <EmbeddedResource Include="Employee\ListEmployeeUC.resx">
       <DependentUpon>ListEmployeeUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Employee\ProfileUC.resx">
+      <DependentUpon>ProfileUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Employee\SalaryReportUC.resx">
       <DependentUpon>SalaryReportUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employee\WorkShiftUC.resx">
       <DependentUpon>WorkShiftUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forgot.resx">
+      <DependentUpon>Forgot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -722,6 +743,7 @@
     <None Include="Resources\reset1.png" />
     <None Include="Resources\imgClock.png" />
     <None Include="Resources\imgCalender.png" />
+    <None Include="Resources\bg21.jpg" />
     <Content Include="Resources\roomDefault.png" />
     <None Include="Resources\Search3.png" />
     <None Include="Resources\Search2.png" />

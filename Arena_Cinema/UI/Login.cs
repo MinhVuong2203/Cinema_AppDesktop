@@ -85,5 +85,21 @@ namespace UI
         {
 
         }
+
+        private void lbForgot_MouseEnter(object sender, EventArgs e)
+        {
+            this.lbForgot.ForeColor = Color.Red;
+        }
+
+        private void lbForgot_MouseLeave(object sender, EventArgs e)
+        {
+            this.lbForgot.ForeColor = Color.Black;
+        }
+
+        private void lbForgot_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Forgot().Show();
+        }
     }
 }
