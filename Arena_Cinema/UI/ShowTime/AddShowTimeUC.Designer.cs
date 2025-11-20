@@ -34,7 +34,6 @@ namespace UI.ShowTime
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddShowTimeUC));
             this.panelHeader = new System.Windows.Forms.Panel();
             this.right_panel = new System.Windows.Forms.Panel();
             this.btnBack = new ReaLTaiizor.Controls.ParrotButton();
@@ -58,17 +57,6 @@ namespace UI.ShowTime
             this.lblNote = new System.Windows.Forms.Label();
             this.groupBoxTimeline = new System.Windows.Forms.GroupBox();
             this.panelTimeline = new System.Windows.Forms.Panel();
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-
-            this.cboMovie.SelectedIndexChanged += new System.EventHandler(this.cboMovie_SelectedIndexChanged);
-            this.cboRoom.SelectedIndexChanged += new System.EventHandler(this.cboRoom_SelectedIndexChanged);
-            this.dtpStartTime.ValueChanged += new System.EventHandler(this.dtpStartTime_ValueChanged);
-            this.panelTimeline.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTimeline_Paint);
-
-            this.panelForm.Resize += new System.EventHandler(this.panelForm_Resize);
-            this.Load += new System.EventHandler(this.AddShowTimeUC_Load);
             this.panelHeader.SuspendLayout();
             this.right_panel.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -165,9 +153,9 @@ namespace UI.ShowTime
             // btnCancel
             // 
             this.btnCancel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.btnCancel.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnCancel.ButtonImage")));
+            this.btnCancel.ButtonImage = null;
             this.btnCancel.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnCancel.ButtonText = "✖ Hủy";
+            this.btnCancel.ButtonText = "Hủy";
             this.btnCancel.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
             this.btnCancel.ClickTextColor = System.Drawing.Color.DodgerBlue;
             this.btnCancel.CornerRadius = 5;
@@ -185,13 +173,14 @@ namespace UI.ShowTime
             this.btnCancel.TextColor = System.Drawing.Color.White;
             this.btnCancel.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnCancel.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
             this.btnSave.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnSave.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnSave.ButtonImage")));
+            this.btnSave.ButtonImage = null;
             this.btnSave.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnSave.ButtonText = "💾 Lưu";
+            this.btnSave.ButtonText = " Lưu";
             this.btnSave.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
             this.btnSave.ClickTextColor = System.Drawing.Color.DodgerBlue;
             this.btnSave.CornerRadius = 5;
@@ -209,6 +198,7 @@ namespace UI.ShowTime
             this.btnSave.TextColor = System.Drawing.Color.White;
             this.btnSave.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnSave.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBoxInfo
             // 
@@ -259,6 +249,7 @@ namespace UI.ShowTime
             this.cboMovie.Size = new System.Drawing.Size(426, 49);
             this.cboMovie.StartIndex = 0;
             this.cboMovie.TabIndex = 1;
+            this.cboMovie.SelectedIndexChanged += new System.EventHandler(this.cboMovie_SelectedIndexChanged);
             // 
             // lblRoom
             // 
@@ -292,6 +283,7 @@ namespace UI.ShowTime
             this.cboRoom.Size = new System.Drawing.Size(426, 49);
             this.cboRoom.StartIndex = 0;
             this.cboRoom.TabIndex = 3;
+            this.cboRoom.SelectedIndexChanged += new System.EventHandler(this.cboRoom_SelectedIndexChanged);
             // 
             // lblPrice
             // 
@@ -357,6 +349,7 @@ namespace UI.ShowTime
             this.dtpStartTime.Name = "dtpStartTime";
             this.dtpStartTime.Size = new System.Drawing.Size(426, 30);
             this.dtpStartTime.TabIndex = 1;
+            this.dtpStartTime.ValueChanged += new System.EventHandler(this.dtpStartTime_ValueChanged);
             // 
             // lblEndTime
             // 
@@ -409,6 +402,7 @@ namespace UI.ShowTime
             this.panelTimeline.Name = "panelTimeline";
             this.panelTimeline.Size = new System.Drawing.Size(975, 150);
             this.panelTimeline.TabIndex = 0;
+            this.panelTimeline.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTimeline_Paint);
             // 
             // AddShowTimeUC
             // 
@@ -429,6 +423,7 @@ namespace UI.ShowTime
             this.groupBoxTime.PerformLayout();
             this.groupBoxTimeline.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
 
         #endregion
