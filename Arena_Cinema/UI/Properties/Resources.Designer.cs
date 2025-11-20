@@ -353,6 +353,26 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap invoice123 {
+            get {
+                object obj = ResourceManager.GetObject("invoice123", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap invoice213 {
+            get {
+                object obj = ResourceManager.GetObject("invoice213", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap list_symbol_of_three_items_with_dots {
             get {
                 object obj = ResourceManager.GetObject("list-symbol-of-three-items-with-dots", resourceCulture);
@@ -636,6 +656,16 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap three_dot_menu {
             get {
                 object obj = ResourceManager.GetObject("three-dot-menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ticket {
+            get {
+                object obj = ResourceManager.GetObject("ticket", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -27,6 +27,8 @@ namespace UI.EmployeeSale
         private Dictionary<int, int> _selectedProductQuantities = new Dictionary<int, int>();
         private Guid _selectedShowTimeId = Guid.Empty;
 
+        private Dictionary<int, Button> _seatButtons = new Dictionary<int, Button>();
+        
         // Timer refresh realtime
         private Timer _refreshTimer;
         private const int REFRESH_INTERVAL = 3000;
@@ -38,10 +40,11 @@ namespace UI.EmployeeSale
             LoadMovieInfo();
             LoadShowTimes();
             LoadProducts();
-            btnPayment.Click += BtnPayment_Click;
 
             // Khởi tạo timer
             InitializeRefreshTimer();
+
+            btnPayment.Click += BtnPayment_Click;
         }
 
         /// <summary>
@@ -197,6 +200,7 @@ namespace UI.EmployeeSale
             }
         }
 
+
         private void LoadMovieInfo()
         {
             lbTitle.Text = $"{_movie.Title} ({_movie.AgeLimit})";
@@ -250,6 +254,7 @@ namespace UI.EmployeeSale
         private void LoadSeatsByRoom(int roomId)
         {
             flpTickets.Controls.Clear();
+            _seatButtons.Clear();
             _seats = _saleTicketDAL.GetSeatsByRoomID(roomId);
             _tickets = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId);
 
@@ -376,8 +381,10 @@ namespace UI.EmployeeSale
 
                 // Sự kiện click
                 btnSeat.Click += BtnSeat_Click;
-
+                //rowPanel.Controls.Add(btnSeat);
                 flpTickets.Controls.Add(btnSeat);
+
+                _seatButtons[seat.SeatID] = btnSeat;
                 btnSeat.BringToFront();
             }
 
@@ -458,30 +465,11 @@ namespace UI.EmployeeSale
                 }
             }
 
+            RefreshSeatStatus();
             UpdateInvoice();
         }
 
-        /// <summary>
-        /// Cleanup khi đóng form hoặc dispose
-        /// </summary>
-        protected override void OnHandleDestroyed(EventArgs e)
-        {
-            base.OnHandleDestroyed(e);
-
-            // Dừng timer
-            if (_refreshTimer != null)
-            {
-                _refreshTimer.Stop();
-                _refreshTimer.Dispose();
-            }
-
-            // Unlock tất cả ghế của nhân viên này
-            if (_employee != null)
-            {
-                int unlockedCount = _seatLockDAL.UnlockAllSeatsForEmployee(_employee.EmployeeID);
-                Console.WriteLine($"[Cleanup] Unlocked {unlockedCount} seats for employee {_employee.FullName}");
-            }
-        }
+        
 
         private void LoadProducts()
         {
@@ -769,7 +757,7 @@ namespace UI.EmployeeSale
                         }
                         else
                         {
-                            return null; // Người dùng hủy tạo khách hàng
+                            return null; 
                         }
                     }
 
@@ -803,6 +791,27 @@ namespace UI.EmployeeSale
                 lbCustomerPhone.Text = "SĐT: ---";
                 //lbCustomerEmail.Text = "Email: ---";
                 MessageBox.Show("Không tìm thấy khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        /// <summary>
+        /// Cleanup khi đóng form hoặc dispose
+        /// </summary>
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            base.OnHandleDestroyed(e);
+
+            // Dừng timer
+            if (_refreshTimer != null)
+            {
+                _refreshTimer.Stop();
+                _refreshTimer.Dispose();
+            }
+
+            // Unlock tất cả ghế của nhân viên này
+            if (_employee != null)
+            {
+                int unlockedCount = _seatLockDAL.UnlockAllSeatsForEmployee(_employee.EmployeeID);
+                Console.WriteLine($"[Cleanup] Unlocked {unlockedCount} seats for employee {_employee.FullName}");
             }
         }
     }
