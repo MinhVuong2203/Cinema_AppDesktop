@@ -10,59 +10,116 @@ namespace DAL
 {
     public class SeatDAL
     {
-        private readonly CinemaDBContext _context;
-        public SeatDAL()
-        {
-            _context = new CinemaDBContext();
-        }
+        // Không dùng field _context nữa để tránh tracking conflict
 
         public Seat getAllSeatById(int id)
         {
-            return _context.Seats.Find(id); 
+            using (var context = new CinemaDBContext())
+            {
+                return context.Seats.Find(id);
+            }
         }
 
         public List<Seat> GetSeatsByRoomId(int roomId)
         {
-            return _context.Seats
-                           .Where(s => s.RoomID == roomId && !s.IsDeleted)
-                           .Include(s => s.Room)
-                           .ToList();
+            using (var context = new CinemaDBContext())
+            {
+                return context.Seats
+                               .Where(s => s.RoomID == roomId && !s.IsDeleted)
+                               .Include(s => s.Room)
+                               .ToList();
+            }
         }
 
         public List<Seat> GetAllSeatsIncludeDeleted(int roomId)
         {
-            return _context.Seats
-                           .Where(s => s.RoomID == roomId)
-                           .Include(s => s.Room)
-                           .ToList();
+            using (var context = new CinemaDBContext())
+            {
+                return context.Seats
+                               .Where(s => s.RoomID == roomId)
+                               .Include(s => s.Room)
+                               .ToList();
+            }
         }
 
         public Seat GetSeatById(int seatId)
         {
-            return _context.Seats
-                           .Include(s => s.Room)
-                           .FirstOrDefault(s => s.SeatID == seatId && !s.IsDeleted);
+            using (var context = new CinemaDBContext())
+            {
+                return context.Seats
+                               .Include(s => s.Room)
+                               .FirstOrDefault(s => s.SeatID == seatId && !s.IsDeleted);
+            }
         }
 
         public Seat GetSeatByIdIncludeDeleted(int seatId)
         {
-            return _context.Seats
-                           .Include(s => s.Room)
-                           .FirstOrDefault(s => s.SeatID == seatId);
+            using (var context = new CinemaDBContext())
+            {
+                return context.Seats
+                               .Include(s => s.Room)
+                               .FirstOrDefault(s => s.SeatID == seatId);
+            }
+        }
+
+        // Kiểm tra tên ghế có tồn tại không
+        public bool IsSeatNameExists(int roomId, string seatName, int? excludeSeatId = null)
+        {
+            using (var context = new CinemaDBContext())
+            {
+                var query = context.Seats.Where(s => s.RoomID == roomId &&
+                                                       s.SeatName == seatName &&
+                                                       !s.IsDeleted);
+
+                if (excludeSeatId.HasValue)
+                {
+                    query = query.Where(s => s.SeatID != excludeSeatId.Value);
+                }
+
+                return query.Any();
+            }
         }
 
         // Thêm ghế mới
         public bool AddSeat(Seat seat)
         {
-            _context.Seats.Add(seat);
-            return _context.SaveChanges() > 0;
+            using (var context = new CinemaDBContext())
+            {
+                context.Seats.Add(seat);
+                return context.SaveChanges() > 0;
+            }
         }
 
         // Cập nhật ghế (sửa tên, loại, vị trí, IsDeleted, v.v.)
         public bool UpdateSeat(Seat seat)
         {
-            _context.Entry(seat).State = EntityState.Modified;
-            return _context.SaveChanges() > 0;
+            try
+            {
+                using (var context = new CinemaDBContext())
+                {
+                    // Tìm entity trong context mới
+                    var existingSeat = context.Seats.Find(seat.SeatID);
+
+                    if (existingSeat != null)
+                    {
+                        // Cập nhật các thuộc tính
+                        existingSeat.SeatName = seat.SeatName;
+                        existingSeat.SeatType = seat.SeatType;
+                        existingSeat.pX = seat.pX;
+                        existingSeat.pY = seat.pY;
+                        existingSeat.IsDeleted = seat.IsDeleted;
+                        existingSeat.RoomID = seat.RoomID;
+
+                        return context.SaveChanges() > 0;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in UpdateSeat: {ex.Message}");
+                return false;
+            }
         }
 
         // Xóa mềm ghế
@@ -88,35 +145,43 @@ namespace DAL
         // Xóa vĩnh viễn (nếu cần)
         public bool DeleteSeatPermanently(int seatId)
         {
-            var seat = GetSeatByIdIncludeDeleted(seatId);
-            if (seat == null) return false;
+            using (var context = new CinemaDBContext())
+            {
+                var seat = context.Seats.Find(seatId);
+                if (seat == null) return false;
 
-            _context.Seats.Remove(seat);
-            return _context.SaveChanges() > 0;
+                context.Seats.Remove(seat);
+                return context.SaveChanges() > 0;
+            }
         }
 
         // Lấy danh sách ghế theo loại (VIP, Standard, v.v.)
         public List<Seat> GetSeatsByType(int roomId, string seatType)
         {
-            return _context.Seats
-                           .Where(s => s.RoomID == roomId && !s.IsDeleted && s.SeatType == seatType)
-                           .ToList();
+            using (var context = new CinemaDBContext())
+            {
+                return context.Seats
+                               .Where(s => s.RoomID == roomId && !s.IsDeleted && s.SeatType == seatType)
+                               .ToList();
+            }
         }
+
         public bool AddRangeSeats(List<Seat> seats)
         {
             try
             {
-                _context.Seats.AddRange(seats);
-                _context.SaveChanges();
-                return true;
+                using (var context = new CinemaDBContext())
+                {
+                    context.Seats.AddRange(seats);
+                    context.SaveChanges();
+                    return true;
+                }
             }
             catch (Exception ex)
             {
-                // Log lỗi nếu cần
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 return false;
             }
         }
-
     }
 }
