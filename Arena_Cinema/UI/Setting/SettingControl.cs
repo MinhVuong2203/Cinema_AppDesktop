@@ -102,5 +102,20 @@ namespace UI.Setting
                 parentForm.Dispose();
             }
         }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            // Lấy form chứa UserControl
+            Form parent = this.FindForm();
+
+            // Ẩn form cha
+            parent.Hide();
+
+            // Mở form login
+            Login lg = new Login();
+            lg.StartPosition = FormStartPosition.CenterScreen;
+            lg.Show();
+        }
+
     }
 }

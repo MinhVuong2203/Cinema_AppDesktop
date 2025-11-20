@@ -40,13 +40,14 @@
             this.lblPreview = new System.Windows.Forms.Label();
             this.btnOk = new ReaLTaiizor.Controls.SkyButton();
             this.cyberColorPicker1 = new ReaLTaiizor.Controls.CyberColorPicker();
+            this.btnDangXuat = new ReaLTaiizor.Controls.SkyButton();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(170, 97);
+            this.label1.Location = new System.Drawing.Point(186, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 30);
             this.label1.TabIndex = 0;
@@ -69,7 +70,7 @@
             this.cbLang.Items.AddRange(new object[] {
             "Tiếng Việt",
             "Tiếng Anh"});
-            this.cbLang.Location = new System.Drawing.Point(285, 85);
+            this.cbLang.Location = new System.Drawing.Point(301, 86);
             this.cbLang.MaxDropDownItems = 4;
             this.cbLang.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             this.cbLang.Name = "cbLang";
@@ -82,7 +83,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(170, 176);
+            this.label2.Location = new System.Drawing.Point(186, 177);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 30);
             this.label2.TabIndex = 3;
@@ -93,7 +94,7 @@
             this.textBox1.BackColor = System.Drawing.Color.Silver;
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(285, 176);
+            this.textBox1.Location = new System.Drawing.Point(301, 177);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(260, 37);
             this.textBox1.TabIndex = 4;
@@ -101,7 +102,7 @@
             // btnFont
             // 
             this.btnFont.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFont.Location = new System.Drawing.Point(547, 179);
+            this.btnFont.Location = new System.Drawing.Point(563, 180);
             this.btnFont.Name = "btnFont";
             this.btnFont.Size = new System.Drawing.Size(35, 30);
             this.btnFont.TabIndex = 5;
@@ -113,7 +114,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(170, 278);
+            this.label3.Location = new System.Drawing.Point(186, 279);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(97, 30);
             this.label3.TabIndex = 6;
@@ -160,7 +161,7 @@
             this.btnOk.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
             this.btnOk.HoverForeColor = System.Drawing.Color.Black;
             this.btnOk.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnOk.Location = new System.Drawing.Point(311, 503);
+            this.btnOk.Location = new System.Drawing.Point(327, 504);
             this.btnOk.Name = "btnOk";
             this.btnOk.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
             this.btnOk.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
@@ -180,7 +181,7 @@
             // 
             this.cyberColorPicker1.BackColor = System.Drawing.Color.Transparent;
             this.cyberColorPicker1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cyberColorPicker1.Location = new System.Drawing.Point(322, 262);
+            this.cyberColorPicker1.Location = new System.Drawing.Point(338, 263);
             this.cyberColorPicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cyberColorPicker1.Name = "cyberColorPicker1";
             this.cyberColorPicker1.SelectedColor = System.Drawing.Color.Empty;
@@ -188,10 +189,49 @@
             this.cyberColorPicker1.TabIndex = 10;
             this.cyberColorPicker1.Tag = "Cyber";
             // 
+            // btnDangXuat
+            // 
+            this.btnDangXuat.BackColor = System.Drawing.Color.Transparent;
+            this.btnDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDangXuat.DownBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.btnDangXuat.DownBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnDangXuat.DownBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnDangXuat.DownBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.btnDangXuat.DownBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnDangXuat.DownBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnDangXuat.DownForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnDangXuat.DownShadowForeColor = System.Drawing.Color.White;
+            this.btnDangXuat.Font = new System.Drawing.Font("Verdana", 13.2F, System.Drawing.FontStyle.Bold);
+            this.btnDangXuat.ForeColor = System.Drawing.Color.White;
+            this.btnDangXuat.HoverBGColorA = System.Drawing.Color.WhiteSmoke;
+            this.btnDangXuat.HoverBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnDangXuat.HoverBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnDangXuat.HoverBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.btnDangXuat.HoverBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnDangXuat.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnDangXuat.HoverForeColor = System.Drawing.Color.Black;
+            this.btnDangXuat.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnDangXuat.Location = new System.Drawing.Point(95, 668);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.btnDangXuat.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnDangXuat.NormalBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnDangXuat.NormalBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.btnDangXuat.NormalBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnDangXuat.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnDangXuat.NormalForeColor = System.Drawing.Color.White;
+            this.btnDangXuat.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnDangXuat.Size = new System.Drawing.Size(175, 44);
+            this.btnDangXuat.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnDangXuat.TabIndex = 11;
+            this.btnDangXuat.Text = "Đăng xuất";
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
             // SettingControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnDangXuat);
             this.Controls.Add(this.cyberColorPicker1);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.lblPreview);
@@ -224,5 +264,6 @@
         private System.Windows.Forms.Label lblPreview;
         private ReaLTaiizor.Controls.SkyButton btnOk;
         private ReaLTaiizor.Controls.CyberColorPicker cyberColorPicker1;
+        private ReaLTaiizor.Controls.SkyButton btnDangXuat;
     }
 }

@@ -30,16 +30,10 @@ namespace UI
 
             if (em != null)
             {
-                if (em.Role.RoleName == "Admin")
-                {
-                    // Set ngôn ngữ
-                    //Thread.CurrentThread.CurrentCulture = new CultureInfo(em.Settings.Language);
-                    // Mở form Home
-                    this.Hide();
-                    Home homeForm = new Home(em);
-                    homeForm.FormClosed += (s, args) => this.Close(); // Đóng form Login khi form Home đóng
-                    homeForm.Show();
-                }
+                this.Hide();
+                Home homeForm = new Home(em);
+                homeForm.FormClosed += (s, args) => this.Close(); // Đóng form Login khi form Home đóng
+                homeForm.Show();
             }
             else
             {

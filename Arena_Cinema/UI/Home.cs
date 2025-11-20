@@ -37,9 +37,47 @@ namespace UI
             _employee = employee;
             LanguageHelper.ChangeLanguage(employee.Setting.LanguageCode);
             InitializeComponent();
+            Decentralization();
             InitializeSidebarAnimation();
             StartClock();
             StartCleanupTimer();
+        }
+
+        private void Decentralization()
+        {
+            btnBanVe.Visible = false;
+            btnNhanSu.Visible = false;
+            btnPhim.Visible = false;
+            btnPhong.Visible = false;
+            btnSuatChieu.Visible = false;
+            btnSanPham.Visible = false;
+   
+
+            switch (_employee.Role.RoleName)
+            {
+                case "Admin":
+                    btnNhanSu.Visible = true;
+                    btnPhim.Visible = true;
+                    btnPhong.Visible = true;
+                    btnSuatChieu.Visible = true;
+                    btnSanPham.Visible = true;
+                    btnBanVe.Visible = true;
+                    break;
+                case "Nhân viên bán vé":
+                    btnBanVe.Visible = true;
+                    break;
+                case "Nhân viên phim":
+                    btnPhim.Visible = true;
+                   
+                    btnSuatChieu.Visible = true;
+                    break;
+                case "Nhân viên kỹ thuật":
+                    btnPhong.Visible = true;
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         private void InitializeSidebarAnimation()

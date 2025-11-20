@@ -20,6 +20,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfileUC));
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelContent = new ReaLTaiizor.Controls.Panel();
+            this.picImg = new UI.Controls.CircularPictureBox();
             this.panelCards = new System.Windows.Forms.Panel();
             this.cardAddress = new ReaLTaiizor.Controls.NightPanel();
             this.lblAddressContent = new System.Windows.Forms.Label();
@@ -50,9 +51,9 @@
             this.lblName = new System.Windows.Forms.Label();
             this.panelCover = new ReaLTaiizor.Controls.NightPanel();
             this.picCover = new System.Windows.Forms.PictureBox();
-            this.picImg = new UI.Controls.CircularPictureBox();
             this.panelMain.SuspendLayout();
             this.panelContent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
             this.panelCards.SuspendLayout();
             this.cardAddress.SuspendLayout();
             this.cardWork.SuspendLayout();
@@ -61,7 +62,6 @@
             this.panelPersonalContent.SuspendLayout();
             this.panelCover.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCover)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMain
@@ -96,6 +96,21 @@
             this.panelContent.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.panelContent.TabIndex = 0;
             this.panelContent.Text = "panel1";
+            // 
+            // picImg
+            // 
+            this.picImg.BackColor = System.Drawing.Color.Transparent;
+            this.picImg.BorderColor = System.Drawing.Color.White;
+            this.picImg.BorderColor2 = System.Drawing.Color.SpringGreen;
+            this.picImg.BorderSize = 5;
+            this.picImg.GradientBorder = true;
+            this.picImg.Image = ((System.Drawing.Image)(resources.GetObject("picImg.Image")));
+            this.picImg.Location = new System.Drawing.Point(70, 258);
+            this.picImg.Name = "picImg";
+            this.picImg.Size = new System.Drawing.Size(181, 181);
+            this.picImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picImg.TabIndex = 10;
+            this.picImg.TabStop = false;
             // 
             // panelCards
             // 
@@ -496,8 +511,8 @@
             // picCover
             // 
             this.picCover.BackColor = System.Drawing.Color.Transparent;
-            //this.picCover.BackgroundImage = global::UI.Properties.Resources.bg21;
-            this.picCover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picCover.BackgroundImage = global::UI.Properties.Resources.bg2;
+            this.picCover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picCover.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picCover.Location = new System.Drawing.Point(0, 0);
             this.picCover.Margin = new System.Windows.Forms.Padding(4);
@@ -506,21 +521,6 @@
             this.picCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picCover.TabIndex = 0;
             this.picCover.TabStop = false;
-            // 
-            // picImg
-            // 
-            this.picImg.BackColor = System.Drawing.Color.Transparent;
-            this.picImg.BorderColor = System.Drawing.Color.White;
-            this.picImg.BorderColor2 = System.Drawing.Color.SpringGreen;
-            this.picImg.BorderSize = 5;
-            this.picImg.GradientBorder = true;
-            this.picImg.Image = ((System.Drawing.Image)(resources.GetObject("picImg.Image")));
-            this.picImg.Location = new System.Drawing.Point(70, 258);
-            this.picImg.Name = "picImg";
-            this.picImg.Size = new System.Drawing.Size(181, 181);
-            this.picImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picImg.TabIndex = 10;
-            this.picImg.TabStop = false;
             // 
             // ProfileUC
             // 
@@ -534,6 +534,7 @@
             this.panelMain.ResumeLayout(false);
             this.panelContent.ResumeLayout(false);
             this.panelContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
             this.panelCards.ResumeLayout(false);
             this.cardAddress.ResumeLayout(false);
             this.cardAddress.PerformLayout();
@@ -547,7 +548,6 @@
             this.panelPersonalContent.PerformLayout();
             this.panelCover.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picCover)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
             this.ResumeLayout(false);
 
         }

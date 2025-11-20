@@ -35,10 +35,11 @@ namespace UI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.PanelTop = new ReaLTaiizor.Controls.ParrotGradientPanel();
-            this.lbDate = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.lbTime = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbDate = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnMenu = new ReaLTaiizor.Controls.ParrotButton();
             this.PanelMain = new ReaLTaiizor.Controls.ParrotGradientPanel();
             this.pnMenuBottom = new System.Windows.Forms.FlowLayoutPanel();
@@ -51,18 +52,15 @@ namespace UI
             this.btnSuatChieu = new ReaLTaiizor.Controls.ParrotButton();
             this.btnPhim = new ReaLTaiizor.Controls.ParrotButton();
             this.btnPhong = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnGhe = new ReaLTaiizor.Controls.ParrotButton();
             this.btnSanPham = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnThongKe = new ReaLTaiizor.Controls.ParrotButton();
             this.pnMenu = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.PanelTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnMenuBottom.SuspendLayout();
             this.pnMenuTop.SuspendLayout();
             this.pnMenu.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelTop
@@ -87,16 +85,18 @@ namespace UI
             this.PanelTop.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
             this.PanelTop.TopRight = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
             // 
-            // lbDate
+            // panel1
             // 
-            this.lbDate.AutoSize = true;
-            this.lbDate.BackColor = System.Drawing.Color.Transparent;
-            this.lbDate.Font = new System.Drawing.Font("Monotype Corsiva", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(69, 42);
-            this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(55, 21);
-            this.lbDate.TabIndex = 18;
-            this.lbDate.Text = "label1";
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.lbTime);
+            this.panel1.Controls.Add(this.lbDate);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pictureBox2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(1386, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(226, 70);
+            this.panel1.TabIndex = 19;
             // 
             // lbTime
             // 
@@ -109,16 +109,16 @@ namespace UI
             this.lbTime.TabIndex = 17;
             this.lbTime.Text = "label1";
             // 
-            // pictureBox2
+            // lbDate
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::UI.Properties.Resources.imgCalender;
-            this.pictureBox2.Location = new System.Drawing.Point(21, 37);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(35, 32);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 16;
-            this.pictureBox2.TabStop = false;
+            this.lbDate.AutoSize = true;
+            this.lbDate.BackColor = System.Drawing.Color.Transparent;
+            this.lbDate.Font = new System.Drawing.Font("Monotype Corsiva", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDate.Location = new System.Drawing.Point(69, 42);
+            this.lbDate.Name = "lbDate";
+            this.lbDate.Size = new System.Drawing.Size(55, 21);
+            this.lbDate.TabIndex = 18;
+            this.lbDate.Text = "label1";
             // 
             // pictureBox1
             // 
@@ -130,6 +130,17 @@ namespace UI
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::UI.Properties.Resources.imgCalender;
+            this.pictureBox2.Location = new System.Drawing.Point(21, 37);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(35, 32);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
             // 
             // btnMenu
             // 
@@ -253,9 +264,7 @@ namespace UI
             this.pnMenuTop.Controls.Add(this.btnSuatChieu);
             this.pnMenuTop.Controls.Add(this.btnPhim);
             this.pnMenuTop.Controls.Add(this.btnPhong);
-            this.pnMenuTop.Controls.Add(this.btnGhe);
             this.pnMenuTop.Controls.Add(this.btnSanPham);
-            this.pnMenuTop.Controls.Add(this.btnThongKe);
             this.pnMenuTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMenuTop.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.pnMenuTop.Location = new System.Drawing.Point(0, 0);
@@ -420,32 +429,6 @@ namespace UI
             this.btnPhong.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnPhong.Click += new System.EventHandler(this.MenuItem_Click);
             // 
-            // btnGhe
-            // 
-            this.btnGhe.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.btnGhe.ButtonImage = global::UI.Properties.Resources.armchair;
-            this.btnGhe.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
-            this.btnGhe.ButtonText = "GHẾ";
-            this.btnGhe.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.btnGhe.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnGhe.CornerRadius = 5;
-            this.btnGhe.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGhe.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGhe.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnGhe.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnGhe.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
-            this.btnGhe.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnGhe.Location = new System.Drawing.Point(3, 416);
-            this.btnGhe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnGhe.Name = "btnGhe";
-            this.btnGhe.Size = new System.Drawing.Size(282, 65);
-            this.btnGhe.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnGhe.TabIndex = 15;
-            this.btnGhe.TextColor = System.Drawing.Color.White;
-            this.btnGhe.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnGhe.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnGhe.Click += new System.EventHandler(this.MenuItem_Click);
-            // 
             // btnSanPham
             // 
             this.btnSanPham.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
@@ -461,7 +444,7 @@ namespace UI
             this.btnSanPham.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.btnSanPham.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
             this.btnSanPham.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnSanPham.Location = new System.Drawing.Point(3, 485);
+            this.btnSanPham.Location = new System.Drawing.Point(3, 416);
             this.btnSanPham.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSanPham.Name = "btnSanPham";
             this.btnSanPham.Padding = new System.Windows.Forms.Padding(10);
@@ -472,33 +455,6 @@ namespace UI
             this.btnSanPham.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnSanPham.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnSanPham.Click += new System.EventHandler(this.MenuItem_Click);
-            // 
-            // btnThongKe
-            // 
-            this.btnThongKe.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.btnThongKe.ButtonImage = global::UI.Properties.Resources.business_and_finance__1_;
-            this.btnThongKe.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
-            this.btnThongKe.ButtonText = "THỐNG KÊ";
-            this.btnThongKe.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.btnThongKe.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnThongKe.CornerRadius = 5;
-            this.btnThongKe.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnThongKe.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongKe.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnThongKe.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnThongKe.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
-            this.btnThongKe.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnThongKe.Location = new System.Drawing.Point(3, 554);
-            this.btnThongKe.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Padding = new System.Windows.Forms.Padding(10);
-            this.btnThongKe.Size = new System.Drawing.Size(282, 65);
-            this.btnThongKe.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnThongKe.TabIndex = 17;
-            this.btnThongKe.TextColor = System.Drawing.Color.White;
-            this.btnThongKe.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnThongKe.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnThongKe.Click += new System.EventHandler(this.MenuItem_Click);
             // 
             // pnMenu
             // 
@@ -511,19 +467,6 @@ namespace UI
             this.pnMenu.Name = "pnMenu";
             this.pnMenu.Size = new System.Drawing.Size(300, 847);
             this.pnMenu.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.lbTime);
-            this.panel1.Controls.Add(this.lbDate);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(1386, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(226, 70);
-            this.panel1.TabIndex = 19;
             // 
             // Home
             // 
@@ -538,13 +481,13 @@ namespace UI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.PanelTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnMenuBottom.ResumeLayout(false);
             this.pnMenuTop.ResumeLayout(false);
             this.pnMenu.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -584,9 +527,7 @@ namespace UI
         private FlowLayoutPanel pnMenuBottom;
         private ReaLTaiizor.Controls.ParrotButton btnCaiDat;
         private ReaLTaiizor.Controls.ParrotButton btnCaNhan;
-        private ReaLTaiizor.Controls.ParrotButton btnGhe;
         private ReaLTaiizor.Controls.ParrotButton btnBanVe;
-        private ReaLTaiizor.Controls.ParrotButton btnThongKe;
         private ReaLTaiizor.Controls.ParrotButton btnSanPham;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
