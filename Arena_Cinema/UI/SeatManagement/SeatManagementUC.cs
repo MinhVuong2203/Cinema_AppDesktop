@@ -130,6 +130,12 @@ namespace UI.SeatManagement
                     break;
             }
 
+            // Context menu - Right click
+            var contextMenu = new ContextMenuStrip();
+            contextMenu.Items.Add("✏️ Chỉnh sửa", null, (s, e) => EditSeat(seat));
+            contextMenu.Items.Add("🗑️ Xóa ghế", null, (s, e) => DeleteSeat(seat));
+            btn.ContextMenuStrip = contextMenu;
+
             // Di chuyển ghế
             btn.MouseDown += (s, e) =>
             {
@@ -250,7 +256,7 @@ namespace UI.SeatManagement
 
                             if (saved)
                             {
-                                // ✅ RELOAD LẠI DỮ LIỆU ĐỂ LẤY TÊN MỚI TỪ TRIGGER
+                                //Load lại dlieu
                                 _seats = _seatBLL.GetSeatsByRoomId(_roomId);
                                 LoadSeatMap();
                                 var updatedSeat = _seatBLL.GetSeatByIdIncludeDeleted(currentSeat.SeatID);
@@ -302,6 +308,140 @@ namespace UI.SeatManagement
             var roomBLL = new RoomBLL();
             var room = roomBLL.GetRoomById(_roomId);
             _home.LoadControl(new Room_homeUC(_home, room));
+        }
+
+        private void btnThemGhe_Click(object sender, EventArgs e)
+        {
+            var addForm = new AddSeatForm(_roomId);
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                var newSeat = addForm.NewSeat;
+
+                // Kiểm tra tên ghế trùng
+                if (_seats.Any(s => s.SeatName.Equals(newSeat.SeatName, StringComparison.OrdinalIgnoreCase)))
+                {
+                    MessageBox.Show($"Tên ghế '{newSeat.SeatName}' đã tồn tại trong phòng!\nVui lòng chọn tên khác.",
+                        "Trùng tên ghế",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tìm vị trí trống
+                var emptyPos = FindEmptyPosition();
+                newSeat.pX = emptyPos.x;
+                newSeat.pY = emptyPos.y;
+
+                // Thêm ghế vào database
+                string result = _seatBLL.AddSeat(newSeat);
+
+                if (result.Contains("thành công"))
+                {
+                    MessageBox.Show($"✓ {result}\nGhế '{newSeat.SeatName}' đã được thêm tại vị trí [{(char)('A' + emptyPos.y)}{emptyPos.x + 1}]",
+                        "Thành công",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    LoadSeatMap();
+                }
+                else
+                {
+                    MessageBox.Show(result, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void EditSeat(Seat seat)
+        {
+            // Chỉ cho phép chỉnh sửa ghế thường và VIP
+            if (seat.SeatType == "Ghế đôi")
+            {
+                MessageBox.Show("Không thể chỉnh sửa ghế đôi!\nChỉ có thể chỉnh sửa ghế thường và ghế VIP.",
+                    "Thông báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+
+            var editForm = new EditSeatForm(seat);
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                if (editForm.IsDelete)
+                {
+                    // Xử lý xóa
+                    string result = _seatBLL.SoftDeleteSeat(seat.SeatID);
+                    MessageBox.Show(result, result.Contains("thành công") ? "Thành công" : "Lỗi",
+                        MessageBoxButtons.OK,
+                        result.Contains("thành công") ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+                    LoadSeatMap();
+                }
+                else
+                {
+                    // Xử lý cập nhật
+                    var editedSeat = editForm.EditedSeat;
+
+                    // Kiểm tra tên trùng (trừ chính nó)
+                    if (_seats.Any(s => s.SeatID != editedSeat.SeatID &&
+                                       s.SeatName.Equals(editedSeat.SeatName, StringComparison.OrdinalIgnoreCase)))
+                    {
+                        MessageBox.Show($"Tên ghế '{editedSeat.SeatName}' đã tồn tại!\nVui lòng chọn tên khác.",
+                            "Trùng tên ghế",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    string result = _seatBLL.UpdateSeat(editedSeat);
+                    MessageBox.Show(result, result.Contains("thành công") ? "Thành công" : "Lỗi",
+                        MessageBoxButtons.OK,
+                        result.Contains("thành công") ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+                    LoadSeatMap();
+                }
+            }
+        }
+
+        private void DeleteSeat(Seat seat)
+        {
+            if (seat.SeatType == "Ghế đôi")
+            {
+                MessageBox.Show("Không thể xóa ghế đôi!\nChỉ có thể xóa ghế thường và ghế VIP.",
+                    "Thông báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
+
+            var result = MessageBox.Show(
+                $"Bạn có chắc muốn xóa ghế {seat.SeatName}?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                string deleteResult = _seatBLL.DeleteSeatPermanently(seat.SeatID);
+                MessageBox.Show(deleteResult, deleteResult.Contains("thành công") ? "Thành công" : "Lỗi",
+                    MessageBoxButtons.OK,
+                    deleteResult.Contains("thành công") ? MessageBoxIcon.Information : MessageBoxIcon.Error);
+                LoadSeatMap();
+            }
+        }
+
+        // Tìm vị trí trống ưu tiên
+        private (int x, int y) FindEmptyPosition()
+        {
+            for (int row = 0; row < _maxRows; row++)
+            {
+                for (int col = 0; col < MAX_COLS; col++)
+                {
+                    bool isOccupied = _seats.Any(s => s.pX == col && s.pY == row);
+                    if (!isOccupied)
+                    {
+                        return (col, row);
+                    }
+                }
+            }
+
+            return (0, _maxRows);
         }
     }
 }

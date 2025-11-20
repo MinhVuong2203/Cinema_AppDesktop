@@ -35,6 +35,7 @@
             this.pnlCanvas = new System.Windows.Forms.Panel();
             this.pnlLegend = new System.Windows.Forms.Panel();
             this.picScreen = new System.Windows.Forms.Panel();
+            this.btnThemGhe = new ReaLTaiizor.Controls.ParrotButton();
             this.label1 = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -45,6 +46,7 @@
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.panelHeader.Controls.Add(this.btnThemGhe);
             this.panelHeader.Controls.Add(this.btnBack);
             this.panelHeader.Controls.Add(this.lblTitle);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -132,6 +134,31 @@
             this.picScreen.Size = new System.Drawing.Size(1640, 100);
             this.picScreen.TabIndex = 0;
             // 
+            // btnThemGhe
+            // 
+            this.btnThemGhe.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
+            this.btnThemGhe.ButtonImage = null;
+            this.btnThemGhe.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnThemGhe.ButtonText = "Thêm ghế";
+            this.btnThemGhe.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnThemGhe.ClickTextColor = System.Drawing.Color.White;
+            this.btnThemGhe.CornerRadius = 5;
+            this.btnThemGhe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThemGhe.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnThemGhe.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnThemGhe.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this.btnThemGhe.HoverTextColor = System.Drawing.Color.White;
+            this.btnThemGhe.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnThemGhe.Location = new System.Drawing.Point(1346, 0);
+            this.btnThemGhe.Name = "btnThemGhe";
+            this.btnThemGhe.Size = new System.Drawing.Size(170, 60);
+            this.btnThemGhe.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnThemGhe.TabIndex = 4;
+            this.btnThemGhe.TextColor = System.Drawing.Color.White;
+            this.btnThemGhe.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnThemGhe.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnThemGhe.Click += new System.EventHandler(this.btnThemGhe_Click);
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -172,5 +199,6 @@
         private System.Windows.Forms.Panel pnlLegend;
         private System.Windows.Forms.Panel picScreen;
         private System.Windows.Forms.Label label1;
+        private ReaLTaiizor.Controls.ParrotButton btnThemGhe;
     }
 }
