@@ -172,7 +172,7 @@
     <value>If not type in: 250 seats</value>
   </data>
   <data name="SoLuongGhe" xml:space="preserve">
-    <value>Seats number</value>
+    <value>Seats number:</value>
   </data>
   <data name="ViDuTenPhong" xml:space="preserve">
     <value>Ex: Room 1</value>
@@ -254,5 +254,20 @@
   </data>
   <data name="KhoiPhuc" xml:space="preserve">
     <value>Restore</value>
+  </data>
+  <data name="QlyPhongChieu" xml:space="preserve">
+    <value>Room management</value>
+  </data>
+  <data name="SapXepGhe" xml:space="preserve">
+    <value>Chairs arrange</value>
+  </data>
+  <data name="Sua" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="MoTaPhong" xml:space="preserve">
+    <value>Room description</value>
+  </data>
+  <data name="Xoa" xml:space="preserve">
+    <value>Delete</value>
   </data>
 </root>

@@ -50,7 +50,6 @@
             this.cboRoomType = new ReaLTaiizor.Controls.MaterialComboBox();
             this.right_Panel = new System.Windows.Forms.Panel();
             this.btnDeletedRoom = new ReaLTaiizor.Controls.ParrotButton();
-            this.lblInfo = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelRoomsList.SuspendLayout();
@@ -72,7 +71,6 @@
             this.panelHeader.Name = "panelHeader";
             this.panelHeader.Size = new System.Drawing.Size(1376, 60);
             this.panelHeader.TabIndex = 2;
-            this.panelHeader.Paint += new System.Windows.Forms.PaintEventHandler(this.panelHeader_Paint);
             // 
             // lblTitle
             // 
@@ -83,14 +81,14 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(255, 32);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "Quản Lý Phòng chiếu";
+            this.lblTitle.Text = global::UI.Resources.Lang.QlyPhongChieu;
             // 
             // btnAddRoom
             // 
             this.btnAddRoom.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
             this.btnAddRoom.ButtonImage = null;
             this.btnAddRoom.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnAddRoom.ButtonText = "+ Thêm Phòng Mới";
+            this.btnAddRoom.ButtonText = global::UI.Resources.Lang.ThemPhong;
             this.btnAddRoom.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnAddRoom.ClickTextColor = System.Drawing.Color.White;
             this.btnAddRoom.CornerRadius = 5;
@@ -181,7 +179,7 @@
             this.btnSeatManagement.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnSeatManagement.Size = new System.Drawing.Size(147, 42);
             this.btnSeatManagement.TabIndex = 8;
-            this.btnSeatManagement.Text = "Sắp xếp ghế";
+            this.btnSeatManagement.Text = global::UI.Resources.Lang.SapXepGhe;
             this.btnSeatManagement.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnSeatManagement.UseAccentColor = false;
             this.btnSeatManagement.UseVisualStyleBackColor = true;
@@ -195,7 +193,7 @@
             this.lblSeatcount.Name = "lblSeatcount";
             this.lblSeatcount.Size = new System.Drawing.Size(134, 28);
             this.lblSeatcount.TabIndex = 7;
-            this.lblSeatcount.Text = "Số lượng ghế:";
+            this.lblSeatcount.Text = global::UI.Resources.Lang.SoLuongGhe;
             // 
             // btnSua
             // 
@@ -213,7 +211,7 @@
             this.btnSua.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnSua.Size = new System.Drawing.Size(100, 42);
             this.btnSua.TabIndex = 6;
-            this.btnSua.Text = "Sửa";
+            this.btnSua.Text = global::UI.Resources.Lang.Sua;
             this.btnSua.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnSua.UseAccentColor = false;
             this.btnSua.UseVisualStyleBackColor = true;
@@ -226,7 +224,7 @@
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(423, 122);
             this.lblDescription.TabIndex = 5;
-            this.lblDescription.Text = "SĐT: 0123456789";
+            this.lblDescription.Text = global::UI.Resources.Lang.MoTaPhong;
             // 
             // lblRoomType
             // 
@@ -257,7 +255,7 @@
             this.btnXoa.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnXoa.Size = new System.Drawing.Size(100, 42);
             this.btnXoa.TabIndex = 2;
-            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Text = global::UI.Resources.Lang.Xoa;
             this.btnXoa.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnXoa.UseAccentColor = true;
             this.btnXoa.UseMnemonic = false;
@@ -301,7 +299,6 @@
             this.filterPanel.BackColor = System.Drawing.SystemColors.Window;
             this.filterPanel.Controls.Add(this.left_Panel);
             this.filterPanel.Controls.Add(this.right_Panel);
-            this.filterPanel.Controls.Add(this.lblInfo);
             this.filterPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.filterPanel.Location = new System.Drawing.Point(25, 25);
             this.filterPanel.Name = "filterPanel";
@@ -316,7 +313,7 @@
             this.left_Panel.Dock = System.Windows.Forms.DockStyle.Left;
             this.left_Panel.Location = new System.Drawing.Point(15, 15);
             this.left_Panel.Name = "left_Panel";
-            this.left_Panel.Size = new System.Drawing.Size(826, 84);
+            this.left_Panel.Size = new System.Drawing.Size(826, 119);
             this.left_Panel.TabIndex = 9;
             // 
             // lblMovie
@@ -328,7 +325,7 @@
             this.lblMovie.Name = "lblMovie";
             this.lblMovie.Size = new System.Drawing.Size(84, 20);
             this.lblMovie.TabIndex = 2;
-            this.lblMovie.Text = "Loại phòng";
+            this.lblMovie.Text = global::UI.Resources.Lang.LoaiPhong;
             // 
             // cboRoomType
             // 
@@ -342,7 +339,7 @@
             this.cboRoomType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboRoomType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboRoomType.FormattingEnabled = true;
-            this.cboRoomType.Hint = "-- Chọn loại phòng --";
+            this.cboRoomType.Hint = global::UI.Resources.Lang.ChonLoaiPhong;
             this.cboRoomType.IntegralHeight = false;
             this.cboRoomType.ItemHeight = 43;
             this.cboRoomType.Location = new System.Drawing.Point(16, 28);
@@ -359,7 +356,7 @@
             this.right_Panel.Dock = System.Windows.Forms.DockStyle.Right;
             this.right_Panel.Location = new System.Drawing.Point(847, 15);
             this.right_Panel.Name = "right_Panel";
-            this.right_Panel.Size = new System.Drawing.Size(464, 84);
+            this.right_Panel.Size = new System.Drawing.Size(464, 119);
             this.right_Panel.TabIndex = 8;
             // 
             // btnDeletedRoom
@@ -367,12 +364,11 @@
             this.btnDeletedRoom.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
             this.btnDeletedRoom.ButtonImage = null;
             this.btnDeletedRoom.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnDeletedRoom.ButtonText = "Phòng đã xóa";
+            this.btnDeletedRoom.ButtonText = global::UI.Resources.Lang.PhongDaXoa;
             this.btnDeletedRoom.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnDeletedRoom.ClickTextColor = System.Drawing.Color.White;
             this.btnDeletedRoom.CornerRadius = 5;
             this.btnDeletedRoom.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDeletedRoom.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnDeletedRoom.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnDeletedRoom.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
             this.btnDeletedRoom.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
@@ -387,20 +383,6 @@
             this.btnDeletedRoom.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnDeletedRoom.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnDeletedRoom.Click += new System.EventHandler(this.btnDeletedRoom_Click);
-            // 
-            // lblInfo
-            // 
-            this.lblInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.lblInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lblInfo.ForeColor = System.Drawing.Color.White;
-            this.lblInfo.Location = new System.Drawing.Point(15, 99);
-            this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.lblInfo.Size = new System.Drawing.Size(1296, 35);
-            this.lblInfo.TabIndex = 0;
-            this.lblInfo.Text = "Hiển thị 10 trong tổng số 25 phòng | Trang 1 / 3";
-            this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Room_homeUC
             // 
@@ -450,6 +432,5 @@
         private System.Windows.Forms.Panel right_Panel;
         private ReaLTaiizor.Controls.ParrotButton btnDeletedRoom;
         private ReaLTaiizor.Controls.MaterialButton btnSeatManagement;
-        private System.Windows.Forms.Label lblInfo;
     }
 }

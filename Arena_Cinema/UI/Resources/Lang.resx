@@ -172,7 +172,7 @@
     <value>Mặc định không nhập: 250 ghế</value>
   </data>
   <data name="SoLuongGhe" xml:space="preserve">
-    <value>Số lượng ghế</value>
+    <value>Số lượng ghế:</value>
   </data>
   <data name="ViDuTenPhong" xml:space="preserve">
     <value>Ví dụ: Phòng 1</value>
@@ -254,5 +254,20 @@
   </data>
   <data name="KhoiPhuc" xml:space="preserve">
     <value>Khôi phục</value>
+  </data>
+  <data name="QlyPhongChieu" xml:space="preserve">
+    <value>Quản lí phòng chiếu</value>
+  </data>
+  <data name="SapXepGhe" xml:space="preserve">
+    <value>Sắp xếp ghế</value>
+  </data>
+  <data name="Sua" xml:space="preserve">
+    <value>Sửa</value>
+  </data>
+  <data name="MoTaPhong" xml:space="preserve">
+    <value>Mô tả phòng chiếu</value>
+  </data>
+  <data name="Xoa" xml:space="preserve">
+    <value>Xóa</value>
   </data>
 </root>

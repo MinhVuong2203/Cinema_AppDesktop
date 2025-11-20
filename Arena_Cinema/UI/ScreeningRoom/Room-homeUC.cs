@@ -248,10 +248,5 @@ namespace UI.ScreeningRoom
         {
             this._home.LoadControl(new Deleted_room(_home, this._room));
         }
-
-        private void panelHeader_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

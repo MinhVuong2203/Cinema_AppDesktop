@@ -259,6 +259,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mô tả phòng chiếu.
+        /// </summary>
+        public static string MoTaPhong {
+            get {
+                return ResourceManager.GetString("MoTaPhong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ngày sinh.
         /// </summary>
         public static string NgaySinh {
@@ -313,6 +322,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Quản lí phòng chiếu.
+        /// </summary>
+        public static string QlyPhongChieu {
+            get {
+                return ResourceManager.GetString("QlyPhongChieu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quay lại.
         /// </summary>
         public static string QuayLai {
@@ -327,6 +345,15 @@ namespace UI.Resources {
         public static string SANPHAM {
             get {
                 return ResourceManager.GetString("SANPHAM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sắp xếp ghế.
+        /// </summary>
+        public static string SapXepGhe {
+            get {
+                return ResourceManager.GetString("SapXepGhe", resourceCulture);
             }
         }
         
@@ -349,11 +376,20 @@ namespace UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Số lượng ghế.
+        ///   Looks up a localized string similar to Số lượng ghế:.
         /// </summary>
         public static string SoLuongGhe {
             get {
                 return ResourceManager.GetString("SoLuongGhe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sửa.
+        /// </summary>
+        public static string Sua {
+            get {
+                return ResourceManager.GetString("Sua", resourceCulture);
             }
         }
         
@@ -471,6 +507,15 @@ namespace UI.Resources {
         public static string ViDuTenPhong {
             get {
                 return ResourceManager.GetString("ViDuTenPhong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xóa.
+        /// </summary>
+        public static string Xoa {
+            get {
+                return ResourceManager.GetString("Xoa", resourceCulture);
             }
         }
     }
