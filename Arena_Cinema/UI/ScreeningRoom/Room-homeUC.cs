@@ -248,5 +248,6 @@ namespace UI.ScreeningRoom
         {
             this._home.LoadControl(new Deleted_room(_home, this._room));
         }
+
     }
 }

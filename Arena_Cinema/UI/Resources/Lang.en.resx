@@ -294,4 +294,10 @@
   <data name="ThongBao" xml:space="preserve">
     <value>Announce</value>
   </data>
+  <data name="QuanLyGhe" xml:space="preserve">
+    <value>Manage seats of:</value>
+  </data>
+  <data name="ManHinh" xml:space="preserve">
+    <value>SCREEN</value>
+  </data>
 </root>

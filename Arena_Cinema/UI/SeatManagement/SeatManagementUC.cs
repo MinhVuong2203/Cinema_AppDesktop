@@ -79,7 +79,15 @@ namespace UI.SeatManagement
 
             pnlCanvas.AutoScrollPosition = new Point(0, 0);
 
-            pnlCanvas.Controls.Clear();
+            for (int i = pnlCanvas.Controls.Count - 1; i >= 0; i--)
+            {
+                Control ctrl = pnlCanvas.Controls[i];
+                if (ctrl.Name != "picScreen" && ctrl.Name != "pnlLegend")
+                {
+                    pnlCanvas.Controls.RemoveAt(i);
+                    ctrl.Dispose();
+                }
+            }
             DrawGridLabels();
             // Tạo button
             foreach (var seat in _seats)
@@ -132,8 +140,8 @@ namespace UI.SeatManagement
 
             // Context menu - Right click
             var contextMenu = new ContextMenuStrip();
-            contextMenu.Items.Add("✏️ Chỉnh sửa", null, (s, e) => EditSeat(seat));
-            contextMenu.Items.Add("🗑️ Xóa ghế", null, (s, e) => DeleteSeat(seat));
+            contextMenu.Items.Add("Chỉnh sửa", null, (s, e) => EditSeat(seat));
+            contextMenu.Items.Add("Xóa ghế", null, (s, e) => DeleteSeat(seat));
             btn.ContextMenuStrip = contextMenu;
 
             // Di chuyển ghế
@@ -442,6 +450,11 @@ namespace UI.SeatManagement
             }
 
             return (0, _maxRows);
+        }
+
+        private void pnlCanvas_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

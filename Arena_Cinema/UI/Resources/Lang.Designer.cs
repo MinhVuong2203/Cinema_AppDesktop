@@ -250,6 +250,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to MÀN HÌNH.
+        /// </summary>
+        public static string ManHinh {
+            get {
+                return ResourceManager.GetString("ManHinh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to MÃ phòng sẽ tự động được tạo.
         /// </summary>
         public static string MaPhongTuTao {
@@ -345,6 +354,15 @@ namespace UI.Resources {
         public static string QlyPhongChieu {
             get {
                 return ResourceManager.GetString("QlyPhongChieu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quản lý ghế của:.
+        /// </summary>
+        public static string QuanLyGhe {
+            get {
+                return ResourceManager.GetString("QuanLyGhe", resourceCulture);
             }
         }
         

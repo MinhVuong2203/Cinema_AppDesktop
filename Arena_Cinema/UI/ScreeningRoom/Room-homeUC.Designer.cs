@@ -79,9 +79,9 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(22, 14);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(255, 32);
+            this.lblTitle.Size = new System.Drawing.Size(245, 32);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = global::UI.Resources.Lang.QlyPhongChieu;
+            this.lblTitle.Text = "Quản lí phòng chiếu";
             // 
             // btnAddRoom
             // 
@@ -172,7 +172,7 @@
             this.btnSeatManagement.HighEmphasis = true;
             this.btnSeatManagement.Icon = global::UI.Properties.Resources.armchair;
             this.btnSeatManagement.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btnSeatManagement.Location = new System.Drawing.Point(42, 328);
+            this.btnSeatManagement.Location = new System.Drawing.Point(17, 328);
             this.btnSeatManagement.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSeatManagement.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnSeatManagement.Name = "btnSeatManagement";
@@ -193,7 +193,7 @@
             this.lblSeatcount.Name = "lblSeatcount";
             this.lblSeatcount.Size = new System.Drawing.Size(134, 28);
             this.lblSeatcount.TabIndex = 7;
-            this.lblSeatcount.Text = global::UI.Resources.Lang.SoLuongGhe;
+            this.lblSeatcount.Text = "Số lượng ghế:";
             // 
             // btnSua
             // 
@@ -224,7 +224,7 @@
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(423, 122);
             this.lblDescription.TabIndex = 5;
-            this.lblDescription.Text = global::UI.Resources.Lang.MoTaPhong;
+            this.lblDescription.Text = "Mô tả phòng chiếu";
             // 
             // lblRoomType
             // 
@@ -325,7 +325,7 @@
             this.lblMovie.Name = "lblMovie";
             this.lblMovie.Size = new System.Drawing.Size(84, 20);
             this.lblMovie.TabIndex = 2;
-            this.lblMovie.Text = global::UI.Resources.Lang.LoaiPhong;
+            this.lblMovie.Text = "Loại phòng";
             // 
             // cboRoomType
             // 

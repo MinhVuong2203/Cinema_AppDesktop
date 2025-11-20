@@ -294,4 +294,10 @@
   <data name="ThongBao" xml:space="preserve">
     <value>Thông báo</value>
   </data>
+  <data name="QuanLyGhe" xml:space="preserve">
+    <value>Quản lý ghế của:</value>
+  </data>
+  <data name="ManHinh" xml:space="preserve">
+    <value>MÀN HÌNH</value>
+  </data>
 </root>

@@ -564,6 +564,9 @@
     <EmbeddedResource Include="SeatManagement\AddSeatForm.resx">
       <DependentUpon>AddSeatForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SeatManagement\EditSeatForm.resx">
+      <DependentUpon>EditSeatForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeatManagement\SeatManagementUC.resx">
       <DependentUpon>SeatManagementUC.cs</DependentUpon>
     </EmbeddedResource>
