@@ -12,6 +12,7 @@ using UI.EmployeeSale;
 using UI.ScreeningRoom;
 using UI.ShowTime;
 using UI.Products;
+using UI.PayOSMethod;
 
 
 namespace UI
@@ -24,6 +25,8 @@ namespace UI
         private int sidebarCollapsedWidth = 80;
         private ParrotButton selectedButton = null;
 
+        //Bminh thêm
+        private Timer _cleanupTimer;
 
 
         public DTO.Employee _employee { get; set; }
@@ -36,6 +39,7 @@ namespace UI
             InitializeComponent();
             InitializeSidebarAnimation();
             StartClock();
+            StartCleanupTimer();
         }
 
         private void InitializeSidebarAnimation()
@@ -172,6 +176,29 @@ namespace UI
         {
             Room_homeUC room = new Room_homeUC(this, _room);
             LoadControl(room);
+        }
+
+        //Bminh thêm
+        private void StartCleanupTimer()
+        {
+            _cleanupTimer = new Timer();
+            _cleanupTimer.Interval = 1800000; // 30 phút
+            _cleanupTimer.Tick += (s, e) =>
+            {
+                Console.WriteLine("🧹 Running cleanup for old payment mappings...");
+                PaymentMappingManager.Instance.CleanupOldMappings();
+            };
+            _cleanupTimer.Start();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (_cleanupTimer != null)
+            {
+                _cleanupTimer.Stop();
+                _cleanupTimer.Dispose();
+            }
+            base.OnFormClosing(e);
         }
     }
 }

@@ -125,28 +125,32 @@ namespace UI.PayOSMethod
                 var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID);
                 if (invoice == null) return;
 
-                // Cập nhật trạng thái hóa đơn
-                invoice.Status = "Đã thanh toán";
-                //invoice.PaymentMethod = "PayOS";
-                //invoice.PaymentDate = DateTime.Now;
+                // Chỉ hiển thị thông tin, không update gì thêm
+                Console.WriteLine($"✅ Displaying success for Invoice: {_invoiceID}");
+                Console.WriteLine($"Status: {invoice.Status}");
 
-                // Cập nhật trạng thái vé nếu có
-                var invoiceTickets = _context.InvoiceTickets
-                    .Where(it => it.InvoiceID == _invoiceID)
-                    .ToList();
+                //// Cập nhật trạng thái hóa đơn
+                //invoice.Status = "Đã thanh toán";
+                ////invoice.PaymentMethod = "PayOS";
+                ////invoice.PaymentDate = DateTime.Now;
 
-                if (invoiceTickets.Any())
-                {
-                    var ticketIds = invoiceTickets.Select(it => it.TicketID).ToList();
-                    var tickets = _context.Tickets.Where(t => ticketIds.Contains(t.TicketID)).ToList();
+                //// Cập nhật trạng thái vé nếu có
+                //var invoiceTickets = _context.InvoiceTickets
+                //    .Where(it => it.InvoiceID == _invoiceID)
+                //    .ToList();
 
-                    foreach (var ticket in tickets)
-                    {
-                        ticket.Status = "Đã bán";
-                    }
-                }
+                //if (invoiceTickets.Any())
+                //{
+                //    var ticketIds = invoiceTickets.Select(it => it.TicketID).ToList();
+                //    var tickets = _context.Tickets.Where(t => ticketIds.Contains(t.TicketID)).ToList();
 
-                _context.SaveChanges();
+                //    foreach (var ticket in tickets)
+                //    {
+                //        ticket.Status = "Đã bán";
+                //    }
+                //}
+
+                //_context.SaveChanges();
             }
             catch (Exception ex)
             {
