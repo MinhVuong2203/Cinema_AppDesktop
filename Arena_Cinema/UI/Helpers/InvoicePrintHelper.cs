@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DAL;
@@ -31,6 +33,7 @@ namespace UI.Helpers
                 .FirstOrDefault();
         }
 
+        // Phương thức in ra máy in (giữ nguyên)
         public void Print()
         {
             if (_invoice == null)
@@ -59,6 +62,69 @@ namespace UI.Helpers
                 MessageBox.Show($"Lỗi khi in: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        //Phương thức lưu hóa đơn ra file
+        public string SaveToFile(string folderPath)
+        {
+            if (_invoice == null)
+            {
+                throw new Exception("Không tìm thấy hóa đơn!");
+            }
+
+            try
+            {
+                // Tạo thư mục nếu chưa có
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                // Tạo tên file: "mã hóa đơn-ngày tạo"
+                string invoiceCode = _invoice.InvoiceID.ToString().Substring(0, 8).ToUpper();
+                string dateStr = _invoice.IssueDate.ToString("yyyyMMdd-HHmmss");
+                string fileName = $"{invoiceCode}-{dateStr}.png";
+                string fullPath = Path.Combine(folderPath, fileName);
+
+                // Render hóa đơn thành bitmap
+                Bitmap bitmap = RenderInvoiceToBitmap();
+
+                // Lưu file
+                bitmap.Save(fullPath, ImageFormat.Png);
+                bitmap.Dispose();
+
+                return fullPath;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi lưu hóa đơn: {ex.Message}");
+            }
+        }
+
+        private Bitmap RenderInvoiceToBitmap()
+        {
+            // Kích thước A4 (300 DPI): 2480 x 3508 pixels
+            int width = 800;
+            int height = 1100;
+
+            Bitmap bitmap = new Bitmap(width, height);
+            Graphics g = Graphics.FromImage(bitmap);
+
+            // Nền trắng
+            g.Clear(Color.White);
+
+            // Vẽ nội dung hóa đơn
+            PrintPageEventArgs args = new PrintPageEventArgs(
+                g,
+                new Rectangle(0, 0, width, height),
+                new Rectangle(0, 0, width, height),
+                null
+            );
+
+            PrintPage(null, args);
+
+            g.Dispose();
+            return bitmap;
         }
 
         private void PrintPage(object sender, PrintPageEventArgs e)
@@ -130,7 +196,6 @@ namespace UI.Helpers
                 g.DrawString("CHI TIẾT VÉ XEM PHIM", headerFont, Brushes.Black, leftMargin, yPos);
                 yPos += 30;
 
-                // Header table
                 g.DrawString("Phim", headerFont, Brushes.Black, leftMargin, yPos);
                 g.DrawString("Ghế", headerFont, Brushes.Black, leftMargin + 250, yPos);
                 g.DrawString("Loại", headerFont, Brushes.Black, leftMargin + 350, yPos);
@@ -222,45 +287,10 @@ namespace UI.Helpers
             g.DrawLine(Pens.Black, leftMargin, yPos, leftMargin + 700, yPos);
             yPos += 20;
 
-            decimal subtotal = (_invoice.TotalAmount ?? 0) + (_invoice.Discount ?? 0);
-            g.DrawString($"Tạm tính:", normalFont, Brushes.Black, leftMargin + 450, yPos);
-            g.DrawString($"{subtotal.ToString("#,##0")} ₫", normalFont, Brushes.Black, leftMargin + 580, yPos);
-            yPos += lineHeight;
-
-            g.DrawString($"Giảm giá:", normalFont, Brushes.Black, leftMargin + 450, yPos);
-            g.DrawString($"{(_invoice.Discount ?? 0).ToString("#,##0")} ₫",
-                normalFont, Brushes.Black, leftMargin + 580, yPos);
-            yPos += lineHeight;
-
             g.DrawString("TỔNG CỘNG:", headerFont, Brushes.Black, leftMargin + 450, yPos);
             g.DrawString($"{(_invoice.TotalAmount ?? 0).ToString("#,##0")} ₫",
                 headerFont, Brushes.Red, leftMargin + 580, yPos);
             yPos += 35;
-
-            // ========== THÔNG TIN THANH TOÁN ==========
-            if (_payment != null)
-            {
-                g.DrawLine(Pens.Gray, leftMargin, yPos, leftMargin + 700, yPos);
-                yPos += 20;
-
-                g.DrawString("THÔNG TIN THANH TOÁN", headerFont, Brushes.Black, leftMargin, yPos);
-                yPos += 30;
-
-                g.DrawString($"Phương thức: {_payment.Method}", normalFont, Brushes.Black, leftMargin, yPos);
-                yPos += lineHeight;
-
-                g.DrawString($"Thời gian: {_payment.PaymentTime:dd/MM/yyyy HH:mm:ss}",
-                    normalFont, Brushes.Black, leftMargin, yPos);
-                yPos += lineHeight;
-
-
-                g.DrawString($"Số tiền: {(_payment.Amount ?? 0).ToString("#,##0")} ₫",
-                    normalFont, Brushes.Black, leftMargin, yPos);
-                yPos += lineHeight;
-
-                g.DrawString($"Trạng thái: {_invoice.Status}", normalFont, Brushes.Green, leftMargin, yPos);
-                yPos += 35;
-            }
 
             // ========== FOOTER ==========
             g.DrawLine(Pens.Gray, leftMargin, yPos, leftMargin + 700, yPos);

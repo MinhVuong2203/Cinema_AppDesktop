@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using DAL;
 using DTO;
-
+using MovieDTO = DTO.Movie;
 // Thêm alias để tránh conflict với namespace UI.ShowTime và UI.Movie
 using ShowTimeDTO = DTO.ShowTime;
-using MovieDTO = DTO.Movie;
 
 namespace UI.Helpers
 {
@@ -277,6 +278,73 @@ namespace UI.Helpers
             SizeF codeSize = g.MeasureString(code, barcodeFont);
             g.DrawString(code, barcodeFont, Brushes.Black,
                 x + (width - codeSize.Width) / 2, y + height + 2);
+        }
+
+        public string SaveToFile(string folderPath)
+        {
+            if (_ticket == null || _movie == null || _seat == null)
+            {
+                throw new Exception("Không tìm thấy thông tin vé!");
+            }
+
+            try
+            {
+                // Tạo thư mục nếu chưa có
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                // Lấy mã hóa đơn
+                string invoiceCode = "UNKNOWN";
+                if (_invoice != null)
+                {
+                    invoiceCode = _invoice.InvoiceID.ToString().Substring(0, 8).ToUpper();
+                }
+
+                // Tạo tên file: "mã hóa đơn-số ghế"
+                string fileName = $"{invoiceCode}-{_seat.SeatName}.png";
+                string fullPath = Path.Combine(folderPath, fileName);
+
+                // Render vé thành bitmap
+                Bitmap bitmap = RenderTicketToBitmap();
+
+                // Lưu file
+                bitmap.Save(fullPath, ImageFormat.Png);
+                bitmap.Dispose();
+
+                return fullPath;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi lưu vé: {ex.Message}");
+            }
+        }
+
+        private Bitmap RenderTicketToBitmap()
+        {
+            // Kích thước vé: 80mm x 200mm (315 x 787 pixels)
+            int width = 315;
+            int height = 787;
+
+            Bitmap bitmap = new Bitmap(width, height);
+            Graphics g = Graphics.FromImage(bitmap);
+
+            // Nền trắng
+            g.Clear(Color.White);
+
+            // Vẽ nội dung vé
+            PrintPageEventArgs args = new PrintPageEventArgs(
+                g,
+                new Rectangle(0, 0, width, height),
+                new Rectangle(0, 0, width, height),
+                null
+            );
+
+            PrintTicketPage(null, args);
+
+            g.Dispose();
+            return bitmap;
         }
     }
 }
