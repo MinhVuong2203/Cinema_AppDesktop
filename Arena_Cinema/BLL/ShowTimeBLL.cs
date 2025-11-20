@@ -74,6 +74,12 @@ namespace BLL
                 if (existingShowTime == null)
                     return (false, "✗ Suất chiếu không tồn tại!");
 
+                string status = GetShowTimeStatus(existingShowTime);
+                if (status == "Đang chiếu" || status == "Đã chiếu")
+                {
+                    return (false, $"✗ Không thể cập nhật!\nSuất chiếu này {status.ToLower()}.");
+                }
+
                 // Kiểm tra đã có vé bán ra chưa
                 int ticketsSold = _showTimeDAL.CountTicketsSold(showTime.ShowTimeID);
                 if (ticketsSold > 0)
