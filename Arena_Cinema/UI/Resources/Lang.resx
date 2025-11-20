@@ -215,6 +215,7 @@
   </data>
   <data name="ThemPhong" xml:space="preserve">
     <value>Thêm phòng chiếu mới</value>
+  </data>
   <data name="CaiDatHeThong" xml:space="preserve">
     <value>Cài đặt hệ thống</value>
   </data>
@@ -244,5 +245,14 @@
   </data>
   <data name="TenDangNhap" xml:space="preserve">
     <value>Tên đăng nhập</value>
+  </data>
+  <data name="QuayLai" xml:space="preserve">
+    <value>Quay lại</value>
+  </data>
+  <data name="PhongDaXoa" xml:space="preserve">
+    <value>Phòng đã xóa</value>
+  </data>
+  <data name="KhoiPhuc" xml:space="preserve">
+    <value>Khôi phục</value>
   </data>
 </root>

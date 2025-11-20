@@ -215,6 +215,7 @@
   </data>
   <data name="ThemPhong" xml:space="preserve">
     <value>Add new screening room</value>
+  </data>
   <data name="CaiDatHeThong" xml:space="preserve">
     <value>Setting system</value>
   </data>
@@ -244,5 +245,14 @@
   </data>
   <data name="TenDangNhap" xml:space="preserve">
     <value>Username</value>
+  </data>
+  <data name="QuayLai" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="PhongDaXoa" xml:space="preserve">
+    <value>Deleted rooms</value>
+  </data>
+  <data name="KhoiPhuc" xml:space="preserve">
+    <value>Restore</value>
   </data>
 </root>
