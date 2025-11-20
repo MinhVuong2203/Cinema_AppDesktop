@@ -270,9 +270,13 @@ namespace UI.Resources {
         /// <summary>
         ///   Looks up a localized string similar to MÀN HÌNH.
         /// </summary>
-        public static string ManHinh {
-            get {
+        public static string ManHinh
+        {
+            get
+            {
                 return ResourceManager.GetString("ManHinh", resourceCulture);
+            }
+        }
         ///   Looks up a localized string similar to Mã NV.
         /// </summary>
         public static string MaNV {
