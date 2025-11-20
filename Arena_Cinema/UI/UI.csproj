@@ -309,6 +309,7 @@
     </Compile>
     <Compile Include="Helpers\InvoicePrintHelper.cs" />
     <Compile Include="Helpers\PrintManager.cs" />
+    <Compile Include="Helpers\SeatLockService.cs" />
     <Compile Include="Helpers\TicketPrintHelper.cs" />
     <Compile Include="Home.cs">
       <SubType>Form</SubType>

@@ -14,6 +14,8 @@ using UI.ShowTime;
 using UI.Products;
 using UI.PayOSMethod;
 
+using UI.Helpers;
+
 
 namespace UI
 {
@@ -41,6 +43,7 @@ namespace UI
             InitializeSidebarAnimation();
             StartClock();
             StartCleanupTimer();
+            StartSeatLockService();
         }
 
         private void Decentralization()
@@ -230,14 +233,55 @@ namespace UI
             _cleanupTimer.Start();
         }
 
+        /// <summary>
+        /// Khởi động service tự động unlock ghế hết hạn
+        /// Service chạy nền, tự động unlock ghế sau 10 phút
+        /// </summary>
+        private void StartSeatLockService()
+        {
+            try
+            {
+                // Khởi động singleton service
+                var service = SeatLockService.Instance;
+                Console.WriteLine("🔓 SeatLockService started - Auto-unlock expired seats every 1 minute");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️ Failed to start SeatLockService: {ex.Message}");
+                MessageBox.Show(
+                    $"Không thể khởi động dịch vụ tự động mở khóa ghế.\n{ex.Message}",
+                    "Cảnh báo",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+        }
+
+
+
+        /// <summary>
+        /// Dọn dẹp khi đóng form Home
+        /// </summary>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (_cleanupTimer != null)
-            {
-                _cleanupTimer.Stop();
-                _cleanupTimer.Dispose();
-            }
             base.OnFormClosing(e);
+
+            try
+            {
+                // Dừng cleanup timer
+                if (_cleanupTimer != null)
+                {
+                    _cleanupTimer.Stop();
+                    _cleanupTimer.Dispose();
+                }
+
+                // Dừng seat lock service
+                SeatLockService.Instance.Stop();
+                Console.WriteLine("✅ All services stopped");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️ Error stopping services: {ex.Message}");
+            }
         }
     }
 }
