@@ -84,6 +84,7 @@
     <Compile Include="SaleProductDAL.cs" />
     <Compile Include="SeatDAL.cs" />
     <Compile Include="SaleTicketDAL.cs" />
+    <Compile Include="SeatLockDAL.cs" />
     <Compile Include="ShowTimeDAL.cs" />
     <Compile Include="WorkShiftDAL.cs" />
   </ItemGroup>

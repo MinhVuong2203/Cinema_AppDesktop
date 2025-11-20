@@ -16,6 +16,8 @@ namespace UI.EmployeeSale
         private DTO.Employee _employee;
         private Home _parentForm;
         private SaleTicketDAL _saleTicketDAL = new SaleTicketDAL();
+        private SeatLockDAL _seatLockDAL = new SeatLockDAL();
+
         private List<DTO.ShowTime> _showTimes = new List<DTO.ShowTime>();
         private List<Ticket> _tickets = new List<Ticket>();
         private List<Seat> _seats = new List<Seat>();
@@ -25,6 +27,10 @@ namespace UI.EmployeeSale
         private Dictionary<int, int> _selectedProductQuantities = new Dictionary<int, int>();
         private Guid _selectedShowTimeId = Guid.Empty;
 
+        // Timer refresh realtime
+        private Timer _refreshTimer;
+        private const int REFRESH_INTERVAL = 3000;
+
         public SaleTicketUC(DTO.Movie movie)
         {
             InitializeComponent();
@@ -33,6 +39,130 @@ namespace UI.EmployeeSale
             LoadShowTimes();
             LoadProducts();
             btnPayment.Click += BtnPayment_Click;
+
+            // Khởi tạo timer
+            InitializeRefreshTimer();
+        }
+
+        /// <summary>
+        /// Khởi tạo timer để refresh trạng thái ghế realtime
+        /// </summary>
+        private void InitializeRefreshTimer()
+        {
+            _refreshTimer = new Timer();
+            _refreshTimer.Interval = REFRESH_INTERVAL;
+            _refreshTimer.Tick += RefreshTimer_Tick;
+            _refreshTimer.Start();
+        }
+
+        /// <summary>
+        /// Sự kiện timer - refresh trạng thái ghế mỗi 3 giây
+        /// </summary>
+        private void RefreshTimer_Tick(object sender, EventArgs e)
+        {
+            if (_selectedShowTimeId != Guid.Empty)
+            {
+                RefreshSeatStatus();
+            }
+        }
+
+        /// <summary>
+        /// Refresh trạng thái tất cả ghế từ database
+        /// </summary>
+        private void RefreshSeatStatus()
+        {
+            try
+            {
+                // Refresh context để lấy dữ liệu mới
+                _seatLockDAL.RefreshContext();
+
+                // Reload tickets từ database
+                _tickets = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId);
+
+                // Cập nhật màu sắc các button ghế
+                foreach (Control control in flpTickets.Controls)
+                {
+                    if (control is Button btnSeat && btnSeat.Tag is int seatId)
+                    {
+                        var seat = _seats.FirstOrDefault(s => s.SeatID == seatId);
+                        var ticket = _tickets.FirstOrDefault(t => t.SeatID == seatId);
+
+                        if (seat != null && ticket != null)
+                        {
+                            UpdateSeatButtonAppearance(btnSeat, seat, ticket);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Không hiển thị MessageBox để tránh spam
+                Console.WriteLine($"[RefreshSeatStatus] Error: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Cập nhật màu sắc và trạng thái của button ghế
+        /// </summary>
+        private void UpdateSeatButtonAppearance(Button btnSeat, Seat seat, Ticket ticket)
+        {
+            // Màu mặc định theo loại ghế
+            Color seatColor = Color.FromArgb(30, 144, 255); // DodgerBlue
+            if (seat.SeatType == "Ghế VIP")
+                seatColor = Color.Gold;
+            else if (seat.SeatType == "Ghế Đôi" || seat.SeatType == "Ghế đôi")
+                seatColor = Color.FromArgb(255, 105, 180); // HotPink
+
+            bool isSelected = _selectedTickets.Any(t => t.SeatID == seat.SeatID);
+            bool isLockedByMe = ticket.LockedBy == _employee?.EmployeeID;
+            bool isLockedByOther = ticket.LockedBy.HasValue && !isLockedByMe;
+            bool isSold = ticket.Status == "Đã bán";
+
+            if (isSold)
+            {
+                btnSeat.BackColor = Color.DarkGray;
+                btnSeat.ForeColor = Color.White;
+                btnSeat.Enabled = false;
+                btnSeat.Cursor = Cursors.No;
+                btnSeat.Text = seat.SeatName;
+            }
+            else if (isLockedByOther)
+            {
+                btnSeat.BackColor = Color.Orange;
+                btnSeat.ForeColor = Color.White;
+                btnSeat.Enabled = false;
+                btnSeat.Cursor = Cursors.No;
+
+                // Hiển thị icon khóa
+                string displayText = (seat.SeatType == "Ghế đôi" || seat.SeatType == "Ghế Đôi")
+                    ? seat.SeatName + "\n🔒 Couple"
+                    : seat.SeatName + "\n🔒";
+                btnSeat.Text = displayText;
+            }
+            else if (isSelected || isLockedByMe)
+            {
+                btnSeat.BackColor = Color.LimeGreen;
+                btnSeat.ForeColor = Color.White;
+                btnSeat.Enabled = true;
+                btnSeat.Cursor = Cursors.Hand;
+
+                string displayText = (seat.SeatType == "Ghế đôi" || seat.SeatType == "Ghế Đôi")
+                    ? seat.SeatName + "\nCouple"
+                    : seat.SeatName;
+                btnSeat.Text = displayText;
+            }
+            else
+            {
+                btnSeat.BackColor = seatColor;
+                btnSeat.ForeColor = Color.White;
+                btnSeat.Enabled = true;
+                btnSeat.Cursor = Cursors.Hand;
+
+                string displayText = (seat.SeatType == "Ghế đôi" || seat.SeatType == "Ghế Đôi")
+                    ? seat.SeatName + "\nCouple"
+                    : seat.SeatName;
+                btnSeat.Text = displayText;
+            }
         }
 
         public SaleTicketUC(DTO.Movie movie, Home parent, DTO.Employee employee) : this(movie)
@@ -255,6 +385,9 @@ namespace UI.EmployeeSale
             lblScreen.BringToFront();
         }
 
+        /// <summary>
+        /// Sự kiện click vào button ghế
+        /// </summary>
         private void BtnSeat_Click(object sender, EventArgs e)
         {
             var btn = sender as Button;
@@ -262,22 +395,92 @@ namespace UI.EmployeeSale
             var ticket = _tickets.FirstOrDefault(t => t.SeatID == seatId);
             var seat = _seats.FirstOrDefault(s => s.SeatID == seatId);
 
-            if (ticket == null || ticket.Status == "Đã bán") return;
+            if (ticket == null || seat == null) return;
+            if (ticket.Status == "Đã bán") return;
 
             var selected = _selectedTickets.FirstOrDefault(t => t.SeatID == seatId);
+
             if (selected != null)
             {
-                _selectedTickets.Remove(selected);
-                if (seat.SeatType == "Ghế VIP") btn.BackColor = Color.Gold;
-                else if (seat.SeatType == "Ghế đôi") btn.BackColor = Color.HotPink;
-                else btn.BackColor = Color.DodgerBlue;
+                // ===== BỎ CHỌN GHẾ - UNLOCK =====
+                if (_employee != null)
+                {
+                    bool unlocked = _seatLockDAL.UnlockSeat(ticket.TicketID, _employee.EmployeeID);
+                    if (unlocked)
+                    {
+                        _selectedTickets.Remove(selected);
+
+                        // Cập nhật giao diện ngay lập tức
+                        Color seatColor = Color.FromArgb(30, 144, 255);
+                        if (seat.SeatType == "Ghế VIP") seatColor = Color.Gold;
+                        else if (seat.SeatType == "Ghế Đôi" || seat.SeatType == "Ghế đôi")
+                            seatColor = Color.FromArgb(255, 105, 180);
+
+                        btn.BackColor = seatColor;
+                        string displayText = (seat.SeatType == "Ghế đôi" || seat.SeatType == "Ghế Đôi")
+                            ? seat.SeatName + "\nCouple"
+                            : seat.SeatName;
+                        btn.Text = displayText;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không thể bỏ chọn ghế này!", "Lỗi",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
             else
             {
-                _selectedTickets.Add(ticket);
-                btn.BackColor = Color.LimeGreen;
+                // ===== CHỌN GHẾ - LOCK =====
+                if (_employee != null)
+                {
+                    bool locked = _seatLockDAL.LockSeat(ticket.TicketID, _employee.EmployeeID);
+                    if (locked)
+                    {
+                        // Reload ticket để lấy thông tin mới nhất
+                        var updatedTicket = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId)
+                            .FirstOrDefault(t => t.TicketID == ticket.TicketID);
+
+                        if (updatedTicket != null)
+                        {
+                            _selectedTickets.Add(updatedTicket);
+                            btn.BackColor = Color.LimeGreen;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(
+                            "Ghế này đang được chọn bởi nhân viên khác!\nVui lòng chọn ghế khác.",
+                            "Thông báo",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+                    }
+                }
             }
+
             UpdateInvoice();
+        }
+
+        /// <summary>
+        /// Cleanup khi đóng form hoặc dispose
+        /// </summary>
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            base.OnHandleDestroyed(e);
+
+            // Dừng timer
+            if (_refreshTimer != null)
+            {
+                _refreshTimer.Stop();
+                _refreshTimer.Dispose();
+            }
+
+            // Unlock tất cả ghế của nhân viên này
+            if (_employee != null)
+            {
+                int unlockedCount = _seatLockDAL.UnlockAllSeatsForEmployee(_employee.EmployeeID);
+                Console.WriteLine($"[Cleanup] Unlocked {unlockedCount} seats for employee {_employee.FullName}");
+            }
         }
 
         private void LoadProducts()
