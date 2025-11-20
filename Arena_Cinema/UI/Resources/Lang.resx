@@ -228,9 +228,6 @@
   <data name="ThongTinCaNhan" xml:space="preserve">
     <value>Thông tin cá nhân</value>
   </data>
-  <data name="NgaySinh" xml:space="preserve">
-    <value>Ngày sinh</value>
-  </data>
   <data name="HoVaTen" xml:space="preserve">
     <value>Họ và tên</value>
   </data>
@@ -281,5 +278,31 @@
   </data>
   <data name="MaNV" xml:space="preserve">
     <value>Mã NV</value>
+  <data name="ThemGhe" xml:space="preserve">
+    <value>Thêm ghế mới</value>
+  </data>
+  <data name="TenGhe" xml:space="preserve">
+    <value>Tên ghế</value>
+  </data>
+  <data name="NgaySinh" xml:space="preserve">
+    <value>Ngày sinh</value>
+  </data>
+  <data name="VDTenGhe" xml:space="preserve">
+    <value>Ví dụ: A00</value>
+  </data>
+  <data name="TenGhePhaiUnique" xml:space="preserve">
+    <value>Tên ghế phải là duy nhất trong phòng (A-Z + số)</value>
+  </data>
+  <data name="LoaiGhe" xml:space="preserve">
+    <value>Loại ghế</value>
+  </data>
+  <data name="Huy" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="VLTenGhe" xml:space="preserve">
+    <value>Vui lòng nhập tên ghế</value>
+  </data>
+  <data name="ThongBao" xml:space="preserve">
+    <value>Thông báo</value>
   </data>
 </root>

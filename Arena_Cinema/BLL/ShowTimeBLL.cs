@@ -127,14 +127,27 @@ namespace BLL
                 if (showTime == null)
                     return (false, "✗ Suất chiếu không tồn tại!");
 
-                // Kiểm tra có thể xóa không
-                if (!_showTimeDAL.CanDeleteShowTime(showTimeId))
+                // ✅ THÊM: Kiểm tra trạng thái suất chiếu
+                string status = GetShowTimeStatus(showTime);
+
+                // Nếu là "Đang chiếu" hoặc "Đã chiếu" -> không được xóa
+                if (status == "Đang chiếu" || status == "Đã chiếu")
                 {
-                    int ticketsSold = _showTimeDAL.CountTicketsSold(showTimeId);
-                    return (false, $"✗ Không thể xóa!\nĐã có {ticketsSold} vé được bán cho suất chiếu này.");
+                    return (false, $"✗ Không thể xóa suất chiếu!\n" +
+                                  $"Suất chiếu này đang ở trạng thái '{status}'.\n" +
+                                  $"Chỉ có thể xóa suất chiếu 'Sắp chiếu' mà chưa bán vé.");
                 }
 
-                // Xóa
+                // ✅ THÊM: Kiểm tra số vé đã bán
+                int ticketsSold = _showTimeDAL.CountTicketsSold(showTimeId);
+                if (ticketsSold > 0)
+                {
+                    return (false, $"✗ Không thể xóa!\n" +
+                                  $"Đã có {ticketsSold} vé được bán cho suất chiếu này.\n" +
+                                  $"Vui lòng kiểm tra lại hoặc liên hệ quản trị viên.");
+                }
+
+                // ✅ THÊM: Xóa thành công nếu là "Sắp chiếu" và không có vé bán
                 bool result = _showTimeDAL.DeleteShowTime(showTimeId);
                 if (result)
                     return (true, "✓ Xóa suất chiếu thành công!");
@@ -343,7 +356,7 @@ namespace BLL
             if (showTime.StartTime < DateTime.Now.AddDays(-1))
                 return (false, "✗ Thời gian bắt đầu quá xa trong quá khứ!");
 
-            // ✅ THÊM: Kiểm tra ngày khởi chiếu của phim
+            // ========== THÊM: Kiểm tra ngày khởi chiếu của phim ==========
             var movie = _movieBLL.GetMovieById(showTime.MovieID);
             if (movie != null && movie.StartTime.HasValue)
             {
@@ -355,6 +368,20 @@ namespace BLL
                 {
                     return (false, $"✗ Suất chiếu không thể trước ngày khởi chiếu của phim!\n" +
                                   $"Phim \"{movie.Title}\" khởi chiếu từ ngày {movieStartDate:dd/MM/yyyy}");
+                }
+            }
+
+            // ========== THÊM: Kiểm tra ngày kết chiếu của phim ==========
+            if (movie != null && movie.EndTime.HasValue)
+            {
+                // Chỉ so sánh ngày, bỏ qua giờ
+                DateTime movieEndDate = movie.EndTime.Value.Date;
+                DateTime showTimeDate = showTime.StartTime.Date;
+
+                if (showTimeDate > movieEndDate)
+                {
+                    return (false, $"✗ Suất chiếu không thể sau ngày kết chiếu của phim!\n" +
+                                  $"Phim \"{movie.Title}\" kết chiếu vào ngày {movieEndDate:dd/MM/yyyy}");
                 }
             }
 

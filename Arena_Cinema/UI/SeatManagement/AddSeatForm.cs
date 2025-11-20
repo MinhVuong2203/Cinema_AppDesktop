@@ -31,14 +31,17 @@ namespace UI.SeatManagement
         private void InitializeComponent()
         {
             this.SuspendLayout();
-
-            this.ClientSize = new Size(560, 400);
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.StartPosition = FormStartPosition.CenterParent;
-            this.BackColor = Color.White;
-            this.Font = new Font("Segoe UI", 9F);
-
+            // 
+            // AddSeatForm
+            // 
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1003, 604);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "AddSeatForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
+
         }
 
         private void InitializeControls()
@@ -54,7 +57,7 @@ namespace UI.SeatManagement
 
             lblTitle = new Label
             {
-                Text = "Thêm Ghế Mới",
+                Text = global::UI.Resources.Lang.ThemGhe,
                 Font = new Font("Segoe UI", 16F, FontStyle.Bold),
                 ForeColor = Color.White,
                 Location = new Point(20, 22),
@@ -81,7 +84,7 @@ namespace UI.SeatManagement
             // ========== TÊN GHẾ ==========
             lblSeatName = new Label
             {
-                Text = "Tên Ghế *",
+                Text = global::UI.Resources.Lang.TenGhe,
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 Location = new Point(30, 100),
                 AutoSize = true
@@ -94,7 +97,7 @@ namespace UI.SeatManagement
                 Location = new Point(30, 125),
                 Size = new Size(500, 34),
                 BorderStyle = BorderStyle.FixedSingle,
-                Text = "Ví dụ: Q01, VIP01",
+                Text = global::UI.Resources.Lang.VDTenGhe,
                 ForeColor = Color.Gray
             };
             this.Controls.Add(txtSeatName);
@@ -112,14 +115,14 @@ namespace UI.SeatManagement
             {
                 if (string.IsNullOrWhiteSpace(txtSeatName.Text))
                 {
-                    txtSeatName.Text = "Ví dụ: Q01, VIP01";
+                    txtSeatName.Text = global::UI.Resources.Lang.VDTenGhe;
                     txtSeatName.ForeColor = Color.Gray;
                 }
             };
 
             lblSeatNameHint = new Label
             {
-                Text = "Tên ghế phải duy nhất trong phòng (A-Z + số)",
+                Text = global::UI.Resources.Lang.TenGhePhaiUnique,
                 Font = new Font("Segoe UI", 8.5F, FontStyle.Italic),
                 ForeColor = Color.Gray,
                 Location = new Point(32, 162),
@@ -130,7 +133,7 @@ namespace UI.SeatManagement
             // ========== LOẠI GHẾ ==========
             lblSeatType = new Label
             {
-                Text = "Loại Ghế",
+                Text = global::UI.Resources.Lang.LoaiGhe,
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 Location = new Point(30, 195),
                 AutoSize = true
@@ -151,7 +154,7 @@ namespace UI.SeatManagement
             // ========== BUTTONS ==========
             btnAdd = new Button
             {
-                Text = "Thêm Ghế",
+                Text = global::UI.Resources.Lang.ThemGhe,
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 BackColor = Color.FromArgb(40, 167, 69),
                 ForeColor = Color.White,
@@ -166,7 +169,7 @@ namespace UI.SeatManagement
 
             btnCancel = new Button
             {
-                Text = "Hủy",
+                Text = global::UI.Resources.Lang.Huy,
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 BackColor = Color.FromArgb(108, 117, 125),
                 ForeColor = Color.White,
@@ -187,7 +190,7 @@ namespace UI.SeatManagement
             // Validation
             if (string.IsNullOrWhiteSpace(seatName) || seatName == "Ví dụ: Q01, VIP01")
             {
-                MessageBox.Show("Vui lòng nhập tên ghế!", "Thông báo",
+                MessageBox.Show(global::UI.Resources.Lang.VLTenGhe, global::UI.Resources.Lang.ThongBao,
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtSeatName.Focus();
                 return;
@@ -209,5 +212,6 @@ namespace UI.SeatManagement
 
             this.DialogResult = DialogResult.OK;
         }
+
     }
 }
