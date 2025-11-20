@@ -31,9 +31,9 @@ namespace UI.Movie
             this.Resize += (s, e) => grb_Movie.Left = (panelMain.Width - grb_Movie.Width) / 2;
 
             // Setup events
-            btnSave.Click += BtnSave_Click;
-            btnCancel.Click += BtnCancel_Click;
-            btnUploadImage.Click += BtnUploadImage_Click;
+            //btnSave.Click += BtnSave_Click;
+            //btnCancel.Click += BtnCancel_Click;
+            //btnUploadImage.Click += BtnUploadImage_Click;
 
             // Track changes
             SetupChangeTracking();
@@ -193,6 +193,7 @@ namespace UI.Movie
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
 
         private void BtnSave_Click(object sender, EventArgs e)
         {

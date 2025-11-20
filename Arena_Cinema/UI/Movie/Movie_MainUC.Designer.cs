@@ -41,13 +41,13 @@
             this.btnNavTemplate = new ReaLTaiizor.Controls.ParrotButton();
             this.searchPanel = new System.Windows.Forms.Panel();
             this.panelinfo_right = new System.Windows.Forms.Panel();
+            this.btnRP = new ReaLTaiizor.Controls.ParrotButton();
             this.cboAgeLimit = new ReaLTaiizor.Controls.MaterialComboBox();
             this.cboGenre = new ReaLTaiizor.Controls.MaterialComboBox();
             this.cboFilter = new ReaLTaiizor.Controls.MaterialComboBox();
             this.btnReset = new ReaLTaiizor.Controls.ParrotButton();
             this.lblInfo = new System.Windows.Forms.Label();
             this.txtSearch = new ReaLTaiizor.Controls.MaterialTextBox();
-            this.btnRP = new ReaLTaiizor.Controls.ParrotButton();
             this.panelHeader.SuspendLayout();
             this.right_panel.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -132,12 +132,11 @@
             // 
             // lbl_MovieTitle
             // 
-            this.lbl_MovieTitle.AutoSize = true;
             this.lbl_MovieTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lbl_MovieTitle.ForeColor = System.Drawing.Color.White;
             this.lbl_MovieTitle.Location = new System.Drawing.Point(50, 14);
             this.lbl_MovieTitle.Name = "lbl_MovieTitle";
-            this.lbl_MovieTitle.Size = new System.Drawing.Size(212, 32);
+            this.lbl_MovieTitle.Size = new System.Drawing.Size(267, 32);
             this.lbl_MovieTitle.TabIndex = 1;
             this.lbl_MovieTitle.Text = "📽 Quản Lý Phim";
             // 
@@ -198,8 +197,6 @@
             this.movieCardTemplate.Size = new System.Drawing.Size(296, 407);
             this.movieCardTemplate.TabIndex = 0;
             this.movieCardTemplate.Visible = false;
-            //this.movieCardTemplate.MouseEnter += new System.EventHandler(this.movieCardTemplate_MouseEnter);
-            //this.movieCardTemplate.MouseLeave += new System.EventHandler(this.movieCardTemplate_MouseLeave);
             // 
             // btnDeleteTemplate
             // 
@@ -435,6 +432,31 @@
             this.panelinfo_right.Size = new System.Drawing.Size(720, 101);
             this.panelinfo_right.TabIndex = 3;
             // 
+            // btnRP
+            // 
+            this.btnRP.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnRP.ButtonImage = null;
+            this.btnRP.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnRP.ButtonText = "Xem Thống  Kê";
+            this.btnRP.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
+            this.btnRP.ClickTextColor = System.Drawing.Color.White;
+            this.btnRP.CornerRadius = 5;
+            this.btnRP.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnRP.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnRP.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
+            this.btnRP.HoverTextColor = System.Drawing.Color.White;
+            this.btnRP.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnRP.Location = new System.Drawing.Point(597, 60);
+            this.btnRP.Name = "btnRP";
+            this.btnRP.Size = new System.Drawing.Size(120, 38);
+            this.btnRP.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnRP.TabIndex = 6;
+            this.btnRP.TextColor = System.Drawing.Color.White;
+            this.btnRP.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnRP.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnRP.Click += new System.EventHandler(this.btnRP_Click);
+            // 
             // cboAgeLimit
             // 
             this.cboAgeLimit.AutoResize = false;
@@ -569,31 +591,6 @@
             this.txtSearch.TrailingIcon = null;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // btnRP
-            // 
-            this.btnRP.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.btnRP.ButtonImage = null;
-            this.btnRP.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnRP.ButtonText = "Xem Thống  Kê";
-            this.btnRP.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
-            this.btnRP.ClickTextColor = System.Drawing.Color.White;
-            this.btnRP.CornerRadius = 5;
-            this.btnRP.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnRP.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnRP.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
-            this.btnRP.HoverTextColor = System.Drawing.Color.White;
-            this.btnRP.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnRP.Location = new System.Drawing.Point(597, 60);
-            this.btnRP.Name = "btnRP";
-            this.btnRP.Size = new System.Drawing.Size(120, 38);
-            this.btnRP.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnRP.TabIndex = 6;
-            this.btnRP.TextColor = System.Drawing.Color.White;
-            this.btnRP.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnRP.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnRP.Click += new System.EventHandler(this.btnRP_Click);
-            // 
             // Movie_MainUC
             // 
             this.BackColor = System.Drawing.Color.White;
@@ -602,7 +599,6 @@
             this.Name = "Movie_MainUC";
             this.Size = new System.Drawing.Size(1360, 800);
             this.panelHeader.ResumeLayout(false);
-            this.panelHeader.PerformLayout();
             this.right_panel.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
             this.panel_movie.ResumeLayout(false);
