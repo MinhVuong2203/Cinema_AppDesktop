@@ -5,6 +5,8 @@ using System.Linq;
 using System.Windows.Forms;
 using DAL;
 using DTO;
+
+// Thêm alias để tránh conflict với namespace UI.ShowTime và UI.Movie
 using ShowTimeDTO = DTO.ShowTime;
 using MovieDTO = DTO.Movie;
 
@@ -17,9 +19,8 @@ namespace UI.Helpers
     {
         private readonly CinemaDBContext _context;
         private Ticket _ticket;
-        private ShowTimeDTO _showTime;
-
-        private MovieDTO _movie;
+        private ShowTimeDTO _showTime;  // Thay đổi ở đây
+        private MovieDTO _movie;        // Thay đổi ở đây
         private Seat _seat;
         private Room _room;
         private Invoice _invoice;

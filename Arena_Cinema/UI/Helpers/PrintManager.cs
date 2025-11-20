@@ -145,7 +145,6 @@ namespace UI.Helpers
                 result.Add(new TicketInfo
                 {
                     TicketID = ticket.TicketID,
-
                     MovieTitle = movie?.Title ?? "N/A",
                     SeatName = seat?.SeatName ?? "N/A",
                     ShowTime = showTime?.StartTime ?? DateTime.MinValue,

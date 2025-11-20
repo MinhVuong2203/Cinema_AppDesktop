@@ -41,7 +41,7 @@
             this.lb_successTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.lb_successTitle.Location = new System.Drawing.Point(206, 90);
             this.lb_successTitle.Name = "lb_successTitle";
-            this.lb_successTitle.Size = new System.Drawing.Size(390, 46);
+            this.lb_successTitle.Size = new System.Drawing.Size(382, 45);
             this.lb_successTitle.TabIndex = 0;
             this.lb_successTitle.Text = "Thanh toán thành công";
             // 
@@ -73,7 +73,7 @@
             // parrotButton_home
             // 
             this.parrotButton_home.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.parrotButton_home.ButtonImage = ((System.Drawing.Image)(resources.GetObject("parrotButton_home.ButtonImage")));
+            this.parrotButton_home.ButtonImage = global::UI.Properties.Resources.Home;
             this.parrotButton_home.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
             this.parrotButton_home.ButtonText = "Home";
             this.parrotButton_home.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
