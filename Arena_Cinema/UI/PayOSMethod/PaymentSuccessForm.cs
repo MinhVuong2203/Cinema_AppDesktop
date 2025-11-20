@@ -258,19 +258,19 @@ namespace UI.PayOSMethod
 
                 btnInvoice.Click += (s, ev) =>
                 {
-                    printManager.PrintInvoice();
+                    printManager.SaveInvoiceOnly();
                     printOptionsForm.Close();
                 };
 
                 btnTickets.Click += (s, ev) =>
                 {
-                    printManager.PrintAllTickets();
+                    printManager.SaveTicketsOnly();
                     printOptionsForm.Close();
                 };
 
                 btnAll.Click += (s, ev) =>
                 {
-                    printManager.PrintAll();
+                    printManager.SaveAll();
                     printOptionsForm.Close();
                 };
 
