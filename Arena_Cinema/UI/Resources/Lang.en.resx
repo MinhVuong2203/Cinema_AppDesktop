@@ -147,9 +147,6 @@
   <data name="TRANGCHU" xml:space="preserve">
     <value>HOME</value>
   </data>
-  <data name="BanVe" xml:space="preserve">
-    <value>SALE TICKET</value>
-  </data>
   <data name="KieuChu" xml:space="preserve">
     <value>Typeface</value>
   </data>
@@ -161,5 +158,62 @@
   </data>
   <data name="DangXuat" xml:space="preserve">
     <value>Log out</value>
+  </data>
+  <data name="BanVe" xml:space="preserve">
+    <value>SALE TICKET</value>
+  </data>
+  <data name="MoTa" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="LoaiPhong" xml:space="preserve">
+    <value>Room type</value>
+  </data>
+  <data name="SoGheMD" xml:space="preserve">
+    <value>If not type in: 250 seats</value>
+  </data>
+  <data name="SoLuongGhe" xml:space="preserve">
+    <value>Seats number</value>
+  </data>
+  <data name="ViDuTenPhong" xml:space="preserve">
+    <value>Ex: Room 1</value>
+  </data>
+  <data name="TenPhong" xml:space="preserve">
+    <value>Room name</value>
+  </data>
+  <data name="ThongTinPhong" xml:space="preserve">
+    <value>Room information</value>
+  </data>
+  <data name="ChonLoaiPhong" xml:space="preserve">
+    <value>--Choose room type--</value>
+  </data>
+  <data name="TaiAnh" xml:space="preserve">
+    <value>Upload image</value>
+  </data>
+  <data name="TruongBatBuoc" xml:space="preserve">
+    <value>Must fill in</value>
+  </data>
+  <data name="HuongDan" xml:space="preserve">
+    <value>Instruction</value>
+  </data>
+  <data name="TenPhongChieuLaDuyNhat" xml:space="preserve">
+    <value>Room name is unique</value>
+  </data>
+  <data name="AnhPhongChieu" xml:space="preserve">
+    <value>Room image</value>
+  </data>
+  <data name="LuuY" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="MaPhongTuTao" xml:space="preserve">
+    <value>Room ID will be auto generate</value>
+  </data>
+  <data name="MacDinhGhe" xml:space="preserve">
+    <value>Default: 250 seats</value>
+  </data>
+  <data name="HinhCoTheTrong" xml:space="preserve">
+    <value>Image can be empty</value>
+  </data>
+  <data name="ThemPhong" xml:space="preserve">
+    <value>Add new screening room</value>
   </data>
 </root>

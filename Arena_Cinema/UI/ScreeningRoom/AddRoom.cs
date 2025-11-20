@@ -180,9 +180,5 @@ namespace UI.ScreeningRoom
             _home.LoadControl(new Room_homeUC(_home, _room));
         }
 
-        private void btnUploadImage_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
