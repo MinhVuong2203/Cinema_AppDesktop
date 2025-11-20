@@ -37,14 +37,17 @@ namespace UI.SeatManagement
         private void InitializeComponent()
         {
             this.SuspendLayout();
-
-            this.ClientSize = new Size(560, 500);
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.StartPosition = FormStartPosition.CenterParent;
-            this.BackColor = Color.White;
-            this.Font = new Font("Segoe UI", 9F);
-
+            // 
+            // EditSeatForm
+            // 
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(560, 500);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "EditSeatForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
+
         }
 
         private void InitializeControls()
@@ -117,7 +120,7 @@ namespace UI.SeatManagement
             // ========== TÊN GHẾ ==========
             lblSeatName = new Label
             {
-                Text = "Tên Ghế",
+                Text = global::UI.Resources.Lang.TenGhe,
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 Location = new Point(30, 200),
                 AutoSize = true
@@ -135,7 +138,7 @@ namespace UI.SeatManagement
 
             lblSeatNameHint = new Label
             {
-                Text = "Tên ghế phải duy nhất trong phòng",
+                Text = global::UI.Resources.Lang.TenGhePhaiUnique,
                 Font = new Font("Segoe UI", 8.5F, FontStyle.Italic),
                 ForeColor = Color.Gray,
                 Location = new Point(32, 262),
@@ -146,7 +149,7 @@ namespace UI.SeatManagement
             // ========== LOẠI GHẾ ==========
             lblSeatType = new Label
             {
-                Text = "Loại Ghế",
+                Text = global::UI.Resources.Lang.LoaiGhe,
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 Location = new Point(30, 290),
                 AutoSize = true
@@ -166,7 +169,7 @@ namespace UI.SeatManagement
             // ========== BUTTONS ==========
             btnSave = new Button
             {
-                Text = "Lưu Thay Đổi",
+                Text = global::UI.Resources.Lang.LuuThayDoi,
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 BackColor = Color.FromArgb(40, 167, 69),
                 ForeColor = Color.White,
@@ -181,7 +184,7 @@ namespace UI.SeatManagement
 
             btnDelete = new Button
             {
-                Text = "Xóa Ghế",
+                Text = global::UI.Resources.Lang.Xoa,
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 BackColor = Color.FromArgb(220, 53, 69),
                 ForeColor = Color.White,
@@ -196,7 +199,7 @@ namespace UI.SeatManagement
 
             btnCancel = new Button
             {
-                Text = "Hủy",
+                Text = global::UI.Resources.Lang.Huy,
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 BackColor = Color.FromArgb(108, 117, 125),
                 ForeColor = Color.White,
@@ -277,5 +280,6 @@ namespace UI.SeatManagement
                 this.DialogResult = DialogResult.OK;
             }
         }
+
     }
 }

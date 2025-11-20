@@ -228,9 +228,6 @@
   <data name="ThongTinCaNhan" xml:space="preserve">
     <value>INFOMATION</value>
   </data>
-  <data name="NgaySinh" xml:space="preserve">
-    <value>Birthday</value>
-  </data>
   <data name="HoVaTen" xml:space="preserve">
     <value>Fullname</value>
   </data>
@@ -269,5 +266,32 @@
   </data>
   <data name="Xoa" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="ThemGhe" xml:space="preserve">
+    <value>Add new seat</value>
+  </data>
+  <data name="TenGhe" xml:space="preserve">
+    <value>Seat name</value>
+  </data>
+  <data name="NgaySinh" xml:space="preserve">
+    <value>Birthday</value>
+  </data>
+  <data name="VDTenGhe" xml:space="preserve">
+    <value>EX: A00</value>
+  </data>
+  <data name="TenGhePhaiUnique" xml:space="preserve">
+    <value>Seat name must be unique in room (A-Z + number)</value>
+  </data>
+  <data name="LoaiGhe" xml:space="preserve">
+    <value>Seat type</value>
+  </data>
+  <data name="Huy" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="VLTenGhe" xml:space="preserve">
+    <value>Please type seat name</value>
+  </data>
+  <data name="ThongBao" xml:space="preserve">
+    <value>Announce</value>
   </data>
 </root>
