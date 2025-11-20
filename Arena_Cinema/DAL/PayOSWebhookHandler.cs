@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using DTO;
 using Newtonsoft.Json;
 
 namespace DAL
@@ -47,13 +48,16 @@ namespace DAL
                 long orderCode = long.Parse(data.data.orderCode.ToString());
                 string status = data.data.status?.ToString(); // PAID, CANCELLED, PENDING
                 decimal amount = decimal.Parse(data.data.amount.ToString());
+                string description = data.data.description?.ToString() ?? "";
+                //Guid? invoiceID = data.data.invoiceID != null ? Guid.Parse(data.data.invoiceID.ToString()) : (Guid?)null;
+                string buyerName = data.data.buyerName?.ToString() ?? "";
 
                 Console.WriteLine($"✅ Webhook received - OrderCode: {orderCode}, Status: {status}");
 
                 // 4. Xử lý theo trạng thái
                 if (status == "PAID")
                 {
-                    return HandleSuccessfulPayment(orderCode, amount);
+                    return HandleSuccessfulPayment(orderCode, amount, description, buyerName);
                 }
                 else if (status == "CANCELLED")
                 {
@@ -125,6 +129,144 @@ namespace DAL
             {
                 Console.WriteLine($"❌ Error handling successful payment: {ex.Message}");
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Xử lý thanh toán thành công - Tìm theo InvoiceID
+        /// </summary>
+        private bool HandleSuccessfulPayment(long orderCode, decimal amount, string description, string buyerName)
+        {
+            using (var transaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    // ✅ PARSE InvoiceID từ buyerName
+                    Guid invoiceID;
+                    if (!Guid.TryParse(buyerName, out invoiceID))
+                    {
+                        Console.WriteLine($"❌ Invalid InvoiceID in buyerName: {buyerName}");
+                        return false;
+                    }
+
+                    Console.WriteLine($"✅ Parsed InvoiceID: {invoiceID}");
+
+                    // ✅ TÌM Invoice theo InvoiceID
+                    var invoice = _context.Invoices
+                        .FirstOrDefault(i => i.InvoiceID == invoiceID && !i.IsDeleted);
+
+                    if (invoice == null)
+                    {
+                        Console.WriteLine($"❌ Invoice not found: {invoiceID}");
+                        return false;
+                    }
+
+                    Console.WriteLine($"✅ Found invoice: {invoice.InvoiceID}");
+
+                    // Kiểm tra đã thanh toán
+                    if (invoice.Status == "Đã thanh toán")
+                    {
+                        Console.WriteLine($"⚠️ Invoice already paid");
+                        return true;
+                    }
+
+                    // Kiểm tra duplicate payment
+                    var existingPayment = _context.Payments
+                        .FirstOrDefault(p => p.InvoiceID == invoice.InvoiceID);
+
+                    if (existingPayment != null)
+                    {
+                        Console.WriteLine($"⚠️ Payment already exists");
+                        return true;
+                    }
+
+                    // 1. Update invoice
+                    invoice.Status = "Đã thanh toán";
+
+                    // 2. ✅ CREATE PAYMENT
+                    var payment = new Payment
+                    {
+                        PaymentID = Guid.NewGuid(),
+                        InvoiceID = invoice.InvoiceID,
+                        Method = "PayOS",
+                        Amount = amount,
+                        PaymentTime = DateTime.Now
+                    };
+                    _context.Payments.Add(payment);
+
+                    Console.WriteLine($"✅ Created payment: {payment.PaymentID}");
+
+                    // 3. Update tickets
+                    var invoiceTickets = _context.InvoiceTickets
+                        .Where(it => it.InvoiceID == invoice.InvoiceID)
+                        .ToList();
+
+                    if (invoiceTickets.Any())
+                    {
+                        var ticketIds = invoiceTickets.Select(it => it.TicketID).ToList();
+                        var tickets = _context.Tickets
+                            .Where(t => ticketIds.Contains(t.TicketID))
+                            .ToList();
+
+                        foreach (var ticket in tickets)
+                        {
+                            ticket.Status = "Đã bán";
+                        }
+
+                        Console.WriteLine($"✅ Updated {tickets.Count} tickets to 'Đã bán'");
+                    }
+
+                    // 4. Save
+                    _context.SaveChanges();
+                    transaction.Commit();
+
+                    Console.WriteLine($"✅ Payment completed successfully");
+                    Console.WriteLine($"   Invoice: {invoice.InvoiceID}");
+                    Console.WriteLine($"   Payment: {payment.PaymentID}");
+                    Console.WriteLine($"   Amount: {amount}");
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    Console.WriteLine($"❌ Error handling payment: {ex.Message}");
+                    Console.WriteLine($"Stack trace: {ex.StackTrace}");
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// ✅ Hàm extract InvoiceID từ description
+        /// Format: "HD XXXXXXXX|INV:guid"
+        /// </summary>
+        private Guid? ExtractInvoiceIDFromDescription(string description)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(description))
+                    return null;
+
+                // Tìm pattern "INV:guid"
+                int invIndex = description.IndexOf("|INV:");
+                if (invIndex == -1)
+                    return null;
+
+                string guidString = description.Substring(invIndex + 5); // Skip "|INV:"
+
+                if (Guid.TryParse(guidString, out Guid invoiceID))
+                {
+                    Console.WriteLine($"✅ Extracted InvoiceID: {invoiceID}");
+                    return invoiceID;
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️ Error extracting InvoiceID: {ex.Message}");
+                return null;
             }
         }
 
@@ -207,6 +349,43 @@ namespace DAL
             catch (Exception ex)
             {
                 Console.WriteLine($"❌ Error handling cancelled payment: {ex.Message}");
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Xử lý hủy thanh toán
+        /// </summary>
+        private bool HandleCancelledPayment(long orderCode, string buyerName)
+        {
+            try
+            {
+                // Parse InvoiceID
+                Guid invoiceID;
+                if (!Guid.TryParse(buyerName, out invoiceID))
+                {
+                    Console.WriteLine($"❌ Invalid InvoiceID in buyerName: {buyerName}");
+                    return false;
+                }
+
+                var invoice = _context.Invoices
+                    .FirstOrDefault(i => i.InvoiceID == invoiceID && !i.IsDeleted);
+
+                if (invoice == null)
+                {
+                    Console.WriteLine($"❌ Invoice not found: {invoiceID}");
+                    return false;
+                }
+
+                invoice.Status = "Đã hủy";
+                _context.SaveChanges();
+
+                Console.WriteLine($"✅ Invoice {invoice.InvoiceID} cancelled");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error handling cancellation: {ex.Message}");
                 return false;
             }
         }
