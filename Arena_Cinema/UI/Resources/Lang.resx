@@ -123,6 +123,9 @@
   <data name="CANHAN" xml:space="preserve">
     <value>CÁ NHÂN</value>
   </data>
+  <data name="NgonNgu" xml:space="preserve">
+    <value>Ngôn ngữ</value>
+  </data>
   <data name="NHANSU" xml:space="preserve">
     <value>NHÂN SỰ</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="PHONGCHIEU" xml:space="preserve">
     <value>PHÒNG CHIẾU</value>
   </data>
+  <data name="SANPHAM" xml:space="preserve">
+    <value>SẢN PHẨM</value>
+  </data>
   <data name="SUATCHIEU" xml:space="preserve">
     <value>SUẤT CHIẾU</value>
   </data>
@@ -140,5 +146,20 @@
   </data>
   <data name="TRANGCHU" xml:space="preserve">
     <value>TRANG CHỦ</value>
+  </data>
+  <data name="BanVe" xml:space="preserve">
+    <value>BÁN VÉ</value>
+  </data>
+  <data name="KieuChu" xml:space="preserve">
+    <value>Kiểu chữ</value>
+  </data>
+  <data name="MauSac" xml:space="preserve">
+    <value>Màu sắc</value>
+  </data>
+  <data name="ChonMau" xml:space="preserve">
+    <value>Chọn màu</value>
+  </data>
+  <data name="DangXuat" xml:space="preserve">
+    <value>Đăng xuất</value>
   </data>
 </root>

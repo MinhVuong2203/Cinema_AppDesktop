@@ -304,7 +304,7 @@ namespace UI
             this.btnBanVe.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
             this.btnBanVe.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnBanVe.ButtonImage")));
             this.btnBanVe.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
-            this.btnBanVe.ButtonText = "BÁN VÉ";
+            this.btnBanVe.ButtonText = global::UI.Resources.Lang.BanVe;
             this.btnBanVe.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
             this.btnBanVe.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.btnBanVe.CornerRadius = 5;
@@ -434,7 +434,7 @@ namespace UI
             this.btnSanPham.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
             this.btnSanPham.ButtonImage = global::UI.Properties.Resources.popcorn;
             this.btnSanPham.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
-            this.btnSanPham.ButtonText = "SẢN PHẨM";
+            this.btnSanPham.ButtonText = global::UI.Resources.Lang.SANPHAM;
             this.btnSanPham.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
             this.btnSanPham.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.btnSanPham.CornerRadius = 5;

@@ -61,6 +61,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BÁN VÉ.
+        /// </summary>
+        public static string BanVe {
+            get {
+                return ResourceManager.GetString("BanVe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CÀI ĐẶT.
         /// </summary>
         public static string CAIDAT {
@@ -75,6 +84,51 @@ namespace UI.Resources {
         public static string CANHAN {
             get {
                 return ResourceManager.GetString("CANHAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chọn màu.
+        /// </summary>
+        public static string ChonMau {
+            get {
+                return ResourceManager.GetString("ChonMau", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Đăng xuất.
+        /// </summary>
+        public static string DangXuat {
+            get {
+                return ResourceManager.GetString("DangXuat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kiểu chữ.
+        /// </summary>
+        public static string KieuChu {
+            get {
+                return ResourceManager.GetString("KieuChu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Màu sắc.
+        /// </summary>
+        public static string MauSac {
+            get {
+                return ResourceManager.GetString("MauSac", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ngôn ngữ.
+        /// </summary>
+        public static string NgonNgu {
+            get {
+                return ResourceManager.GetString("NgonNgu", resourceCulture);
             }
         }
         
@@ -102,6 +156,15 @@ namespace UI.Resources {
         public static string PHONGCHIEU {
             get {
                 return ResourceManager.GetString("PHONGCHIEU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SẢN PHẨM.
+        /// </summary>
+        public static string SANPHAM {
+            get {
+                return ResourceManager.GetString("SANPHAM", resourceCulture);
             }
         }
         

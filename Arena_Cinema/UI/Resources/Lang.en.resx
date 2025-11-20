@@ -123,6 +123,9 @@
   <data name="CANHAN" xml:space="preserve">
     <value>PERSONAL</value>
   </data>
+  <data name="NgonNgu" xml:space="preserve">
+    <value>Language</value>
+  </data>
   <data name="NHANSU" xml:space="preserve">
     <value>EMPLOYEE</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="PHONGCHIEU" xml:space="preserve">
     <value>ROOM</value>
   </data>
+  <data name="SANPHAM" xml:space="preserve">
+    <value>PRODUCT</value>
+  </data>
   <data name="SUATCHIEU" xml:space="preserve">
     <value>SHOWTIME</value>
   </data>
@@ -140,5 +146,20 @@
   </data>
   <data name="TRANGCHU" xml:space="preserve">
     <value>HOME</value>
+  </data>
+  <data name="BanVe" xml:space="preserve">
+    <value>SALE TICKET</value>
+  </data>
+  <data name="KieuChu" xml:space="preserve">
+    <value>Typeface</value>
+  </data>
+  <data name="MauSac" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="ChonMau" xml:space="preserve">
+    <value>Choose color</value>
+  </data>
+  <data name="DangXuat" xml:space="preserve">
+    <value>Log out</value>
   </data>
 </root>

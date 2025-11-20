@@ -1,16 +1,33 @@
-﻿namespace UI.Setting
+﻿using System.Drawing;
+
+namespace UI.Setting
 {
     partial class SettingControl
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        private System.Windows.Forms.Panel mainPanel;
+
+        private System.Windows.Forms.Label lblTitle;
+
+        private UI.Controls.RoundedPanel cardLang;
+        private UI.Controls.RoundedPanel cardAppearance;
+        private UI.Controls.RoundedPanel cardAccount;
+
+        private System.Windows.Forms.Label lblLang;
+        private ReaLTaiizor.Controls.MaterialComboBox cbLang;
+
+        private System.Windows.Forms.Label lblFont;
+        private System.Windows.Forms.TextBox textFont;
+        private System.Windows.Forms.Button btnFont;
+
+        private ReaLTaiizor.Controls.CyberColorPicker colorPicker;
+        private System.Windows.Forms.Label lblColor;
+        private System.Windows.Forms.Label lblPreview;
+
+        private System.Windows.Forms.FontDialog fontDialog1;
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,124 +37,232 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbLang = new ReaLTaiizor.Controls.MaterialComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.cardLang = new UI.Controls.RoundedPanel();
+            this.lblLang = new System.Windows.Forms.Label();
+            this.cbLang = new ReaLTaiizor.Controls.MaterialComboBox();
+            this.cardAppearance = new UI.Controls.RoundedPanel();
+            this.lblFont = new System.Windows.Forms.Label();
+            this.textFont = new System.Windows.Forms.TextBox();
             this.btnFont = new System.Windows.Forms.Button();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnChonMau = new System.Windows.Forms.Button();
+            this.lblColor = new System.Windows.Forms.Label();
+            this.colorPicker = new ReaLTaiizor.Controls.CyberColorPicker();
             this.lblPreview = new System.Windows.Forms.Label();
+            this.cardAccount = new UI.Controls.RoundedPanel();
+            this.skyButton1 = new ReaLTaiizor.Controls.SkyButton();
             this.btnOk = new ReaLTaiizor.Controls.SkyButton();
-            this.cyberColorPicker1 = new ReaLTaiizor.Controls.CyberColorPicker();
-            this.btnDangXuat = new ReaLTaiizor.Controls.SkyButton();
+            this.mainPanel.SuspendLayout();
+            this.cardLang.SuspendLayout();
+            this.cardAppearance.SuspendLayout();
+            this.cardAccount.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // mainPanel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(186, 98);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ngôn ngữ:";
+            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(252)))));
+            this.mainPanel.Controls.Add(this.lblTitle);
+            this.mainPanel.Controls.Add(this.cardLang);
+            this.mainPanel.Controls.Add(this.cardAppearance);
+            this.mainPanel.Controls.Add(this.cardAccount);
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(0, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(916, 860);
+            this.mainPanel.TabIndex = 0;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 26F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lblTitle.Location = new System.Drawing.Point(40, 30);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(426, 60);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "CÀI ĐẶT HỆ THỐNG";
+            // 
+            // cardLang
+            // 
+            this.cardLang.BackColor = System.Drawing.Color.White;
+            this.cardLang.BorderColor = System.Drawing.Color.LightGray;
+            this.cardLang.BorderRadius = 20;
+            this.cardLang.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.cardLang.BorderThickness = 2F;
+            this.cardLang.Controls.Add(this.lblLang);
+            this.cardLang.Controls.Add(this.cbLang);
+            this.cardLang.Location = new System.Drawing.Point(100, 120);
+            this.cardLang.Name = "cardLang";
+            this.cardLang.Size = new System.Drawing.Size(720, 95);
+            this.cardLang.TabIndex = 1;
+            // 
+            // lblLang
+            // 
+            this.lblLang.AutoSize = true;
+            this.lblLang.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.lblLang.Location = new System.Drawing.Point(30, 26);
+            this.lblLang.Name = "lblLang";
+            this.lblLang.Size = new System.Drawing.Size(123, 32);
+            this.lblLang.TabIndex = 0;
+            this.lblLang.Text = "Ngôn ngữ";
             // 
             // cbLang
             // 
             this.cbLang.AutoResize = false;
-            this.cbLang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.cbLang.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.cbLang.Depth = 0;
             this.cbLang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.cbLang.DropDownHeight = 174;
             this.cbLang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLang.DropDownWidth = 121;
-            this.cbLang.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbLang.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cbLang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbLang.FormattingEnabled = true;
             this.cbLang.IntegralHeight = false;
             this.cbLang.ItemHeight = 43;
             this.cbLang.Items.AddRange(new object[] {
             "Tiếng Việt",
             "Tiếng Anh"});
-            this.cbLang.Location = new System.Drawing.Point(301, 86);
+            this.cbLang.Location = new System.Drawing.Point(190, 18);
             this.cbLang.MaxDropDownItems = 4;
             this.cbLang.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             this.cbLang.Name = "cbLang";
-            this.cbLang.Size = new System.Drawing.Size(301, 49);
+            this.cbLang.Size = new System.Drawing.Size(350, 49);
             this.cbLang.StartIndex = 0;
-            this.cbLang.TabIndex = 2;
-            this.cbLang.SelectedIndexChanged += new System.EventHandler(this.cbLang_SelectedIndexChanged);
+            this.cbLang.TabIndex = 1;
             // 
-            // label2
+            // cardAppearance
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(186, 177);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 30);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Kiểu chữ";
+            this.cardAppearance.BackColor = System.Drawing.Color.White;
+            this.cardAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.cardAppearance.BorderRadius = 20;
+            this.cardAppearance.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.cardAppearance.BorderThickness = 2F;
+            this.cardAppearance.Controls.Add(this.lblFont);
+            this.cardAppearance.Controls.Add(this.textFont);
+            this.cardAppearance.Controls.Add(this.btnFont);
+            this.cardAppearance.Controls.Add(this.lblColor);
+            this.cardAppearance.Controls.Add(this.colorPicker);
+            this.cardAppearance.Controls.Add(this.lblPreview);
+            this.cardAppearance.Location = new System.Drawing.Point(100, 231);
+            this.cardAppearance.Name = "cardAppearance";
+            this.cardAppearance.Size = new System.Drawing.Size(720, 336);
+            this.cardAppearance.TabIndex = 2;
             // 
-            // textBox1
+            // lblFont
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Silver;
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(301, 177);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(260, 37);
-            this.textBox1.TabIndex = 4;
+            this.lblFont.AutoSize = true;
+            this.lblFont.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.lblFont.Location = new System.Drawing.Point(30, 30);
+            this.lblFont.Name = "lblFont";
+            this.lblFont.Size = new System.Drawing.Size(107, 32);
+            this.lblFont.TabIndex = 0;
+            this.lblFont.Text = "Kiểu chữ";
+            // 
+            // textFont
+            // 
+            this.textFont.BackColor = System.Drawing.Color.Silver;
+            this.textFont.Enabled = false;
+            this.textFont.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textFont.Location = new System.Drawing.Point(150, 30);
+            this.textFont.Name = "textFont";
+            this.textFont.Size = new System.Drawing.Size(330, 34);
+            this.textFont.TabIndex = 1;
             // 
             // btnFont
             // 
-            this.btnFont.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFont.Location = new System.Drawing.Point(563, 180);
+            this.btnFont.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnFont.Location = new System.Drawing.Point(500, 30);
             this.btnFont.Name = "btnFont";
-            this.btnFont.Size = new System.Drawing.Size(35, 30);
-            this.btnFont.TabIndex = 5;
+            this.btnFont.Size = new System.Drawing.Size(40, 34);
+            this.btnFont.TabIndex = 2;
             this.btnFont.Text = "...";
-            this.btnFont.UseVisualStyleBackColor = true;
             this.btnFont.Click += new System.EventHandler(this.btnFont_Click);
             // 
-            // label3
+            // lblColor
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(186, 279);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 30);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Màu sắc:";
+            this.lblColor.AutoSize = true;
+            this.lblColor.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.lblColor.Location = new System.Drawing.Point(30, 100);
+            this.lblColor.Name = "lblColor";
+            this.lblColor.Size = new System.Drawing.Size(155, 32);
+            this.lblColor.TabIndex = 3;
+            this.lblColor.Text = "Màu chủ đạo";
             // 
-            // btnChonMau
+            // colorPicker
             // 
-            this.btnChonMau.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChonMau.Location = new System.Drawing.Point(95, 460);
-            this.btnChonMau.Name = "btnChonMau";
-            this.btnChonMau.Size = new System.Drawing.Size(171, 30);
-            this.btnChonMau.TabIndex = 7;
-            this.btnChonMau.Text = "Chọn màu";
-            this.btnChonMau.UseVisualStyleBackColor = true;
-            this.btnChonMau.Click += new System.EventHandler(this.btnChonMau_Click);
+            this.colorPicker.BackColor = System.Drawing.Color.Transparent;
+            this.colorPicker.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.colorPicker.Location = new System.Drawing.Point(150, 120);
+            this.colorPicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.colorPicker.Name = "colorPicker";
+            this.colorPicker.SelectedColor = System.Drawing.Color.Empty;
+            this.colorPicker.Size = new System.Drawing.Size(300, 196);
+            this.colorPicker.TabIndex = 4;
+            this.colorPicker.Tag = "Cyber";
             // 
             // lblPreview
             // 
-            this.lblPreview.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPreview.Location = new System.Drawing.Point(467, 278);
+            this.lblPreview.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.lblPreview.Location = new System.Drawing.Point(494, 160);
             this.lblPreview.Name = "lblPreview";
-            this.lblPreview.Size = new System.Drawing.Size(97, 30);
-            this.lblPreview.TabIndex = 8;
+            this.lblPreview.Size = new System.Drawing.Size(137, 69);
+            this.lblPreview.TabIndex = 5;
+            this.lblPreview.Text = "Preview";
+            // 
+            // cardAccount
+            // 
+            this.cardAccount.BackColor = System.Drawing.Color.White;
+            this.cardAccount.BorderColor = System.Drawing.Color.LightGray;
+            this.cardAccount.BorderRadius = 20;
+            this.cardAccount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.cardAccount.BorderThickness = 2F;
+            this.cardAccount.Controls.Add(this.skyButton1);
+            this.cardAccount.Controls.Add(this.btnOk);
+            this.cardAccount.Location = new System.Drawing.Point(100, 591);
+            this.cardAccount.Name = "cardAccount";
+            this.cardAccount.Size = new System.Drawing.Size(720, 101);
+            this.cardAccount.TabIndex = 3;
+            // 
+            // skyButton1
+            // 
+            this.skyButton1.BackColor = System.Drawing.Color.Transparent;
+            this.skyButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.skyButton1.DownBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.skyButton1.DownBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.skyButton1.DownBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.skyButton1.DownBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.skyButton1.DownBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.skyButton1.DownBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.skyButton1.DownForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.skyButton1.DownShadowForeColor = System.Drawing.Color.White;
+            this.skyButton1.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skyButton1.ForeColor = System.Drawing.Color.White;
+            this.skyButton1.HoverBGColorA = System.Drawing.Color.WhiteSmoke;
+            this.skyButton1.HoverBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.skyButton1.HoverBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.skyButton1.HoverBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.skyButton1.HoverBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.skyButton1.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.skyButton1.HoverForeColor = System.Drawing.Color.Black;
+            this.skyButton1.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.skyButton1.Location = new System.Drawing.Point(391, 21);
+            this.skyButton1.Name = "skyButton1";
+            this.skyButton1.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.skyButton1.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.skyButton1.NormalBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.skyButton1.NormalBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.skyButton1.NormalBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.skyButton1.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.skyButton1.NormalForeColor = System.Drawing.Color.White;
+            this.skyButton1.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.skyButton1.Size = new System.Drawing.Size(240, 53);
+            this.skyButton1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.skyButton1.TabIndex = 4;
+            this.skyButton1.Text = "Đăng xuất";
             // 
             // btnOk
             // 
@@ -151,7 +276,7 @@
             this.btnOk.DownBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
             this.btnOk.DownForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnOk.DownShadowForeColor = System.Drawing.Color.White;
-            this.btnOk.Font = new System.Drawing.Font("Verdana", 13.2F, System.Drawing.FontStyle.Bold);
+            this.btnOk.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOk.ForeColor = System.Drawing.Color.White;
             this.btnOk.HoverBGColorA = System.Drawing.Color.WhiteSmoke;
             this.btnOk.HoverBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
@@ -161,7 +286,7 @@
             this.btnOk.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
             this.btnOk.HoverForeColor = System.Drawing.Color.Black;
             this.btnOk.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnOk.Location = new System.Drawing.Point(327, 504);
+            this.btnOk.Location = new System.Drawing.Point(98, 21);
             this.btnOk.Name = "btnOk";
             this.btnOk.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
             this.btnOk.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
@@ -171,99 +296,28 @@
             this.btnOk.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
             this.btnOk.NormalForeColor = System.Drawing.Color.White;
             this.btnOk.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnOk.Size = new System.Drawing.Size(175, 44);
+            this.btnOk.Size = new System.Drawing.Size(240, 53);
             this.btnOk.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnOk.TabIndex = 9;
-            this.btnOk.Text = "OK";
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // cyberColorPicker1
-            // 
-            this.cyberColorPicker1.BackColor = System.Drawing.Color.Transparent;
-            this.cyberColorPicker1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cyberColorPicker1.Location = new System.Drawing.Point(338, 263);
-            this.cyberColorPicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cyberColorPicker1.Name = "cyberColorPicker1";
-            this.cyberColorPicker1.SelectedColor = System.Drawing.Color.Empty;
-            this.cyberColorPicker1.Size = new System.Drawing.Size(260, 206);
-            this.cyberColorPicker1.TabIndex = 10;
-            this.cyberColorPicker1.Tag = "Cyber";
-            // 
-            // btnDangXuat
-            // 
-            this.btnDangXuat.BackColor = System.Drawing.Color.Transparent;
-            this.btnDangXuat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDangXuat.DownBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.btnDangXuat.DownBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnDangXuat.DownBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnDangXuat.DownBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.btnDangXuat.DownBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
-            this.btnDangXuat.DownBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
-            this.btnDangXuat.DownForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnDangXuat.DownShadowForeColor = System.Drawing.Color.White;
-            this.btnDangXuat.Font = new System.Drawing.Font("Verdana", 13.2F, System.Drawing.FontStyle.Bold);
-            this.btnDangXuat.ForeColor = System.Drawing.Color.White;
-            this.btnDangXuat.HoverBGColorA = System.Drawing.Color.WhiteSmoke;
-            this.btnDangXuat.HoverBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.btnDangXuat.HoverBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnDangXuat.HoverBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.btnDangXuat.HoverBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
-            this.btnDangXuat.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
-            this.btnDangXuat.HoverForeColor = System.Drawing.Color.Black;
-            this.btnDangXuat.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnDangXuat.Location = new System.Drawing.Point(95, 668);
-            this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.btnDangXuat.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnDangXuat.NormalBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnDangXuat.NormalBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.btnDangXuat.NormalBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
-            this.btnDangXuat.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
-            this.btnDangXuat.NormalForeColor = System.Drawing.Color.White;
-            this.btnDangXuat.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnDangXuat.Size = new System.Drawing.Size(175, 44);
-            this.btnDangXuat.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnDangXuat.TabIndex = 11;
-            this.btnDangXuat.Text = "Đăng xuất";
-            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            this.btnOk.TabIndex = 3;
+            this.btnOk.Text = "Lưu thay đổi";
             // 
             // SettingControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnDangXuat);
-            this.Controls.Add(this.cyberColorPicker1);
-            this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.lblPreview);
-            this.Controls.Add(this.btnChonMau);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnFont);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbLang);
-            this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Controls.Add(this.mainPanel);
             this.Name = "SettingControl";
-            this.Size = new System.Drawing.Size(916, 796);
+            this.Size = new System.Drawing.Size(916, 860);
+            this.mainPanel.ResumeLayout(false);
+            this.mainPanel.PerformLayout();
+            this.cardLang.ResumeLayout(false);
+            this.cardLang.PerformLayout();
+            this.cardAppearance.ResumeLayout(false);
+            this.cardAppearance.PerformLayout();
+            this.cardAccount.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
-        #endregion
-
-        private System.Windows.Forms.Label label1;
-        private ReaLTaiizor.Controls.MaterialComboBox cbLang;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnFont;
-        private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnChonMau;
-        private System.Windows.Forms.Label lblPreview;
+        private ReaLTaiizor.Controls.SkyButton skyButton1;
         private ReaLTaiizor.Controls.SkyButton btnOk;
-        private ReaLTaiizor.Controls.CyberColorPicker cyberColorPicker1;
-        private ReaLTaiizor.Controls.SkyButton btnDangXuat;
     }
 }

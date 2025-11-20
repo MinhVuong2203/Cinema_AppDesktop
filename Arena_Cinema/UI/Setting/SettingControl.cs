@@ -39,7 +39,7 @@ namespace UI.Setting
             this.lang = selected == "Tiếng Anh" ? "en-US" : "vi-VN";
         }
 
-        private void btnFont_Click(object sender, EventArgs e)
+        private void BtnFont_Click(object sender, EventArgs e)
         {
             using (FontDialog fontDialog = new FontDialog())
             {
@@ -48,7 +48,7 @@ namespace UI.Setting
 
                 if (fontDialog.ShowDialog() == DialogResult.OK)
                 {
-                    this.textBox1.Text = fontDialog.Font.Name + ", " + fontDialog.Font.Size;  
+                    this.textFont.Text = fontDialog.Font.Name + ", " + fontDialog.Font.Size;  
                     this.font = fontDialog.Font.Name;
                     this.size = (int)fontDialog.Font.Size;
                 }
@@ -116,6 +116,26 @@ namespace UI.Setting
             lg.StartPosition = FormStartPosition.CenterScreen;
             lg.Show();
         }
+
+
+        private void btnFont_Click(object sender, EventArgs e)
+        {
+            if (fontDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textFont.Text = fontDialog1.Font.Name;
+                lblPreview.Font = fontDialog1.Font;
+            }
+        }
+
+        //private void tnOk_Click(object sender, EventArgs e)
+        //{
+        //    MessageBox.Show("Đã lưu cài đặt!", "Thông báo");
+        //}
+
+        //private void BtnDangXuat_Click(object sender, EventArgs e)
+        //{
+        //    MessageBox.Show("Đã đăng xuất khỏi tài khoản!", "Thông báo");
+        //}
 
     }
 }
