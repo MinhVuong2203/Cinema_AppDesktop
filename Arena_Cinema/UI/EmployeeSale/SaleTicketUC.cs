@@ -119,38 +119,31 @@ namespace UI.EmployeeSale
 
         private void LoadSeatsByRoom(int roomId)
         {
-            //flpTickets.Controls.Clear();
-            //_seats = _saleTicketDAL.GetSeatsByRoomID(roomId);
-            //_tickets = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId);
-
-            //foreach (var seat in _seats)
-            //{
-            //    var ticket = _tickets.FirstOrDefault(t => t.SeatID == seat.SeatID);
-            //    var isSold = ticket != null && ticket.Status == "Đã bán";
-            //    var isSelected = _selectedTickets.Any(t => t.SeatID == seat.SeatID);
-
-            //    var btnSeat = new Button
-            //    {
-            //        Text = seat.SeatName,
-            //        Tag = seat.SeatID,
-            //        Width = 40,
-            //        Height = 40,
-            //        Margin = new Padding(2),
-            //        BackColor = isSold ? Color.Gray : (isSelected ? Color.Yellow : Color.White),
-            //        Enabled = !isSold && ticket != null,
-            //        Font = new Font("Segoe UI", 9F)
-            //    };
-            //    btnSeat.Click += BtnSeat_Click;
-            //    flpTickets.Controls.Add(btnSeat);
-            //}
             flpTickets.Controls.Clear();
             _seats = _saleTicketDAL.GetSeatsByRoomID(roomId);
             _tickets = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId);
 
-            var seatRows = _seats.GroupBy(s => s.SeatName.Substring(0, 1))
-                                 .OrderBy(g => g.Key)
-                                 .ToList();
+            // ===== THIẾT LẬP LAYOUT GIỐNG SeatManagementUC =====
+            const int CELL_SIZE = 58;        // Kích thước mỗi ô ghế (giống SeatManagementUC)
+            const int OFFSET_Y = 80;         // Khoảng cách từ trên (cho màn hình)
+            const int OFFSET_X = 60;         // Khoảng cách từ trái (cho label hàng)
+            const int SNAP_GRID = 58;        // Lưới snap (giống SeatManagementUC)
 
+            // Tính kích thước cần thiết
+            int maxX = _seats.Any() ? _seats.Max(s => s.pX) : 15;
+            int maxY = _seats.Any() ? _seats.Max(s => s.pY) : 10;
+
+            // Tính số hàng thực tế
+            int maxRows = maxY + 1;
+
+            // Đặt chế độ absolute positioning
+            flpTickets.AutoScroll = true;
+            flpTickets.AutoScrollMinSize = new Size(
+                (maxX + 2) * SNAP_GRID + OFFSET_X + 60,
+                maxRows * SNAP_GRID + OFFSET_Y + 60
+            );
+
+            // ===== LABEL MÀN HÌNH =====
             var lblScreen = new Label
             {
                 Text = "MÀN HÌNH",
@@ -158,61 +151,108 @@ namespace UI.EmployeeSale
                 ForeColor = Color.White,
                 BackColor = Color.Black,
                 TextAlign = ContentAlignment.MiddleCenter,
-                Dock = DockStyle.Top,
-                Height = 80,
-                Width = flpTickets.Width
+                Location = new Point(OFFSET_X, 10),
+                Size = new Size((maxX + 1) * SNAP_GRID, 60)
             };
             flpTickets.Controls.Add(lblScreen);
 
-            foreach (var row in seatRows)
+            // ===== LABEL HÀNG (A, B, C, D...) - GIỐNG SeatManagementUC =====
+            // Lấy danh sách các hàng duy nhất
+            var uniqueRows = _seats.Select(s => s.pY).Distinct().OrderBy(y => y).ToList();
+
+            foreach (var rowY in uniqueRows)
             {
-                var rowPanel = new FlowLayoutPanel
+                // Lấy tên hàng từ ghế đầu tiên trong hàng
+                var firstSeatInRow = _seats.Where(s => s.pY == rowY)
+                                           .OrderBy(s => s.pX)
+                                           .FirstOrDefault();
+
+                if (firstSeatInRow != null && !string.IsNullOrEmpty(firstSeatInRow.SeatName))
                 {
-                    FlowDirection = FlowDirection.LeftToRight,
-                    AutoSize = true,
-                    Margin = new Padding(0, 5, 0, 5)
-                };
+                    // Lấy ký tự đầu (A, B, C...)
+                    string rowLetter = firstSeatInRow.SeatName.Substring(0, 1);
 
-                var lblRow = new Label
-                {
-                    Text = row.Key,
-                    Font = new Font("Segoe UI", 16F, FontStyle.Bold),
-                    ForeColor = Color.White,
-                    BackColor = Color.FromArgb(239, 68, 68),
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Width = 40,
-                    Height = 40,
-                    Margin = new Padding(5, 0, 5, 0)
-                };
-                rowPanel.Controls.Add(lblRow);
-
-                foreach (var seat in row.OrderBy(s => s.SeatName))
-                {
-                    Color seatColor = Color.DodgerBlue;
-                    if (seat.SeatType == "Ghế VIP") seatColor = Color.Gold;
-                    else if (seat.SeatType == "Ghế Đôi") seatColor = Color.HotPink;
-
-                    var ticket = _tickets.FirstOrDefault(t => t.SeatID == seat.SeatID);
-                    bool isLocked = ticket != null && ticket.Status != "Trống";
-
-                    var btnSeat = new Button
+                    var lblRow = new Label
                     {
-                        Text = seat.SeatName,
-                        Tag = seat.SeatID,
-                        Width = 60,
-                        Height = 40,
-                        Margin = new Padding(2),
-                        BackColor = isLocked ? Color.Gray : seatColor,
+                        Text = rowLetter,
+                        Location = new Point(5, rowY * SNAP_GRID + OFFSET_Y),
+                        Size = new Size(50, SNAP_GRID),
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Font = new Font("Segoe UI", 12F, FontStyle.Bold),
                         ForeColor = Color.White,
-                        Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                        Enabled = !isLocked // Không chọn được nếu đã đặt/bán
+                        BackColor = Color.FromArgb(220, 53, 69)
                     };
-                    btnSeat.Click += BtnSeat_Click;
-                    rowPanel.Controls.Add(btnSeat);
+                    flpTickets.Controls.Add(lblRow);
+                }
+            }
+
+            // ===== TẠO CÁC NÚT GHẾ THEO TỌA ĐỘ pX, pY =====
+            foreach (var seat in _seats)
+            {
+                // Tính vị trí pixel từ tọa độ lưới (GIỐNG SeatManagementUC)
+                int posX = seat.pX * SNAP_GRID + OFFSET_X;
+                int posY = seat.pY * SNAP_GRID + OFFSET_Y;
+
+                // Xác định màu ghế theo loại
+                Color seatColor;
+                switch (seat.SeatType)
+                {
+                    case "Ghế đôi":
+                    case "Ghế Đôi":
+                        seatColor = Color.FromArgb(255, 105, 180); // Hồng
+                        break;
+                    case "Ghế VIP":
+                        seatColor = Color.Gold;
+                        break;
+                    default:
+                        seatColor = Color.FromArgb(30, 144, 255); // Xanh dương
+                        break;
                 }
 
-                flpTickets.Controls.Add(rowPanel);
+                // Kiểm tra trạng thái vé
+                var ticket = _tickets.FirstOrDefault(t => t.SeatID == seat.SeatID);
+                bool isLocked = ticket != null && ticket.Status != "Trống";
+
+                // Kiểm tra ghế đã được chọn
+                bool isSelected = _selectedTickets.Any(t => t.SeatID == seat.SeatID);
+
+                // Tạo button ghế
+                var btnSeat = new Button
+                {
+                    // Ghế đôi rộng gấp đôi
+                    Width = (seat.SeatType == "Ghế đôi" || seat.SeatType == "Ghế Đôi")
+                        ? CELL_SIZE * 2 + 8
+                        : CELL_SIZE,
+                    Height = CELL_SIZE,
+                    Location = new Point(posX, posY),
+                    FlatStyle = FlatStyle.Flat,
+                    Font = new Font("Segoe UI", 8F, FontStyle.Bold),
+                    Text = (seat.SeatType == "Ghế đôi" || seat.SeatType == "Ghế Đôi")
+                        ? seat.SeatName + "\nCouple"
+                        : seat.SeatName,
+                    Tag = seat.SeatID,
+
+                    // Màu sắc dựa trên trạng thái
+                    BackColor = isLocked ? Color.Gray : (isSelected ? Color.LimeGreen : seatColor),
+                    ForeColor = Color.White,
+
+                    Enabled = !isLocked,
+                    Cursor = isLocked ? Cursors.No : Cursors.Hand
+                };
+
+                // Style cho button
+                btnSeat.FlatAppearance.BorderSize = 1;
+                btnSeat.FlatAppearance.BorderColor = Color.White;
+
+                // Sự kiện click
+                btnSeat.Click += BtnSeat_Click;
+
+                flpTickets.Controls.Add(btnSeat);
+                btnSeat.BringToFront();
             }
+
+            // Đưa màn hình lên trên cùng
+            lblScreen.BringToFront();
         }
 
         private void BtnSeat_Click(object sender, EventArgs e)
@@ -229,7 +269,7 @@ namespace UI.EmployeeSale
             {
                 _selectedTickets.Remove(selected);
                 if (seat.SeatType == "Ghế VIP") btn.BackColor = Color.Gold;
-                else if (seat.SeatType == "Ghế Đôi") btn.BackColor = Color.HotPink;
+                else if (seat.SeatType == "Ghế đôi") btn.BackColor = Color.HotPink;
                 else btn.BackColor = Color.DodgerBlue;
             }
             else

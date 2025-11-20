@@ -23,7 +23,7 @@
 
         private System.Windows.Forms.Panel pnlSeats;
         private System.Windows.Forms.Label lbSeats;
-        private System.Windows.Forms.FlowLayoutPanel flpTickets;
+        private System.Windows.Forms.Panel flpTickets;
 
         private System.Windows.Forms.Panel pnlProducts;
         private System.Windows.Forms.Label lbProducts;
@@ -68,7 +68,7 @@
             this.flpShowTimes = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlSeats = new System.Windows.Forms.Panel();
             this.lbSeats = new System.Windows.Forms.Label();
-            this.flpTickets = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpTickets = new System.Windows.Forms.Panel();
             this.lbCustomerPhone = new System.Windows.Forms.Label();
             this.pnlProducts = new System.Windows.Forms.Panel();
             this.lbProducts = new System.Windows.Forms.Label();
