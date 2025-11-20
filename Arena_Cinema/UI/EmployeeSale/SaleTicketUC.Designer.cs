@@ -38,7 +38,6 @@
         private System.Windows.Forms.Label lbInvoiceMovie;
         private System.Windows.Forms.Label lbInvoiceShowTime;
         private System.Windows.Forms.Label lbInvoiceTickets;
-        private System.Windows.Forms.Label lbInvoiceTicketTypes;
         private System.Windows.Forms.Label lbInvoiceProducts;
         private System.Windows.Forms.Panel pnlInvoiceTotal;
         private System.Windows.Forms.Label lbInvoiceTotal;
@@ -56,17 +55,21 @@
         {
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlLeft = new System.Windows.Forms.Panel();
+            this.txt_Phone = new System.Windows.Forms.TextBox();
+            this.btnCheckCustomer = new System.Windows.Forms.Button();
             this.btn_back = new ReaLTaiizor.Controls.ParrotButton();
             this.pnlMovieInfo = new System.Windows.Forms.Panel();
             this.picPoster = new System.Windows.Forms.PictureBox();
             this.lbTitle = new System.Windows.Forms.Label();
             this.lbInfo = new System.Windows.Forms.Label();
+            this.lbCustomerName = new System.Windows.Forms.Label();
             this.pnlShowTime = new System.Windows.Forms.Panel();
             this.lbShowTime = new System.Windows.Forms.Label();
             this.flpShowTimes = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlSeats = new System.Windows.Forms.Panel();
             this.lbSeats = new System.Windows.Forms.Label();
             this.flpTickets = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbCustomerPhone = new System.Windows.Forms.Label();
             this.pnlProducts = new System.Windows.Forms.Panel();
             this.lbProducts = new System.Windows.Forms.Label();
             this.flpProducts = new System.Windows.Forms.FlowLayoutPanel();
@@ -77,15 +80,10 @@
             this.lbInvoiceMovie = new System.Windows.Forms.Label();
             this.lbInvoiceShowTime = new System.Windows.Forms.Label();
             this.lbInvoiceTickets = new System.Windows.Forms.Label();
-            this.lbInvoiceTicketTypes = new System.Windows.Forms.Label();
             this.lbInvoiceProducts = new System.Windows.Forms.Label();
             this.pnlInvoiceTotal = new System.Windows.Forms.Panel();
             this.lbInvoiceTotal = new System.Windows.Forms.Label();
             this.btnPayment = new System.Windows.Forms.Button();
-            this.txt_Phone = new System.Windows.Forms.TextBox();
-            this.btnCheckCustomer = new System.Windows.Forms.Button();
-            this.lbCustomerName = new System.Windows.Forms.Label();
-            this.lbCustomerPhone = new System.Windows.Forms.Label();
             this.pnlMain.SuspendLayout();
             this.pnlLeft.SuspendLayout();
             this.pnlMovieInfo.SuspendLayout();
@@ -108,7 +106,7 @@
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Padding = new System.Windows.Forms.Padding(20);
-            this.pnlMain.Size = new System.Drawing.Size(1800, 1000);
+            this.pnlMain.Size = new System.Drawing.Size(1800, 2000);
             this.pnlMain.TabIndex = 0;
             // 
             // pnlLeft
@@ -127,8 +125,29 @@
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlLeft.Location = new System.Drawing.Point(20, 20);
             this.pnlLeft.Name = "pnlLeft";
-            this.pnlLeft.Size = new System.Drawing.Size(1200, 960);
+            this.pnlLeft.Size = new System.Drawing.Size(1200, 1960);
             this.pnlLeft.TabIndex = 0;
+            // 
+            // txt_Phone
+            // 
+            this.txt_Phone.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Phone.Location = new System.Drawing.Point(787, 9);
+            this.txt_Phone.Name = "txt_Phone";
+            this.txt_Phone.Size = new System.Drawing.Size(238, 30);
+            this.txt_Phone.TabIndex = 11;
+            // 
+            // btnCheckCustomer
+            // 
+            this.btnCheckCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
+            this.btnCheckCustomer.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCheckCustomer.ForeColor = System.Drawing.Color.White;
+            this.btnCheckCustomer.Location = new System.Drawing.Point(1036, 9);
+            this.btnCheckCustomer.Name = "btnCheckCustomer";
+            this.btnCheckCustomer.Size = new System.Drawing.Size(100, 30);
+            this.btnCheckCustomer.TabIndex = 12;
+            this.btnCheckCustomer.Text = "Kiểm tra";
+            this.btnCheckCustomer.UseVisualStyleBackColor = false;
+            this.btnCheckCustomer.Click += new System.EventHandler(this.btnCheckCustomer_Click);
             // 
             // btn_back
             // 
@@ -195,6 +214,16 @@
             this.lbInfo.TabIndex = 2;
             this.lbInfo.Text = "Thể loại • Thời lượng • Độ tuổi";
             // 
+            // lbCustomerName
+            // 
+            this.lbCustomerName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lbCustomerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            this.lbCustomerName.Location = new System.Drawing.Point(783, 54);
+            this.lbCustomerName.Name = "lbCustomerName";
+            this.lbCustomerName.Size = new System.Drawing.Size(350, 30);
+            this.lbCustomerName.TabIndex = 13;
+            this.lbCustomerName.Text = "Tên khách hàng: ";
+            // 
             // pnlShowTime
             // 
             this.pnlShowTime.BackColor = System.Drawing.Color.White;
@@ -232,7 +261,7 @@
             this.pnlSeats.Location = new System.Drawing.Point(0, 321);
             this.pnlSeats.Name = "pnlSeats";
             this.pnlSeats.Padding = new System.Windows.Forms.Padding(25, 20, 25, 20);
-            this.pnlSeats.Size = new System.Drawing.Size(1183, 359);
+            this.pnlSeats.Size = new System.Drawing.Size(1183, 686);
             this.pnlSeats.TabIndex = 3;
             // 
             // lbSeats
@@ -250,18 +279,28 @@
             this.flpTickets.AutoScroll = true;
             this.flpTickets.Location = new System.Drawing.Point(25, 50);
             this.flpTickets.Name = "flpTickets";
-            this.flpTickets.Size = new System.Drawing.Size(1082, 309);
+            this.flpTickets.Size = new System.Drawing.Size(1082, 613);
             this.flpTickets.TabIndex = 1;
+            // 
+            // lbCustomerPhone
+            // 
+            this.lbCustomerPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lbCustomerPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
+            this.lbCustomerPhone.Location = new System.Drawing.Point(783, 95);
+            this.lbCustomerPhone.Name = "lbCustomerPhone";
+            this.lbCustomerPhone.Size = new System.Drawing.Size(350, 30);
+            this.lbCustomerPhone.TabIndex = 14;
+            this.lbCustomerPhone.Text = "SĐT: ";
             // 
             // pnlProducts
             // 
             this.pnlProducts.BackColor = System.Drawing.Color.White;
             this.pnlProducts.Controls.Add(this.lbProducts);
             this.pnlProducts.Controls.Add(this.flpProducts);
-            this.pnlProducts.Location = new System.Drawing.Point(0, 686);
+            this.pnlProducts.Location = new System.Drawing.Point(0, 1013);
             this.pnlProducts.Name = "pnlProducts";
             this.pnlProducts.Padding = new System.Windows.Forms.Padding(25, 20, 25, 20);
-            this.pnlProducts.Size = new System.Drawing.Size(1183, 262);
+            this.pnlProducts.Size = new System.Drawing.Size(1183, 944);
             this.pnlProducts.TabIndex = 4;
             // 
             // lbProducts
@@ -279,7 +318,7 @@
             this.flpProducts.AutoScroll = true;
             this.flpProducts.Location = new System.Drawing.Point(25, 47);
             this.flpProducts.Name = "flpProducts";
-            this.flpProducts.Size = new System.Drawing.Size(1141, 201);
+            this.flpProducts.Size = new System.Drawing.Size(1141, 884);
             this.flpProducts.TabIndex = 1;
             // 
             // pnlRight
@@ -289,7 +328,7 @@
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlRight.Location = new System.Drawing.Point(1220, 20);
             this.pnlRight.Name = "pnlRight";
-            this.pnlRight.Size = new System.Drawing.Size(560, 960);
+            this.pnlRight.Size = new System.Drawing.Size(560, 1960);
             this.pnlRight.TabIndex = 1;
             // 
             // pnlInvoice
@@ -304,7 +343,7 @@
             this.pnlInvoice.Location = new System.Drawing.Point(0, 0);
             this.pnlInvoice.Name = "pnlInvoice";
             this.pnlInvoice.Padding = new System.Windows.Forms.Padding(25);
-            this.pnlInvoice.Size = new System.Drawing.Size(560, 960);
+            this.pnlInvoice.Size = new System.Drawing.Size(560, 1960);
             this.pnlInvoice.TabIndex = 0;
             // 
             // lbInvoiceTitle
@@ -327,7 +366,6 @@
             this.pnlInvoiceContent.Controls.Add(this.lbInvoiceMovie);
             this.pnlInvoiceContent.Controls.Add(this.lbInvoiceShowTime);
             this.pnlInvoiceContent.Controls.Add(this.lbInvoiceTickets);
-            this.pnlInvoiceContent.Controls.Add(this.lbInvoiceTicketTypes);
             this.pnlInvoiceContent.Controls.Add(this.lbInvoiceProducts);
             this.pnlInvoiceContent.Location = new System.Drawing.Point(25, 95);
             this.pnlInvoiceContent.Name = "pnlInvoiceContent";
@@ -370,18 +408,6 @@
             this.lbInvoiceTickets.Size = new System.Drawing.Size(112, 23);
             this.lbInvoiceTickets.TabIndex = 2;
             this.lbInvoiceTickets.Text = "Ghế đã chọn:";
-            // 
-            // lbInvoiceTicketTypes
-            // 
-            this.lbInvoiceTicketTypes.AutoSize = true;
-            this.lbInvoiceTicketTypes.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lbInvoiceTicketTypes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.lbInvoiceTicketTypes.Location = new System.Drawing.Point(20, 180);
-            this.lbInvoiceTicketTypes.MaximumSize = new System.Drawing.Size(450, 0);
-            this.lbInvoiceTicketTypes.Name = "lbInvoiceTicketTypes";
-            this.lbInvoiceTicketTypes.Size = new System.Drawing.Size(177, 23);
-            this.lbInvoiceTicketTypes.TabIndex = 3;
-            this.lbInvoiceTicketTypes.Text = "Số lượng từng loại vé:";
             // 
             // lbInvoiceProducts
             // 
@@ -431,47 +457,6 @@
             this.btnPayment.Text = "THANH TOÁN";
             this.btnPayment.UseVisualStyleBackColor = false;
             // 
-            // txt_Phone
-            // 
-            this.txt_Phone.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Phone.Location = new System.Drawing.Point(787, 9);
-            this.txt_Phone.Name = "txt_Phone";
-            this.txt_Phone.Size = new System.Drawing.Size(238, 30);
-            this.txt_Phone.TabIndex = 11;
-            // 
-            // btnCheckCustomer
-            // 
-            this.btnCheckCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
-            this.btnCheckCustomer.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnCheckCustomer.ForeColor = System.Drawing.Color.White;
-            this.btnCheckCustomer.Location = new System.Drawing.Point(1036, 9);
-            this.btnCheckCustomer.Name = "btnCheckCustomer";
-            this.btnCheckCustomer.Size = new System.Drawing.Size(100, 30);
-            this.btnCheckCustomer.TabIndex = 12;
-            this.btnCheckCustomer.Text = "Kiểm tra";
-            this.btnCheckCustomer.UseVisualStyleBackColor = false;
-            this.btnCheckCustomer.Click += new System.EventHandler(this.btnCheckCustomer_Click);
-            // 
-            // lbCustomerName
-            // 
-            this.lbCustomerName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lbCustomerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lbCustomerName.Location = new System.Drawing.Point(783, 54);
-            this.lbCustomerName.Name = "lbCustomerName";
-            this.lbCustomerName.Size = new System.Drawing.Size(350, 30);
-            this.lbCustomerName.TabIndex = 13;
-            this.lbCustomerName.Text = "Tên khách hàng: ";
-            // 
-            // lbCustomerPhone
-            // 
-            this.lbCustomerPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lbCustomerPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lbCustomerPhone.Location = new System.Drawing.Point(783, 95);
-            this.lbCustomerPhone.Name = "lbCustomerPhone";
-            this.lbCustomerPhone.Size = new System.Drawing.Size(350, 30);
-            this.lbCustomerPhone.TabIndex = 14;
-            this.lbCustomerPhone.Text = "SĐT: ";
-            // 
             // SaleTicketUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -479,7 +464,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.pnlMain);
             this.Name = "SaleTicketUC";
-            this.Size = new System.Drawing.Size(1800, 1000);
+            this.Size = new System.Drawing.Size(1800, 2000);
             this.pnlMain.ResumeLayout(false);
             this.pnlLeft.ResumeLayout(false);
             this.pnlLeft.PerformLayout();

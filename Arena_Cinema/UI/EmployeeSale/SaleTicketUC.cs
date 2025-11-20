@@ -307,6 +307,7 @@ namespace UI.EmployeeSale
                     Location = new Point(630, 80),
                     ButtonText = "-",
                     ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded,
+                    ButtonImage = global::UI.Properties.Resources.minus,
                     CornerRadius = 8,
                     BackgroundColor = Color.White,
                     HoverBackgroundColor = Color.FromArgb(254, 226, 226),
