@@ -22,5 +22,10 @@ namespace UI
             this.Hide();
             new Login().Show();
         }
+
+        private void skyButton2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

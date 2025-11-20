@@ -99,7 +99,8 @@ namespace UI
         private void lbForgot_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new Forgot().Show();
+            Forgot f = new Forgot();
+            f.Show();   
         }
     }
 }
