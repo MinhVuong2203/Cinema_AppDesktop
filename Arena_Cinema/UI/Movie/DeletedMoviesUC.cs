@@ -205,10 +205,13 @@ namespace UI.Movie
             };
 
             // Buttons
-            var btnRestore = CreateActionButton("♻️ Khôi phục", Color.FromArgb(40, 167, 69), new Point(12, 374), new Size(125, 25));
+
+            var btnRestore = CreateActionButton("Khôi phục", Color.FromArgb(40, 167, 69), new Point(12, 374), new Size(125, 25));
+            btnRestore.ButtonImage = null;
             btnRestore.Click += (s, e) => RestoreMovie(movie);
 
-            var btnPermanentDelete = CreateActionButton("🗑️ Xóa vĩnh viễn", Color.FromArgb(220, 53, 69), new Point(147, 374), new Size(141, 25));
+            var btnPermanentDelete = CreateActionButton("Xóa vĩnh viễn", Color.FromArgb(220, 53, 69), new Point(147, 374), new Size(141, 25));
+            btnPermanentDelete.ButtonImage = null;
             btnPermanentDelete.Click += (s, e) => PermanentDeleteMovie(movie);
 
             card.Controls.AddRange(new Control[] {
