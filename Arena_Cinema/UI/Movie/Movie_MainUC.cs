@@ -331,15 +331,22 @@ namespace UI.Movie
                 Visible = true
             };
 
+
+            cardOriginalSizes[card] = card.Size;
+
+            card.MouseEnter += MovieCard_MouseEnter;
+            card.MouseLeave += MovieCard_MouseLeave;
+
             string status = movieBLL.GetMovieStatus(movie);
 
+            // Clone tất cả controls từ template
             foreach (Control templateControl in movieCardTemplate.Controls)
             {
                 Control clonedControl = null;
 
                 if (templateControl.Name == "badgeTemplate")
                 {
-                    var badge = new Label
+                    clonedControl = new Label
                     {
                         BackColor = GetStatusColor(status),
                         Font = (templateControl as Label).Font,
@@ -349,18 +356,17 @@ namespace UI.Movie
                         Text = status,
                         TextAlign = (templateControl as Label).TextAlign
                     };
-                    clonedControl = badge;
                 }
                 else if (templateControl.Name == "posterTemplate")
                 {
-                    var posterPanel = new System.Windows.Forms.Panel
+                    var posterPanel = new Panel
                     {
                         Location = templateControl.Location,
                         Size = templateControl.Size,
                         BackColor = templateControl.BackColor
                     };
 
-                    PictureBox posterPicBox = new PictureBox
+                    var posterPicBox = new PictureBox
                     {
                         Dock = DockStyle.Fill,
                         SizeMode = PictureBoxSizeMode.Zoom,
@@ -368,12 +374,10 @@ namespace UI.Movie
                     };
 
                     if (!string.IsNullOrEmpty(movie.ImageUrl))
-                    {
                         ImgHelper.DisplayImageFromRelative(movie.ImageUrl, posterPicBox);
-                    }
                     else
                     {
-                        Label lblNoImage = new Label
+                        var lblNoImage = new Label
                         {
                             Text = "📷\nChưa có ảnh",
                             Font = new Font("Segoe UI", 10F, FontStyle.Italic),
@@ -455,7 +459,6 @@ namespace UI.Movie
                         ClickBackColor = btn.ClickBackColor,
                         ClickTextColor = btn.ClickTextColor,
                         CornerRadius = btn.CornerRadius,
-                        Cursor = btn.Cursor,
                         Font = btn.Font,
                         Horizontal_Alignment = btn.Horizontal_Alignment,
                         HoverBackgroundColor = btn.HoverBackgroundColor,
@@ -469,7 +472,7 @@ namespace UI.Movie
                         TextRenderingType = btn.TextRenderingType,
                         Vertical_Alignment = btn.Vertical_Alignment
                     };
-                    newBtn.Click += (s, e) => ViewMovieDetail(movie);
+                    newBtn.Click += (s, ev) => ViewMovieDetail(movie);
                     clonedControl = newBtn;
                 }
                 else if (templateControl.Name == "btnEditTemplate")
@@ -483,7 +486,6 @@ namespace UI.Movie
                         ClickBackColor = btn.ClickBackColor,
                         ClickTextColor = btn.ClickTextColor,
                         CornerRadius = btn.CornerRadius,
-                        Cursor = btn.Cursor,
                         Font = btn.Font,
                         Horizontal_Alignment = btn.Horizontal_Alignment,
                         HoverBackgroundColor = btn.HoverBackgroundColor,
@@ -497,7 +499,7 @@ namespace UI.Movie
                         TextRenderingType = btn.TextRenderingType,
                         Vertical_Alignment = btn.Vertical_Alignment
                     };
-                    newBtn.Click += (s, e) => EditMovie(movie);
+                    newBtn.Click += (s, ev) => EditMovie(movie);
                     clonedControl = newBtn;
                 }
                 else if (templateControl.Name == "btnDeleteTemplate")
@@ -511,7 +513,6 @@ namespace UI.Movie
                         ClickBackColor = btn.ClickBackColor,
                         ClickTextColor = btn.ClickTextColor,
                         CornerRadius = btn.CornerRadius,
-                        Cursor = btn.Cursor,
                         Font = btn.Font,
                         Horizontal_Alignment = btn.Horizontal_Alignment,
                         HoverBackgroundColor = btn.HoverBackgroundColor,
@@ -525,18 +526,17 @@ namespace UI.Movie
                         TextRenderingType = btn.TextRenderingType,
                         Vertical_Alignment = btn.Vertical_Alignment
                     };
-                    newBtn.Click += (s, e) => DeleteMovie(movie);
+                    newBtn.Click += (s, ev) => DeleteMovie(movie);
                     clonedControl = newBtn;
                 }
 
                 if (clonedControl != null)
-                {
                     card.Controls.Add(clonedControl);
-                }
             }
 
             return card;
         }
+
 
         private Color GetStatusColor(string status)
         {
@@ -985,16 +985,124 @@ namespace UI.Movie
             }
         }
 
-        private void movieCardTemplate_MouseEnter(object sender, EventArgs e)
-        {
 
+        private System.Collections.Generic.Dictionary<Control, System.Drawing.Size> cardOriginalSizes =
+            new System.Collections.Generic.Dictionary<Control, System.Drawing.Size>();
+
+
+        private System.Collections.Generic.Dictionary<Control, System.Windows.Forms.Timer> cardTimers =
+            new System.Collections.Generic.Dictionary<Control, System.Windows.Forms.Timer>();
+
+        private void MovieCard_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                var card = sender as ReaLTaiizor.Controls.MaterialCard;
+                if (card == null || cardOriginalSizes == null || !cardOriginalSizes.ContainsKey(card))
+                    return;
+
+            
+                if (cardTimers.ContainsKey(card) && cardTimers[card] != null)
+                {
+                    cardTimers[card].Stop();
+                    cardTimers[card].Dispose();
+                    cardTimers.Remove(card);
+                }
+
+            
+                var originalSize = cardOriginalSizes[card];
+                card.Size = new Size(
+                    (int)(originalSize.Width * 1.08),
+                    (int)(originalSize.Height * 1.08)
+                );
+
+                // 2️⃣ Tăng độ sâu (shadow)
+                card.Depth = 5;
+
+                // 3️⃣ Đổi màu nền nhẹ
+                card.BackColor = Color.FromArgb(250, 250, 250);
+
+                // 4️⃣ Đổi cursor thành hand
+                card.Cursor = Cursors.Hand;
+
+                // 5️⃣ Làm nổi bật buttons
+                foreach (Control ctrl in card.Controls)
+                {
+                    if (ctrl is ReaLTaiizor.Controls.ParrotButton btn)
+                    {
+                        btn.Visible = true;
+                        btn.BringToFront();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in MovieCard_MouseEnter: {ex.Message}");
+            }
         }
 
-        private void movieCardTemplate_MouseLeave(object sender, EventArgs e)
+        private void MovieCard_MouseLeave(object sender, EventArgs e)
         {
+            try
+            {
+                var card = sender as ReaLTaiizor.Controls.MaterialCard;
+                if (card == null || cardOriginalSizes == null || !cardOriginalSizes.ContainsKey(card))
+                    return;
 
+             
+                if (cardTimers.ContainsKey(card) && cardTimers[card] != null)
+                {
+                    cardTimers[card].Stop();
+                    cardTimers[card].Dispose();
+                    cardTimers.Remove(card);
+                }
+
+          
+                var timer = new System.Windows.Forms.Timer();
+                cardTimers[card] = timer;
+                timer.Interval = 100; 
+                timer.Tick += (s, ev) =>
+                {
+                    try
+                    {
+                        if (card == null || !card.IsHandleCreated)
+                        {
+                            timer.Stop();
+                            return;
+                        }
+
+                        var originalSize = cardOriginalSizes.ContainsKey(card) ? cardOriginalSizes[card] : card.Size;
+
+                   
+                        card.Size = originalSize;
+
+                     
+                        card.Depth = 1;
+
+                        card.BackColor = movieCardTemplate.BackColor;
+
+      
+                        card.Cursor = Cursors.Default;
+
+                   
+                        timer.Stop();
+                        if (cardTimers.ContainsKey(card))
+                            cardTimers.Remove(card);
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Error in MouseLeave animation: {ex.Message}");
+                    }
+                };
+                timer.Start();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in MovieCard_MouseLeave: {ex.Message}");
+            }
         }
 
+       
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             currentPage = 1;
