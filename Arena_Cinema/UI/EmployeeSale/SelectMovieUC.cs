@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using BLL;
 using Common;
+using DAL;
 using DTO;
 using Microsoft.VisualBasic.Devices;
 
@@ -42,76 +43,96 @@ namespace UI.EmployeeSale
         private void LoadMoviesShowingToday()
         {
             flpMovies.Controls.Clear();
-            var allMovies = _movieBLL.GetAllMovies();
-            var today = DateTime.Today;
-            var moviesShowingToday = allMovies
-                .Where(m => m.StartTime.HasValue && m.EndTime.HasValue
-                            && m.StartTime.Value <= today && m.EndTime.Value >= today
-                            && !m.IsDeleted)
-                .ToList();
 
-            foreach (var movie in moviesShowingToday)
+            using (var showTimeDAL = new ShowTimeDAL())
             {
-                //string fullPath = Path.Combine(Application.StartupPath, movie.ImageUrl);
-                var panel = new Panel
+                var todayShowTimes = showTimeDAL.GetTodayShowTimes();
+
+                var movieIdsWithShowTime = todayShowTimes
+                    .Select(st => st.MovieID)
+                    .Distinct()
+                    .ToList();
+
+                var allMovies = _movieBLL.GetAllMovies();
+                var moviesShowingToday = allMovies
+                    .Where(m => movieIdsWithShowTime.Contains(m.MovieID) && !m.IsDeleted)
+                    .ToList();
+
+                foreach (var movie in moviesShowingToday)
                 {
-                    Width = 320,
-                    Height = 560,
-                    Margin = new Padding(10),
-                    BackColor = System.Drawing.Color.White
-                };
+                    var panel = new Panel
+                    {
+                        Width = 320,
+                        Height = 560,
+                        Margin = new Padding(10),
+                        BackColor = System.Drawing.Color.White
+                    };
 
-                var picPoster = new PictureBox
+                    var picPoster = new PictureBox
+                    {
+                        Location = new System.Drawing.Point(10, 10),
+                        Size = new System.Drawing.Size(300, 400),
+                        SizeMode = PictureBoxSizeMode.Zoom,
+                    };
+                    ImgHelper.DisplayImageFromRelative(movie.ImageUrl, picPoster);
+
+                    var lbTitle = new Label
+                    {
+                        Location = new System.Drawing.Point(10, 420),
+                        Size = new System.Drawing.Size(300, 30),
+                        Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold),
+                        Text = $"{movie.Title} ({movie.AgeLimit})"
+                    };
+
+                    var lbInfo = new Label
+                    {
+                        Location = new System.Drawing.Point(10, 455),
+                        Size = new System.Drawing.Size(300, 25),
+                        Font = new System.Drawing.Font("Segoe UI", 10F),
+                        Text = $"{movie.Genre} • {movie.DurationMinutes} phút"
+                    };
+
+                    var lbAge = new Label
+                    {
+                        Location = new System.Drawing.Point(10, 480),
+                        Size = new System.Drawing.Size(300, 25),
+                        Font = new System.Drawing.Font("Segoe UI", 10F),
+                        Text = movie.AgeLimit
+                    };
+
+                    var btnBook = new Button
+                    {
+                        Location = new System.Drawing.Point(10, 510),
+                        Size = new System.Drawing.Size(300, 40),
+                        Text = "Đặt vé",
+                        BackColor = System.Drawing.Color.FromArgb(184, 28, 45),
+                        ForeColor = System.Drawing.Color.White,
+                        Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold)
+                    };
+                    btnBook.Click += (s, e) => _home.LoadControl(new SaleTicketUC(movie, _home, _employee));
+
+                    panel.Controls.Add(picPoster);
+                    panel.Controls.Add(lbTitle);
+                    panel.Controls.Add(lbInfo);
+                    panel.Controls.Add(lbAge);
+                    panel.Controls.Add(btnBook);
+
+                    flpMovies.Controls.Add(panel);
+                }
+
+                // ✅ HIỂN THỊ THÔNG BÁO NẾU KHÔNG CÓ PHIM NÀO
+                if (moviesShowingToday.Count == 0)
                 {
-                    Location = new System.Drawing.Point(10, 10),
-                    Size = new System.Drawing.Size(300, 400),
-                    SizeMode = PictureBoxSizeMode.Zoom,
-                    //ImageLocation = fullPath
-                };
-                ImgHelper.DisplayImageFromRelative(movie.ImageUrl, picPoster);
-
-                var lbTitle = new Label
-                {
-                    Location = new System.Drawing.Point(10, 420),
-                    Size = new System.Drawing.Size(300, 30),
-                    Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold),
-                    Text = $"{movie.Title} ({movie.AgeLimit})"
-                };
-
-                var lbInfo = new Label
-                {
-                    Location = new System.Drawing.Point(10, 455),
-                    Size = new System.Drawing.Size(300, 25),
-                    Font = new System.Drawing.Font("Segoe UI", 10F),
-                    Text = $"{movie.Genre} • {movie.DurationMinutes} phút"
-                };
-
-                var lbAge = new Label
-                {
-                    Location = new System.Drawing.Point(10, 480),
-                    Size = new System.Drawing.Size(300, 25),
-                    Font = new System.Drawing.Font("Segoe UI", 10F),
-                    Text = movie.AgeLimit
-                };
-
-                var btnBook = new Button
-                {
-                    Location = new System.Drawing.Point(10, 510),
-                    Size = new System.Drawing.Size(300, 40),
-                    Text = "Đặt vé",
-                    BackColor = System.Drawing.Color.FromArgb(184, 28, 45),
-                    ForeColor = System.Drawing.Color.White,
-                    Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold)
-                };
-                btnBook.Click += (s, e) => _home.LoadControl(new SaleTicketUC(movie, _home, _employee));
-
-                panel.Controls.Add(picPoster);
-                panel.Controls.Add(lbTitle);
-                panel.Controls.Add(lbInfo);
-                panel.Controls.Add(lbAge);
-                panel.Controls.Add(btnBook);
-
-                flpMovies.Controls.Add(panel);
+                    var lblNoMovie = new Label
+                    {
+                        Text = "Không có phim nào có lịch chiếu trong ngày hôm nay.",
+                        Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold),
+                        ForeColor = System.Drawing.Color.Gray,
+                        AutoSize = true,
+                        Margin = new Padding(20)
+                    };
+                    flpMovies.Controls.Add(lblNoMovie);
+                }
             }
         }
 

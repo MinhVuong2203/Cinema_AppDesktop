@@ -69,7 +69,6 @@ namespace UI.EmployeeSale
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TicketPaymentInfo));
             this.colMovie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSeat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,7 +115,6 @@ namespace UI.EmployeeSale
             this.btnBack = new System.Windows.Forms.Button();
             this.btnPayOS = new System.Windows.Forms.Button();
             this.btn_payCash = new System.Windows.Forms.Button();
-            this.btnCancelPayment = new ReaLTaiizor.Controls.ParrotButton();
             this.panelHeader.SuspendLayout();
             this.panelCustomer.SuspendLayout();
             this.panelTickets.SuspendLayout();
@@ -634,38 +632,12 @@ namespace UI.EmployeeSale
             this.btn_payCash.UseVisualStyleBackColor = false;
             this.btn_payCash.Click += new System.EventHandler(this.btn_payCash_Click);
             // 
-            // btnCancelPayment
-            // 
-            this.btnCancelPayment.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnCancelPayment.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnCancelPayment.ButtonImage")));
-            this.btnCancelPayment.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnCancelPayment.ButtonText = "Hủy thanh toán";
-            this.btnCancelPayment.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
-            this.btnCancelPayment.ClickTextColor = System.Drawing.Color.DodgerBlue;
-            this.btnCancelPayment.CornerRadius = 5;
-            this.btnCancelPayment.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancelPayment.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelPayment.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnCancelPayment.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.btnCancelPayment.HoverTextColor = System.Drawing.Color.DodgerBlue;
-            this.btnCancelPayment.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnCancelPayment.Location = new System.Drawing.Point(727, 719);
-            this.btnCancelPayment.Name = "btnCancelPayment";
-            this.btnCancelPayment.Size = new System.Drawing.Size(200, 50);
-            this.btnCancelPayment.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnCancelPayment.TabIndex = 7;
-            this.btnCancelPayment.TextColor = System.Drawing.Color.DodgerBlue;
-            this.btnCancelPayment.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnCancelPayment.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnCancelPayment.Click += new System.EventHandler(this.btnCancelPayment_Click);
-            // 
             // TicketPaymentInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(250)))), ((int)(((byte)(251)))));
-            this.Controls.Add(this.btnCancelPayment);
             this.Controls.Add(this.panelHeader);
             this.Controls.Add(this.panelCustomer);
             this.Controls.Add(this.panelTickets);
@@ -697,6 +669,5 @@ namespace UI.EmployeeSale
         private DataGridViewTextBoxColumn colUnitPrice;
         private DataGridViewTextBoxColumn colTotal;
         private Button btn_payCash;
-        private ReaLTaiizor.Controls.ParrotButton btnCancelPayment;
     }
 }

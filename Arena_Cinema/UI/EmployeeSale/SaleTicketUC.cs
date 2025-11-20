@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using BLL;
-using DTO;
-using DAL;
 using Common;
+using DAL;
+using DTO;
 
 namespace UI.EmployeeSale
 {
@@ -211,8 +212,19 @@ namespace UI.EmployeeSale
         {
             _showTimes = _saleTicketDAL.GetShowTimesByMovieID(_movie.MovieID);
             flpShowTimes.Controls.Clear();
+
+            DateTime now = DateTime.Now;
             foreach (var showTime in _showTimes)
             {
+                DateTime bookingDeadline = showTime.StartTime.AddMinutes(15);
+
+                // ✅ CHỈ HIỂN THỊ NẾU:
+                // - Suất chiếu chưa bắt đầu (StartTime > now)
+                // - HOẶC suất chiếu đã bắt đầu nhưng chưa quá 15 phút (bookingDeadline >= now)
+                if (bookingDeadline < now)
+                {
+                    continue;
+                }
                 var btnShowTime = new Button
                 {
                     Text = $"{showTime.StartTime:HH:mm} - Phòng {showTime.RoomID} - {showTime.Price.ToString("C0")}",

@@ -286,7 +286,7 @@ namespace UI.EmployeeSale
                 //StartPaymentStatusPolling(_invoiceID);
                 StartPaymentStatusPollingWithAPI(_invoiceID, orderCode);
 
-                _home.LoadControl(new SaleHomeUC(_home, _employee));
+                //_home.LoadControl(new SaleHomeUC(_home, _employee));
             }
             catch (Exception ex)
             {
@@ -405,10 +405,12 @@ namespace UI.EmployeeSale
                                 MessageBoxIcon.Information
                             );
 
+                            LoadInvoiceInfo();
+
                             var successForm = new PayOSMethod.PaymentSuccessForm(invoiceID, _home, _employee);
                             successForm.ShowDialog();
 
-                            LoadInvoiceInfo();
+                            _home.LoadControl(new SaleHomeUC(_home, _employee));
                         });
                     }
                     else if (result.Status == "CANCELLED")
@@ -555,6 +557,7 @@ namespace UI.EmployeeSale
                 return;
             }
 
+
             // ✅ XỬ LÝ THANH TOÁN TIỀN MẶT VÀ LƯU VÀO PAYMENT
             var paymentService = new PaymentService();
             bool success = paymentService.ProcessCashPayment(_invoiceID);
@@ -568,6 +571,7 @@ namespace UI.EmployeeSale
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
+                LoadInvoiceInfo();
 
                 var successForm = new UI.PayOSMethod.PaymentSuccessForm(_invoiceID, _home, _employee);
                 successForm.ShowDialog();
