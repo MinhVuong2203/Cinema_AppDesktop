@@ -1234,12 +1234,45 @@ namespace UI.ShowTime
                     return;
                 }
 
+                // ✅ THÊM: Lấy trạng thái và số vé bán
+                string status = showTimeBLL.GetShowTimeStatus(showTime);
+                int ticketsSold = showTimeBLL.CountTicketsSold(showTimeId);
+
+                // ✅ THÊM: Kiểm tra điều kiện xóa trước khi hỏi người dùng
+                if (status == "Đang chiếu" || status == "Đã chiếu")
+                {
+                    MessageBox.Show(
+                        $"✗ Không thể xóa suất chiếu!\n\n" +
+                        $"Suất chiếu này đang ở trạng thái '{status}'.\n" +
+                        $"Chỉ có thể xóa suất chiếu 'Sắp chiếu' mà chưa bán vé.",
+                        "⚠️ Không Thể Xóa",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+
+                if (ticketsSold > 0)
+                {
+                    MessageBox.Show(
+                        $"✗ Không thể xóa suất chiếu!\n\n" +
+                        $"Đã có {ticketsSold} vé được bán cho suất chiếu này.\n" +
+                        $"Vui lòng kiểm tra lại hoặc liên hệ quản trị viên.",
+                        "⚠️ Không Thể Xóa",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+
+                // ✅ Xác nhận xóa nếu thỏa điều kiện
                 var confirmResult = MessageBox.Show(
                     $"Xác nhận xóa suất chiếu:\n\n" +
                     $"📽️ Phim: {showTime.Movie?.Title}\n" +
                     $"🎭 Phòng: {showTime.Room?.RoomName}\n" +
                     $"⏰ Thời gian: {showTime.StartTime:dd/MM/yyyy HH:mm}\n" +
-                    $"💰 Giá: {showTime.Price:N0} VNĐ",
+                    $"💰 Giá: {showTime.Price:N0} VNĐ\n" +
+                    $"🔴 Trạng thái: {status}",
                     "⚠️ Xác nhận xóa",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
