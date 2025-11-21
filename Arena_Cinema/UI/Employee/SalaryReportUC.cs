@@ -178,9 +178,9 @@ namespace UI.Employee
             DateTime start = dtpStartDate.Value.Date;
             DateTime end = dtpEndDate.Value.Date;
             string role = cboRole.SelectedItem != null ? cboRole.SelectedItem.ToString() : null;
-            string name = txtSearch.Text.Trim();
+            //string name = txtSearch.Text.Trim();
 
-            _currentData = _reportBLL.GetSalaryReport(start, end, role, name);
+            _currentData = _reportBLL.GetSalaryReport(start, end, role, "");
 
             // Fill grid
             dgvReport.Rows.Clear();

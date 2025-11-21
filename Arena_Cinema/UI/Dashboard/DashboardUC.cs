@@ -14,9 +14,10 @@ namespace UI.Dashboard
         private Home _home;
         private DTO.Employee _employee;
         private MovieBLL _movieBLL;
+        private InvoiceBLL _invoiceBLL;
         private List<DTO.Movie> _allUpcomingMovies;
         private int _currentPage = 0;
-        private const int MOVIES_PER_PAGE = 4; // Số phim trên 1 trang
+        private const int MOVIES_PER_PAGE = 4;
 
         public DashboardUC(Home home, DTO.Employee employee)
         {
@@ -24,6 +25,7 @@ namespace UI.Dashboard
             _home = home;
             _employee = employee;
             _movieBLL = new MovieBLL();
+            _invoiceBLL = new InvoiceBLL();
             _allUpcomingMovies = new List<DTO.Movie>();
 
             // Gán sự kiện cho các nút
@@ -34,21 +36,59 @@ namespace UI.Dashboard
         private void DashboardUC_Load(object sender, EventArgs e)
         {
             LoadUpcomingMovies();
+            LoadRevenueStatistics();
         }
 
         public void RefreshData()
         {
             LoadUpcomingMovies();
+            LoadRevenueStatistics();
+        }
+
+        // Load thống kê doanh thu
+        private void LoadRevenueStatistics()
+        {
+            try
+            {
+                var stats = _invoiceBLL.GetDashboardStatistics();
+
+                // Cập nhật các label
+                lblMonthYear.Text = $"Doanh Thu Tháng {stats["CurrentMonth"]}";
+                lblRevenue.Text = _invoiceBLL.FormatCurrency((decimal)stats["MonthlyRevenue"]);
+
+                decimal growth = (decimal)stats["RevenueGrowth"];
+                lblGrowth.Text = _invoiceBLL.FormatPercentage(growth) + " so với tháng trước";
+                lblGrowth.ForeColor = _invoiceBLL.GetGrowthColor();
+
+                // Hiển thị icon tăng/giảm
+                if (growth > 0)
+                    lblGrowthIcon.Text = "▲";
+                else if (growth < 0)
+                    lblGrowthIcon.Text = "▼";
+                else
+                    lblGrowthIcon.Text = "●";
+
+                lblGrowthIcon.ForeColor = _invoiceBLL.GetGrowthColor();
+
+                // Các thống kê bổ sung
+                lblInvoiceCount.Text = $"Số hóa đơn: {stats["InvoiceCount"]}";
+                lblTodayRevenue.Text = $"Doanh thu hôm nay: {_invoiceBLL.FormatCurrency((decimal)stats["TodayRevenue"])}";
+                lblAvgInvoice.Text = $"Giá trị TB/HĐ: {_invoiceBLL.FormatCurrency((decimal)stats["AverageInvoiceValue"])}";
+                lblYearRevenue.Text = $"Doanh thu năm {DateTime.Now.Year}: {_invoiceBLL.FormatCurrency((decimal)stats["YearlyRevenue"])}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải thống kê doanh thu: " + ex.Message, "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void LoadUpcomingMovies()
         {
             try
             {
-                // Lấy tất cả phim
                 List<DTO.Movie> allMovies = _movieBLL.GetAllMovies();
 
-                // Lọc phim sắp chiếu
                 _allUpcomingMovies = allMovies
                     .Where(m => _movieBLL.GetMovieStatus(m) == "Sắp chiếu")
                     .OrderBy(m => m.StartTime)
@@ -85,30 +125,25 @@ namespace UI.Dashboard
 
             int totalPages = (int)Math.Ceiling((double)_allUpcomingMovies.Count / MOVIES_PER_PAGE);
 
-            // Giới hạn pageIndex
             if (pageIndex < 0) pageIndex = 0;
             if (pageIndex >= totalPages) pageIndex = totalPages - 1;
 
             _currentPage = pageIndex;
 
-            // Lấy phim của trang hiện tại
             var moviesInPage = _allUpcomingMovies
                 .Skip(pageIndex * MOVIES_PER_PAGE)
                 .Take(MOVIES_PER_PAGE)
                 .ToList();
 
-            // Thêm poster
             foreach (var movie in moviesInPage)
             {
                 Panel moviePanel = CreateMoviePanel(movie);
                 flowPanelMovies.Controls.Add(moviePanel);
             }
 
-            // Cập nhật trạng thái nút
             btnPrev.Enabled = pageIndex > 0;
             btnNext.Enabled = pageIndex < totalPages - 1;
 
-            // Cập nhật text hiển thị trang
             lblTitle.Text = $"PHIM SẮP CHIẾU ({_allUpcomingMovies.Count} phim) - Trang {pageIndex + 1}/{totalPages}";
         }
 
@@ -142,7 +177,6 @@ namespace UI.Dashboard
                 Tag = movie.MovieID
             };
 
-            // Poster
             PictureBox pictureBox = new PictureBox
             {
                 Width = 240,
@@ -153,10 +187,8 @@ namespace UI.Dashboard
                 Cursor = Cursors.Hand
             };
 
-            // Load ảnh poster
             LoadMoviePoster(pictureBox, movie.ImageUrl);
 
-            // Label tên phim
             Label titleLabel = new Label
             {
                 Text = movie.Title,
@@ -171,13 +203,11 @@ namespace UI.Dashboard
                 TextAlign = ContentAlignment.TopLeft
             };
 
-            // Tooltip
             ToolTip toolTip = new ToolTip();
             string tooltipText = $"{movie.Title}\nKhởi chiếu: {movie.StartTime:dd/MM/yyyy}\nThể loại: {movie.Genre}";
             toolTip.SetToolTip(pictureBox, tooltipText);
             toolTip.SetToolTip(titleLabel, tooltipText);
 
-            // Sự kiện click
             EventHandler clickHandler = (s, e) => ShowMovieDetails(movie);
             pictureBox.Click += clickHandler;
             titleLabel.Click += clickHandler;

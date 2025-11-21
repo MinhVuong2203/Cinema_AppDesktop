@@ -20,6 +20,13 @@ namespace UI.Employee
             InitializeComponent();
             _employee = employee;
             LoadProfileData(employee);
+            LoadThem();
+        }
+
+        private void LoadThem()
+        {
+            Color c = ColorHelper.Parse(_employee.Setting.MainColor);
+            this.panelMain.BackColor = c;  
         }
 
         private void LoadProfileData(DTO.Employee employee)

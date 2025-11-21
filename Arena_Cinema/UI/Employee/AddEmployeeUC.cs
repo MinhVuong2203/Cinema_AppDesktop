@@ -44,7 +44,7 @@ namespace UI.Employee
         private void LoadThem()
         {
             Color c = ColorHelper.Parse(_employee.Setting.MainColor);
-            this.groupBox1.BackColor = c;
+            this.BackColor = c;
         }
 
         public AddEmployeeUC(Home home, DTO.Employee employee, DTO.Employee employeeEdit)
