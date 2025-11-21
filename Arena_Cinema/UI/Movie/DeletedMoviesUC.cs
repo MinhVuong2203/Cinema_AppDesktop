@@ -69,7 +69,7 @@ namespace UI.Movie
 
                     Label lblNoData = new Label
                     {
-                        Text = "📭 Không có phim nào đã xóa!",
+                        Text = global::UI.Resources.Lang.khongcophimdaxoa,
                         Font = new Font("Segoe UI", 14, FontStyle.Bold),
                         ForeColor = Color.Gray,
                         AutoSize = true
@@ -321,7 +321,7 @@ namespace UI.Movie
         {
             try
             {
-                lblInfo.Text = $"🗑️ Tổng số phim đã xóa: {deletedMovies.Count}";
+                lblInfo.Text = global::UI.Resources.Lang.tongsophimdaxoa +$" {deletedMovies.Count}";
             }
             catch (Exception ex)
             {

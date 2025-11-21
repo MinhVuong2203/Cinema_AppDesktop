@@ -56,7 +56,7 @@
             this.btnBack.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
             this.btnBack.ButtonImage = null;
             this.btnBack.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnBack.ButtonText = "← Quay lại";
+            this.btnBack.ButtonText = global::UI.Resources.Lang.QuayLai;
             this.btnBack.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(77)))), ((int)(((byte)(85)))));
             this.btnBack.ClickTextColor = System.Drawing.Color.White;
             this.btnBack.CornerRadius = 5;
@@ -84,7 +84,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(254, 32);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "🗑️ Phim Đã Xóa";
+            this.lblTitle.Text = global::UI.Resources.Lang.lblPhimDaXoa;
             // 
             // panelMain
             // 
@@ -138,7 +138,7 @@
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(1290, 40);
             this.lblInfo.TabIndex = 0;
-            this.lblInfo.Text = "🗑️ Tổng số phim đã xóa: 0";
+            this.lblInfo.Text = global::UI.Resources.Lang.tongsophimdaxoa;
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // DeletedMoviesUC

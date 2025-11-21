@@ -86,7 +86,7 @@
             this.btnBack.BackgroundColor = System.Drawing.Color.Transparent;
             this.btnBack.ButtonImage = null;
             this.btnBack.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnBack.ButtonText = "← Quay lại";
+            this.btnBack.ButtonText = global::UI.Resources.Lang.QuayLai;
             this.btnBack.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
             this.btnBack.ClickTextColor = System.Drawing.Color.White;
             this.btnBack.CornerRadius = 5;
@@ -116,7 +116,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(234, 32);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "✏ Chỉnh Sửa Phim";
+            this.lblTitle.Text = global::UI.Resources.Lang.ChinhSuaPhim;
             // 
             // panelMain
             // 
@@ -178,7 +178,7 @@
             this.grb_Movie.Size = new System.Drawing.Size(1123, 780);
             this.grb_Movie.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.grb_Movie.TabIndex = 25;
-            this.grb_Movie.Text = "Thông tin phim";
+            this.grb_Movie.Text = global::UI.Resources.Lang.ThongKePhim;
             // 
             // lblDuration
             // 
@@ -189,7 +189,7 @@
             this.lblDuration.Name = "lblDuration";
             this.lblDuration.Size = new System.Drawing.Size(164, 20);
             this.lblDuration.TabIndex = 36;
-            this.lblDuration.Text = "⏱️ Thời Lượng (phút)";
+            this.lblDuration.Text = global::UI.Resources.Lang.ThoiLuong;
             // 
             // cbotype
             // 
@@ -203,7 +203,7 @@
             this.cbotype.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cbotype.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cbotype.FormattingEnabled = true;
-            this.cbotype.Hint = "-- Chọn loại phim --";
+            this.cbotype.Hint = global::UI.Resources.Lang.TagPhim;
             this.cbotype.IntegralHeight = false;
             this.cbotype.ItemHeight = 43;
             this.cbotype.Items.AddRange(new object[] {
@@ -228,7 +228,7 @@
             this.lblType.Name = "lblType";
             this.lblType.Size = new System.Drawing.Size(104, 20);
             this.lblType.TabIndex = 34;
-            this.lblType.Text = "🎬 Loại phim";
+            this.lblType.Text = global::UI.Resources.Lang.Taglbl;
             // 
             // lblTrailer
             // 
@@ -239,7 +239,7 @@
             this.lblTrailer.Name = "lblTrailer";
             this.lblTrailer.Size = new System.Drawing.Size(112, 20);
             this.lblTrailer.TabIndex = 33;
-            this.lblTrailer.Text = "🎬 Link Trailer";
+            this.lblTrailer.Text = global::UI.Resources.Lang.LinkTRL;
             // 
             // lblGenre
             // 
@@ -250,7 +250,7 @@
             this.lblGenre.Name = "lblGenre";
             this.lblGenre.Size = new System.Drawing.Size(129, 20);
             this.lblGenre.TabIndex = 25;
-            this.lblGenre.Text = "🎭 Giới Hạn Tuổi";
+            this.lblGenre.Text = global::UI.Resources.Lang.AgeLM;
             // 
             // dtpEndDate
             // 
@@ -274,7 +274,7 @@
             this.cboGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboGenre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboGenre.FormattingEnabled = true;
-            this.cboGenre.Hint = "-- Chọn giới hạn tuổi --";
+            this.cboGenre.Hint = global::UI.Resources.Lang.ChooseAgeLM;
             this.cboGenre.IntegralHeight = false;
             this.cboGenre.ItemHeight = 43;
             this.cboGenre.Items.AddRange(new object[] {
@@ -301,7 +301,7 @@
             this.lblEndDate.Name = "lblEndDate";
             this.lblEndDate.Size = new System.Drawing.Size(138, 20);
             this.lblEndDate.TabIndex = 31;
-            this.lblEndDate.Text = "🗓️ Ngày Kết Thúc";
+            this.lblEndDate.Text = global::UI.Resources.Lang.NgayKT;
             // 
             // lblSubtitle
             // 
@@ -312,7 +312,7 @@
             this.lblSubtitle.Name = "lblSubtitle";
             this.lblSubtitle.Size = new System.Drawing.Size(113, 20);
             this.lblSubtitle.TabIndex = 27;
-            this.lblSubtitle.Text = "🔊 Lồng Tiếng";
+            this.lblSubtitle.Text = global::UI.Resources.Lang.LongTieng;
             // 
             // dtpStartDate
             // 
@@ -332,7 +332,7 @@
             this.chkSubtitle.Name = "chkSubtitle";
             this.chkSubtitle.Size = new System.Drawing.Size(156, 24);
             this.chkSubtitle.TabIndex = 28;
-            this.chkSubtitle.Text = "Phim có lồng tiếng";
+            this.chkSubtitle.Text = global::UI.Resources.Lang.PhimCoLT;
             this.chkSubtitle.UseVisualStyleBackColor = true;
             // 
             // lblStartDate
@@ -344,14 +344,14 @@
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(151, 20);
             this.lblStartDate.TabIndex = 29;
-            this.lblStartDate.Text = "🗓️ Ngày Khởi Chiếu";
+            this.lblStartDate.Text = global::UI.Resources.Lang.NgayKC;
             // 
             // btnCancel
             // 
             this.btnCancel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnCancel.ButtonImage = null;
             this.btnCancel.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnCancel.ButtonText = "✖ Hủy Bỏ";
+            this.btnCancel.ButtonText = global::UI.Resources.Lang.Huy;
             this.btnCancel.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnCancel.ClickTextColor = System.Drawing.Color.White;
             this.btnCancel.CornerRadius = 5;
@@ -376,7 +376,7 @@
             this.btnSave.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             this.btnSave.ButtonImage = null;
             this.btnSave.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnSave.ButtonText = "💾 Cập Nhật";
+            this.btnSave.ButtonText= global::UI.Resources.Lang.CapNhat ;
             this.btnSave.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(137)))), ((int)(((byte)(55)))));
             this.btnSave.ClickTextColor = System.Drawing.Color.White;
             this.btnSave.CornerRadius = 5;
@@ -404,14 +404,14 @@
             this.lblPoster.Name = "lblPoster";
             this.lblPoster.Size = new System.Drawing.Size(213, 20);
             this.lblPoster.TabIndex = 22;
-            this.lblPoster.Text = "📷 Hình Ảnh Poster Phim";
+            this.lblPoster.Text = global::UI.Resources.Lang.Poster;
             // 
             // btnUploadImage
             // 
             this.btnUploadImage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
             this.btnUploadImage.ButtonImage = null;
             this.btnUploadImage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Dark;
-            this.btnUploadImage.ButtonText = "Đổi ảnh";
+            this.btnUploadImage.ButtonText = global::UI.Resources.Lang.DoiAnh;
             this.btnUploadImage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
             this.btnUploadImage.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
             this.btnUploadImage.CornerRadius = 5;
@@ -438,7 +438,7 @@
             this.txtPreview.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPreview.Depth = 0;
             this.txtPreview.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtPreview.Hint = "Nhập nội dung phim.";
+            this.txtPreview.Hint = global::UI.Resources.Lang.NhapNDP;
             this.txtPreview.LeadingIcon = null;
             this.txtPreview.Location = new System.Drawing.Point(56, 707);
             this.txtPreview.MaxLength = 32767;
@@ -469,7 +469,7 @@
             this.lblPreview.Name = "lblPreview";
             this.lblPreview.Size = new System.Drawing.Size(102, 20);
             this.lblPreview.TabIndex = 23;
-            this.lblPreview.Text = "📝 Nội Dung";
+            this.lblPreview.Text = global::UI.Resources.Lang.NoiDung;
             // 
             // txtCategory
             // 
@@ -478,7 +478,7 @@
             this.txtCategory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCategory.Depth = 0;
             this.txtCategory.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtCategory.Hint = "VD: Hành động, Kinh dị, Phiêu lưu";
+            this.txtCategory.Hint = global::UI.Resources.Lang.viducategory;
             this.txtCategory.LeadingIcon = null;
             this.txtCategory.Location = new System.Drawing.Point(416, 76);
             this.txtCategory.MaxLength = 32767;
@@ -497,7 +497,7 @@
             this.txtMovieName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMovieName.Depth = 0;
             this.txtMovieName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtMovieName.Hint = "Nhập tên phim...";
+            this.txtMovieName.Hint = global::UI.Resources.Lang.NhapTenPhim;
             this.txtMovieName.LeadingIcon = null;
             this.txtMovieName.Location = new System.Drawing.Point(57, 76);
             this.txtMovieName.MaxLength = 32767;
@@ -521,7 +521,7 @@
             this.cboLanguage.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboLanguage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboLanguage.FormattingEnabled = true;
-            this.cboLanguage.Hint = "-- Chọn ngôn ngữ --";
+            this.cboLanguage.Hint = global::UI.Resources.Lang.ChonNgonNgu;
             this.cboLanguage.IntegralHeight = false;
             this.cboLanguage.ItemHeight = 43;
             this.cboLanguage.Items.AddRange(new object[] {
@@ -548,7 +548,7 @@
             this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDescription.Depth = 0;
             this.txtDescription.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtDescription.Hint = "Nhập mô tả chi tiết về phim: diễn viên, đạo diễn...";
+            this.txtDescription.Hint = global::UI.Resources.Lang.NhapMoTaPhim;
             this.txtDescription.LeadingIcon = null;
             this.txtDescription.Location = new System.Drawing.Point(57, 591);
             this.txtDescription.MaxLength = 32767;
@@ -569,7 +569,7 @@
             this.lblMovieName.Name = "lblMovieName";
             this.lblMovieName.Size = new System.Drawing.Size(100, 20);
             this.lblMovieName.TabIndex = 0;
-            this.lblMovieName.Text = "🎬 Tên Phim";
+            this.lblMovieName.Text = global::UI.Resources.Lang.TenPhim;
             // 
             // lblDescription
             // 
@@ -580,7 +580,7 @@
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(119, 20);
             this.lblDescription.TabIndex = 17;
-            this.lblDescription.Text = "📝 Mô Tả Phim";
+            this.lblDescription.Text = global::UI.Resources.Lang.lblDescription;
             // 
             // lblLanguage
             // 
@@ -591,7 +591,7 @@
             this.lblLanguage.Name = "lblLanguage";
             this.lblLanguage.Size = new System.Drawing.Size(109, 20);
             this.lblLanguage.TabIndex = 5;
-            this.lblLanguage.Text = "🗣️ Ngôn Ngữ";
+            this.lblLanguage.Text = global::UI.Resources.Lang.NgonNgu;
             // 
             // txtTrailer
             // 
@@ -621,7 +621,7 @@
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Size = new System.Drawing.Size(94, 20);
             this.lblCategory.TabIndex = 3;
-            this.lblCategory.Text = "🎭 Thể Loại";
+            this.lblCategory.Text = global::UI.Resources.Lang.TheLoaiPhim;
             // 
             // txtDuration
             // 

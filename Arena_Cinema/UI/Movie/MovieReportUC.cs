@@ -98,10 +98,10 @@ namespace UI.Movie
             {
                 var stats = movieBLL.GetMovieCountByStatus();
 
-                lblTotalMovies.Text = $"Tổng Phim: {stats["Tất cả phim"]}";
-                lblShowingMovies.Text = $"Đang Chiếu: {stats["Đang chiếu"]}";
-                lblComingMovies.Text = $"Sắp Chiếu: {stats["Sắp chiếu"]}";
-                lblEndedMovies.Text = $"Đã Kết Thúc: {stats["Đã kết thúc"]}";
+                lblTotalMovies.Text = global::UI.Resources.Lang.TongPhim + $": {stats["Tất cả phim"]}";
+                lblShowingMovies.Text = global::UI.Resources.Lang.DangChieu + $": {stats["Đang chiếu"]}";
+                lblComingMovies.Text = global::UI.Resources.Lang.sapchieu + $": {stats["Sắp chiếu"]}";
+                lblEndedMovies.Text = global::UI.Resources.Lang.DaChieu + $": {stats["Đã kết thúc"]}";
             }
             catch (Exception ex)
             {

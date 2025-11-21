@@ -85,7 +85,7 @@
             this.btnDeletedMovies.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
             this.btnDeletedMovies.ButtonImage = null;
             this.btnDeletedMovies.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnDeletedMovies.ButtonText = "- Phim đã xóa";
+            this.btnDeletedMovies.ButtonText = global::UI.Resources.Lang.PhimDaXoa;
             this.btnDeletedMovies.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnDeletedMovies.ClickTextColor = System.Drawing.Color.White;
             this.btnDeletedMovies.CornerRadius = 5;
@@ -110,7 +110,7 @@
             this.btnAddMovie.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
             this.btnAddMovie.ButtonImage = null;
             this.btnAddMovie.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnAddMovie.ButtonText = "+ Thêm Phim Mới";
+            this.btnAddMovie.ButtonText = global::UI.Resources.Lang.ThemPhim;
             this.btnAddMovie.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnAddMovie.ClickTextColor = System.Drawing.Color.White;
             this.btnAddMovie.CornerRadius = 5;
@@ -138,7 +138,7 @@
             this.lbl_MovieTitle.Name = "lbl_MovieTitle";
             this.lbl_MovieTitle.Size = new System.Drawing.Size(267, 32);
             this.lbl_MovieTitle.TabIndex = 1;
-            this.lbl_MovieTitle.Text = "📽 Quản Lý Phim";
+            this.lbl_MovieTitle.Text = global::UI.Resources.Lang.QuanLyPhim;
             // 
             // panelMain
             // 
@@ -203,7 +203,7 @@
             this.btnDeleteTemplate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnDeleteTemplate.ButtonImage = null;
             this.btnDeleteTemplate.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnDeleteTemplate.ButtonText = "Xóa";
+            this.btnDeleteTemplate.ButtonText = global::UI.Resources.Lang.Xoa;
             this.btnDeleteTemplate.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnDeleteTemplate.ClickTextColor = System.Drawing.Color.White;
             this.btnDeleteTemplate.CornerRadius = 3;
@@ -227,7 +227,7 @@
             this.btnEditTemplate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
             this.btnEditTemplate.ButtonImage = null;
             this.btnEditTemplate.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnEditTemplate.ButtonText = "Sửa";
+            this.btnEditTemplate.ButtonText = global::UI.Resources.Lang.Sua;
             this.btnEditTemplate.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(170)))), ((int)(((byte)(0)))));
             this.btnEditTemplate.ClickTextColor = System.Drawing.Color.White;
             this.btnEditTemplate.CornerRadius = 3;
@@ -251,7 +251,7 @@
             this.btnViewTemplate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
             this.btnViewTemplate.ButtonImage = null;
             this.btnViewTemplate.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnViewTemplate.ButtonText = "Chi Tiết";
+            this.btnViewTemplate.ButtonText = global::UI.Resources.Lang.ChiTiet;
             this.btnViewTemplate.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(140)))), ((int)(((byte)(160)))));
             this.btnViewTemplate.ClickTextColor = System.Drawing.Color.White;
             this.btnViewTemplate.CornerRadius = 3;
@@ -278,7 +278,7 @@
             this.lblDatesTemplate.Name = "lblDatesTemplate";
             this.lblDatesTemplate.Size = new System.Drawing.Size(275, 39);
             this.lblDatesTemplate.TabIndex = 6;
-            this.lblDatesTemplate.Text = "Khởi chiếu:         \r\nKết thúc:            ";
+            this.lblDatesTemplate.Text = global::UI.Resources.Lang.thoigianchieu;
             // 
             // lblSubtitleTemplate
             // 
@@ -291,7 +291,7 @@
             this.lblSubtitleTemplate.Padding = new System.Windows.Forms.Padding(4);
             this.lblSubtitleTemplate.Size = new System.Drawing.Size(86, 23);
             this.lblSubtitleTemplate.TabIndex = 5;
-            this.lblSubtitleTemplate.Text = "🎬 Ngôn ngữ";
+            this.lblSubtitleTemplate.Text = global::UI.Resources.Lang.NgonNgu;
             // 
             // lblLanguageTemplate
             // 
@@ -302,7 +302,7 @@
             this.lblLanguageTemplate.Name = "lblLanguageTemplate";
             this.lblLanguageTemplate.Size = new System.Drawing.Size(79, 19);
             this.lblLanguageTemplate.TabIndex = 4;
-            this.lblLanguageTemplate.Text = "❤️ Thể loại";
+            this.lblLanguageTemplate.Text = global::UI.Resources.Lang.TheLoaiPhim;
             // 
             // lblDurationTemplate
             // 
@@ -313,7 +313,7 @@
             this.lblDurationTemplate.Name = "lblDurationTemplate";
             this.lblDurationTemplate.Size = new System.Drawing.Size(97, 19);
             this.lblDurationTemplate.TabIndex = 3;
-            this.lblDurationTemplate.Text = "🔴 Thời lượng";
+            this.lblDurationTemplate.Text = global::UI.Resources.Lang.ThoiLuong;
             // 
             // lblTitleTemplate
             // 
@@ -323,7 +323,7 @@
             this.lblTitleTemplate.Name = "lblTitleTemplate";
             this.lblTitleTemplate.Size = new System.Drawing.Size(276, 45);
             this.lblTitleTemplate.TabIndex = 2;
-            this.lblTitleTemplate.Text = "TÊN PHIM";
+            this.lblTitleTemplate.Text = global::UI.Resources.Lang.TenPhim;
             // 
             // posterTemplate
             // 
@@ -342,7 +342,7 @@
             this.badgeTemplate.Name = "badgeTemplate";
             this.badgeTemplate.Size = new System.Drawing.Size(75, 18);
             this.badgeTemplate.TabIndex = 0;
-            this.badgeTemplate.Text = "Trạng thái";
+            this.badgeTemplate.Text = global::UI.Resources.Lang.TrangThai;
             this.badgeTemplate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // paginationPanel
@@ -437,7 +437,7 @@
             this.btnRP.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnRP.ButtonImage = null;
             this.btnRP.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnRP.ButtonText = "Xem Thống  Kê";
+            this.btnRP.ButtonText = global::UI.Resources.Lang.ThongKePhim;
             this.btnRP.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             this.btnRP.ClickTextColor = System.Drawing.Color.White;
             this.btnRP.CornerRadius = 5;
@@ -469,7 +469,7 @@
             this.cboAgeLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboAgeLimit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboAgeLimit.FormattingEnabled = true;
-            this.cboAgeLimit.Hint = "Độ tuổi";
+            this.cboAgeLimit.Hint = global::UI.Resources.Lang.DoTuoi;
             this.cboAgeLimit.IntegralHeight = false;
             this.cboAgeLimit.ItemHeight = 43;
             this.cboAgeLimit.Location = new System.Drawing.Point(390, 5);
@@ -493,7 +493,7 @@
             this.cboGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboGenre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboGenre.FormattingEnabled = true;
-            this.cboGenre.Hint = "Thể loại";
+            this.cboGenre.Hint = global::UI.Resources.Lang.TheLOAI;
             this.cboGenre.IntegralHeight = false;
             this.cboGenre.ItemHeight = 43;
             this.cboGenre.Location = new System.Drawing.Point(200, 5);
@@ -517,7 +517,7 @@
             this.cboFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboFilter.FormattingEnabled = true;
-            this.cboFilter.Hint = "Trạng thái";
+            this.cboFilter.Hint = global::UI.Resources.Lang.TrangThai;
             this.cboFilter.IntegralHeight = false;
             this.cboFilter.ItemHeight = 43;
             this.cboFilter.Items.AddRange(new object[] {
@@ -539,7 +539,7 @@
             this.btnReset.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnReset.ButtonImage = null;
             this.btnReset.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnReset.ButtonText = "Reset";
+            this.btnReset.ButtonText = global::UI.Resources.Lang.DatLai;
             this.btnReset.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(65)))), ((int)(((byte)(75)))));
             this.btnReset.ClickTextColor = System.Drawing.Color.White;
             this.btnReset.CornerRadius = 5;
@@ -576,7 +576,7 @@
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearch.Depth = 0;
             this.txtSearch.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtSearch.Hint = "Tìm kiếm phim theo tên...";
+            this.txtSearch.Hint = global::UI.Resources.Lang.timkiemtheoten;
             this.txtSearch.LeadingIcon = null;
             this.txtSearch.Location = new System.Drawing.Point(15, 15);
             this.txtSearch.MaxLength = 32767;

@@ -381,4 +381,79 @@
   <data name="TheLoaiPhim" xml:space="preserve">
     <value>🎭 Category</value>
   </data>
+  <data name="PhimDaXoa" xml:space="preserve">
+    <value>Deleted Movie</value>
+  </data>
+  <data name="QuanLyPhim" xml:space="preserve">
+    <value>📽 Manage Movie</value>
+  </data>
+  <data name="ChiTiet" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="KhoiChieu" xml:space="preserve">
+    <value>Start Time:</value>
+  </data>
+  <data name="KetThuc" xml:space="preserve">
+    <value>End Time:</value>
+  </data>
+  <data name="TrangThai" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ThongKePhim" xml:space="preserve">
+    <value>View Chart</value>
+  </data>
+  <data name="DoTuoi" xml:space="preserve">
+    <value>Age</value>
+  </data>
+  <data name="TheLOAI" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="DatLai" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="timkiemtheoten" xml:space="preserve">
+    <value>Search by Movie's Name</value>
+  </data>
+  <data name="thoigianchieu" xml:space="preserve">
+    <value>Start Day:         \r\nEnd Date:            </value>
+  </data>
+  <data name="ChinhSuaPhim" xml:space="preserve">
+    <value>✏ Edit Movie</value>
+  </data>
+  <data name="CapNhat" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="DoiAnh" xml:space="preserve">
+    <value>Change Img</value>
+  </data>
+  <data name="lblPhimDaXoa" xml:space="preserve">
+    <value>🗑️ Movie has deleted</value>
+  </data>
+  <data name="tongsophimdaxoa" xml:space="preserve">
+    <value>🗑️  Total deleted movies:</value>
+  </data>
+  <data name="khongcophimdaxoa" xml:space="preserve">
+    <value>📭 No movies have been deleted</value>
+  </data>
+  <data name="viducategory" xml:space="preserve">
+    <value>VD: Comedy, Action, Advanture</value>
+  </data>
+  <data name="ApDung" xml:space="preserve">
+    <value>filter</value>
+  </data>
+  <data name="TongPhim" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="DangChieu" xml:space="preserve">
+    <value>showing</value>
+  </data>
+  <data name="DaChieu" xml:space="preserve">
+    <value>showed</value>
+  </data>
+  <data name="sapchieu" xml:space="preserve">
+    <value>coming soon</value>
+  </data>
+  <data name="bangthongkephim" xml:space="preserve">
+    <value>📊 Movie statistics</value>
+  </data>
 </root>

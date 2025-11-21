@@ -178,7 +178,7 @@
             this.lblFilterGenre.Name = "lblFilterGenre";
             this.lblFilterGenre.Size = new System.Drawing.Size(107, 31);
             this.lblFilterGenre.TabIndex = 0;
-            this.lblFilterGenre.Text = "Thể Loại:";
+            this.lblFilterGenre.Text = global::UI.Resources.Lang.TheLOAI;
             // 
             // cboGenre
             // 
@@ -197,7 +197,7 @@
             this.lblFilterAge.Name = "lblFilterAge";
             this.lblFilterAge.Size = new System.Drawing.Size(107, 31);
             this.lblFilterAge.TabIndex = 2;
-            this.lblFilterAge.Text = "Độ Tuổi:";
+            this.lblFilterAge.Text = global::UI.Resources.Lang.DoTuoi;
             // 
             // cboAgeLimit
             // 
@@ -216,7 +216,7 @@
             this.lblFilterStatus.Name = "lblFilterStatus";
             this.lblFilterStatus.Size = new System.Drawing.Size(135, 31);
             this.lblFilterStatus.TabIndex = 4;
-            this.lblFilterStatus.Text = "Trạng Thái:";
+            this.lblFilterStatus.Text = global::UI.Resources.Lang.TrangThai;
             // 
             // cboStatus
             // 
@@ -242,7 +242,7 @@
             this.btnApplyFilter.Name = "btnApplyFilter";
             this.btnApplyFilter.Size = new System.Drawing.Size(120, 31);
             this.btnApplyFilter.TabIndex = 6;
-            this.btnApplyFilter.Text = "Áp Dụng";
+            this.btnApplyFilter.Text = global::UI.Resources.Lang.ApDung;
             this.btnApplyFilter.UseVisualStyleBackColor = false;
             // 
             // btnResetFilter
@@ -255,7 +255,7 @@
             this.btnResetFilter.Name = "btnResetFilter";
             this.btnResetFilter.Size = new System.Drawing.Size(120, 31);
             this.btnResetFilter.TabIndex = 7;
-            this.btnResetFilter.Text = "Đặt Lại";
+            this.btnResetFilter.Text = global::UI.Resources.Lang.DatLai;
             this.btnResetFilter.UseVisualStyleBackColor = false;
             // 
             // pnlStats
@@ -351,7 +351,7 @@
             this.lblTitle.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
             this.lblTitle.Size = new System.Drawing.Size(1600, 62);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "📊 BÁNG THỐNG KÊ PHIM";
+            this.lblTitle.Text = global::UI.Resources.Lang.bangthongkephim;
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MovieReportUC

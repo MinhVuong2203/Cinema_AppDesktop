@@ -469,7 +469,7 @@
             this.txtCategory.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCategory.Depth = 0;
             this.txtCategory.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtCategory.Hint = "VD: Hành động, Kinh dị, Phiêu lưu";
+            this.txtCategory.Hint = global::UI.Resources.Lang.viducategory;
             this.txtCategory.LeadingIcon = null;
             this.txtCategory.Location = new System.Drawing.Point(416, 76);
             this.txtCategory.MaxLength = 32767;

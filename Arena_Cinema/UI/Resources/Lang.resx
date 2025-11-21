@@ -381,4 +381,79 @@
   <data name="TheLoaiPhim" xml:space="preserve">
     <value>🎭 Thể Loại</value>
   </data>
+  <data name="PhimDaXoa" xml:space="preserve">
+    <value>Phim Đã Xóa</value>
+  </data>
+  <data name="QuanLyPhim" xml:space="preserve">
+    <value>📽 Quản Lý Phim</value>
+  </data>
+  <data name="ChiTiet" xml:space="preserve">
+    <value>Chi Tiết</value>
+  </data>
+  <data name="KhoiChieu" xml:space="preserve">
+    <value>Khởi chiếu:</value>
+  </data>
+  <data name="KetThuc" xml:space="preserve">
+    <value>Kết thúc:</value>
+  </data>
+  <data name="TrangThai" xml:space="preserve">
+    <value>Trạng Thái</value>
+  </data>
+  <data name="ThongKePhim" xml:space="preserve">
+    <value>Thống Kê</value>
+  </data>
+  <data name="DoTuoi" xml:space="preserve">
+    <value>Độ Tuổi</value>
+  </data>
+  <data name="TheLOAI" xml:space="preserve">
+    <value>Thể Loại</value>
+  </data>
+  <data name="DatLai" xml:space="preserve">
+    <value>Đặt Lại</value>
+  </data>
+  <data name="timkiemtheoten" xml:space="preserve">
+    <value>Tìm Kiếm Theo Tên....</value>
+  </data>
+  <data name="thoigianchieu" xml:space="preserve">
+    <value>Khởi chiếu:         \r\nKết thúc:            </value>
+  </data>
+  <data name="ChinhSuaPhim" xml:space="preserve">
+    <value>✏ Chỉnh Sửa Phim</value>
+  </data>
+  <data name="CapNhat" xml:space="preserve">
+    <value>Cập Nhật</value>
+  </data>
+  <data name="DoiAnh" xml:space="preserve">
+    <value>Đổi Ảnh</value>
+  </data>
+  <data name="lblPhimDaXoa" xml:space="preserve">
+    <value>🗑️ Phim Đã Xóa</value>
+  </data>
+  <data name="tongsophimdaxoa" xml:space="preserve">
+    <value>🗑️ Tổng số phim đã xóa:</value>
+  </data>
+  <data name="khongcophimdaxoa" xml:space="preserve">
+    <value>📭 Không có phim nào đã xóa</value>
+  </data>
+  <data name="viducategory" xml:space="preserve">
+    <value>VD: Hành động, Kinh dị, Phiêu lưu</value>
+  </data>
+  <data name="ApDung" xml:space="preserve">
+    <value>Áp Dụng</value>
+  </data>
+  <data name="TongPhim" xml:space="preserve">
+    <value>Tổng Phim</value>
+  </data>
+  <data name="DangChieu" xml:space="preserve">
+    <value>Đang chiếu</value>
+  </data>
+  <data name="DaChieu" xml:space="preserve">
+    <value>Đã kết thúc</value>
+  </data>
+  <data name="sapchieu" xml:space="preserve">
+    <value>Sắp Chiếu</value>
+  </data>
+  <data name="bangthongkephim" xml:space="preserve">
+    <value>📊 BÁNG THỐNG KÊ PHIM</value>
+  </data>
 </root>
