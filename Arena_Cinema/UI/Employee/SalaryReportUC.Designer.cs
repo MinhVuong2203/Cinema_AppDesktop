@@ -17,9 +17,6 @@ namespace UI.Employee
         private ReaLTaiizor.Controls.PoisonDateTime dtpStartDate;
         private ReaLTaiizor.Controls.MetroLabel lblEnd;
         private ReaLTaiizor.Controls.PoisonDateTime dtpEndDate;
-        private ReaLTaiizor.Controls.MetroLabel lblSearch;
-        private ReaLTaiizor.Controls.CyberTextBox txtSearch;
-        private ReaLTaiizor.Controls.PoisonButton btnViewReport;
 
         private System.Windows.Forms.Panel pnlSummary;
         private System.Windows.Forms.Panel cardTotalEmp;
@@ -55,12 +52,9 @@ namespace UI.Employee
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.lblTitle = new ReaLTaiizor.Controls.PoisonLabel();
             this.pnlFilters = new System.Windows.Forms.Panel();
-            this.btnViewReport = new ReaLTaiizor.Controls.PoisonButton();
-            this.txtSearch = new ReaLTaiizor.Controls.CyberTextBox();
-            this.lblSearch = new ReaLTaiizor.Controls.MetroLabel();
             this.dtpEndDate = new ReaLTaiizor.Controls.PoisonDateTime();
             this.lblEnd = new ReaLTaiizor.Controls.MetroLabel();
             this.dtpStartDate = new ReaLTaiizor.Controls.PoisonDateTime();
@@ -114,9 +108,6 @@ namespace UI.Employee
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFilters.BackColor = System.Drawing.Color.White;
             this.pnlFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlFilters.Controls.Add(this.btnViewReport);
-            this.pnlFilters.Controls.Add(this.txtSearch);
-            this.pnlFilters.Controls.Add(this.lblSearch);
             this.pnlFilters.Controls.Add(this.dtpEndDate);
             this.pnlFilters.Controls.Add(this.lblEnd);
             this.pnlFilters.Controls.Add(this.dtpStartDate);
@@ -127,60 +118,6 @@ namespace UI.Employee
             this.pnlFilters.Name = "pnlFilters";
             this.pnlFilters.Size = new System.Drawing.Size(1260, 90);
             this.pnlFilters.TabIndex = 2;
-            // 
-            // btnViewReport
-            // 
-            this.btnViewReport.Location = new System.Drawing.Point(1100, 34);
-            this.btnViewReport.Name = "btnViewReport";
-            this.btnViewReport.Size = new System.Drawing.Size(140, 32);
-            this.btnViewReport.TabIndex = 0;
-            this.btnViewReport.Text = "Xem báo cáo";
-            this.btnViewReport.UseSelectable = true;
-            this.btnViewReport.Click += new System.EventHandler(this.btnViewReport_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Alpha = 20;
-            this.txtSearch.BackColor = System.Drawing.Color.Transparent;
-            this.txtSearch.Background_WidthPen = 3F;
-            this.txtSearch.BackgroundPen = true;
-            this.txtSearch.ColorBackground = System.Drawing.Color.White;
-            this.txtSearch.ColorBackground_Pen = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
-            this.txtSearch.ColorLighting = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
-            this.txtSearch.ColorPen_1 = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(200)))), ((int)(((byte)(238)))));
-            this.txtSearch.ColorPen_2 = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(52)))), ((int)(((byte)(68)))));
-            this.txtSearch.CyberTextBoxStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtSearch.ForeColor = System.Drawing.Color.Black;
-            this.txtSearch.Lighting = false;
-            this.txtSearch.LinearGradientPen = false;
-            this.txtSearch.Location = new System.Drawing.Point(760, 33);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.PenWidth = 15;
-            this.txtSearch.RGB = false;
-            this.txtSearch.Rounding = true;
-            this.txtSearch.RoundingInt = 60;
-            this.txtSearch.Size = new System.Drawing.Size(320, 36);
-            this.txtSearch.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.txtSearch.TabIndex = 1;
-            this.txtSearch.Tag = "Cyber";
-            this.txtSearch.TextButton = "Tìm kiếm nhân viên...";
-            this.txtSearch.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.txtSearch.Timer_RGB = 300;
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblSearch.IsDerivedStyle = true;
-            this.lblSearch.Location = new System.Drawing.Point(760, 4);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(150, 23);
-            this.lblSearch.Style = ReaLTaiizor.Enum.Metro.Style.Light;
-            this.lblSearch.StyleManager = null;
-            this.lblSearch.TabIndex = 2;
-            this.lblSearch.Text = "Tìm kiếm";
-            this.lblSearch.ThemeAuthor = "Taiizor";
-            this.lblSearch.ThemeName = "MetroLight";
             // 
             // dtpEndDate
             // 
@@ -459,8 +396,8 @@ namespace UI.Employee
             // 
             // chartSalary
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartSalary.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            this.chartSalary.ChartAreas.Add(chartArea2);
             this.chartSalary.Location = new System.Drawing.Point(32, 505);
             this.chartSalary.Name = "chartSalary";
             this.chartSalary.Size = new System.Drawing.Size(1202, 551);

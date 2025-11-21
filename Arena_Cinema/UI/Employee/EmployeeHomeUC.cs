@@ -29,7 +29,7 @@ namespace UI.Employee
         private void LoadThem()
         {
             Color c = ColorHelper.Parse(_employee.Setting.MainColor);
-            this.panelMain.BackColor = c;
+            this.panelMain.BackColor = c;  
         }
 
         private void lblNhanVien_Click(object sender, EventArgs e)
