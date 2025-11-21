@@ -88,18 +88,16 @@ namespace UI.EmployeeSale
         {
             try
             {
-                // Refresh context để lấy dữ liệu mới
-                _seatLockDAL.RefreshContext();
-
-                // Reload tickets từ database
-                //_tickets = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId);
-                // Reload tickets từ database - tạo context mới để tránh cache
+                // Tạo context mới để tránh cache và lấy dữ liệu mới nhất từ database
+                // Tương tự cách GetCustomerByPhone đã làm
                 using (var context = new CinemaDBContext())
                 {
+                    // Reload tickets từ database với context mới để đảm bảo lấy LockedBy mới nhất
                     _tickets = context.Tickets
                         .Where(t => t.ShowTimeID == _selectedShowTimeId && !t.IsDeleted)
                         .ToList();
                 }
+
                 // Cập nhật màu sắc các button ghế
                 foreach (Control control in flpTickets.Controls)
                 {
@@ -130,6 +128,7 @@ namespace UI.EmployeeSale
             catch (Exception ex)
             {
                 Console.WriteLine($"[RefreshSeatStatus] Error: {ex.Message}");
+                Console.WriteLine($"[RefreshSeatStatus] StackTrace: {ex.StackTrace}");
             }
         }
 
@@ -154,7 +153,7 @@ namespace UI.EmployeeSale
                 btnSeat.BackColor = Color.Gray;
                 btnSeat.Enabled = false;
             }
-            else if (isLockedByOther || ticket.Status == "Đang giữ chỗ")
+            else if (isLockedByOther)
             {
                 // Ghế đang được nhân viên khác chọn - màu cam và disabled
                 btnSeat.BackColor = Color.Orange;
@@ -387,6 +386,18 @@ namespace UI.EmployeeSale
             if (ticket.Status == "Đã bán") return;
 
             // Kiểm tra ghế có đang bị lock bởi người khác không
+            // Reload ticket từ database để đảm bảo có dữ liệu mới nhất
+            using (var context = new CinemaDBContext())
+            {
+                var freshTicket = context.Tickets
+                    .FirstOrDefault(t => t.TicketID == ticket.TicketID && !t.IsDeleted);
+
+                if (freshTicket != null)
+                {
+                    ticket = freshTicket;
+                }
+            }
+
             if (ticket.LockedBy.HasValue && ticket.LockedBy != _employee?.EmployeeID)
             {
                 MessageBox.Show("Ghế này đang được nhân viên khác chọn!", "Thông báo",
@@ -405,26 +416,20 @@ namespace UI.EmployeeSale
                     {
                         _selectedTickets.Remove(selected);
 
-                        // Reload ticket để lấy thông tin mới nhất từ database
-                        _tickets = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId);
-                        var updatedTicket = _tickets.FirstOrDefault(t => t.TicketID == ticket.TicketID);
-
-                        // Cập nhật màu thông qua UpdateSeatButtonAppearance để đảm bảo đồng bộ
-                        if (updatedTicket != null)
+                        // Reload tickets từ database để cập nhật trạng thái
+                        using (var context = new CinemaDBContext())
                         {
-                            RefreshSeatStatus();
-                            Console.WriteLine(ticket.Status);
-                            //_refreshTimer += RefreshTimer_Tick;
-
-                            //_refreshTimer.Start();
-                            UpdateSeatButtonAppearance(btn, seat, updatedTicket);
-                            //RefreshTimer_Tick(null, null);
+                            _tickets = context.Tickets
+                                .Where(t => t.ShowTimeID == _selectedShowTimeId && !t.IsDeleted)
+                                .ToList();
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ghế này đang được nhân viên khác chọn!", "Thông báo",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        // Cập nhật màu thông qua UpdateSeatButtonAppearance
+                        var updatedTicket = _tickets.FirstOrDefault(t => t.TicketID == ticket.TicketID);
+                        if (updatedTicket != null && seat != null)
+                        {
+                            UpdateSeatButtonAppearance(btn, seat, updatedTicket);
+                        }
                     }
                 }
             }
@@ -436,22 +441,25 @@ namespace UI.EmployeeSale
                     bool locked = _seatLockDAL.LockSeat(ticket.TicketID, _employee.EmployeeID);
                     if (locked)
                     {
-                        // Reload ticket để lấy thông tin mới nhất từ database
-                        _tickets = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId);
-                        var updatedTicket = _tickets.FirstOrDefault(t => t.TicketID == ticket.TicketID);
+                        // Reload tickets từ database để cập nhật trạng thái
+                        using (var context = new CinemaDBContext())
+                        {
+                            _tickets = context.Tickets
+                                .Where(t => t.ShowTimeID == _selectedShowTimeId && !t.IsDeleted)
+                                .ToList();
+                        }
 
+                        var updatedTicket = _tickets.FirstOrDefault(t => t.TicketID == ticket.TicketID);
                         if (updatedTicket != null)
                         {
                             _selectedTickets.Add(updatedTicket);
-                            // Cập nhật màu thông qua UpdateSeatButtonAppearance để đảm bảo đồng bộ
-                            RefreshSeatStatus();
-                            Console.WriteLine(ticket.Status);
+                            // Cập nhật màu thông qua UpdateSeatButtonAppearance
                             UpdateSeatButtonAppearance(btn, seat, updatedTicket);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Ghế này đang được nhân viên khác chọn!", "Thông báo",
+                        MessageBox.Show("Không thể chọn ghế này!", "Thông báo",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
