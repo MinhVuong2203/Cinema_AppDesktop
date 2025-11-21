@@ -306,9 +306,6 @@
   <data name="ThongBao" xml:space="preserve">
     <value>Thông báo</value>
   </data>
-  <data name="QuanLyGhe" xml:space="preserve">
-    <value>Quản lý ghế của:</value>
-  </data>
   <data name="ManHinh" xml:space="preserve">
     <value>MÀN HÌNH</value>
   </data>
@@ -439,7 +436,7 @@
     <value>VD: Hành động, Kinh dị, Phiêu lưu</value>
   </data>
   <data name="ApDung" xml:space="preserve">
-    <value>Áp Dụng</value>
+    <value>Lọc</value>
   </data>
   <data name="TongPhim" xml:space="preserve">
     <value>Tổng Phim</value>
@@ -455,5 +452,110 @@
   </data>
   <data name="bangthongkephim" xml:space="preserve">
     <value>📊 BÁNG THỐNG KÊ PHIM</value>
+  </data>
+  <data name="themSuatChieu" xml:space="preserve">
+    <value>Thêm Suất chiếu</value>
+  </data>
+  <data name="QuanLySuatChieu" xml:space="preserve">
+    <value>🎬 Quản Lý Suất Chiếu</value>
+  </data>
+  <data name="QuanLyGhe" xml:space="preserve">
+    <value>Quản lý ghế của:</value>
+  </data>
+  <data name="colMovie" xml:space="preserve">
+    <value>TÊN PHIM</value>
+  </data>
+  <data name="colRoom" xml:space="preserve">
+    <value>PHÒNG</value>
+  </data>
+  <data name="colstartTime" xml:space="preserve">
+    <value>GIỜ BẮT ĐẦU</value>
+  </data>
+  <data name="colEndTime" xml:space="preserve">
+    <value>GIỜ KẾT THÚC</value>
+  </data>
+  <data name="colPrice" xml:space="preserve">
+    <value>GIÁ</value>
+  </data>
+  <data name="colstatus" xml:space="preserve">
+    <value>TRẠNG THÁI</value>
+  </data>
+  <data name="phonglbl" xml:space="preserve">
+    <value>Phòng</value>
+  </data>
+  <data name="tatcaphong" xml:space="preserve">
+    <value>--Tất cả phòng--</value>
+  </data>
+  <data name="phimlbl" xml:space="preserve">
+    <value>Phim</value>
+  </data>
+  <data name="tatcaphim" xml:space="preserve">
+    <value>--Tất Cả Phim--</value>
+  </data>
+  <data name="pagesize" xml:space="preserve">
+    <value>Số dòng/Trang</value>
+  </data>
+  <data name="hienthi" xml:space="preserve">
+    <value>⚪ Hiển Thị</value>
+  </data>
+  <data name="trongtongso" xml:space="preserve">
+    <value>Trong Tổng Số</value>
+  </data>
+  <data name="hienthisuatchieu" xml:space="preserve">
+    <value>Suất chiếu / Trang</value>
+  </data>
+  <data name="ThemSC" xml:space="preserve">
+    <value>🎬 Thêm Suất Chiếu</value>
+  </data>
+  <data name="Luu" xml:space="preserve">
+    <value>Lưu</value>
+  </data>
+  <data name="showtimeinfo" xml:space="preserve">
+    <value>📋 Thông Tin Suất Chiếu</value>
+  </data>
+  <data name="chonphim" xml:space="preserve">
+    <value>Chọn Phim</value>
+  </data>
+  <data name="chonPhimHint" xml:space="preserve">
+    <value>--Chọn Phim--</value>
+  </data>
+  <data name="chonPhong" xml:space="preserve">
+    <value>Chọn Phòng</value>
+  </data>
+  <data name="chonPhongHint" xml:space="preserve">
+    <value>--chọn Phòng--</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Giá Vé (VNĐ)</value>
+  </data>
+  <data name="nhapgiave" xml:space="preserve">
+    <value>Nhập giá vé (VD: 85000)</value>
+  </data>
+  <data name="TimeShow" xml:space="preserve">
+    <value>⏰ Thời Gian Chiếu</value>
+  </data>
+  <data name="startTime" xml:space="preserve">
+    <value>Giờ bắt đầu</value>
+  </data>
+  <data name="endTime" xml:space="preserve">
+    <value>Giờ kết thúc ( Dự kiến)</value>
+  </data>
+  <data name="gioketthucdukien" xml:space="preserve">
+    <value>* Giờ kết thúc tự động tính dựa trên thời lượng phim.</value>
+  </data>
+  <data name="lichchieutrongngay" xml:space="preserve">
+    <value>📅 Lịch Chiếu Trong Ngày</value>
+  </data>
+  <data name="suasuatchieu" xml:space="preserve">
+    <value>✏️ Sửa Suất Chiếu</value>
+  </data>
+  <data name="MaSuatChieu" xml:space="preserve">
+    <value>Mã Suất chiếu</value>
+  </data>
+  <data name="grbTrangThai" xml:space="preserve">
+    <value>ℹ️ Trạng Thái</value>
+  </data>
+  <data name="vedaban" xml:space="preserve">
+    <value>Số vé dã bán:</value>
   </data>
 </root>

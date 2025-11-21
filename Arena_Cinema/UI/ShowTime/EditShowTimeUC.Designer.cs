@@ -99,7 +99,7 @@ namespace UI.ShowTime
             this.btnBack.BackgroundColor = System.Drawing.Color.Transparent;
             this.btnBack.ButtonImage = null;
             this.btnBack.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnBack.ButtonText = "← Quay lại";
+            this.btnBack.ButtonText = global::UI.Resources.Lang.QuayLai;
             this.btnBack.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
             this.btnBack.ClickTextColor = System.Drawing.Color.White;
             this.btnBack.CornerRadius = 5;
@@ -126,7 +126,7 @@ namespace UI.ShowTime
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(330, 32);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "✏️ Sửa Suất Chiếu";
+            this.lblTitle.Text = global::UI.Resources.Lang.suasuatchieu;
             // 
             // panelMain
             // 
@@ -161,7 +161,7 @@ namespace UI.ShowTime
             this.btnCancel.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.btnCancel.ButtonImage = null;
             this.btnCancel.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnCancel.ButtonText = "✖ Hủy";
+            this.btnCancel.ButtonText = global::UI.Resources.Lang.Huy;
             this.btnCancel.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
             this.btnCancel.ClickTextColor = System.Drawing.Color.DodgerBlue;
             this.btnCancel.CornerRadius = 5;
@@ -185,7 +185,7 @@ namespace UI.ShowTime
             this.btnUpdate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             this.btnUpdate.ButtonImage = null;
             this.btnUpdate.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnUpdate.ButtonText = "💾 Cập Nhật";
+            this.btnUpdate.ButtonText = global::UI.Resources.Lang.CapNhat;
             this.btnUpdate.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(195)))), ((int)(((byte)(195)))));
             this.btnUpdate.ClickTextColor = System.Drawing.Color.DodgerBlue;
             this.btnUpdate.CornerRadius = 5;
@@ -221,7 +221,7 @@ namespace UI.ShowTime
             this.groupBoxInfo.Size = new System.Drawing.Size(1035, 305);
             this.groupBoxInfo.TabIndex = 0;
             this.groupBoxInfo.TabStop = false;
-            this.groupBoxInfo.Text = "📋 Thông Tin Suất Chiếu";
+            this.groupBoxInfo.Text = global::UI.Resources.Lang.showtimeinfo;
             // 
             // lblShowTimeID
             // 
@@ -232,7 +232,7 @@ namespace UI.ShowTime
             this.lblShowTimeID.Name = "lblShowTimeID";
             this.lblShowTimeID.Size = new System.Drawing.Size(109, 20);
             this.lblShowTimeID.TabIndex = 0;
-            this.lblShowTimeID.Text = "Mã Suất Chiếu";
+            this.lblShowTimeID.Text = global::UI.Resources.Lang.MaSuatChieu;
             // 
             // txtShowTimeID
             // 
@@ -255,7 +255,7 @@ namespace UI.ShowTime
             this.lblMovie.Name = "lblMovie";
             this.lblMovie.Size = new System.Drawing.Size(85, 20);
             this.lblMovie.TabIndex = 2;
-            this.lblMovie.Text = "Chọn Phim";
+            this.lblMovie.Text = global::UI.Resources.Lang.chonphim;
             // 
             // cboMovie
             // 
@@ -268,7 +268,7 @@ namespace UI.ShowTime
             this.cboMovie.DropDownWidth = 121;
             this.cboMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboMovie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cboMovie.Hint = "-- Chọn Phim --";
+            this.cboMovie.Hint = global::UI.Resources.Lang.chonPhimHint;
             this.cboMovie.IntegralHeight = false;
             this.cboMovie.ItemHeight = 43;
             this.cboMovie.Location = new System.Drawing.Point(30, 128);
@@ -288,7 +288,7 @@ namespace UI.ShowTime
             this.lblRoom.Name = "lblRoom";
             this.lblRoom.Size = new System.Drawing.Size(94, 20);
             this.lblRoom.TabIndex = 4;
-            this.lblRoom.Text = "Chọn Phòng";
+            this.lblRoom.Text = global::UI.Resources.Lang.chonPhong;
             // 
             // cboRoom
             // 
@@ -301,7 +301,7 @@ namespace UI.ShowTime
             this.cboRoom.DropDownWidth = 121;
             this.cboRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cboRoom.Hint = "-- Chọn Phòng --";
+            this.cboRoom.Hint = global::UI.Resources.Lang.chonPhongHint;
             this.cboRoom.IntegralHeight = false;
             this.cboRoom.ItemHeight = 43;
             this.cboRoom.Location = new System.Drawing.Point(566, 128);
@@ -321,7 +321,7 @@ namespace UI.ShowTime
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(102, 20);
             this.lblPrice.TabIndex = 6;
-            this.lblPrice.Text = "Giá Vé (VNĐ)";
+            this.lblPrice.Text = global::UI.Resources.Lang.Price;
             // 
             // txtPrice
             // 
@@ -329,7 +329,7 @@ namespace UI.ShowTime
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrice.Depth = 0;
             this.txtPrice.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtPrice.Hint = "Nhập giá vé (VD: 85000)";
+            this.txtPrice.Hint = global::UI.Resources.Lang.nhapgiave;
             this.txtPrice.LeadingIcon = null;
             this.txtPrice.Location = new System.Drawing.Point(30, 218);
             this.txtPrice.MaxLength = 50;
@@ -355,7 +355,7 @@ namespace UI.ShowTime
             this.groupBoxTime.Size = new System.Drawing.Size(1035, 155);
             this.groupBoxTime.TabIndex = 1;
             this.groupBoxTime.TabStop = false;
-            this.groupBoxTime.Text = "⏰ Thời Gian Chiếu";
+            this.groupBoxTime.Text = global::UI.Resources.Lang.TimeShow;
             // 
             // lblStartTime
             // 
@@ -366,7 +366,7 @@ namespace UI.ShowTime
             this.lblStartTime.Name = "lblStartTime";
             this.lblStartTime.Size = new System.Drawing.Size(93, 20);
             this.lblStartTime.TabIndex = 0;
-            this.lblStartTime.Text = "Giờ Bắt Đầu";
+            this.lblStartTime.Text = global::UI.Resources.Lang.startTime;
             // 
             // dtpStartTime
             // 
@@ -386,7 +386,7 @@ namespace UI.ShowTime
             this.lblEndTime.Name = "lblEndTime";
             this.lblEndTime.Size = new System.Drawing.Size(169, 20);
             this.lblEndTime.TabIndex = 2;
-            this.lblEndTime.Text = "Giờ Kết Thúc (Dự kiến)";
+            this.lblEndTime.Text = global::UI.Resources.Lang.endTime;
             // 
             // dtpEndTime
             // 
@@ -407,7 +407,7 @@ namespace UI.ShowTime
             this.lblNote.Name = "lblNote";
             this.lblNote.Size = new System.Drawing.Size(342, 19);
             this.lblNote.TabIndex = 4;
-            this.lblNote.Text = "* Giờ kết thúc tự động tính dựa trên thời lượng phim.";
+            this.lblNote.Text = global::UI.Resources.Lang.gioketthucdukien;
             // 
             // groupBoxStatus
             // 
@@ -423,7 +423,7 @@ namespace UI.ShowTime
             this.groupBoxStatus.Size = new System.Drawing.Size(1035, 95);
             this.groupBoxStatus.TabIndex = 2;
             this.groupBoxStatus.TabStop = false;
-            this.groupBoxStatus.Text = "ℹ️ Trạng Thái";
+            this.groupBoxStatus.Text = global::UI.Resources.Lang.grbTrangThai;
             // 
             // lblTicketsSoldLabel
             // 
@@ -434,7 +434,7 @@ namespace UI.ShowTime
             this.lblTicketsSoldLabel.Name = "lblTicketsSoldLabel";
             this.lblTicketsSoldLabel.Size = new System.Drawing.Size(101, 20);
             this.lblTicketsSoldLabel.TabIndex = 0;
-            this.lblTicketsSoldLabel.Text = "Số vé đã bán:";
+            this.lblTicketsSoldLabel.Text = global::UI.Resources.Lang.vedaban;
             // 
             // lblTicketsSold
             // 
@@ -456,7 +456,7 @@ namespace UI.ShowTime
             this.lblStatusLabel.Name = "lblStatusLabel";
             this.lblStatusLabel.Size = new System.Drawing.Size(84, 20);
             this.lblStatusLabel.TabIndex = 2;
-            this.lblStatusLabel.Text = "Trạng thái:";
+            this.lblStatusLabel.Text = global::UI.Resources.Lang.TrangThai;
             // 
             // lblStatus
             // 
@@ -489,7 +489,7 @@ namespace UI.ShowTime
             this.groupBoxTimeline.Size = new System.Drawing.Size(1035, 180);
             this.groupBoxTimeline.TabIndex = 5;
             this.groupBoxTimeline.TabStop = false;
-            this.groupBoxTimeline.Text = "📅 Lịch Chiếu Trong Ngày";
+            this.groupBoxTimeline.Text = global::UI.Resources.Lang.lichchieutrongngay;
             // 
             // panelTimeline
             // 

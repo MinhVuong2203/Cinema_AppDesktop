@@ -306,9 +306,6 @@
   <data name="ThongBao" xml:space="preserve">
     <value>Announce</value>
   </data>
-  <data name="QuanLyGhe" xml:space="preserve">
-    <value>Manage seats of:</value>
-  </data>
   <data name="ManHinh" xml:space="preserve">
     <value>SCREEN</value>
   </data>
@@ -455,5 +452,110 @@
   </data>
   <data name="bangthongkephim" xml:space="preserve">
     <value>📊 Movie statistics</value>
+  </data>
+  <data name="themSuatChieu" xml:space="preserve">
+    <value>Add showTime</value>
+  </data>
+  <data name="QuanLySuatChieu" xml:space="preserve">
+    <value>🎬 Manage ShowTime</value>
+  </data>
+  <data name="QuanLyGhe" xml:space="preserve">
+    <value>Manage seats of:</value>
+  </data>
+  <data name="colMovie" xml:space="preserve">
+    <value>MOVIE'S NAME</value>
+  </data>
+  <data name="colRoom" xml:space="preserve">
+    <value>ROOM</value>
+  </data>
+  <data name="colstartTime" xml:space="preserve">
+    <value>START TIME</value>
+  </data>
+  <data name="colEndTime" xml:space="preserve">
+    <value>END TIME</value>
+  </data>
+  <data name="colPrice" xml:space="preserve">
+    <value>PRICE</value>
+  </data>
+  <data name="colstatus" xml:space="preserve">
+    <value>STATUS</value>
+  </data>
+  <data name="phonglbl" xml:space="preserve">
+    <value>Room</value>
+  </data>
+  <data name="tatcaphong" xml:space="preserve">
+    <value>--All room--</value>
+  </data>
+  <data name="phimlbl" xml:space="preserve">
+    <value>Movie</value>
+  </data>
+  <data name="tatcaphim" xml:space="preserve">
+    <value>--All Movie--</value>
+  </data>
+  <data name="pagesize" xml:space="preserve">
+    <value>lines/page</value>
+  </data>
+  <data name="hienthi" xml:space="preserve">
+    <value>⚪ Showing</value>
+  </data>
+  <data name="trongtongso" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="hienthisuatchieu" xml:space="preserve">
+    <value>shows/ Page</value>
+  </data>
+  <data name="ThemSC" xml:space="preserve">
+    <value>🎬 Add ShowTime</value>
+  </data>
+  <data name="Luu" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="showtimeinfo" xml:space="preserve">
+    <value>📋 ShowTime Information</value>
+  </data>
+  <data name="chonphim" xml:space="preserve">
+    <value>Choose Movie</value>
+  </data>
+  <data name="chonPhimHint" xml:space="preserve">
+    <value>--Choose Movie--</value>
+  </data>
+  <data name="chonPhong" xml:space="preserve">
+    <value>Choose Room</value>
+  </data>
+  <data name="chonPhongHint" xml:space="preserve">
+    <value>--Choose Room--</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price (VNĐ)</value>
+  </data>
+  <data name="nhapgiave" xml:space="preserve">
+    <value>Enter Price (VD: 85000)</value>
+  </data>
+  <data name="TimeShow" xml:space="preserve">
+    <value>⏰ Showtime</value>
+  </data>
+  <data name="startTime" xml:space="preserve">
+    <value>Start Time</value>
+  </data>
+  <data name="endTime" xml:space="preserve">
+    <value>End Time ( Expected)</value>
+  </data>
+  <data name="gioketthucdukien" xml:space="preserve">
+    <value>* End time is automatically calculated based on movie's duration.</value>
+  </data>
+  <data name="lichchieutrongngay" xml:space="preserve">
+    <value>📅 Showtime of  Today</value>
+  </data>
+  <data name="suasuatchieu" xml:space="preserve">
+    <value>✏️ Edit Movie</value>
+  </data>
+  <data name="MaSuatChieu" xml:space="preserve">
+    <value>ID Showtime</value>
+  </data>
+  <data name="grbTrangThai" xml:space="preserve">
+    <value>ℹ️ Status</value>
+  </data>
+  <data name="vedaban" xml:space="preserve">
+    <value>Sold Tickets:</value>
   </data>
 </root>

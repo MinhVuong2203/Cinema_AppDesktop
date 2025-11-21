@@ -105,7 +105,7 @@ namespace UI.ShowTime
             this.btnEdit.BackgroundColor = System.Drawing.Color.MediumBlue;
             this.btnEdit.ButtonImage = null;
             this.btnEdit.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnEdit.ButtonText = "Sửa";
+            this.btnEdit.ButtonText = global::UI.Resources.Lang.Sua;
             this.btnEdit.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnEdit.ClickTextColor = System.Drawing.Color.White;
             this.btnEdit.CornerRadius = 5;
@@ -131,7 +131,7 @@ namespace UI.ShowTime
             this.btnDelete.BackgroundColor = System.Drawing.Color.Coral;
             this.btnDelete.ButtonImage = null;
             this.btnDelete.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnDelete.ButtonText = "- Xóa";
+            this.btnDelete.ButtonText = global::UI.Resources.Lang.Xoa;
             this.btnDelete.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnDelete.ClickTextColor = System.Drawing.Color.White;
             this.btnDelete.CornerRadius = 5;
@@ -157,7 +157,7 @@ namespace UI.ShowTime
             this.btnAddShowtime.BackgroundColor = System.Drawing.Color.LimeGreen;
             this.btnAddShowtime.ButtonImage = null;
             this.btnAddShowtime.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnAddShowtime.ButtonText = "+ Thêm Mới";
+            this.btnAddShowtime.ButtonText = global::UI.Resources.Lang.themSuatChieu;
             this.btnAddShowtime.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnAddShowtime.ClickTextColor = System.Drawing.Color.White;
             this.btnAddShowtime.CornerRadius = 5;
@@ -185,7 +185,7 @@ namespace UI.ShowTime
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(364, 32);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "🎬 Quản Lý Suất Chiếu";
+            this.lblTitle.Text = global::UI.Resources.Lang.QuanLySuatChieu;
             // 
             // panelMain
             // 
@@ -287,7 +287,7 @@ namespace UI.ShowTime
             // 
             this.colMovie.DataPropertyName = "MovieTitle";
             this.colMovie.FillWeight = 34.8F;
-            this.colMovie.HeaderText = "PHIM";
+            this.colMovie.HeaderText = global::UI.Resources.Lang.colMovie;
             this.colMovie.MinimumWidth = 6;
             this.colMovie.Name = "colMovie";
             // 
@@ -295,7 +295,7 @@ namespace UI.ShowTime
             // 
             this.colRoom.DataPropertyName = "RoomName";
             this.colRoom.FillWeight = 13.8F;
-            this.colRoom.HeaderText = "PHÒNG";
+            this.colRoom.HeaderText = global::UI.Resources.Lang.colRoom;
             this.colRoom.MinimumWidth = 6;
             this.colRoom.Name = "colRoom";
             // 
@@ -303,7 +303,7 @@ namespace UI.ShowTime
             // 
             this.colStartTime.DataPropertyName = "StartTimeDisplay";
             this.colStartTime.FillWeight = 13.8F;
-            this.colStartTime.HeaderText = "GIỜ BẮT ĐẦU";
+            this.colStartTime.HeaderText = global::UI.Resources.Lang.colstartTime;
             this.colStartTime.MinimumWidth = 6;
             this.colStartTime.Name = "colStartTime";
             // 
@@ -311,7 +311,7 @@ namespace UI.ShowTime
             // 
             this.colEndTime.DataPropertyName = "EndTimeDisplay";
             this.colEndTime.FillWeight = 13.8F;
-            this.colEndTime.HeaderText = "GIỜ KẾT THÚC";
+            this.colEndTime.HeaderText = global::UI.Resources.Lang.colEndTime;
             this.colEndTime.MinimumWidth = 6;
             this.colEndTime.Name = "colEndTime";
             // 
@@ -319,7 +319,7 @@ namespace UI.ShowTime
             // 
             this.colPrice.DataPropertyName = "PriceDisplay";
             this.colPrice.FillWeight = 13.8F;
-            this.colPrice.HeaderText = "GIÁ";
+            this.colPrice.HeaderText = global::UI.Resources.Lang.colPrice;
             this.colPrice.MinimumWidth = 6;
             this.colPrice.Name = "colPrice";
             // 
@@ -327,7 +327,7 @@ namespace UI.ShowTime
             // 
             this.colStatus.DataPropertyName = "Status";
             this.colStatus.FillWeight = 13.8F;
-            this.colStatus.HeaderText = "TRẠNG THÁI";
+            this.colStatus.HeaderText = global::UI.Resources.Lang.colstatus;
             this.colStatus.MinimumWidth = 6;
             this.colStatus.Name = "colStatus";
             // 
@@ -402,7 +402,7 @@ namespace UI.ShowTime
             this.lblRoom.Name = "lblRoom";
             this.lblRoom.Size = new System.Drawing.Size(51, 20);
             this.lblRoom.TabIndex = 0;
-            this.lblRoom.Text = "Phòng";
+            this.lblRoom.Text = global::UI.Resources.Lang.phonglbl;
             // 
             // cboRoom
             // 
@@ -416,7 +416,7 @@ namespace UI.ShowTime
             this.cboRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboRoom.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboRoom.FormattingEnabled = true;
-            this.cboRoom.Hint = "-- Tất cả Phòng--";
+            this.cboRoom.Hint = global::UI.Resources.Lang.tatcaphong;
             this.cboRoom.IntegralHeight = false;
             this.cboRoom.ItemHeight = 43;
             this.cboRoom.Location = new System.Drawing.Point(2, 28);
@@ -436,7 +436,7 @@ namespace UI.ShowTime
             this.lblMovie.Name = "lblMovie";
             this.lblMovie.Size = new System.Drawing.Size(42, 20);
             this.lblMovie.TabIndex = 2;
-            this.lblMovie.Text = "Phim";
+            this.lblMovie.Text = global::UI.Resources.Lang.phimlbl;
             // 
             // cboMovie
             // 
@@ -450,7 +450,7 @@ namespace UI.ShowTime
             this.cboMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboMovie.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboMovie.FormattingEnabled = true;
-            this.cboMovie.Hint = "-- Tất cả phim --";
+            this.cboMovie.Hint = global::UI.Resources.Lang.tatcaphim;
             this.cboMovie.IntegralHeight = false;
             this.cboMovie.ItemHeight = 43;
             this.cboMovie.Location = new System.Drawing.Point(252, 28);
@@ -470,7 +470,7 @@ namespace UI.ShowTime
             this.lblPageSize.Name = "lblPageSize";
             this.lblPageSize.Size = new System.Drawing.Size(106, 20);
             this.lblPageSize.TabIndex = 4;
-            this.lblPageSize.Text = "Số dòng/trang";
+            this.lblPageSize.Text = global::UI.Resources.Lang.pagesize;
             // 
             // cboPageSize
             // 
@@ -515,7 +515,7 @@ namespace UI.ShowTime
             this.btnFilter.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnFilter.ButtonImage = null;
             this.btnFilter.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnFilter.ButtonText = "Lọc";
+            this.btnFilter.ButtonText = global::UI.Resources.Lang.ApDung;
             this.btnFilter.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnFilter.ClickTextColor = System.Drawing.Color.White;
             this.btnFilter.CornerRadius = 5;
@@ -539,7 +539,7 @@ namespace UI.ShowTime
             this.btnReset.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.btnReset.ButtonImage = null;
             this.btnReset.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnReset.ButtonText = "Reset";
+            this.btnReset.ButtonText = global::UI.Resources.Lang.DatLai;
             this.btnReset.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(97)))), ((int)(((byte)(105)))));
             this.btnReset.ClickTextColor = System.Drawing.Color.White;
             this.btnReset.CornerRadius = 5;
@@ -889,7 +889,7 @@ namespace UI.ShowTime
             int startRecord = (currentPage - 1) * pageSize + 1;
             int endRecord = System.Math.Min(currentPage * pageSize, totalRecords);
 
-            lblInfo.Text = $"⚪ Hiển thị {startRecord}-{endRecord} trong tổng số {totalRecords} suất chiếu / Trang {currentPage} / {totalPages}";
+            lblInfo.Text = global::UI.Resources.Lang.hienthi +$" {startRecord}-{endRecord} " + global::UI.Resources.Lang.trongtongso +$" {totalRecords} " + global::UI.Resources.Lang.hienthisuatchieu +$" {currentPage} / {totalPages}";
         }
 
 
