@@ -276,9 +276,9 @@
   <data name="NGAYVAOLAM" xml:space="preserve">
     <value>Ngày vào làm</value>
   </data>
-	<data name="MaNV" xml:space="preserve">
+  <data name="MaNV" xml:space="preserve">
     <value>Mã NV</value>
-	  </data>
+  </data>
   <data name="ThemGhe" xml:space="preserve">
     <value>Thêm ghế mới</value>
   </data>
@@ -311,5 +311,74 @@
   </data>
   <data name="ManHinh" xml:space="preserve">
     <value>MÀN HÌNH</value>
+  </data>
+  <data name="ThemPhim" xml:space="preserve">
+    <value>Thêm Phim Mới</value>
+  </data>
+  <data name="ThongTinPhim" xml:space="preserve">
+    <value>Thông Tin Phim</value>
+  </data>
+  <data name="ThoiLuong" xml:space="preserve">
+    <value>⏱️ Thời Lượng (phút)</value>
+  </data>
+  <data name="TagPhim" xml:space="preserve">
+    <value>--Chọn Loại Phim--</value>
+  </data>
+  <data name="Taglbl" xml:space="preserve">
+    <value>🎬 Loại phim</value>
+  </data>
+  <data name="LinkTRL" xml:space="preserve">
+    <value>🎬 Link Trailer</value>
+  </data>
+  <data name="AgeLM" xml:space="preserve">
+    <value>🎭 Giới Hạn Tuổi</value>
+  </data>
+  <data name="ChooseAgeLM" xml:space="preserve">
+    <value>--Chọn Giới Hạn Tuổi--</value>
+  </data>
+  <data name="NgayKT" xml:space="preserve">
+    <value>🗓️ Ngày Kết Thúc</value>
+  </data>
+  <data name="LongTieng" xml:space="preserve">
+    <value>🔊 Lồng Tiếng</value>
+  </data>
+  <data name="PhimCoLT" xml:space="preserve">
+    <value>Phim có lồng tiếng</value>
+  </data>
+  <data name="NgayKC" xml:space="preserve">
+    <value>🗓️ Ngày Khởi Chiếu</value>
+  </data>
+  <data name="LuuPhim" xml:space="preserve">
+    <value>Lưu Phim</value>
+  </data>
+  <data name="Poster" xml:space="preserve">
+    <value>📷 Hình Ảnh Poster Phim</value>
+  </data>
+  <data name="NhapNDP" xml:space="preserve">
+    <value>Nhập nội dung phim</value>
+  </data>
+  <data name="NoiDung" xml:space="preserve">
+    <value>📝 Nội Dung</value>
+  </data>
+  <data name="NhapTenPhim" xml:space="preserve">
+    <value>Nhập tên phim...</value>
+  </data>
+  <data name="ChonNgonNgu" xml:space="preserve">
+    <value>--Chọn Ngôn Ngữ--</value>
+  </data>
+  <data name="NhapMoTaPhim" xml:space="preserve">
+    <value>Nhập mô tả chi tiết về phim: diễn viên, đạo diễn...</value>
+  </data>
+  <data name="TenPhim" xml:space="preserve">
+    <value>🎬 Tên Phim</value>
+  </data>
+  <data name="lblDescription" xml:space="preserve">
+    <value>📝 Mô Tả Phim</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>🗣️ Ngôn Ngữ</value>
+  </data>
+  <data name="TheLoaiPhim" xml:space="preserve">
+    <value>🎭 Thể Loại</value>
   </data>
 </root>

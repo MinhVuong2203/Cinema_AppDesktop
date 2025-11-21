@@ -312,4 +312,73 @@
   <data name="ManHinh" xml:space="preserve">
     <value>SCREEN</value>
   </data>
+  <data name="ThemPhim" xml:space="preserve">
+    <value>Add Movie</value>
+  </data>
+  <data name="ThongTinPhim" xml:space="preserve">
+    <value>Movie Details</value>
+  </data>
+  <data name="ThoiLuong" xml:space="preserve">
+    <value>⏱️ Duration (Minute)</value>
+  </data>
+  <data name="TagPhim" xml:space="preserve">
+    <value>--Choose category--</value>
+  </data>
+  <data name="Taglbl" xml:space="preserve">
+    <value>🎬 Tag</value>
+  </data>
+  <data name="LinkTRL" xml:space="preserve">
+    <value>🎬 Link Trailer</value>
+  </data>
+  <data name="AgeLM" xml:space="preserve">
+    <value>🎭 Age Limit</value>
+  </data>
+  <data name="ChooseAgeLM" xml:space="preserve">
+    <value>--Choose Age Limit--</value>
+  </data>
+  <data name="NgayKT" xml:space="preserve">
+    <value>🗓️ End Day</value>
+  </data>
+  <data name="LongTieng" xml:space="preserve">
+    <value>🔊 Dub</value>
+  </data>
+  <data name="PhimCoLT" xml:space="preserve">
+    <value>Have A Dub</value>
+  </data>
+  <data name="NgayKC" xml:space="preserve">
+    <value>🗓️ Start Day</value>
+  </data>
+  <data name="LuuPhim" xml:space="preserve">
+    <value>Save Movie</value>
+  </data>
+  <data name="Poster" xml:space="preserve">
+    <value>📷 Movie's Poster</value>
+  </data>
+  <data name="NhapNDP" xml:space="preserve">
+    <value>Enter Preview</value>
+  </data>
+  <data name="NoiDung" xml:space="preserve">
+    <value>📝 Preview</value>
+  </data>
+  <data name="NhapTenPhim" xml:space="preserve">
+    <value>Enter Movie's Name...</value>
+  </data>
+  <data name="ChonNgonNgu" xml:space="preserve">
+    <value>--Choose Language--</value>
+  </data>
+  <data name="NhapMoTaPhim" xml:space="preserve">
+    <value>Enter Description...</value>
+  </data>
+  <data name="TenPhim" xml:space="preserve">
+    <value>🎬 Movie's Name</value>
+  </data>
+  <data name="lblDescription" xml:space="preserve">
+    <value>📝 Description</value>
+  </data>
+  <data name="lblLanguage" xml:space="preserve">
+    <value>🗣️ Language</value>
+  </data>
+  <data name="TheLoaiPhim" xml:space="preserve">
+    <value>🎭 Category</value>
+  </data>
 </root>
