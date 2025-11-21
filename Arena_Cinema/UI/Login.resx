@@ -264,9 +264,6 @@
   <data name="tbPassword.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="tbPassword.Text" xml:space="preserve">
-    <value>Minhvuong@123</value>
-  </data>
   <data name="&gt;&gt;tbPassword.Name" xml:space="preserve">
     <value>tbPassword</value>
   </data>
@@ -323,9 +320,6 @@
   </data>
   <data name="tbUsername.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="tbUsername.Text" xml:space="preserve">
-    <value>MinhVuong</value>
   </data>
   <data name="&gt;&gt;tbUsername.Name" xml:space="preserve">
     <value>tbUsername</value>
