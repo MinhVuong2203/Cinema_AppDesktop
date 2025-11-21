@@ -117,6 +117,7 @@ namespace UI.ShowTime
             this.btnBack.TextColor = System.Drawing.Color.White;
             this.btnBack.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnBack.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // lblTitle
             // 
@@ -155,6 +156,7 @@ namespace UI.ShowTime
             this.panelForm.Padding = new System.Windows.Forms.Padding(40);
             this.panelForm.Size = new System.Drawing.Size(1260, 660);
             this.panelForm.TabIndex = 0;
+            this.panelForm.Resize += new System.EventHandler(this.panelForm_Resize);
             // 
             // btnCancel
             // 
@@ -179,6 +181,7 @@ namespace UI.ShowTime
             this.btnCancel.TextColor = System.Drawing.Color.White;
             this.btnCancel.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnCancel.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnUpdate
             // 
@@ -203,6 +206,7 @@ namespace UI.ShowTime
             this.btnUpdate.TextColor = System.Drawing.Color.White;
             this.btnUpdate.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnUpdate.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // groupBoxInfo
             // 
@@ -230,7 +234,7 @@ namespace UI.ShowTime
             this.lblShowTimeID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblShowTimeID.Location = new System.Drawing.Point(30, 35);
             this.lblShowTimeID.Name = "lblShowTimeID";
-            this.lblShowTimeID.Size = new System.Drawing.Size(109, 20);
+            this.lblShowTimeID.Size = new System.Drawing.Size(107, 20);
             this.lblShowTimeID.TabIndex = 0;
             this.lblShowTimeID.Text = global::UI.Resources.Lang.MaSuatChieu;
             // 
@@ -278,6 +282,7 @@ namespace UI.ShowTime
             this.cboMovie.Size = new System.Drawing.Size(426, 49);
             this.cboMovie.StartIndex = 0;
             this.cboMovie.TabIndex = 3;
+            this.cboMovie.SelectedIndexChanged += new System.EventHandler(this.cboMovie_SelectedIndexChanged);
             // 
             // lblRoom
             // 
@@ -311,6 +316,7 @@ namespace UI.ShowTime
             this.cboRoom.Size = new System.Drawing.Size(426, 49);
             this.cboRoom.StartIndex = 0;
             this.cboRoom.TabIndex = 5;
+            this.cboRoom.SelectedIndexChanged += new System.EventHandler(this.cboRoom_SelectedIndexChanged);
             // 
             // lblPrice
             // 
@@ -340,6 +346,7 @@ namespace UI.ShowTime
             this.txtPrice.TabIndex = 7;
             this.txtPrice.Text = "";
             this.txtPrice.TrailingIcon = null;
+            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
             // 
             // groupBoxTime
             // 
@@ -364,7 +371,7 @@ namespace UI.ShowTime
             this.lblStartTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblStartTime.Location = new System.Drawing.Point(30, 40);
             this.lblStartTime.Name = "lblStartTime";
-            this.lblStartTime.Size = new System.Drawing.Size(93, 20);
+            this.lblStartTime.Size = new System.Drawing.Size(90, 20);
             this.lblStartTime.TabIndex = 0;
             this.lblStartTime.Text = global::UI.Resources.Lang.startTime;
             // 
@@ -376,6 +383,7 @@ namespace UI.ShowTime
             this.dtpStartTime.Name = "dtpStartTime";
             this.dtpStartTime.Size = new System.Drawing.Size(426, 30);
             this.dtpStartTime.TabIndex = 1;
+            this.dtpStartTime.ValueChanged += new System.EventHandler(this.dtpStartTime_ValueChanged);
             // 
             // lblEndTime
             // 
@@ -384,7 +392,7 @@ namespace UI.ShowTime
             this.lblEndTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblEndTime.Location = new System.Drawing.Point(566, 40);
             this.lblEndTime.Name = "lblEndTime";
-            this.lblEndTime.Size = new System.Drawing.Size(169, 20);
+            this.lblEndTime.Size = new System.Drawing.Size(168, 20);
             this.lblEndTime.TabIndex = 2;
             this.lblEndTime.Text = global::UI.Resources.Lang.endTime;
             // 
@@ -454,7 +462,7 @@ namespace UI.ShowTime
             this.lblStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblStatusLabel.Location = new System.Drawing.Point(350, 35);
             this.lblStatusLabel.Name = "lblStatusLabel";
-            this.lblStatusLabel.Size = new System.Drawing.Size(84, 20);
+            this.lblStatusLabel.Size = new System.Drawing.Size(83, 20);
             this.lblStatusLabel.TabIndex = 2;
             this.lblStatusLabel.Text = global::UI.Resources.Lang.TrangThai;
             // 
@@ -498,6 +506,7 @@ namespace UI.ShowTime
             this.panelTimeline.Name = "panelTimeline";
             this.panelTimeline.Size = new System.Drawing.Size(975, 130);
             this.panelTimeline.TabIndex = 0;
+            this.panelTimeline.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTimeline_Paint);
             // 
             // EditShowTimeUC
             // 
@@ -506,6 +515,7 @@ namespace UI.ShowTime
             this.Controls.Add(this.panelHeader);
             this.Name = "EditShowTimeUC";
             this.Size = new System.Drawing.Size(1360, 780);
+            this.Load += new System.EventHandler(this.EditShowTimeUC_Load);
             this.panelHeader.ResumeLayout(false);
             this.right_panel.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
@@ -519,16 +529,6 @@ namespace UI.ShowTime
             this.groupBoxTimeline.ResumeLayout(false);
             this.ResumeLayout(false);
 
-            // Event handlers
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            this.cboMovie.SelectedIndexChanged += new System.EventHandler(this.cboMovie_SelectedIndexChanged);
-            this.cboRoom.SelectedIndexChanged += new System.EventHandler(this.cboRoom_SelectedIndexChanged);
-            this.dtpStartTime.ValueChanged += new System.EventHandler(this.dtpStartTime_ValueChanged);
-            this.panelTimeline.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTimeline_Paint);
-            this.panelForm.Resize += new System.EventHandler(this.panelForm_Resize);
-            this.Load += new System.EventHandler(this.EditShowTimeUC_Load);
         }
 
         #endregion

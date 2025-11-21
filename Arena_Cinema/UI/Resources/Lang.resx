@@ -327,9 +327,6 @@
   <data name="LinkTRL" xml:space="preserve">
     <value>🎬 Link Trailer</value>
   </data>
-  <data name="AgeLM" xml:space="preserve">
-    <value>🎭 Giới Hạn Tuổi</value>
-  </data>
   <data name="ChooseAgeLM" xml:space="preserve">
     <value>--Chọn Giới Hạn Tuổi--</value>
   </data>
@@ -557,5 +554,47 @@
   </data>
   <data name="vedaban" xml:space="preserve">
     <value>Số vé dã bán:</value>
+	  </data>
+  <data name="NhanVien" xml:space="preserve">
+    <value>Nhân viên</value>
+  </data>
+  <data name="KhuVucNhanVien" xml:space="preserve">
+    <value>Khu vực nhân viên</value>
+  </data>
+  <data name="CacTuyChonKhacCuaNhanVien" xml:space="preserve">
+    <value>Các tùy chọn khác của nhân viên</value>
+  </data>
+  <data name="AgeLM" xml:space="preserve">
+    <value>🎭 Giới Hạn Tuổi</value>
+  </data>
+  <data name="Khac" xml:space="preserve">
+    <value>Khác</value>
+  </data>
+  <data name="XemBaoCaoLuongVaCongViec" xml:space="preserve">
+    <value>Xem báo cáo lương và công việc</value>
+  </data>
+  <data name="KiemKe" xml:space="preserve">
+    <value>Kiểm kê</value>
+  </data>
+  <data name="QuanLyCaLamViecCuaNhanVien" xml:space="preserve">
+    <value>Quản lý ca làm việc của nhân viên</value>
+  </data>
+  <data name="CaLam" xml:space="preserve">
+    <value>Ca làm</value>
+  </data>
+  <data name="QuanLyThongTinVaDanhSachNhanVien" xml:space="preserve">
+    <value>Quản lý thông tin và danh sách nhân viên</value>
+  </data>
+  <data name="QUANLYNHANVIEN" xml:space="preserve">
+    <value>QUẢN LÝ NHÂN VIÊN</value>
+  </data>
+  <data name="XEMTUYCHON" xml:space="preserve">
+    <value>XEM TÙY CHỌN</value>
+  </data>
+  <data name="XEMTHONGKE" xml:space="preserve">
+    <value>XEM THỐNG KÊ</value>
+  </data>
+  <data name="XEMCALAM" xml:space="preserve">
+    <value>XEM CA LÀM</value>
   </data>
 </root>

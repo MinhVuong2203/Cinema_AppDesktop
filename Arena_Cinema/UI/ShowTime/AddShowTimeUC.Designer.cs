@@ -313,6 +313,7 @@ namespace UI.ShowTime
             this.txtPrice.TabIndex = 5;
             this.txtPrice.Text = "";
             this.txtPrice.TrailingIcon = null;
+            this.txtPrice.TextChanged += new System.EventHandler(this.txtPrice_TextChanged);
             // 
             // groupBoxTime
             // 
@@ -329,7 +330,6 @@ namespace UI.ShowTime
             this.groupBoxTime.TabIndex = 1;
             this.groupBoxTime.TabStop = false;
             this.groupBoxTime.Text = global::UI.Resources.Lang.TimeShow;
-            // 
             // lblStartTime
             // 
             this.lblStartTime.AutoSize = true;
@@ -337,7 +337,7 @@ namespace UI.ShowTime
             this.lblStartTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblStartTime.Location = new System.Drawing.Point(30, 40);
             this.lblStartTime.Name = "lblStartTime";
-            this.lblStartTime.Size = new System.Drawing.Size(93, 20);
+            this.lblStartTime.Size = new System.Drawing.Size(90, 20);
             this.lblStartTime.TabIndex = 0;
             this.lblStartTime.Text = global::UI.Resources.Lang.startTime;
             // 
@@ -358,7 +358,7 @@ namespace UI.ShowTime
             this.lblEndTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.lblEndTime.Location = new System.Drawing.Point(562, 42);
             this.lblEndTime.Name = "lblEndTime";
-            this.lblEndTime.Size = new System.Drawing.Size(169, 20);
+            this.lblEndTime.Size = new System.Drawing.Size(168, 20);
             this.lblEndTime.TabIndex = 2;
             this.lblEndTime.Text = global::UI.Resources.Lang.endTime;
             // 

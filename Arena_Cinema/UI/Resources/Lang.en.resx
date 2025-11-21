@@ -327,9 +327,6 @@
   <data name="LinkTRL" xml:space="preserve">
     <value>🎬 Link Trailer</value>
   </data>
-  <data name="AgeLM" xml:space="preserve">
-    <value>🎭 Age Limit</value>
-  </data>
   <data name="ChooseAgeLM" xml:space="preserve">
     <value>--Choose Age Limit--</value>
   </data>
@@ -555,7 +552,49 @@
   <data name="grbTrangThai" xml:space="preserve">
     <value>ℹ️ Status</value>
   </data>
-  <data name="vedaban" xml:space="preserve">
+	<data name="vedaban" xml:space="preserve">
     <value>Sold Tickets:</value>
+	  </data>
+  <data name="NhanVien" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="KhuVucNhanVien" xml:space="preserve">
+    <value>Area employee</value>
+  </data>
+  <data name="CacTuyChonKhacCuaNhanVien" xml:space="preserve">
+    <value>Other user options</value>
+  </data>
+  <data name="AgeLM" xml:space="preserve">
+    <value>🎭 Age Limit</value>
+  </data>
+  <data name="Khac" xml:space="preserve">
+    <value>Orther</value>
+  </data>
+  <data name="XemBaoCaoLuongVaCongViec" xml:space="preserve">
+    <value>View salary and job reports</value>
+  </data>
+  <data name="KiemKe" xml:space="preserve">
+    <value>Inventory</value>
+  </data>
+  <data name="QuanLyCaLamViecCuaNhanVien" xml:space="preserve">
+    <value>Employee shift management</value>
+  </data>
+  <data name="CaLam" xml:space="preserve">
+    <value>Shift</value>
+  </data>
+  <data name="QuanLyThongTinVaDanhSachNhanVien" xml:space="preserve">
+    <value>Manage employee information and lists</value>
+  </data>
+  <data name="QUANLYNHANVIEN" xml:space="preserve">
+    <value>PERSONNEL MANAGEMENT</value>
+  </data>
+  <data name="XEMTUYCHON" xml:space="preserve">
+    <value>VIEW OPTIONS</value>
+  </data>
+  <data name="XEMTHONGKE" xml:space="preserve">
+    <value>VIEW STATISTICS</value>
+  </data>
+  <data name="XEMCALAM" xml:space="preserve">
+    <value>SEE WORK SHIFTS</value>
   </data>
 </root>

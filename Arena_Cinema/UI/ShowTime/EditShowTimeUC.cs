@@ -17,7 +17,7 @@ namespace UI.ShowTime
   
     public partial class EditShowTimeUC : UserControl
     {
-        // Constructor mặc định (BẮT BUỘC cho Designer)
+      
         public EditShowTimeUC()
         {
             InitializeComponent();
@@ -28,6 +28,31 @@ namespace UI.ShowTime
         {
             InitializeData(home, employee, showTime);
             LoadInitialData();
+        }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+            ReaLTaiizor.Controls.MaterialTextBox txt = sender as ReaLTaiizor.Controls.MaterialTextBox;
+            if (txt == null) return;
+
+            string text = txt.Text;
+            string filteredText = "";
+
+            foreach (char c in text)
+            {
+                if (char.IsDigit(c))
+                {
+                    filteredText += c;
+                }
+            }
+
+          
+            if (text != filteredText)
+            {
+                txt.Text = filteredText;
+              
+                txt.SelectionStart = filteredText.Length;
+            }
         }
     }
 }
