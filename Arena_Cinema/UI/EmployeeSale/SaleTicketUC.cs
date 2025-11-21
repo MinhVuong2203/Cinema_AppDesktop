@@ -66,9 +66,18 @@ namespace UI.EmployeeSale
         {
             if (_selectedShowTimeId != Guid.Empty)
             {
-                Console.WriteLine($"[RefreshTimer] Refreshing seat status...");
-                RefreshSeatStatus();
-                Console.WriteLine($"[RefreshTimer] Refresh completed");
+                //Console.WriteLine($"[RefreshTimer] Refreshing seat status...");
+                //RefreshSeatStatus();
+                //Console.WriteLine($"[RefreshTimer] Refresh completed");
+                // Đảm bảo chạy trên UI thread
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(new Action(() => RefreshSeatStatus()));
+                }
+                else
+                {
+                    RefreshSeatStatus();
+                }
             }
         }
 
@@ -83,8 +92,14 @@ namespace UI.EmployeeSale
                 _seatLockDAL.RefreshContext();
 
                 // Reload tickets từ database
-                _tickets = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId);
-
+                //_tickets = _saleTicketDAL.GetTicketsByShowTimeID(_selectedShowTimeId);
+                // Reload tickets từ database - tạo context mới để tránh cache
+                using (var context = new CinemaDBContext())
+                {
+                    _tickets = context.Tickets
+                        .Where(t => t.ShowTimeID == _selectedShowTimeId && !t.IsDeleted)
+                        .ToList();
+                }
                 // Cập nhật màu sắc các button ghế
                 foreach (Control control in flpTickets.Controls)
                 {
@@ -139,7 +154,7 @@ namespace UI.EmployeeSale
                 btnSeat.BackColor = Color.Gray;
                 btnSeat.Enabled = false;
             }
-            else if (isLockedByOther)
+            else if (isLockedByOther || ticket.Status == "Đang giữ chỗ")
             {
                 // Ghế đang được nhân viên khác chọn - màu cam và disabled
                 btnSeat.BackColor = Color.Orange;
@@ -397,7 +412,13 @@ namespace UI.EmployeeSale
                         // Cập nhật màu thông qua UpdateSeatButtonAppearance để đảm bảo đồng bộ
                         if (updatedTicket != null)
                         {
+                            RefreshSeatStatus();
+                            Console.WriteLine(ticket.Status);
+                            //_refreshTimer += RefreshTimer_Tick;
+
+                            //_refreshTimer.Start();
                             UpdateSeatButtonAppearance(btn, seat, updatedTicket);
+                            //RefreshTimer_Tick(null, null);
                         }
                     }
                     else
@@ -423,6 +444,8 @@ namespace UI.EmployeeSale
                         {
                             _selectedTickets.Add(updatedTicket);
                             // Cập nhật màu thông qua UpdateSeatButtonAppearance để đảm bảo đồng bộ
+                            RefreshSeatStatus();
+                            Console.WriteLine(ticket.Status);
                             UpdateSeatButtonAppearance(btn, seat, updatedTicket);
                         }
                     }
