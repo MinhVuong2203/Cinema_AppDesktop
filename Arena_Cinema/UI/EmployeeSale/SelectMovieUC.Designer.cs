@@ -57,7 +57,7 @@
             this.grpEmployeeInfo.Controls.Add(this.lb_workDateText);
             this.grpEmployeeInfo.Location = new System.Drawing.Point(20, 96);
             this.grpEmployeeInfo.Name = "grpEmployeeInfo";
-            this.grpEmployeeInfo.Size = new System.Drawing.Size(441, 353);
+            this.grpEmployeeInfo.Size = new System.Drawing.Size(593, 353);
             this.grpEmployeeInfo.TabIndex = 0;
             this.grpEmployeeInfo.TabStop = false;
             this.grpEmployeeInfo.Text = "Thông tin nhân viên";
@@ -66,7 +66,7 @@
             // 
             this.picAVT.Location = new System.Drawing.Point(20, 30);
             this.picAVT.Name = "picAVT";
-            this.picAVT.Size = new System.Drawing.Size(80, 80);
+            this.picAVT.Size = new System.Drawing.Size(80, 115);
             this.picAVT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picAVT.TabIndex = 0;
             this.picAVT.TabStop = false;
@@ -76,7 +76,7 @@
             this.lb_EmName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_EmName.Location = new System.Drawing.Point(120, 30);
             this.lb_EmName.Name = "lb_EmName";
-            this.lb_EmName.Size = new System.Drawing.Size(315, 31);
+            this.lb_EmName.Size = new System.Drawing.Size(448, 31);
             this.lb_EmName.TabIndex = 1;
             this.lb_EmName.Text = "Tên nhân viên";
             // 
@@ -85,16 +85,17 @@
             this.lb_EmpIDText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_EmpIDText.Location = new System.Drawing.Point(120, 61);
             this.lb_EmpIDText.Name = "lb_EmpIDText";
-            this.lb_EmpIDText.Size = new System.Drawing.Size(315, 26);
+            this.lb_EmpIDText.Size = new System.Drawing.Size(448, 26);
             this.lb_EmpIDText.TabIndex = 2;
-            this.lb_EmpIDText.Text = "Mã NV";
+            //this.lb_EmpIDText.Text = "Mã NV";
+            this.lb_EmpIDText.Text = global::UI.Resources.Lang.MaNV;
             // 
             // lb_BranchText
             // 
             this.lb_BranchText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_BranchText.Location = new System.Drawing.Point(120, 93);
             this.lb_BranchText.Name = "lb_BranchText";
-            this.lb_BranchText.Size = new System.Drawing.Size(315, 30);
+            this.lb_BranchText.Size = new System.Drawing.Size(448, 30);
             this.lb_BranchText.TabIndex = 3;
             this.lb_BranchText.Text = "Chi nhánh";
             // 
@@ -103,7 +104,7 @@
             this.lb_EmailText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_EmailText.Location = new System.Drawing.Point(120, 130);
             this.lb_EmailText.Name = "lb_EmailText";
-            this.lb_EmailText.Size = new System.Drawing.Size(315, 28);
+            this.lb_EmailText.Size = new System.Drawing.Size(448, 28);
             this.lb_EmailText.TabIndex = 4;
             this.lb_EmailText.Text = "Email";
             // 
@@ -112,7 +113,7 @@
             this.lb_PhoneText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_PhoneText.Location = new System.Drawing.Point(120, 166);
             this.lb_PhoneText.Name = "lb_PhoneText";
-            this.lb_PhoneText.Size = new System.Drawing.Size(250, 29);
+            this.lb_PhoneText.Size = new System.Drawing.Size(448, 29);
             this.lb_PhoneText.TabIndex = 5;
             this.lb_PhoneText.Text = "SĐT";
             // 
@@ -121,7 +122,7 @@
             this.lb_BthDayText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_BthDayText.Location = new System.Drawing.Point(120, 201);
             this.lb_BthDayText.Name = "lb_BthDayText";
-            this.lb_BthDayText.Size = new System.Drawing.Size(250, 26);
+            this.lb_BthDayText.Size = new System.Drawing.Size(448, 26);
             this.lb_BthDayText.TabIndex = 6;
             this.lb_BthDayText.Text = "Ngày sinh";
             // 
@@ -130,7 +131,7 @@
             this.lb_SalaryText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_SalaryText.Location = new System.Drawing.Point(120, 237);
             this.lb_SalaryText.Name = "lb_SalaryText";
-            this.lb_SalaryText.Size = new System.Drawing.Size(250, 27);
+            this.lb_SalaryText.Size = new System.Drawing.Size(448, 27);
             this.lb_SalaryText.TabIndex = 7;
             this.lb_SalaryText.Text = "Lương";
             // 
@@ -139,14 +140,14 @@
             this.lb_workDateText.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lb_workDateText.Location = new System.Drawing.Point(120, 274);
             this.lb_workDateText.Name = "lb_workDateText";
-            this.lb_workDateText.Size = new System.Drawing.Size(315, 27);
+            this.lb_workDateText.Size = new System.Drawing.Size(448, 27);
             this.lb_workDateText.TabIndex = 8;
             this.lb_workDateText.Text = "Ngày vào làm";
             // 
             // lbMovieListTitle
             // 
             this.lbMovieListTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lbMovieListTitle.Location = new System.Drawing.Point(476, 20);
+            this.lbMovieListTitle.Location = new System.Drawing.Point(664, 20);
             this.lbMovieListTitle.Name = "lbMovieListTitle";
             this.lbMovieListTitle.Size = new System.Drawing.Size(400, 30);
             this.lbMovieListTitle.TabIndex = 1;
@@ -155,9 +156,9 @@
             // flpMovies
             // 
             this.flpMovies.AutoScroll = true;
-            this.flpMovies.Location = new System.Drawing.Point(467, 60);
+            this.flpMovies.Location = new System.Drawing.Point(636, 60);
             this.flpMovies.Name = "flpMovies";
-            this.flpMovies.Size = new System.Drawing.Size(1150, 700);
+            this.flpMovies.Size = new System.Drawing.Size(981, 700);
             this.flpMovies.TabIndex = 2;
             // 
             // btn_back
