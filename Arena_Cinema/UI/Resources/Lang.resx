@@ -554,6 +554,7 @@
   </data>
   <data name="vedaban" xml:space="preserve">
     <value>Số vé dã bán:</value>
+	  </data>
   <data name="NhanVien" xml:space="preserve">
     <value>Nhân viên</value>
   </data>

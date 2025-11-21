@@ -552,8 +552,9 @@
   <data name="grbTrangThai" xml:space="preserve">
     <value>ℹ️ Status</value>
   </data>
-  <data name="vedaban" xml:space="preserve">
+	<data name="vedaban" xml:space="preserve">
     <value>Sold Tickets:</value>
+	  </data>
   <data name="NhanVien" xml:space="preserve">
     <value>Employee</value>
   </data>
