@@ -75,6 +75,7 @@
     <Compile Include="AccountDAL.cs" />
     <Compile Include="CinemaDBContext.cs" />
     <Compile Include="EmployeeDAL.cs" />
+    <Compile Include="invoiceDAL.cs" />
     <Compile Include="MovieDAL.cs" />
     <Compile Include="PayOSWebhookHandler.cs" />
     <Compile Include="ProductDAL.cs" />
