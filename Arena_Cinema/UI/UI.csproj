@@ -226,6 +226,12 @@
     <Compile Include="Controls\RoundedPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Dashboard\DashboardUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dashboard\DashboardUC.Designer.cs">
+      <DependentUpon>DashboardUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="EmployeeSale\CreatCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -464,6 +470,9 @@
     <Compile Include="TestPayment.Designer.cs">
       <DependentUpon>TestPayment.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Dashboard\DashboardUC.resx">
+      <DependentUpon>DashboardUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeSale\CreatCustomer.resx">
       <DependentUpon>CreatCustomer.cs</DependentUpon>
     </EmbeddedResource>

@@ -17,6 +17,7 @@ using UI.ShowTime;
 
 
 using UI.Helpers;
+using UI.Dashboard;
 
 
 namespace UI
@@ -158,7 +159,9 @@ namespace UI
             switch (buttonName)
             {
                 case "btnTrangChu":
-                    MessageBox.Show("Trang Chủ");
+                    DashboardUC dashboardUC = new DashboardUC(this, _employee);
+                    dashboardUC.LoadUpcomingMovies();
+                    LoadControl(dashboardUC);
                     break;
                 case "btnNhanSu":
                   
