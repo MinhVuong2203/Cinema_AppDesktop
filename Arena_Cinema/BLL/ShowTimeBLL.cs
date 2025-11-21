@@ -348,6 +348,8 @@ namespace BLL
 
             if (showTime.Price < 0)
                 return (false, "✗ Giá vé không hợp lệ!");
+            if(showTime.Price % 1000 !=0)
+                return(false, "✗ Giá vé phải là bội số của 1,000 VNĐ!");
 
             if (showTime.Price > 1000000)
                 return (false, "✗ Giá vé quá cao! (Tối đa 1,000,000 VNĐ)");
