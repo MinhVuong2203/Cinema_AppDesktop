@@ -127,7 +127,7 @@ namespace UI.ShowTime
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(330, 32);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "✏️ Sửa Suất Chiếu";
+            this.lblTitle.Text = global::UI.Resources.Lang.suasuatchieu;
             // 
             // panelMain
             // 
@@ -225,7 +225,7 @@ namespace UI.ShowTime
             this.groupBoxInfo.Size = new System.Drawing.Size(1035, 305);
             this.groupBoxInfo.TabIndex = 0;
             this.groupBoxInfo.TabStop = false;
-            this.groupBoxInfo.Text = "📋 Thông Tin Suất Chiếu";
+            this.groupBoxInfo.Text = global::UI.Resources.Lang.showtimeinfo;
             // 
             // lblShowTimeID
             // 
@@ -236,7 +236,7 @@ namespace UI.ShowTime
             this.lblShowTimeID.Name = "lblShowTimeID";
             this.lblShowTimeID.Size = new System.Drawing.Size(107, 20);
             this.lblShowTimeID.TabIndex = 0;
-            this.lblShowTimeID.Text = "Mã Suất chiếu";
+            this.lblShowTimeID.Text = global::UI.Resources.Lang.MaSuatChieu;
             // 
             // txtShowTimeID
             // 
@@ -259,7 +259,7 @@ namespace UI.ShowTime
             this.lblMovie.Name = "lblMovie";
             this.lblMovie.Size = new System.Drawing.Size(85, 20);
             this.lblMovie.TabIndex = 2;
-            this.lblMovie.Text = "Chọn Phim";
+            this.lblMovie.Text = global::UI.Resources.Lang.chonphim;
             // 
             // cboMovie
             // 
@@ -293,7 +293,7 @@ namespace UI.ShowTime
             this.lblRoom.Name = "lblRoom";
             this.lblRoom.Size = new System.Drawing.Size(94, 20);
             this.lblRoom.TabIndex = 4;
-            this.lblRoom.Text = "Chọn Phòng";
+            this.lblRoom.Text = global::UI.Resources.Lang.chonPhong;
             // 
             // cboRoom
             // 
@@ -327,7 +327,7 @@ namespace UI.ShowTime
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(102, 20);
             this.lblPrice.TabIndex = 6;
-            this.lblPrice.Text = "Giá Vé (VNĐ)";
+            this.lblPrice.Text = global::UI.Resources.Lang.Price;
             // 
             // txtPrice
             // 
@@ -362,7 +362,7 @@ namespace UI.ShowTime
             this.groupBoxTime.Size = new System.Drawing.Size(1035, 155);
             this.groupBoxTime.TabIndex = 1;
             this.groupBoxTime.TabStop = false;
-            this.groupBoxTime.Text = "⏰ Thời Gian Chiếu";
+            this.groupBoxTime.Text = global::UI.Resources.Lang.TimeShow;
             // 
             // lblStartTime
             // 
@@ -373,7 +373,7 @@ namespace UI.ShowTime
             this.lblStartTime.Name = "lblStartTime";
             this.lblStartTime.Size = new System.Drawing.Size(90, 20);
             this.lblStartTime.TabIndex = 0;
-            this.lblStartTime.Text = "Giờ bắt đầu";
+            this.lblStartTime.Text = global::UI.Resources.Lang.startTime;
             // 
             // dtpStartTime
             // 
@@ -394,7 +394,7 @@ namespace UI.ShowTime
             this.lblEndTime.Name = "lblEndTime";
             this.lblEndTime.Size = new System.Drawing.Size(168, 20);
             this.lblEndTime.TabIndex = 2;
-            this.lblEndTime.Text = "Giờ kết thúc ( Dự kiến)";
+            this.lblEndTime.Text = global::UI.Resources.Lang.endTime;
             // 
             // dtpEndTime
             // 
@@ -415,7 +415,7 @@ namespace UI.ShowTime
             this.lblNote.Name = "lblNote";
             this.lblNote.Size = new System.Drawing.Size(342, 19);
             this.lblNote.TabIndex = 4;
-            this.lblNote.Text = "* Giờ kết thúc tự động tính dựa trên thời lượng phim.";
+            this.lblNote.Text = global::UI.Resources.Lang.gioketthucdukien;
             // 
             // groupBoxStatus
             // 
@@ -431,7 +431,7 @@ namespace UI.ShowTime
             this.groupBoxStatus.Size = new System.Drawing.Size(1035, 95);
             this.groupBoxStatus.TabIndex = 2;
             this.groupBoxStatus.TabStop = false;
-            this.groupBoxStatus.Text = "ℹ️ Trạng Thái";
+            this.groupBoxStatus.Text = global::UI.Resources.Lang.grbTrangThai;
             // 
             // lblTicketsSoldLabel
             // 
@@ -442,7 +442,7 @@ namespace UI.ShowTime
             this.lblTicketsSoldLabel.Name = "lblTicketsSoldLabel";
             this.lblTicketsSoldLabel.Size = new System.Drawing.Size(101, 20);
             this.lblTicketsSoldLabel.TabIndex = 0;
-            this.lblTicketsSoldLabel.Text = "Số vé dã bán:";
+            this.lblTicketsSoldLabel.Text = global::UI.Resources.Lang.vedaban;
             // 
             // lblTicketsSold
             // 
@@ -464,7 +464,7 @@ namespace UI.ShowTime
             this.lblStatusLabel.Name = "lblStatusLabel";
             this.lblStatusLabel.Size = new System.Drawing.Size(83, 20);
             this.lblStatusLabel.TabIndex = 2;
-            this.lblStatusLabel.Text = "Trạng Thái";
+            this.lblStatusLabel.Text = global::UI.Resources.Lang.TrangThai;
             // 
             // lblStatus
             // 
@@ -497,7 +497,7 @@ namespace UI.ShowTime
             this.groupBoxTimeline.Size = new System.Drawing.Size(1035, 180);
             this.groupBoxTimeline.TabIndex = 5;
             this.groupBoxTimeline.TabStop = false;
-            this.groupBoxTimeline.Text = "📅 Lịch Chiếu Trong Ngày";
+            this.groupBoxTimeline.Text = global::UI.Resources.Lang.lichchieutrongngay;
             // 
             // panelTimeline
             // 
