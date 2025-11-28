@@ -32,7 +32,7 @@ namespace UI.EmployeeSale
         
         // Timer refresh realtime
         private Timer _refreshTimer;
-        private const int REFRESH_INTERVAL = 3000;
+        private const int REFRESH_INTERVAL = 2000;
 
         public SaleTicketUC(DTO.Movie movie)
         {
@@ -88,14 +88,18 @@ namespace UI.EmployeeSale
         {
             try
             {
-                // Tạo context mới để tránh cache và lấy dữ liệu mới nhất từ database
-                // Tương tự cách GetCustomerByPhone đã làm
-                using (var context = new CinemaDBContext())
+                // **QUAN TRỌNG**: Sử dụng method GetFreshTickets để force query từ DB
+                _tickets = _seatLockDAL.GetFreshTickets(_selectedShowTimeId);
+
+                // Debug log để kiểm tra
+                var lockedTickets = _tickets.Where(t => t.LockedBy.HasValue).ToList();
+                if (lockedTickets.Any())
                 {
-                    // Reload tickets từ database với context mới để đảm bảo lấy LockedBy mới nhất
-                    _tickets = context.Tickets
-                        .Where(t => t.ShowTimeID == _selectedShowTimeId && !t.IsDeleted)
-                        .ToList();
+                    Console.WriteLine($"[RefreshSeatStatus] Found {lockedTickets.Count} locked tickets");
+                    foreach (var ticket in lockedTickets)
+                    {
+                        Console.WriteLine($"  - Ticket {ticket.TicketID}: LockedBy={ticket.LockedBy}");
+                    }
                 }
 
                 // Cập nhật màu sắc các button ghế
@@ -104,23 +108,14 @@ namespace UI.EmployeeSale
                     // Bỏ qua Label "MÀN HÌNH"
                     if (control is Label) continue;
 
-                    if (control is FlowLayoutPanel rowPanel)
+                    if (control is Button btnSeat && btnSeat.Tag is int seatId)
                     {
-                        foreach (Control ctrl in rowPanel.Controls)
+                        var seat = _seats.FirstOrDefault(s => s.SeatID == seatId);
+                        var ticket = _tickets.FirstOrDefault(t => t.SeatID == seatId);
+
+                        if (seat != null && ticket != null)
                         {
-                            // Bỏ qua Label hàng (A, B, C...)
-                            if (ctrl is Label) continue;
-
-                            if (ctrl is Button btnSeat && btnSeat.Tag is int seatId)
-                            {
-                                var seat = _seats.FirstOrDefault(s => s.SeatID == seatId);
-                                var ticket = _tickets.FirstOrDefault(t => t.SeatID == seatId);
-
-                                if (seat != null && ticket != null)
-                                {
-                                    UpdateSeatButtonAppearance(btnSeat, seat, ticket);
-                                }
-                            }
+                            UpdateSeatButtonAppearance(btnSeat, seat, ticket);
                         }
                     }
                 }
@@ -147,29 +142,43 @@ namespace UI.EmployeeSale
             bool isLockedByOther = ticket.LockedBy.HasValue && !isLockedByMe;
             bool isSold = ticket.Status == "Đã bán";
 
-            // Thứ tự ưu tiên: Đã bán > Lock bởi người khác > Đang chọn (bởi mình hoặc đã lock) > Trống
+            // **QUAN TRỌNG**: Chỉ cập nhật màu nếu trạng thái thực sự thay đổi
+            Color targetColor;
+            bool shouldEnable;
+
             if (isSold)
             {
-                btnSeat.BackColor = Color.Gray;
-                btnSeat.Enabled = false;
+                targetColor = Color.Gray;
+                shouldEnable = false;
             }
             else if (isLockedByOther)
             {
                 // Ghế đang được nhân viên khác chọn - màu cam và disabled
-                btnSeat.BackColor = Color.Orange;
-                btnSeat.Enabled = false;
+                targetColor = Color.Orange;
+                shouldEnable = false;
             }
             else if (isSelected || isLockedByMe)
             {
                 // Ghế đang được mình chọn - màu xanh lá
-                btnSeat.BackColor = Color.LimeGreen;
-                btnSeat.Enabled = true;
+                targetColor = Color.LimeGreen;
+                shouldEnable = true;
             }
             else
             {
                 // Ghế trống - màu gốc
-                btnSeat.BackColor = seatColor;
-                btnSeat.Enabled = true;
+                targetColor = seatColor;
+                shouldEnable = true;
+            }
+
+            // Chỉ update nếu có thay đổi để tránh flicker
+            if (btnSeat.BackColor != targetColor)
+            {
+                btnSeat.BackColor = targetColor;
+            }
+
+            if (btnSeat.Enabled != shouldEnable)
+            {
+                btnSeat.Enabled = shouldEnable;
             }
         }
 
@@ -379,29 +388,31 @@ namespace UI.EmployeeSale
         {
             var btn = sender as Button;
             var seatId = (int)btn.Tag;
-            var ticket = _tickets.FirstOrDefault(t => t.SeatID == seatId);
             var seat = _seats.FirstOrDefault(s => s.SeatID == seatId);
 
-            if (ticket == null || seat == null) return;
+            if (seat == null) return;
+
+            // **QUAN TRỌNG**: Luôn query fresh ticket từ DB trước khi xử lý
+            Ticket ticket = null;
+            using (var context = new CinemaDBContext())
+            {
+                context.Configuration.AutoDetectChangesEnabled = false;
+                ticket = context.Tickets
+                    .AsNoTracking()
+                    .FirstOrDefault(t => t.SeatID == seatId && t.ShowTimeID == _selectedShowTimeId && !t.IsDeleted);
+            }
+
+            if (ticket == null) return;
             if (ticket.Status == "Đã bán") return;
 
             // Kiểm tra ghế có đang bị lock bởi người khác không
-            // Reload ticket từ database để đảm bảo có dữ liệu mới nhất
-            using (var context = new CinemaDBContext())
-            {
-                var freshTicket = context.Tickets
-                    .FirstOrDefault(t => t.TicketID == ticket.TicketID && !t.IsDeleted);
-
-                if (freshTicket != null)
-                {
-                    ticket = freshTicket;
-                }
-            }
-
             if (ticket.LockedBy.HasValue && ticket.LockedBy != _employee?.EmployeeID)
             {
                 MessageBox.Show("Ghế này đang được nhân viên khác chọn!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                // Force refresh ngay lập tức
+                RefreshSeatStatus();
                 return;
             }
 
@@ -416,20 +427,8 @@ namespace UI.EmployeeSale
                     {
                         _selectedTickets.Remove(selected);
 
-                        // Reload tickets từ database để cập nhật trạng thái
-                        using (var context = new CinemaDBContext())
-                        {
-                            _tickets = context.Tickets
-                                .Where(t => t.ShowTimeID == _selectedShowTimeId && !t.IsDeleted)
-                                .ToList();
-                        }
-
-                        // Cập nhật màu thông qua UpdateSeatButtonAppearance
-                        var updatedTicket = _tickets.FirstOrDefault(t => t.TicketID == ticket.TicketID);
-                        if (updatedTicket != null && seat != null)
-                        {
-                            UpdateSeatButtonAppearance(btn, seat, updatedTicket);
-                        }
+                        // Refresh ngay sau khi unlock
+                        RefreshSeatStatus();
                     }
                 }
             }
@@ -441,19 +440,13 @@ namespace UI.EmployeeSale
                     bool locked = _seatLockDAL.LockSeat(ticket.TicketID, _employee.EmployeeID);
                     if (locked)
                     {
-                        // Reload tickets từ database để cập nhật trạng thái
-                        using (var context = new CinemaDBContext())
-                        {
-                            _tickets = context.Tickets
-                                .Where(t => t.ShowTimeID == _selectedShowTimeId && !t.IsDeleted)
-                                .ToList();
-                        }
+                        // Refresh để lấy ticket đã lock
+                        _tickets = _seatLockDAL.GetFreshTickets(_selectedShowTimeId);
 
                         var updatedTicket = _tickets.FirstOrDefault(t => t.TicketID == ticket.TicketID);
                         if (updatedTicket != null)
                         {
                             _selectedTickets.Add(updatedTicket);
-                            // Cập nhật màu thông qua UpdateSeatButtonAppearance
                             UpdateSeatButtonAppearance(btn, seat, updatedTicket);
                         }
                     }
@@ -461,13 +454,17 @@ namespace UI.EmployeeSale
                     {
                         MessageBox.Show("Không thể chọn ghế này!", "Thông báo",
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        // Force refresh để cập nhật trạng thái đúng
+                        RefreshSeatStatus();
                     }
                 }
             }
+
             UpdateInvoice();
         }
 
-        
+
 
         private void LoadProducts()
         {

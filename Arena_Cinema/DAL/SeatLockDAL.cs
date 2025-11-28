@@ -289,6 +289,35 @@ namespace DAL
             _context.Dispose();
             _context = new CinemaDBContext();
         }
+
+        /// <summary>
+        /// Lấy danh sách tickets mới nhất từ database (không cache)
+        /// </summary>
+        public List<Ticket> GetFreshTickets(Guid showTimeId)
+        {
+            try
+            {
+                // Tạo context mới để đảm bảo không bị cache
+                using (var freshContext = new CinemaDBContext())
+                {
+                    // Tắt tracking để đảm bảo query trực tiếp từ DB
+                    freshContext.Configuration.AutoDetectChangesEnabled = false;
+                    freshContext.Configuration.LazyLoadingEnabled = false;
+
+                    var tickets = freshContext.Tickets
+                        .AsNoTracking() // Quan trọng: không tracking để force fresh data
+                        .Where(t => t.ShowTimeID == showTimeId && !t.IsDeleted)
+                        .ToList();
+
+                    return tickets;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[GetFreshTickets] Error: {ex.Message}");
+                return new List<Ticket>();
+            }
+        }
     }
 
     /// <summary>
