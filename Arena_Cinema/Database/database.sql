@@ -286,7 +286,7 @@ GO
 CREATE TABLE ShowTime (
     ShowTimeID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
     StartTime DATETIME NOT NULL,
-    Price DECIMAL(18,2) NOT NULL CHECK (Price > 0),
+    Price DECIMAL(18,2) NOT NULL CHECK (Price >= 0),
     MovieID INT NOT NULL,
     RoomID INT NOT NULL,
     IsDeleted BIT DEFAULT 0 NOT NULL,
@@ -294,6 +294,8 @@ CREATE TABLE ShowTime (
     FOREIGN KEY (RoomID) REFERENCES Room(RoomID) ON DELETE CASCADE
 );
 GO
+
+
 
 -- Tạo stored procedure mới
 CREATE PROCEDURE sp_GetShowTimesPaginated

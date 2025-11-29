@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Properties", "Properties\Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{9F034985-4935-4580-8336-693E045F9A51}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AppDesktopArena", "AppDesktopArena\AppDesktopArena.vdproj", "{ECD73E00-2786-DA88-0A96-622E4C2EC4F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,8 @@ Global
 		{9F034985-4935-4580-8336-693E045F9A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F034985-4935-4580-8336-693E045F9A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F034985-4935-4580-8336-693E045F9A51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECD73E00-2786-DA88-0A96-622E4C2EC4F6}.Debug|Any CPU.ActiveCfg = Debug
+		{ECD73E00-2786-DA88-0A96-622E4C2EC4F6}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
