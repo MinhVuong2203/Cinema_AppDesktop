@@ -29,7 +29,8 @@ namespace UI.EmployeeSale
         private Guid _selectedShowTimeId = Guid.Empty;
 
         private Dictionary<int, Button> _seatButtons = new Dictionary<int, Button>();
-        
+        private bool isInvoiceExpanded = true;
+
         // Timer refresh realtime
         private Timer _refreshTimer;
         private const int REFRESH_INTERVAL = 2000;
@@ -807,6 +808,46 @@ namespace UI.EmployeeSale
             {
                 int unlockedCount = _seatLockDAL.UnlockAllSeatsForEmployee(_employee.EmployeeID);
                 Console.WriteLine($"[Cleanup] Unlocked {unlockedCount} seats for employee {_employee.FullName}");
+            }
+        }
+
+        // Thêm các phương thức này
+        private void btnToggleInvoice_Click(object sender, EventArgs e)
+        {
+            isInvoiceExpanded = !isInvoiceExpanded;
+
+            if (isInvoiceExpanded)
+            {
+                // Mở rộng sidebar
+                pnlRight.Width = 450;
+                btnToggleInvoice.Text = "◀ Thu gọn";
+                pnlInvoiceContent.Visible = true;
+            }
+            else
+            {
+                // Thu gọn sidebar
+                pnlRight.Width = 50;
+                btnToggleInvoice.Text = "▶";
+                pnlInvoiceContent.Visible = false;
+            }
+        }
+
+        // Thêm placeholder cho textbox số điện thoại
+        private void txt_Phone_Enter(object sender, EventArgs e)
+        {
+            if (txt_Phone.Text == "Nhập SĐT khách hàng...")
+            {
+                txt_Phone.Text = "";
+                txt_Phone.ForeColor = System.Drawing.Color.Black;
+            }
+        }
+
+        private void txt_Phone_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_Phone.Text))
+            {
+                txt_Phone.Text = "Nhập SĐT khách hàng...";
+                txt_Phone.ForeColor = System.Drawing.Color.Gray;
             }
         }
     }
