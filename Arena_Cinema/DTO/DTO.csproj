@@ -60,6 +60,7 @@
     <Compile Include="Language.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="MovieProduct.cs" />
+    <Compile Include="Operation.cs" />
     <Compile Include="Payment.cs" />
     <Compile Include="PaymentData.cs" />
     <Compile Include="PaymentItem.cs" />

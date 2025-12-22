@@ -33,6 +33,7 @@ namespace DAL
             return _context.Employees
                            .Include(e => e.Role)        // load role
                            .Include(e => e.Setting)    // load cấu hình
+                           .Include(e => e.Operations)
                            .FirstOrDefault(e => e.EmployeeID == employeeId && !e.IsDeleted);
         }
 

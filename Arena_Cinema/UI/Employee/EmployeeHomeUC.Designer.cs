@@ -13,7 +13,7 @@ namespace UI.Employee
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.panelMain = new System.Windows.Forms.Panel();
             this.materialCard2 = new ReaLTaiizor.Controls.MaterialCard();
-            this.parrotButton2 = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnPhanQuyen = new ReaLTaiizor.Controls.ParrotButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -65,7 +65,7 @@ namespace UI.Employee
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(226, 32);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = global::UI.Resources.Lang.KhuVucNhanVien;
+            this.lblTitle.Text = "Khu vực nhân viên";
             // 
             // pictureBoxIcon
             // 
@@ -94,7 +94,7 @@ namespace UI.Employee
             // materialCard2
             // 
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard2.Controls.Add(this.parrotButton2);
+            this.materialCard2.Controls.Add(this.btnPhanQuyen);
             this.materialCard2.Controls.Add(this.label3);
             this.materialCard2.Controls.Add(this.label4);
             this.materialCard2.Controls.Add(this.pictureBox2);
@@ -108,29 +108,30 @@ namespace UI.Employee
             this.materialCard2.Size = new System.Drawing.Size(473, 276);
             this.materialCard2.TabIndex = 5;
             // 
-            // parrotButton2
+            // btnPhanQuyen
             // 
-            this.parrotButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.parrotButton2.ButtonImage = global::UI.Properties.Resources.next2;
-            this.parrotButton2.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.parrotButton2.ButtonText = global::UI.Resources.Lang.XEMTUYCHON;
-            this.parrotButton2.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.parrotButton2.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.parrotButton2.CornerRadius = 5;
-            this.parrotButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.parrotButton2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.parrotButton2.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.parrotButton2.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.parrotButton2.HoverTextColor = System.Drawing.Color.Silver;
-            this.parrotButton2.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.parrotButton2.Location = new System.Drawing.Point(112, 206);
-            this.parrotButton2.Name = "parrotButton2";
-            this.parrotButton2.Size = new System.Drawing.Size(269, 50);
-            this.parrotButton2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.parrotButton2.TabIndex = 1;
-            this.parrotButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.parrotButton2.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.parrotButton2.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPhanQuyen.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPhanQuyen.ButtonImage = global::UI.Properties.Resources.next2;
+            this.btnPhanQuyen.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnPhanQuyen.ButtonText = "XEM PHÂN QUYỀN";
+            this.btnPhanQuyen.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnPhanQuyen.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnPhanQuyen.CornerRadius = 5;
+            this.btnPhanQuyen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPhanQuyen.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPhanQuyen.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPhanQuyen.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnPhanQuyen.HoverTextColor = System.Drawing.Color.Silver;
+            this.btnPhanQuyen.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnPhanQuyen.Location = new System.Drawing.Point(112, 206);
+            this.btnPhanQuyen.Name = "btnPhanQuyen";
+            this.btnPhanQuyen.Size = new System.Drawing.Size(269, 50);
+            this.btnPhanQuyen.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnPhanQuyen.TabIndex = 1;
+            this.btnPhanQuyen.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnPhanQuyen.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnPhanQuyen.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPhanQuyen.Click += new System.EventHandler(this.btnPhanQuyen_Click);
             // 
             // label3
             // 
@@ -140,7 +141,7 @@ namespace UI.Employee
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(457, 35);
             this.label3.TabIndex = 2;
-            this.label3.Text = global::UI.Resources.Lang.CacTuyChonKhacCuaNhanVien;
+            this.label3.Text = "Đặt các quyền cho nhân viên";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
@@ -150,7 +151,7 @@ namespace UI.Employee
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(456, 32);
             this.label4.TabIndex = 1;
-            this.label4.Text = global::UI.Resources.Lang.Khac;
+            this.label4.Text = "Phân quyền";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox2
@@ -214,7 +215,7 @@ namespace UI.Employee
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(457, 35);
             this.label5.TabIndex = 2;
-            this.label5.Text = global::UI.Resources.Lang.XemBaoCaoLuongVaCongViec;
+            this.label5.Text = "Xem báo cáo lương và công việc";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label6
@@ -224,7 +225,7 @@ namespace UI.Employee
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(456, 32);
             this.label6.TabIndex = 1;
-            this.label6.Text = global::UI.Resources.Lang.KiemKe;
+            this.label6.Text = "Kiểm kê";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox3
@@ -288,7 +289,7 @@ namespace UI.Employee
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(457, 35);
             this.label1.TabIndex = 2;
-            this.label1.Text = global::UI.Resources.Lang.QuanLyCaLamViecCuaNhanVien;
+            this.label1.Text = "Quản lý ca làm việc của nhân viên";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
@@ -298,7 +299,7 @@ namespace UI.Employee
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(456, 32);
             this.label2.TabIndex = 1;
-            this.label2.Text = global::UI.Resources.Lang.CaLam;
+            this.label2.Text = "Ca làm";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox1
@@ -362,7 +363,7 @@ namespace UI.Employee
             this.lblNhanVienDesc.Name = "lblNhanVienDesc";
             this.lblNhanVienDesc.Size = new System.Drawing.Size(457, 35);
             this.lblNhanVienDesc.TabIndex = 2;
-            this.lblNhanVienDesc.Text = global::UI.Resources.Lang.QuanLyCaLamViecCuaNhanVien;
+            this.lblNhanVienDesc.Text = "Quản lý ca làm việc của nhân viên";
             this.lblNhanVienDesc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblNhanVien
@@ -372,7 +373,7 @@ namespace UI.Employee
             this.lblNhanVien.Name = "lblNhanVien";
             this.lblNhanVien.Size = new System.Drawing.Size(456, 32);
             this.lblNhanVien.TabIndex = 1;
-            this.lblNhanVien.Text = global::UI.Resources.Lang.NhanVien;
+            this.lblNhanVien.Text = "Nhân viên";
             this.lblNhanVien.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblNhanVien.Click += new System.EventHandler(this.lblNhanVien_Click);
             // 
@@ -425,7 +426,7 @@ namespace UI.Employee
 
         private ReaLTaiizor.Controls.ParrotButton btnQuanLyNhanVien;
         private ReaLTaiizor.Controls.MaterialCard materialCard2;
-        private ReaLTaiizor.Controls.ParrotButton parrotButton2;
+        private ReaLTaiizor.Controls.ParrotButton btnPhanQuyen;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox2;

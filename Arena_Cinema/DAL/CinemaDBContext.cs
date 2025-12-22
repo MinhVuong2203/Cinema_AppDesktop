@@ -47,6 +47,8 @@ namespace DAL
         public virtual DbSet<TextTranslation> TextTranslations { get; set; }
         public virtual DbSet<Ticket> Tickets { get; set; }
         public virtual DbSet<WorkShift> WorkShifts { get; set; }
+        public virtual DbSet<Operation> Operations { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -108,6 +110,16 @@ namespace DAL
             modelBuilder.Entity<TextTranslation>()
                 .Property(e => e.LanguageCode)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.Operations)
+                .WithMany(o => o.Employees)
+                .Map(m =>
+                {
+                    m.ToTable("Employee_Operation");
+                    m.MapLeftKey("EmployeeID");
+                    m.MapRightKey("OperationId");
+                });
         }
     }
 }

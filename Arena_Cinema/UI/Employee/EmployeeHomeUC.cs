@@ -56,5 +56,10 @@ namespace UI.Employee
         {
 
         }
+
+        private void btnPhanQuyen_Click(object sender, EventArgs e)
+        {
+            this._home.LoadControl(new OperationUC());
+        }
     }
 }

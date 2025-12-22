@@ -17,12 +17,24 @@ namespace DAL
             _context = new CinemaDBContext();
         }
 
-        public List<DTO.Employee> GetAllEmployees()
+        public List<Employee> GetAllEmployees()
         {
-            return _context.Employees
-                .Include(e => e.Setting)
-                .Include(e => e.Role)
-                .ToList();
+            try
+            {
+                using (var context = new CinemaDBContext())
+                {
+                    return context.Employees
+                        .Include(e => e.Setting)
+                        .Include(e => e.Role)
+                        .Include(e => e.Operations)
+                        .ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in GetAllEmployees: {ex.Message}");
+                return new List<Employee>();
+            }
         }
 
         public Employee GetEmployeeById(Guid employeeId)
@@ -298,5 +310,6 @@ namespace DAL
                 throw new Exception($"Lỗi khi đếm nhân viên theo chức vụ: {ex.Message}");
             }
         }
+    
     }
 }

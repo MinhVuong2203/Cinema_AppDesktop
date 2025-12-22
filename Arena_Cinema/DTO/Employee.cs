@@ -1,6 +1,5 @@
 namespace DTO
 {
-    using DAL;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -15,6 +14,7 @@ namespace DTO
         {
             Invoices = new HashSet<Invoice>();
             WorkShifts = new HashSet<WorkShift>();
+            Operations = new HashSet<Operation>();
         }
 
         public Guid EmployeeID { get; set; }
@@ -63,5 +63,9 @@ namespace DTO
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkShift> WorkShifts { get; set; }
+
+        public virtual ICollection<Operation> Operations { get; set; }
+
+
     }
 }

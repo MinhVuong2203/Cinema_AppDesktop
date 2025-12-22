@@ -13,7 +13,7 @@ using UI.Products;
 using UI.ScreeningRoom;
 using UI.Setting;
 using UI.ShowTime;
-
+using System.Linq;
 
 
 using UI.Helpers;
@@ -59,31 +59,36 @@ namespace UI
             btnSuatChieu.Visible = false;
             btnSanPham.Visible = false;
    
-
-            switch (_employee.Role.RoleName)
+            if (_employee.Operations.Any(op => op.OperationCode == "SALE"))
             {
-                case "Admin":
-                    btnNhanSu.Visible = true;
-                    btnPhim.Visible = true;
-                    btnPhong.Visible = true;
-                    btnSuatChieu.Visible = true;
-                    btnSanPham.Visible = true;
-                    btnBanVe.Visible = true;
-                    break;
-                case "Nhân viên bán vé":
-                    btnBanVe.Visible = true;
-                    break;
-                case "Nhân viên phim":
-                    btnPhim.Visible = true;
-                   
-                    btnSuatChieu.Visible = true;
-                    break;
-                case "Nhân viên kỹ thuật":
-                    btnPhong.Visible = true;
-                    break;
-                default:
-                    break;
+                btnBanVe.Visible = true;
             }
+
+            if (_employee.Operations.Any(op => op.OperationCode == "EMPLOYEE"))
+            {
+                btnNhanSu.Visible = true;
+            }
+
+            if (_employee.Operations.Any(op => op.OperationCode == "SHOWTIME"))
+            {
+                btnSuatChieu.Visible = true;
+            }
+
+            if (_employee.Operations.Any(op => op.OperationCode == "MOVIE"))
+            {
+                btnPhim.Visible = true;
+            }
+
+            if (_employee.Operations.Any(op => op.OperationCode == "ROOM"))
+            {
+                btnPhong.Visible = true;
+            }
+
+            if (_employee.Operations.Any(op => op.OperationCode == "PRODUCT"))
+            {
+                btnSanPham.Visible = true;
+            }
+
 
         }
 

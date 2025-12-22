@@ -5,7 +5,7 @@ CREATE TABLE Role(
 	RoleID INT PRIMARY KEY IDENTITY,
 	RoleName NVARCHAR(100) NOT NULL
 );
-INSERT INTO Role (RoleName)
+INSERT INTO Role (RoleName) -- chức vụ
 VALUES 
     (N'Admin'),
     (N'Nhân viên bán vé'),
@@ -14,6 +14,20 @@ VALUES
     (N'Tạp vụ'),
     (N'Bảo vệ');
 
+CREATE TABLE Operation(
+	OperationId INT PRIMARY KEY IDENTITY,
+	OperationCode NVARCHAR(100) NOT NULL,
+	OperationName NVARCHAR(100) NOT NULL
+)
+
+INSERT INTO Operation(OperationCode, OperationName)
+VALUES ('SALE', 'Bán vé'),
+	   ('EMPLOYEE', 'Nhân viên'),
+	   ('SHOWTIME', 'Xuất chiếu'),
+	   ('MOVIE', 'Phim'),
+	   ('ROOM', 'Phòng'),
+	   ('PRODUCT', 'Bắp nước'),
+	   ('LOGIN', 'Đăng nhập')
 
 -- PEOPLE GROUP
 CREATE TABLE Employee (
@@ -33,6 +47,14 @@ CREATE TABLE Employee (
 	FOREIGN KEY (RoleId) REFERENCES Role(RoleID) ON UPDATE CASCADE ON DELETE SET NULL
 );
 
+CREATE TABLE Employee_Operation(
+	EmployeeID UNIQUEIDENTIFIER,
+	OperationId INT,
+	PRIMARY KEY (EmployeeID, OperationId),
+	FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID) ON DELETE CASCADE,
+	FOREIGN KEY (OperationId) REFERENCES Operation(OperationId) ON DELETE CASCADE
+)
+
 SELECT 
     tc.CONSTRAINT_NAME,
     kcu.COLUMN_NAME
@@ -41,8 +63,6 @@ JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE kcu
      ON tc.CONSTRAINT_NAME = kcu.CONSTRAINT_NAME
 WHERE tc.CONSTRAINT_TYPE = 'UNIQUE'
   AND tc.TABLE_NAME = 'Account';
-
-
 
 
 

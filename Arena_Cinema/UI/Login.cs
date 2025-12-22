@@ -30,10 +30,15 @@ namespace UI
 
             if (em != null)
             {
-                this.Hide();
-                Home homeForm = new Home(em);
-                homeForm.FormClosed += (s, args) => this.Close(); // Đóng form Login khi form Home đóng
-                homeForm.Show();
+                if (em.Operations.Any(o => o.OperationCode == "LOGIN")){
+                    this.Hide();
+                    Home homeForm = new Home(em);
+                    homeForm.FormClosed += (s, args) => this.Close(); // Đóng form Login khi form Home đóng
+                    homeForm.Show();
+                }
+                else{
+                    MessageBox.Show("Tài khoản của bạn không có quyền đăng nhập vào hệ thống!", "Không đủ quyền hạn");
+                }
             }
             else
             {
