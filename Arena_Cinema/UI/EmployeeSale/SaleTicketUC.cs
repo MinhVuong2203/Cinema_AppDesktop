@@ -89,7 +89,7 @@ namespace UI.EmployeeSale
         {
             try
             {
-                // **QUAN TRỌNG**: Sử dụng method GetFreshTickets để force query từ DB
+                //Sử dụng method GetFreshTickets để force query từ DB
                 _tickets = _seatLockDAL.GetFreshTickets(_selectedShowTimeId);
 
                 // Debug log để kiểm tra
@@ -143,7 +143,7 @@ namespace UI.EmployeeSale
             bool isLockedByOther = ticket.LockedBy.HasValue && !isLockedByMe;
             bool isSold = ticket.Status == "Đã bán";
 
-            // **QUAN TRỌNG**: Chỉ cập nhật màu nếu trạng thái thực sự thay đổi
+            //Chỉ cập nhật màu nếu trạng thái thực sự thay đổi
             Color targetColor;
             bool shouldEnable;
 
@@ -218,8 +218,29 @@ namespace UI.EmployeeSale
 
         private void LoadMovieInfo()
         {
+            // Cho phép label tự động điều chỉnh kích thước
+            lbTitle.AutoSize = true;
+            lbTitle.MaximumSize = new Size(520, 0);
+
             lbTitle.Text = $"{_movie.Title} ({_movie.AgeLimit})";
+
+            // Điều chỉnh vị trí của lbInfo dựa trên chiều cao thực tế của lbTitle
+            int titleBottom = lbTitle.Location.Y + lbTitle.Height + 10; // 10px margin
+            lbInfo.Location = new Point(lbInfo.Location.X, titleBottom);
+
+            lbInfo.AutoSize = true;
+            lbInfo.MaximumSize = new Size(520, 0);
             lbInfo.Text = $"{_movie.Genre} • {_movie.DurationMinutes} phút • {_movie.AgeLimit}";
+
+            // Điều chỉnh chiều cao của pnlMovieInfo nếu cần
+            int infoBottom = lbInfo.Location.Y + lbInfo.Height + 20; // 20px bottom padding
+            int picPosterBottom = picPoster.Location.Y + picPoster.Height + 20;
+            int requiredHeight = Math.Max(infoBottom, picPosterBottom) + 20;
+
+            if (pnlMovieInfo.Height < requiredHeight)
+            {
+                pnlMovieInfo.Height = requiredHeight;
+            }
         }
 
         private void LoadShowTimes()
@@ -232,7 +253,7 @@ namespace UI.EmployeeSale
             {
                 DateTime bookingDeadline = showTime.StartTime.AddMinutes(15);
 
-                // ✅ CHỈ HIỂN THỊ NẾU:
+                // CHỈ HIỂN THỊ NẾU:
                 // - Suất chiếu chưa bắt đầu (StartTime > now)
                 // - HOẶC suất chiếu đã bắt đầu nhưng chưa quá 15 phút (bookingDeadline >= now)
                 if (bookingDeadline < now)
@@ -393,7 +414,7 @@ namespace UI.EmployeeSale
 
             if (seat == null) return;
 
-            // **QUAN TRỌNG**: Luôn query fresh ticket từ DB trước khi xử lý
+            //Luôn query fresh ticket từ DB trước khi xử lý
             Ticket ticket = null;
             using (var context = new CinemaDBContext())
             {
@@ -740,7 +761,7 @@ namespace UI.EmployeeSale
                     var customer = context.Customers
                         .FirstOrDefault(c => c.Phone == phone && !c.IsDeleted);
                     //nếu không có mở cửa sổ tạo khách hàng mới và txt_phone không được trống
-                    if (customer == null && !string.IsNullOrWhiteSpace(phone))
+                    if (customer != null && !string.IsNullOrWhiteSpace(phone))
                     {
                         CreatCustomer creatCustomer = new CreatCustomer(phone);
                         var result = creatCustomer.ShowDialog();
@@ -819,7 +840,7 @@ namespace UI.EmployeeSale
             if (isInvoiceExpanded)
             {
                 // Mở rộng sidebar
-                pnlRight.Width = 450;
+                pnlRight.Width = 350;
                 btnToggleInvoice.Text = "◀ Thu gọn";
                 pnlInvoiceContent.Visible = true;
             }

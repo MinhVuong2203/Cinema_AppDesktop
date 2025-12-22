@@ -143,7 +143,7 @@
             this.pnlProducts.Location = new System.Drawing.Point(0, 855);
             this.pnlProducts.Name = "pnlProducts";
             this.pnlProducts.Padding = new System.Windows.Forms.Padding(20, 15, 20, 20);
-            this.pnlProducts.Size = new System.Drawing.Size(1089, 400);
+            this.pnlProducts.Size = new System.Drawing.Size(1089, 800);
             this.pnlProducts.TabIndex = 3;
             // 
             // flpProducts
@@ -152,7 +152,7 @@
             this.flpProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpProducts.Location = new System.Drawing.Point(20, 59);
             this.flpProducts.Name = "flpProducts";
-            this.flpProducts.Size = new System.Drawing.Size(1049, 321);
+            this.flpProducts.Size = new System.Drawing.Size(1049, 721);
             this.flpProducts.TabIndex = 1;
             // 
             // lbProducts
@@ -305,11 +305,13 @@
             // 
             // lbInfo
             // 
+            this.lbInfo.AutoSize = true;
             this.lbInfo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lbInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
             this.lbInfo.Location = new System.Drawing.Point(175, 90);
+            this.lbInfo.MaximumSize = new System.Drawing.Size(520, 0);
             this.lbInfo.Name = "lbInfo";
-            this.lbInfo.Size = new System.Drawing.Size(520, 60);
+            this.lbInfo.Size = new System.Drawing.Size(212, 20);
             this.lbInfo.TabIndex = 3;
             this.lbInfo.Text = "Thể loại • Thời lượng • Độ tuổi";
             // 
@@ -318,8 +320,9 @@
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.lbTitle.Location = new System.Drawing.Point(175, 50);
+            this.lbTitle.MaximumSize = new System.Drawing.Size(520, 0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(520, 35);
+            this.lbTitle.Size = new System.Drawing.Size(520, 0);
             this.lbTitle.TabIndex = 2;
             this.lbTitle.Text = "Tên phim";
             // 
@@ -451,7 +454,7 @@
             this.lbInvoiceProducts.AutoSize = true;
             this.lbInvoiceProducts.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lbInvoiceProducts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.lbInvoiceProducts.Location = new System.Drawing.Point(15, 200);
+            this.lbInvoiceProducts.Location = new System.Drawing.Point(15, 233);
             this.lbInvoiceProducts.MaximumSize = new System.Drawing.Size(370, 0);
             this.lbInvoiceProducts.Name = "lbInvoiceProducts";
             this.lbInvoiceProducts.Size = new System.Drawing.Size(160, 20);
@@ -463,7 +466,7 @@
             this.lbInvoiceTickets.AutoSize = true;
             this.lbInvoiceTickets.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lbInvoiceTickets.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.lbInvoiceTickets.Location = new System.Drawing.Point(15, 100);
+            this.lbInvoiceTickets.Location = new System.Drawing.Point(15, 133);
             this.lbInvoiceTickets.MaximumSize = new System.Drawing.Size(370, 0);
             this.lbInvoiceTickets.Name = "lbInvoiceTickets";
             this.lbInvoiceTickets.Size = new System.Drawing.Size(120, 20);
@@ -475,7 +478,7 @@
             this.lbInvoiceShowTime.AutoSize = true;
             this.lbInvoiceShowTime.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lbInvoiceShowTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(85)))), ((int)(((byte)(99)))));
-            this.lbInvoiceShowTime.Location = new System.Drawing.Point(15, 55);
+            this.lbInvoiceShowTime.Location = new System.Drawing.Point(15, 88);
             this.lbInvoiceShowTime.MaximumSize = new System.Drawing.Size(370, 0);
             this.lbInvoiceShowTime.Name = "lbInvoiceShowTime";
             this.lbInvoiceShowTime.Size = new System.Drawing.Size(105, 20);
