@@ -141,6 +141,7 @@ namespace UI.SeatManagement
             // Context menu - Right click
             var contextMenu = new ContextMenuStrip();
             contextMenu.Items.Add("Chỉnh sửa", null, (s, e) => EditSeat(seat));
+            contextMenu.Items.Add("Xóa ghế", null, (s, e) => DeleteSeat(seat));
             btn.ContextMenuStrip = contextMenu;
 
             // Di chuyển ghế
