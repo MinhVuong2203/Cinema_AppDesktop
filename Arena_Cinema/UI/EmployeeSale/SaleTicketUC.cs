@@ -47,6 +47,30 @@ namespace UI.EmployeeSale
             InitializeRefreshTimer();
 
             btnPayment.Click += BtnPayment_Click;
+            AdjustPanelHeights();
+        }
+
+        private void AdjustPanelHeights()
+        {
+            // Cho phép các panel con tự động điều chỉnh chiều cao
+            flpTickets.AutoSize = true;
+            flpTickets.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            //flpProducts.AutoSize = true;
+            //flpProducts.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            flpShowTimes.AutoSize = true;
+            flpShowTimes.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            // Điều chỉnh các panel cha
+            pnlSeats.AutoSize = true;
+            pnlSeats.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            //pnlProducts.AutoSize = true;
+            //pnlProducts.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
+            pnlShowTime.AutoSize = true;
+            pnlShowTime.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
 
         /// <summary>
@@ -493,12 +517,16 @@ namespace UI.EmployeeSale
             flpProducts.Controls.Clear();
             _products = _saleTicketDAL.GetAllProducts();
 
+            int totalHeight = 0;
+            const int PRODUCT_HEIGHT = 150;
+            const int PRODUCT_MARGIN = 10;
+
             foreach (var product in _products)
             {
                 var productPanel = new Panel
                 {
                     Width = 900,
-                    Height = 150,
+                    Height = PRODUCT_HEIGHT,
                     Margin = new Padding(5),
                     BackColor = Color.FromArgb(248, 250, 252),
                     BorderStyle = BorderStyle.None
@@ -644,7 +672,32 @@ namespace UI.EmployeeSale
                 productPanel.Controls.Add(btnPlus);
 
                 flpProducts.Controls.Add(productPanel);
+
+                // Tính tổng chiều cao
+                totalHeight += PRODUCT_HEIGHT + PRODUCT_MARGIN;
             }
+
+            //Điều chỉnh chiều cao của flpProducts và pnlProducts
+            if (_products.Count > 0)
+            {
+                flpProducts.Height = totalHeight + 20; // Thêm padding
+
+                // Điều chỉnh chiều cao pnlProducts
+                int labelHeight = lbProducts.Height;
+                int paddingHeight = 35; // padding top + bottom
+                pnlProducts.Height = totalHeight + labelHeight + paddingHeight + 20;
+            }
+            else
+            {
+                flpProducts.Height = 100;
+                pnlProducts.Height = 150;
+            }
+
+            // Điều chỉnh chiều cao của flpProducts và pnlProducts
+            pnlLeft.PerformLayout();
+            pnlProducts.Refresh();
+            flpProducts.Refresh();
+
             UpdateInvoice();
         }
 

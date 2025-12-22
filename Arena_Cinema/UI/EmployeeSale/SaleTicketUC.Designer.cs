@@ -148,7 +148,7 @@
             // 
             // flpProducts
             // 
-            this.flpProducts.AutoScroll = true;
+            this.flpProducts.AutoScroll = false;
             this.flpProducts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpProducts.Location = new System.Drawing.Point(20, 59);
             this.flpProducts.Name = "flpProducts";
@@ -182,7 +182,7 @@
             // 
             // flpTickets
             // 
-            this.flpTickets.AutoScroll = true;
+            this.flpTickets.AutoScroll = false;
             this.flpTickets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpTickets.Location = new System.Drawing.Point(20, 57);
             this.flpTickets.Name = "flpTickets";
@@ -216,7 +216,7 @@
             // 
             // flpShowTimes
             // 
-            this.flpShowTimes.AutoScroll = true;
+            this.flpShowTimes.AutoScroll = false;
             this.flpShowTimes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpShowTimes.Location = new System.Drawing.Point(20, 51);
             this.flpShowTimes.Name = "flpShowTimes";
