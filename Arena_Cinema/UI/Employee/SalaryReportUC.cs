@@ -1,5 +1,6 @@
 ﻿using BLL;
 using DTO;
+using Microsoft.VisualBasic;
 using ReaLTaiizor.Controls;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,10 @@ namespace UI.Employee
         {
             dtpStartDate.Value = DateTime.Today.AddDays(-30);
             dtpEndDate.Value = DateTime.Today;
+            int monthCurrent = DateTime.Today.Month;
+            this.MonthCurrent.Text = "Tháng " + monthCurrent;
+
+
         }
 
         private void LoadRoles()
@@ -79,6 +84,8 @@ namespace UI.Employee
 
             dgvReport.Columns.Clear();
 
+            dgvReport.MinimumSize = new Size(0, 200);
+
             dgvReport.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "colIndex",
@@ -91,7 +98,7 @@ namespace UI.Employee
             {
                 Name = "colName",
                 HeaderText = "HỌ TÊN",
-                Width = 200,
+                MinimumWidth = 200,
                 ReadOnly = true
             });
 
@@ -99,7 +106,7 @@ namespace UI.Employee
             {
                 Name = "colRole",
                 HeaderText = "CHỨC VỤ",
-                Width = 150,
+                MinimumWidth = 150,
                 ReadOnly = true
             });
 
@@ -180,6 +187,8 @@ namespace UI.Employee
             string role = cboRole.SelectedItem != null ? cboRole.SelectedItem.ToString() : null;
             //string name = txtSearch.Text.Trim();
 
+
+
             _currentData = _reportBLL.GetSalaryReport(start, end, role, "");
 
             // Fill grid
@@ -187,7 +196,7 @@ namespace UI.Employee
             int index = 1;
             foreach (var r in _currentData)
             {
-                dgvReport.Rows.Add(
+                int rowIndex = dgvReport.Rows.Add(
                     index++,
                     r.Employee.FullName,
                     r.Employee.Role != null ? r.Employee.Role.RoleName : "",
@@ -198,6 +207,7 @@ namespace UI.Employee
                     r.Total,
                     r.Salary
                 );
+                dgvReport.Rows[rowIndex].Height = 42;
             }
 
             // Tổng quan
@@ -257,6 +267,20 @@ namespace UI.Employee
         private void cboRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadReport();
+        }
+
+        private void MonthCurrent_Click(object sender, EventArgs e)
+        {
+            int month = int.Parse(this.MonthCurrent.Text.Split(' ').Last());
+            DateTime t = new DateTime(DateTime.Today.Year, month, 1);
+            dtpStartDate.Value = t;
+            dtpEndDate.Value = t.AddDays(30);
+        }
+
+        private void skyButton2_Click(object sender, EventArgs e)
+        {
+            ChooseMonth cm = new ChooseMonth(this.dtpStartDate, this.dtpEndDate);
+            cm.Show();
         }
     }
 }

@@ -65,7 +65,7 @@ namespace UI.Employee
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(253, 41);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = global::UI.Resources.Lang.ThemNhanSu;
+            this.lblTitle.Text = "THÊM NHÂN SỰ";
             // 
             // txtFullName
             // 
@@ -283,7 +283,7 @@ namespace UI.Employee
             this.groupBox1.Size = new System.Drawing.Size(1069, 637);
             this.groupBox1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.groupBox1.TabIndex = 16;
-            this.groupBox1.Text = global::UI.Resources.Lang.ThongTinCaNhan;
+            this.groupBox1.Text = "Thông tin cá nhân";
             // 
             // btnShowPass
             // 
@@ -480,9 +480,9 @@ namespace UI.Employee
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(48, 483);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 28);
+            this.label1.Size = new System.Drawing.Size(107, 28);
             this.label1.TabIndex = 14;
-            this.label1.Text = global::UI.Resources.Lang.NgaySinh;
+            this.label1.Text = "Ngày sinh";
             // 
             // btnCancel
             // 

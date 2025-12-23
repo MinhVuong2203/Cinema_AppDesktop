@@ -280,6 +280,12 @@
     <Compile Include="Employee\AddEmployeeUC.Designer.cs">
       <DependentUpon>AddEmployeeUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Employee\ChooseMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employee\ChooseMonth.Designer.cs">
+      <DependentUpon>ChooseMonth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employee\EmployeeHomeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -496,6 +502,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Employee\AddEmployeeUC.resx">
       <DependentUpon>AddEmployeeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee\ChooseMonth.resx">
+      <DependentUpon>ChooseMonth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employee\EmployeeHomeUC.resx">
       <DependentUpon>EmployeeHomeUC.cs</DependentUpon>

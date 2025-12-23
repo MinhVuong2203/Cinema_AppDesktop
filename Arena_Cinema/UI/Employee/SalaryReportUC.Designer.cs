@@ -52,7 +52,7 @@ namespace UI.Employee
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.lblTitle = new ReaLTaiizor.Controls.PoisonLabel();
             this.pnlFilters = new System.Windows.Forms.Panel();
             this.dtpEndDate = new ReaLTaiizor.Controls.PoisonDateTime();
@@ -77,6 +77,8 @@ namespace UI.Employee
             this.splitContainerMain = new System.Windows.Forms.SplitContainer();
             this.chartSalary = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgvReport = new System.Windows.Forms.DataGridView();
+            this.MonthCurrent = new ReaLTaiizor.Controls.SkyButton();
+            this.skyButton2 = new ReaLTaiizor.Controls.SkyButton();
             this.pnlFilters.SuspendLayout();
             this.pnlSummary.SuspendLayout();
             this.cardTotalAbsent.SuspendLayout();
@@ -108,6 +110,8 @@ namespace UI.Employee
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFilters.BackColor = System.Drawing.Color.White;
             this.pnlFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFilters.Controls.Add(this.skyButton2);
+            this.pnlFilters.Controls.Add(this.MonthCurrent);
             this.pnlFilters.Controls.Add(this.dtpEndDate);
             this.pnlFilters.Controls.Add(this.lblEnd);
             this.pnlFilters.Controls.Add(this.dtpStartDate);
@@ -396,8 +400,8 @@ namespace UI.Employee
             // 
             // chartSalary
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartSalary.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            this.chartSalary.ChartAreas.Add(chartArea4);
             this.chartSalary.Location = new System.Drawing.Point(32, 505);
             this.chartSalary.Name = "chartSalary";
             this.chartSalary.Size = new System.Drawing.Size(1202, 551);
@@ -414,6 +418,82 @@ namespace UI.Employee
             this.dgvReport.RowHeadersWidth = 51;
             this.dgvReport.Size = new System.Drawing.Size(1202, 424);
             this.dgvReport.TabIndex = 0;
+            // 
+            // MonthCurrent
+            // 
+            this.MonthCurrent.BackColor = System.Drawing.Color.Transparent;
+            this.MonthCurrent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MonthCurrent.DownBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(153)))), ((int)(((byte)(205)))));
+            this.MonthCurrent.DownBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(124)))), ((int)(((byte)(170)))));
+            this.MonthCurrent.DownBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(168)))), ((int)(((byte)(221)))));
+            this.MonthCurrent.DownBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(149)))), ((int)(((byte)(194)))));
+            this.MonthCurrent.DownBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(93)))), ((int)(((byte)(131)))));
+            this.MonthCurrent.DownBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(25)))), ((int)(((byte)(73)))), ((int)(((byte)(109)))));
+            this.MonthCurrent.DownForeColor = System.Drawing.Color.White;
+            this.MonthCurrent.DownShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MonthCurrent.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MonthCurrent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(137)))));
+            this.MonthCurrent.HoverBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(153)))), ((int)(((byte)(205)))));
+            this.MonthCurrent.HoverBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(124)))), ((int)(((byte)(170)))));
+            this.MonthCurrent.HoverBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(168)))), ((int)(((byte)(221)))));
+            this.MonthCurrent.HoverBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(149)))), ((int)(((byte)(194)))));
+            this.MonthCurrent.HoverBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(93)))), ((int)(((byte)(131)))));
+            this.MonthCurrent.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(25)))), ((int)(((byte)(73)))), ((int)(((byte)(109)))));
+            this.MonthCurrent.HoverForeColor = System.Drawing.Color.White;
+            this.MonthCurrent.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MonthCurrent.Location = new System.Drawing.Point(794, 27);
+            this.MonthCurrent.Name = "MonthCurrent";
+            this.MonthCurrent.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.MonthCurrent.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.MonthCurrent.NormalBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.MonthCurrent.NormalBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.MonthCurrent.NormalBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.MonthCurrent.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            this.MonthCurrent.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(137)))));
+            this.MonthCurrent.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.MonthCurrent.Size = new System.Drawing.Size(143, 41);
+            this.MonthCurrent.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.MonthCurrent.TabIndex = 9;
+            this.MonthCurrent.Text = "Tháng";
+            this.MonthCurrent.Click += new System.EventHandler(this.MonthCurrent_Click);
+            // 
+            // skyButton2
+            // 
+            this.skyButton2.BackColor = System.Drawing.Color.Transparent;
+            this.skyButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.skyButton2.DownBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(153)))), ((int)(((byte)(205)))));
+            this.skyButton2.DownBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(124)))), ((int)(((byte)(170)))));
+            this.skyButton2.DownBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(168)))), ((int)(((byte)(221)))));
+            this.skyButton2.DownBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(149)))), ((int)(((byte)(194)))));
+            this.skyButton2.DownBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(93)))), ((int)(((byte)(131)))));
+            this.skyButton2.DownBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(25)))), ((int)(((byte)(73)))), ((int)(((byte)(109)))));
+            this.skyButton2.DownForeColor = System.Drawing.Color.White;
+            this.skyButton2.DownShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.skyButton2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.skyButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(137)))));
+            this.skyButton2.HoverBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(153)))), ((int)(((byte)(205)))));
+            this.skyButton2.HoverBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(124)))), ((int)(((byte)(170)))));
+            this.skyButton2.HoverBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(168)))), ((int)(((byte)(221)))));
+            this.skyButton2.HoverBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(149)))), ((int)(((byte)(194)))));
+            this.skyButton2.HoverBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(93)))), ((int)(((byte)(131)))));
+            this.skyButton2.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(25)))), ((int)(((byte)(73)))), ((int)(((byte)(109)))));
+            this.skyButton2.HoverForeColor = System.Drawing.Color.White;
+            this.skyButton2.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.skyButton2.Location = new System.Drawing.Point(954, 27);
+            this.skyButton2.Name = "skyButton2";
+            this.skyButton2.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.skyButton2.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.skyButton2.NormalBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.skyButton2.NormalBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(249)))), ((int)(((byte)(249)))));
+            this.skyButton2.NormalBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.skyButton2.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            this.skyButton2.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(137)))));
+            this.skyButton2.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.skyButton2.Size = new System.Drawing.Size(143, 41);
+            this.skyButton2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.skyButton2.TabIndex = 11;
+            this.skyButton2.Text = "Chọn tháng";
+            this.skyButton2.Click += new System.EventHandler(this.skyButton2_Click);
             // 
             // SalaryReportUC
             // 
@@ -445,5 +525,8 @@ namespace UI.Employee
         }
 
         #endregion
+
+        private ReaLTaiizor.Controls.SkyButton skyButton2;
+        private ReaLTaiizor.Controls.SkyButton MonthCurrent;
     }
 }
