@@ -214,6 +214,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActivateForm.Designer.cs">
+      <DependentUpon>ActivateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CircularPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -279,6 +285,12 @@
     </Compile>
     <Compile Include="Employee\AddEmployeeUC.Designer.cs">
       <DependentUpon>AddEmployeeUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employee\ChooseMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employee\ChooseMonth.Designer.cs">
+      <DependentUpon>ChooseMonth.cs</DependentUpon>
     </Compile>
     <Compile Include="Employee\EmployeeHomeUC.cs">
       <SubType>UserControl</SubType>
@@ -476,6 +488,9 @@
     <Compile Include="ShowTime\MNShowTimeUC.Designer.cs">
       <DependentUpon>MNShowTimeUC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ActivateForm.resx">
+      <DependentUpon>ActivateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard\DashboardUC.resx">
       <DependentUpon>DashboardUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -502,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Employee\AddEmployeeUC.resx">
       <DependentUpon>AddEmployeeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employee\ChooseMonth.resx">
+      <DependentUpon>ChooseMonth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Employee\EmployeeHomeUC.resx">
       <DependentUpon>EmployeeHomeUC.cs</DependentUpon>

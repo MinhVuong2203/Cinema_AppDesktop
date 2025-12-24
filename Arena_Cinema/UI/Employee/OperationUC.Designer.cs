@@ -34,7 +34,6 @@
         private System.Windows.Forms.Label lblRole;
         private ReaLTaiizor.Controls.HopeComboBox cboRole;
         private System.Windows.Forms.DataGridView dgvPermissions;
-        private System.Windows.Forms.Label lblHint;
 
         private System.Windows.Forms.DataGridViewTextBoxColumn colEmployeeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFullName;
@@ -43,8 +42,8 @@
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpRoot = new System.Windows.Forms.TableLayoutPanel();
             this.pnlTop = new ReaLTaiizor.Controls.ParrotGradientPanel();
             this.hopeButton1 = new ReaLTaiizor.Controls.HopeButton();
@@ -58,7 +57,6 @@
             this.colFullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRoleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colOpSample = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.lblHint = new System.Windows.Forms.Label();
             this.tlpRoot.SuspendLayout();
             this.pnlTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPermissions)).BeginInit();
@@ -71,7 +69,6 @@
             this.tlpRoot.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpRoot.Controls.Add(this.pnlTop, 0, 0);
             this.tlpRoot.Controls.Add(this.dgvPermissions, 0, 1);
-            this.tlpRoot.Controls.Add(this.lblHint, 0, 2);
             this.tlpRoot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpRoot.Location = new System.Drawing.Point(0, 0);
             this.tlpRoot.Name = "tlpRoot";
@@ -216,27 +213,27 @@
             this.dgvPermissions.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPermissions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvPermissions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(115)))), ((int)(((byte)(217)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.dgvPermissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(115)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.dgvPermissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPermissions.ColumnHeadersHeight = 40;
             this.dgvPermissions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colEmployeeId,
             this.colFullName,
             this.colRoleName,
             this.colOpSample});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPermissions.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPermissions.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPermissions.EnableHeadersVisualStyles = false;
             this.dgvPermissions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(239)))), ((int)(((byte)(245)))));
@@ -280,20 +277,6 @@
             this.colOpSample.MinimumWidth = 110;
             this.colOpSample.Name = "colOpSample";
             this.colOpSample.Width = 113;
-            // 
-            // lblHint
-            // 
-            this.lblHint.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHint.Font = new System.Drawing.Font("Segoe UI", 8.5F);
-            this.lblHint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
-            this.lblHint.Location = new System.Drawing.Point(12, 439);
-            this.lblHint.Margin = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.lblHint.Name = "lblHint";
-            this.lblHint.Size = new System.Drawing.Size(1237, 30);
-            this.lblHint.TabIndex = 2;
-            this.lblHint.Text = "Gợi ý: Mỗi cột checkbox tương ứng 1 Operation. Khi load dữ liệu, hãy xóa OP_SAMPL" +
-    "E và add cột Operation động theo DB.";
-            this.lblHint.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // OperationUC
             // 
