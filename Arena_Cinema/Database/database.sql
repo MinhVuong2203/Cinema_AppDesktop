@@ -501,6 +501,216 @@ CREATE TABLE TextTranslation (
     FOREIGN KEY (LanguageCode) REFERENCES Language(LanguageCode)
 );
 
+-- Giới hạn bảng quyền
+CREATE TABLE dbo.AppSettings
+(
+        SettingId        INT IDENTITY(1,1) NOT NULL CONSTRAINT PK_AppSettings PRIMARY KEY,
+        TenantId         UNIQUEIDENTIFIER NOT NULL,
+        TrialStartUtc    DATETIME2(0) NULL,
+        CreatedAtUtc     DATETIME2(0) NOT NULL CONSTRAINT DF_AppSettings_CreatedAtUtc DEFAULT SYSUTCDATETIME(),
+        UpdatedAtUtc     DATETIME2(0) NOT NULL CONSTRAINT DF_AppSettings_UpdatedAtUtc DEFAULT SYSUTCDATETIME()
+);
+CREATE UNIQUE INDEX UX_AppSettings_TenantId ON dbo.AppSettings(TenantId);
+-- Tạo ra id riêng của rạp
+IF NOT EXISTS (SELECT 1 FROM dbo.AppSettings)
+BEGIN
+    INSERT INTO dbo.AppSettings (TenantId, TrialStartUtc)
+    VALUES (NEWID(), NULL);
+END
+
+
+
+CREATE TABLE dbo.Licenses
+(
+        LicenseId        INT IDENTITY(1,1) NOT NULL CONSTRAINT PK_Licenses PRIMARY KEY,
+        TenantId         UNIQUEIDENTIFIER NOT NULL,
+        LicenseToken     NVARCHAR(MAX) NOT NULL,
+        PlanCode         NVARCHAR(50) NULL,          -- tuỳ chọn (Basic/Pro/...)
+        MaxSeats         INT NOT NULL,
+        ExpiresAtUtc     DATETIME2(0) NOT NULL,
+        ActivatedAtUtc   DATETIME2(0) NOT NULL CONSTRAINT DF_Licenses_ActivatedAtUtc DEFAULT SYSUTCDATETIME(),
+        IsActive         BIT NOT NULL CONSTRAINT DF_Licenses_IsActive DEFAULT (1),
+        RevokedAtUtc     DATETIME2(0) NULL,          -- nếu thu hồi
+        Note             NVARCHAR(255) NULL
+);
+CREATE UNIQUE INDEX UX_Licenses_OneActivePerTenant ON dbo.Licenses(TenantId) WHERE IsActive = 1;
+CREATE INDEX IX_Licenses_Tenant_Expires ON dbo.Licenses(TenantId, ExpiresAtUtc);
+
+
+ CREATE TABLE dbo.LicenseActivations
+(
+        ActivationId     INT IDENTITY(1,1) NOT NULL CONSTRAINT PK_LicenseActivations PRIMARY KEY,
+        TenantId         UNIQUEIDENTIFIER NOT NULL,
+        InstallId        NVARCHAR(64) NOT NULL,          -- GUID string (N) hoặc chuỗi bạn lưu local
+        MachineName      NVARCHAR(128) NULL,
+        ActivatedAtUtc   DATETIME2(0) NOT NULL CONSTRAINT DF_LA_ActivatedAtUtc DEFAULT SYSUTCDATETIME(),
+        LastSeenAtUtc    DATETIME2(0) NOT NULL CONSTRAINT DF_LA_LastSeenAtUtc DEFAULT SYSUTCDATETIME(),
+        IsBlocked        BIT NOT NULL CONSTRAINT DF_LA_IsBlocked DEFAULT (0)  -- tuỳ chọn
+);
+CREATE UNIQUE INDEX UX_LA_Tenant_Install ON dbo.LicenseActivations(TenantId, InstallId);
+CREATE INDEX IX_LA_Tenant_LastSeen ON dbo.LicenseActivations(TenantId, LastSeenAtUtc);
+
+-- Proc kiểm tra license/trial + đăng ký máy (seat counting)
+CREATE OR ALTER PROC dbo.usp_License_CheckAccessAndRegisterSeat
+    @InstallId NVARCHAR(64),
+    @MachineName NVARCHAR(128) = NULL,
+    @TrialDays INT = 3
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SET XACT_ABORT ON;
+
+    DECLARE @Now DATETIME2(0) = SYSUTCDATETIME();
+    DECLARE @TenantId UNIQUEIDENTIFIER;
+    DECLARE @TrialStartUtc DATETIME2(0);
+
+    IF NOT EXISTS (SELECT 1 FROM dbo.AppSettings)
+    BEGIN
+        INSERT INTO dbo.AppSettings (TenantId, TrialStartUtc)
+        VALUES (NEWID(), NULL);
+    END
+
+    SELECT TOP 1
+        @TenantId = TenantId,
+        @TrialStartUtc = TrialStartUtc
+    FROM dbo.AppSettings
+    ORDER BY SettingId;
+
+    IF @TrialStartUtc IS NULL
+    BEGIN
+        SET @TrialStartUtc = @Now;
+        UPDATE dbo.AppSettings
+        SET TrialStartUtc = @TrialStartUtc,
+            UpdatedAtUtc = @Now
+        WHERE SettingId = (SELECT TOP 1 SettingId FROM dbo.AppSettings ORDER BY SettingId);
+    END
+
+    -- Active license?
+    DECLARE @MaxSeats INT = NULL;
+    DECLARE @ExpiresAtUtc DATETIME2(0) = NULL;
+
+    SELECT TOP 1
+        @MaxSeats = MaxSeats,
+        @ExpiresAtUtc = ExpiresAtUtc
+    FROM dbo.Licenses
+    WHERE TenantId = @TenantId
+      AND IsActive = 1
+      AND RevokedAtUtc IS NULL
+    ORDER BY LicenseId DESC;
+
+    -- Activated and not expired
+    IF @MaxSeats IS NOT NULL AND @ExpiresAtUtc IS NOT NULL AND @Now <= @ExpiresAtUtc
+    BEGIN
+        BEGIN TRAN;
+
+        IF EXISTS (SELECT 1 FROM dbo.LicenseActivations WHERE TenantId=@TenantId AND InstallId=@InstallId)
+        BEGIN
+            UPDATE dbo.LicenseActivations
+            SET LastSeenAtUtc = @Now
+            WHERE TenantId=@TenantId AND InstallId=@InstallId;
+
+            DECLARE @UsedSeats1 INT = (SELECT COUNT(*) FROM dbo.LicenseActivations WHERE TenantId=@TenantId AND IsBlocked=0);
+            COMMIT;
+
+            SELECT 1 AS StateCode, N'OK' AS Message,
+                   CAST(NULL AS INT) AS TrialDaysLeft,
+                   @TenantId AS TenantId,
+                   @MaxSeats AS MaxSeats,
+                   @UsedSeats1 AS UsedSeats,
+                   @ExpiresAtUtc AS ExpiresAtUtc;
+            RETURN;
+        END
+
+        DECLARE @UsedSeats INT = (SELECT COUNT(*) FROM dbo.LicenseActivations WHERE TenantId=@TenantId AND IsBlocked=0);
+
+        IF @UsedSeats >= @MaxSeats
+        BEGIN
+            ROLLBACK;
+            SELECT 4 AS StateCode, N'Vượt số máy theo gói (MaxSeats).' AS Message,
+                   CAST(NULL AS INT) AS TrialDaysLeft,
+                   @TenantId AS TenantId,
+                   @MaxSeats AS MaxSeats,
+                   @UsedSeats AS UsedSeats,
+                   @ExpiresAtUtc AS ExpiresAtUtc;
+            RETURN;
+        END
+
+        INSERT INTO dbo.LicenseActivations (TenantId, InstallId, MachineName)
+        VALUES (@TenantId, @InstallId, @MachineName);
+
+        SET @UsedSeats = @UsedSeats + 1;
+        COMMIT;
+
+        SELECT 1 AS StateCode, N'OK' AS Message,
+               CAST(NULL AS INT) AS TrialDaysLeft,
+               @TenantId AS TenantId,
+               @MaxSeats AS MaxSeats,
+               @UsedSeats AS UsedSeats,
+               @ExpiresAtUtc AS ExpiresAtUtc;
+        RETURN;
+    END
+
+    -- Trial / Expired
+    DECLARE @DaysUsed INT = DATEDIFF(DAY, @TrialStartUtc, @Now);
+    DECLARE @DaysLeft INT = @TrialDays - @DaysUsed;
+
+    IF @DaysLeft > 0
+    BEGIN
+        SELECT 2 AS StateCode, N'Trial' AS Message,
+               @DaysLeft AS TrialDaysLeft,
+               @TenantId AS TenantId,
+               CAST(NULL AS INT) AS MaxSeats,
+               CAST(NULL AS INT) AS UsedSeats,
+               CAST(NULL AS DATETIME2(0)) AS ExpiresAtUtc;
+        RETURN;
+    END
+
+    SELECT 3 AS StateCode, N'Hết hạn dùng thử' AS Message,
+           0 AS TrialDaysLeft,
+           @TenantId AS TenantId,
+           CAST(NULL AS INT) AS MaxSeats,
+           CAST(NULL AS INT) AS UsedSeats,
+           CAST(NULL AS DATETIME2(0)) AS ExpiresAtUtc;
+END
+GO
+
+-- Proc lưu key vào DB (nhập 1 lần)
+CREATE OR ALTER PROC dbo.usp_License_ApplyToken
+    @TenantId UNIQUEIDENTIFIER,
+    @LicenseToken NVARCHAR(MAX),
+    @PlanCode NVARCHAR(50) = NULL,
+    @MaxSeats INT,
+    @ExpiresAtUtc DATETIME2(0)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SET XACT_ABORT ON;
+
+    DECLARE @Now DATETIME2(0) = SYSUTCDATETIME();
+
+    BEGIN TRAN;
+
+    UPDATE dbo.Licenses
+    SET IsActive = 0,
+        RevokedAtUtc = @Now,
+        Note = ISNULL(Note, N'') + N' [Replaced]'
+    WHERE TenantId = @TenantId AND IsActive = 1;
+
+    INSERT INTO dbo.Licenses (TenantId, LicenseToken, PlanCode, MaxSeats, ExpiresAtUtc, IsActive)
+    VALUES (@TenantId, @LicenseToken, @PlanCode, @MaxSeats, @ExpiresAtUtc, 1);
+
+    COMMIT;
+
+    SELECT 1 AS Ok, N'Applied' AS Message;
+END
+GO
+
+
+
+
+
+
+
 -- Gender
 INSERT INTO TextTranslation VALUES 
 ('MALE','vi',N'Nam'), ('MALE','en','Male'),

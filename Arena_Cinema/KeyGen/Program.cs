@@ -6,42 +6,47 @@ namespace KeyGen
 {
     internal class Program
     {
-        // PRIVATE KEY: chỉ để trong tool KeyGen, KHÔNG nhúng vào app
-        private const string RSA_PRIVATE_KEY_XML = @"<RSAKeyValue><Modulus>xsNnGI5LhzcDT6u802aqJazQRw1I0tcRTQL2xR0mTctCMzwlsNjK8S+1SF7O5/7S9N1NqhoCK6E3neDfDZYNg05CjhENYOHMrGjBZoOalMUtq41l0cIr99t3Y4Z5YfesFON0GzU4om8lU7wRdfSlc37dzmXSfLHNCM1ITMXNip+RnZxiAwsbndlGKhQLTDgaRzQFmZE4uMP4+VYUS57FQbVVOs/B6NETzqYP0zuHNKRSGpHD3PgfymeyvXcJc94fer0Ac4ylq5xOFoSpXTAhyOg7Crej7UCIn9MYetEISUMO2fZOlyAGPXKQV5YeccasmtYmDtwlZ35R8VbtaWGBTQ==</Modulus><Exponent>AQAB</Exponent><P>zJ5aishfIxoUcrWpOB5fcABy9gV/aH5HwX8aGd/2cVuVK/fjEJy5CwE2r2GkV9daIOSoYW+lBbGv0t8RQuKk8/SaEFvmZ+rTcOZPP6FfU1ViO5dM+r/Pkdzr+jVcA7diuXqbl0xEmZ0q0bn2OT4nK9O5hzluOxc145RNKQtDCYs=</P><Q>+KymYlSWSr1saS3aYuNlHgphK6uSzSoN3PNVM8/FB600KuuD7XaSzBHHCCdMd2fKA60i/UdZSVXrlfzPhL5DjkksfzNFkyF91/Jneaki7dmHuTZCjb+047a75MkZeDWd/VXTaBx17fW53aWZH9luK6K0Euhg7TxYSJwJw3mri4c=</Q><DP>ozmC8oiKU97/Bs5hEbIw4ZCKJDUYgIuTxAgXEyL0XVL4OR3CFUNf3SZ3sAnM5oGUlP6yTx+XXWZz4lwtUdSoTy8FIx2cO7M4PiyKdTDOcRSAixbTwob2Ft5Lo8mjABfu+hSTP2sIoh2cxbZ5cwpghvabXgJzK1IFm+h2cNJaBKc=</DP><DQ>bF9Jj5bPfLj6kwfhobD581KQsGhwbKsEKaN+ITtN4Z+RGZdUAlvnc7nXpG0D/RGlT17X3cuHVNd1+QKZKX+Fj2/CTZj5nDo/TqocgD++sitX49aKwJ2oZojPb9BYIjQzqyEJJdkpZ8/r9XViuyeVxLx+f7L38suWqeYetyrCIOc=</DQ><InverseQ>fW0BvFNUYLfIK2d8dcWU702Jk5gJj2u83ixzvFpGcOLRTr0S5hWKsqF/zd5AVWTeCqRMRpYrCXRYgi5f9/YU3g0YCAuQu+NUPzYJGX7Yh4zOhLCJiTml8H+Qffq5enRTzyrxk2Kkrt5N+hKa7dSVc7sT1PeTZJjWU7X2CAI1Jik=</InverseQ><D>pUGnwRHmGBkURrR6PaX5R3PEg5628p3gA5C4TbDrvPiHJQQYLk5BhYBuECrLirYi/XXWcdxH+7CCBmEF80zUFV0HFwl0fx2dx6cdTbeT2aeLTjw08M6pMd2mCPiwiVScHY3zZf+9A8i3V0RhnBn5SeqsTkP4WraVy4CqYTKAr4R9ch1Qd1CE+Alg6ySCSFSDv1rWqeKYUJv/5nOPo+K66ATGpjQzxp6NnVTde39eLd8RfMu/I3DuMlgaAValidmujxYzTJ5WnjSIuhc0SMOKn157VbO4AmfByndRx2Ryce6zNdDrc57tTq7B4lX21gN4T9ogpMoMzPv419vB4i7u3Q==</D></RSAKeyValue>";
+        // TODO: dán PRIVATE KEY XML vào đây (chỉ bạn giữ)
+        private const string RsaPrivateKeyXml = @"<RSAKeyValue><Modulus>2ZvFj8EoJQGy/i6/LHNZxcOXzezESJmm+qJ/bkXskqR0rTzEG0nnarYaJVV8Dh/Sh7nY0BAzywCxb4EPKlfWmUEtEc1csWoB0PT9jocxRpAbM6jfMPg0Lt7W4t6JZ4C5y8n7a5NBC46BYGxHIZWwsam61m1df+2u4LxeQ6KpMN3wzz2J93te38nB4BBJV7e9Z/Uhw64YjSEcDeYr/jrc0G8YIiRU/EWREU52eCKg6SOkFifvGdQfllJSpKKupDkvqb5lxKgWiuL4FI9EEnhIIvx4Almz2/VJwRybGP0PTi7CnRXIck0avUtLzMbn4JqrB0SBJaV8uqYZ9d9GqnSpbQ==</Modulus><Exponent>AQAB</Exponent><P>4k0yv9RIM3FsxslPFx8UYcLZe5m9/SF+A5F6K2tLFI3OCTeq8d7ZDQnzEOFnH1EiFFqn7wiGBFg65uGN6beO5XcawHr77s71DgZQwBPo7cftScamVZ2yMJpJb1KxXX8Y9lGMnehSMTUI8vetcN6CPrxWI4SkgzObm8ZueAQ0vMs=</P><Q>9iqFocAPOe7u6wzeLDMfI9/e+YPp4/s9DsxSDiYJWaQqrx5XXP9Kn/TvHde6Wvw5z1QAJnHlH4pjM+XswZh6E1BzRIverco94OczNvh4HRGf9kmP4bzwYTe5I8/KZzeuwJqvrOQGCqrGD7XhWzludQIMXN6PbzQBZoqV51bBY6c=</Q><DP>m77lnoBK8JyvcGA7vn31WRLw+s/kocHbKDmHCzrcgVjW5CEb1Tq5xu+CCawXfMYp3jhGO4xyL6tJXnz9XkymW+aM0svRd5mXrf9Ks+b/+CYQeSXudB4D9M86mxMeXmqKk3use0DY0GTfs9gh1fxNRz/3SJqRXnq2LY9zl8XNReE=</DP><DQ>1Fp0MseymuBiHERaeDiVeWYLPKWuI6w8zMI3Wts3H6w94hlDdgcIghpSGCVcLlb9K7wj8QY5iE7iKwgCiDMXxAeXmB8stjEL1jK7/IS1YSYuHtDwnORXXRYr0RfUW9wuFRqbx4JhL9yHxU+6Gu7dOXTN42NeyqhLOQD+NbWiWGs=</DQ><InverseQ>GjpQo1kltWcc/XBCRep5mA7GL+0EjswMuQGlZi0OEbnKT/4JWukoG1gyhorePsj3mTbUGMgP8poj1FAlddBdh1GE54DGv4m9bTYmLrUsvlHirrwR5vMLcmdZqso/pXBr3zhQ43wKh3DCkKFa0pN7g9k3NERtdagmxv5mkR+lV28=</InverseQ><D>UVOLQU+SHkqFR8PWxNkTavrPiDF9phhutGr4rxDI+oEl7fyw2fYD2/jUyrEpHOo9t2X4psH3aV4H8kFMlqmfVUVrf6S9iLyykxKMlLDn9JQ05litmVKZxg6YRs+ekKUmSwhgw3KUM6p9pbix2NZl4/AoGK1k7UO6QNmFbUekbdND8amdT3gGcHaE3f0Pqg4g/cDQUXgvTf2Ej2ETHin8m5Jn+RWaLbbC0zPOmI7oi/3aZZP9lDsbHq0y1591pwgh6uTjsuvRMEd3FDWAAs+6ovBC+2bRyE9O2Lhk03a8ltr3HpAaCmT6ydICTf2dPKBw/7cfS4w9gwz53i3FlwsWTQ==</D></RSAKeyValue>";
 
-        static void Main(string[] args)
+        static void Main()
         {
-            string installId;
+            Console.Write("TenantId: ");
+            var tenant = Guid.Parse(Console.ReadLine());
 
-            if (args.Length >= 1)
+            Console.Write("MaxSeats: ");
+            var maxSeats = int.Parse(Console.ReadLine());
+
+            Console.Write("Plan (1Y / 2Y / LIFETIME): ");
+            var plan = Console.ReadLine().Trim().ToUpperInvariant();
+
+            var expUnix = GetExpUnix(plan);
+            var payload = $"{tenant}|{maxSeats}|{expUnix}|{plan}";
+            var payloadBytes = Encoding.UTF8.GetBytes(payload);
+
+            byte[] sig;
+            using (var rsa = new RSACryptoServiceProvider(2048))
             {
-                installId = args[0].Trim();
+                rsa.FromXmlString(RsaPrivateKeyXml);
+                sig = rsa.SignData(payloadBytes, CryptoConfig.MapNameToOID("SHA256"));
             }
-            else
+
+            var token = Convert.ToBase64String(payloadBytes) + "." + Convert.ToBase64String(sig);
+            Console.WriteLine("\nKEY:");
+            Console.WriteLine(token);
+        }
+
+        static long GetExpUnix(string plan)
+        {
+            var now = DateTimeOffset.UtcNow;
+            switch (plan)
             {
-                Console.Write("InstallId: ");
-                installId = (Console.ReadLine() ?? "").Trim();
-            }
-
-            if (string.IsNullOrWhiteSpace(installId))
-            {
-                Console.WriteLine("InstallId rỗng.");
-                return;
-            }
-
-            byte[] payload = Encoding.UTF8.GetBytes(installId);
-
-            using (var rsa = new RSACryptoServiceProvider())
-            {
-                rsa.FromXmlString(RSA_PRIVATE_KEY_XML);
-
-                // Phải đồng bộ với Verify bên app: SHA256
-                byte[] signature = rsa.SignData(payload, CryptoConfig.MapNameToOID("SHA256"));
-
-                string activationKey = Convert.ToBase64String(signature);
-
-                Console.WriteLine("Activation Key (Base64):");
-                Console.WriteLine(activationKey);
+                case "1Y": return now.AddYears(1).ToUnixTimeSeconds();
+                case "2Y": return now.AddYears(2).ToUnixTimeSeconds();
+                case "LIFETIME":
+                    return new DateTimeOffset(new DateTime(2100, 1, 1, 0, 0, 0, DateTimeKind.Utc)).ToUnixTimeSeconds();
+                default:
+                    throw new ArgumentException("Plan không hợp lệ.");
             }
         }
     }

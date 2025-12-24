@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Licensing;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,54 +13,40 @@ namespace UI
 {
     public partial class ActivateForm : Form
     {
-        private readonly string _installId;
+        private readonly string _connStr;
+        private readonly Guid _tenantId;
 
-        public ActivateForm(string installId, string message)
+        public ActivateForm(string connStr, Guid tenantId)
         {
             InitializeComponent();
-
-            _installId = installId ?? "";
-            txtInstallId.Text = _installId;
-            lblInfo.Text = message ?? "";
-        }
-
-        private void btnCopy_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(_installId))
-            {
-                Clipboard.SetText(_installId);
-                MessageBox.Show("Đã copy InstallId.");
-            }
+            _connStr = connStr;
+            _tenantId = tenantId;
+            lblTenant.Text = "TenantId: " + _tenantId;
         }
 
         private void btnActivate_Click(object sender, EventArgs e)
         {
             var key = txtKey.Text.Trim();
-
             if (string.IsNullOrWhiteSpace(key))
             {
                 MessageBox.Show("Vui lòng nhập key.");
                 return;
             }
 
-            // GỌI ĐÚNG CLASS LICENSE CỦA BẠN Ở ĐÂY:
-            // ví dụ: Common.Licensing.AppLicenseManager
-            if (Common.AppLicenseManager.Activate(_installId, key, out var err))
+            if (AppLicenseManager.ApplyToken(_connStr, key, out var err))
             {
                 MessageBox.Show("Kích hoạt thành công. Ứng dụng sẽ khởi động lại.");
                 Application.Restart();
             }
             else
             {
-                MessageBox.Show(err ?? "Key không hợp lệ.");
+                MessageBox.Show(err ?? "Kích hoạt thất bại.");
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); 
         }
-
-        
     }
 }
