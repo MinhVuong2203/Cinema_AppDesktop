@@ -13,7 +13,7 @@ namespace Common.Licensing
     public static class AppLicenseManager
     {
         private static readonly string AppDir =
-            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "ArenaApp");
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Arena_Cinema");
         private static readonly string InstallIdPath = Path.Combine(AppDir, "install.id");
 
         public static string GetOrCreateInstallId()
