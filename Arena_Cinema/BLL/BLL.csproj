@@ -85,6 +85,7 @@
     <Compile Include="PayOS.cs" />
     <Compile Include="ProductBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RevenueBLL.cs" />
     <Compile Include="roomBLL.cs" />
     <Compile Include="SalaryReportBLL.cs" />
     <Compile Include="SaleProductBLL.cs" />

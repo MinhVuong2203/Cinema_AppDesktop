@@ -18,6 +18,7 @@ using System.Linq;
 
 using UI.Helpers;
 using UI.Dashboard;
+using UI.Revenue;
 
 
 namespace UI
@@ -213,6 +214,10 @@ namespace UI
                     ProfileUC profileUC = new ProfileUC(this._employee);
                     LoadControl(profileUC);
                     break;
+                case "btnDoanhThu":
+                    Main_RevenueUC revenueUC = new Main_RevenueUC(this, _employee);
+                    LoadControl(revenueUC);
+                    break;
                 default:
                     break;
 
@@ -295,5 +300,6 @@ namespace UI
             }
         }
 
+       
     }
 }

@@ -37,10 +37,14 @@ namespace UI
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbTime = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnMenu = new ReaLTaiizor.Controls.ParrotButton();
             this.PanelMain = new ReaLTaiizor.Controls.ParrotGradientPanel();
             this.pnMenuBottom = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnCaiDat = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnCaNhan = new ReaLTaiizor.Controls.ParrotButton();
             this.pnMenuTop = new System.Windows.Forms.FlowLayoutPanel();
-            this.pnMenu = new System.Windows.Forms.Panel();
             this.btnTrangChu = new ReaLTaiizor.Controls.ParrotButton();
             this.btnBanVe = new ReaLTaiizor.Controls.ParrotButton();
             this.btnNhanSu = new ReaLTaiizor.Controls.ParrotButton();
@@ -48,18 +52,15 @@ namespace UI
             this.btnPhim = new ReaLTaiizor.Controls.ParrotButton();
             this.btnPhong = new ReaLTaiizor.Controls.ParrotButton();
             this.btnSanPham = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnCaiDat = new ReaLTaiizor.Controls.ParrotButton();
-            this.btnCaNhan = new ReaLTaiizor.Controls.ParrotButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btnMenu = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnDoanhThu = new ReaLTaiizor.Controls.ParrotButton();
+            this.pnMenu = new System.Windows.Forms.Panel();
             this.PanelTop.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.pnMenuBottom.SuspendLayout();
             this.pnMenuTop.SuspendLayout();
             this.pnMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelTop
@@ -119,6 +120,54 @@ namespace UI
             this.lbDate.TabIndex = 18;
             this.lbDate.Text = "label1";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::UI.Properties.Resources.imgClock;
+            this.pictureBox1.Location = new System.Drawing.Point(11, -7);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(56, 49);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::UI.Properties.Resources.imgCalender;
+            this.pictureBox2.Location = new System.Drawing.Point(21, 37);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(35, 32);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            // 
+            // btnMenu
+            // 
+            this.btnMenu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
+            this.btnMenu.ButtonImage = global::UI.Properties.Resources.list_symbol_of_three_items_with_dots;
+            this.btnMenu.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
+            this.btnMenu.ButtonText = "";
+            this.btnMenu.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.btnMenu.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.btnMenu.CornerRadius = 5;
+            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.btnMenu.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnMenu.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.btnMenu.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.btnMenu.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnMenu.Location = new System.Drawing.Point(3, -1);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(69, 70);
+            this.btnMenu.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnMenu.TabIndex = 14;
+            this.btnMenu.TextColor = System.Drawing.Color.White;
+            this.btnMenu.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnMenu.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
+            // 
             // PanelMain
             // 
             this.PanelMain.BottomLeft = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -153,6 +202,58 @@ namespace UI
             this.pnMenuBottom.Size = new System.Drawing.Size(300, 173);
             this.pnMenuBottom.TabIndex = 2;
             // 
+            // btnCaiDat
+            // 
+            this.btnCaiDat.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
+            this.btnCaiDat.ButtonImage = global::UI.Properties.Resources.gear;
+            this.btnCaiDat.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
+            this.btnCaiDat.ButtonText = global::UI.Resources.Lang.CAIDAT;
+            this.btnCaiDat.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.btnCaiDat.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnCaiDat.CornerRadius = 5;
+            this.btnCaiDat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCaiDat.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCaiDat.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnCaiDat.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnCaiDat.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.btnCaiDat.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnCaiDat.Location = new System.Drawing.Point(3, 2);
+            this.btnCaiDat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCaiDat.Name = "btnCaiDat";
+            this.btnCaiDat.Size = new System.Drawing.Size(282, 65);
+            this.btnCaiDat.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnCaiDat.TabIndex = 11;
+            this.btnCaiDat.TextColor = System.Drawing.Color.White;
+            this.btnCaiDat.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnCaiDat.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnCaiDat.Click += new System.EventHandler(this.MenuItem_Click);
+            // 
+            // btnCaNhan
+            // 
+            this.btnCaNhan.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
+            this.btnCaNhan.ButtonImage = global::UI.Properties.Resources.profile__1_;
+            this.btnCaNhan.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
+            this.btnCaNhan.ButtonText = global::UI.Resources.Lang.CANHAN;
+            this.btnCaNhan.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.btnCaNhan.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnCaNhan.CornerRadius = 5;
+            this.btnCaNhan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCaNhan.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCaNhan.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnCaNhan.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnCaNhan.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.btnCaNhan.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnCaNhan.Location = new System.Drawing.Point(3, 71);
+            this.btnCaNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCaNhan.Name = "btnCaNhan";
+            this.btnCaNhan.Size = new System.Drawing.Size(282, 65);
+            this.btnCaNhan.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnCaNhan.TabIndex = 10;
+            this.btnCaNhan.TextColor = System.Drawing.Color.White;
+            this.btnCaNhan.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnCaNhan.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnCaNhan.Click += new System.EventHandler(this.MenuItem_Click);
+            // 
             // pnMenuTop
             // 
             this.pnMenuTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
@@ -164,6 +265,7 @@ namespace UI
             this.pnMenuTop.Controls.Add(this.btnPhim);
             this.pnMenuTop.Controls.Add(this.btnPhong);
             this.pnMenuTop.Controls.Add(this.btnSanPham);
+            this.pnMenuTop.Controls.Add(this.btnDoanhThu);
             this.pnMenuTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMenuTop.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.pnMenuTop.Location = new System.Drawing.Point(0, 0);
@@ -171,18 +273,6 @@ namespace UI
             this.pnMenuTop.Name = "pnMenuTop";
             this.pnMenuTop.Size = new System.Drawing.Size(300, 674);
             this.pnMenuTop.TabIndex = 0;
-            // 
-            // pnMenu
-            // 
-            this.pnMenu.BackColor = System.Drawing.Color.IndianRed;
-            this.pnMenu.Controls.Add(this.pnMenuTop);
-            this.pnMenu.Controls.Add(this.pnMenuBottom);
-            this.pnMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnMenu.Location = new System.Drawing.Point(0, 70);
-            this.pnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pnMenu.Name = "pnMenu";
-            this.pnMenu.Size = new System.Drawing.Size(300, 847);
-            this.pnMenu.TabIndex = 1;
             // 
             // btnTrangChu
             // 
@@ -367,105 +457,43 @@ namespace UI
             this.btnSanPham.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnSanPham.Click += new System.EventHandler(this.MenuItem_Click);
             // 
-            // btnCaiDat
+            // btnDoanhThu
             // 
-            this.btnCaiDat.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.btnCaiDat.ButtonImage = global::UI.Properties.Resources.gear;
-            this.btnCaiDat.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
-            this.btnCaiDat.ButtonText = global::UI.Resources.Lang.CAIDAT;
-            this.btnCaiDat.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.btnCaiDat.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnCaiDat.CornerRadius = 5;
-            this.btnCaiDat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCaiDat.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCaiDat.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnCaiDat.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnCaiDat.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
-            this.btnCaiDat.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnCaiDat.Location = new System.Drawing.Point(3, 2);
-            this.btnCaiDat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCaiDat.Name = "btnCaiDat";
-            this.btnCaiDat.Size = new System.Drawing.Size(282, 65);
-            this.btnCaiDat.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnCaiDat.TabIndex = 11;
-            this.btnCaiDat.TextColor = System.Drawing.Color.White;
-            this.btnCaiDat.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnCaiDat.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnCaiDat.Click += new System.EventHandler(this.MenuItem_Click);
+            this.btnDoanhThu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
+            this.btnDoanhThu.ButtonImage = global::UI.Properties.Resources.ticket;
+            this.btnDoanhThu.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
+            this.btnDoanhThu.ButtonText = "DOANH THU";
+            this.btnDoanhThu.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.btnDoanhThu.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnDoanhThu.CornerRadius = 5;
+            this.btnDoanhThu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDoanhThu.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDoanhThu.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnDoanhThu.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnDoanhThu.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.btnDoanhThu.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnDoanhThu.Location = new System.Drawing.Point(3, 485);
+            this.btnDoanhThu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDoanhThu.Name = "btnDoanhThu";
+            this.btnDoanhThu.Size = new System.Drawing.Size(282, 65);
+            this.btnDoanhThu.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnDoanhThu.TabIndex = 19;
+            this.btnDoanhThu.TextColor = System.Drawing.Color.White;
+            this.btnDoanhThu.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnDoanhThu.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnDoanhThu.Click += new System.EventHandler(this.MenuItem_Click);
             // 
-            // btnCaNhan
+            // pnMenu
             // 
-            this.btnCaNhan.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.btnCaNhan.ButtonImage = global::UI.Properties.Resources.profile__1_;
-            this.btnCaNhan.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
-            this.btnCaNhan.ButtonText = global::UI.Resources.Lang.CANHAN;
-            this.btnCaNhan.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.btnCaNhan.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnCaNhan.CornerRadius = 5;
-            this.btnCaNhan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCaNhan.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCaNhan.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnCaNhan.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
-            this.btnCaNhan.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
-            this.btnCaNhan.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnCaNhan.Location = new System.Drawing.Point(3, 71);
-            this.btnCaNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCaNhan.Name = "btnCaNhan";
-            this.btnCaNhan.Size = new System.Drawing.Size(282, 65);
-            this.btnCaNhan.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnCaNhan.TabIndex = 10;
-            this.btnCaNhan.TextColor = System.Drawing.Color.White;
-            this.btnCaNhan.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnCaNhan.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnCaNhan.Click += new System.EventHandler(this.MenuItem_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::UI.Properties.Resources.imgClock;
-            this.pictureBox1.Location = new System.Drawing.Point(11, -7);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(56, 49);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::UI.Properties.Resources.imgCalender;
-            this.pictureBox2.Location = new System.Drawing.Point(21, 37);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(35, 32);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 16;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btnMenu
-            // 
-            this.btnMenu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.btnMenu.ButtonImage = global::UI.Properties.Resources.list_symbol_of_three_items_with_dots;
-            this.btnMenu.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
-            this.btnMenu.ButtonText = "";
-            this.btnMenu.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.btnMenu.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.btnMenu.CornerRadius = 5;
-            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.btnMenu.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnMenu.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
-            this.btnMenu.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
-            this.btnMenu.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
-            this.btnMenu.Location = new System.Drawing.Point(3, -1);
-            this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(69, 70);
-            this.btnMenu.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.btnMenu.TabIndex = 14;
-            this.btnMenu.TextColor = System.Drawing.Color.White;
-            this.btnMenu.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            this.btnMenu.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
+            this.pnMenu.BackColor = System.Drawing.Color.IndianRed;
+            this.pnMenu.Controls.Add(this.pnMenuTop);
+            this.pnMenu.Controls.Add(this.pnMenuBottom);
+            this.pnMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnMenu.Location = new System.Drawing.Point(0, 70);
+            this.pnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnMenu.Name = "pnMenu";
+            this.pnMenu.Size = new System.Drawing.Size(300, 847);
+            this.pnMenu.TabIndex = 1;
             // 
             // Home
             // 
@@ -482,11 +510,11 @@ namespace UI
             this.PanelTop.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.pnMenuBottom.ResumeLayout(false);
             this.pnMenuTop.ResumeLayout(false);
             this.pnMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -534,5 +562,6 @@ namespace UI
         private Label lbTime;
         private System.Windows.Forms.Timer timerClock;
         private Panel panel1;
+        private ReaLTaiizor.Controls.ParrotButton btnDoanhThu;
     }
 }
