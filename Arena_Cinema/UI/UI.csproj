@@ -428,6 +428,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Lang.resx</DependentUpon>
     </Compile>
+    <Compile Include="Revenue\Main_RevenueUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Revenue\Main_RevenueUC.Designer.cs">
+      <DependentUpon>Main_RevenueUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScreeningRoom\AddRoom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -581,6 +587,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Lang.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Revenue\Main_RevenueUC.resx">
+      <DependentUpon>Main_RevenueUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScreeningRoom\AddRoom.resx">
       <DependentUpon>AddRoom.cs</DependentUpon>

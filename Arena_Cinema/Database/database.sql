@@ -811,6 +811,431 @@ INSERT INTO TextTranslation VALUES
 
 
 
+-- VOUCHER SYSTEM FOR CINEMA APP
+
+-- 1. BẢNG VOUCHER TEMPLATE (Mẫu voucher do Admin tạo)
+CREATE TABLE Voucher (
+    VoucherID INT PRIMARY KEY IDENTITY(1,1),
+    VoucherCode NVARCHAR(50) NOT NULL UNIQUE, -- Mã voucher (VD: SUMMER2024, NEWUSER50)
+    VoucherName NVARCHAR(200) NOT NULL, -- Tên voucher
+    Description NVARCHAR(MAX), -- Mô tả chi tiết
+    
+    -- Loại giảm giá
+    DiscountType NVARCHAR(20) NOT NULL, -- 'Phần trăm' hoặc 'Số tiền'
+    DiscountValue DECIMAL(18,2) NOT NULL CHECK (DiscountValue > 0), -- Giá trị giảm (% hoặc VND)
+    MaxDiscountAmount DECIMAL(18,2), -- Giới hạn giảm tối đa (VND) - áp dụng khi giảm theo %
+    
+    -- Điều kiện sử dụng
+    MinOrderAmount DECIMAL(18,2) DEFAULT 0, -- Giá trị đơn hàng tối thiểu
+    PointRequired INT DEFAULT 0 CHECK (PointRequired >= 0), -- Số điểm cần để đổi
+    
+    -- Số lượng và thời hạn
+    TotalQuantity INT CHECK (TotalQuantity > 0), -- Tổng số voucher phát hành
+    UsedQuantity INT DEFAULT 0 CHECK (UsedQuantity >= 0), -- Số voucher đã sử dụng
+    RemainingQuantity AS (TotalQuantity - UsedQuantity) PERSISTED, -- Số voucher còn lại
+    
+    StartDate DATETIME NOT NULL, -- Ngày bắt đầu hiệu lực
+    EndDate DATETIME NOT NULL, -- Ngày hết hạn
+    
+    -- Giới hạn sử dụng
+    MaxUsagePerCustomer INT DEFAULT 1, -- Số lần tối đa 1 khách hàng có thể sử dụng
+    
+    -- Phân loại voucher
+    VoucherCategory NVARCHAR(50), -- 'Khuyến mãi chung', 'Sinh nhật', 'Thành viên mới', 'VIP'
+    ApplicableFor NVARCHAR(50), -- 'Tất cả', 'Vé xem phim', 'Sản phẩm', 'Combo'
+    
+    ImageUrl NVARCHAR(255), -- Hình ảnh voucher
+    CreatedBy UNIQUEIDENTIFIER, -- Admin tạo voucher
+    CreatedDate DATETIME DEFAULT GETDATE(),
+    IsActive BIT DEFAULT 1 NOT NULL, -- Voucher còn hoạt động không
+    IsDeleted BIT DEFAULT 0 NOT NULL,
+    
+    FOREIGN KEY (CreatedBy) REFERENCES Employee(EmployeeID) ON DELETE SET NULL,
+    CHECK (EndDate > StartDate),
+    CHECK (TotalQuantity >= UsedQuantity)
+);
+
+-- 2. BẢNG VOUCHER CỦA KHÁCH HÀNG (Voucher đã được đổi/phát cho khách)
+CREATE TABLE CustomerVoucher (
+    CustomerVoucherID UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    VoucherID INT NOT NULL, -- Voucher template
+    CustomerID UNIQUEIDENTIFIER NOT NULL, -- Khách hàng sở hữu
+    
+    -- Thông tin đổi voucher
+    RedeemedBy UNIQUEIDENTIFIER, -- Nhân viên thực hiện đổi
+    RedeemedDate DATETIME DEFAULT GETDATE(), -- Ngày đổi
+    PointsUsed INT DEFAULT 0, -- Số điểm đã dùng để đổi
+    
+    -- Trạng thái và sử dụng
+    Status NVARCHAR(30) NOT NULL DEFAULT N'Chưa sử dụng', -- 'Chưa sử dụng', 'Đã sử dụng', 'Hết hạn'
+    UsedDate DATETIME, -- Ngày sử dụng
+    InvoiceID UNIQUEIDENTIFIER, -- Hóa đơn sử dụng voucher
+    
+    ExpiryDate DATETIME NOT NULL, -- Ngày hết hạn (copy từ Voucher template)
+    IsDeleted BIT DEFAULT 0 NOT NULL,
+    
+    FOREIGN KEY (VoucherID) REFERENCES Voucher(VoucherID) ON DELETE CASCADE,
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID) ON DELETE CASCADE,
+    FOREIGN KEY (RedeemedBy) REFERENCES Employee(EmployeeID) ON DELETE SET NULL,
+    FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID) ON DELETE SET NULL,
+    
+    CONSTRAINT UQ_CustomerVoucher UNIQUE (CustomerVoucherID)
+);
+
+-- 3. INDEX cho hiệu năng
+CREATE INDEX IDX_Voucher_Code ON Voucher(VoucherCode) WHERE IsDeleted = 0;
+CREATE INDEX IDX_Voucher_Active ON Voucher(IsActive, StartDate, EndDate) WHERE IsDeleted = 0;
+CREATE INDEX IDX_CustomerVoucher_Customer ON CustomerVoucher(CustomerID, Status) WHERE IsDeleted = 0;
+CREATE INDEX IDX_CustomerVoucher_Status ON CustomerVoucher(Status, ExpiryDate);
+
+-- =====================================================
+-- TRIGGERS
+-- =====================================================
+go
+-- Trigger 1: Tự động cập nhật số lượng voucher đã sử dụng
+CREATE OR ALTER TRIGGER trg_UpdateVoucherUsedQuantity
+ON CustomerVoucher
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    -- Cập nhật UsedQuantity khi voucher được sử dụng
+    UPDATE v
+    SET UsedQuantity = (
+        SELECT COUNT(*) 
+        FROM CustomerVoucher cv 
+        WHERE cv.VoucherID = v.VoucherID 
+        AND cv.Status = N'Đã sử dụng'
+        AND cv.IsDeleted = 0
+    )
+    FROM Voucher v
+    WHERE v.VoucherID IN (SELECT DISTINCT VoucherID FROM inserted);
+END;
+GO
+
+-- Trigger 2: Tự động set ExpiryDate khi đổi voucher
+CREATE OR ALTER TRIGGER trg_SetCustomerVoucherExpiry
+ON CustomerVoucher
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    UPDATE cv
+    SET ExpiryDate = v.EndDate
+    FROM CustomerVoucher cv
+    JOIN inserted i ON cv.CustomerVoucherID = i.CustomerVoucherID
+    JOIN Voucher v ON i.VoucherID = v.VoucherID
+    WHERE cv.ExpiryDate IS NULL OR cv.ExpiryDate = '1900-01-01';
+END;
+GO
+
+-- Trigger 3: Tự động cập nhật trạng thái voucher hết hạn
+CREATE OR ALTER TRIGGER trg_UpdateExpiredVouchers
+ON CustomerVoucher
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    UPDATE CustomerVoucher
+    SET Status = N'Hết hạn'
+    WHERE Status = N'Chưa sử dụng'
+    AND ExpiryDate < GETDATE()
+    AND IsDeleted = 0;
+END;
+GO
+
+-- Trigger 4: Trừ điểm khách hàng khi đổi voucher
+CREATE OR ALTER TRIGGER trg_DeductPointsOnVoucherRedeem
+ON CustomerVoucher
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    UPDATE c
+    SET Point = c.Point - i.PointsUsed
+    FROM Customer c
+    JOIN inserted i ON c.CustomerID = i.CustomerID
+    WHERE i.PointsUsed > 0;
+END;
+GO
+
+-- STORED PROCEDURES
+
+-- SP 1: Đổi voucher cho khách hàng
+CREATE OR ALTER PROCEDURE sp_RedeemVoucher
+    @VoucherCode NVARCHAR(50),
+    @CustomerID UNIQUEIDENTIFIER,
+    @EmployeeID UNIQUEIDENTIFIER
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        -- Kiểm tra voucher tồn tại và còn hiệu lực
+        DECLARE @VoucherID INT, @PointRequired INT, @CustomerPoint DECIMAL(18,2);
+        DECLARE @MaxUsagePerCustomer INT, @CurrentUsage INT;
+        DECLARE @RemainingQuantity INT, @StartDate DATETIME, @EndDate DATETIME;
+        
+        SELECT 
+            @VoucherID = VoucherID,
+            @PointRequired = PointRequired,
+            @MaxUsagePerCustomer = MaxUsagePerCustomer,
+            @RemainingQuantity = RemainingQuantity,
+            @StartDate = StartDate,
+            @EndDate = EndDate
+        FROM Voucher
+        WHERE VoucherCode = @VoucherCode
+        AND IsActive = 1
+        AND IsDeleted = 0;
+        
+        IF @VoucherID IS NULL
+        BEGIN
+            RAISERROR(N'Voucher không tồn tại hoặc không còn hiệu lực', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+        
+        -- Kiểm tra thời hạn
+        IF GETDATE() < @StartDate OR GETDATE() > @EndDate
+        BEGIN
+            RAISERROR(N'Voucher chưa có hiệu lực hoặc đã hết hạn', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+        
+        -- Kiểm tra số lượng còn lại
+        IF @RemainingQuantity <= 0
+        BEGIN
+            RAISERROR(N'Voucher đã hết số lượng', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+        
+        -- Kiểm tra điểm của khách hàng
+        SELECT @CustomerPoint = Point FROM Customer WHERE CustomerID = @CustomerID;
+        
+        IF @CustomerPoint < @PointRequired
+        BEGIN
+            RAISERROR(N'Khách hàng không đủ điểm để đổi voucher', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+        
+        -- Kiểm tra số lần đã sử dụng
+        SELECT @CurrentUsage = COUNT(*)
+        FROM CustomerVoucher
+        WHERE VoucherID = @VoucherID
+        AND CustomerID = @CustomerID
+        AND IsDeleted = 0;
+        
+        IF @CurrentUsage >= @MaxUsagePerCustomer
+        BEGIN
+            RAISERROR(N'Khách hàng đã đạt giới hạn sử dụng voucher này', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+        
+        -- Tạo voucher cho khách hàng
+        INSERT INTO CustomerVoucher (VoucherID, CustomerID, RedeemedBy, PointsUsed, ExpiryDate)
+        VALUES (@VoucherID, @CustomerID, @EmployeeID, @PointRequired, @EndDate);
+        
+        COMMIT;
+        SELECT N'Đổi voucher thành công' AS Message, SCOPE_IDENTITY() AS CustomerVoucherID;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        THROW;
+    END CATCH
+END;
+GO
+
+-- SP 2: Áp dụng voucher vào hóa đơn
+CREATE OR ALTER PROCEDURE sp_ApplyVoucherToInvoice
+    @CustomerVoucherID UNIQUEIDENTIFIER,
+    @InvoiceID UNIQUEIDENTIFIER,
+    @TotalAmount DECIMAL(18,2),
+    @DiscountAmount DECIMAL(18,2) OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        DECLARE @VoucherID INT, @DiscountType NVARCHAR(20), @DiscountValue DECIMAL(18,2);
+        DECLARE @MaxDiscountAmount DECIMAL(18,2), @MinOrderAmount DECIMAL(18,2);
+        DECLARE @Status NVARCHAR(30), @ExpiryDate DATETIME;
+        
+        -- Lấy thông tin voucher
+        SELECT 
+            @VoucherID = cv.VoucherID,
+            @Status = cv.Status,
+            @ExpiryDate = cv.ExpiryDate,
+            @DiscountType = v.DiscountType,
+            @DiscountValue = v.DiscountValue,
+            @MaxDiscountAmount = v.MaxDiscountAmount,
+            @MinOrderAmount = v.MinOrderAmount
+        FROM CustomerVoucher cv
+        JOIN Voucher v ON cv.VoucherID = v.VoucherID
+        WHERE cv.CustomerVoucherID = @CustomerVoucherID
+        AND cv.IsDeleted = 0;
+        
+        -- Kiểm tra voucher
+        IF @VoucherID IS NULL
+        BEGIN
+            RAISERROR(N'Voucher không tồn tại', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+        
+        IF @Status != N'Chưa sử dụng'
+        BEGIN
+            RAISERROR(N'Voucher đã được sử dụng hoặc hết hạn', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+        
+        IF @ExpiryDate < GETDATE()
+        BEGIN
+            RAISERROR(N'Voucher đã hết hạn', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+        
+        IF @TotalAmount < @MinOrderAmount
+        BEGIN
+            RAISERROR(N'Giá trị đơn hàng chưa đạt yêu cầu tối thiểu', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+        
+        -- Tính số tiền giảm giá
+        IF @DiscountType = N'Phần trăm'
+        BEGIN
+            SET @DiscountAmount = @TotalAmount * @DiscountValue / 100;
+            IF @MaxDiscountAmount IS NOT NULL AND @DiscountAmount > @MaxDiscountAmount
+                SET @DiscountAmount = @MaxDiscountAmount;
+        END
+        ELSE
+        BEGIN
+            SET @DiscountAmount = @DiscountValue;
+            IF @DiscountAmount > @TotalAmount
+                SET @DiscountAmount = @TotalAmount;
+        END
+        
+        -- Cập nhật trạng thái voucher
+        UPDATE CustomerVoucher
+        SET Status = N'Đã sử dụng',
+            UsedDate = GETDATE(),
+            InvoiceID = @InvoiceID
+        WHERE CustomerVoucherID = @CustomerVoucherID;
+        
+        COMMIT;
+        SELECT N'Áp dụng voucher thành công' AS Message;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        THROW;
+    END CATCH
+END;
+GO
+
+-- SP 3: Lấy danh sách voucher có thể đổi
+CREATE OR ALTER PROCEDURE sp_GetAvailableVouchers
+    @CustomerID UNIQUEIDENTIFIER
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    DECLARE @CustomerPoint DECIMAL(18,2);
+    SELECT @CustomerPoint = Point FROM Customer WHERE CustomerID = @CustomerID;
+    
+    SELECT 
+        v.VoucherID,
+        v.VoucherCode,
+        v.VoucherName,
+        v.Description,
+        v.DiscountType,
+        v.DiscountValue,
+        v.MaxDiscountAmount,
+        v.MinOrderAmount,
+        v.PointRequired,
+        v.RemainingQuantity,
+        v.StartDate,
+        v.EndDate,
+        v.VoucherCategory,
+        v.ApplicableFor,
+        v.ImageUrl,
+        @CustomerPoint AS CustomerPoint,
+        CASE 
+            WHEN @CustomerPoint >= v.PointRequired THEN 1
+            ELSE 0
+        END AS CanRedeem,
+        -- Số lần đã dùng
+        ISNULL((SELECT COUNT(*) 
+                FROM CustomerVoucher cv 
+                WHERE cv.VoucherID = v.VoucherID 
+                AND cv.CustomerID = @CustomerID
+                AND cv.IsDeleted = 0), 0) AS TimesUsed,
+        v.MaxUsagePerCustomer
+    FROM Voucher v
+    WHERE v.IsActive = 1
+    AND v.IsDeleted = 0
+    AND v.RemainingQuantity > 0
+    AND GETDATE() BETWEEN v.StartDate AND v.EndDate
+    AND ISNULL((SELECT COUNT(*) 
+                FROM CustomerVoucher cv 
+                WHERE cv.VoucherID = v.VoucherID 
+                AND cv.CustomerID = @CustomerID
+                AND cv.IsDeleted = 0), 0) < v.MaxUsagePerCustomer
+    ORDER BY v.PointRequired ASC, v.EndDate ASC;
+END;
+GO
+
+-- SP 4: Lấy voucher của khách hàng
+CREATE OR ALTER PROCEDURE sp_GetCustomerVouchers
+    @CustomerID UNIQUEIDENTIFIER,
+    @Status NVARCHAR(30) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    SELECT 
+        cv.CustomerVoucherID,
+        cv.VoucherID,
+        v.VoucherCode,
+        v.VoucherName,
+        v.Description,
+        v.DiscountType,
+        v.DiscountValue,
+        v.MaxDiscountAmount,
+        v.MinOrderAmount,
+        v.ApplicableFor,
+        v.ImageUrl,
+        cv.RedeemedDate,
+        cv.Status,
+        cv.UsedDate,
+        cv.ExpiryDate,
+        cv.PointsUsed,
+        e.FullName AS RedeemedByName
+    FROM CustomerVoucher cv
+    JOIN Voucher v ON cv.VoucherID = v.VoucherID
+    LEFT JOIN Employee e ON cv.RedeemedBy = e.EmployeeID
+    WHERE cv.CustomerID = @CustomerID
+    AND cv.IsDeleted = 0
+    AND (@Status IS NULL OR cv.Status = @Status)
+    ORDER BY 
+        CASE cv.Status
+            WHEN N'Chưa sử dụng' THEN 1
+            WHEN N'Đã sử dụng' THEN 2
+            WHEN N'Hết hạn' THEN 3
+        END,
+        cv.ExpiryDate ASC;
+END;
 
 
 
