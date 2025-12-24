@@ -16,6 +16,8 @@ namespace DTO
             InvoiceProducts = new HashSet<InvoiceProduct>();
             InvoiceTickets = new HashSet<InvoiceTicket>();
             Payments = new HashSet<Payment>();
+
+            CustomerVouchers = new HashSet<CustomerVoucher>();
         }
 
         public Guid InvoiceID { get; set; }
@@ -47,5 +49,7 @@ namespace DTO
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payment> Payments { get; set; }
+
+        public virtual ICollection<CustomerVoucher> CustomerVouchers { get; set; }
     }
 }

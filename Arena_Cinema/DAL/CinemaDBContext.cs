@@ -1,4 +1,4 @@
-using DTO;
+ï»¿using DTO;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
@@ -9,7 +9,7 @@ namespace DAL
 {
     public partial class CinemaDBContext : DbContext
     {
-        // Dòng này ??m b?o provider ???c load ?úng lúc runtime
+        // DÃ²ng nÃ y ??m b?o provider ???c load ?Ãºng lÃºc runtime
         static CinemaDBContext()
         {
             var ensureDLLIsCopied = SqlProviderServices.Instance;
@@ -48,6 +48,8 @@ namespace DAL
         public virtual DbSet<Ticket> Tickets { get; set; }
         public virtual DbSet<WorkShift> WorkShifts { get; set; }
         public virtual DbSet<Operation> Operations { get; set; }
+        public virtual DbSet<Voucher> Vouchers { get; set; }
+        public virtual DbSet<CustomerVoucher> CustomerVouchers { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -120,6 +122,71 @@ namespace DAL
                     m.MapLeftKey("EmployeeID");
                     m.MapRightKey("OperationId");
                 });
+
+            // VOUCHER
+
+            // Voucher configurations
+            modelBuilder.Entity<Voucher>()
+                .Property(e => e.VoucherCode)
+                .IsRequired()
+                .HasMaxLength(50);
+
+            modelBuilder.Entity<Voucher>()
+                .HasIndex(e => e.VoucherCode)
+                .IsUnique();
+
+            modelBuilder.Entity<Voucher>()
+                .Property(e => e.DiscountValue)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Voucher>()
+                .Property(e => e.MaxDiscountAmount)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Voucher>()
+                .Property(e => e.MinOrderAmount)
+                .HasPrecision(18, 2);
+
+            // Voucher - Employee relationship (CreatedBy)
+            modelBuilder.Entity<Voucher>()
+                .HasOptional(v => v.Employee)
+                .WithMany(e => e.CreatedVouchers)
+                .HasForeignKey(v => v.CreatedBy)
+                .WillCascadeOnDelete(false);
+
+            // CustomerVoucher configurations
+            modelBuilder.Entity<CustomerVoucher>()
+                .Property(e => e.Status)
+                .IsRequired()
+                .HasMaxLength(30);
+
+            // CustomerVoucher - Voucher relationship
+            modelBuilder.Entity<CustomerVoucher>()
+                .HasRequired(cv => cv.Voucher)
+                .WithMany(v => v.CustomerVouchers)
+                .HasForeignKey(cv => cv.VoucherID)
+                .WillCascadeOnDelete(true);
+
+            // CustomerVoucher - Customer relationship
+            modelBuilder.Entity<CustomerVoucher>()
+                .HasRequired(cv => cv.Customer)
+                .WithMany(c => c.CustomerVouchers)
+                .HasForeignKey(cv => cv.CustomerID)
+                .WillCascadeOnDelete(true);
+
+            // CustomerVoucher - Employee relationship (RedeemedBy)
+            modelBuilder.Entity<CustomerVoucher>()
+                .HasOptional(cv => cv.Employee)
+                .WithMany(e => e.RedeemedVouchers)
+                .HasForeignKey(cv => cv.RedeemedBy)
+                .WillCascadeOnDelete(false);
+
+            // CustomerVoucher - Invoice relationship
+            modelBuilder.Entity<CustomerVoucher>()
+                .HasOptional(cv => cv.Invoice)
+                .WithMany(i => i.CustomerVouchers)
+                .HasForeignKey(cv => cv.InvoiceID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

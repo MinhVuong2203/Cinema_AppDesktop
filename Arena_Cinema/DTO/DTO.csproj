@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="CustomerVoucher.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="InvoiceProduct.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="ShowTime.cs" />
     <Compile Include="TextTranslation.cs" />
     <Compile Include="Ticket.cs" />
+    <Compile Include="Voucher.cs" />
     <Compile Include="WorkShift.cs" />
   </ItemGroup>
   <ItemGroup>

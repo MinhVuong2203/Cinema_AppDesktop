@@ -54,6 +54,7 @@ namespace UI
             this.btnSanPham = new ReaLTaiizor.Controls.ParrotButton();
             this.btnDoanhThu = new ReaLTaiizor.Controls.ParrotButton();
             this.pnMenu = new System.Windows.Forms.Panel();
+            this.btnVoucher = new ReaLTaiizor.Controls.ParrotButton();
             this.PanelTop.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -266,6 +267,7 @@ namespace UI
             this.pnMenuTop.Controls.Add(this.btnPhong);
             this.pnMenuTop.Controls.Add(this.btnSanPham);
             this.pnMenuTop.Controls.Add(this.btnDoanhThu);
+            this.pnMenuTop.Controls.Add(this.btnVoucher);
             this.pnMenuTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnMenuTop.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.pnMenuTop.Location = new System.Drawing.Point(0, 0);
@@ -495,6 +497,32 @@ namespace UI
             this.pnMenu.Size = new System.Drawing.Size(300, 847);
             this.pnMenu.TabIndex = 1;
             // 
+            // btnVoucher
+            // 
+            this.btnVoucher.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
+            this.btnVoucher.ButtonImage = global::UI.Properties.Resources.ticket;
+            this.btnVoucher.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
+            this.btnVoucher.ButtonText = "VOUCHER";
+            this.btnVoucher.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
+            this.btnVoucher.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnVoucher.CornerRadius = 5;
+            this.btnVoucher.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVoucher.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoucher.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnVoucher.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnVoucher.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(215)))));
+            this.btnVoucher.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnVoucher.Location = new System.Drawing.Point(3, 554);
+            this.btnVoucher.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnVoucher.Name = "btnVoucher";
+            this.btnVoucher.Size = new System.Drawing.Size(282, 65);
+            this.btnVoucher.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnVoucher.TabIndex = 19;
+            this.btnVoucher.TextColor = System.Drawing.Color.White;
+            this.btnVoucher.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnVoucher.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnVoucher.Click += new System.EventHandler(this.MenuItem_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -563,5 +591,6 @@ namespace UI
         private System.Windows.Forms.Timer timerClock;
         private Panel panel1;
         private ReaLTaiizor.Controls.ParrotButton btnDoanhThu;
+        private ReaLTaiizor.Controls.ParrotButton btnVoucher;
     }
 }

@@ -19,6 +19,7 @@ using System.Linq;
 using UI.Helpers;
 using UI.Dashboard;
 using UI.Revenue;
+using UI.Voucher;
 
 
 namespace UI
@@ -217,6 +218,10 @@ namespace UI
                 case "btnDoanhThu":
                     Main_RevenueUC revenueUC = new Main_RevenueUC(this, _employee);
                     LoadControl(revenueUC);
+                    break;
+                case "btnVoucher":
+                    VoucherUC voucherUC = new VoucherUC(this, _employee);
+                    LoadControl(voucherUC);
                     break;
                 default:
                     break;

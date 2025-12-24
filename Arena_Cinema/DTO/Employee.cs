@@ -15,6 +15,10 @@ namespace DTO
             Invoices = new HashSet<Invoice>();
             WorkShifts = new HashSet<WorkShift>();
             Operations = new HashSet<Operation>();
+
+            //voucher navigation properties
+            CreatedVouchers = new HashSet<Voucher>();
+            RedeemedVouchers = new HashSet<CustomerVoucher>();
         }
 
         public Guid EmployeeID { get; set; }
@@ -65,6 +69,10 @@ namespace DTO
         public virtual ICollection<WorkShift> WorkShifts { get; set; }
 
         public virtual ICollection<Operation> Operations { get; set; }
+
+        //voucher navigation properties
+        public virtual ICollection<Voucher> CreatedVouchers { get; set; }
+        public virtual ICollection<CustomerVoucher> RedeemedVouchers { get; set; }
 
 
     }

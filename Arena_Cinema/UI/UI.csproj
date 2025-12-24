@@ -488,6 +488,12 @@
     <Compile Include="ShowTime\MNShowTimeUC.Designer.cs">
       <DependentUpon>MNShowTimeUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="Voucher\VoucherUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Voucher\VoucherUC.Designer.cs">
+      <DependentUpon>VoucherUC.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ActivateForm.resx">
       <DependentUpon>ActivateForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -620,6 +626,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ShowTime\MNShowTimeUC.resx">
       <DependentUpon>MNShowTimeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Voucher\VoucherUC.resx">
+      <DependentUpon>VoucherUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

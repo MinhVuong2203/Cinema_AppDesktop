@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="AccountDAL.cs" />
     <Compile Include="CinemaDBContext.cs" />
+    <Compile Include="CustomerVoucherDAL.cs" />
     <Compile Include="EmployeeDAL.cs" />
     <Compile Include="invoiceDAL.cs" />
     <Compile Include="MovieDAL.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="SaleTicketDAL.cs" />
     <Compile Include="SeatLockDAL.cs" />
     <Compile Include="ShowTimeDAL.cs" />
+    <Compile Include="VoucherDAL.cs" />
     <Compile Include="WorkShiftDAL.cs" />
   </ItemGroup>
   <ItemGroup>
