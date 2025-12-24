@@ -214,6 +214,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ActivateForm.Designer.cs">
+      <DependentUpon>ActivateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CircularPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -476,6 +482,9 @@
     <Compile Include="ShowTime\MNShowTimeUC.Designer.cs">
       <DependentUpon>MNShowTimeUC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ActivateForm.resx">
+      <DependentUpon>ActivateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard\DashboardUC.resx">
       <DependentUpon>DashboardUC.cs</DependentUpon>
     </EmbeddedResource>
