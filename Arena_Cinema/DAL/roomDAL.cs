@@ -41,6 +41,11 @@ namespace DAL
             try
             {
                 room.IsDeleted = false;
+
+                if (string.IsNullOrWhiteSpace(room.statement))
+                {
+                    room.statement = "Bình thường";
+                }
                 _context.Rooms.Add(room);
                 _context.SaveChanges();
                 return true;

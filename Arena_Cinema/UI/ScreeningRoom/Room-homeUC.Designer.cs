@@ -50,6 +50,7 @@
             this.cboRoomType = new ReaLTaiizor.Controls.MaterialComboBox();
             this.right_Panel = new System.Windows.Forms.Panel();
             this.btnDeletedRoom = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnBaoTri = new ReaLTaiizor.Controls.ParrotButton();
             this.panelHeader.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelRoomsList.SuspendLayout();
@@ -352,6 +353,7 @@
             // 
             // right_Panel
             // 
+            this.right_Panel.Controls.Add(this.btnBaoTri);
             this.right_Panel.Controls.Add(this.btnDeletedRoom);
             this.right_Panel.Dock = System.Windows.Forms.DockStyle.Right;
             this.right_Panel.Location = new System.Drawing.Point(847, 15);
@@ -383,6 +385,30 @@
             this.btnDeletedRoom.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.btnDeletedRoom.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnDeletedRoom.Click += new System.EventHandler(this.btnDeletedRoom_Click);
+            // 
+            // btnBaoTri
+            // 
+            this.btnBaoTri.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
+            this.btnBaoTri.ButtonImage = null;
+            this.btnBaoTri.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnBaoTri.ButtonText = "Phòng đang bảo trì";
+            this.btnBaoTri.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnBaoTri.ClickTextColor = System.Drawing.Color.White;
+            this.btnBaoTri.CornerRadius = 5;
+            this.btnBaoTri.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBaoTri.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnBaoTri.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnBaoTri.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(60)))), ((int)(((byte)(75)))));
+            this.btnBaoTri.HoverTextColor = System.Drawing.Color.White;
+            this.btnBaoTri.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnBaoTri.Location = new System.Drawing.Point(118, 0);
+            this.btnBaoTri.Name = "btnBaoTri";
+            this.btnBaoTri.Size = new System.Drawing.Size(170, 84);
+            this.btnBaoTri.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnBaoTri.TabIndex = 4;
+            this.btnBaoTri.TextColor = System.Drawing.Color.White;
+            this.btnBaoTri.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnBaoTri.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             // 
             // Room_homeUC
             // 
@@ -432,5 +458,6 @@
         private System.Windows.Forms.Panel right_Panel;
         private ReaLTaiizor.Controls.ParrotButton btnDeletedRoom;
         private ReaLTaiizor.Controls.MaterialButton btnSeatManagement;
+        private ReaLTaiizor.Controls.ParrotButton btnBaoTri;
     }
 }

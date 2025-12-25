@@ -35,9 +35,8 @@ namespace DTO
 
         public bool IsDeleted { get; set; }
 
-        public string statement { get; set; }
-
         [StringLength(255)]
+        public string statement { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Seat> Seats { get; set; }
