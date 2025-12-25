@@ -16,6 +16,8 @@ namespace UI.PayOSMethod.Services
         private readonly BLL.PayOS _payOS;
         private readonly CinemaDBContext _context;
 
+        private const decimal POINTS_RATE = 100000m;
+
         public PaymentService()
         {
             _payOS = new BLL.PayOS(
@@ -194,6 +196,45 @@ namespace UI.PayOSMethod.Services
             }
         }
 
+        ///Tính điểm thưởng: 100,000 VND = 1 điểm
+        private decimal CalculatePoints(decimal amount)
+        {
+            return Math.Floor(amount / POINTS_RATE);
+        }
+
+        ///Cộng điểm cho khách hàng
+        private bool AddPointsToCustomer(Guid? customerID, decimal points)
+        {
+            try
+            {
+                if (!customerID.HasValue || customerID.Value == Guid.Empty)
+                {
+                    Console.WriteLine("⚠️ No CustomerID provided, skipping points");
+                    return true; // Không có khách hàng thì bỏ qua, không phải lỗi
+                }
+
+                var customer = _context.Customers.FirstOrDefault(c => c.CustomerID == customerID.Value);
+                if (customer == null)
+                {
+                    Console.WriteLine($"⚠️ Customer not found: {customerID.Value}");
+                    return false;
+                }
+
+                // Cộng điểm (nếu Point là NULL thì khởi tạo = 0)
+                customer.Point = (customer.Point ?? 0) + points;
+
+                _context.SaveChanges();
+
+                Console.WriteLine($"✅ Added {points} points to Customer {customerID.Value}. Total: {customer.Point}");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"❌ Error adding points: {ex.Message}");
+                return false;
+            }
+        }
+
         /// <summary>
         /// Xử lý thanh toán thành công - Cập nhật Invoice và tạo Payment record
         /// </summary>
@@ -254,6 +295,19 @@ namespace UI.PayOSMethod.Services
                         foreach (var ticket in tickets)
                         {
                             ticket.Status = "Đã bán";
+                        }
+                    }
+
+                    //Cộng điểm cho khách hàng nếu có
+                    if (invoice.CustomerID.HasValue && invoice.CustomerID.Value != Guid.Empty)
+                    {
+                        decimal amount = invoice.TotalAmount ?? 0;
+                        decimal points = CalculatePoints(amount);
+
+                        bool pointsAdded = AddPointsToCustomer(invoice.CustomerID, points);
+                        if (!pointsAdded)
+                        {
+                            Console.WriteLine($"⚠️ Failed to add points, but continuing with payment");
                         }
                     }
 

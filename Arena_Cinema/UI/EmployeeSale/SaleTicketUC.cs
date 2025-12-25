@@ -814,7 +814,7 @@ namespace UI.EmployeeSale
                     var customer = context.Customers
                         .FirstOrDefault(c => c.Phone == phone && !c.IsDeleted);
                     //nếu không có mở cửa sổ tạo khách hàng mới và txt_phone không được trống
-                    if (customer != null && !string.IsNullOrWhiteSpace(phone))
+                    if (customer == null && !string.IsNullOrWhiteSpace(phone))
                     {
                         CreatCustomer creatCustomer = new CreatCustomer(phone);
                         var result = creatCustomer.ShowDialog();
@@ -863,27 +863,6 @@ namespace UI.EmployeeSale
                 MessageBox.Show("Không tìm thấy khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// Cleanup khi đóng form hoặc dispose
-        /// </summary>
-        protected override void OnHandleDestroyed(EventArgs e)
-        {
-            base.OnHandleDestroyed(e);
-
-            // Dừng timer
-            if (_refreshTimer != null)
-            {
-                _refreshTimer.Stop();
-                _refreshTimer.Dispose();
-            }
-
-            // Unlock tất cả ghế của nhân viên này
-            if (_employee != null)
-            {
-                int unlockedCount = _seatLockDAL.UnlockAllSeatsForEmployee(_employee.EmployeeID);
-                Console.WriteLine($"[Cleanup] Unlocked {unlockedCount} seats for employee {_employee.FullName}");
-            }
-        }
 
         // Thêm các phương thức này
         private void btnToggleInvoice_Click(object sender, EventArgs e)
@@ -922,6 +901,28 @@ namespace UI.EmployeeSale
             {
                 txt_Phone.Text = "Nhập SĐT khách hàng...";
                 txt_Phone.ForeColor = System.Drawing.Color.Gray;
+            }
+        }
+
+        /// <summary>
+        /// Cleanup khi đóng form hoặc dispose
+        /// </summary>
+        protected override void OnHandleDestroyed(EventArgs e)
+        {
+            base.OnHandleDestroyed(e);
+
+            // Dừng timer
+            if (_refreshTimer != null)
+            {
+                _refreshTimer.Stop();
+                _refreshTimer.Dispose();
+            }
+
+            // Unlock tất cả ghế của nhân viên này
+            if (_employee != null)
+            {
+                int unlockedCount = _seatLockDAL.UnlockAllSeatsForEmployee(_employee.EmployeeID);
+                Console.WriteLine($"[Cleanup] Unlocked {unlockedCount} seats for employee {_employee.FullName}");
             }
         }
     }
