@@ -39,6 +39,7 @@
             this.txtPassword = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             this.btnOk = new ReaLTaiizor.Controls.SkyButton();
             this.roundedPanel2 = new UI.Controls.RoundedPanel();
+            this.btnBack = new ReaLTaiizor.Controls.SkyButton();
             this.pnForgot.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +59,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnBack);
             this.groupBox1.Controls.Add(this.lblPasswordRule);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -96,7 +98,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 289);
+            this.label1.Location = new System.Drawing.Point(45, 276);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 28);
             this.label1.TabIndex = 26;
@@ -110,7 +112,7 @@
             this.txtOTP.FocusOnHover = false;
             this.txtOTP.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOTP.ForeColor = System.Drawing.Color.GreenYellow;
-            this.txtOTP.Location = new System.Drawing.Point(133, 279);
+            this.txtOTP.Location = new System.Drawing.Point(134, 266);
             this.txtOTP.MaxLength = 32767;
             this.txtOTP.Multiline = false;
             this.txtOTP.Name = "txtOTP";
@@ -218,7 +220,7 @@
             this.btnOk.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
             this.btnOk.HoverForeColor = System.Drawing.Color.Black;
             this.btnOk.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnOk.Location = new System.Drawing.Point(302, 279);
+            this.btnOk.Location = new System.Drawing.Point(64, 325);
             this.btnOk.Name = "btnOk";
             this.btnOk.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
             this.btnOk.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
@@ -228,7 +230,7 @@
             this.btnOk.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
             this.btnOk.NormalForeColor = System.Drawing.Color.White;
             this.btnOk.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnOk.Size = new System.Drawing.Size(137, 38);
+            this.btnOk.Size = new System.Drawing.Size(175, 43);
             this.btnOk.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnOk.TabIndex = 2;
             this.btnOk.Text = "OK";
@@ -245,6 +247,44 @@
             this.roundedPanel2.Name = "roundedPanel2";
             this.roundedPanel2.Size = new System.Drawing.Size(338, 384);
             this.roundedPanel2.TabIndex = 1;
+            // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.Transparent;
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.DownBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnBack.DownBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.btnBack.DownBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnBack.DownBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.btnBack.DownBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnBack.DownBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnBack.DownForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnBack.DownShadowForeColor = System.Drawing.Color.White;
+            this.btnBack.Font = new System.Drawing.Font("Verdana", 13.2F, System.Drawing.FontStyle.Bold);
+            this.btnBack.ForeColor = System.Drawing.Color.Black;
+            this.btnBack.HoverBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnBack.HoverBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.btnBack.HoverBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnBack.HoverBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnBack.HoverBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(93)))), ((int)(((byte)(131)))));
+            this.btnBack.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(25)))), ((int)(((byte)(73)))), ((int)(((byte)(109)))));
+            this.btnBack.HoverForeColor = System.Drawing.Color.White;
+            this.btnBack.HoverShadowForeColor = System.Drawing.Color.DimGray;
+            this.btnBack.Location = new System.Drawing.Point(250, 324);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.btnBack.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.btnBack.NormalBorderColorA = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
+            this.btnBack.NormalBorderColorB = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.btnBack.NormalBorderColorC = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnBack.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
+            this.btnBack.NormalForeColor = System.Drawing.Color.Black;
+            this.btnBack.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnBack.Size = new System.Drawing.Size(175, 44);
+            this.btnBack.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.btnBack.TabIndex = 29;
+            this.btnBack.Text = "Back";
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // PassChange
             // 
@@ -277,5 +317,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblPasswordRule;
+        private ReaLTaiizor.Controls.SkyButton btnBack;
     }
 }

@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="AppSetting.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="CustomerVoucher.cs" />
     <Compile Include="Employee.cs" />
@@ -59,6 +60,8 @@
     <Compile Include="InvoiceProduct.cs" />
     <Compile Include="InvoiceTicket.cs" />
     <Compile Include="Language.cs" />
+    <Compile Include="License.cs" />
+    <Compile Include="LicenseActivation.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="MovieProduct.cs" />
     <Compile Include="Operation.cs" />

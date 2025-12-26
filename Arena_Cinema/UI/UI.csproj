@@ -476,6 +476,12 @@
     <Compile Include="SeatManagement\SeatManagementUC.Designer.cs">
       <DependentUpon>SeatManagementUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="ServicePackage\LicenseManagementForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ServicePackage\LicenseManagementForm.Designer.cs">
+      <DependentUpon>LicenseManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setting\SettingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -835,6 +841,8 @@
     <None Include="Resources\invoice213.png" />
     <None Include="Resources\forgot.png" />
     <None Include="Resources\forgot-password.png" />
+    <None Include="Resources\product-management.png" />
+    <None Include="Resources\product-management %281%29.png" />
     <Content Include="Resources\roomDefault.png" />
     <None Include="Resources\Search3.png" />
     <None Include="Resources\Search2.png" />
