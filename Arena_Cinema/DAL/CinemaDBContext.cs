@@ -51,6 +51,10 @@ namespace DAL
         public virtual DbSet<Voucher> Vouchers { get; set; }
         public virtual DbSet<CustomerVoucher> CustomerVouchers { get; set; }
 
+        public virtual DbSet<AppSetting> AppSettings { get; set; }
+        public virtual DbSet<License> Licenses { get; set; }
+        public virtual DbSet<LicenseActivation> LicenseActivations { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -187,6 +191,89 @@ namespace DAL
                 .WithMany(i => i.CustomerVouchers)
                 .HasForeignKey(cv => cv.InvoiceID)
                 .WillCascadeOnDelete(false);
+
+            // ----- AppSettings -----
+            modelBuilder.Entity<AppSetting>()
+                .Property(x => x.CreatedAtUtc)
+                .HasColumnType("datetime2")
+                .HasPrecision(0);
+
+            modelBuilder.Entity<AppSetting>()
+                .Property(x => x.UpdatedAtUtc)
+                .HasColumnType("datetime2")
+                .HasPrecision(0);
+
+            modelBuilder.Entity<AppSetting>()
+                .Property(x => x.TrialStartUtc)
+                .HasColumnType("datetime2")
+                .HasPrecision(0);
+
+            modelBuilder.Entity<AppSetting>()
+                .HasIndex(x => x.TenantId)
+                .IsUnique()
+                .HasName("UX_AppSettings_TenantId");
+
+            // ----- Licenses -----
+            modelBuilder.Entity<License>()
+                .Property(x => x.ExpiresAtUtc)
+                .HasColumnType("datetime2")
+                .HasPrecision(0);
+
+            modelBuilder.Entity<License>()
+                .Property(x => x.ActivatedAtUtc)
+                .HasColumnType("datetime2")
+                .HasPrecision(0);
+
+            modelBuilder.Entity<License>()
+                .Property(x => x.RevokedAtUtc)
+                .HasColumnType("datetime2")
+                .HasPrecision(0);
+
+            modelBuilder.Entity<License>()
+                .Property(x => x.PlanCode)
+                .HasMaxLength(50);
+
+            modelBuilder.Entity<License>()
+                .Property(x => x.Note)
+                .HasMaxLength(255);
+
+            // index (TenantId, ExpiresAtUtc)
+            modelBuilder.Entity<License>()
+                .HasIndex(x => new { x.TenantId, x.ExpiresAtUtc })
+                .HasName("IX_Licenses_Tenant_Expires");
+
+            // LƯU Ý: Filtered unique index "WHERE IsActive = 1" (UX_Licenses_OneActivePerTenant)
+            // EF6 không map được điều kiện filter trong Fluent API.
+            // Nếu DB đã có sẵn index này thì cứ để DB quản lý, EF không cần khai báo.
+
+            // ----- LicenseActivations -----
+            modelBuilder.Entity<LicenseActivation>()
+                .Property(x => x.ActivatedAtUtc)
+                .HasColumnType("datetime2")
+                .HasPrecision(0);
+
+            modelBuilder.Entity<LicenseActivation>()
+                .Property(x => x.LastSeenAtUtc)
+                .HasColumnType("datetime2")
+                .HasPrecision(0);
+
+            modelBuilder.Entity<LicenseActivation>()
+                .Property(x => x.InstallId)
+                .HasMaxLength(64)
+                .IsRequired();
+
+            modelBuilder.Entity<LicenseActivation>()
+                .Property(x => x.MachineName)
+                .HasMaxLength(128);
+
+            modelBuilder.Entity<LicenseActivation>()
+                .HasIndex(x => new { x.TenantId, x.InstallId })
+                .IsUnique()
+                .HasName("UX_LA_Tenant_Install");
+
+            modelBuilder.Entity<LicenseActivation>()
+                .HasIndex(x => new { x.TenantId, x.LastSeenAtUtc })
+                .HasName("IX_LA_Tenant_LastSeen");
         }
     }
 }

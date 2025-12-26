@@ -21,6 +21,15 @@ namespace UI
             InitializeComponent();
         }
 
+        public Forgot(string email, string cccd)
+        {
+            InitializeComponent();
+            this.txtEmail.Text = email;
+            this.txtCCCD.Text = cccd;
+        }
+
+
+
         private void skyButton3_Click(object sender, EventArgs e)
         {
             this.Hide();

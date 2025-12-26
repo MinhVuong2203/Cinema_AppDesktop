@@ -217,7 +217,7 @@ namespace UI
                     MessageBox.Show("Chức năng thống đanng chờ bạn code");
 
                     break;
-                case "btnCaiDat":
+                case "btnGoiDichVu":
                     
                     SettingControl settingControl = new SettingControl(this._employee);
                     LoadControl(settingControl);

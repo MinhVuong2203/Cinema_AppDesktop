@@ -20,17 +20,20 @@ namespace BLL
         {
             return _roomDAL.GetAllRooms();
         }
+
         public bool IsRoomNameExists(string roomName, int? excludeRoomId = null)
         {
             if (string.IsNullOrWhiteSpace(roomName)) return false;
             return _roomDAL.IsRoomNameExists(roomName.Trim(), excludeRoomId);
         }
+
         // Lấy phòng theo ID
         public Room GetRoomById(int roomId)
         {
             if (roomId <= 0) return null;
             return _roomDAL.GetRoomById(roomId);
         }
+
         public List<string> GetAllRoomType()
         {
             return _roomDAL.GetAllRoomType();
@@ -47,6 +50,12 @@ namespace BLL
 
             if (room.SeatCount <= 0)
                 return "Số ghế phải lớn hơn 0.";
+
+            // Đảm bảo có statement mặc định
+            if (string.IsNullOrWhiteSpace(room.statement))
+            {
+                room.statement = "Bình thường";
+            }
 
             if (_roomDAL.AddRoom(room))
                 return "Thêm phòng thành công!";
@@ -89,7 +98,6 @@ namespace BLL
             if (roomId <= 0) return "ID không hợp lệ.";
 
             var room = _roomDAL.GetRoomByIdIncludeDeleted(roomId);
-
             if (room == null)
                 return "Phòng không tồn tại.";
 
@@ -110,6 +118,44 @@ namespace BLL
         public Room GetRoomByIdIncludeDeleted(int roomId)
         {
             return _roomDAL.GetRoomByIdIncludeDeleted(roomId);
+        }
+
+        // ===== THÊM METHOD MỚI: Chuyển phòng sang trạng thái bảo trì =====
+        public string SetRoomMaintenance(int roomId)
+        {
+            if (roomId <= 0)
+                return "ID phòng không hợp lệ.";
+
+            var room = _roomDAL.GetRoomById(roomId);
+            if (room == null)
+                return "Phòng không tồn tại hoặc đã bị xóa.";
+
+            // Kiểm tra trạng thái hiện tại
+            if (room.statement == "Bảo trì")
+                return "Phòng đã ở trạng thái bảo trì.";
+
+            // Cập nhật trạng thái sang "Bảo trì"
+            if (_roomDAL.UpdateRoomStatement(roomId, "Bảo trì"))
+                return "Đã chuyển phòng sang trạng thái bảo trì!";
+            else
+                return "Cập nhật trạng thái thất bại.";
+        }
+
+        // ===== THÊM METHOD MỚI: Chuyển phòng về trạng thái bình thường =====
+        public string SetRoomNormal(int roomId)
+        {
+            if (roomId <= 0)
+                return "ID phòng không hợp lệ.";
+
+            var room = _roomDAL.GetRoomById(roomId);
+            if (room == null)
+                return "Phòng không tồn tại hoặc đã bị xóa.";
+
+            // Cập nhật trạng thái về "Bình thường"
+            if (_roomDAL.UpdateRoomStatement(roomId, "Bình thường"))
+                return "Đã chuyển phòng về trạng thái bình thường!";
+            else
+                return "Cập nhật trạng thái thất bại.";
         }
     }
 }

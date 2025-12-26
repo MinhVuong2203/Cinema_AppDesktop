@@ -104,5 +104,11 @@ namespace UI
                 : "Tối thiểu 6 ký tự, gồm chữ hoa, chữ thường và ký tự đặc biệt.";
             lblPasswordRule.ForeColor = ok ? Color.Green : Color.Red;     
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Forgot forgot = new Forgot(this.employee.Email, this.employee.CCCD);
+            forgot.Show();
+        }
     }
 }
