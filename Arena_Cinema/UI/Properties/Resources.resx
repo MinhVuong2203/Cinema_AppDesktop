@@ -121,9 +121,6 @@
   <data name="business-and-finance" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\business-and-finance.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="next" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="setting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\setting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -154,6 +151,9 @@
   <data name="bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bg1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="minus1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\minus1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="three-dot-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\three-dot-menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,8 +166,8 @@
   <data name="noButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\noButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="showtime" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\showtime.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OpenEyes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OpenEyes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="next2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\next2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,8 +175,8 @@
   <data name="cinema" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cinema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="minus1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\minus1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="home (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="reset1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\reset1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,17 +184,17 @@
   <data name="bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="showtime" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\showtime.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="no-photo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\no-photo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CoVietNam" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CoVietNam.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="next" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="clapperboard" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clapperboard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="home (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ban" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ban.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,8 +229,8 @@
   <data name="minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="OpenEyes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OpenEyes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="teamwork" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\teamwork.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="diskette" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\diskette.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,11 +238,17 @@
   <data name="Search2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Search2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="forgot-password" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forgot-password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="profile (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\profile (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="teamwork1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\teamwork1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="revenue (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\revenue (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="invoice123" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\invoice123.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -271,6 +277,9 @@
   <data name="showtime (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\showtime (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="revenue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\revenue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ticket" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ticket.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -279,6 +288,9 @@
   </data>
   <data name="pngegg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pngegg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CoVietNam" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CoVietNam.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="reset" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\reset.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -307,13 +319,10 @@
   <data name="forgot" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forgot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="teamwork" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\teamwork.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="forgot-password" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forgot-password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="revenue (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\revenue (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

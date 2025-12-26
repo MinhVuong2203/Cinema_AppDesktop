@@ -835,6 +835,9 @@
     <None Include="Resources\invoice213.png" />
     <None Include="Resources\forgot.png" />
     <None Include="Resources\forgot-password.png" />
+    <None Include="Resources\revenue.png" />
+    <None Include="Resources\revenue %281%29.png" />
+    <None Include="Resources\revenue %282%29.png" />
     <Content Include="Resources\roomDefault.png" />
     <None Include="Resources\Search3.png" />
     <None Include="Resources\Search2.png" />
