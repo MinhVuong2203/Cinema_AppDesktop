@@ -19,7 +19,9 @@ namespace DAL
         // Lấy tất cả phòng (không bao gồm đã xóa)
         public List<Room> GetAllRooms()
         {
+            // Đảm bảo lấy dữ liệu mới nhất từ database
             return _context.Rooms
+                           .AsNoTracking() // Không cache
                            .Where(r => !r.IsDeleted)
                            .Include(r => r.Seats)
                            .Include(r => r.ShowTimes)
@@ -42,10 +44,12 @@ namespace DAL
             {
                 room.IsDeleted = false;
 
+                // Set statement mặc định khi thêm phòng mới
                 if (string.IsNullOrWhiteSpace(room.statement))
                 {
                     room.statement = "Bình thường";
                 }
+
                 _context.Rooms.Add(room);
                 _context.SaveChanges();
                 return true;
@@ -123,10 +127,33 @@ namespace DAL
         public Room GetRoomByIdIncludeDeleted(int roomId)
         {
             return _context.Rooms
-                           .Where(r => r.RoomID == roomId) // KHÔNG LỌC IsDeleted
+                           .Where(r => r.RoomID == roomId)
                            .Include(r => r.Seats)
                            .Include(r => r.ShowTimes)
                            .FirstOrDefault();
+        }
+
+        // ===== THÊM METHOD MỚI: Cập nhật trạng thái phòng =====
+        public bool UpdateRoomStatement(int roomId, string statement)
+        {
+            try
+            {
+                // Tạo context mới để tránh cache
+                using (var freshContext = new CinemaDBContext())
+                {
+                    var room = freshContext.Rooms.Find(roomId);
+                    if (room == null || room.IsDeleted) return false;
+
+                    room.statement = statement;
+                    freshContext.SaveChanges();
+                }
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

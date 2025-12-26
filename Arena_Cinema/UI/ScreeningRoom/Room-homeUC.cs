@@ -39,8 +39,6 @@ namespace UI.ScreeningRoom
             LoadRoomsWithFilter();
         }
 
-
-
         private void LoadRoomTypes()
         {
             cboRoomType.Items.Clear();
@@ -59,7 +57,12 @@ namespace UI.ScreeningRoom
         {
             panelRoomsList.Controls.Clear();
 
+            // Tạo instance mới để tránh cache
+            _roomBLL = new RoomBLL();
             var rooms = _roomBLL.GetAllRooms();
+
+            // Chỉ hiển thị phòng có trạng thái "Bình thường"
+            rooms = rooms.Where(r => r.statement == "Bình thường").ToList();
 
             if (_filterType != "Tất cả")
                 rooms = rooms.Where(r => r.RoomType == _filterType).ToList();
@@ -71,7 +74,6 @@ namespace UI.ScreeningRoom
                 panelRoomsList.Controls.Add(card);
             }
         }
-
 
         private ReaLTaiizor.Controls.MaterialCard CloneCard(ReaLTaiizor.Controls.MaterialCard sample)
         {
@@ -201,18 +203,85 @@ namespace UI.ScreeningRoom
             btnXoa.Click -= btnXoa_Click;
             btnXoa.Click += btnXoa_Click;
 
-            var btnSeat = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnSeatManagement"];
-            btnSeat.Tag = room.RoomID;
-            btnSeat.Click -= BtnSeatManagement_Click;  // Gỡ sự kiện cũ (tránh lỗi clone)
-            btnSeat.Click += BtnSeatManagement_Click;
+            // ===== NÚT BẢO TRÌ (THAY ĐỔI TỪ SEAT MANAGEMENT) =====
+            var btnMaintenance = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnSeatManagement"];
+            btnMaintenance.Tag = room.RoomID;
+
+            // Thay đổi text và màu dựa trên trạng thái hiện tại
+            if (room.statement == "Bảo trì")
+            {
+                btnMaintenance.Text = "Hoạt động";
+                btnMaintenance.BackColor = Color.Green;
+            }
+            else
+            {
+                btnMaintenance.Text = "Bảo trì";
+                btnMaintenance.BackColor = Color.Orange;
+            }
+
+            btnMaintenance.Click -= BtnMaintenance_Click;
+            btnMaintenance.Click += BtnMaintenance_Click;
         }
 
-        private void BtnSeatManagement_Click(object sender, EventArgs e)
+        // ===== THAY ĐỔI METHOD NÀY: Từ SeatManagement sang Maintenance =====
+        private void BtnMaintenance_Click(object sender, EventArgs e)
         {
             int roomId = (int)((Control)sender).Tag;
 
-            // Chuyển sang trang quản lý ghế của phòng này
-            _home.LoadControl(new SeatManagementUC(_home, roomId));
+            // Tạo BLL mới để tránh cache
+            var roomBLL = new RoomBLL();
+            var room = roomBLL.GetRoomById(roomId);
+
+            if (room == null)
+            {
+                MessageBox.Show("Không tìm thấy phòng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string message, result;
+
+            if (room.statement == "Bảo trì")
+            {
+                // Đang bảo trì -> Chuyển về hoạt động
+                message = $"Chuyển phòng '{room.RoomName}' về trạng thái hoạt động?";
+                if (MessageBox.Show(message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    result = roomBLL.SetRoomNormal(roomId);
+
+                    if (result.Contains("thành công"))
+                    {
+                        MessageBox.Show(result, "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Force refresh bằng cách tạo lại control hoàn toàn
+                        _home.LoadControl(new Room_homeUC(_home, _room));
+                    }
+                    else
+                    {
+                        MessageBox.Show(result, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                // Đang hoạt động -> Chuyển sang bảo trì
+                message = $"Chuyển phòng '{room.RoomName}' sang trạng thái bảo trì?\n\nPhòng sẽ không hiển thị trong danh sách chính.";
+                if (MessageBox.Show(message, "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    result = roomBLL.SetRoomMaintenance(roomId);
+
+                    if (result.Contains("thành công"))
+                    {
+                        MessageBox.Show(result, "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        // Force refresh bằng cách tạo lại control hoàn toàn
+                        _home.LoadControl(new Room_homeUC(_home, _room));
+                    }
+                    else
+                    {
+                        MessageBox.Show(result, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -249,5 +318,14 @@ namespace UI.ScreeningRoom
             this._home.LoadControl(new Deleted_room(_home, this._room));
         }
 
+        private void btnSeatManagement_Click_1(object sender, EventArgs e)
+        {
+            // Method này có thể xóa hoặc giữ lại tùy design form của bạn
+        }
+
+        private void btnBaoTri_Click(object sender, EventArgs e)
+        {
+            this._home.LoadControl(new maintenanceRoom(_home, this._room));
+        }
     }
 }
