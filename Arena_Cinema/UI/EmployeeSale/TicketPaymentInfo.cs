@@ -19,6 +19,11 @@ namespace UI.EmployeeSale
         private long _currentOrderCode = 0;
         private Timer _paymentTimer;
 
+        private int? _selectedVoucherID;
+        private decimal _originalTotal; // Tổng tiền gốc trước khi giảm
+        private decimal _discountAmount; // Số tiền được giảm
+
+
         public TicketPaymentInfo(Guid invoiceID, DTO.Employee employee, Home home)
         {
             InitializeComponent();
@@ -60,6 +65,11 @@ namespace UI.EmployeeSale
             lblInvoiceCode.Text = invoice.InvoiceID.ToString().Substring(0, 8).ToUpper();
             lblInvoiceDate.Text = invoice.IssueDate.ToString("dd/MM/yyyy HH:mm:ss") ?? "N/A";
             lblEmployee.Text = invoice.Employee?.FullName ?? "N/A";
+
+            //hiển thị điểm của khách hàng
+            lblCustomerPoints.Text = invoice.Customer != null && !invoice.Customer.IsDeleted
+                ? (invoice.Customer.Point?.ToString("N0") ?? "0") + " điểm"
+                : "0 điểm";
 
             // Status with color
             lblStatus.Text = invoice.Status;
@@ -149,13 +159,283 @@ namespace UI.EmployeeSale
             lblProductTotal.Text = productTotal.ToString("#,##0") + " ₫";
 
             // === TOTAL ===
-            decimal grandTotal = invoice.TotalAmount ?? 0;
-            decimal discount = invoice.Discount ?? 0;
-            decimal subtotal = grandTotal + discount;
+            _originalTotal = ticketTotal + productTotal;
+            _discountAmount = invoice.Discount ?? 0;
+            decimal finalTotal = _originalTotal - _discountAmount;
 
-            lblSubtotal.Text = subtotal.ToString("#,##0") + " ₫";
-            lblDiscount.Text = discount.ToString("#,##0") + " ₫";
-            lblGrandTotal.Text = grandTotal.ToString("#,##0") + " ₫";
+
+            lblSubtotal.Text = _originalTotal.ToString("#,##0") + " ₫";
+            lblDiscount.Text = _discountAmount.ToString("#,##0") + " ₫";
+            lblGrandTotal.Text = finalTotal.ToString("#,##0") + " ₫";
+
+            LoadAppliedVoucher();
+        }
+
+        private void LoadAppliedVoucher()
+        {
+            var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID);
+            if (invoice == null) return;
+
+            // Kiểm tra xem có voucher nào đã được áp dụng chưa
+            var appliedVoucher = _context.CustomerVouchers
+                .Where(cv => cv.InvoiceID == _invoiceID && !cv.IsDeleted)
+                .Select(cv => cv.Voucher)
+                .FirstOrDefault();
+
+            if (appliedVoucher != null)
+            {
+                lblVoucherName.Text = appliedVoucher.VoucherName;
+                lblVoucherName.ForeColor = Color.FromArgb(22, 163, 74);
+                btnSelectVoucher.Text = "🔄 Đổi voucher";
+                btnRemoveVoucher.Visible = true;
+                _selectedVoucherID = appliedVoucher.VoucherID;
+            }
+            else
+            {
+                lblVoucherName.Text = "Chưa chọn voucher";
+                lblVoucherName.ForeColor = Color.FromArgb(107, 114, 128);
+                btnSelectVoucher.Text = "🎫 Chọn voucher";
+                btnRemoveVoucher.Visible = false;
+                _selectedVoucherID = null;
+            }
+        }
+
+        private void btnSelectVoucher_Click(object sender, EventArgs e)
+        {
+            var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID);
+            if (invoice == null || invoice.Status != "Chờ thanh toán")
+            {
+                MessageBox.Show("Chỉ có thể chọn voucher cho hóa đơn đang chờ thanh toán!",
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Mở form chọn voucher
+            var voucherForm = new Form
+            {
+                Text = "Chọn Voucher",
+                Size = new Size(850, 700),
+                StartPosition = FormStartPosition.CenterParent,
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                MaximizeBox = false
+            };
+
+            var voucherSelection = new Voucher.VoucherSelectionUC();
+            voucherSelection.Dock = DockStyle.Fill;
+
+            // Load vouchers với tổng tiền hiện tại
+            voucherSelection.LoadVouchers(_originalTotal, invoice.CustomerID, _employee.EmployeeID);
+
+            // Subscribe to event
+            voucherSelection.VoucherSelected += (s, args) =>
+            {
+                if (args.CustomerVoucherID.HasValue)
+                {
+                    //ApplyVoucher(args.CustomerVoucherID.HasValue);
+                    ApplyVoucherFromCustomerVoucher(args.CustomerVoucherID.Value);
+                }
+                else
+                {
+                    RemoveVoucher();
+                }
+            };
+
+            voucherForm.Controls.Add(voucherSelection);
+            voucherForm.ShowDialog(this);
+        }
+
+        private void ApplyVoucherFromCustomerVoucher(Guid customerVoucherID)
+        {
+            try
+            {
+                var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID);
+                if (invoice == null) return;
+
+                // Lấy thông tin CustomerVoucher
+                var customerVoucher = _context.CustomerVouchers
+                    .FirstOrDefault(cv => cv.CustomerVoucherID == customerVoucherID && !cv.IsDeleted);
+
+                if (customerVoucher == null || customerVoucher.Status != "Chưa sử dụng")
+                {
+                    MessageBox.Show("Voucher không hợp lệ hoặc đã được sử dụng!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var voucher = _context.Vouchers.FirstOrDefault(v => v.VoucherID == customerVoucher.VoucherID && !v.IsDeleted);
+                if (voucher == null)
+                {
+                    MessageBox.Show("Voucher không tồn tại!", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Kiểm tra điều kiện áp dụng
+                if (_originalTotal < voucher.MinOrderAmount)
+                {
+                    MessageBox.Show(
+                        $"Đơn hàng chưa đủ điều kiện áp dụng voucher!\n\n" +
+                        $"Yêu cầu tối thiểu: {voucher.MinOrderAmount:N0} ₫\n" +
+                        $"Tổng đơn hiện tại: {_originalTotal:N0} ₫",
+                        "Thông báo",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tính discount
+                decimal discount = 0;
+                if (voucher.DiscountType == "Phần trăm")
+                {
+                    discount = _originalTotal * (voucher.DiscountValue / 100m);
+                    if (voucher.MaxDiscountAmount.HasValue && voucher.MaxDiscountAmount.Value > 0)
+                    {
+                        discount = Math.Min(discount, voucher.MaxDiscountAmount.Value);
+                    }
+                }
+                else
+                {
+                    discount = voucher.DiscountValue;
+                }
+
+                discount = Math.Min(discount, _originalTotal);
+
+                // ✅ Cập nhật CustomerVoucher: Link với Invoice
+                customerVoucher.InvoiceID = _invoiceID;
+                customerVoucher.Status = "Đã sử dụng";
+                customerVoucher.UsedDate = DateTime.Now;
+
+                // Cập nhật invoice
+                invoice.Discount = discount;
+                invoice.TotalAmount = _originalTotal - discount;
+
+                _context.SaveChanges();
+
+                // Cập nhật UI
+                _selectedVoucherID = voucher.VoucherID;
+                _discountAmount = discount;
+
+                lblDiscount.Text = discount.ToString("#,##0") + " ₫";
+                lblGrandTotal.Text = invoice.TotalAmount?.ToString("#,##0") + " ₫";
+
+                LoadAppliedVoucher();
+
+                MessageBox.Show(
+                    $"Áp dụng voucher thành công!\n\n" +
+                    $"Voucher: {voucher.VoucherName}\n" +
+                    $"Đã giảm: {discount:N0} ₫",
+                    "Thành công",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi áp dụng voucher: {ex.Message}",
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //THÊM: Áp dụng voucher
+        private void ApplyVoucher(int voucherID)
+        {
+            try
+            {
+                var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID);
+                if (invoice == null) return;
+
+                var voucher = _context.Vouchers.FirstOrDefault(v => v.VoucherID == voucherID && !v.IsDeleted);
+                if (voucher == null)
+                {
+                    MessageBox.Show("Voucher không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Tính discount
+                decimal discount = 0;
+                if (voucher.DiscountType == "Phần trăm")
+                {
+                    discount = _originalTotal * (voucher.DiscountValue / 100m);
+                    if (voucher.MaxDiscountAmount.HasValue && voucher.MaxDiscountAmount.Value > 0)
+                    {
+                        discount = Math.Min(discount, voucher.MaxDiscountAmount.Value);
+                    }
+                }
+                else
+                {
+                    discount = voucher.DiscountValue;
+                }
+
+                discount = Math.Min(discount, _originalTotal);
+
+                // Cập nhật invoice
+                invoice.Discount = discount;
+                invoice.TotalAmount = _originalTotal - discount;
+
+                _context.SaveChanges();
+
+                // Cập nhật UI
+                _selectedVoucherID = voucherID;
+                _discountAmount = discount;
+
+                lblDiscount.Text = discount.ToString("#,##0") + " ₫";
+                lblGrandTotal.Text = invoice.TotalAmount?.ToString("#,##0") + " ₫";
+
+                LoadAppliedVoucher();
+
+                MessageBox.Show($"Áp dụng voucher thành công!\nĐã giảm: {discount:N0} ₫",
+                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi áp dụng voucher: {ex.Message}",
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //THÊM: Xóa voucher
+        private void btnRemoveVoucher_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+                "Bạn có chắc muốn bỏ voucher này?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                RemoveVoucher();
+            }
+        }
+
+        private void RemoveVoucher()
+        {
+            try
+            {
+                var invoice = _context.Invoices.FirstOrDefault(i => i.InvoiceID == _invoiceID);
+                if (invoice == null) return;
+
+                // Reset discount
+                invoice.Discount = 0;
+                invoice.TotalAmount = _originalTotal;
+
+                _context.SaveChanges();
+
+                // Cập nhật UI
+                _selectedVoucherID = null;
+                _discountAmount = 0;
+
+                lblDiscount.Text = "0 ₫";
+                lblGrandTotal.Text = _originalTotal.ToString("#,##0") + " ₫";
+
+                LoadAppliedVoucher();
+
+                MessageBox.Show("Đã bỏ voucher", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi bỏ voucher: {ex.Message}",
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -379,7 +659,7 @@ namespace UI.EmployeeSale
             _paymentTimer.Tick += async (s, e) =>
             {
                 checkCount++;
-                Console.WriteLine($"🔄 Checking payment status... (Attempt {checkCount}/{maxChecks})");
+                Console.WriteLine($"Checking payment status... (Attempt {checkCount}/{maxChecks})");
 
                 try
                 {
@@ -640,6 +920,7 @@ namespace UI.EmployeeSale
                 }
             }
         }
+
 
 
 

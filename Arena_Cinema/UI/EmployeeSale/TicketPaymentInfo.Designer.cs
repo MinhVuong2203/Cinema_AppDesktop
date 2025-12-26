@@ -58,6 +58,13 @@ namespace UI.EmployeeSale
         private Button btnBack;
         private Button btnPayOS;
 
+        private Panel panelVoucher;
+        private Label lblVoucherTitle;
+        private Label lblVoucherName;
+        private Button btnSelectVoucher;
+        private Button btnRemoveVoucher;
+        private Label lblCustomerPoints;
+
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -95,6 +102,8 @@ namespace UI.EmployeeSale
             this.lblCustomerPhone = new System.Windows.Forms.Label();
             this.lblCustomerEmailLabel = new System.Windows.Forms.Label();
             this.lblCustomerEmail = new System.Windows.Forms.Label();
+            this.lblCustomerPointsTitle = new System.Windows.Forms.Label();
+            this.lblCustomerPoints = new System.Windows.Forms.Label();
             this.panelTickets = new System.Windows.Forms.Panel();
             this.lblTicketsTitle = new System.Windows.Forms.Label();
             this.dgvTickets = new System.Windows.Forms.DataGridView();
@@ -115,6 +124,11 @@ namespace UI.EmployeeSale
             this.btnBack = new System.Windows.Forms.Button();
             this.btnPayOS = new System.Windows.Forms.Button();
             this.btn_payCash = new System.Windows.Forms.Button();
+            this.panelVoucher = new System.Windows.Forms.Panel();
+            this.lblVoucherTitle = new System.Windows.Forms.Label();
+            this.lblVoucherName = new System.Windows.Forms.Label();
+            this.btnSelectVoucher = new System.Windows.Forms.Button();
+            this.btnRemoveVoucher = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.panelCustomer.SuspendLayout();
             this.panelTickets.SuspendLayout();
@@ -122,6 +136,7 @@ namespace UI.EmployeeSale
             this.panelProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.panelTotal.SuspendLayout();
+            this.panelVoucher.SuspendLayout();
             this.SuspendLayout();
             // 
             // colMovie
@@ -252,7 +267,7 @@ namespace UI.EmployeeSale
             // 
             this.lblEmployeeLabel.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblEmployeeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
-            this.lblEmployeeLabel.Location = new System.Drawing.Point(800, 65);
+            this.lblEmployeeLabel.Location = new System.Drawing.Point(508, 65);
             this.lblEmployeeLabel.Name = "lblEmployeeLabel";
             this.lblEmployeeLabel.Size = new System.Drawing.Size(120, 25);
             this.lblEmployeeLabel.TabIndex = 5;
@@ -262,7 +277,7 @@ namespace UI.EmployeeSale
             // 
             this.lblEmployee.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblEmployee.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lblEmployee.Location = new System.Drawing.Point(930, 65);
+            this.lblEmployee.Location = new System.Drawing.Point(638, 65);
             this.lblEmployee.Name = "lblEmployee";
             this.lblEmployee.Size = new System.Drawing.Size(250, 25);
             this.lblEmployee.TabIndex = 6;
@@ -272,7 +287,7 @@ namespace UI.EmployeeSale
             // 
             this.lblStatusLabel.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.lblStatusLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
-            this.lblStatusLabel.Location = new System.Drawing.Point(800, 100);
+            this.lblStatusLabel.Location = new System.Drawing.Point(508, 100);
             this.lblStatusLabel.Name = "lblStatusLabel";
             this.lblStatusLabel.Size = new System.Drawing.Size(120, 25);
             this.lblStatusLabel.TabIndex = 7;
@@ -283,7 +298,7 @@ namespace UI.EmployeeSale
             this.lblStatus.BackColor = System.Drawing.Color.LightGray;
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblStatus.ForeColor = System.Drawing.Color.Black;
-            this.lblStatus.Location = new System.Drawing.Point(930, 95);
+            this.lblStatus.Location = new System.Drawing.Point(638, 95);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(404, 35);
             this.lblStatus.TabIndex = 8;
@@ -301,6 +316,8 @@ namespace UI.EmployeeSale
             this.panelCustomer.Controls.Add(this.lblCustomerPhone);
             this.panelCustomer.Controls.Add(this.lblCustomerEmailLabel);
             this.panelCustomer.Controls.Add(this.lblCustomerEmail);
+            this.panelCustomer.Controls.Add(this.lblCustomerPointsTitle);
+            this.panelCustomer.Controls.Add(this.lblCustomerPoints);
             this.panelCustomer.Location = new System.Drawing.Point(20, 190);
             this.panelCustomer.Name = "panelCustomer";
             this.panelCustomer.Size = new System.Drawing.Size(781, 150);
@@ -375,6 +392,26 @@ namespace UI.EmployeeSale
             this.lblCustomerEmail.Size = new System.Drawing.Size(350, 25);
             this.lblCustomerEmail.TabIndex = 6;
             this.lblCustomerEmail.Text = "---";
+            // 
+            // lblCustomerPointsTitle
+            // 
+            this.lblCustomerPointsTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblCustomerPointsTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.lblCustomerPointsTitle.Location = new System.Drawing.Point(420, 60);
+            this.lblCustomerPointsTitle.Name = "lblCustomerPointsTitle";
+            this.lblCustomerPointsTitle.Size = new System.Drawing.Size(100, 25);
+            this.lblCustomerPointsTitle.TabIndex = 8;
+            this.lblCustomerPointsTitle.Text = "Điểm tích lũy:";
+            // 
+            // lblCustomerPoints
+            // 
+            this.lblCustomerPoints.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblCustomerPoints.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(115)))), ((int)(((byte)(22)))));
+            this.lblCustomerPoints.Location = new System.Drawing.Point(540, 60);
+            this.lblCustomerPoints.Name = "lblCustomerPoints";
+            this.lblCustomerPoints.Size = new System.Drawing.Size(200, 25);
+            this.lblCustomerPoints.TabIndex = 7;
+            this.lblCustomerPoints.Text = "0 điểm";
             // 
             // panelTickets
             // 
@@ -516,7 +553,7 @@ namespace UI.EmployeeSale
             this.panelTotal.Controls.Add(this.lblDiscount);
             this.panelTotal.Controls.Add(this.lblGrandTotalLabel);
             this.panelTotal.Controls.Add(this.lblGrandTotal);
-            this.panelTotal.Location = new System.Drawing.Point(824, 590);
+            this.panelTotal.Location = new System.Drawing.Point(824, 690);
             this.panelTotal.Name = "panelTotal";
             this.panelTotal.Size = new System.Drawing.Size(779, 120);
             this.panelTotal.TabIndex = 4;
@@ -608,7 +645,7 @@ namespace UI.EmployeeSale
             this.btnPayOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPayOS.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btnPayOS.ForeColor = System.Drawing.Color.White;
-            this.btnPayOS.Location = new System.Drawing.Point(1256, 719);
+            this.btnPayOS.Location = new System.Drawing.Point(546, 733);
             this.btnPayOS.Name = "btnPayOS";
             this.btnPayOS.Size = new System.Drawing.Size(257, 50);
             this.btnPayOS.TabIndex = 6;
@@ -624,13 +661,79 @@ namespace UI.EmployeeSale
             this.btn_payCash.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_payCash.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.btn_payCash.ForeColor = System.Drawing.Color.White;
-            this.btn_payCash.Location = new System.Drawing.Point(960, 719);
+            this.btn_payCash.Location = new System.Drawing.Point(250, 733);
             this.btn_payCash.Name = "btn_payCash";
             this.btn_payCash.Size = new System.Drawing.Size(249, 50);
             this.btn_payCash.TabIndex = 6;
             this.btn_payCash.Text = "💳 Thanh toán tiền mặt";
             this.btn_payCash.UseVisualStyleBackColor = false;
             this.btn_payCash.Click += new System.EventHandler(this.btn_payCash_Click);
+            // 
+            // panelVoucher
+            // 
+            this.panelVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(247)))), ((int)(((byte)(237)))));
+            this.panelVoucher.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelVoucher.Controls.Add(this.lblVoucherTitle);
+            this.panelVoucher.Controls.Add(this.lblVoucherName);
+            this.panelVoucher.Controls.Add(this.btnSelectVoucher);
+            this.panelVoucher.Controls.Add(this.btnRemoveVoucher);
+            this.panelVoucher.Location = new System.Drawing.Point(824, 590);
+            this.panelVoucher.Name = "panelVoucher";
+            this.panelVoucher.Size = new System.Drawing.Size(779, 80);
+            this.panelVoucher.TabIndex = 8;
+            // 
+            // lblVoucherTitle
+            // 
+            this.lblVoucherTitle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblVoucherTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(83)))), ((int)(((byte)(9)))));
+            this.lblVoucherTitle.Location = new System.Drawing.Point(20, 10);
+            this.lblVoucherTitle.Name = "lblVoucherTitle";
+            this.lblVoucherTitle.Size = new System.Drawing.Size(150, 25);
+            this.lblVoucherTitle.TabIndex = 0;
+            this.lblVoucherTitle.Text = "🎫 Voucher:";
+            // 
+            // lblVoucherName
+            // 
+            this.lblVoucherName.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblVoucherName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
+            this.lblVoucherName.Location = new System.Drawing.Point(20, 40);
+            this.lblVoucherName.Name = "lblVoucherName";
+            this.lblVoucherName.Size = new System.Drawing.Size(400, 25);
+            this.lblVoucherName.TabIndex = 1;
+            this.lblVoucherName.Text = "Chưa chọn voucher";
+            // 
+            // btnSelectVoucher
+            // 
+            this.btnSelectVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(115)))), ((int)(((byte)(22)))));
+            this.btnSelectVoucher.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelectVoucher.FlatAppearance.BorderSize = 0;
+            this.btnSelectVoucher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectVoucher.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSelectVoucher.ForeColor = System.Drawing.Color.White;
+            this.btnSelectVoucher.Location = new System.Drawing.Point(450, 20);
+            this.btnSelectVoucher.Name = "btnSelectVoucher";
+            this.btnSelectVoucher.Size = new System.Drawing.Size(150, 40);
+            this.btnSelectVoucher.TabIndex = 2;
+            this.btnSelectVoucher.Text = "🎫 Chọn voucher";
+            this.btnSelectVoucher.UseVisualStyleBackColor = false;
+            this.btnSelectVoucher.Click += new System.EventHandler(this.btnSelectVoucher_Click);
+            // 
+            // btnRemoveVoucher
+            // 
+            this.btnRemoveVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.btnRemoveVoucher.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemoveVoucher.FlatAppearance.BorderSize = 0;
+            this.btnRemoveVoucher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveVoucher.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRemoveVoucher.ForeColor = System.Drawing.Color.White;
+            this.btnRemoveVoucher.Location = new System.Drawing.Point(610, 20);
+            this.btnRemoveVoucher.Name = "btnRemoveVoucher";
+            this.btnRemoveVoucher.Size = new System.Drawing.Size(150, 40);
+            this.btnRemoveVoucher.TabIndex = 3;
+            this.btnRemoveVoucher.Text = "✕ Bỏ voucher";
+            this.btnRemoveVoucher.UseVisualStyleBackColor = false;
+            this.btnRemoveVoucher.Visible = false;
+            this.btnRemoveVoucher.Click += new System.EventHandler(this.btnRemoveVoucher_Click);
             // 
             // TicketPaymentInfo
             // 
@@ -642,13 +745,14 @@ namespace UI.EmployeeSale
             this.Controls.Add(this.panelCustomer);
             this.Controls.Add(this.panelTickets);
             this.Controls.Add(this.panelProducts);
-            this.Controls.Add(this.panelTotal);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btn_payCash);
             this.Controls.Add(this.btnPayOS);
+            this.Controls.Add(this.panelVoucher);
+            this.Controls.Add(this.panelTotal);
             this.Name = "TicketPaymentInfo";
             this.Padding = new System.Windows.Forms.Padding(20);
-            this.Size = new System.Drawing.Size(1630, 800);
+            this.Size = new System.Drawing.Size(1630, 861);
             this.panelHeader.ResumeLayout(false);
             this.panelCustomer.ResumeLayout(false);
             this.panelTickets.ResumeLayout(false);
@@ -656,6 +760,7 @@ namespace UI.EmployeeSale
             this.panelProducts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.panelTotal.ResumeLayout(false);
+            this.panelVoucher.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -669,5 +774,6 @@ namespace UI.EmployeeSale
         private DataGridViewTextBoxColumn colUnitPrice;
         private DataGridViewTextBoxColumn colTotal;
         private Button btn_payCash;
+        private Label lblCustomerPointsTitle;
     }
 }
