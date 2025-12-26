@@ -27,5 +27,22 @@ namespace BLL
                 return null;
             }
         }
+
+        public bool SaveResetOtp(string username, string otpPlain, int expireMinutes = 10)
+        {
+            return _accountDAL.SaveResetOtp(username, otpPlain, expireMinutes);
+        }
+
+        public bool VerifyResetOtp(string username, string otpInput, int maxAttempts = 5)
+        {
+            return _accountDAL.VerifyResetOtp(username, otpInput, maxAttempts);
+        }
+
+        public bool ResetPasswordByOtp(string username, string otpInput, string newPassword, int maxAttempts = 5)
+        {
+            return _accountDAL.ResetPasswordByOtp(username, otpInput, newPassword, maxAttempts);
+        }
+
+        public int getResetOtpAttemptCount(string username) => _accountDAL.getResetOtpAttemptCount(username);
     }
 }

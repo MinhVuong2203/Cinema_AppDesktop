@@ -76,5 +76,18 @@ namespace BLL
         {
             return _employeeDAL.GetEmployeeCountByRole();
         }
+
+        // Cung cấp cho chức năng quên mật khẩu
+        public Employee GetByEmailAndCCCD(string email, string cccd)
+        {
+            try
+            {
+                return _employeeDAL.GetByEmailAndCCCD(email, cccd);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

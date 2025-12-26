@@ -1,18 +1,15 @@
 namespace DTO
 {
-    using DAL;
     using System;
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Account")]
     public partial class Account
     {
         [Key]
         [ForeignKey("Employee")]
-        public Guid EmployeeID { get; set; }  // PK và FK cùng lúc
+        public Guid EmployeeID { get; set; }
 
         [StringLength(50)]
         public string Username { get; set; }
@@ -21,9 +18,15 @@ namespace DTO
         public string PasswordHash { get; set; }
 
         public int RoleId { get; set; }
-      
-        public virtual Employee Employee { get; set; }
 
+        [StringLength(200)]
+        public string ResetOtpHash { get; set; }
+
+        public DateTime? ResetOtpExpiresAt { get; set; }
+
+        public int ResetOtpAttemptCount { get; set; }
+
+        public virtual Employee Employee { get; set; }
         public virtual Role Role { get; set; }
     }
 }

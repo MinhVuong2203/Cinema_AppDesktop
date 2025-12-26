@@ -223,7 +223,9 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1082, 613);
             this.Controls.Add(this.pnForgot);
+            this.MaximizeBox = false;
             this.Name = "Forgot";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Forgot";
             this.pnForgot.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

@@ -101,5 +101,17 @@ namespace UI
             Forgot f = new Forgot();
             f.Show();   
         }
+
+        private void lbForgot_MouseLeave(object sender, EventArgs e)
+        {
+            this.lbForgot.ForeColor = Color.Black;
+        }
+
+        private void lbForgot_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.lbForgot.ForeColor = Color.Red;
+        }
+
+       
     }
 }

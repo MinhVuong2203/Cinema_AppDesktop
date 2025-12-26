@@ -52,6 +52,7 @@
     <Compile Include="Licensing\LicenseResult.cs" />
     <Compile Include="Licensing\LicenseState.cs" />
     <Compile Include="Licensing\LicenseToken.cs" />
+    <Compile Include="MailHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidateHepler.cs" />
   </ItemGroup>

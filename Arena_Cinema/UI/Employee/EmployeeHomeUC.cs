@@ -1,11 +1,13 @@
 ﻿using Common;
 using DTO;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -59,7 +61,23 @@ namespace UI.Employee
 
         private void btnPhanQuyen_Click(object sender, EventArgs e)
         {
-            this._home.LoadControl(new OperationUC());
+            if (!this._employee.Role.RoleName.Equals("Admin"))
+            {
+                MessageBox.Show("Bạn không có quyền truy cập chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string s = Interaction.InputBox("Nhập mật khẩu", "Xác minh", "");
+            if (BCrypt.Net.BCrypt.Verify(s, _employee.Account.PasswordHash))
+            {
+                this._home.LoadControl(new OperationUC());      
+            }
+            else
+            {
+                MessageBox.Show("Mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
     }
 }

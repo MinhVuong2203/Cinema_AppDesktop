@@ -100,22 +100,7 @@ namespace UI.Setting
             }
         }
 
-        private void btnChonMau_Click(object sender, EventArgs e)
-        {
-            using (ColorDialog colorDialog = new ColorDialog())
-            {
-                colorDialog.Color = this.BackColor;
-                colorDialog.AllowFullOpen = true;
-                colorDialog.FullOpen = true;
-                if (colorDialog.ShowDialog() == DialogResult.OK)
-                {
-                    Color selectedColor = colorDialog.Color;
-                    lblPreview.BackColor = selectedColor;
-                    string rgb = $"{selectedColor.R},{selectedColor.G},{selectedColor.B}";
-                    this.color = rgb;         
-                }
-            }
-        }
+     
 
         private void btnOk_Click(object sender, EventArgs e)
         {
@@ -148,19 +133,7 @@ namespace UI.Setting
             }
         }
 
-        private void btnDangXuat_Click(object sender, EventArgs e)
-        {
-            // Lấy form chứa UserControl
-            Form parent = this.FindForm();
-
-            // Ẩn form cha
-            parent.Hide();
-
-            // Mở form login
-            Login lg = new Login();
-            lg.StartPosition = FormStartPosition.CenterScreen;
-            lg.Show();
-        }
+      
 
 
         private void btnFont_Click(object sender, EventArgs e)
@@ -209,20 +182,17 @@ namespace UI.Setting
             return Color.Black;
         }
 
-        //private void colorPicker_ColorChanged(object sender, EventArgs e)
-        //{
-        //}
-
-        private void colorPicker_MouseUp(object sender, MouseEventArgs e)
-        {
-            Color c = colorPicker.SelectedColor;
-            lblPreview.BackColor = c;
-        }
-
+      
+     
         private void colorPicker_ColorChanged(Color color)
         {
 
             lblPreview.BackColor = color;
+        }
+
+        private void skyButton1_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }
