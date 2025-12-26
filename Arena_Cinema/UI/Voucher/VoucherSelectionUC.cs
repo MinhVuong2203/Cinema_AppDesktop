@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using DAL; 
+using DAL; // Giả sử DAL chứa DBContext
+using DTO; // Giả sử DTO chứa các class Entity
 
 namespace UI.Voucher
 {
