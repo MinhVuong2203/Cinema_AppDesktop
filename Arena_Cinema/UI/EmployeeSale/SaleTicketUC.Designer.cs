@@ -255,7 +255,7 @@
             // 
             this.lbCustomerPhone.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lbCustomerPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
-            this.lbCustomerPhone.Location = new System.Drawing.Point(576, 112);
+            this.lbCustomerPhone.Location = new System.Drawing.Point(705, 112);
             this.lbCustomerPhone.Name = "lbCustomerPhone";
             this.lbCustomerPhone.Size = new System.Drawing.Size(370, 20);
             this.lbCustomerPhone.TabIndex = 7;
@@ -265,7 +265,7 @@
             // 
             this.lbCustomerName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lbCustomerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lbCustomerName.Location = new System.Drawing.Point(576, 87);
+            this.lbCustomerName.Location = new System.Drawing.Point(705, 87);
             this.lbCustomerName.Name = "lbCustomerName";
             this.lbCustomerName.Size = new System.Drawing.Size(370, 23);
             this.lbCustomerName.TabIndex = 6;
@@ -279,7 +279,7 @@
             this.btnCheckCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCheckCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnCheckCustomer.ForeColor = System.Drawing.Color.White;
-            this.btnCheckCustomer.Location = new System.Drawing.Point(846, 42);
+            this.btnCheckCustomer.Location = new System.Drawing.Point(975, 42);
             this.btnCheckCustomer.Name = "btnCheckCustomer";
             this.btnCheckCustomer.Size = new System.Drawing.Size(100, 32);
             this.btnCheckCustomer.TabIndex = 5;
@@ -292,7 +292,7 @@
             this.txt_Phone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_Phone.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txt_Phone.ForeColor = System.Drawing.Color.Gray;
-            this.txt_Phone.Location = new System.Drawing.Point(576, 42);
+            this.txt_Phone.Location = new System.Drawing.Point(705, 42);
             this.txt_Phone.Name = "txt_Phone";
             this.txt_Phone.Size = new System.Drawing.Size(260, 30);
             this.txt_Phone.TabIndex = 4;

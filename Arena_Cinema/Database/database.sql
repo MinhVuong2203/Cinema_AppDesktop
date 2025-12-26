@@ -967,6 +967,23 @@ BEGIN
 END;
 GO
 
+CREATE OR ALTER TRIGGER trg_AutoDisableExpiredVoucherTemplates
+ON Voucher
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Cập nhật trạng thái cho các Voucher đã quá hạn tính đến thời điểm hiện tại
+    UPDATE Voucher
+    SET 
+        IsActive = 0,       -- Tắt hoạt động
+        IsDeleted = 1       -- Đánh dấu xóa
+    WHERE EndDate < GETDATE() -- Điều kiện: Ngày kết thúc nhỏ hơn ngày hiện tại
+      AND (IsActive = 1 OR IsDeleted = 0); -- Chỉ cập nhật những dòng đang Active hoặc chưa bị xóa để tối ưu hiệu năng
+END;
+GO
+
 -- STORED PROCEDURES
 
 -- SP 1: Đổi voucher cho khách hàng

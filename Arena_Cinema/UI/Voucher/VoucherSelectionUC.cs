@@ -67,7 +67,6 @@ namespace UI.Voucher
                 LoadRedeemVoucherTab();
         }
 
-        #region TAB 1: CHỌN VOUCHER (Logic cũ - Áp dụng voucher vào đơn)
         private void LoadSelectVoucherTab()
         {
             flpSelectVouchers.Controls.Clear();
@@ -133,7 +132,6 @@ namespace UI.Voucher
                 BorderStyle = BorderStyle.FixedSingle
             };
 
-            // ... (Code vẽ giao diện card như cũ của bạn, tôi tóm tắt logic chính) ...
 
             // Nút ÁP DỤNG
             if (isEligible)
@@ -162,7 +160,7 @@ namespace UI.Voucher
                 card.Controls.Add(lblReason);
             }
 
-            // Tên voucher, giảm giá...
+            // Tên voucher, giảm giá
             Label lblName = new Label { Text = voucher.VoucherName, Font = new Font("Arial", 12, FontStyle.Bold), Location = new Point(20, 20), AutoSize = true };
             Label lblDiscount = new Label { Text = voucher.DiscountType == "Phần trăm" ? $"-{voucher.DiscountValue}%" : $"-{voucher.DiscountValue:N0}đ", ForeColor = Color.Red, Font = new Font("Arial", 14, FontStyle.Bold), Location = new Point(20, 50), AutoSize = true };
             card.Controls.Add(lblName);
@@ -199,9 +197,7 @@ namespace UI.Voucher
             // Đóng form (Form cha xử lý DialogResult)
             ((Form)this.TopLevelControl).DialogResult = DialogResult.OK;
         }
-        #endregion
 
-        #region TAB 2: ĐỔI VOUCHER (Logic Mới - Dùng điểm đổi voucher)
         private void LoadRedeemVoucherTab()
         {
             flpRedeemVouchers.Controls.Clear();
@@ -218,7 +214,7 @@ namespace UI.Voucher
             // 1. Lấy tất cả Voucher mẫu đang hoạt động
             var availableVouchers = _context.Vouchers
                 .Where(v => !v.IsDeleted && v.IsActive
-                         && v.StartDate <= DateTime.Now && v.EndDate >= DateTime.Now
+                         //&& v.StartDate <= DateTime.Now && v.EndDate >= DateTime.Now
                          && v.RemainingQuantity > 0) // Kiểm tra còn hàng
                 .OrderBy(v => v.PointRequired)
                 .ToList();
@@ -235,7 +231,7 @@ namespace UI.Voucher
                 // Logic kiểm tra điều kiện đổi
                 bool enoughPoints = customer.Point >= v.PointRequired;
 
-                // Kiểm tra giới hạn số lần đổi của khách (nếu cần thiết theo Business Rule của bạn)
+                // Kiểm tra giới hạn số lần đổi của khách 
                 int timesRedeemed = _context.CustomerVouchers.Count(cv => cv.CustomerID == customer.CustomerID && cv.VoucherID == v.VoucherID);
                 bool underLimit = timesRedeemed < v.MaxUsagePerCustomer;
 
@@ -388,7 +384,6 @@ namespace UI.Voucher
                 }
             }
         }
-        #endregion
 
         // Helper hiển thị thông báo trống
         private void ShowMessage(FlowLayoutPanel panel, string title, string sub)

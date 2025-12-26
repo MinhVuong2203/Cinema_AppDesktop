@@ -673,9 +673,9 @@ namespace UI.EmployeeSale
             // 
             this.panelVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(247)))), ((int)(((byte)(237)))));
             this.panelVoucher.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelVoucher.Controls.Add(this.btnSelectVoucher);
             this.panelVoucher.Controls.Add(this.lblVoucherTitle);
             this.panelVoucher.Controls.Add(this.lblVoucherName);
-            this.panelVoucher.Controls.Add(this.btnSelectVoucher);
             this.panelVoucher.Controls.Add(this.btnRemoveVoucher);
             this.panelVoucher.Location = new System.Drawing.Point(824, 590);
             this.panelVoucher.Name = "panelVoucher";
@@ -710,9 +710,9 @@ namespace UI.EmployeeSale
             this.btnSelectVoucher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelectVoucher.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSelectVoucher.ForeColor = System.Drawing.Color.White;
-            this.btnSelectVoucher.Location = new System.Drawing.Point(450, 20);
+            this.btnSelectVoucher.Location = new System.Drawing.Point(398, 20);
             this.btnSelectVoucher.Name = "btnSelectVoucher";
-            this.btnSelectVoucher.Size = new System.Drawing.Size(150, 40);
+            this.btnSelectVoucher.Size = new System.Drawing.Size(206, 40);
             this.btnSelectVoucher.TabIndex = 2;
             this.btnSelectVoucher.Text = "🎫 Chọn voucher";
             this.btnSelectVoucher.UseVisualStyleBackColor = false;
