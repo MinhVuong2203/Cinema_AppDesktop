@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Common
 {
@@ -47,5 +48,10 @@ namespace Common
             return true;
         }
 
+        public static string GenerateRandomNumber(int quanlity)
+        {
+            Random _rand = new Random();
+            return _rand.Next(0, 1_000_000).ToString("D6");
+        }
     }
 }

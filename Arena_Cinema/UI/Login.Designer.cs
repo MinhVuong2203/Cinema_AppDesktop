@@ -36,6 +36,7 @@ namespace UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.pnLogin = new UI.Controls.RoundedPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbForgot = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnShowPass = new ReaLTaiizor.Controls.ParrotButton();
             this.btnForgotPassword = new ReaLTaiizor.Controls.MetroButton();
@@ -62,6 +63,7 @@ namespace UI
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbForgot);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnShowPass);
             this.groupBox1.Controls.Add(this.btnForgotPassword);
@@ -74,6 +76,15 @@ namespace UI
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // lbForgot
+            // 
+            resources.ApplyResources(this.lbForgot, "lbForgot");
+            this.lbForgot.Image = global::UI.Properties.Resources.forgot_password;
+            this.lbForgot.Name = "lbForgot";
+            this.lbForgot.Click += new System.EventHandler(this.lbForgot_Click);
+            this.lbForgot.MouseLeave += new System.EventHandler(this.lbForgot_MouseLeave);
+            this.lbForgot.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbForgot_MouseMove);
             // 
             // label3
             // 
@@ -252,5 +263,6 @@ namespace UI
         private ReaLTaiizor.Controls.MetroButton btnForgotPassword;
         private ReaLTaiizor.Controls.ParrotButton btnShowPass;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbForgot;
     }
 }

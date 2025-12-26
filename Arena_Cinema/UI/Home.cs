@@ -60,7 +60,9 @@ namespace UI
             btnPhong.Visible = false;
             btnSuatChieu.Visible = false;
             btnSanPham.Visible = false;
-   
+            btnDoanhThu.Visible = false;
+            btnVoucher.Visible = false;
+
             if (_employee.Operations.Any(op => op.OperationCode == "SALE"))
             {
                 btnBanVe.Visible = true;
@@ -91,6 +93,15 @@ namespace UI
                 btnSanPham.Visible = true;
             }
 
+            if (_employee.Operations.Any(op => op.OperationCode == "REVENUE"))
+            {
+                btnDoanhThu.Visible = true;
+            }
+
+            if (_employee.Operations.Any(op => op.OperationCode == "VOUCHER"))
+            {
+                btnVoucher.Visible = true;
+            }
 
         }
 

@@ -311,5 +311,17 @@ namespace DAL
             }
         }
     
+        public Employee GetByEmailAndCCCD(string email, string cccd)
+        {
+            try
+            {
+                return _context.Employees
+                    .FirstOrDefault(e => e.Email == email && e.CCCD == cccd && !e.IsDeleted);
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

@@ -345,6 +345,12 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="InputOTP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InputOTP.Designer.cs">
+      <DependentUpon>InputOTP.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -380,6 +386,12 @@
     </Compile>
     <Compile Include="Movie\Movie_MainUC.Designer.cs">
       <DependentUpon>Movie_MainUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PassChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassChange.Designer.cs">
+      <DependentUpon>PassChange.cs</DependentUpon>
     </Compile>
     <Compile Include="PayOSMethod\Config\PayOSConfig.cs" />
     <Compile Include="PayOSMethod\PaymentCancelForm.cs">
@@ -557,6 +569,9 @@
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InputOTP.resx">
+      <DependentUpon>InputOTP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -574,6 +589,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Movie\Movie_MainUC.resx">
       <DependentUpon>Movie_MainUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PassChange.resx">
+      <DependentUpon>PassChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PayOSMethod\PaymentSuccessForm.resx">
       <DependentUpon>PaymentSuccessForm.cs</DependentUpon>
@@ -815,6 +833,8 @@
     <None Include="Resources\bg21.jpg" />
     <None Include="Resources\invoice123.png" />
     <None Include="Resources\invoice213.png" />
+    <None Include="Resources\forgot.png" />
+    <None Include="Resources\forgot-password.png" />
     <Content Include="Resources\roomDefault.png" />
     <None Include="Resources\Search3.png" />
     <None Include="Resources\Search2.png" />

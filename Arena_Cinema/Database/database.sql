@@ -22,12 +22,14 @@ CREATE TABLE Operation(
 
 INSERT INTO Operation(OperationCode, OperationName)
 VALUES ('SALE', 'Bán vé'),
-	   ('EMPLOYEE', 'Nhân viên'),
-	   ('SHOWTIME', 'Xuất chiếu'),
-	   ('MOVIE', 'Phim'),
-	   ('ROOM', 'Phòng'),
-	   ('PRODUCT', 'Bắp nước'),
-	   ('LOGIN', 'Đăng nhập')
+	   ('EMPLOYEE', N'Nhân viên'),
+	   ('SHOWTIME', N'Xuất chiếu'),
+	   ('MOVIE', N'Phim'),
+	   ('ROOM', N'Phòng'),
+	   ('PRODUCT', N'Bắp nước'),
+	   ('LOGIN', N'Đăng nhập'),
+	   ('VOUCHER', N'Mã giảm giá'),
+	   ('REVENUE', N'Doanh thu')
 
 -- PEOPLE GROUP
 CREATE TABLE Employee (
@@ -104,11 +106,13 @@ CREATE TABLE Account(
 	Username VARCHAR(50),
     PasswordHash VARCHAR(255),
 	RoleId INT NOT NULL,
+	ResetOtpHash NVARCHAR(200) NULL,
+    ResetOtpExpiresAt DATETIME2 NULL,
+    ResetOtpAttemptCount INT NOT NULL CONSTRAINT DF_Users_ResetOtpAttemptCount DEFAULT(0),
 	FOREIGN KEY (EmployeeID) REFERENCES Employee(EmployeeID) ON DELETE CASCADE,
 	FOREIGN KEY (RoleId) REFERENCES Role(RoleId) ON DELETE CASCADE
 );
-
-
+   
 
 INSERT INTO Account (Username, PasswordHash, EmployeeID, RoleId)
 VALUES

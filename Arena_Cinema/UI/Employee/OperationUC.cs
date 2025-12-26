@@ -54,8 +54,8 @@ namespace UI.Employee
             dgvPermissions.RowHeadersVisible = false;
 
             // FULL WIDTH: cột tự fill hết chiều ngang
-            dgvPermissions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+            //dgvPermissions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPermissions.ScrollBars = ScrollBars.Both;
             // Font to hơn
             dgvPermissions.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
             dgvPermissions.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
@@ -118,14 +118,14 @@ namespace UI.Employee
             {
                 Name = "colFullName",
                 HeaderText = "Nhân viên",
-                MinimumWidth = 240
+                MinimumWidth = 220
             });
 
             dgvPermissions.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "colRole",
                 HeaderText = "Chức vụ",
-                MinimumWidth = 180
+                MinimumWidth = 160
             });
 
             foreach (var op in operations)
@@ -134,7 +134,7 @@ namespace UI.Employee
                 {
                     Name = $"op_{op.OperationId}",
                     HeaderText = op.OperationName, // hoặc OperationCode
-                    Width = 90,
+                    MinimumWidth = 120,
                     ImageLayout = DataGridViewImageCellLayout.Zoom,
                     Tag = op.OperationId
                 };

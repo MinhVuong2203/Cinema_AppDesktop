@@ -224,5 +224,10 @@ namespace UI.Setting
 
             lblPreview.BackColor = color;
         }
+
+        private void skyButton1_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
     }
 }

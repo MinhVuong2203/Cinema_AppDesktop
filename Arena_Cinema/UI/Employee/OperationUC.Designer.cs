@@ -42,8 +42,8 @@
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpRoot = new System.Windows.Forms.TableLayoutPanel();
             this.pnlTop = new ReaLTaiizor.Controls.ParrotGradientPanel();
             this.hopeButton1 = new ReaLTaiizor.Controls.HopeButton();
@@ -138,7 +138,9 @@
             this.cboRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.cboRole.FormattingEnabled = true;
             this.cboRole.ItemHeight = 24;
-            this.cboRole.Location = new System.Drawing.Point(780, 15);
+            this.cboRole.Items.AddRange(new object[] {
+            "-- Tất cả --"});
+            this.cboRole.Location = new System.Drawing.Point(780, 8);
             this.cboRole.Name = "cboRole";
             this.cboRole.Size = new System.Drawing.Size(189, 30);
             this.cboRole.TabIndex = 4;
@@ -149,7 +151,7 @@
             this.lblRole.BackColor = System.Drawing.Color.Transparent;
             this.lblRole.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.lblRole.Location = new System.Drawing.Point(695, 16);
+            this.lblRole.Location = new System.Drawing.Point(695, 14);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(81, 25);
             this.lblRole.TabIndex = 3;
@@ -164,7 +166,7 @@
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtSearch.Hint = "";
-            this.txtSearch.Location = new System.Drawing.Point(378, 10);
+            this.txtSearch.Location = new System.Drawing.Point(385, 8);
             this.txtSearch.MaxLength = 200;
             this.txtSearch.Multiline = false;
             this.txtSearch.Name = "txtSearch";
@@ -208,32 +210,31 @@
             this.dgvPermissions.AllowUserToAddRows = false;
             this.dgvPermissions.AllowUserToDeleteRows = false;
             this.dgvPermissions.AllowUserToResizeRows = false;
-            this.dgvPermissions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvPermissions.BackgroundColor = System.Drawing.Color.White;
             this.dgvPermissions.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPermissions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvPermissions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(115)))), ((int)(((byte)(217)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.dgvPermissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(115)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.dgvPermissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPermissions.ColumnHeadersHeight = 40;
             this.dgvPermissions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colEmployeeId,
             this.colFullName,
             this.colRoleName,
             this.colOpSample});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPermissions.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPermissions.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPermissions.EnableHeadersVisualStyles = false;
             this.dgvPermissions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(239)))), ((int)(((byte)(245)))));
@@ -270,6 +271,7 @@
             this.colRoleName.HeaderText = "Role";
             this.colRoleName.MinimumWidth = 100;
             this.colRoleName.Name = "colRoleName";
+            this.colRoleName.Width = 125;
             // 
             // colOpSample
             // 
