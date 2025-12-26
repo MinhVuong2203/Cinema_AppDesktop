@@ -42,7 +42,7 @@ namespace UI
             bool verifyResetOtp = accountBLL.VerifyResetOtp(employee.Account.Username, txtOTP.Text.Trim());
             if (!verifyResetOtp)
             {
-                int ResetOtpAttemptCount = accountBLL.getResetOtpAttemptCount(employee.Account.Username)
+                int ResetOtpAttemptCount = accountBLL.getResetOtpAttemptCount(employee.Account.Username);
                 if ((5 - ResetOtpAttemptCount) < 0)
                 {
                     MessageBox.Show("Đã quá số lần nhập OTP!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
