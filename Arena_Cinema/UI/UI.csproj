@@ -458,6 +458,12 @@
     <Compile Include="ScreeningRoom\Deleted_room.Designer.cs">
       <DependentUpon>Deleted_room.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScreeningRoom\maintenanceRoom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScreeningRoom\maintenanceRoom.Designer.cs">
+      <DependentUpon>maintenanceRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScreeningRoom\Room-homeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -632,6 +638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScreeningRoom\Deleted_room.resx">
       <DependentUpon>Deleted_room.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScreeningRoom\maintenanceRoom.resx">
+      <DependentUpon>maintenanceRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScreeningRoom\Room-homeUC.resx">
       <DependentUpon>Room-homeUC.cs</DependentUpon>
