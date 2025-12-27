@@ -42,6 +42,7 @@
             this.lblEmployeeName = new System.Windows.Forms.Label();
             this.lblRoomID = new System.Windows.Forms.Label();
             this.ptbRoomImage = new System.Windows.Forms.PictureBox();
+            this.btnXepGhe = new ReaLTaiizor.Controls.MaterialButton();
             this.panelHeader.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelRoomsList.SuspendLayout();
@@ -136,6 +137,7 @@
             // 
             // panelCardContent
             // 
+            this.panelCardContent.Controls.Add(this.btnXepGhe);
             this.panelCardContent.Controls.Add(this.lblSeatcount);
             this.panelCardContent.Controls.Add(this.lblDescription);
             this.panelCardContent.Controls.Add(this.lblRoomType);
@@ -189,7 +191,7 @@
             this.btnBaoTri.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnBaoTri.Depth = 0;
             this.btnBaoTri.HighEmphasis = true;
-            this.btnBaoTri.Icon = global::UI.Properties.Resources.trash;
+            this.btnBaoTri.Icon = null;
             this.btnBaoTri.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
             this.btnBaoTri.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBaoTri.Location = new System.Drawing.Point(306, 328);
@@ -237,6 +239,30 @@
             this.ptbRoomImage.TabIndex = 0;
             this.ptbRoomImage.TabStop = false;
             // 
+            // btnXepGhe
+            // 
+            this.btnXepGhe.AutoSize = false;
+            this.btnXepGhe.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnXepGhe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnXepGhe.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnXepGhe.Depth = 0;
+            this.btnXepGhe.HighEmphasis = true;
+            this.btnXepGhe.Icon = null;
+            this.btnXepGhe.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnXepGhe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXepGhe.Location = new System.Drawing.Point(105, 328);
+            this.btnXepGhe.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnXepGhe.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btnXepGhe.Name = "btnXepGhe";
+            this.btnXepGhe.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnXepGhe.Size = new System.Drawing.Size(151, 42);
+            this.btnXepGhe.TabIndex = 8;
+            this.btnXepGhe.Text = "Sắp xếp ghế";
+            this.btnXepGhe.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnXepGhe.UseAccentColor = true;
+            this.btnXepGhe.UseMnemonic = false;
+            this.btnXepGhe.UseVisualStyleBackColor = false;
+            // 
             // maintenanceRoom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -273,5 +299,6 @@
         private System.Windows.Forms.Label lblEmployeeName;
         private System.Windows.Forms.Label lblRoomID;
         private System.Windows.Forms.PictureBox ptbRoomImage;
+        private ReaLTaiizor.Controls.MaterialButton btnXepGhe;
     }
 }
