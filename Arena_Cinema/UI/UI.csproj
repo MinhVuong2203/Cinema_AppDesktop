@@ -861,6 +861,9 @@
     <None Include="Resources\product-management %281%291.png" />
     <None Include="Resources\package.png" />
     <None Include="Resources\package1.png" />
+    <None Include="Resources\IconApp.png" />
+    <None Include="Resources\AppIcon-removebg-preview.png" />
+    <None Include="Resources\AppIcon.png" />
     <Content Include="Resources\roomDefault.png" />
     <None Include="Resources\Search3.png" />
     <None Include="Resources\Search2.png" />

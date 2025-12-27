@@ -83,6 +83,26 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AppIcon {
+            get {
+                object obj = ResourceManager.GetObject("AppIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AppIcon_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("AppIcon-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap armchair {
             get {
                 object obj = ResourceManager.GetObject("armchair", resourceCulture);
@@ -346,6 +366,16 @@ namespace UI.Properties {
         internal static System.Drawing.Bitmap home__1_ {
             get {
                 object obj = ResourceManager.GetObject("home (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconApp {
+            get {
+                object obj = ResourceManager.GetObject("IconApp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
