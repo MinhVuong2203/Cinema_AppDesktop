@@ -841,6 +841,8 @@
     <Content Include="Image\Employee\emloyeeDefault.png" />
     <Content Include="Image\Employee\Gai4.jpeg" />
     <Content Include="Image\Product\popcorn %281%29.png" />
+    <None Include="Resources\voucher %281%29.png" />
+    <None Include="Resources\voucher.png" />
     <None Include="Resources\sort.png" />
     <None Include="Resources\sort-descending %281%29.png" />
     <None Include="Resources\reset.png" />
