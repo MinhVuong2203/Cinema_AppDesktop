@@ -157,6 +157,9 @@
   <data name="calendar (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendar (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="package1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\package1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bg1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -168,6 +171,9 @@
   </data>
   <data name="imgCalender" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgCalender.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="voucher" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\voucher.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="list-symbol-of-three-items-with-dots" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\list-symbol-of-three-items-with-dots.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -334,7 +340,7 @@
   <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="package1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\package1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="voucher (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\voucher (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
