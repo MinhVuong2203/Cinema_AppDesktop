@@ -33,7 +33,6 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.PanelTop = new ReaLTaiizor.Controls.ParrotGradientPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbTime = new System.Windows.Forms.Label();
@@ -207,7 +206,7 @@ namespace UI
             // btnGoiDichVu
             // 
             this.btnGoiDichVu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.btnGoiDichVu.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnGoiDichVu.ButtonImage")));
+            this.btnGoiDichVu.ButtonImage = global::UI.Properties.Resources.product_management__1_;
             this.btnGoiDichVu.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
             this.btnGoiDichVu.ButtonText = "GÓI DỊCH VỤ";
             this.btnGoiDichVu.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));

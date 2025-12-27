@@ -654,6 +654,9 @@
     <EmbeddedResource Include="SeatManagement\SeatManagementUC.resx">
       <DependentUpon>SeatManagementUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ServicePackage\LicenseManagementForm.resx">
+      <DependentUpon>LicenseManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Setting\SettingControl.resx">
       <DependentUpon>SettingControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -853,6 +856,9 @@
     <None Include="Resources\revenue.png" />
     <None Include="Resources\revenue %281%29.png" />
     <None Include="Resources\revenue %282%29.png" />
+    <None Include="Resources\product-management %281%291.png" />
+    <None Include="Resources\package.png" />
+    <None Include="Resources\package1.png" />
     <Content Include="Resources\roomDefault.png" />
     <None Include="Resources\Search3.png" />
     <None Include="Resources\Search2.png" />

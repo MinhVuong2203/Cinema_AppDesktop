@@ -15,6 +15,16 @@ namespace DAL
             _context = new CinemaDBContext();
         }
 
+        public Guid getTenantId()
+        {
+            var appSetting = _context.AppSettings.FirstOrDefault();
+            if (appSetting == null)
+            {
+                return Guid.Empty;
+            }
+            return appSetting.TenantId;
+        }
+
         // Lấy License theo TenantId
         public License GetLicenseByTenantId(Guid tenantId)
         {

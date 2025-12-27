@@ -14,6 +14,7 @@ using UI.ScreeningRoom;
 using UI.Setting;
 using UI.ShowTime;
 using System.Linq;
+using BLL;
 
 
 using UI.Helpers;
@@ -218,8 +219,9 @@ namespace UI
 
                     break;
                 case "btnGoiDichVu":
+                    LicenseBLL bll = new LicenseBLL();
                     
-                    SettingControl settingControl = new SettingControl(this._employee);
+                    LicenseManagementForm settingControl = new LicenseManagementForm(bll.getTenantId());
                     LoadControl(settingControl);
                     break;
                 case "btnCaNhan":
