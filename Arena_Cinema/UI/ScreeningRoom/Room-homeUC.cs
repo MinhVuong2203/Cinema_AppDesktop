@@ -325,7 +325,7 @@ namespace UI.ScreeningRoom
 
         private void btnBaoTri_Click(object sender, EventArgs e)
         {
-            this._home.LoadControl(new maintenanceRoom(_home, this._room));
+            //this._home.LoadControl(new maintenanceRoom(_home, this._room));
         }
     }
 }

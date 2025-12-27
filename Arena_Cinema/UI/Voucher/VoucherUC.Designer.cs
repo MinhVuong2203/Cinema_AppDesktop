@@ -185,66 +185,107 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(162)))), ((int)(((byte)(184)))));
             this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnRefresh.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnRefresh.Depth = 0;
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(1372, 10);
+            this.btnRefresh.HighEmphasis = true;
+            this.btnRefresh.Icon = null;
+            this.btnRefresh.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnRefresh.Location = new System.Drawing.Point(1423, 5);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnRefresh.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(160, 60);
+            this.btnRefresh.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnRefresh.Size = new System.Drawing.Size(93, 36);
             this.btnRefresh.TabIndex = 3;
             this.btnRefresh.Text = "🔄 Làm mới";
+            this.btnRefresh.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnRefresh.UseAccentColor = false;
             this.btnRefresh.UseVisualStyleBackColor = false;
             // 
             // btnDelete
             // 
+            this.btnDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
             this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDelete.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnDelete.Depth = 0;
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(320, 10);
+            this.btnDelete.HighEmphasis = true;
+            this.btnDelete.Icon = null;
+            this.btnDelete.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnDelete.Location = new System.Drawing.Point(271, 5);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnDelete.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(160, 60);
+            this.btnDelete.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnDelete.Size = new System.Drawing.Size(66, 36);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "🗑️ Xóa";
+            this.btnDelete.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnDelete.UseAccentColor = false;
             this.btnDelete.UseVisualStyleBackColor = false;
             // 
             // btnEdit
             // 
+            this.btnEdit.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
             this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnEdit.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnEdit.Depth = 0;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(160, 10);
+            this.btnEdit.HighEmphasis = true;
+            this.btnEdit.Icon = null;
+            this.btnEdit.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnEdit.Location = new System.Drawing.Point(160, 5);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnEdit.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(160, 60);
+            this.btnEdit.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnEdit.Size = new System.Drawing.Size(76, 36);
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "✏️ Sửa";
+            this.btnEdit.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnEdit.UseAccentColor = false;
             this.btnEdit.UseVisualStyleBackColor = false;
             // 
             // btnAdd
             // 
+            this.btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAdd.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAdd.Depth = 0;
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(0, 10);
+            this.btnAdd.HighEmphasis = true;
+            this.btnAdd.Icon = null;
+            this.btnAdd.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnAdd.Location = new System.Drawing.Point(0, 5);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAdd.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(160, 60);
+            this.btnAdd.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAdd.Size = new System.Drawing.Size(111, 36);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "➕ Thêm mới";
+            this.btnAdd.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAdd.UseAccentColor = false;
             this.btnAdd.UseVisualStyleBackColor = false;
             // 
             // pnlVoucherFilter
@@ -279,9 +320,8 @@
             this.lblFilterStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblFilterStatus.Location = new System.Drawing.Point(600, 5);
             this.lblFilterStatus.Name = "lblFilterStatus";
-            this.lblFilterStatus.Size = new System.Drawing.Size(100, 23);
+            this.lblFilterStatus.Size = new System.Drawing.Size(0, 23);
             this.lblFilterStatus.TabIndex = 2;
-            this.lblFilterStatus.Text = "Trạng thái:";
             // 
             // txtSearch
             // 
@@ -297,7 +337,7 @@
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblSearch.Location = new System.Drawing.Point(10, 5);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(87, 23);
+            this.lblSearch.Size = new System.Drawing.Size(91, 23);
             this.lblSearch.TabIndex = 0;
             this.lblSearch.Text = "Tìm kiếm:";
             // 
@@ -382,17 +422,28 @@
             // 
             // btnBrowseImage
             // 
+            this.btnBrowseImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnBrowseImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnBrowseImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBrowseImage.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnBrowseImage.Depth = 0;
             this.btnBrowseImage.FlatAppearance.BorderSize = 0;
             this.btnBrowseImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBrowseImage.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnBrowseImage.ForeColor = System.Drawing.Color.White;
+            this.btnBrowseImage.HighEmphasis = true;
+            this.btnBrowseImage.Icon = null;
+            this.btnBrowseImage.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
             this.btnBrowseImage.Location = new System.Drawing.Point(930, 600);
+            this.btnBrowseImage.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnBrowseImage.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnBrowseImage.Name = "btnBrowseImage";
-            this.btnBrowseImage.Size = new System.Drawing.Size(120, 40);
+            this.btnBrowseImage.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnBrowseImage.Size = new System.Drawing.Size(107, 36);
             this.btnBrowseImage.TabIndex = 32;
             this.btnBrowseImage.Text = "📁 Chọn ảnh";
+            this.btnBrowseImage.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnBrowseImage.UseAccentColor = false;
             this.btnBrowseImage.UseVisualStyleBackColor = false;
             // 
             // txtImageUrl
@@ -409,7 +460,7 @@
             this.lblImageUrl.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblImageUrl.Location = new System.Drawing.Point(30, 575);
             this.lblImageUrl.Name = "lblImageUrl";
-            this.lblImageUrl.Size = new System.Drawing.Size(161, 23);
+            this.lblImageUrl.Size = new System.Drawing.Size(146, 23);
             this.lblImageUrl.TabIndex = 30;
             this.lblImageUrl.Text = "Đường dẫn hình:";
             // 
@@ -421,7 +472,7 @@
             this.chkIsActive.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.chkIsActive.Location = new System.Drawing.Point(560, 530);
             this.chkIsActive.Name = "chkIsActive";
-            this.chkIsActive.Size = new System.Drawing.Size(129, 27);
+            this.chkIsActive.Size = new System.Drawing.Size(118, 27);
             this.chkIsActive.TabIndex = 29;
             this.chkIsActive.Text = "Hoạt động";
             this.chkIsActive.UseVisualStyleBackColor = true;
@@ -447,7 +498,7 @@
             this.lblApplicableFor.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblApplicableFor.Location = new System.Drawing.Point(560, 445);
             this.lblApplicableFor.Name = "lblApplicableFor";
-            this.lblApplicableFor.Size = new System.Drawing.Size(139, 23);
+            this.lblApplicableFor.Size = new System.Drawing.Size(118, 23);
             this.lblApplicableFor.TabIndex = 27;
             this.lblApplicableFor.Text = "Áp dụng cho:";
             // 
@@ -506,7 +557,7 @@
             this.lblMaxUsagePerCustomer.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblMaxUsagePerCustomer.Location = new System.Drawing.Point(800, 375);
             this.lblMaxUsagePerCustomer.Name = "lblMaxUsagePerCustomer";
-            this.lblMaxUsagePerCustomer.Size = new System.Drawing.Size(234, 23);
+            this.lblMaxUsagePerCustomer.Size = new System.Drawing.Size(219, 23);
             this.lblMaxUsagePerCustomer.TabIndex = 23;
             this.lblMaxUsagePerCustomer.Text = "Số lần dùng tối đa/người:";
             // 
@@ -526,7 +577,7 @@
             this.lblEndDate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblEndDate.Location = new System.Drawing.Point(540, 375);
             this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(125, 23);
+            this.lblEndDate.Size = new System.Drawing.Size(128, 23);
             this.lblEndDate.TabIndex = 21;
             this.lblEndDate.Text = "Ngày kết thúc:";
             // 
@@ -579,7 +630,7 @@
             this.lblTotalQuantity.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblTotalQuantity.Location = new System.Drawing.Point(30, 375);
             this.lblTotalQuantity.Name = "lblTotalQuantity";
-            this.lblTotalQuantity.Size = new System.Drawing.Size(104, 23);
+            this.lblTotalQuantity.Size = new System.Drawing.Size(88, 23);
             this.lblTotalQuantity.TabIndex = 17;
             this.lblTotalQuantity.Text = "Số lượng:";
             // 
@@ -607,7 +658,7 @@
             this.lblPointRequired.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblPointRequired.Location = new System.Drawing.Point(800, 305);
             this.lblPointRequired.Name = "lblPointRequired";
-            this.lblPointRequired.Size = new System.Drawing.Size(140, 23);
+            this.lblPointRequired.Size = new System.Drawing.Size(123, 23);
             this.lblPointRequired.TabIndex = 15;
             this.lblPointRequired.Text = "Điểm yêu cầu:";
             // 
@@ -635,7 +686,7 @@
             this.lblMinOrderAmount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblMinOrderAmount.Location = new System.Drawing.Point(540, 305);
             this.lblMinOrderAmount.Name = "lblMinOrderAmount";
-            this.lblMinOrderAmount.Size = new System.Drawing.Size(174, 23);
+            this.lblMinOrderAmount.Size = new System.Drawing.Size(175, 23);
             this.lblMinOrderAmount.TabIndex = 13;
             this.lblMinOrderAmount.Text = "Giá trị đơn tối thiểu:";
             // 
@@ -663,7 +714,7 @@
             this.lblMaxDiscountAmount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblMaxDiscountAmount.Location = new System.Drawing.Point(280, 305);
             this.lblMaxDiscountAmount.Name = "lblMaxDiscountAmount";
-            this.lblMaxDiscountAmount.Size = new System.Drawing.Size(188, 23);
+            this.lblMaxDiscountAmount.Size = new System.Drawing.Size(178, 23);
             this.lblMaxDiscountAmount.TabIndex = 11;
             this.lblMaxDiscountAmount.Text = "Giảm tối đa (nếu có):";
             // 
@@ -672,10 +723,10 @@
             this.numDiscountValue.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.numDiscountValue.Location = new System.Drawing.Point(30, 335);
             this.numDiscountValue.Maximum = new decimal(new int[] {
-                                                        10000000,
-                                                        0,
-                                                        0,
-                                                        0});
+            10000000,
+            0,
+            0,
+            0});
             this.numDiscountValue.Name = "numDiscountValue";
             this.numDiscountValue.Size = new System.Drawing.Size(230, 30);
             this.numDiscountValue.TabIndex = 10;
@@ -686,7 +737,7 @@
             this.lblDiscountValue.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblDiscountValue.Location = new System.Drawing.Point(30, 305);
             this.lblDiscountValue.Name = "lblDiscountValue";
-            this.lblDiscountValue.Size = new System.Drawing.Size(109, 23);
+            this.lblDiscountValue.Size = new System.Drawing.Size(111, 23);
             this.lblDiscountValue.TabIndex = 9;
             this.lblDiscountValue.Text = "Giá trị giảm:";
             // 
@@ -696,8 +747,8 @@
             this.cboDiscountType.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboDiscountType.FormattingEnabled = true;
             this.cboDiscountType.Items.AddRange(new object[] {
-                                                "Phần trăm",
-                                                "Số tiền"});
+            "Phần trăm",
+            "Số tiền"});
             this.cboDiscountType.Location = new System.Drawing.Point(560, 265);
             this.cboDiscountType.Name = "cboDiscountType";
             this.cboDiscountType.Size = new System.Drawing.Size(490, 31);
@@ -709,7 +760,7 @@
             this.lblDiscountType.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblDiscountType.Location = new System.Drawing.Point(560, 235);
             this.lblDiscountType.Name = "lblDiscountType";
-            this.lblDiscountType.Size = new System.Drawing.Size(138, 23);
+            this.lblDiscountType.Size = new System.Drawing.Size(124, 23);
             this.lblDiscountType.TabIndex = 7;
             this.lblDiscountType.Text = "Loại giảm giá:";
             // 
@@ -729,7 +780,7 @@
             this.lblDescription.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblDescription.Location = new System.Drawing.Point(30, 165);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(68, 23);
+            this.lblDescription.Size = new System.Drawing.Size(62, 23);
             this.lblDescription.TabIndex = 5;
             this.lblDescription.Text = "Mô tả:";
             // 
@@ -748,7 +799,7 @@
             this.lblVoucherName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblVoucherName.Location = new System.Drawing.Point(30, 95);
             this.lblVoucherName.Name = "lblVoucherName";
-            this.lblVoucherName.Size = new System.Drawing.Size(128, 23);
+            this.lblVoucherName.Size = new System.Drawing.Size(112, 23);
             this.lblVoucherName.TabIndex = 3;
             this.lblVoucherName.Text = "Tên Voucher:";
             // 
@@ -767,7 +818,7 @@
             this.lblVoucherCode.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblVoucherCode.Location = new System.Drawing.Point(30, 25);
             this.lblVoucherCode.Name = "lblVoucherCode";
-            this.lblVoucherCode.Size = new System.Drawing.Size(128, 23);
+            this.lblVoucherCode.Size = new System.Drawing.Size(110, 23);
             this.lblVoucherCode.TabIndex = 1;
             this.lblVoucherCode.Text = "Mã Voucher:";
             // 
@@ -784,34 +835,54 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCancel.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnCancel.Depth = 0;
             this.btnCancel.FlatAppearance.BorderSize = 0;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(160, 10);
+            this.btnCancel.HighEmphasis = true;
+            this.btnCancel.Icon = null;
+            this.btnCancel.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnCancel.Location = new System.Drawing.Point(167, 5);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCancel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(160, 60);
+            this.btnCancel.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnCancel.Size = new System.Drawing.Size(69, 36);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "❌ Hủy";
+            this.btnCancel.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnCancel.UseAccentColor = false;
             this.btnCancel.UseVisualStyleBackColor = false;
             // 
             // btnSave
             // 
+            this.btnSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSave.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnSave.Depth = 0;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(0, 10);
+            this.btnSave.HighEmphasis = true;
+            this.btnSave.Icon = null;
+            this.btnSave.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnSave.Location = new System.Drawing.Point(44, 5);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnSave.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(160, 60);
+            this.btnSave.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnSave.Size = new System.Drawing.Size(64, 36);
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = "💾 Lưu";
+            this.btnSave.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnSave.UseAccentColor = false;
             this.btnSave.UseVisualStyleBackColor = false;
             // 
             // pnlHeader
@@ -848,6 +919,7 @@
             this.tabVoucherList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVouchers)).EndInit();
             this.pnlVoucherActions.ResumeLayout(false);
+            this.pnlVoucherActions.PerformLayout();
             this.pnlVoucherFilter.ResumeLayout(false);
             this.pnlVoucherFilter.PerformLayout();
             this.tabCreateVoucher.ResumeLayout(false);
@@ -863,6 +935,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numMaxDiscountAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDiscountValue)).EndInit();
             this.pnlCreateActions.ResumeLayout(false);
+            this.pnlCreateActions.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
             this.ResumeLayout(false);
 

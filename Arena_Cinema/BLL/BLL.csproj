@@ -80,6 +80,7 @@
     <Compile Include="AccountBLL.cs" />
     <Compile Include="EmployeeBLL.cs" />
     <Compile Include="invoiceBLL.cs" />
+    <Compile Include="LicenseBLL.cs" />
     <Compile Include="MovieBLL.cs" />
     <Compile Include="OperationBLL.cs" />
     <Compile Include="PayOS.cs" />

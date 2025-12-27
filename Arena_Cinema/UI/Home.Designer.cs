@@ -207,7 +207,7 @@ namespace UI
             // btnGoiDichVu
             // 
             this.btnGoiDichVu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.btnGoiDichVu.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnGoiDichVu.ButtonImage")));
+            this.btnGoiDichVu.ButtonImage = global::UI.Properties.Resources.product_management__1_;
             this.btnGoiDichVu.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
             this.btnGoiDichVu.ButtonText = "GÓI DỊCH VỤ";
             this.btnGoiDichVu.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
@@ -490,7 +490,7 @@ namespace UI
             // btnVoucher
             // 
             this.btnVoucher.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
-            this.btnVoucher.ButtonImage = global::UI.Properties.Resources.ticket;
+            this.btnVoucher.ButtonImage = global::UI.Properties.Resources.voucher__1_;
             this.btnVoucher.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
             this.btnVoucher.ButtonText = "VOUCHER";
             this.btnVoucher.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
@@ -533,6 +533,7 @@ namespace UI
             this.Controls.Add(this.PanelMain);
             this.Controls.Add(this.pnMenu);
             this.Controls.Add(this.PanelTop);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
