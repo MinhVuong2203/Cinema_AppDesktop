@@ -482,6 +482,65 @@ namespace DAL
             }
         }
 
+        public int DeleteFutureShowTimesByRoom(int roomId, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+            int deletedCount = 0;
+
+            try
+            {
+                DateTime now = DateTime.Now;
+
+                var futureShowTimes = _context.ShowTimes
+                    .Where(st => st.RoomID == roomId
+                              && st.StartTime >= now
+                              && !st.IsDeleted)
+                    .ToList();
+
+                if (!futureShowTimes.Any())
+                {
+                    errorMessage = "Không có xuất chiếu nào trong tương lai.";
+                    return 0;
+                }
+
+                deletedCount = futureShowTimes.Count;
+
+                _context.ShowTimes.RemoveRange(futureShowTimes);
+                _context.SaveChanges();
+
+                errorMessage = $"Đã xóa vĩnh viễn {deletedCount} xuất chiếu.";
+                return deletedCount;
+            }
+            catch (Exception ex)
+            {
+                errorMessage = "Lỗi khi xóa xuất chiếu: " + ex.Message;
+                return 0;
+            }
+        }
+
+        public int CountFutureShowTimesByRoom(int roomId)
+        {
+            DateTime now = DateTime.Now;
+
+            return _context.ShowTimes
+                          .Count(st => st.RoomID == roomId
+                                    && st.StartTime >= now
+                                    && !st.IsDeleted);
+        }
+
+        public List<ShowTime> GetFutureShowTimesByRoom(int roomId)
+        {
+            DateTime now = DateTime.Now;
+
+            return _context.ShowTimes
+                          .Where(st => st.RoomID == roomId
+                                    && st.StartTime >= now
+                                    && !st.IsDeleted)
+                          .Include(st => st.Movie)
+                          .OrderBy(st => st.StartTime)
+                          .ToList();
+        }
+
         public void Dispose()
         {
             _context?.Dispose();

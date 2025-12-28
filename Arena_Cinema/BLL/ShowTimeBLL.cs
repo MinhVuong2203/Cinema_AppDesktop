@@ -461,6 +461,39 @@ namespace BLL
                 throw new Exception("Lỗi khi gọi stored procedure GetShowTimesPaginated: " + ex.Message, ex);
             }
         }
+
+        public string DeleteFutureShowTimesForMaintenance(int roomId, out int deletedCount)
+        {
+            deletedCount = 0;
+
+            if (roomId <= 0)
+                return "ID phòng không hợp lệ.";
+
+            int futureCount = _showTimeDAL.CountFutureShowTimesByRoom(roomId);
+
+            if (futureCount == 0)
+            {
+                return "Phòng không có xuất chiếu nào trong tương lai.";
+            }
+
+            string errorMessage;
+            deletedCount = _showTimeDAL.DeleteFutureShowTimesByRoom(roomId, out errorMessage);
+
+            if (deletedCount > 0)
+            {
+                return errorMessage; 
+            }
+            else
+            {
+                return $"Xóa xuất chiếu thất bại.\n{errorMessage}";
+            }
+        }
+
+        public (int count, List<ShowTime> showTimes) GetFutureShowTimesInfo(int roomId)
+        {
+            var showTimes = _showTimeDAL.GetFutureShowTimesByRoom(roomId);
+            return (showTimes.Count, showTimes);
+        }
         public void Dispose()
         {
             _showTimeDAL?.Dispose();
