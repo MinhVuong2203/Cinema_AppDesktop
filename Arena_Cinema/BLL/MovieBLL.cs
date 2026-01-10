@@ -147,61 +147,66 @@ namespace BLL
 
         // Tìm kiếm và lọc phim với phân trang sử dụng stored procedure
         // FIXED: Đổi thứ tự tham số để khớp với MovieDAL
+        // Tìm kiếm và lọc phim với phân trang sử dụng stored procedure
         public List<Movie> SearchMoviesWithPagingSP(
-    string searchText,
-    string filterStatus,
-    string genre,
-    string ageLimit,
-    int pageNumber,
-    int pageSize,
-    out int totalPages)
+            string searchText,
+            string filterStatus,
+            string genre,
+            string ageLimit,
+            int pageNumber,
+            int pageSize,
+            out int totalPages)
         {
             try
             {
                 int totalRecords;
 
-                // Gọi stored procedure
-                var movies = movieDAL.GetMoviesPaginatedWithSP(
-                    pageNumber: pageNumber,
-                    pageSize: pageSize,
+                // ✅ BƯỚC 1: Lấy TẤT CẢ phim phù hợp (không phân trang)
+                // Đặt pageSize = int.MaxValue để lấy hết
+                var allMovies = movieDAL.GetMoviesPaginatedWithSP(
+                    pageNumber: 1,
+                    pageSize: int.MaxValue,
                     totalRecords: out totalRecords,
-                    totalPages: out totalPages,
+                    totalPages: out int _,
                     searchKeyword: string.IsNullOrWhiteSpace(searchText) ? null : searchText,
                     genre: string.IsNullOrWhiteSpace(genre) || genre == "Tất cả" ? null : genre,
                     ageLimit: string.IsNullOrWhiteSpace(ageLimit) || ageLimit == "Tất cả" ? null : ageLimit,
                     isDeleted: false
                 );
 
-                // ✅ LỌC LẠI CLIENT-SIDE nếu genre được chọn
-                // Vì DB lưu "Tình Cảm, Hài" nhưng user chọn "Hài"
-                //if (!string.IsNullOrWhiteSpace(genre) && genre != "Tất cả")
-                //{
-                //    movies = movies.Where(m =>
-                //    {
-                //        if (string.IsNullOrWhiteSpace(m.Genre))
-                //            return false;
+                // ✅ BƯỚC 2: Lọc theo trạng thái (client-side)
+                List<Movie> filteredMovies;
 
-                //        string[] movieGenres = m.Genre.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries)
-                //                                      .Select(g => g.Trim())
-                //                                      .ToArray();
-
-                //        return movieGenres.Any(g => g.Equals(genre, StringComparison.OrdinalIgnoreCase));
-                //    }).ToList();
-                //}
-
-                // Lọc theo trạng thái
-                if (filterStatus != "Tất cả phim" && movies.Count > 0)
+                if (filterStatus != "Tất cả phim" && allMovies.Count > 0)
                 {
                     DateTime today = DateTime.Today;
 
-                    movies = movies.Where(m =>
+                    filteredMovies = allMovies.Where(m =>
                     {
                         string status = GetMovieStatus(m);
                         return status == filterStatus;
                     }).ToList();
                 }
+                else
+                {
+                    filteredMovies = allMovies;
+                }
 
-                return movies;
+                // ✅ BƯỚC 3: Tính lại totalRecords và totalPages SAU KHI lọc
+                int actualTotalRecords = filteredMovies.Count;
+                totalPages = actualTotalRecords > 0
+                    ? (int)Math.Ceiling((double)actualTotalRecords / pageSize)
+                    : 1;
+
+                // ✅ BƯỚC 4: Phân trang thủ công trên kết quả đã lọc
+                var pagedMovies = filteredMovies
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();
+
+                System.Diagnostics.Debug.WriteLine($"[BLL] FilterStatus={filterStatus}, AllMovies={allMovies.Count}, Filtered={filteredMovies.Count}, Paged={pagedMovies.Count}, TotalPages={totalPages}");
+
+                return pagedMovies;
             }
             catch (Exception ex)
             {
