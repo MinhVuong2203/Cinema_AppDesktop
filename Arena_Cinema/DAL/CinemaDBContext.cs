@@ -14,18 +14,15 @@ namespace DAL
         {
             var ensureDLLIsCopied = SqlProviderServices.Instance;
         }
-        public static readonly string conn = "data source=arenaapp.database.windows.net;" +
-              "initial catalog=arenaapp;" +
-              "persist security info=False;" +
-              "user id=arenaapp;" +
-              "password=Minh@212005;" +
-              "trustservercertificate=True;" +
-              "Encrypt=True;" +
-              "MultipleActiveResultSets=True;";
-             
+        public static readonly string conn = "Data Source=100.102.199.72;Initial Catalog = arenaapp; User ID = sa; Password=123456789;TrustServerCertificate=True";
+
         public CinemaDBContext() : base(conn)
         {
             
+        }
+
+        public string getConnection() {             
+            return conn;
         }
 
         public virtual DbSet<Account> Accounts { get; set; }

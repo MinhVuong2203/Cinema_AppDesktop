@@ -1,4 +1,5 @@
 ﻿using Common.Licensing; // nơi có AppLicenseManager, LicenseState
+using DAL;
 using System;
 using System.Windows.Forms;
 
@@ -6,16 +7,10 @@ namespace UI
 {
     internal static class Program
     {
+        static CinemaDBContext db = new CinemaDBContext();
         // TODO: connection string của rạp A (bạn set sẵn)
-        private const string ConnStr = "data source=arenaapp.database.windows.net;" +
-              "initial catalog=arenaapp;" +
-              "persist security info=False;" +
-              "user id=arenaapp;" +
-              "password=Minh@212005;" +
-              "trustservercertificate=True;" +
-              "Encrypt=True;" +
-              "MultipleActiveResultSets=True;";
-
+        //private const string ConnStr = "Data Source=100.102.199.72;Initial Catalog=arenaapp;User ID=sa;Password=123456789;TrustServerCertificate=True";
+        private static string ConnStr = db.getConnection();
         [STAThread]
         static void Main()
         {

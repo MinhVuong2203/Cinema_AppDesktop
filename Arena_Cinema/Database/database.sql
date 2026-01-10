@@ -1,6 +1,7 @@
 ﻿CREATE DATABASE arenaapp;
 USE arenaapp;
 
+
 CREATE TABLE Role(
 	RoleID INT PRIMARY KEY IDENTITY,
 	RoleName NVARCHAR(100) NOT NULL
@@ -21,7 +22,7 @@ CREATE TABLE Operation(
 )
 
 INSERT INTO Operation(OperationCode, OperationName)
-VALUES ('SALE', 'Bán vé'),
+VALUES ('SALE', N'Bán vé'),
 	   ('EMPLOYEE', N'Nhân viên'),
 	   ('SHOWTIME', N'Xuất chiếu'),
 	   ('MOVIE', N'Phim'),
@@ -262,6 +263,7 @@ GO
 DROP PROC sp_GetMoviesPaginated
 
 SELECT COUNT(*) FROM Movie WHERE IsDeleted = 0;
+
 CREATE TABLE Room (
     RoomID INT PRIMARY KEY IDENTITY(1,1),
     RoomName NVARCHAR(100) NOT NULL UNIQUE,
@@ -401,6 +403,7 @@ GO
 
 
 DROP PROC sp_GetShowTimesPaginated
+
 SELECT * 
 FROM sys.procedures 
 WHERE name = 'sp_GetShowTimesPaginated'
