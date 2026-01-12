@@ -21,7 +21,7 @@ namespace DAL
         {
             // Đảm bảo lấy dữ liệu mới nhất từ database
             return _context.Rooms
-                           .AsNoTracking() // Không cache
+                           .AsNoTracking()
                            .Where(r => !r.IsDeleted)
                            .Include(r => r.Seats)
                            .Include(r => r.ShowTimes)
