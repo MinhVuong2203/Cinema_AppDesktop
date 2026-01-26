@@ -202,7 +202,6 @@ namespace UI.PayOSMethod
         {
             try
             {
-                // Tạo form tùy chọn in
                 var printOptionsForm = new Form
                 {
                     Text = "Tùy chọn in",
@@ -256,21 +255,24 @@ namespace UI.PayOSMethod
 
                 var printManager = new PrintManager(_invoiceID);
 
+                // Lưu chỉ hóa đơn PDF
                 btnInvoice.Click += (s, ev) =>
                 {
-                    printManager.SaveInvoiceOnly();
+                    printManager.SaveInvoiceOnly(); //  và mở file
                     printOptionsForm.Close();
                 };
 
+                //Lưu chỉ các vé PDF
                 btnTickets.Click += (s, ev) =>
                 {
-                    printManager.SaveTicketsOnly();
+                    printManager.SaveTicketsOnlyPDF(); // Vé cũng PDF
                     printOptionsForm.Close();
                 };
 
+                // Lưu cả hóa đơn PDF + vé PDF
                 btnAll.Click += (s, ev) =>
                 {
-                    printManager.SaveAll();
+                    printManager.SaveAllPDF(); // đều PDF
                     printOptionsForm.Close();
                 };
 

@@ -108,43 +108,7 @@ namespace UI.Helpers
         }
 
         /// <summary>
-        /// Lưu chỉ hóa đơn tổng
-        /// </summary>
-        public void SaveInvoiceOnly()
-        {
-            try
-            {
-                string projectPath = GetProjectPath();
-                string folderPath = Path.Combine(projectPath, INVOICE_FOLDER);
-
-                if (!Directory.Exists(folderPath))
-                {
-                    Directory.CreateDirectory(folderPath);
-                }
-
-                var invoicePrinter = new InvoicePrintHelper(_invoiceID);
-                string invoiceFile = invoicePrinter.SaveToFile(folderPath);
-
-                MessageBox.Show(
-                    $"Đã lưu hóa đơn thành công!\n\n" +
-                    $"File: {Path.GetFileName(invoiceFile)}\n" +
-                    $"Đường dẫn: {folderPath}",
-                    "Lưu thành công",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-
-                // Mở thư mục
-                System.Diagnostics.Process.Start("explorer.exe", $"/select,\"{invoiceFile}\"");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi lưu hóa đơn: {ex.Message}", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        /// <summary>
-        /// Lưu chỉ các vé
+        /// Lưu chỉ các vé PNG
         /// </summary>
         public void SaveTicketsOnly()
         {
@@ -200,6 +164,188 @@ namespace UI.Helpers
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi lưu vé: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Lưu chỉ hóa đơn tổng dưới dạng PDF và mở file
+        /// </summary>
+        public void SaveInvoiceOnly()
+        {
+            try
+            {
+                string projectPath = GetProjectPath();
+                string folderPath = Path.Combine(projectPath, INVOICE_FOLDER);
+
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                var invoicePrinter = new InvoicePrintHelper(_invoiceID);
+                string pdfFile = invoicePrinter.SaveToPDF(folderPath);
+
+                MessageBox.Show(
+                    $"Đã lưu hóa đơn PDF thành công!\n\n" +
+                    $"File: {Path.GetFileName(pdfFile)}\n" +
+                    $"Đường dẫn: {folderPath}",
+                    "Lưu thành công",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                // Mở file PDF trực tiếp
+                System.Diagnostics.Process.Start(pdfFile);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lưu hóa đơn PDF: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// ✅ Lưu chỉ các vé dưới dạng PDF và MỞ TẤT CẢ
+        /// </summary>
+        public void SaveTicketsOnlyPDF()
+        {
+            try
+            {
+                string projectPath = GetProjectPath();
+                string folderPath = Path.Combine(projectPath, INVOICE_FOLDER);
+
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                var invoiceTickets = _context.InvoiceTickets
+                    .Where(it => it.InvoiceID == _invoiceID)
+                    .ToList();
+
+                if (!invoiceTickets.Any())
+                {
+                    MessageBox.Show(
+                        "Hóa đơn này không có vé xem phim!",
+                        "Thông báo",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    return;
+                }
+
+                List<string> savedFiles = new List<string>();
+                List<string> fullPaths = new List<string>(); // ✅ THÊM: Lưu đường dẫn đầy đủ
+
+                foreach (var it in invoiceTickets)
+                {
+                    var ticketPrinter = new TicketPrintHelper(it.TicketID, _context);
+                    string ticketFile = ticketPrinter.SaveToPDF(folderPath);
+                    savedFiles.Add(Path.GetFileName(ticketFile));
+                    fullPaths.Add(ticketFile); // ✅ THÊM: Lưu full path
+                }
+
+                string message = $"Đã lưu thành công {savedFiles.Count} vé PDF!\n\n" +
+                                $"Các file đã lưu:\n" +
+                                string.Join("\n", savedFiles.Take(5));
+
+                if (savedFiles.Count > 5)
+                {
+                    message += $"\n... và {savedFiles.Count - 5} vé khác";
+                }
+
+                message += $"\n\nĐường dẫn: {folderPath}";
+
+                MessageBox.Show(message, "Lưu thành công",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // ✅ MỞ TẤT CẢ FILE PDF VÉ
+                foreach (var filePath in fullPaths)
+                {
+                    try
+                    {
+                        System.Diagnostics.Process.Start(filePath);
+                        System.Threading.Thread.Sleep(300); // Delay 300ms giữa các file để tránh lag
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Không thể mở file {filePath}: {ex.Message}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lưu vé PDF: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// ✅ Lưu hóa đơn PDF và tất cả các vé PDF, MỞ TẤT CẢ
+        /// </summary>
+        public void SaveAllPDF()
+        {
+            try
+            {
+                string projectPath = GetProjectPath();
+                string folderPath = Path.Combine(projectPath, INVOICE_FOLDER);
+
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+
+                List<string> savedFiles = new List<string>();
+                List<string> allFilePaths = new List<string>(); // ✅ THÊM: Lưu tất cả đường dẫn
+
+                // 1. Lưu hóa đơn tổng dưới dạng PDF
+                var invoicePrinter = new InvoicePrintHelper(_invoiceID);
+                string pdfInvoiceFile = invoicePrinter.SaveToPDF(folderPath);
+                savedFiles.Add(Path.GetFileName(pdfInvoiceFile));
+                allFilePaths.Add(pdfInvoiceFile); // ✅ THÊM
+
+                // 2. Lưu tất cả các vé dưới dạng PDF
+                var invoiceTickets = _context.InvoiceTickets
+                    .Where(it => it.InvoiceID == _invoiceID)
+                    .ToList();
+
+                foreach (var it in invoiceTickets)
+                {
+                    var ticketPrinter = new TicketPrintHelper(it.TicketID, _context);
+                    string ticketFile = ticketPrinter.SaveToPDF(folderPath);
+                    savedFiles.Add(Path.GetFileName(ticketFile));
+                    allFilePaths.Add(ticketFile); // ✅ THÊM
+                }
+
+                string message = $"Đã lưu thành công {savedFiles.Count} file PDF vào:\n" +
+                                $"{folderPath}\n\n" +
+                                $"Các file đã lưu:\n" +
+                                string.Join("\n", savedFiles.Take(5));
+
+                if (savedFiles.Count > 5)
+                {
+                    message += $"\n... và {savedFiles.Count - 5} file khác";
+                }
+
+                MessageBox.Show(message, "Lưu thành công",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // ✅ MỞ TẤT CẢ FILE PDF (HÓA ĐƠN + VÉ)
+                foreach (var filePath in allFilePaths)
+                {
+                    try
+                    {
+                        System.Diagnostics.Process.Start(filePath);
+                        System.Threading.Thread.Sleep(300); // Delay 300ms giữa các file
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Không thể mở file {filePath}: {ex.Message}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi lưu file PDF: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

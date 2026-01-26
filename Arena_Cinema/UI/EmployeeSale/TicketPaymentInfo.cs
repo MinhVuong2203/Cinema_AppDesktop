@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Windows.Forms;
-using DTO;
-using DAL;
-using UI.PayOSMethod.Services;
-using UI.Helpers;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using DAL;
+using DTO;
+using UI.Helpers;
+using UI.PayOSMethod.Services;
 
 namespace UI.EmployeeSale
 {
@@ -784,7 +785,7 @@ namespace UI.EmployeeSale
                 {
                     var result = MessageBox.Show(
                         "Hóa đơn chưa được thanh toán!\n\n" +
-                        "Bạn có muốn in hóa đơn tạm không?",
+                        "Bạn có muốn lưu hóa đơn tạm không?",
                         "Cảnh báo",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Warning
@@ -796,13 +797,13 @@ namespace UI.EmployeeSale
                     }
                 }
 
-                // Sử dụng InvoicePrintHelper để in
-                var printHelper = new InvoicePrintHelper(_invoiceID);
-                printHelper.Print();
+                // ✅ SỬ DỤNG PrintManager để lưu PDF
+                var printManager = new PrintManager(_invoiceID);
+                printManager.SaveInvoiceOnly();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi in hóa đơn: {ex.Message}", "Lỗi",
+                MessageBox.Show($"Lỗi khi lưu hóa đơn: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
