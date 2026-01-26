@@ -28,9 +28,17 @@ namespace UI.Employee
             this._employee = employee;
             this._home = home;
             InitializeComponent();
+            LoadThem();
             LoadCboRoles();
             FilterEmployees();
         }
+
+        private void LoadThem()
+        {
+            Color c = ColorHelper.Parse(_employee.Setting.MainColor);
+            this.panelEmployeeList.BackColor = c;
+        }
+
 
         private void btnPrev_Click(object sender, EventArgs e)
         {
@@ -68,11 +76,11 @@ namespace UI.Employee
                 card.Padding = new System.Windows.Forms.Padding(15);
                 card.Size = new System.Drawing.Size(462, 244);
 
-                // Tạo panel chứa nội dung
+                // Tạo panel chứa nội dungd
                 System.Windows.Forms.Panel panelContent = new System.Windows.Forms.Panel();
                 panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
                 panelContent.Size = new System.Drawing.Size(432, 214);
-
+                 
                 // PictureBox - Ảnh nhân viên
                 System.Windows.Forms.PictureBox picEmployee = new System.Windows.Forms.PictureBox();
                 picEmployee.BackColor = System.Drawing.Color.FromArgb(224, 224, 224);

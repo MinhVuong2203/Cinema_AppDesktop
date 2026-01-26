@@ -113,7 +113,7 @@ namespace UI.Employee
             this.btnPhanQuyen.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnPhanQuyen.ButtonImage = global::UI.Properties.Resources.next2;
             this.btnPhanQuyen.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnPhanQuyen.ButtonText = "XEM PHÂN QUYỀN";
+            this.btnPhanQuyen.ButtonText = global::UI.Resources.Lang.XEMPHANQUYEN;
             this.btnPhanQuyen.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnPhanQuyen.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnPhanQuyen.CornerRadius = 5;
@@ -141,7 +141,7 @@ namespace UI.Employee
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(457, 35);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Đặt các quyền cho nhân viên";
+            this.label3.Text = global::UI.Resources.Lang.DatCaQuyenChoNhanVien;
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label4
@@ -151,7 +151,7 @@ namespace UI.Employee
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(456, 32);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Phân quyền";
+            this.label4.Text = global::UI.Resources.Lang.PhanQuyen;
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox2
@@ -215,7 +215,7 @@ namespace UI.Employee
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(457, 35);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Xem báo cáo lương và công việc";
+            this.label5.Text = global::UI.Resources.Lang.XemBaoCaoLuongVaCongViec;
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label6
@@ -225,7 +225,7 @@ namespace UI.Employee
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(456, 32);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Kiểm kê";
+            this.label6.Text = global::UI.Resources.Lang.KiemKe;
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox3
@@ -289,7 +289,7 @@ namespace UI.Employee
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(457, 35);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Quản lý ca làm việc của nhân viên";
+            this.label1.Text = global::UI.Resources.Lang.QuanLyThongTinVaDanhSachNhanVien;
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label2
@@ -299,7 +299,7 @@ namespace UI.Employee
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(456, 32);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Ca làm";
+            this.label2.Text = global::UI.Resources.Lang.CaLam;
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // pictureBox1
@@ -363,7 +363,7 @@ namespace UI.Employee
             this.lblNhanVienDesc.Name = "lblNhanVienDesc";
             this.lblNhanVienDesc.Size = new System.Drawing.Size(457, 35);
             this.lblNhanVienDesc.TabIndex = 2;
-            this.lblNhanVienDesc.Text = "Quản lý ca làm việc của nhân viên";
+            this.lblNhanVienDesc.Text = global::UI.Resources.Lang.QuanLyCaLamViecCuaNhanVien;
             this.lblNhanVienDesc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblNhanVien
@@ -373,7 +373,7 @@ namespace UI.Employee
             this.lblNhanVien.Name = "lblNhanVien";
             this.lblNhanVien.Size = new System.Drawing.Size(456, 32);
             this.lblNhanVien.TabIndex = 1;
-            this.lblNhanVien.Text = "Nhân viên";
+            this.lblNhanVien.Text = global::UI.Resources.Lang.NhanVien;
             this.lblNhanVien.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblNhanVien.Click += new System.EventHandler(this.lblNhanVien_Click);
             // 

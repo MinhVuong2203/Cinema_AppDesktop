@@ -436,7 +436,7 @@
     <value>filter</value>
   </data>
   <data name="TongPhim" xml:space="preserve">
-    <value>Total</value>
+    <value>All Movies</value>
   </data>
   <data name="DangChieu" xml:space="preserve">
     <value>showing</value>
@@ -552,9 +552,9 @@
   <data name="grbTrangThai" xml:space="preserve">
     <value>ℹ️ Status</value>
   </data>
-	<data name="vedaban" xml:space="preserve">
+  <data name="vedaban" xml:space="preserve">
     <value>Sold Tickets:</value>
-	  </data>
+  </data>
   <data name="NhanVien" xml:space="preserve">
     <value>Employee</value>
   </data>
@@ -596,5 +596,62 @@
   </data>
   <data name="XEMCALAM" xml:space="preserve">
     <value>SEE WORK SHIFTS</value>
+  </data>
+  <data name="DOANHTHU" xml:space="preserve">
+    <value>REVENUE</value>
+  </data>
+  <data name="GOIDICHVU" xml:space="preserve">
+    <value>SERVICE PACKAGES</value>
+  </data>
+  <data name="PhanQuyen" xml:space="preserve">
+    <value>Decentralization</value>
+  </data>
+  <data name="DatCaQuyenChoNhanVien" xml:space="preserve">
+    <value>Set permissions for employees</value>
+  </data>
+  <data name="XEMPHANQUYEN" xml:space="preserve">
+    <value>VIEW PERMISSIONS</value>
+  </data>
+  <data name="DanhSachNhanVien" xml:space="preserve">
+    <value>List employee</value>
+  </data>
+  <data name="TimKiemNhanVien" xml:space="preserve">
+    <value>Search for employee name...</value>
+  </data>
+  <data name="ChucVu" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="GioiTinh" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="DaNghiViec" xml:space="preserve">
+    <value>Retired</value>
+  </data>
+  <data name="TuNgay" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="DenNgay" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="TongNhanVien" xml:space="preserve">
+    <value>All employees</value>
+  </data>
+  <data name="TongLuong" xml:space="preserve">
+    <value>Total salary</value>
+  </data>
+  <data name="TongCaVang" xml:space="preserve">
+    <value>The general shift is absent</value>
+  </data>
+  <data name="TongCaHoanThanh" xml:space="preserve">
+    <value>Total shift completed</value>
+  </data>
+  <data name="Thang" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="ChonThang" xml:space="preserve">
+    <value>Choosen month</value>
+  </data>
+  <data name="ThongKeLuongVaHieuSuatLamViec" xml:space="preserve">
+    <value>Salary and performance statistics</value>
   </data>
 </root>

@@ -209,7 +209,7 @@ namespace UI
             this.btnGoiDichVu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
             this.btnGoiDichVu.ButtonImage = global::UI.Properties.Resources.product_management__1_;
             this.btnGoiDichVu.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
-            this.btnGoiDichVu.ButtonText = "GÓI DỊCH VỤ";
+            this.btnGoiDichVu.ButtonText = global::UI.Resources.Lang.GOIDICHVU;
             this.btnGoiDichVu.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
             this.btnGoiDichVu.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.btnGoiDichVu.CornerRadius = 5;
@@ -466,7 +466,7 @@ namespace UI
             this.btnDoanhThu.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
             this.btnDoanhThu.ButtonImage = global::UI.Properties.Resources.revenue__2_;
             this.btnDoanhThu.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Material;
-            this.btnDoanhThu.ButtonText = "DOANH THU";
+            this.btnDoanhThu.ButtonText = global::UI.Resources.Lang.DOANHTHU;
             this.btnDoanhThu.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
             this.btnDoanhThu.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
             this.btnDoanhThu.CornerRadius = 5;

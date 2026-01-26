@@ -100,7 +100,7 @@ namespace UI.Employee
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(500, 30);
             this.lblTitle.TabIndex = 3;
-            this.lblTitle.Text = "Thống kê lương và hiệu suất làm việc";
+            this.lblTitle.Text = global::UI.Resources.Lang.ThongKeLuongVaHieuSuatLamViec;
             this.lblTitle.UseCustomBackColor = true;
             this.lblTitle.UseCustomForeColor = true;
             // 
@@ -145,7 +145,7 @@ namespace UI.Employee
             this.lblEnd.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.lblEnd.StyleManager = null;
             this.lblEnd.TabIndex = 4;
-            this.lblEnd.Text = "Đến ngày";
+            this.lblEnd.Text = global::UI.Resources.Lang.DenNgay;
             this.lblEnd.ThemeAuthor = "Taiizor";
             this.lblEnd.ThemeName = "MetroLight";
             // 
@@ -171,7 +171,7 @@ namespace UI.Employee
             this.lblStart.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.lblStart.StyleManager = null;
             this.lblStart.TabIndex = 6;
-            this.lblStart.Text = "Từ ngày";
+            this.lblStart.Text = global::UI.Resources.Lang.TuNgay;
             this.lblStart.ThemeAuthor = "Taiizor";
             this.lblStart.ThemeName = "MetroLight";
             // 
@@ -197,7 +197,7 @@ namespace UI.Employee
             this.lblRole.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.lblRole.StyleManager = null;
             this.lblRole.TabIndex = 8;
-            this.lblRole.Text = "Chức vụ";
+            this.lblRole.Text = global::UI.Resources.Lang.ChucVu;
             this.lblRole.ThemeAuthor = "Taiizor";
             this.lblRole.ThemeName = "MetroLight";
             // 
@@ -251,7 +251,7 @@ namespace UI.Employee
             this.lblTotalAbsentTitle.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.lblTotalAbsentTitle.StyleManager = null;
             this.lblTotalAbsentTitle.TabIndex = 1;
-            this.lblTotalAbsentTitle.Text = "Tổng ca vắng";
+            this.lblTotalAbsentTitle.Text = global::UI.Resources.Lang.TongCaVang;
             this.lblTotalAbsentTitle.ThemeAuthor = "Taiizor";
             this.lblTotalAbsentTitle.ThemeName = "MetroLight";
             // 
@@ -291,7 +291,7 @@ namespace UI.Employee
             this.lblTotalDoneTitle.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.lblTotalDoneTitle.StyleManager = null;
             this.lblTotalDoneTitle.TabIndex = 1;
-            this.lblTotalDoneTitle.Text = "Tổng ca hoàn thành";
+            this.lblTotalDoneTitle.Text = global::UI.Resources.Lang.TongCaHoanThanh;
             this.lblTotalDoneTitle.ThemeAuthor = "Taiizor";
             this.lblTotalDoneTitle.ThemeName = "MetroLight";
             // 
@@ -331,7 +331,7 @@ namespace UI.Employee
             this.lblTotalSalaryTitle.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.lblTotalSalaryTitle.StyleManager = null;
             this.lblTotalSalaryTitle.TabIndex = 1;
-            this.lblTotalSalaryTitle.Text = "Tổng lương";
+            this.lblTotalSalaryTitle.Text = global::UI.Resources.Lang.TongLuong;
             this.lblTotalSalaryTitle.ThemeAuthor = "Taiizor";
             this.lblTotalSalaryTitle.ThemeName = "MetroLight";
             // 
@@ -371,7 +371,7 @@ namespace UI.Employee
             this.lblTotalEmpTitle.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.lblTotalEmpTitle.StyleManager = null;
             this.lblTotalEmpTitle.TabIndex = 1;
-            this.lblTotalEmpTitle.Text = "Tổng nhân viên";
+            this.lblTotalEmpTitle.Text = global::UI.Resources.Lang.TongNhanVien;
             this.lblTotalEmpTitle.ThemeAuthor = "Taiizor";
             this.lblTotalEmpTitle.ThemeName = "MetroLight";
             // 
@@ -454,7 +454,7 @@ namespace UI.Employee
             this.MonthCurrent.Size = new System.Drawing.Size(143, 41);
             this.MonthCurrent.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.MonthCurrent.TabIndex = 9;
-            this.MonthCurrent.Text = "Tháng";
+            this.MonthCurrent.Text = global::UI.Resources.Lang.Thang;
             this.MonthCurrent.Click += new System.EventHandler(this.MonthCurrent_Click);
             // 
             // skyButton2
@@ -492,7 +492,7 @@ namespace UI.Employee
             this.skyButton2.Size = new System.Drawing.Size(143, 41);
             this.skyButton2.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.skyButton2.TabIndex = 11;
-            this.skyButton2.Text = "Chọn tháng";
+            this.skyButton2.Text = global::UI.Resources.Lang.ChonThang;
             this.skyButton2.Click += new System.EventHandler(this.skyButton2_Click);
             // 
             // SalaryReportUC

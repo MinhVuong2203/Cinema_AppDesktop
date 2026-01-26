@@ -95,7 +95,7 @@
             this.lblRole.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.lblRole.StyleManager = null;
             this.lblRole.TabIndex = 0;
-            this.lblRole.Text = "Chức vụ";
+            this.lblRole.Text = global::UI.Resources.Lang.ChucVu;
             this.lblRole.ThemeAuthor = "Taiizor";
             this.lblRole.ThemeName = "MetroLight";
             // 
@@ -123,7 +123,7 @@
             this.lblStartDate.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.lblStartDate.StyleManager = null;
             this.lblStartDate.TabIndex = 2;
-            this.lblStartDate.Text = "Từ ngày";
+            this.lblStartDate.Text = global::UI.Resources.Lang.TuNgay;
             this.lblStartDate.ThemeAuthor = "Taiizor";
             this.lblStartDate.ThemeName = "MetroLight";
             // 
@@ -151,7 +151,7 @@
             this.lblEndDate.Style = ReaLTaiizor.Enum.Metro.Style.Light;
             this.lblEndDate.StyleManager = null;
             this.lblEndDate.TabIndex = 4;
-            this.lblEndDate.Text = "Đến ngày";
+            this.lblEndDate.Text = global::UI.Resources.Lang.DenNgay;
             this.lblEndDate.ThemeAuthor = "Taiizor";
             this.lblEndDate.ThemeName = "MetroLight";
             // 

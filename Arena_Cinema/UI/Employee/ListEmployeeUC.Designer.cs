@@ -81,7 +81,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(278, 37);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Danh sách nhân viên";
+            this.lblTitle.Text = global::UI.Resources.Lang.DanhSachNhanVien;
             // 
             // btnPrev
             // 
@@ -135,7 +135,7 @@
             this.parrotGroupBox1.Size = new System.Drawing.Size(140, 72);
             this.parrotGroupBox1.TabIndex = 1;
             this.parrotGroupBox1.TabStop = false;
-            this.parrotGroupBox1.Text = "Đã nghỉ việc";
+            this.parrotGroupBox1.Text = global::UI.Resources.Lang.DaNghiViec;
             this.parrotGroupBox1.TextColor = System.Drawing.Color.DodgerBlue;
             // 
             // btnWorking
@@ -176,7 +176,7 @@
             this.txtSearch.Depth = 0;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSearch.HideSelection = true;
-            this.txtSearch.Hint = "Tìm kiếm nhân viên...";
+            this.txtSearch.Hint = global::UI.Resources.Lang.TimKiemNhanVien;
             this.txtSearch.LeadingIcon = null;
             this.txtSearch.Location = new System.Drawing.Point(20, 20);
             this.txtSearch.MaxLength = 32767;
@@ -210,7 +210,7 @@
             this.cboRole.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboRole.FormattingEnabled = true;
-            this.cboRole.Hint = "Chức vụ";
+            this.cboRole.Hint = global::UI.Resources.Lang.ChucVu;
             this.cboRole.IntegralHeight = false;
             this.cboRole.ItemHeight = 43;
             this.cboRole.Items.AddRange(new object[] {
@@ -239,7 +239,7 @@
             this.cboGender.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboGender.FormattingEnabled = true;
-            this.cboGender.Hint = "Giới tính";
+            this.cboGender.Hint = global::UI.Resources.Lang.GioiTinh;
             this.cboGender.IntegralHeight = false;
             this.cboGender.ItemHeight = 43;
             this.cboGender.Items.AddRange(new object[] {

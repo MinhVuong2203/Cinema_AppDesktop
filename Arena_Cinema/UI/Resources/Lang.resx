@@ -554,7 +554,7 @@
   </data>
   <data name="vedaban" xml:space="preserve">
     <value>Số vé dã bán:</value>
-	  </data>
+  </data>
   <data name="NhanVien" xml:space="preserve">
     <value>Nhân viên</value>
   </data>
@@ -596,5 +596,62 @@
   </data>
   <data name="XEMCALAM" xml:space="preserve">
     <value>XEM CA LÀM</value>
+  </data>
+  <data name="DOANHTHU" xml:space="preserve">
+    <value>DOANH THU</value>
+  </data>
+  <data name="GOIDICHVU" xml:space="preserve">
+    <value>GÓI DỊCH VỤ</value>
+  </data>
+  <data name="PhanQuyen" xml:space="preserve">
+    <value>Phân quyền</value>
+  </data>
+  <data name="DatCaQuyenChoNhanVien" xml:space="preserve">
+    <value>Đặt các quyền cho nhân viên</value>
+  </data>
+  <data name="XEMPHANQUYEN" xml:space="preserve">
+    <value>XEM PHÂN QUYỀN</value>
+  </data>
+  <data name="DanhSachNhanVien" xml:space="preserve">
+    <value>Danh sách nhân viên</value>
+  </data>
+  <data name="TimKiemNhanVien" xml:space="preserve">
+    <value>Tìm kiếm nhân viên...</value>
+  </data>
+  <data name="ChucVu" xml:space="preserve">
+    <value>Chức vụ</value>
+  </data>
+  <data name="GioiTinh" xml:space="preserve">
+    <value>Giới tính</value>
+  </data>
+  <data name="DaNghiViec" xml:space="preserve">
+    <value>Đã nghỉ việc</value>
+  </data>
+  <data name="TuNgay" xml:space="preserve">
+    <value>Từ ngày</value>
+  </data>
+  <data name="DenNgay" xml:space="preserve">
+    <value>Đến ngày</value>
+  </data>
+  <data name="TongNhanVien" xml:space="preserve">
+    <value>Tổng nhân viên</value>
+  </data>
+  <data name="TongLuong" xml:space="preserve">
+    <value>Tổng lương</value>
+  </data>
+  <data name="TongCaVang" xml:space="preserve">
+    <value>Tổng ca vắng</value>
+  </data>
+  <data name="TongCaHoanThanh" xml:space="preserve">
+    <value>Tổng ca hoàn thành</value>
+  </data>
+  <data name="Thang" xml:space="preserve">
+    <value>Tháng</value>
+  </data>
+  <data name="ChonThang" xml:space="preserve">
+    <value>Chọn tháng</value>
+  </data>
+  <data name="ThongKeLuongVaHieuSuatLamViec" xml:space="preserve">
+    <value>Thống kê lương và hiệu suất làm việc</value>
   </data>
 </root>
