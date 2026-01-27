@@ -330,58 +330,212 @@ namespace UI.Voucher
 
         private void PerformRedemption(DTO.Voucher voucher)
         {
-            using (var transaction = _context.Database.BeginTransaction())
+            CinemaDBContext context = null;
+            System.Data.Entity.DbContextTransaction transaction = null;
+
+            try
             {
-                try
-                {
-                    // 1. Reload lại customer để đảm bảo điểm mới nhất (tránh concurrency)
-                    var customer = _context.Customers.Find(_customerID.Value);
+                System.Diagnostics.Debug.WriteLine("=== BẮT ĐẦU PerformRedemption ===");
 
-                    if (customer.Point < voucher.PointRequired)
+                context = new CinemaDBContext();
+                transaction = context.Database.BeginTransaction();
+
+                // 1. Kiểm tra Employee tồn tại
+                var employee = context.Employees.Find(_employeeID);
+                if (employee == null)
+                {
+                    MessageBox.Show($"Lỗi: Không tìm thấy nhân viên với ID: {_employeeID}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                System.Diagnostics.Debug.WriteLine($"Employee found: {_employeeID}");
+
+                // 2. Reload customer
+                var customer = context.Customers.Find(_customerID.Value);
+                if (customer == null)
+                {
+                    MessageBox.Show("Không tìm thấy thông tin khách hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                System.Diagnostics.Debug.WriteLine($"Customer found: {customer.CustomerID}");
+                System.Diagnostics.Debug.WriteLine($"Current Points: {customer.Point?.ToString("N2") ?? "NULL"}");
+                System.Diagnostics.Debug.WriteLine($"Required Points: {voucher.PointRequired}");
+
+                // 3. KIỂM TRA ĐIỂM CẨN THẬN - XỬ LÝ NULLABLE
+                decimal currentPoints = customer.Point ?? 0; // Nếu null thì coi như 0
+
+                if (currentPoints < voucher.PointRequired)
+                {
+                    MessageBox.Show(
+                        $"Điểm không đủ!\n\n" +
+                        $"Điểm hiện tại: {currentPoints:N0}\n" +
+                        $"Điểm cần: {voucher.PointRequired:N0}\n" +
+                        $"Thiếu: {(voucher.PointRequired - currentPoints):N0} điểm",
+                        "Thông báo",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // 4. Tính điểm mới
+                decimal newPoints = currentPoints - voucher.PointRequired;
+
+                System.Diagnostics.Debug.WriteLine($"New Points will be: {newPoints:N2}");
+
+                // 5. Đảm bảo không âm (double check)
+                if (newPoints < 0)
+                {
+                    MessageBox.Show(
+                        $"Lỗi: Điểm sau khi trừ không hợp lệ!\n\n" +
+                        $"Điểm hiện tại: {currentPoints:N0}\n" +
+                        $"Điểm cần trừ: {voucher.PointRequired:N0}\n" +
+                        $"Kết quả: {newPoints:N2} (không được âm)",
+                        "Lỗi",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+
+                // 6. CẬP NHẬT ĐIỂM - ĐẢM BẢO KHÔNG NULL
+                customer.Point = newPoints;
+
+                // 7. Tạo CustomerVoucher
+                var newCV = new DTO.CustomerVoucher
+                {
+                    CustomerVoucherID = Guid.NewGuid(),
+                    VoucherID = voucher.VoucherID,
+                    CustomerID = customer.CustomerID,
+                    RedeemedBy = _employeeID,
+                    RedeemedDate = DateTime.Now,
+                    PointsUsed = voucher.PointRequired,
+                    Status = "Chưa sử dụng",
+                    ExpiryDate = voucher.EndDate,
+                    UsedDate = null,
+                    InvoiceID = null,
+                    IsDeleted = false
+                };
+
+                System.Diagnostics.Debug.WriteLine($"Creating CustomerVoucher:");
+                System.Diagnostics.Debug.WriteLine($"  - ID: {newCV.CustomerVoucherID}");
+                System.Diagnostics.Debug.WriteLine($"  - VoucherID: {newCV.VoucherID}");
+                System.Diagnostics.Debug.WriteLine($"  - CustomerID: {newCV.CustomerID}");
+                System.Diagnostics.Debug.WriteLine($"  - RedeemedBy: {newCV.RedeemedBy}");
+                System.Diagnostics.Debug.WriteLine($"  - PointsUsed: {newCV.PointsUsed}");
+
+                context.CustomerVouchers.Add(newCV);
+
+                // 8. Cập nhật Voucher quantity
+                var voucherToUpdate = context.Vouchers.Find(voucher.VoucherID);
+                if (voucherToUpdate != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Updating Voucher UsedQuantity from {voucherToUpdate.UsedQuantity} to {voucherToUpdate.UsedQuantity + 1}");
+                    voucherToUpdate.UsedQuantity++;
+                }
+
+                // 9. Lưu database
+                System.Diagnostics.Debug.WriteLine("Calling SaveChanges...");
+                context.SaveChanges();
+                System.Diagnostics.Debug.WriteLine("SaveChanges successful");
+
+                System.Diagnostics.Debug.WriteLine("Calling Commit...");
+                transaction.Commit();
+                System.Diagnostics.Debug.WriteLine("Transaction committed successfully");
+
+                MessageBox.Show("Đổi voucher thành công! 🎉", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 10. Cập nhật UI
+                if (_context != null)
+                {
+                    _context.Dispose();
+                }
+                _context = new CinemaDBContext();
+
+                var updatedCustomer = _context.Customers.Find(_customerID.Value);
+                if (updatedCustomer != null)
+                {
+                    lblCustomerInfo.Text = $"👤 {updatedCustomer.FullName} - ⭐ {(updatedCustomer.Point ?? 0):N0} điểm";
+                }
+
+                LoadRedeemVoucherTab();
+                LoadSelectVoucherTab();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                var errorMessages = new System.Text.StringBuilder();
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
                     {
-                        MessageBox.Show("Điểm của khách hàng không đủ (có thể vừa thay đổi). Vui lòng tải lại.");
-                        return;
+                        errorMessages.AppendLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
                     }
-
-                    // 2. Trừ điểm khách hàng
-                    customer.Point -= voucher.PointRequired;
-
-                    // 3. Tạo CustomerVoucher mới
-                    var newCV = new DTO.CustomerVoucher
-                    {
-                        CustomerVoucherID = Guid.NewGuid(),
-                        VoucherID = voucher.VoucherID,
-                        CustomerID = customer.CustomerID,
-                        RedeemedBy = _employeeID,
-                        RedeemedDate = DateTime.Now,
-                        PointsUsed = voucher.PointRequired,
-                        Status = "Chưa sử dụng",
-                        ExpiryDate = voucher.EndDate,
-                        IsDeleted = false
-                    };
-                    _context.CustomerVouchers.Add(newCV);
-
-                    // 4. Lưu database
-                    _context.SaveChanges();
-                    transaction.Commit();
-
-                    MessageBox.Show("Đổi voucher thành công! 🎉", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // 5. Cập nhật UI
-                    // Cập nhật text điểm khách hàng trên header
-                    lblCustomerInfo.Text = $"👤 {customer.FullName} - ⭐ {customer.Point:N0} điểm";
-
-                    // Reload lại tab Đổi voucher (để cập nhật trạng thái các nút)
-                    LoadRedeemVoucherTab();
-
-                    // Reload lại tab Chọn voucher (để voucher mới xuất hiện bên kia nếu muốn dùng ngay)
-                    // (Tùy chọn: có thể tự động chuyển sang tab 1)
                 }
-                catch (Exception ex)
+
+                System.Diagnostics.Debug.WriteLine($"VALIDATION ERROR: {errorMessages}");
+
+                if (transaction != null)
                 {
-                    transaction.Rollback();
-                    MessageBox.Show($"Lỗi đổi điểm: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try { transaction.Rollback(); } catch { }
                 }
+
+                MessageBox.Show($"Lỗi validation:\n{errorMessages}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException dbUpdateEx)
+            {
+                var innerException = dbUpdateEx.InnerException;
+                while (innerException != null && innerException.InnerException != null)
+                {
+                    innerException = innerException.InnerException;
+                }
+
+                string errorDetail = innerException?.Message ?? dbUpdateEx.Message;
+                System.Diagnostics.Debug.WriteLine($"DB UPDATE ERROR: {errorDetail}");
+
+                if (transaction != null)
+                {
+                    try { transaction.Rollback(); } catch { }
+                }
+
+                MessageBox.Show(
+                    $"Lỗi cập nhật database:\n\n{errorDetail}\n\n" +
+                    $"Gợi ý: Kiểm tra constraint 'CK_Customer_Point' (Point >= 0)",
+                    "Lỗi Database",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"GENERAL ERROR: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"STACK: {ex.StackTrace}");
+
+                if (transaction != null)
+                {
+                    try { transaction.Rollback(); } catch { }
+                }
+
+                string errorMessage = $"Lỗi đổi điểm: {ex.Message}";
+                if (ex.InnerException != null)
+                {
+                    errorMessage += $"\n\nChi tiết: {ex.InnerException.Message}";
+
+                    if (ex.InnerException.InnerException != null)
+                    {
+                        errorMessage += $"\n\nChi tiết sâu hơn: {ex.InnerException.InnerException.Message}";
+                    }
+                }
+
+                MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (transaction != null)
+                {
+                    transaction.Dispose();
+                }
+                if (context != null)
+                {
+                    context.Dispose();
+                }
+                System.Diagnostics.Debug.WriteLine("=== KẾT THÚC PerformRedemption ===\n");
             }
         }
 
