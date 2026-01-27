@@ -20,8 +20,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProfileUC));
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelContent = new ReaLTaiizor.Controls.Panel();
+            this.picImg = new UI.Controls.CircularPictureBox();
+            this.panelCards = new System.Windows.Forms.Panel();
             this.nightPanel1 = new ReaLTaiizor.Controls.NightPanel();
-            this.cardAccount = new UI.Controls.RoundedPanel();
+            this.roundedPanel1 = new UI.Controls.RoundedPanel();
             this.skyButton1 = new ReaLTaiizor.Controls.SkyButton();
             this.btnOk = new ReaLTaiizor.Controls.SkyButton();
             this.cardAppearance = new UI.Controls.RoundedPanel();
@@ -32,8 +34,6 @@
             this.lblLang = new System.Windows.Forms.Label();
             this.cbLang = new ReaLTaiizor.Controls.MaterialComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.picImg = new UI.Controls.CircularPictureBox();
-            this.panelCards = new System.Windows.Forms.Panel();
             this.cardAddress = new ReaLTaiizor.Controls.NightPanel();
             this.lblAddressContent = new System.Windows.Forms.Label();
             this.lblAddressTitle = new System.Windows.Forms.Label();
@@ -65,12 +65,12 @@
             this.picCover = new System.Windows.Forms.PictureBox();
             this.panelMain.SuspendLayout();
             this.panelContent.SuspendLayout();
-            this.nightPanel1.SuspendLayout();
-            this.cardAccount.SuspendLayout();
-            this.cardAppearance.SuspendLayout();
-            this.cardLang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picImg)).BeginInit();
             this.panelCards.SuspendLayout();
+            this.nightPanel1.SuspendLayout();
+            this.roundedPanel1.SuspendLayout();
+            this.cardAppearance.SuspendLayout();
+            this.cardLang.SuspendLayout();
             this.cardAddress.SuspendLayout();
             this.cardWork.SuspendLayout();
             this.panelWorkContent.SuspendLayout();
@@ -88,63 +88,97 @@
             this.panelMain.Controls.Add(this.panelContent);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
-            this.panelMain.Margin = new System.Windows.Forms.Padding(4);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
-            this.panelMain.Size = new System.Drawing.Size(1333, 970);
+            this.panelMain.Padding = new System.Windows.Forms.Padding(20);
+            this.panelMain.Size = new System.Drawing.Size(1630, 1000);
             this.panelMain.TabIndex = 0;
+            //this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // panelContent
             // 
+            this.panelContent.AutoScroll = true;
             this.panelContent.BackColor = System.Drawing.Color.White;
-            this.panelContent.Controls.Add(this.nightPanel1);
             this.panelContent.Controls.Add(this.picImg);
             this.panelContent.Controls.Add(this.panelCards);
             this.panelContent.Controls.Add(this.lblPosition);
             this.panelContent.Controls.Add(this.lblName);
             this.panelContent.Controls.Add(this.panelCover);
-            this.panelContent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.EdgeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.panelContent.Location = new System.Drawing.Point(27, 25);
-            this.panelContent.Margin = new System.Windows.Forms.Padding(4);
+            this.panelContent.Location = new System.Drawing.Point(20, 20);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Padding = new System.Windows.Forms.Padding(5);
-            this.panelContent.Size = new System.Drawing.Size(1258, 1700);
+            this.panelContent.Padding = new System.Windows.Forms.Padding(4);
+            this.panelContent.Size = new System.Drawing.Size(1590, 960);
             this.panelContent.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.panelContent.TabIndex = 0;
             this.panelContent.Text = "panel1";
+            //this.panelContent.Click += new System.EventHandler(this.panelContent_Click);
+            // 
+            // picImg
+            // 
+            this.picImg.BackColor = System.Drawing.Color.Transparent;
+            this.picImg.BorderColor = System.Drawing.Color.White;
+            this.picImg.BorderColor2 = System.Drawing.Color.SpringGreen;
+            this.picImg.BorderSize = 5;
+            this.picImg.GradientBorder = true;
+            this.picImg.Image = ((System.Drawing.Image)(resources.GetObject("picImg.Image")));
+            this.picImg.Location = new System.Drawing.Point(52, 210);
+            this.picImg.Margin = new System.Windows.Forms.Padding(2);
+            this.picImg.Name = "picImg";
+            this.picImg.Size = new System.Drawing.Size(147, 147);
+            this.picImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picImg.TabIndex = 10;
+            this.picImg.TabStop = false;
+            // 
+            // panelCards
+            // 
+            this.panelCards.BackColor = System.Drawing.Color.Transparent;
+            this.panelCards.Controls.Add(this.nightPanel1);
+            this.panelCards.Controls.Add(this.cardAddress);
+            this.panelCards.Controls.Add(this.cardWork);
+            this.panelCards.Controls.Add(this.cardPersonal);
+            this.panelCards.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.panelCards.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelCards.Location = new System.Drawing.Point(4, 397);
+            this.panelCards.Name = "panelCards";
+            this.panelCards.Size = new System.Drawing.Size(1582, 559);
+            this.panelCards.TabIndex = 4;
+            //this.panelCards.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCards_Paint);
             // 
             // nightPanel1
             // 
-            this.nightPanel1.Controls.Add(this.cardAccount);
+            this.nightPanel1.Controls.Add(this.roundedPanel1);
             this.nightPanel1.Controls.Add(this.cardAppearance);
             this.nightPanel1.Controls.Add(this.cardLang);
             this.nightPanel1.Controls.Add(this.label2);
+            this.nightPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.nightPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.nightPanel1.LeftSideColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.nightPanel1.Location = new System.Drawing.Point(53, 1158);
-            this.nightPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.nightPanel1.Location = new System.Drawing.Point(1081, 0);
             this.nightPanel1.Name = "nightPanel1";
-            this.nightPanel1.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.nightPanel1.Padding = new System.Windows.Forms.Padding(5);
             this.nightPanel1.RightSideColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(61)))));
             this.nightPanel1.Side = ReaLTaiizor.Controls.NightPanel.PanelSide.Left;
-            this.nightPanel1.Size = new System.Drawing.Size(1173, 511);
+            this.nightPanel1.Size = new System.Drawing.Size(501, 559);
             this.nightPanel1.TabIndex = 11;
             this.nightPanel1.Text = "nightPanel4";
+            //this.nightPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.nightPanel1_Paint);
             // 
-            // cardAccount
+            // roundedPanel1
             // 
-            this.cardAccount.BackColor = System.Drawing.Color.White;
-            this.cardAccount.BorderColor = System.Drawing.Color.LightGray;
-            this.cardAccount.BorderRadius = 20;
-            this.cardAccount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.cardAccount.BorderThickness = 2F;
-            this.cardAccount.Controls.Add(this.skyButton1);
-            this.cardAccount.Controls.Add(this.btnOk);
-            this.cardAccount.Location = new System.Drawing.Point(240, 383);
-            this.cardAccount.Name = "cardAccount";
-            this.cardAccount.Size = new System.Drawing.Size(720, 101);
-            this.cardAccount.TabIndex = 4;
+            this.roundedPanel1.BackColor = System.Drawing.Color.White;
+            this.roundedPanel1.BorderColor = System.Drawing.Color.LightGray;
+            this.roundedPanel1.BorderRadius = 20;
+            this.roundedPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.roundedPanel1.BorderThickness = 2F;
+            this.roundedPanel1.Controls.Add(this.skyButton1);
+            this.roundedPanel1.Controls.Add(this.btnOk);
+            this.roundedPanel1.Location = new System.Drawing.Point(23, 445);
+            this.roundedPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.roundedPanel1.Name = "roundedPanel1";
+            this.roundedPanel1.Size = new System.Drawing.Size(461, 65);
+            this.roundedPanel1.TabIndex = 5;
+            //this.roundedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.roundedPanel1_Paint);
             // 
             // skyButton1
             // 
@@ -168,7 +202,8 @@
             this.skyButton1.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
             this.skyButton1.HoverForeColor = System.Drawing.Color.Black;
             this.skyButton1.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.skyButton1.Location = new System.Drawing.Point(391, 21);
+            this.skyButton1.Location = new System.Drawing.Point(260, 9);
+            this.skyButton1.Margin = new System.Windows.Forms.Padding(2);
             this.skyButton1.Name = "skyButton1";
             this.skyButton1.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
             this.skyButton1.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
@@ -178,10 +213,10 @@
             this.skyButton1.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
             this.skyButton1.NormalForeColor = System.Drawing.Color.White;
             this.skyButton1.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.skyButton1.Size = new System.Drawing.Size(240, 53);
+            this.skyButton1.Size = new System.Drawing.Size(162, 43);
             this.skyButton1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.skyButton1.TabIndex = 4;
-            this.skyButton1.Text = "Đăng xuất";
+            this.skyButton1.Text = global::UI.Resources.Lang.DangXuat;
             this.skyButton1.Click += new System.EventHandler(this.skyButton1_Click);
             // 
             // btnOk
@@ -206,7 +241,8 @@
             this.btnOk.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
             this.btnOk.HoverForeColor = System.Drawing.Color.Black;
             this.btnOk.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnOk.Location = new System.Drawing.Point(98, 21);
+            this.btnOk.Location = new System.Drawing.Point(51, 10);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(2);
             this.btnOk.Name = "btnOk";
             this.btnOk.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
             this.btnOk.NormalBGColorB = System.Drawing.Color.FromArgb(((int)(((byte)(181)))), ((int)(((byte)(18)))), ((int)(((byte)(27)))));
@@ -216,10 +252,10 @@
             this.btnOk.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(149)))), ((int)(((byte)(149)))));
             this.btnOk.NormalForeColor = System.Drawing.Color.White;
             this.btnOk.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnOk.Size = new System.Drawing.Size(240, 53);
+            this.btnOk.Size = new System.Drawing.Size(171, 43);
             this.btnOk.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnOk.TabIndex = 3;
-            this.btnOk.Text = "Lưu thay đổi";
+            this.btnOk.Text = global::UI.Resources.Lang.LuuThayDoi;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // cardAppearance
@@ -232,41 +268,46 @@
             this.cardAppearance.Controls.Add(this.lblColor);
             this.cardAppearance.Controls.Add(this.colorPicker);
             this.cardAppearance.Controls.Add(this.lblPreview);
-            this.cardAppearance.Location = new System.Drawing.Point(527, 100);
+            this.cardAppearance.Location = new System.Drawing.Point(23, 65);
+            this.cardAppearance.Margin = new System.Windows.Forms.Padding(2);
             this.cardAppearance.Name = "cardAppearance";
-            this.cardAppearance.Size = new System.Drawing.Size(613, 251);
+            this.cardAppearance.Size = new System.Drawing.Size(461, 221);
             this.cardAppearance.TabIndex = 3;
+            //this.cardAppearance.Paint += new System.Windows.Forms.PaintEventHandler(this.cardAppearance_Paint);
             // 
             // lblColor
             // 
             this.lblColor.AutoSize = true;
             this.lblColor.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.lblColor.ForeColor = System.Drawing.Color.Black;
-            this.lblColor.Location = new System.Drawing.Point(22, 12);
+            this.lblColor.Location = new System.Drawing.Point(16, 12);
+            this.lblColor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblColor.Name = "lblColor";
-            this.lblColor.Size = new System.Drawing.Size(102, 32);
+            this.lblColor.Size = new System.Drawing.Size(82, 25);
             this.lblColor.TabIndex = 3;
-            this.lblColor.Text = "Màu sắc";
+            this.lblColor.Text = global::UI.Resources.Lang.MauSac;
+            //this.lblColor.Click += new System.EventHandler(this.lblColor_Click);
             // 
             // colorPicker
             // 
             this.colorPicker.BackColor = System.Drawing.Color.Transparent;
             this.colorPicker.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.colorPicker.Location = new System.Drawing.Point(131, 33);
-            this.colorPicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.colorPicker.Location = new System.Drawing.Point(98, 29);
             this.colorPicker.Name = "colorPicker";
             this.colorPicker.SelectedColor = System.Drawing.Color.Empty;
-            this.colorPicker.Size = new System.Drawing.Size(255, 196);
+            this.colorPicker.Size = new System.Drawing.Size(191, 159);
             this.colorPicker.TabIndex = 4;
             this.colorPicker.Tag = "Cyber";
             this.colorPicker.ColorChanged += new ReaLTaiizor.Controls.CyberColorPicker.EventHandler(this.colorPicker_ColorChanged);
+            //this.colorPicker.Load += new System.EventHandler(this.colorPicker_Load);
             // 
             // lblPreview
             // 
             this.lblPreview.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.lblPreview.Location = new System.Drawing.Point(438, 80);
+            this.lblPreview.Location = new System.Drawing.Point(328, 68);
+            this.lblPreview.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPreview.Name = "lblPreview";
-            this.lblPreview.Size = new System.Drawing.Size(137, 69);
+            this.lblPreview.Size = new System.Drawing.Size(103, 56);
             this.lblPreview.TabIndex = 5;
             // 
             // cardLang
@@ -278,21 +319,25 @@
             this.cardLang.BorderThickness = 2F;
             this.cardLang.Controls.Add(this.lblLang);
             this.cardLang.Controls.Add(this.cbLang);
-            this.cardLang.Location = new System.Drawing.Point(40, 100);
+            this.cardLang.Location = new System.Drawing.Point(23, 327);
+            this.cardLang.Margin = new System.Windows.Forms.Padding(2);
             this.cardLang.Name = "cardLang";
-            this.cardLang.Size = new System.Drawing.Size(475, 95);
+            this.cardLang.Size = new System.Drawing.Size(461, 65);
             this.cardLang.TabIndex = 2;
+            //this.cardLang.Paint += new System.Windows.Forms.PaintEventHandler(this.cardLang_Paint);
             // 
             // lblLang
             // 
             this.lblLang.AutoSize = true;
             this.lblLang.Font = new System.Drawing.Font("Segoe UI", 14F);
             this.lblLang.ForeColor = System.Drawing.Color.Black;
-            this.lblLang.Location = new System.Drawing.Point(14, 27);
+            this.lblLang.Location = new System.Drawing.Point(63, 19);
+            this.lblLang.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLang.Name = "lblLang";
-            this.lblLang.Size = new System.Drawing.Size(123, 32);
+            this.lblLang.Size = new System.Drawing.Size(97, 25);
             this.lblLang.TabIndex = 0;
-            this.lblLang.Text = "Ngôn ngữ";
+            this.lblLang.Text = global::UI.Resources.Lang.NgonNgu;
+            //this.lblLang.Click += new System.EventHandler(this.lblLang_Click);
             // 
             // cbLang
             // 
@@ -310,11 +355,12 @@
             this.cbLang.Items.AddRange(new object[] {
             "Tiếng Việt",
             "Tiếng Anh"});
-            this.cbLang.Location = new System.Drawing.Point(148, 18);
+            this.cbLang.Location = new System.Drawing.Point(164, 7);
+            this.cbLang.Margin = new System.Windows.Forms.Padding(2);
             this.cbLang.MaxDropDownItems = 4;
             this.cbLang.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             this.cbLang.Name = "cbLang";
-            this.cbLang.Size = new System.Drawing.Size(305, 49);
+            this.cbLang.Size = new System.Drawing.Size(230, 49);
             this.cbLang.StartIndex = 0;
             this.cbLang.TabIndex = 1;
             this.cbLang.SelectedIndexChanged += new System.EventHandler(this.cbLang_SelectedIndexChanged);
@@ -325,39 +371,12 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(152)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(27, 25);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(20, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(243, 32);
+            this.label2.Size = new System.Drawing.Size(185, 25);
             this.label2.TabIndex = 0;
-            this.label2.Text = "⚙ Cài đặt hệ thống";
-            // 
-            // picImg
-            // 
-            this.picImg.BackColor = System.Drawing.Color.Transparent;
-            this.picImg.BorderColor = System.Drawing.Color.White;
-            this.picImg.BorderColor2 = System.Drawing.Color.SpringGreen;
-            this.picImg.BorderSize = 5;
-            this.picImg.GradientBorder = true;
-            this.picImg.Image = ((System.Drawing.Image)(resources.GetObject("picImg.Image")));
-            this.picImg.Location = new System.Drawing.Point(70, 258);
-            this.picImg.Name = "picImg";
-            this.picImg.Size = new System.Drawing.Size(181, 181);
-            this.picImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picImg.TabIndex = 10;
-            this.picImg.TabStop = false;
-            // 
-            // panelCards
-            // 
-            this.panelCards.BackColor = System.Drawing.Color.Transparent;
-            this.panelCards.Controls.Add(this.cardAddress);
-            this.panelCards.Controls.Add(this.cardWork);
-            this.panelCards.Controls.Add(this.cardPersonal);
-            this.panelCards.Location = new System.Drawing.Point(53, 505);
-            this.panelCards.Margin = new System.Windows.Forms.Padding(4);
-            this.panelCards.Name = "panelCards";
-            this.panelCards.Size = new System.Drawing.Size(1173, 633);
-            this.panelCards.TabIndex = 4;
+            this.label2.Text = global::UI.Resources.Lang.IconCaiDatHeThong;
+            //this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // cardAddress
             // 
@@ -365,25 +384,24 @@
             this.cardAddress.Controls.Add(this.lblAddressTitle);
             this.cardAddress.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cardAddress.LeftSideColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.cardAddress.Location = new System.Drawing.Point(0, 502);
-            this.cardAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.cardAddress.Location = new System.Drawing.Point(0, 408);
             this.cardAddress.Name = "cardAddress";
-            this.cardAddress.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.cardAddress.Padding = new System.Windows.Forms.Padding(5);
             this.cardAddress.RightSideColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(61)))));
             this.cardAddress.Side = ReaLTaiizor.Controls.NightPanel.PanelSide.Left;
-            this.cardAddress.Size = new System.Drawing.Size(1173, 114);
+            this.cardAddress.Size = new System.Drawing.Size(706, 93);
             this.cardAddress.TabIndex = 2;
             this.cardAddress.Text = "nightPanel4";
+            //this.cardAddress.Paint += new System.Windows.Forms.PaintEventHandler(this.cardAddress_Paint);
             // 
             // lblAddressContent
             // 
             this.lblAddressContent.BackColor = System.Drawing.Color.Transparent;
             this.lblAddressContent.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddressContent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblAddressContent.Location = new System.Drawing.Point(33, 74);
-            this.lblAddressContent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAddressContent.Location = new System.Drawing.Point(25, 60);
             this.lblAddressContent.Name = "lblAddressContent";
-            this.lblAddressContent.Size = new System.Drawing.Size(1107, 34);
+            this.lblAddressContent.Size = new System.Drawing.Size(830, 28);
             this.lblAddressContent.TabIndex = 1;
             this.lblAddressContent.Text = "123 Đường Nguyễn Văn Linh, Phường Tân Phú, Quận 7, Thành phố Hồ Chí Minh";
             // 
@@ -393,12 +411,11 @@
             this.lblAddressTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblAddressTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAddressTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(152)))), ((int)(((byte)(0)))));
-            this.lblAddressTitle.Location = new System.Drawing.Point(27, 25);
-            this.lblAddressTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblAddressTitle.Location = new System.Drawing.Point(20, 20);
             this.lblAddressTitle.Name = "lblAddressTitle";
-            this.lblAddressTitle.Size = new System.Drawing.Size(133, 32);
+            this.lblAddressTitle.Size = new System.Drawing.Size(98, 25);
             this.lblAddressTitle.TabIndex = 0;
-            this.lblAddressTitle.Text = "📍 Địa chỉ";
+            this.lblAddressTitle.Text = global::UI.Resources.Lang.IconDiaChi;
             // 
             // cardWork
             // 
@@ -407,15 +424,15 @@
             this.cardWork.Controls.Add(this.lblWorkTitle);
             this.cardWork.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cardWork.LeftSideColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.cardWork.Location = new System.Drawing.Point(613, 0);
-            this.cardWork.Margin = new System.Windows.Forms.Padding(4);
+            this.cardWork.Location = new System.Drawing.Point(354, 0);
             this.cardWork.Name = "cardWork";
-            this.cardWork.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.cardWork.Padding = new System.Windows.Forms.Padding(5);
             this.cardWork.RightSideColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.cardWork.Side = ReaLTaiizor.Controls.NightPanel.PanelSide.Left;
-            this.cardWork.Size = new System.Drawing.Size(560, 468);
+            this.cardWork.Size = new System.Drawing.Size(352, 381);
             this.cardWork.TabIndex = 1;
             this.cardWork.Text = "nightPanel3";
+            //this.cardWork.Paint += new System.Windows.Forms.PaintEventHandler(this.cardWork_Paint);
             // 
             // panelWorkContent
             // 
@@ -426,10 +443,9 @@
             this.panelWorkContent.Controls.Add(this.lblWageLabel);
             this.panelWorkContent.Controls.Add(this.lblRole);
             this.panelWorkContent.Controls.Add(this.lblRoleLabel);
-            this.panelWorkContent.Location = new System.Drawing.Point(0, 74);
-            this.panelWorkContent.Margin = new System.Windows.Forms.Padding(4);
+            this.panelWorkContent.Location = new System.Drawing.Point(0, 60);
             this.panelWorkContent.Name = "panelWorkContent";
-            this.panelWorkContent.Size = new System.Drawing.Size(560, 388);
+            this.panelWorkContent.Size = new System.Drawing.Size(420, 315);
             this.panelWorkContent.TabIndex = 1;
             // 
             // lblRegister
@@ -438,10 +454,9 @@
             this.lblRegister.BackColor = System.Drawing.Color.Transparent;
             this.lblRegister.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegister.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblRegister.Location = new System.Drawing.Point(33, 183);
-            this.lblRegister.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRegister.Location = new System.Drawing.Point(25, 149);
             this.lblRegister.Name = "lblRegister";
-            this.lblRegister.Size = new System.Drawing.Size(116, 25);
+            this.lblRegister.Size = new System.Drawing.Size(95, 20);
             this.lblRegister.TabIndex = 5;
             this.lblRegister.Text = "01/01/2020";
             // 
@@ -451,12 +466,11 @@
             this.lblRegisterLabel.BackColor = System.Drawing.Color.Transparent;
             this.lblRegisterLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegisterLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-            this.lblRegisterLabel.Location = new System.Drawing.Point(33, 148);
-            this.lblRegisterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRegisterLabel.Location = new System.Drawing.Point(25, 120);
             this.lblRegisterLabel.Name = "lblRegisterLabel";
-            this.lblRegisterLabel.Size = new System.Drawing.Size(137, 28);
+            this.lblRegisterLabel.Size = new System.Drawing.Size(109, 21);
             this.lblRegisterLabel.TabIndex = 4;
-            this.lblRegisterLabel.Text = "Ngày vào làm:";
+            this.lblRegisterLabel.Text = global::UI.Resources.Lang.NGAYVAOLAM;
             // 
             // lblWage
             // 
@@ -464,10 +478,9 @@
             this.lblWage.BackColor = System.Drawing.Color.Transparent;
             this.lblWage.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblWage.Location = new System.Drawing.Point(33, 116);
-            this.lblWage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWage.Location = new System.Drawing.Point(25, 94);
             this.lblWage.Name = "lblWage";
-            this.lblWage.Size = new System.Drawing.Size(156, 25);
+            this.lblWage.Size = new System.Drawing.Size(124, 20);
             this.lblWage.TabIndex = 3;
             this.lblWage.Text = "50,000 VNĐ/giờ";
             // 
@@ -477,12 +490,11 @@
             this.lblWageLabel.BackColor = System.Drawing.Color.Transparent;
             this.lblWageLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-            this.lblWageLabel.Location = new System.Drawing.Point(33, 80);
-            this.lblWageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWageLabel.Location = new System.Drawing.Point(25, 65);
             this.lblWageLabel.Name = "lblWageLabel";
-            this.lblWageLabel.Size = new System.Drawing.Size(151, 28);
+            this.lblWageLabel.Size = new System.Drawing.Size(120, 21);
             this.lblWageLabel.TabIndex = 2;
-            this.lblWageLabel.Text = "Lương theo giờ:";
+            this.lblWageLabel.Text = global::UI.Resources.Lang.LuongGio;
             // 
             // lblRole
             // 
@@ -490,10 +502,9 @@
             this.lblRole.BackColor = System.Drawing.Color.Transparent;
             this.lblRole.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblRole.Location = new System.Drawing.Point(33, 48);
-            this.lblRole.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRole.Location = new System.Drawing.Point(25, 39);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(173, 25);
+            this.lblRole.Size = new System.Drawing.Size(137, 20);
             this.lblRole.TabIndex = 1;
             this.lblRole.Text = "Nhân viên thiết kế";
             // 
@@ -503,24 +514,23 @@
             this.lblRoleLabel.BackColor = System.Drawing.Color.Transparent;
             this.lblRoleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRoleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-            this.lblRoleLabel.Location = new System.Drawing.Point(33, 12);
-            this.lblRoleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRoleLabel.Location = new System.Drawing.Point(25, 10);
             this.lblRoleLabel.Name = "lblRoleLabel";
-            this.lblRoleLabel.Size = new System.Drawing.Size(73, 28);
+            this.lblRoleLabel.Size = new System.Drawing.Size(58, 21);
             this.lblRoleLabel.TabIndex = 0;
-            this.lblRoleLabel.Text = "Vai trò:";
+            this.lblRoleLabel.Text = global::UI.Resources.Lang.ChucVu;
             // 
             // lblWorkTitle
             // 
             this.lblWorkTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblWorkTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWorkTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
-            this.lblWorkTitle.Location = new System.Drawing.Point(27, 25);
-            this.lblWorkTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblWorkTitle.Location = new System.Drawing.Point(20, 20);
             this.lblWorkTitle.Name = "lblWorkTitle";
-            this.lblWorkTitle.Size = new System.Drawing.Size(498, 32);
+            this.lblWorkTitle.Size = new System.Drawing.Size(374, 26);
             this.lblWorkTitle.TabIndex = 0;
-            this.lblWorkTitle.Text = "💼 Thông tin công việc";
+            this.lblWorkTitle.Text = global::UI.Resources.Lang.ThongTinCongViec;
+            //this.lblWorkTitle.Click += new System.EventHandler(this.lblWorkTitle_Click);
             // 
             // cardPersonal
             // 
@@ -530,14 +540,14 @@
             this.cardPersonal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.cardPersonal.LeftSideColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.cardPersonal.Location = new System.Drawing.Point(0, 0);
-            this.cardPersonal.Margin = new System.Windows.Forms.Padding(4);
             this.cardPersonal.Name = "cardPersonal";
-            this.cardPersonal.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.cardPersonal.Padding = new System.Windows.Forms.Padding(5);
             this.cardPersonal.RightSideColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.cardPersonal.Side = ReaLTaiizor.Controls.NightPanel.PanelSide.Left;
-            this.cardPersonal.Size = new System.Drawing.Size(560, 468);
+            this.cardPersonal.Size = new System.Drawing.Size(308, 381);
             this.cardPersonal.TabIndex = 0;
             this.cardPersonal.Text = "nightPanel2";
+            //this.cardPersonal.Paint += new System.Windows.Forms.PaintEventHandler(this.cardPersonal_Paint);
             // 
             // panelPersonalContent
             // 
@@ -552,10 +562,9 @@
             this.panelPersonalContent.Controls.Add(this.lblEmailLabel);
             this.panelPersonalContent.Controls.Add(this.lblPhone);
             this.panelPersonalContent.Controls.Add(this.lblPhoneLabel);
-            this.panelPersonalContent.Location = new System.Drawing.Point(0, 74);
-            this.panelPersonalContent.Margin = new System.Windows.Forms.Padding(4);
+            this.panelPersonalContent.Location = new System.Drawing.Point(0, 60);
             this.panelPersonalContent.Name = "panelPersonalContent";
-            this.panelPersonalContent.Size = new System.Drawing.Size(560, 388);
+            this.panelPersonalContent.Size = new System.Drawing.Size(420, 315);
             this.panelPersonalContent.TabIndex = 1;
             // 
             // lblCCCD
@@ -564,10 +573,9 @@
             this.lblCCCD.BackColor = System.Drawing.Color.Transparent;
             this.lblCCCD.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCCCD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblCCCD.Location = new System.Drawing.Point(33, 319);
-            this.lblCCCD.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCCCD.Location = new System.Drawing.Point(25, 259);
             this.lblCCCD.Name = "lblCCCD";
-            this.lblCCCD.Size = new System.Drawing.Size(144, 25);
+            this.lblCCCD.Size = new System.Drawing.Size(117, 20);
             this.lblCCCD.TabIndex = 9;
             this.lblCCCD.Text = "001234567890";
             // 
@@ -577,10 +585,9 @@
             this.lblCCCDLabel.BackColor = System.Drawing.Color.Transparent;
             this.lblCCCDLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCCCDLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-            this.lblCCCDLabel.Location = new System.Drawing.Point(33, 283);
-            this.lblCCCDLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCCCDLabel.Location = new System.Drawing.Point(25, 230);
             this.lblCCCDLabel.Name = "lblCCCDLabel";
-            this.lblCCCDLabel.Size = new System.Drawing.Size(64, 28);
+            this.lblCCCDLabel.Size = new System.Drawing.Size(54, 21);
             this.lblCCCDLabel.TabIndex = 8;
             this.lblCCCDLabel.Text = "CCCD:";
             // 
@@ -590,10 +597,9 @@
             this.lblBirth.BackColor = System.Drawing.Color.Transparent;
             this.lblBirth.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBirth.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblBirth.Location = new System.Drawing.Point(33, 251);
-            this.lblBirth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBirth.Location = new System.Drawing.Point(25, 204);
             this.lblBirth.Name = "lblBirth";
-            this.lblBirth.Size = new System.Drawing.Size(116, 25);
+            this.lblBirth.Size = new System.Drawing.Size(95, 20);
             this.lblBirth.TabIndex = 7;
             this.lblBirth.Text = "15/08/1995";
             // 
@@ -603,12 +609,11 @@
             this.lblBirthLabel.BackColor = System.Drawing.Color.Transparent;
             this.lblBirthLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBirthLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-            this.lblBirthLabel.Location = new System.Drawing.Point(33, 215);
-            this.lblBirthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBirthLabel.Location = new System.Drawing.Point(25, 175);
             this.lblBirthLabel.Name = "lblBirthLabel";
-            this.lblBirthLabel.Size = new System.Drawing.Size(103, 28);
+            this.lblBirthLabel.Size = new System.Drawing.Size(83, 21);
             this.lblBirthLabel.TabIndex = 6;
-            this.lblBirthLabel.Text = "Ngày sinh:";
+            this.lblBirthLabel.Text = global::UI.Resources.Lang.NgaySinh;
             // 
             // lblGender
             // 
@@ -616,10 +621,9 @@
             this.lblGender.BackColor = System.Drawing.Color.Transparent;
             this.lblGender.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGender.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblGender.Location = new System.Drawing.Point(33, 183);
-            this.lblGender.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGender.Location = new System.Drawing.Point(25, 149);
             this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(40, 25);
+            this.lblGender.Size = new System.Drawing.Size(31, 20);
             this.lblGender.TabIndex = 5;
             this.lblGender.Text = "Nữ";
             // 
@@ -629,12 +633,11 @@
             this.lblGenderLabel.BackColor = System.Drawing.Color.Transparent;
             this.lblGenderLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGenderLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-            this.lblGenderLabel.Location = new System.Drawing.Point(33, 148);
-            this.lblGenderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGenderLabel.Location = new System.Drawing.Point(25, 120);
             this.lblGenderLabel.Name = "lblGenderLabel";
-            this.lblGenderLabel.Size = new System.Drawing.Size(91, 28);
+            this.lblGenderLabel.Size = new System.Drawing.Size(73, 21);
             this.lblGenderLabel.TabIndex = 4;
-            this.lblGenderLabel.Text = "Giới tính:";
+            this.lblGenderLabel.Text = global::UI.Resources.Lang.GioiTinh;
             // 
             // lblEmail
             // 
@@ -642,10 +645,9 @@
             this.lblEmail.BackColor = System.Drawing.Color.Transparent;
             this.lblEmail.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblEmail.Location = new System.Drawing.Point(33, 116);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmail.Location = new System.Drawing.Point(25, 94);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(219, 25);
+            this.lblEmail.Size = new System.Drawing.Size(171, 20);
             this.lblEmail.TabIndex = 3;
             this.lblEmail.Text = "ngocanhtu@gmail.com";
             // 
@@ -655,10 +657,9 @@
             this.lblEmailLabel.BackColor = System.Drawing.Color.Transparent;
             this.lblEmailLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmailLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-            this.lblEmailLabel.Location = new System.Drawing.Point(33, 80);
-            this.lblEmailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmailLabel.Location = new System.Drawing.Point(25, 65);
             this.lblEmailLabel.Name = "lblEmailLabel";
-            this.lblEmailLabel.Size = new System.Drawing.Size(63, 28);
+            this.lblEmailLabel.Size = new System.Drawing.Size(51, 21);
             this.lblEmailLabel.TabIndex = 2;
             this.lblEmailLabel.Text = "Email:";
             // 
@@ -668,10 +669,9 @@
             this.lblPhone.BackColor = System.Drawing.Color.Transparent;
             this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblPhone.Location = new System.Drawing.Point(33, 48);
-            this.lblPhone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPhone.Location = new System.Drawing.Point(25, 39);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(132, 25);
+            this.lblPhone.Size = new System.Drawing.Size(107, 20);
             this.lblPhone.TabIndex = 1;
             this.lblPhone.Text = "0123 456 789";
             // 
@@ -681,24 +681,23 @@
             this.lblPhoneLabel.BackColor = System.Drawing.Color.Transparent;
             this.lblPhoneLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhoneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-            this.lblPhoneLabel.Location = new System.Drawing.Point(33, 12);
-            this.lblPhoneLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPhoneLabel.Location = new System.Drawing.Point(25, 10);
             this.lblPhoneLabel.Name = "lblPhoneLabel";
-            this.lblPhoneLabel.Size = new System.Drawing.Size(132, 28);
+            this.lblPhoneLabel.Size = new System.Drawing.Size(104, 21);
             this.lblPhoneLabel.TabIndex = 0;
-            this.lblPhoneLabel.Text = "Số điện thoại:";
+            this.lblPhoneLabel.Text = global::UI.Resources.Lang.SoDienThoai;
             // 
             // lblPersonalTitle
             // 
             this.lblPersonalTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblPersonalTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPersonalTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(136)))), ((int)(((byte)(229)))));
-            this.lblPersonalTitle.Location = new System.Drawing.Point(27, 25);
-            this.lblPersonalTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPersonalTitle.Location = new System.Drawing.Point(20, 20);
             this.lblPersonalTitle.Name = "lblPersonalTitle";
-            this.lblPersonalTitle.Size = new System.Drawing.Size(486, 32);
+            this.lblPersonalTitle.Size = new System.Drawing.Size(364, 26);
             this.lblPersonalTitle.TabIndex = 0;
-            this.lblPersonalTitle.Text = "📋 Thông tin cá nhân";
+            this.lblPersonalTitle.Text = global::UI.Resources.Lang.IconThongTinCaNhan;
+            //this.lblPersonalTitle.Click += new System.EventHandler(this.lblPersonalTitle_Click);
             // 
             // lblPosition
             // 
@@ -706,12 +705,12 @@
             this.lblPosition.BackColor = System.Drawing.Color.Transparent;
             this.lblPosition.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPosition.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(118)))), ((int)(((byte)(118)))));
-            this.lblPosition.Location = new System.Drawing.Point(327, 437);
-            this.lblPosition.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPosition.Location = new System.Drawing.Point(245, 343);
             this.lblPosition.Name = "lblPosition";
-            this.lblPosition.Size = new System.Drawing.Size(547, 28);
+            this.lblPosition.Size = new System.Drawing.Size(433, 21);
             this.lblPosition.TabIndex = 3;
             this.lblPosition.Text = "B-0012 - Nhân viên thiết kế - Khối đồi mối - Văn phòng MISA";
+            //this.lblPosition.Click += new System.EventHandler(this.lblPosition_Click);
             // 
             // lblName
             // 
@@ -719,12 +718,12 @@
             this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.lblName.Location = new System.Drawing.Point(320, 369);
-            this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblName.Location = new System.Drawing.Point(240, 286);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(313, 62);
+            this.lblName.Size = new System.Drawing.Size(252, 51);
             this.lblName.TabIndex = 2;
             this.lblName.Text = "Ngọc Anh Tú";
+            //this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // panelCover
             // 
@@ -732,12 +731,11 @@
             this.panelCover.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelCover.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
             this.panelCover.LeftSideColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(93)))), ((int)(((byte)(89)))));
-            this.panelCover.Location = new System.Drawing.Point(5, 5);
-            this.panelCover.Margin = new System.Windows.Forms.Padding(4);
+            this.panelCover.Location = new System.Drawing.Point(4, 4);
             this.panelCover.Name = "panelCover";
             this.panelCover.RightSideColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(61)))));
             this.panelCover.Side = ReaLTaiizor.Controls.NightPanel.PanelSide.Left;
-            this.panelCover.Size = new System.Drawing.Size(1248, 345);
+            this.panelCover.Size = new System.Drawing.Size(1582, 280);
             this.panelCover.TabIndex = 0;
             this.panelCover.Text = "nightPanel1";
             // 
@@ -748,34 +746,34 @@
             this.picCover.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picCover.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picCover.Location = new System.Drawing.Point(0, 0);
-            this.picCover.Margin = new System.Windows.Forms.Padding(4);
             this.picCover.Name = "picCover";
-            this.picCover.Size = new System.Drawing.Size(1248, 345);
+            this.picCover.Size = new System.Drawing.Size(1582, 280);
             this.picCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picCover.TabIndex = 0;
             this.picCover.TabStop = false;
+            //this.picCover.Click += new System.EventHandler(this.picCover_Click);
             // 
             // ProfileUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.panelMain);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ProfileUC";
-            this.Size = new System.Drawing.Size(1333, 970);
+            this.Size = new System.Drawing.Size(1630, 1000);
+            //this.Load += new System.EventHandler(this.ProfileUC_Load);
             this.panelMain.ResumeLayout(false);
             this.panelContent.ResumeLayout(false);
             this.panelContent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
+            this.panelCards.ResumeLayout(false);
             this.nightPanel1.ResumeLayout(false);
             this.nightPanel1.PerformLayout();
-            this.cardAccount.ResumeLayout(false);
+            this.roundedPanel1.ResumeLayout(false);
             this.cardAppearance.ResumeLayout(false);
             this.cardAppearance.PerformLayout();
             this.cardLang.ResumeLayout(false);
             this.cardLang.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picImg)).EndInit();
-            this.panelCards.ResumeLayout(false);
             this.cardAddress.ResumeLayout(false);
             this.cardAddress.PerformLayout();
             this.cardWork.ResumeLayout(false);
@@ -840,8 +838,8 @@
         private System.Windows.Forms.Label lblColor;
         private ReaLTaiizor.Controls.CyberColorPicker colorPicker;
         private System.Windows.Forms.Label lblPreview;
-        private Controls.RoundedPanel cardAccount;
         private ReaLTaiizor.Controls.SkyButton skyButton1;
         private ReaLTaiizor.Controls.SkyButton btnOk;
+        private Controls.RoundedPanel roundedPanel1;
     }
 }

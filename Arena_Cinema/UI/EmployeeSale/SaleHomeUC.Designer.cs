@@ -15,6 +15,7 @@
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelWelcome = new System.Windows.Forms.Panel();
             this.lblWelcomeMessage = new System.Windows.Forms.Label();
@@ -23,24 +24,24 @@
             this.panel_SaleProduct = new System.Windows.Forms.Panel();
             this.lb_SaleProduct_Desc = new System.Windows.Forms.Label();
             this.lb_SaleProduct_Title = new System.Windows.Forms.Label();
-            this.hopePictureBox_ = new ReaLTaiizor.Controls.HopePictureBox();
             this.btn_SaleProduct = new ReaLTaiizor.Controls.MaterialButton();
             this.panel_SaleTicket = new System.Windows.Forms.Panel();
             this.lb_SaleTicket_Desc = new System.Windows.Forms.Label();
             this.lb_SaleTicket_Title = new System.Windows.Forms.Label();
-            this.hopePictureBox_Icon = new ReaLTaiizor.Controls.HopePictureBox();
             this.btn_SaleTicket = new ReaLTaiizor.Controls.MaterialButton();
             this.panelHeader = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.timerClock = new System.Windows.Forms.Timer();
+            this.timerClock = new System.Windows.Forms.Timer(this.components);
+            this.hopePictureBox_ = new ReaLTaiizor.Controls.HopePictureBox();
+            this.hopePictureBox_Icon = new ReaLTaiizor.Controls.HopePictureBox();
             this.panelMain.SuspendLayout();
             this.panelWelcome.SuspendLayout();
             this.panel_SaleArea.SuspendLayout();
             this.panel_SaleProduct.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_)).BeginInit();
             this.panel_SaleTicket.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_Icon)).BeginInit();
             this.panelHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_Icon)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMain
@@ -74,7 +75,7 @@
             this.lblWelcomeMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.lblWelcomeMessage.Location = new System.Drawing.Point(30, 20);
             this.lblWelcomeMessage.Name = "lblWelcomeMessage";
-            this.lblWelcomeMessage.Size = new System.Drawing.Size(421, 46);
+            this.lblWelcomeMessage.Size = new System.Drawing.Size(433, 46);
             this.lblWelcomeMessage.TabIndex = 0;
             this.lblWelcomeMessage.Text = "Chào mừng đến bán hàng";
             // 
@@ -138,20 +139,6 @@
             this.lb_SaleProduct_Title.TabIndex = 2;
             this.lb_SaleProduct_Title.Text = "🍿 BÁN SẢN PHẨM";
             this.lb_SaleProduct_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // hopePictureBox_
-            // 
-            this.hopePictureBox_.BackColor = System.Drawing.Color.White;
-            this.hopePictureBox_.Image = global::UI.Properties.Resources.popcorn;
-            this.hopePictureBox_.Location = new System.Drawing.Point(170, 40);
-            this.hopePictureBox_.Name = "hopePictureBox_";
-            this.hopePictureBox_.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox_.Size = new System.Drawing.Size(160, 130);
-            this.hopePictureBox_.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hopePictureBox_.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hopePictureBox_.TabIndex = 1;
-            this.hopePictureBox_.TabStop = false;
-            this.hopePictureBox_.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             // 
             // btn_SaleProduct
             // 
@@ -217,20 +204,6 @@
             this.lb_SaleTicket_Title.Text = "🎬 BÁN VÉ XEM PHIM";
             this.lb_SaleTicket_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // hopePictureBox_Icon
-            // 
-            this.hopePictureBox_Icon.BackColor = System.Drawing.Color.White;
-            this.hopePictureBox_Icon.Image = global::UI.Properties.Resources.coupon;
-            this.hopePictureBox_Icon.Location = new System.Drawing.Point(170, 40);
-            this.hopePictureBox_Icon.Name = "hopePictureBox_Icon";
-            this.hopePictureBox_Icon.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            this.hopePictureBox_Icon.Size = new System.Drawing.Size(160, 130);
-            this.hopePictureBox_Icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.hopePictureBox_Icon.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            this.hopePictureBox_Icon.TabIndex = 1;
-            this.hopePictureBox_Icon.TabStop = false;
-            this.hopePictureBox_Icon.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            // 
             // btn_SaleTicket
             // 
             this.btn_SaleTicket.AutoSize = false;
@@ -287,6 +260,34 @@
             this.timerClock.Interval = 1000;
             this.timerClock.Tick += new System.EventHandler(this.TimerClock_Tick);
             // 
+            // hopePictureBox_
+            // 
+            this.hopePictureBox_.BackColor = System.Drawing.Color.White;
+            this.hopePictureBox_.Image = global::UI.Properties.Resources.popcorn3;
+            this.hopePictureBox_.Location = new System.Drawing.Point(170, 40);
+            this.hopePictureBox_.Name = "hopePictureBox_";
+            this.hopePictureBox_.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            this.hopePictureBox_.Size = new System.Drawing.Size(160, 130);
+            this.hopePictureBox_.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hopePictureBox_.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.hopePictureBox_.TabIndex = 1;
+            this.hopePictureBox_.TabStop = false;
+            this.hopePictureBox_.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
+            // hopePictureBox_Icon
+            // 
+            this.hopePictureBox_Icon.BackColor = System.Drawing.Color.White;
+            this.hopePictureBox_Icon.Image = global::UI.Properties.Resources.coupon;
+            this.hopePictureBox_Icon.Location = new System.Drawing.Point(170, 40);
+            this.hopePictureBox_Icon.Name = "hopePictureBox_Icon";
+            this.hopePictureBox_Icon.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            this.hopePictureBox_Icon.Size = new System.Drawing.Size(160, 130);
+            this.hopePictureBox_Icon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.hopePictureBox_Icon.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            this.hopePictureBox_Icon.TabIndex = 1;
+            this.hopePictureBox_Icon.TabStop = false;
+            this.hopePictureBox_Icon.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            // 
             // SaleHomeUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -300,11 +301,12 @@
             this.panelWelcome.PerformLayout();
             this.panel_SaleArea.ResumeLayout(false);
             this.panel_SaleProduct.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_)).EndInit();
             this.panel_SaleTicket.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_Icon)).EndInit();
             this.panelHeader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.hopePictureBox_Icon)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #region Component Designer generated code

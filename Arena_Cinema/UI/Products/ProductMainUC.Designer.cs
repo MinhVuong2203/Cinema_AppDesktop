@@ -112,7 +112,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 28);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Giá:";
+            this.label2.Text = global::UI.Resources.Lang.Gia;
             // 
             // label1
             // 
@@ -122,7 +122,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 28);
             this.label1.TabIndex = 6;
-            this.label1.Text = "Ngưng bán";
+            this.label1.Text = global::UI.Resources.Lang.NgungBan;
             // 
             // cboType
             // 
@@ -136,7 +136,7 @@
             this.cboType.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboType.FormattingEnabled = true;
-            this.cboType.Hint = "Loại sản phẩm";
+            this.cboType.Hint = global::UI.Resources.Lang.LoaiSanPham;
             this.cboType.IntegralHeight = false;
             this.cboType.ItemHeight = 43;
             this.cboType.Items.AddRange(new object[] {
@@ -201,7 +201,7 @@
             this.btnAdd.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnAdd.Size = new System.Drawing.Size(93, 36);
             this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "THÊM MỚI";
+            this.btnAdd.Text = global::UI.Resources.Lang.ThemMoi;
             this.btnAdd.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnAdd.UseAccentColor = false;
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -217,7 +217,7 @@
             this.txtSearch.Depth = 0;
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtSearch.HideSelection = true;
-            this.txtSearch.Hint = "Tìm kiếm sản phẩm...";
+            this.txtSearch.Hint = global::UI.Resources.Lang.TimKiemSanPham;
             this.txtSearch.LeadingIcon = null;
             this.txtSearch.Location = new System.Drawing.Point(30, 50);
             this.txtSearch.MaxLength = 32767;
@@ -249,7 +249,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(317, 41);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "QUẢN LÝ SẢN PHẨM";
+            this.lblTitle.Text = global::UI.Resources.Lang.QuanLySanPham;
             // 
             // panelMain
             // 

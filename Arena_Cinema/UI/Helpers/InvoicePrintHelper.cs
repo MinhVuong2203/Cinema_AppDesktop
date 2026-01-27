@@ -36,7 +36,6 @@ namespace UI.Helpers
                 .FirstOrDefault();
         }
 
-        // Phương thức in ra máy in (giữ nguyên)
         public void Print()
         {
             if (_invoice == null)
@@ -67,9 +66,6 @@ namespace UI.Helpers
             }
         }
 
-        /// <summary>
-        /// Lưu hóa đơn ra file PDF và tự động mở
-        /// </summary>
         public string SaveToPDF(string folderPath)
         {
             if (_invoice == null)
@@ -79,24 +75,20 @@ namespace UI.Helpers
 
             try
             {
-                // Tạo thư mục nếu chưa có
                 if (!Directory.Exists(folderPath))
                 {
                     Directory.CreateDirectory(folderPath);
                 }
 
-                // Tạo tên file: "HĐ-mã hóa đơn-ngày tạo.pdf"
                 string invoiceCode = _invoice.InvoiceID.ToString().Substring(0, 8).ToUpper();
                 string dateStr = _invoice.IssueDate.ToString("yyyyMMdd-HHmmss");
                 string fileName = $"HD-{invoiceCode}-{dateStr}.pdf";
                 string fullPath = Path.Combine(folderPath, fileName);
 
-                // Tạo document PDF (A4 size)
                 Document document = new Document(PageSize.A4, 50, 50, 50, 50);
                 PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(fullPath, FileMode.Create));
                 document.Open();
 
-                // Font chữ tiếng Việt
                 string fontPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
                 BaseFont baseFont = BaseFont.CreateFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                 iTextSharp.text.Font titleFont = new iTextSharp.text.Font(baseFont, 20, iTextSharp.text.Font.BOLD);
@@ -115,9 +107,8 @@ namespace UI.Helpers
 
                 document.Add(new Paragraph("Địa chỉ: 123 Đường ABC, TP.HCM", smallFont));
                 document.Add(new Paragraph("Hotline: 1900-xxxx", smallFont));
-                document.Add(new Paragraph(" ")); // Khoảng trống
+                document.Add(new Paragraph(" "));
 
-                // Line separator
                 document.Add(new LineSeparator());
                 document.Add(new Paragraph(" "));
 
@@ -150,6 +141,8 @@ namespace UI.Helpers
                     .Where(it => it.InvoiceID == _invoiceID)
                     .ToList();
 
+                decimal ticketTotal = 0;
+
                 if (invoiceTickets.Any())
                 {
                     document.Add(new Paragraph("CHI TIẾT VÉ XEM PHIM", headerFont));
@@ -159,13 +152,11 @@ namespace UI.Helpers
                     ticketTable.WidthPercentage = 100;
                     ticketTable.SetWidths(new float[] { 3f, 1.5f, 1.5f, 2f });
 
-                    // Header
                     AddTableCell(ticketTable, "Phim", headerFont, Element.ALIGN_LEFT);
                     AddTableCell(ticketTable, "Ghế", headerFont, Element.ALIGN_CENTER);
                     AddTableCell(ticketTable, "Loại", headerFont, Element.ALIGN_CENTER);
                     AddTableCell(ticketTable, "Giá", headerFont, Element.ALIGN_RIGHT);
 
-                    decimal ticketTotal = 0;
                     foreach (var it in invoiceTickets)
                     {
                         var ticket = _context.Tickets.FirstOrDefault(t => t.TicketID == it.TicketID);
@@ -198,6 +189,8 @@ namespace UI.Helpers
                     .Where(ip => ip.InvoiceID == _invoiceID)
                     .ToList();
 
+                decimal productTotal = 0;
+
                 if (invoiceProducts.Any())
                 {
                     document.Add(new Paragraph("CHI TIẾT SẢN PHẨM", headerFont));
@@ -207,13 +200,11 @@ namespace UI.Helpers
                     productTable.WidthPercentage = 100;
                     productTable.SetWidths(new float[] { 3f, 1f, 2f, 2f });
 
-                    // Header
                     AddTableCell(productTable, "Sản phẩm", headerFont, Element.ALIGN_LEFT);
                     AddTableCell(productTable, "SL", headerFont, Element.ALIGN_CENTER);
                     AddTableCell(productTable, "Đơn giá", headerFont, Element.ALIGN_RIGHT);
                     AddTableCell(productTable, "Thành tiền", headerFont, Element.ALIGN_RIGHT);
 
-                    decimal productTotal = 0;
                     foreach (var ip in invoiceProducts)
                     {
                         var product = _context.Products.FirstOrDefault(p => p.ProductID == ip.ProductID);
@@ -245,10 +236,32 @@ namespace UI.Helpers
                 document.Add(new LineSeparator());
                 document.Add(new Paragraph(" "));
 
+                //Tính toán
+                decimal subtotal = ticketTotal + productTotal;
+                decimal discount = _invoice.Discount ?? 0;
+                decimal grandTotal = _invoice.TotalAmount ?? 0;
+
+                // Hiển thị tạm tính
+                //Paragraph subtotalParagraph = new Paragraph($"Tạm tính: {subtotal:N0} ₫", normalFont);
+                //subtotalParagraph.Alignment = Element.ALIGN_RIGHT;
+                //document.Add(subtotalParagraph);
+                //document.Add(new Paragraph(" ", smallFont));
+
+                //Hiển thị giảm giá (nếu có)
+                if (discount > 0)
+                {
+                    iTextSharp.text.Font discountFont = new iTextSharp.text.Font(baseFont, 12, iTextSharp.text.Font.BOLD);
+                    Paragraph discountParagraph = new Paragraph($"Giảm giá: -{discount:N0} ₫", discountFont);
+                    discountParagraph.Alignment = Element.ALIGN_RIGHT;
+                    document.Add(discountParagraph);
+                    document.Add(new Paragraph(" ", smallFont));
+                }
+
+                // Hiển thị TỔNG CỘNG
                 iTextSharp.text.Font totalFont = new iTextSharp.text.Font(baseFont, 14, iTextSharp.text.Font.BOLD);
-                Paragraph grandTotal = new Paragraph($"TỔNG CỘNG: {(_invoice.TotalAmount ?? 0):N0} ₫", totalFont);
-                grandTotal.Alignment = Element.ALIGN_RIGHT;
-                document.Add(grandTotal);
+                Paragraph grandTotalParagraph = new Paragraph($"TỔNG CỘNG: {grandTotal:N0} ₫", totalFont);
+                grandTotalParagraph.Alignment = Element.ALIGN_RIGHT;
+                document.Add(grandTotalParagraph);
                 document.Add(new Paragraph(" "));
 
                 // ========== FOOTER ==========
@@ -263,7 +276,6 @@ namespace UI.Helpers
                 seeYou.Alignment = Element.ALIGN_CENTER;
                 document.Add(seeYou);
 
-                // Đóng document
                 document.Close();
                 writer.Close();
 
@@ -275,9 +287,6 @@ namespace UI.Helpers
             }
         }
 
-        /// <summary>
-        /// Helper method để thêm cell vào table
-        /// </summary>
         private void AddTableCell(PdfPTable table, string text, iTextSharp.text.Font font, int alignment)
         {
             PdfPCell cell = new PdfPCell(new Phrase(text, font));
@@ -287,7 +296,6 @@ namespace UI.Helpers
             table.AddCell(cell);
         }
 
-        // Giữ nguyên phương thức SaveToFile cũ (PNG) nếu cần
         public string SaveToFile(string folderPath)
         {
             if (_invoice == null)
@@ -297,22 +305,17 @@ namespace UI.Helpers
 
             try
             {
-                // Tạo thư mục nếu chưa có
                 if (!Directory.Exists(folderPath))
                 {
                     Directory.CreateDirectory(folderPath);
                 }
 
-                // Tạo tên file: "mã hóa đơn-ngày tạo"
                 string invoiceCode = _invoice.InvoiceID.ToString().Substring(0, 8).ToUpper();
                 string dateStr = _invoice.IssueDate.ToString("yyyyMMdd-HHmmss");
                 string fileName = $"{invoiceCode}-{dateStr}.png";
                 string fullPath = Path.Combine(folderPath, fileName);
 
-                // Render hóa đơn thành bitmap
                 Bitmap bitmap = RenderInvoiceToBitmap();
-
-                // Lưu file
                 bitmap.Save(fullPath, ImageFormat.Png);
                 bitmap.Dispose();
 
@@ -326,17 +329,13 @@ namespace UI.Helpers
 
         private Bitmap RenderInvoiceToBitmap()
         {
-            // Kích thước A4 (300 DPI): 2480 x 3508 pixels
             int width = 800;
             int height = 1100;
 
             Bitmap bitmap = new Bitmap(width, height);
             Graphics g = Graphics.FromImage(bitmap);
-
-            // Nền trắng
             g.Clear(Color.White);
 
-            // Vẽ nội dung hóa đơn
             PrintPageEventArgs args = new PrintPageEventArgs(
                 g,
                 new System.Drawing.Rectangle(0, 0, width, height),
@@ -345,7 +344,6 @@ namespace UI.Helpers
             );
 
             PrintPage(null, args);
-
             g.Dispose();
             return bitmap;
         }
@@ -357,7 +355,6 @@ namespace UI.Helpers
             float yPos = 50;
             float lineHeight = 25;
 
-            // Fonts
             System.Drawing.Font titleFont = new System.Drawing.Font("Segoe UI", 20, FontStyle.Bold);
             System.Drawing.Font headerFont = new System.Drawing.Font("Segoe UI", 12, FontStyle.Bold);
             System.Drawing.Font normalFont = new System.Drawing.Font("Segoe UI", 10);
@@ -374,7 +371,6 @@ namespace UI.Helpers
             g.DrawString("Hotline: 1900-xxxx", smallFont, Brushes.Gray, leftMargin, yPos);
             yPos += 35;
 
-            // Line separator
             g.DrawLine(Pens.Black, leftMargin, yPos, leftMargin + 700, yPos);
             yPos += 20;
 
@@ -414,6 +410,8 @@ namespace UI.Helpers
                 .Where(it => it.InvoiceID == _invoiceID)
                 .ToList();
 
+            decimal ticketTotal = 0; // ✅ Khai báo NGOÀI if
+
             if (invoiceTickets.Any())
             {
                 g.DrawString("CHI TIẾT VÉ XEM PHIM", headerFont, Brushes.Black, leftMargin, yPos);
@@ -428,7 +426,6 @@ namespace UI.Helpers
                 g.DrawLine(Pens.Black, leftMargin, yPos, leftMargin + 700, yPos);
                 yPos += 10;
 
-                decimal ticketTotal = 0;
                 foreach (var it in invoiceTickets)
                 {
                     var ticket = _context.Tickets.FirstOrDefault(t => t.TicketID == it.TicketID);
@@ -462,6 +459,8 @@ namespace UI.Helpers
                 .Where(ip => ip.InvoiceID == _invoiceID)
                 .ToList();
 
+            decimal productTotal = 0; // ✅ Khai báo NGOÀI if
+
             if (invoiceProducts.Any())
             {
                 g.DrawString("CHI TIẾT SẢN PHẨM", headerFont, Brushes.Black, leftMargin, yPos);
@@ -476,7 +475,6 @@ namespace UI.Helpers
                 g.DrawLine(Pens.Black, leftMargin, yPos, leftMargin + 700, yPos);
                 yPos += 10;
 
-                decimal productTotal = 0;
                 foreach (var ip in invoiceProducts)
                 {
                     var product = _context.Products.FirstOrDefault(p => p.ProductID == ip.ProductID);
@@ -510,9 +508,27 @@ namespace UI.Helpers
             g.DrawLine(Pens.Black, leftMargin, yPos, leftMargin + 700, yPos);
             yPos += 20;
 
+            // ✅ Tính toán
+            decimal subtotal = ticketTotal + productTotal;
+            decimal discount = _invoice.Discount ?? 0;
+            decimal grandTotal = _invoice.TotalAmount ?? 0;
+
+            // Tạm tính
+            g.DrawString("Tạm tính:", normalFont, Brushes.Black, leftMargin + 450, yPos);
+            g.DrawString($"{subtotal:N0} ₫", normalFont, Brushes.Black, leftMargin + 580, yPos);
+            yPos += 25;
+
+            // ✅ Giảm giá (nếu có)
+            if (discount > 0)
+            {
+                g.DrawString("Giảm giá:", normalFont, Brushes.Black, leftMargin + 450, yPos);
+                g.DrawString($"{discount:N0} ₫", normalFont, Brushes.Red, leftMargin + 580, yPos);
+                yPos += 30;
+            }
+
+            // TỔNG CỘNG
             g.DrawString("TỔNG CỘNG:", headerFont, Brushes.Black, leftMargin + 450, yPos);
-            g.DrawString($"{(_invoice.TotalAmount ?? 0).ToString("#,##0")} ₫",
-                headerFont, Brushes.Red, leftMargin + 580, yPos);
+            g.DrawString($"{grandTotal:N0} ₫", headerFont, Brushes.Red, leftMargin + 580, yPos);
             yPos += 35;
 
             // ========== FOOTER ==========

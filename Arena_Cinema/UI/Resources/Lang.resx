@@ -654,4 +654,112 @@
   <data name="ThongKeLuongVaHieuSuatLamViec" xml:space="preserve">
     <value>Thống kê lương và hiệu suất làm việc</value>
   </data>
+  <data name="PhanQuyenThaoTac" xml:space="preserve">
+    <value>PHÂN QUYỀN THAO TÁC</value>
+  </data>
+  <data name="MatKhauMoi" xml:space="preserve">
+    <value>Mật khẩu mới</value>
+  </data>
+  <data name="CapNhatNhanSu" xml:space="preserve">
+    <value>Cập nhật nhân sự</value>
+  </data>
+  <data name="MatKhau" xml:space="preserve">
+    <value>Mật khẩu</value>
+  </data>
+  <data name="BoSungNhanSu" xml:space="preserve">
+    <value>Bổ sung nhân sự</value>
+  </data>
+  <data name="QuanLySanPham" xml:space="preserve">
+    <value>QUẢN LÝ SẢN PHẨM</value>
+  </data>
+  <data name="TimKiemSanPham" xml:space="preserve">
+    <value>Tìm kiếm sản phẩm...</value>
+  </data>
+  <data name="LoaiSanPham" xml:space="preserve">
+    <value>Loại sản phẩm</value>
+  </data>
+  <data name="Gia" xml:space="preserve">
+    <value>Giá:</value>
+  </data>
+  <data name="NgungBan" xml:space="preserve">
+    <value>Ngưng bán</value>
+  </data>
+  <data name="ThemMoi" xml:space="preserve">
+    <value>+ Thêm mới</value>
+  </data>
+  <data name="CapNhatSanPham" xml:space="preserve">
+    <value>CẬP NHẬT SẢN PHẨM</value>
+  </data>
+  <data name="ThemMoiSanPham" xml:space="preserve">
+    <value>THÊM MỚI SẢN PHẨM</value>
+  </data>
+  <data name="CapNhatSanPhamThanhCong" xml:space="preserve">
+    <value>Cập nhật sản phẩm thành công!</value>
+  </data>
+  <data name="ThemSanPhamThanhCong" xml:space="preserve">
+    <value>Thêm sản phẩm thành công</value>
+  </data>
+  <data name="ThanhCong" xml:space="preserve">
+    <value>Thành công</value>
+  </data>
+  <data name="TenSanPham" xml:space="preserve">
+    <value>Tên sản phẩm</value>
+  </data>
+  <data name="GiaSanPhamVND" xml:space="preserve">
+    <value>Giá sản phẩm (VNĐ)</value>
+  </data>
+  <data name="ChonHinhAnh" xml:space="preserve">
+    <value>CHỌN HÌNH ẢNH</value>
+  </data>
+  <data name="ThongTinGoiDichVu" xml:space="preserve">
+    <value>Thông tin Gói dịch vụ</value>
+  </data>
+  <data name="TrangThaiDaHetHan" xml:space="preserve">
+    <value>⚠ Trạng thái: Đã hết hạn</value>
+  </data>
+  <data name="TrangThaiDaBiThuHoi" xml:space="preserve">
+    <value>⚠ Trạng thái: Đã bị thu hồi</value>
+  </data>
+  <data name="TrangThaiSapHetHan" xml:space="preserve">
+    <value>⚠ Trạng thái: Sắp hết hạn</value>
+  </data>
+  <data name="TrangThaiDangHoatDong" xml:space="preserve">
+    <value>✓ Trạng thái: Đang hoạt động</value>
+  </data>
+  <data name="HetHan" xml:space="preserve">
+    <value>Hết hạn:</value>
+  </data>
+  <data name="ConLai" xml:space="preserve">
+    <value>Còn lại:</value>
+  </data>
+  <data name="Ngay" xml:space="preserve">
+    <value>ngày</value>
+  </data>
+  <data name="DaHetHan" xml:space="preserve">
+    <value>Đã hết hạn</value>
+  </data>
+  <data name="Goi" xml:space="preserve">
+    <value>Gói:</value>
+  </data>
+  <data name="SoMayToiDa" xml:space="preserve">
+    <value>Số máy tối đa:</value>
+  </data>
+  <data name="SoMayDaKichHoat" xml:space="preserve">
+    <value>Số máy đã kích hoạt:</value>
+  </data>
+  <data name="NgayKichHoat" xml:space="preserve">
+    <value>Ngày kích hoạt:</value>
+  </data>
+  <data name="IconThongTinCaNhan" xml:space="preserve">
+    <value>📋 Thông tin cá nhân</value>
+  </data>
+  <data name="ThongTinCongViec" xml:space="preserve">
+    <value>💼 Thông tin công việc</value>
+  </data>
+  <data name="IconCaiDatHeThong" xml:space="preserve">
+    <value>⚙ Cài đặt hệ thống</value>
+  </data>
+  <data name="IconDiaChi" xml:space="preserve">
+    <value>📍 Địa chỉ</value>
+  </data>
 </root>

@@ -42,8 +42,8 @@
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpRoot = new System.Windows.Forms.TableLayoutPanel();
             this.pnlTop = new ReaLTaiizor.Controls.ParrotGradientPanel();
             this.hopeButton1 = new ReaLTaiizor.Controls.HopeButton();
@@ -71,12 +71,13 @@
             this.tlpRoot.Controls.Add(this.dgvPermissions, 0, 1);
             this.tlpRoot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpRoot.Location = new System.Drawing.Point(0, 0);
+            this.tlpRoot.Margin = new System.Windows.Forms.Padding(2);
             this.tlpRoot.Name = "tlpRoot";
             this.tlpRoot.RowCount = 3;
-            this.tlpRoot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 78F));
+            this.tlpRoot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 63F));
             this.tlpRoot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpRoot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpRoot.Size = new System.Drawing.Size(1261, 469);
+            this.tlpRoot.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tlpRoot.Size = new System.Drawing.Size(946, 381);
             this.tlpRoot.TabIndex = 0;
             // 
             // pnlTop
@@ -92,13 +93,13 @@
             this.pnlTop.Controls.Add(this.lblTitle);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTop.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
-            this.pnlTop.Location = new System.Drawing.Point(12, 12);
-            this.pnlTop.Margin = new System.Windows.Forms.Padding(12, 12, 12, 8);
+            this.pnlTop.Location = new System.Drawing.Point(9, 10);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(9, 10, 9, 6);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Padding = new System.Windows.Forms.Padding(14, 12, 14, 12);
+            this.pnlTop.Padding = new System.Windows.Forms.Padding(10);
             this.pnlTop.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.pnlTop.PrimerColor = System.Drawing.Color.White;
-            this.pnlTop.Size = new System.Drawing.Size(1237, 58);
+            this.pnlTop.Size = new System.Drawing.Size(928, 47);
             this.pnlTop.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.pnlTop.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
             this.pnlTop.TabIndex = 0;
@@ -117,10 +118,11 @@
             this.hopeButton1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.hopeButton1.HoverTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
             this.hopeButton1.InfoColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(147)))), ((int)(((byte)(153)))));
-            this.hopeButton1.Location = new System.Drawing.Point(1100, 12);
+            this.hopeButton1.Location = new System.Drawing.Point(826, 10);
+            this.hopeButton1.Margin = new System.Windows.Forms.Padding(2);
             this.hopeButton1.Name = "hopeButton1";
             this.hopeButton1.PrimaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
-            this.hopeButton1.Size = new System.Drawing.Size(123, 34);
+            this.hopeButton1.Size = new System.Drawing.Size(92, 27);
             this.hopeButton1.SuccessColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(194)))), ((int)(((byte)(58)))));
             this.hopeButton1.TabIndex = 5;
             this.hopeButton1.Text = "Lưu";
@@ -140,10 +142,12 @@
             this.cboRole.ItemHeight = 24;
             this.cboRole.Items.AddRange(new object[] {
             "-- Tất cả --"});
-            this.cboRole.Location = new System.Drawing.Point(780, 8);
+            this.cboRole.Location = new System.Drawing.Point(645, 6);
+            this.cboRole.Margin = new System.Windows.Forms.Padding(2);
             this.cboRole.Name = "cboRole";
-            this.cboRole.Size = new System.Drawing.Size(189, 30);
+            this.cboRole.Size = new System.Drawing.Size(143, 30);
             this.cboRole.TabIndex = 4;
+            this.cboRole.SelectedIndexChanged += new System.EventHandler(this.cboRole_SelectedIndexChanged);
             // 
             // lblRole
             // 
@@ -151,9 +155,10 @@
             this.lblRole.BackColor = System.Drawing.Color.Transparent;
             this.lblRole.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.lblRole.Location = new System.Drawing.Point(695, 14);
+            this.lblRole.Location = new System.Drawing.Point(581, 11);
+            this.lblRole.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(81, 25);
+            this.lblRole.Size = new System.Drawing.Size(65, 20);
             this.lblRole.TabIndex = 3;
             this.lblRole.Text = "Chức vụ";
             // 
@@ -166,20 +171,23 @@
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.txtSearch.Hint = "";
-            this.txtSearch.Location = new System.Drawing.Point(385, 8);
+            this.txtSearch.Location = new System.Drawing.Point(375, 6);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(2);
             this.txtSearch.MaxLength = 200;
             this.txtSearch.Multiline = false;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.txtSearch.Padding = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.txtSearch.PasswordChar = '\0';
             this.txtSearch.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtSearch.SelectedText = "";
             this.txtSearch.SelectionLength = 0;
             this.txtSearch.SelectionStart = 0;
-            this.txtSearch.Size = new System.Drawing.Size(272, 40);
+            this.txtSearch.Size = new System.Drawing.Size(204, 36);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.TabStop = false;
             this.txtSearch.UseSystemPasswordChar = false;
+            //this.txtSearch.Click += new System.EventHandler(this.txtSearch_Click);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblSearch
             // 
@@ -187,11 +195,12 @@
             this.lblSearch.BackColor = System.Drawing.Color.Transparent;
             this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(80)))), ((int)(((byte)(90)))));
-            this.lblSearch.Location = new System.Drawing.Point(286, 18);
+            this.lblSearch.Location = new System.Drawing.Point(214, 15);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(90, 25);
+            this.lblSearch.Size = new System.Drawing.Size(158, 20);
             this.lblSearch.TabIndex = 1;
-            this.lblSearch.Text = "Tìm kiếm";
+            this.lblSearch.Text = "Tìm kiếm nhân viên...";
             // 
             // lblTitle
             // 
@@ -199,9 +208,10 @@
             this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(35)))), ((int)(((byte)(45)))));
-            this.lblTitle.Location = new System.Drawing.Point(14, 15);
+            this.lblTitle.Location = new System.Drawing.Point(10, 12);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(248, 28);
+            this.lblTitle.Size = new System.Drawing.Size(197, 21);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "PHÂN QUYỀN THAO TÁC";
             // 
@@ -214,39 +224,39 @@
             this.dgvPermissions.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPermissions.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvPermissions.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(115)))), ((int)(((byte)(217)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.dgvPermissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(115)))), ((int)(((byte)(217)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.dgvPermissions.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPermissions.ColumnHeadersHeight = 40;
             this.dgvPermissions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colEmployeeId,
             this.colFullName,
             this.colRoleName,
             this.colOpSample});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPermissions.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPermissions.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvPermissions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPermissions.EnableHeadersVisualStyles = false;
             this.dgvPermissions.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(239)))), ((int)(((byte)(245)))));
-            this.dgvPermissions.Location = new System.Drawing.Point(12, 86);
-            this.dgvPermissions.Margin = new System.Windows.Forms.Padding(12, 8, 12, 8);
+            this.dgvPermissions.Location = new System.Drawing.Point(9, 69);
+            this.dgvPermissions.Margin = new System.Windows.Forms.Padding(9, 6, 9, 6);
             this.dgvPermissions.MultiSelect = false;
             this.dgvPermissions.Name = "dgvPermissions";
             this.dgvPermissions.RowHeadersVisible = false;
             this.dgvPermissions.RowHeadersWidth = 51;
             this.dgvPermissions.RowTemplate.Height = 30;
             this.dgvPermissions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPermissions.Size = new System.Drawing.Size(1237, 345);
+            this.dgvPermissions.Size = new System.Drawing.Size(928, 282);
             this.dgvPermissions.TabIndex = 1;
             // 
             // colEmployeeId
@@ -282,12 +292,13 @@
             // 
             // OperationUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(247)))), ((int)(((byte)(252)))));
             this.Controls.Add(this.tlpRoot);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "OperationUC";
-            this.Size = new System.Drawing.Size(1261, 469);
+            this.Size = new System.Drawing.Size(946, 381);
             this.tlpRoot.ResumeLayout(false);
             this.pnlTop.ResumeLayout(false);
             this.pnlTop.PerformLayout();

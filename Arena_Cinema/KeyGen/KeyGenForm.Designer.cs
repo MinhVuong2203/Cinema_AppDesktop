@@ -37,7 +37,7 @@ namespace KeyGen
             this.SuspendLayout();
 
             // Form Properties
-            this.Text = "License Key Generator";
+            this.Text = "Trình tạo khóa cấp phép";
             this.Size = new Size(500, 580);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.MaximizeBox = false;
@@ -57,7 +57,7 @@ namespace KeyGen
             {
                 Location = new Point(0, 10),
                 Size = new Size(460, 40),
-                Text = "🔑 License Key Generator",
+                Text = "🔑 Trình tạo khóa cấp phép",
                 Font = new Font("Segoe UI", 18F, FontStyle.Bold),
                 ForeColor = Color.FromArgb(33, 150, 243),
                 TextAlign = ContentAlignment.MiddleCenter
@@ -87,7 +87,7 @@ namespace KeyGen
             {
                 Location = new Point(20, 160),
                 Size = new Size(420, 25),
-                Text = "Max Seats:",
+                Text = "Số lượng tối đa:",
                 Font = new Font("Segoe UI", 11F, FontStyle.Regular),
                 ForeColor = Color.FromArgb(64, 64, 64)
             };
@@ -107,7 +107,7 @@ namespace KeyGen
             {
                 Location = new Point(20, 250),
                 Size = new Size(420, 25),
-                Text = "Plan Type:",
+                Text = "Loại thời hạn:",
                 Font = new Font("Segoe UI", 11F, FontStyle.Regular),
                 ForeColor = Color.FromArgb(64, 64, 64)
             };
@@ -127,7 +127,7 @@ namespace KeyGen
             // Generate Button
             this.btnGenerate = new MaterialButton
             {
-                Location = new Point(20, 345),
+                Location = new Point(20, 365),
                 Size = new Size(420, 48),
                 Text = "GENERATE LICENSE KEY",
                 Font = new Font("Segoe UI", 12F, FontStyle.Bold),
@@ -141,7 +141,7 @@ namespace KeyGen
             {
                 Location = new Point(20, 405),
                 Size = new Size(300, 25),
-                Text = "Generated Key:",
+                Text = "Key đã tạo:",
                 Font = new Font("Segoe UI", 10F, FontStyle.Bold),
                 ForeColor = Color.FromArgb(76, 175, 80),
                 Visible = false
@@ -170,6 +170,17 @@ namespace KeyGen
                 Visible = false
             };
 
+            // Price Label
+            this.lblPrice = new MaterialLabel
+            {
+                Location = new Point(20, 340),
+                Size = new Size(420, 25),
+                Text = "Giá: 0 VND",
+                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
+                ForeColor = Color.FromArgb(255, 152, 0) // màu cam
+            };
+
+
             // Add controls to container
             this.panelContainer.Controls.Add(this.lblTitle);
             this.panelContainer.Controls.Add(this.lblTenantId);
@@ -182,6 +193,7 @@ namespace KeyGen
             this.panelContainer.Controls.Add(this.lblResult);
             this.panelContainer.Controls.Add(this.btnCopy);
             this.panelContainer.Controls.Add(this.txtResult);
+            this.panelContainer.Controls.Add(this.lblPrice);
 
             // Add container to form
             this.Controls.Add(this.panelContainer);
@@ -203,6 +215,7 @@ namespace KeyGen
         private MaterialLabel lblResult;
         private MaterialButton btnCopy;
         private System.Windows.Forms.Panel panelContainer;
+        private Control lblPrice;
         #endregion
     }
 }

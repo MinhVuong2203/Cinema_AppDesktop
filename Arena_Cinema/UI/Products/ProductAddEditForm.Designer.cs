@@ -79,7 +79,7 @@
             this.btnCancel.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnCancel.Size = new System.Drawing.Size(64, 36);
             this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "HỦY";
+            this.btnCancel.Text = global::UI.Resources.Lang.Huy;
             this.btnCancel.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Text;
             this.btnCancel.UseAccentColor = false;
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             this.btnSave.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnSave.Size = new System.Drawing.Size(64, 36);
             this.btnSave.TabIndex = 6;
-            this.btnSave.Text = "LƯU";
+            this.btnSave.Text = global::UI.Resources.Lang.Luu;
             this.btnSave.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnSave.UseAccentColor = false;
             this.btnSave.UseVisualStyleBackColor = true;
@@ -121,7 +121,7 @@
             this.btnChooseImage.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnChooseImage.Size = new System.Drawing.Size(136, 36);
             this.btnChooseImage.TabIndex = 5;
-            this.btnChooseImage.Text = "CHỌN HÌNH ẢNH";
+            this.btnChooseImage.Text = global::UI.Resources.Lang.ChonHinhAnh;
             this.btnChooseImage.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Outlined;
             this.btnChooseImage.UseAccentColor = false;
             this.btnChooseImage.UseVisualStyleBackColor = true;
@@ -149,7 +149,7 @@
             this.txtPrice.Depth = 0;
             this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtPrice.HideSelection = true;
-            this.txtPrice.Hint = "Giá sản phẩm (VNĐ)";
+            this.txtPrice.Hint = global::UI.Resources.Lang.GiaSanPhamVND;
             this.txtPrice.LeadingIcon = null;
             this.txtPrice.Location = new System.Drawing.Point(22, 195);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -183,7 +183,7 @@
             this.cboType.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.cboType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.cboType.FormattingEnabled = true;
-            this.cboType.Hint = "Loại sản phẩm";
+            this.cboType.Hint = global::UI.Resources.Lang.LoaiSanPham;
             this.cboType.IntegralHeight = false;
             this.cboType.ItemHeight = 43;
             this.cboType.Items.AddRange(new object[] {
@@ -213,7 +213,7 @@
             this.txtName.Depth = 0;
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtName.HideSelection = true;
-            this.txtName.Hint = "Tên sản phẩm";
+            this.txtName.Hint = global::UI.Resources.Lang.TenSanPham;
             this.txtName.LeadingIcon = null;
             this.txtName.Location = new System.Drawing.Point(22, 65);
             this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);

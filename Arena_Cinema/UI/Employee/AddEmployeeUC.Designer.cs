@@ -539,7 +539,7 @@ namespace UI.Employee
             this.btnUploadImage.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(70)))), ((int)(((byte)(75)))));
             this.btnUploadImage.ButtonImage = ((System.Drawing.Image)(resources.GetObject("btnUploadImage.ButtonImage")));
             this.btnUploadImage.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.Dark;
-            this.btnUploadImage.ButtonText = "Tải ảnh lên";
+            this.btnUploadImage.ButtonText = global::UI.Resources.Lang.TaiAnh;
             this.btnUploadImage.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(75)))), ((int)(((byte)(80)))));
             this.btnUploadImage.ClickTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(130)))), ((int)(((byte)(140)))));
             this.btnUploadImage.CornerRadius = 5;

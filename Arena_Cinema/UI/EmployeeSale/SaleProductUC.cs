@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
 using DAL;
 using DTO;
-using UI.PayOSMethod.Services;
 
 namespace UI.EmployeeSale
 {
@@ -20,23 +15,19 @@ namespace UI.EmployeeSale
         private DTO.Employee _employee;
         private SaleTicketDAL _saleTicketDAL = new SaleTicketDAL();
         private SaleProductDAL _saleProductDAL = new SaleProductDAL();
-        private List<DTO.ShowTime> _showTimes = new List<DTO.ShowTime>();
-        private List<Ticket> _tickets = new List<Ticket>();
-        private List<Seat> _seats = new List<Seat>();
         private List<Product> _products = new List<Product>();
-        private List<int> _selectedSeatIds = new List<int>();
-        private Dictionary<string, int> _selectedTicketTypeCounts = new Dictionary<string, int>();
         private List<int> _selectedProductIds = new List<int>();
         private Dictionary<int, int> _selectedProductQuantities = new Dictionary<int, int>();
-        private Guid _selectedShowTimeId = Guid.Empty;
 
         public SaleProductUC(Home home, DTO.Employee employee)
         {
             InitializeComponent();
             _home = home;
             _employee = employee;
+
             btn_back.Click += btn_back_Click;
             btnPayment.Click += BtnPayment_Click;
+
             LoadProducts();
         }
 
@@ -50,173 +41,277 @@ namespace UI.EmployeeSale
             flpProducts.Controls.Clear();
             _products = _saleTicketDAL.GetAllProducts();
 
+            // ✅ Tính chiều rộng khả dụng (trừ scrollbar và padding)
+            int availableWidth = flpProducts.ClientSize.Width - 50; // 50 = padding + scrollbar
+
             foreach (var product in _products)
             {
-                // Panel chính cho mỗi sản phẩm
+                // ✅ Kiểm tra số lượng tồn kho
+                int stockQuantity = product.QuaLimited ?? 0;
+                bool isOutOfStock = stockQuantity <= 0;
+
+                // ✅ Panel vừa khít với container: availableWidth x 130
                 var productPanel = new Panel
                 {
-                    Width = 900,
-                    Height = 150,
-                    Margin = new Padding(5),
-                    BackColor = Color.FromArgb(248, 250, 252),
-                    BorderStyle = BorderStyle.None
+                    Width = availableWidth,
+                    Height = 130,
+                    Margin = new Padding(5, 5, 5, 5),
+                    BackColor = isOutOfStock
+                        ? Color.FromArgb(243, 244, 246)
+                        : Color.White,
+                    BorderStyle = BorderStyle.None,
+                    Cursor = isOutOfStock ? Cursors.No : Cursors.Default
                 };
 
-                // PictureBox cho hình ảnh sản phẩm
+                // Border effect
+                productPanel.Paint += (s, e) =>
+                {
+                    var pen = new Pen(Color.FromArgb(229, 231, 235), 1);
+                    e.Graphics.DrawRectangle(pen, 0, 0, productPanel.Width - 1, productPanel.Height - 1);
+                    pen.Dispose();
+                };
+
+                // ✅ PictureBox: 90x90
                 var picProduct = new PictureBox
                 {
-                    Location = new Point(20, 25),
-                    Size = new Size(100, 100),
+                    Location = new Point(15, 20),
+                    Size = new Size(90, 90),
                     SizeMode = PictureBoxSizeMode.Zoom,
-                    BackColor = Color.White
+                    BackColor = Color.FromArgb(249, 250, 251)
                 };
 
-                // Load hình ảnh
                 if (!string.IsNullOrEmpty(product.ImageUrl))
                 {
                     ImgHelper.DisplayImageFromRelative(product.ImageUrl, picProduct);
                 }
 
-                // Label tên sản phẩm
+                // ✅ Overlay "Hết hàng"
+                if (isOutOfStock)
+                {
+                    var lblOutOfStock = new Label
+                    {
+                        Text = "HẾT",
+                        Location = new Point(15, 30),
+                        Size = new Size(90, 70),
+                        BackColor = Color.FromArgb(200, 0, 0, 0),
+                        ForeColor = Color.White,
+                        Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+                        TextAlign = ContentAlignment.MiddleCenter
+                    };
+                    productPanel.Controls.Add(lblOutOfStock);
+                    lblOutOfStock.BringToFront();
+                }
+
+                // ✅ Tính vị trí động dựa trên availableWidth
+                int nameWidth = availableWidth - 550; // Chiều rộng còn lại cho tên
+                int priceX = availableWidth - 360;    // Vị trí giá
+                int buttonX = availableWidth - 215;   // Vị trí nút -
+                int qtyX = availableWidth - 165;      // Vị trí số lượng
+                int plusX = availableWidth - 80;      // Vị trí nút +
+
+                // ✅ Label tên sản phẩm - dynamic width
                 var lblName = new Label
                 {
                     Text = product.ProductName,
-                    Location = new Point(140, 30),
-                    Size = new Size(350, 35),
-                    Font = new Font("Segoe UI", 16F, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(31, 41, 55),
-                    AutoSize = false
+                    Location = new Point(120, 20),
+                    Size = new Size(nameWidth, 32),
+                    Font = new Font("Segoe UI", 12F, FontStyle.Bold),
+                    ForeColor = isOutOfStock
+                        ? Color.FromArgb(156, 163, 175)
+                        : Color.FromArgb(31, 41, 55),
+                    AutoSize = false,
+                    AutoEllipsis = true
                 };
 
-                // Label mã/loại sản phẩm (nếu có)
+                // ✅ Label loại sản phẩm
                 var lblCategory = new Label
                 {
-                    Text = product.ProductType ?? "SẢN PHẨM",
-                    Location = new Point(140, 70),
-                    Size = new Size(350, 25),
-                    Font = new Font("Segoe UI", 10F),
-                    ForeColor = Color.FromArgb(156, 163, 175),
+                    Text = $"📦 {product.ProductType ?? "Sản phẩm"}",
+                    Location = new Point(120, 52),
+                    Size = new Size(180, 20),
+                    Font = new Font("Segoe UI", 8.5F),
+                    ForeColor = Color.FromArgb(107, 114, 128),
                     AutoSize = false
                 };
 
-                // Label giá tiền
+                // ✅ Label số lượng tồn kho
+                var lblStock = new Label
+                {
+                    Text = isOutOfStock
+                        ? "Hết hàng"
+                        : $"Còn: {stockQuantity}",
+                    Location = new Point(120, 75),
+                    Size = new Size(160, 25),
+                    Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                    ForeColor = isOutOfStock
+                        ? Color.FromArgb(220, 38, 38)
+                        : Color.FromArgb(22, 163, 74),
+                    AutoSize = false,
+                    Name = $"lblStock_{product.ProductID}"
+                };
+
+                //Label giá tiền
                 var lblPrice = new Label
                 {
-                    Text = (product.Price ?? 0).ToString("#,##0.00") + " ₫",
-                    Location = new Point(630, 30),
-                    Size = new Size(170, 35),
-                    Font = new Font("Segoe UI", 16F, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(220, 38, 38),
-                    TextAlign = ContentAlignment.TopRight,
+                    Text = (product.Price ?? 0).ToString("#,##0") + " ₫",
+                    Location = new Point(priceX, 45),
+                    Size = new Size(150, 35),
+                    Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+                    ForeColor = isOutOfStock
+                        ? Color.FromArgb(156, 163, 175)
+                        : Color.FromArgb(220, 38, 38),
+                    TextAlign = ContentAlignment.MiddleRight,
                     AutoSize = false
                 };
 
-                // Nút giảm số lượng
-                var btnMinus = new ReaLTaiizor.Controls.ParrotButton
-                {
-                    Width = 45,
-                    Height = 45,
-                    Location = new Point(630, 80),
-                    ButtonText = "",
-                    ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded,
-                    ButtonImage = Properties.Resources.minus1,
-                    CornerRadius = 8,
-                    BackgroundColor = Color.White,
-                    HoverBackgroundColor = Color.FromArgb(254, 226, 226),
-                    ClickBackColor = Color.FromArgb(252, 165, 165),
-                    TextColor = Color.FromArgb(220, 38, 38),
-                    HoverTextColor = Color.FromArgb(220, 38, 38),
-                    ClickTextColor = Color.FromArgb(220, 38, 38),
-                    Font = new Font("Segoe UI", 18F, FontStyle.Bold),
-                    Cursor = Cursors.Hand,
-                    Tag = product.ProductID
-                };
-
-                // Label hiển thị số lượng
-                var lblQuantity = new Label
-                {
-                    Text = "0",
-                    Location = new Point(685, 80),
-                    Size = new Size(50, 45),
-                    Font = new Font("Segoe UI", 18F, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(31, 41, 55),
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Name = $"lblQty_{product.ProductID}"
-                };
-
-                // Nút tăng số lượng
-                var btnPlus = new ReaLTaiizor.Controls.ParrotButton
-                {
-                    Width = 45,
-                    Height = 45,
-                    Location = new Point(745, 80),
-                    ButtonText = "",
-                    ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded,
-                    ButtonImage = Properties.Resources.add,
-                    CornerRadius = 8,
-                    BackgroundColor = Color.White,
-                    HoverBackgroundColor = Color.FromArgb(254, 226, 226),
-                    ClickBackColor = Color.FromArgb(252, 165, 165),
-                    TextColor = Color.FromArgb(220, 38, 38),
-                    HoverTextColor = Color.FromArgb(220, 38, 38),
-                    ClickTextColor = Color.FromArgb(220, 38, 38),
-                    Font = new Font("Segoe UI", 18F, FontStyle.Bold),
-                    Cursor = Cursors.Hand,
-                    Tag = product.ProductID
-                };
-
-                // Dictionary lưu số lượng từng sản phẩm
+                // Dictionary lưu số lượng
                 if (!_selectedProductQuantities.ContainsKey(product.ProductID))
                 {
                     _selectedProductQuantities[product.ProductID] = 0;
                 }
 
-                // Sự kiện click nút giảm
-                btnMinus.Click += (s, e) =>
+                if (!isOutOfStock)
                 {
-                    int productId = (int)((ReaLTaiizor.Controls.ParrotButton)s).Tag;
-                    if (_selectedProductQuantities[productId] > 0)
+                    // ✅ Nút giảm - dynamic position
+                    var btnMinus = new ReaLTaiizor.Controls.ParrotButton
                     {
-                        _selectedProductQuantities[productId]--;
-                        var lbl = productPanel.Controls.Find($"lblQty_{productId}", false).FirstOrDefault() as Label;
-                        if (lbl != null) lbl.Text = _selectedProductQuantities[productId].ToString();
+                        Width = 40,
+                        Height = 40,
+                        Location = new Point(buttonX, 45),
+                        ButtonText = "",
+                        ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded,
+                        ButtonImage = Properties.Resources.minus1,
+                        CornerRadius = 8,
+                        BackgroundColor = Color.White,
+                        HoverBackgroundColor = Color.FromArgb(254, 226, 226),
+                        ClickBackColor = Color.FromArgb(252, 165, 165),
+                        TextColor = Color.FromArgb(220, 38, 38),
+                        HoverTextColor = Color.FromArgb(220, 38, 38),
+                        ClickTextColor = Color.FromArgb(220, 38, 38),
+                        Font = new Font("Segoe UI", 16F, FontStyle.Bold),
+                        Cursor = Cursors.Hand,
+                        Tag = product.ProductID
+                    };
 
-                        // Cập nhật danh sách sản phẩm đã chọn
-                        if (_selectedProductQuantities[productId] == 0)
+                    // ✅ Label số lượng - dynamic position
+                    var lblQuantity = new Label
+                    {
+                        Text = "0",
+                        Location = new Point(qtyX, 45),
+                        Size = new Size(70, 40),
+                        Font = new Font("Segoe UI", 16F, FontStyle.Bold),
+                        ForeColor = Color.FromArgb(31, 41, 55),
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        BackColor = Color.FromArgb(243, 244, 246),
+                        Name = $"lblQty_{product.ProductID}"
+                    };
+
+                    // ✅ Nút tăng - dynamic position
+                    var btnPlus = new ReaLTaiizor.Controls.ParrotButton
+                    {
+                        Width = 40,
+                        Height = 40,
+                        Location = new Point(plusX, 45),
+                        ButtonText = "",
+                        ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded,
+                        ButtonImage = Properties.Resources.add,
+                        CornerRadius = 8,
+                        BackgroundColor = Color.White,
+                        HoverBackgroundColor = Color.FromArgb(220, 252, 231),
+                        ClickBackColor = Color.FromArgb(187, 247, 208),
+                        TextColor = Color.FromArgb(22, 163, 74),
+                        HoverTextColor = Color.FromArgb(22, 163, 74),
+                        ClickTextColor = Color.FromArgb(22, 163, 74),
+                        Font = new Font("Segoe UI", 16F, FontStyle.Bold),
+                        Cursor = Cursors.Hand,
+                        Tag = product.ProductID
+                    };
+
+                    // ✅ Sự kiện nút giảm
+                    btnMinus.Click += (s, e) =>
+                    {
+                        int productId = (int)((ReaLTaiizor.Controls.ParrotButton)s).Tag;
+                        if (_selectedProductQuantities[productId] > 0)
                         {
-                            _selectedProductIds.Remove(productId);
+                            _selectedProductQuantities[productId]--;
+                            var lbl = productPanel.Controls.Find($"lblQty_{productId}", false).FirstOrDefault() as Label;
+                            if (lbl != null) lbl.Text = _selectedProductQuantities[productId].ToString();
+
+                            if (_selectedProductQuantities[productId] == 0)
+                            {
+                                _selectedProductIds.Remove(productId);
+                            }
+                            UpdateInvoice();
                         }
-                        UpdateInvoice();
-                    }
-                };
+                    };
 
-                // Sự kiện click nút tăng
-                btnPlus.Click += (s, e) =>
-                {
-                    int productId = (int)((ReaLTaiizor.Controls.ParrotButton)s).Tag;
-                    _selectedProductQuantities[productId]++;
-                    var lbl = productPanel.Controls.Find($"lblQty_{productId}", false).FirstOrDefault() as Label;
-                    if (lbl != null) lbl.Text = _selectedProductQuantities[productId].ToString();
-
-                    // Thêm vào danh sách đã chọn nếu chưa có
-                    if (!_selectedProductIds.Contains(productId))
+                    // ✅ Sự kiện nút tăng (có kiểm tra tồn kho)
+                    btnPlus.Click += (s, e) =>
                     {
-                        _selectedProductIds.Add(productId);
-                    }
-                    UpdateInvoice();
-                };
+                        int productId = (int)((ReaLTaiizor.Controls.ParrotButton)s).Tag;
+                        var prod = _products.FirstOrDefault(p => p.ProductID == productId);
+
+                        if (prod != null)
+                        {
+                            int currentQty = _selectedProductQuantities[productId];
+                            int stock = prod.QuaLimited ?? 0;
+
+                            // ✅ KIỂM TRA: Không cho mua quá tồn kho
+                            if (currentQty >= stock)
+                            {
+                                MessageBox.Show(
+                                    $"⚠️ Không thể thêm!\n\n" +
+                                    $"'{prod.ProductName}' chỉ còn {stock} trong kho.",
+                                    "Vượt quá tồn kho",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                                return;
+                            }
+
+                            _selectedProductQuantities[productId]++;
+                            var lbl = productPanel.Controls.Find($"lblQty_{productId}", false).FirstOrDefault() as Label;
+                            if (lbl != null) lbl.Text = _selectedProductQuantities[productId].ToString();
+
+                            if (!_selectedProductIds.Contains(productId))
+                            {
+                                _selectedProductIds.Add(productId);
+                            }
+                            UpdateInvoice();
+                        }
+                    };
+
+                    productPanel.Controls.Add(btnMinus);
+                    productPanel.Controls.Add(lblQuantity);
+                    productPanel.Controls.Add(btnPlus);
+                }
+                else
+                {
+                    // ✅ Nút "Hết hàng"
+                    var btnDisabled = new Button
+                    {
+                        Text = "HẾT HÀNG",
+                        Location = new Point(buttonX, 45),
+                        Size = new Size(170, 40),
+                        BackColor = Color.FromArgb(220, 38, 38),
+                        ForeColor = Color.White,
+                        Font = new Font("Segoe UI", 9.5F, FontStyle.Bold),
+                        Enabled = false,
+                        FlatStyle = FlatStyle.Flat,
+                        FlatAppearance = { BorderSize = 0 }
+                    };
+                    productPanel.Controls.Add(btnDisabled);
+                }
 
                 // Thêm controls vào panel
                 productPanel.Controls.Add(picProduct);
                 productPanel.Controls.Add(lblName);
                 productPanel.Controls.Add(lblCategory);
+                productPanel.Controls.Add(lblStock);
                 productPanel.Controls.Add(lblPrice);
-                productPanel.Controls.Add(btnMinus);
-                productPanel.Controls.Add(lblQuantity);
-                productPanel.Controls.Add(btnPlus);
 
                 flpProducts.Controls.Add(productPanel);
             }
+
             UpdateInvoice();
         }
 
@@ -224,7 +319,6 @@ namespace UI.EmployeeSale
         {
             try
             {
-                // Lấy danh sách sản phẩm đã chọn và số lượng
                 var selectedProducts = _products.Where(p => _selectedProductIds.Contains(p.ProductID)).ToList();
                 if (selectedProducts.Count == 0)
                 {
@@ -233,9 +327,29 @@ namespace UI.EmployeeSale
                     return;
                 }
 
-                // Hiển thị dialog xác nhận
+                // ✅ KIỂM TRA TỒN KHO TRƯỚC KHI THANH TOÁN
+                foreach (var p in selectedProducts)
+                {
+                    int requestedQty = _selectedProductQuantities[p.ProductID];
+                    int stock = p.QuaLimited ?? 0;
+
+                    if (requestedQty > stock)
+                    {
+                        MessageBox.Show(
+                            $"❌ Sản phẩm '{p.ProductName}' chỉ còn {stock} trong kho!\n" +
+                            $"Bạn đang chọn {requestedQty}.\n\n" +
+                            $"Vui lòng giảm số lượng.",
+                            "Vượt quá tồn kho",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
                 var confirmResult = MessageBox.Show(
-                    $"Bạn có chắc chắn muốn tạo hóa đơn cho {selectedProducts.Count} sản phẩm?",
+                    $"Bạn có chắc chắn muốn tạo hóa đơn?\n\n" +
+                    $"📦 {selectedProducts.Count} loại sản phẩm\n" +
+                    $"💰 Tổng tiền: {CalculateTotal():N0} ₫",
                     "Xác nhận tạo hóa đơn",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
@@ -245,19 +359,12 @@ namespace UI.EmployeeSale
                     return;
                 }
 
-                // Lấy thông tin khách hàng
                 var customer = GetCustomerByPhone(txt_Phone.Text.Trim());
 
-                // Tính tổng tiền sản phẩm
-                decimal totalProducts = 0;
-                foreach (var p in selectedProducts)
-                {
-                    int qty = _selectedProductQuantities.ContainsKey(p.ProductID) ? _selectedProductQuantities[p.ProductID] : 0;
-                    totalProducts += (p.Price ?? 0) * qty;
-                }
-                decimal discount = 0; // Giảm giá mặc định
+                decimal totalProducts = CalculateTotal();
+                decimal discount = 0;
 
-                // Tạo hóa đơn và chi tiết hóa đơn
+                // Tạo hóa đơn
                 var invoiceId = _saleProductDAL.AddProductInvoice(
                     selectedProducts,
                     _selectedProductQuantities,
@@ -266,13 +373,31 @@ namespace UI.EmployeeSale
                     totalProducts,
                     discount);
 
-                MessageBox.Show(
-                    $"Đã tạo thành công hóa đơn!",
-                    "Thông báo",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                //TRỪ SỐ LƯỢNG TỒN KHO
+                using (var context = new CinemaDBContext())
+                {
+                    foreach (var p in selectedProducts)
+                    {
+                        int qty = _selectedProductQuantities[p.ProductID];
+                        var productInDb = context.Products.Find(p.ProductID);
 
-                // Chuyển sang trang thông tin hóa đơn
+                        if (productInDb != null)
+                        {
+                            productInDb.QuaLimited = (productInDb.QuaLimited ?? 0) - qty;
+
+                            p.QuaLimited = productInDb.QuaLimited;
+                        }
+                    }
+                    context.SaveChanges();
+                }
+
+                //MessageBox.Show(
+                //    "✅ Đã tạo thành công hóa đơn!",
+                //    "Thông báo",
+                //    MessageBoxButtons.OK,
+                //    MessageBoxIcon.Information);
+
+                // Chuyển sang trang thanh toán
                 var paymentInforUC = new ProductPaymentInfor(_home, _employee, invoiceId);
                 paymentInforUC.SetCustomerInfo(customer);
                 _home.LoadControl(paymentInforUC);
@@ -287,84 +412,102 @@ namespace UI.EmployeeSale
             }
         }
 
-        private void UpdateInvoice()
+        private decimal CalculateTotal()
         {
-            // Hiển thị sản phẩm đã chọn và số lượng
-            var selectedProducts = _products.Where(p => _selectedProductIds.Contains(p.ProductID)).ToList();
-            lbInvoiceProducts.Text = "Sản phẩm đã chọn:\n" + (selectedProducts.Count > 0
-                ? string.Join("\n", selectedProducts.Select(p =>
-                {
-                    int qty = _selectedProductQuantities.ContainsKey(p.ProductID)
-                        ? _selectedProductQuantities[p.ProductID] : 0;
-                    return $"{p.ProductName} x{qty} - {((p.Price ?? 0) * qty).ToString("#,##0")} ₫";
-                }))
-                : "Chưa chọn");
+            decimal total = 0;
+            var selectedProducts = _products.Where(p => _selectedProductIds.Contains(p.ProductID));
 
-            // Tính tổng tiền vé
-            decimal totalTickets = 0;
-            foreach (var kv in _selectedTicketTypeCounts)
+            foreach (var p in selectedProducts)
             {
-                var price = _tickets.Where(t => t.TicketType == kv.Key)
-                    .Select(t => t.Price ?? 0)
-                    .FirstOrDefault();
-                totalTickets += price * kv.Value;
+                int qty = _selectedProductQuantities[p.ProductID];
+                total += (p.Price ?? 0) * qty;
             }
 
-            // Tính tổng tiền sản phẩm theo số lượng từng sản phẩm
+            return total;
+        }
+
+        private void UpdateInvoice()
+        {
+            var selectedProducts = _products.Where(p => _selectedProductIds.Contains(p.ProductID)).ToList();
+
+            if (selectedProducts.Count == 0)
+            {
+                lbInvoiceProducts.Text = "🛒 Giỏ hàng trống\n\nVui lòng chọn sản phẩm.";
+                lbInvoiceTotal.Text = "Tổng tiền: 0 ₫";
+                return;
+            }
+
+            //Tạo danh sách
+            var invoiceText = new System.Text.StringBuilder();
+            invoiceText.AppendLine("🛒 GIỎ HÀNG:\n");
+
             decimal totalProducts = 0;
             foreach (var p in selectedProducts)
             {
-                int qty = _selectedProductQuantities.ContainsKey(p.ProductID)
-                    ? _selectedProductQuantities[p.ProductID] : 0;
-                totalProducts += (p.Price ?? 0) * qty;
+                int qty = _selectedProductQuantities[p.ProductID];
+                decimal itemTotal = (p.Price ?? 0) * qty;
+                totalProducts += itemTotal;
+
+                invoiceText.AppendLine($"• {p.ProductName}");
+                invoiceText.AppendLine($"  {qty} x {(p.Price ?? 0):N0} ₫ = {itemTotal:N0} ₫");
+                invoiceText.AppendLine();
             }
 
-            lbInvoiceTotal.Text = $"Tổng tiền: {(totalTickets + totalProducts).ToString("#,##0")} ₫";
+            lbInvoiceProducts.Text = invoiceText.ToString();
+            lbInvoiceTotal.Text = $"Tổng tiền: {totalProducts:N0} ₫";
         }
 
         private void txt_Phone_TextChanged(object sender, EventArgs e)
         {
             var phone = txt_Phone.Text.Trim();
-            var customer = GetCustomerByPhone(phone);
-            if (customer != null)
+            if (phone.Length >= 10)
             {
-                lbCustomerName.Text = $"Tên khách hàng: {customer.FullName}";
-                lbCustomerPhone.Text = $"SĐT: {customer.Phone}";
-                lbCustomerEmail.Text = $"Email: {customer.Email}";
+                var customer = GetCustomerByPhone(phone);
+                UpdateCustomerDisplay(customer);
             }
             else
             {
-                lbCustomerName.Text = "Tên khách hàng: ---";
-                lbCustomerPhone.Text = "SĐT: ---";
-                lbCustomerEmail.Text = "Email: ---";
+                UpdateCustomerDisplay(null);
             }
         }
 
-        // Lấy hoặc tạo khách hàng mặc định
-        private DTO.Customer GetCustomerByPhone(string phone)
+        private void UpdateCustomerDisplay(Customer customer)
+        {
+            if (customer != null)
+            {
+                lbCustomerName.Text = $"👤 {customer.FullName}";
+                lbCustomerName.ForeColor = Color.FromArgb(22, 163, 74);
+                lbCustomerPhone.Text = $"📞 {customer.Phone}";
+                lbCustomerEmail.Text = $"✉️ {customer.Email ?? "---"}";
+            }
+            else
+            {
+                lbCustomerName.Text = "👤 Khách vãng lai";
+                lbCustomerName.ForeColor = Color.FromArgb(107, 114, 128);
+                lbCustomerPhone.Text = "📞 ---";
+                lbCustomerEmail.Text = "✉️ ---";
+            }
+        }
+
+        private Customer GetCustomerByPhone(string phone)
         {
             try
             {
                 using (var context = new CinemaDBContext())
                 {
-                    // Tìm khách hàng theo số điện thoại
                     var customer = context.Customers
                         .FirstOrDefault(c => c.Phone == phone && !c.IsDeleted);
-                    //nếu không có mở cửa sổ tạo khách hàng mới và txt_phone không được trống
-                    if (customer == null && !string.IsNullOrWhiteSpace(phone))
+
+                    if (customer == null && !string.IsNullOrWhiteSpace(phone) && phone.Length >= 10)
                     {
                         CreatCustomer creatCustomer = new CreatCustomer(phone);
                         var result = creatCustomer.ShowDialog();
+
                         if (result == DialogResult.OK)
                         {
-                            // Lấy khách hàng mới tạo
                             var customernew = context.Customers
-                                    .FirstOrDefault(c => c.Phone == phone && !c.IsDeleted);
+                                .FirstOrDefault(c => c.Phone == phone && !c.IsDeleted);
                             return customernew;
-                        }
-                        else
-                        {
-                            return null; // Người dùng hủy tạo khách hàng
                         }
                     }
 
@@ -373,7 +516,9 @@ namespace UI.EmployeeSale
             }
             catch (Exception ex)
             {
-                throw new Exception($"Lỗi khi lấy khách hàng: {ex.Message}");
+                MessageBox.Show($"Lỗi khi lấy khách hàng: {ex.Message}", "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 
@@ -382,22 +527,18 @@ namespace UI.EmployeeSale
             var phone = txt_Phone.Text.Trim();
             if (string.IsNullOrEmpty(phone))
             {
-                MessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng nhập số điện thoại!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             var customer = GetCustomerByPhone(phone);
-            if (customer != null)
+            UpdateCustomerDisplay(customer);
+
+            if (customer == null)
             {
-                lbCustomerName.Text = $"Tên khách hàng: {customer.FullName}";
-                lbCustomerPhone.Text = $"SĐT: {customer.Phone}";
-                lbCustomerEmail.Text = $"Email: {customer.Email}";
-            }
-            else
-            {
-                lbCustomerName.Text = "Tên khách hàng: ---";
-                lbCustomerPhone.Text = "SĐT: ---";
-                lbCustomerEmail.Text = "Email: ---";
-                MessageBox.Show("Không tìm thấy khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Không tìm thấy khách hàng!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
