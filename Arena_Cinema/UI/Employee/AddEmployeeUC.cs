@@ -33,7 +33,8 @@ namespace UI.Employee
             this._employee = employee; 
             isEdit = false;
             InitializeComponent();
-            this.txtPassword.Hint = "Mật khẩu";
+            this.lblTitle.Text = global::UI.Resources.Lang.BoSungNhanSu;
+            this.txtPassword.Hint = global::UI.Resources.Lang.MatKhau;
             pathImg = "Image\\Employee\\emloyeeDefault.png";
 
             LoadThem();
@@ -49,13 +50,14 @@ namespace UI.Employee
 
         public AddEmployeeUC(Home home, DTO.Employee employee, DTO.Employee employeeEdit)
         { 
-            this._home = home;            
+            this._home = home;
+            this._employee = employee;
             this.pathImg = employeeEdit.ImageUrl;
             this.isEdit = true;
             string gender = employeeEdit.Gender;
             InitializeComponent();
-            this.lblTitle.Text = "CẬP NHẬT NHÂN SỰ";
-            this.txtPassword.Hint = "Mật khẩu mới";
+            this.lblTitle.Text = global::UI.Resources.Lang.CapNhatNhanSu;
+            this.txtPassword.Hint = global::UI.Resources.Lang.MatKhauMoi;
             this.EmployeeId = employeeEdit.EmployeeID;
             this.passOld = employeeEdit.Account.PasswordHash;
 

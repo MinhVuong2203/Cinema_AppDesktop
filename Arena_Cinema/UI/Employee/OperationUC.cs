@@ -1,12 +1,13 @@
 ﻿using BLL;
+using DAL;
 using DTO;
 using ReaLTaiizor.Controls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 
 
 namespace UI.Employee
@@ -22,25 +23,58 @@ namespace UI.Employee
         private readonly Dictionary<int, int> _opIdToColIndex = new Dictionary<int, int>();
         private readonly Dictionary<Guid, HashSet<int>> _employeeOpIds = new Dictionary<Guid, HashSet<int>>();
 
+        //List<DTO.Employee> employees = new List<DTO.Employee>();
+
         public OperationUC()
         {
             InitializeComponent();
-
+            LoadCboRoles();
             // load khi UC được show
             this.Load += OperationUC_Load;
 
             InitPermissionGrid();
         }
 
+        public void LoadCboRoles()
+        {
+            cboRole.Items.Clear();
+            cboRole.Items.Add("-- Tất cả --");
+            RoleDAL roleDAL = new RoleDAL();
+            var roles = roleDAL.GetAllRoles();
+            foreach (var role in roles)
+            {
+                cboRole.Items.Add(role.RoleName);
+            }
+            cboRole.SelectedIndex = 0; // Chọn mục đầu tiên làm mặc định
+        }
+
         private void OperationUC_Load(object sender, EventArgs e)
         {
+            var employees = _employeeBLL.GetAllEmployees();
+            var operations = _operationBLL.GetAllOperation();   // lấy danh sách Operation
+
+            LoadPermissionTable(employees, operations);
+        }
+
+
+        private void Load_OperationUC()
+        {
+            string nameFilter = txtSearch.Text.Trim();
+            string roleFilter = cboRole.SelectedItem?.ToString();
             // Lấy dữ liệu thật từ DB
-            var employees = _employeeBLL.GetAllEmployees();      // đã Include Operations
+            var employees = _employeeBLL.FilterEmployees(
+            nameFilter,
+            string.IsNullOrWhiteSpace(roleFilter) || roleFilter == "-- Tất cả --"
+                ? null
+                : roleFilter,
+            includeDeleted: false);
+            //var employees = _employeeBLL.FilterEmployees(this.txtSearch.Text, this.cboRole.Text);      // đã Include Operations
             var operations = _operationBLL.GetAllOperation();   // lấy danh sách Operation
 
             // Render lên bảng
             LoadPermissionTable(employees, operations);
         }
+
 
 
         private void InitPermissionGrid()
@@ -278,6 +312,21 @@ namespace UI.Employee
 
             var ok = _operationBLL.SaveEmployeeOperations(snapshot);
             MessageBox.Show(ok ? "Lưu phân quyền thành công." : "Lưu phân quyền thất bại.");
+        }
+
+
+
+        private void cboRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Load_OperationUC();
+        }
+
+
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            Load_OperationUC();
+
         }
     }
 }

@@ -41,6 +41,7 @@ namespace UI
             this.lblStatus = new ReaLTaiizor.Controls.DungeonLabel();
             this.lblStatusTitle = new ReaLTaiizor.Controls.HeaderLabel();
             this.panelLicenseHeader = new System.Windows.Forms.Panel();
+            this.picLicenseIcon = new System.Windows.Forms.PictureBox();
             this.lblLicenseTitle = new ReaLTaiizor.Controls.BigLabel();
             this.tabActivations = new System.Windows.Forms.TabPage();
             this.dgvActivations = new System.Windows.Forms.DataGridView();
@@ -53,16 +54,15 @@ namespace UI
             this.panelActivationsHeader = new System.Windows.Forms.Panel();
             this.btnRefresh = new ReaLTaiizor.Controls.MaterialButton();
             this.lblActivationsTitle = new ReaLTaiizor.Controls.BigLabel();
-            this.picLicenseIcon = new System.Windows.Forms.PictureBox();
             this.materialTabControl.SuspendLayout();
             this.tabLicenseInfo.SuspendLayout();
             this.panelLicenseDetails.SuspendLayout();
             this.panelLicenseStatus.SuspendLayout();
             this.panelLicenseHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLicenseIcon)).BeginInit();
             this.tabActivations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivations)).BeginInit();
             this.panelActivationsHeader.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLicenseIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // materialTabControl
@@ -72,12 +72,11 @@ namespace UI
             this.materialTabControl.Depth = 0;
             this.materialTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialTabControl.Location = new System.Drawing.Point(0, 0);
-            this.materialTabControl.Margin = new System.Windows.Forms.Padding(4);
             this.materialTabControl.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.materialTabControl.Multiline = true;
             this.materialTabControl.Name = "materialTabControl";
             this.materialTabControl.SelectedIndex = 0;
-            this.materialTabControl.Size = new System.Drawing.Size(1600, 862);
+            this.materialTabControl.Size = new System.Drawing.Size(1200, 700);
             this.materialTabControl.TabIndex = 0;
             // 
             // tabLicenseInfo
@@ -86,11 +85,10 @@ namespace UI
             this.tabLicenseInfo.Controls.Add(this.panelLicenseDetails);
             this.tabLicenseInfo.Controls.Add(this.panelLicenseStatus);
             this.tabLicenseInfo.Controls.Add(this.panelLicenseHeader);
-            this.tabLicenseInfo.Location = new System.Drawing.Point(4, 25);
-            this.tabLicenseInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.tabLicenseInfo.Location = new System.Drawing.Point(4, 22);
             this.tabLicenseInfo.Name = "tabLicenseInfo";
-            this.tabLicenseInfo.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
-            this.tabLicenseInfo.Size = new System.Drawing.Size(1592, 833);
+            this.tabLicenseInfo.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.tabLicenseInfo.Size = new System.Drawing.Size(1192, 674);
             this.tabLicenseInfo.TabIndex = 0;
             this.tabLicenseInfo.Text = "Thông tin License";
             // 
@@ -105,13 +103,12 @@ namespace UI
             this.panelLicenseDetails.Controls.Add(this.lblPlanCode);
             this.panelLicenseDetails.Controls.Add(this.lblDetailsTitle);
             this.panelLicenseDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelLicenseDetails.Location = new System.Drawing.Point(27, 443);
-            this.panelLicenseDetails.Margin = new System.Windows.Forms.Padding(4);
+            this.panelLicenseDetails.Location = new System.Drawing.Point(20, 360);
             this.panelLicenseDetails.Name = "panelLicenseDetails";
-            this.panelLicenseDetails.Padding = new System.Windows.Forms.Padding(33, 25, 33, 25);
-            this.panelLicenseDetails.Size = new System.Drawing.Size(1538, 365);
+            this.panelLicenseDetails.Padding = new System.Windows.Forms.Padding(25, 20, 25, 20);
+            this.panelLicenseDetails.Size = new System.Drawing.Size(1152, 294);
             this.panelLicenseDetails.TabIndex = 2;
-            this.panelLicenseDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLicenseDetails_Paint);
+            //this.panelLicenseDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLicenseDetails_Paint);
             // 
             // lblTenantId
             // 
@@ -119,10 +116,9 @@ namespace UI
             this.lblTenantId.BackColor = System.Drawing.Color.Transparent;
             this.lblTenantId.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblTenantId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(120)))), ((int)(((byte)(120)))));
-            this.lblTenantId.Location = new System.Drawing.Point(32, 256);
-            this.lblTenantId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTenantId.Location = new System.Drawing.Point(24, 208);
             this.lblTenantId.Name = "lblTenantId";
-            this.lblTenantId.Size = new System.Drawing.Size(271, 20);
+            this.lblTenantId.Size = new System.Drawing.Size(203, 15);
             this.lblTenantId.TabIndex = 5;
             this.lblTenantId.Text = "Tenant ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxx";
             // 
@@ -132,10 +128,9 @@ namespace UI
             this.lblActivatedDate.BackColor = System.Drawing.Color.Transparent;
             this.lblActivatedDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblActivatedDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.lblActivatedDate.Location = new System.Drawing.Point(31, 209);
-            this.lblActivatedDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblActivatedDate.Location = new System.Drawing.Point(23, 170);
             this.lblActivatedDate.Name = "lblActivatedDate";
-            this.lblActivatedDate.Size = new System.Drawing.Size(257, 28);
+            this.lblActivatedDate.Size = new System.Drawing.Size(205, 21);
             this.lblActivatedDate.TabIndex = 4;
             this.lblActivatedDate.Text = "Ngày kích hoạt: 01/01/2025";
             // 
@@ -145,10 +140,9 @@ namespace UI
             this.lblActiveSeats.BackColor = System.Drawing.Color.Transparent;
             this.lblActiveSeats.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblActiveSeats.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
-            this.lblActiveSeats.Location = new System.Drawing.Point(31, 166);
-            this.lblActiveSeats.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblActiveSeats.Location = new System.Drawing.Point(23, 135);
             this.lblActiveSeats.Name = "lblActiveSeats";
-            this.lblActiveSeats.Size = new System.Drawing.Size(228, 28);
+            this.lblActiveSeats.Size = new System.Drawing.Size(181, 21);
             this.lblActiveSeats.TabIndex = 3;
             this.lblActiveSeats.Text = "Số máy đã kích hoạt: 5";
             // 
@@ -158,10 +152,9 @@ namespace UI
             this.lblMaxSeats.BackColor = System.Drawing.Color.Transparent;
             this.lblMaxSeats.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMaxSeats.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.lblMaxSeats.Location = new System.Drawing.Point(31, 123);
-            this.lblMaxSeats.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblMaxSeats.Location = new System.Drawing.Point(23, 100);
             this.lblMaxSeats.Name = "lblMaxSeats";
-            this.lblMaxSeats.Size = new System.Drawing.Size(164, 28);
+            this.lblMaxSeats.Size = new System.Drawing.Size(130, 21);
             this.lblMaxSeats.TabIndex = 2;
             this.lblMaxSeats.Text = "Số máy tối đa: 10";
             // 
@@ -171,10 +164,9 @@ namespace UI
             this.lblPlanCode.BackColor = System.Drawing.Color.Transparent;
             this.lblPlanCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlanCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(76)))), ((int)(((byte)(77)))));
-            this.lblPlanCode.Location = new System.Drawing.Point(31, 80);
-            this.lblPlanCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblPlanCode.Location = new System.Drawing.Point(23, 65);
             this.lblPlanCode.Name = "lblPlanCode";
-            this.lblPlanCode.Size = new System.Drawing.Size(139, 28);
+            this.lblPlanCode.Size = new System.Drawing.Size(111, 21);
             this.lblPlanCode.TabIndex = 1;
             this.lblPlanCode.Text = "Gói: Enterprise";
             // 
@@ -184,12 +176,11 @@ namespace UI
             this.lblDetailsTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblDetailsTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblDetailsTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.lblDetailsTitle.Location = new System.Drawing.Point(31, 25);
-            this.lblDetailsTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDetailsTitle.Location = new System.Drawing.Point(23, 20);
             this.lblDetailsTitle.Name = "lblDetailsTitle";
-            this.lblDetailsTitle.Size = new System.Drawing.Size(161, 37);
+            this.lblDetailsTitle.Size = new System.Drawing.Size(92, 30);
             this.lblDetailsTitle.TabIndex = 0;
-            this.lblDetailsTitle.Text = "Chi tiết Gói";
+            this.lblDetailsTitle.Text = "Chi Tiết";
             // 
             // panelLicenseStatus
             // 
@@ -201,21 +192,20 @@ namespace UI
             this.panelLicenseStatus.Controls.Add(this.lblStatus);
             this.panelLicenseStatus.Controls.Add(this.lblStatusTitle);
             this.panelLicenseStatus.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLicenseStatus.Location = new System.Drawing.Point(27, 136);
-            this.panelLicenseStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.panelLicenseStatus.Location = new System.Drawing.Point(20, 110);
             this.panelLicenseStatus.Name = "panelLicenseStatus";
-            this.panelLicenseStatus.Padding = new System.Windows.Forms.Padding(33, 25, 33, 25);
-            this.panelLicenseStatus.Size = new System.Drawing.Size(1538, 307);
+            this.panelLicenseStatus.Padding = new System.Windows.Forms.Padding(25, 20, 25, 20);
+            this.panelLicenseStatus.Size = new System.Drawing.Size(1152, 250);
             this.panelLicenseStatus.TabIndex = 1;
+            //this.panelLicenseStatus.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLicenseStatus_Paint);
             // 
             // progressExpiry
             // 
             this.progressExpiry.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressExpiry.Location = new System.Drawing.Point(31, 234);
-            this.progressExpiry.Margin = new System.Windows.Forms.Padding(4);
+            this.progressExpiry.Location = new System.Drawing.Point(23, 190);
             this.progressExpiry.Name = "progressExpiry";
-            this.progressExpiry.Size = new System.Drawing.Size(1470, 37);
+            this.progressExpiry.Size = new System.Drawing.Size(1100, 30);
             this.progressExpiry.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressExpiry.TabIndex = 4;
             this.progressExpiry.Value = 75;
@@ -226,10 +216,9 @@ namespace UI
             this.lblDaysRemaining.BackColor = System.Drawing.Color.Transparent;
             this.lblDaysRemaining.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDaysRemaining.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.lblDaysRemaining.Location = new System.Drawing.Point(31, 160);
-            this.lblDaysRemaining.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDaysRemaining.Location = new System.Drawing.Point(23, 130);
             this.lblDaysRemaining.Name = "lblDaysRemaining";
-            this.lblDaysRemaining.Size = new System.Drawing.Size(346, 54);
+            this.lblDaysRemaining.Size = new System.Drawing.Size(277, 45);
             this.lblDaysRemaining.TabIndex = 3;
             this.lblDaysRemaining.Text = "Còn lại: 365 ngày";
             // 
@@ -239,10 +228,9 @@ namespace UI
             this.lblExpiryDate.BackColor = System.Drawing.Color.Transparent;
             this.lblExpiryDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExpiryDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.lblExpiryDate.Location = new System.Drawing.Point(31, 117);
-            this.lblExpiryDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblExpiryDate.Location = new System.Drawing.Point(23, 95);
             this.lblExpiryDate.Name = "lblExpiryDate";
-            this.lblExpiryDate.Size = new System.Drawing.Size(246, 28);
+            this.lblExpiryDate.Size = new System.Drawing.Size(198, 21);
             this.lblExpiryDate.TabIndex = 2;
             this.lblExpiryDate.Text = "Hết hạn: 31/12/2025 23:59";
             // 
@@ -252,10 +240,9 @@ namespace UI
             this.lblStatus.BackColor = System.Drawing.Color.Transparent;
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
-            this.lblStatus.Location = new System.Drawing.Point(31, 74);
-            this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStatus.Location = new System.Drawing.Point(23, 60);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(226, 32);
+            this.lblStatus.Size = new System.Drawing.Size(178, 25);
             this.lblStatus.TabIndex = 1;
             this.lblStatus.Text = "✓ Đang hoạt động";
             // 
@@ -265,12 +252,11 @@ namespace UI
             this.lblStatusTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblStatusTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblStatusTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.lblStatusTitle.Location = new System.Drawing.Point(31, 25);
-            this.lblStatusTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStatusTitle.Location = new System.Drawing.Point(23, 20);
             this.lblStatusTitle.Name = "lblStatusTitle";
-            this.lblStatusTitle.Size = new System.Drawing.Size(147, 37);
+            this.lblStatusTitle.Size = new System.Drawing.Size(122, 30);
             this.lblStatusTitle.TabIndex = 0;
-            this.lblStatusTitle.Text = "Trạng thái";
+            this.lblStatusTitle.Text = "Trạng Thái";
             // 
             // panelLicenseHeader
             // 
@@ -278,12 +264,24 @@ namespace UI
             this.panelLicenseHeader.Controls.Add(this.picLicenseIcon);
             this.panelLicenseHeader.Controls.Add(this.lblLicenseTitle);
             this.panelLicenseHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLicenseHeader.Location = new System.Drawing.Point(27, 25);
-            this.panelLicenseHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.panelLicenseHeader.Location = new System.Drawing.Point(20, 20);
             this.panelLicenseHeader.Name = "panelLicenseHeader";
-            this.panelLicenseHeader.Padding = new System.Windows.Forms.Padding(27, 18, 27, 18);
-            this.panelLicenseHeader.Size = new System.Drawing.Size(1538, 111);
+            this.panelLicenseHeader.Padding = new System.Windows.Forms.Padding(20, 15, 20, 15);
+            this.panelLicenseHeader.Size = new System.Drawing.Size(1152, 90);
             this.panelLicenseHeader.TabIndex = 0;
+            // 
+            // picLicenseIcon
+            // 
+            this.picLicenseIcon.BackColor = System.Drawing.Color.Transparent;
+            this.picLicenseIcon.BackgroundImage = global::UI.Properties.Resources.package;
+            this.picLicenseIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.picLicenseIcon.InitialImage = null;
+            this.picLicenseIcon.Location = new System.Drawing.Point(23, 20);
+            this.picLicenseIcon.Name = "picLicenseIcon";
+            this.picLicenseIcon.Size = new System.Drawing.Size(50, 50);
+            this.picLicenseIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picLicenseIcon.TabIndex = 1;
+            this.picLicenseIcon.TabStop = false;
             // 
             // lblLicenseTitle
             // 
@@ -291,10 +289,9 @@ namespace UI
             this.lblLicenseTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblLicenseTitle.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.lblLicenseTitle.ForeColor = System.Drawing.Color.White;
-            this.lblLicenseTitle.Location = new System.Drawing.Point(107, 27);
-            this.lblLicenseTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLicenseTitle.Location = new System.Drawing.Point(80, 22);
             this.lblLicenseTitle.Name = "lblLicenseTitle";
-            this.lblLicenseTitle.Size = new System.Drawing.Size(426, 54);
+            this.lblLicenseTitle.Size = new System.Drawing.Size(344, 45);
             this.lblLicenseTitle.TabIndex = 0;
             this.lblLicenseTitle.Text = "Thông tin Gói dịch vụ";
             // 
@@ -303,11 +300,10 @@ namespace UI
             this.tabActivations.BackColor = System.Drawing.Color.White;
             this.tabActivations.Controls.Add(this.dgvActivations);
             this.tabActivations.Controls.Add(this.panelActivationsHeader);
-            this.tabActivations.Location = new System.Drawing.Point(4, 25);
-            this.tabActivations.Margin = new System.Windows.Forms.Padding(4);
+            this.tabActivations.Location = new System.Drawing.Point(4, 22);
             this.tabActivations.Name = "tabActivations";
-            this.tabActivations.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
-            this.tabActivations.Size = new System.Drawing.Size(1592, 833);
+            this.tabActivations.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.tabActivations.Size = new System.Drawing.Size(1192, 674);
             this.tabActivations.TabIndex = 1;
             this.tabActivations.Text = "Máy đã cài đặt";
             // 
@@ -332,15 +328,14 @@ namespace UI
             this.dgvActivations.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvActivations.EnableHeadersVisualStyles = false;
             this.dgvActivations.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.dgvActivations.Location = new System.Drawing.Point(27, 136);
-            this.dgvActivations.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvActivations.Location = new System.Drawing.Point(20, 110);
             this.dgvActivations.Name = "dgvActivations";
             this.dgvActivations.ReadOnly = true;
             this.dgvActivations.RowHeadersVisible = false;
             this.dgvActivations.RowHeadersWidth = 51;
             this.dgvActivations.RowTemplate.Height = 50;
             this.dgvActivations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvActivations.Size = new System.Drawing.Size(1538, 672);
+            this.dgvActivations.Size = new System.Drawing.Size(1152, 544);
             this.dgvActivations.TabIndex = 1;
             this.dgvActivations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActivations_CellContentClick);
             // 
@@ -379,7 +374,7 @@ namespace UI
             // colStatus
             // 
             this.colStatus.DataPropertyName = "IsBlocked";
-            this.colStatus.HeaderText = "Trạng thái";
+            this.colStatus.HeaderText = global::UI.Resources.Lang.TrangThai;
             this.colStatus.MinimumWidth = 6;
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
@@ -400,11 +395,10 @@ namespace UI
             this.panelActivationsHeader.Controls.Add(this.btnRefresh);
             this.panelActivationsHeader.Controls.Add(this.lblActivationsTitle);
             this.panelActivationsHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelActivationsHeader.Location = new System.Drawing.Point(27, 25);
-            this.panelActivationsHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.panelActivationsHeader.Location = new System.Drawing.Point(20, 20);
             this.panelActivationsHeader.Name = "panelActivationsHeader";
-            this.panelActivationsHeader.Padding = new System.Windows.Forms.Padding(27, 18, 27, 18);
-            this.panelActivationsHeader.Size = new System.Drawing.Size(1538, 111);
+            this.panelActivationsHeader.Padding = new System.Windows.Forms.Padding(20, 15, 20, 15);
+            this.panelActivationsHeader.Size = new System.Drawing.Size(1152, 90);
             this.panelActivationsHeader.TabIndex = 0;
             // 
             // btnRefresh
@@ -417,12 +411,12 @@ namespace UI
             this.btnRefresh.HighEmphasis = true;
             this.btnRefresh.Icon = null;
             this.btnRefresh.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btnRefresh.Location = new System.Drawing.Point(1342, 31);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            this.btnRefresh.Location = new System.Drawing.Point(1004, 25);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnRefresh.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnRefresh.Size = new System.Drawing.Size(160, 49);
+            this.btnRefresh.Size = new System.Drawing.Size(120, 40);
             this.btnRefresh.TabIndex = 1;
             this.btnRefresh.Text = "Làm mới";
             this.btnRefresh.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -436,36 +430,20 @@ namespace UI
             this.lblActivationsTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblActivationsTitle.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.lblActivationsTitle.ForeColor = System.Drawing.Color.White;
-            this.lblActivationsTitle.Location = new System.Drawing.Point(31, 27);
-            this.lblActivationsTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblActivationsTitle.Location = new System.Drawing.Point(23, 22);
             this.lblActivationsTitle.Name = "lblActivationsTitle";
-            this.lblActivationsTitle.Size = new System.Drawing.Size(300, 54);
+            this.lblActivationsTitle.Size = new System.Drawing.Size(239, 45);
             this.lblActivationsTitle.TabIndex = 0;
             this.lblActivationsTitle.Text = "Máy đã cài đặt";
             // 
-            // picLicenseIcon
-            // 
-            this.picLicenseIcon.BackColor = System.Drawing.Color.Transparent;
-            this.picLicenseIcon.BackgroundImage = global::UI.Properties.Resources.package;
-            this.picLicenseIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picLicenseIcon.InitialImage = null;
-            this.picLicenseIcon.Location = new System.Drawing.Point(31, 25);
-            this.picLicenseIcon.Margin = new System.Windows.Forms.Padding(4);
-            this.picLicenseIcon.Name = "picLicenseIcon";
-            this.picLicenseIcon.Size = new System.Drawing.Size(67, 62);
-            this.picLicenseIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.picLicenseIcon.TabIndex = 1;
-            this.picLicenseIcon.TabStop = false;
-            // 
             // LicenseManagementForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.materialTabControl);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LicenseManagementForm";
-            this.Size = new System.Drawing.Size(1600, 862);
+            this.Size = new System.Drawing.Size(1200, 700);
             this.materialTabControl.ResumeLayout(false);
             this.tabLicenseInfo.ResumeLayout(false);
             this.panelLicenseDetails.ResumeLayout(false);
@@ -474,11 +452,11 @@ namespace UI
             this.panelLicenseStatus.PerformLayout();
             this.panelLicenseHeader.ResumeLayout(false);
             this.panelLicenseHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLicenseIcon)).EndInit();
             this.tabActivations.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivations)).EndInit();
             this.panelActivationsHeader.ResumeLayout(false);
             this.panelActivationsHeader.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLicenseIcon)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -515,15 +493,15 @@ namespace UI
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
         private System.Windows.Forms.DataGridViewButtonColumn colActions;
 
-            #endregion
+        #endregion
 
-            #region Component Designer generated code
+        #region Component Designer generated code
 
-            /// <summary> 
-            /// Required method for Designer support - do not modify 
-            /// the contents of this method with the code editor.
-            /// </summary>
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
 
-            #endregion
-        }
+        #endregion
+    }
     }

@@ -654,4 +654,112 @@
   <data name="ThongKeLuongVaHieuSuatLamViec" xml:space="preserve">
     <value>Salary and performance statistics</value>
   </data>
+  <data name="PhanQuyenThaoTac" xml:space="preserve">
+    <value>OPERATIONAL PERMISSIONS</value>
+  </data>
+  <data name="MatKhauMoi" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="CapNhatNhanSu" xml:space="preserve">
+    <value>Edit employee</value>
+  </data>
+  <data name="MatKhau" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="BoSungNhanSu" xml:space="preserve">
+    <value>Create new employee</value>
+  </data>
+  <data name="QuanLySanPham" xml:space="preserve">
+    <value>MANAGE PRODUCT</value>
+  </data>
+  <data name="TimKiemSanPham" xml:space="preserve">
+    <value>Search product...</value>
+  </data>
+  <data name="LoaiSanPham" xml:space="preserve">
+    <value>Product type</value>
+  </data>
+  <data name="Gia" xml:space="preserve">
+    <value>Price:</value>
+  </data>
+  <data name="NgungBan" xml:space="preserve">
+    <value>Stop selling</value>
+  </data>
+  <data name="ThemMoi" xml:space="preserve">
+    <value>+ New</value>
+  </data>
+  <data name="CapNhatSanPham" xml:space="preserve">
+    <value>EDIT PRODUCT</value>
+  </data>
+  <data name="ThemMoiSanPham" xml:space="preserve">
+    <value>CREATE NEW PRODUCT</value>
+  </data>
+  <data name="CapNhatSanPhamThanhCong" xml:space="preserve">
+    <value>UPDATE PRODUCT SUCCESS</value>
+  </data>
+  <data name="ThemSanPhamThanhCong" xml:space="preserve">
+    <value>Create product success</value>
+  </data>
+  <data name="ThanhCong" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="TenSanPham" xml:space="preserve">
+    <value>Product name</value>
+  </data>
+  <data name="GiaSanPhamVND" xml:space="preserve">
+    <value>Price (VND)</value>
+  </data>
+  <data name="ChonHinhAnh" xml:space="preserve">
+    <value>SELECT IMAGE</value>
+  </data>
+  <data name="ThongTinGoiDichVu" xml:space="preserve">
+    <value>Infomation packages service</value>
+  </data>
+  <data name="TrangThaiDaHetHan" xml:space="preserve">
+    <value>⚠ Status: Expired</value>
+  </data>
+  <data name="TrangThaiDaBiThuHoi" xml:space="preserve">
+    <value>⚠ Status: Revoked</value>
+  </data>
+  <data name="TrangThaiSapHetHan" xml:space="preserve">
+    <value>⚠ Status: Near Expiry</value>
+  </data>
+  <data name="TrangThaiDangHoatDong" xml:space="preserve">
+    <value>✓ Status: Active</value>
+  </data>
+  <data name="HetHan" xml:space="preserve">
+    <value>Expired:</value>
+  </data>
+  <data name="ConLai" xml:space="preserve">
+    <value>Remaining:</value>
+  </data>
+  <data name="Ngay" xml:space="preserve">
+    <value>days</value>
+  </data>
+  <data name="DaHetHan" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="Goi" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="SoMayToiDa" xml:space="preserve">
+    <value>Maximum number of computer:</value>
+  </data>
+  <data name="SoMayDaKichHoat" xml:space="preserve">
+    <value>Number of activated computer:</value>
+  </data>
+  <data name="NgayKichHoat" xml:space="preserve">
+    <value>Activation date:</value>
+  </data>
+  <data name="IconThongTinCaNhan" xml:space="preserve">
+    <value>📋 Personal Information</value>
+  </data>
+  <data name="ThongTinCongViec" xml:space="preserve">
+    <value>💼 Job Information</value>
+  </data>
+  <data name="IconCaiDatHeThong" xml:space="preserve">
+    <value>⚙ System settings</value>
+  </data>
+  <data name="IconDiaChi" xml:space="preserve">
+    <value>📍 Address</value>
+  </data>
 </root>

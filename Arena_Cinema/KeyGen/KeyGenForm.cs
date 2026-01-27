@@ -20,6 +20,9 @@ namespace KeyGen
         public KeyGenForm()
         {
             InitializeComponent();
+            this.cboPlan.SelectedIndexChanged += (s, e) => UpdatePriceUI();
+            this.txtMaxSeats.TextChanged += (s, e) => UpdatePriceUI();
+
         }
 
         private void BtnGenerate_Click(object sender, EventArgs e)
@@ -96,6 +99,66 @@ namespace KeyGen
                     throw new ArgumentException("Invalid plan type.");
             }
         }
+
+        private void UpdatePriceUI()
+        {
+            try
+            {
+                // Lấy plan
+                var plan = cboPlan.SelectedItem?.ToString() ?? "1Y";
+
+                // Lấy maxSeats
+                int maxSeats = 0;
+                int.TryParse(txtMaxSeats.Text.Trim(), out maxSeats);
+
+                // Nếu chưa hợp lệ thì hiển thị tạm
+                if (maxSeats < 1)
+                {
+                    lblPrice.Text = "Giá: -- VND";
+                    return;
+                }
+
+                // Tính giá
+                var price = CalculatePriceVnd(plan, maxSeats);
+
+                // Format VND
+                lblPrice.Text = $"Giá: {price:N0} VND";
+            }
+            catch
+            {
+                lblPrice.Text = "Giá: -- VND";
+            }
+        }
+
+        // Ví dụ rule giá (bạn sửa theo bảng giá của bạn)
+        private static long CalculatePriceVnd(string plan, int maxSeats)
+        {
+            long basePrice;
+            switch (plan)
+            {
+                case "1Y":
+                    basePrice = 800000;
+                    break;
+                case "2Y":
+                    basePrice = 1500000;
+                    break;
+                case "LIFETIME":
+                    basePrice = 4000000;
+                    break;
+                default:
+                    basePrice = 0;
+                    break;
+            }
+
+
+            
+            long perSeat = 200_000;
+
+            return basePrice + (long)maxSeats * perSeat;
+        }
+
+
+
     }
 
 }

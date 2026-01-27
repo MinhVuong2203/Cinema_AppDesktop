@@ -29,14 +29,14 @@ namespace UI.Products
                 productBLL = new ProductBLL();
                 isEditMode = false;
                 selectedImagePath = "Image\\Product\\productDefault.png";
-                lblTitle.Text = "THÊM SẢN PHẨM MỚI";
+                lblTitle.Text = global::UI.Resources.Lang.ThemMoiSanPham;
             }
 
             public ProductAddEditForm(Product product) : this()
             {
                 _product = product;
                 isEditMode = true;
-                lblTitle.Text = "CẬP NHẬT SẢN PHẨM";
+                lblTitle.Text = global::UI.Resources.Lang.CapNhatSanPham;
                 LoadProductData();
             }
 
@@ -80,12 +80,12 @@ namespace UI.Products
                         CreateProduct();
                     }
 
-                    MessageBox.Show(
-                        isEditMode ? "Cập nhật sản phẩm thành công!" : "Thêm sản phẩm thành công!",
-                        "Thành công",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                    );
+                MessageBox.Show(
+                    isEditMode ? global::UI.Resources.Lang.CapNhatSanPhamThanhCong : global::UI.Resources.Lang.ThemSanPhamThanhCong,
+                    global::UI.Resources.Lang.ThanhCong,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();

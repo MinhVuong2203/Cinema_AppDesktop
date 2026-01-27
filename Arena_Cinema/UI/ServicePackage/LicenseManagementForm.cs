@@ -47,36 +47,36 @@ namespace UI
             // Cập nhật trạng thái
             if (info.IsExpired)
             {
-                lblStatus.Text = "⚠ Trạng thái: Đã hết hạn";
+                lblStatus.Text = global::UI.Resources.Lang.TrangThaiDaHetHan;
                 lblStatus.ForeColor = Color.Red;
                 panelLicenseHeader.BackColor = Color.FromArgb(211, 47, 47);
             }
             else if (info.IsRevoked)
             {
-                lblStatus.Text = "⚠ Trạng thái: Đã bị thu hồi";
+                lblStatus.Text = global::UI.Resources.Lang.TrangThaiDaBiThuHoi;
                 lblStatus.ForeColor = Color.Red;
                 panelLicenseHeader.BackColor = Color.FromArgb(211, 47, 47);
             }
             else if (info.IsNearExpiry)
             {
-                lblStatus.Text = "⚠ Trạng thái: Sắp hết hạn";
+                lblStatus.Text = global::UI.Resources.Lang.TrangThaiSapHetHan;
                 lblStatus.ForeColor = Color.Orange;
                 panelLicenseHeader.BackColor = Color.FromArgb(255, 152, 0);
             }
             else
             {
-                lblStatus.Text = "✓ Trạng thái: Đang hoạt động";
+                lblStatus.Text = global::UI.Resources.Lang.TrangThaiDangHoatDong;
                 lblStatus.ForeColor = Color.Green;
                 panelLicenseHeader.BackColor = Color.FromArgb(0, 150, 136);
             }
 
             // Ngày hết hạn
-            lblExpiryDate.Text = $"Hết hạn: {license.ExpiresAtUtc.ToLocalTime():dd/MM/yyyy HH:mm}";
+            lblExpiryDate.Text = global::UI.Resources.Lang.HetHan + $"{license.ExpiresAtUtc.ToLocalTime():dd/MM/yyyy HH:mm}";
 
             // Số ngày còn lại
             lblDaysRemaining.Text = info.DaysRemaining > 0
-                ? $"Còn lại: {info.DaysRemaining} ngày"
-                : "Đã hết hạn";
+                ? (global::UI.Resources.Lang.ConLai + $" {info.DaysRemaining} " + global::UI.Resources.Lang.Ngay)
+                : global::UI.Resources.Lang.DaHetHan;
             lblDaysRemaining.ForeColor = info.IsNearExpiry ? Color.Orange : Color.Black;
 
             // Progress bar (ProgressBar không có ProgressColor trong WinForms standard)
@@ -95,11 +95,11 @@ namespace UI
             }
 
             // Chi tiết
-            lblPlanCode.Text = $"Gói: {license.PlanCode ?? "N/A"}";
-            lblMaxSeats.Text = $"Số máy tối đa: {license.MaxSeats}";
-            lblActiveSeats.Text = $"Số máy đã kích hoạt: {info.ActiveInstallations}";
+            lblPlanCode.Text = global::UI.Resources.Lang.Goi + $" {license.PlanCode ?? "N/A"}";
+            lblMaxSeats.Text = global::UI.Resources.Lang.SoMayToiDa + $" {license.MaxSeats}";
+            lblActiveSeats.Text = global::UI.Resources.Lang.SoMayDaKichHoat + $" {info.ActiveInstallations}";
             lblActiveSeats.ForeColor = info.CanActivateMore ? Color.Green : Color.Red;
-            lblActivatedDate.Text = $"Ngày kích hoạt: {license.ActivatedAtUtc.ToLocalTime():dd/MM/yyyy HH:mm}";
+            lblActivatedDate.Text = global::UI.Resources.Lang.NgayKichHoat + $" {license.ActivatedAtUtc.ToLocalTime():dd/MM/yyyy HH:mm}";
             lblTenantId.Text = $"Tenant ID: {license.TenantId}";
         }
 
@@ -182,9 +182,6 @@ namespace UI
             }
         }
 
-        private void panelLicenseDetails_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+      
     }
 }
