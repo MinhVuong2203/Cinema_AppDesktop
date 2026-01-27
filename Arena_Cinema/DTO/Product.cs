@@ -33,6 +33,8 @@ namespace DTO
 
         public bool IsDeleted { get; set; }
 
+        public int? QuaLimited { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InvoiceProduct> InvoiceProducts { get; set; }
 

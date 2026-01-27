@@ -431,7 +431,8 @@ CREATE TABLE Product (
     ProductType NVARCHAR(50), -- đồ ăn, đồ uống, quà lưu niệm, combo
     Price DECIMAL(18,2) CHECK (Price >= 0),
     ImageUrl NVARCHAR(255),
-    IsDeleted BIT DEFAULT 0 NOT NULL
+    IsDeleted BIT DEFAULT 0 NOT NULL,
+	QuaLimited INT DEFAULT 100
 );
 
 CREATE TABLE MovieProduct (
