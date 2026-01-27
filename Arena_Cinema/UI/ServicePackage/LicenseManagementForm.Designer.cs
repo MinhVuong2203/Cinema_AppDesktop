@@ -87,7 +87,7 @@ namespace UI
             this.tabLicenseInfo.Controls.Add(this.panelLicenseHeader);
             this.tabLicenseInfo.Location = new System.Drawing.Point(4, 22);
             this.tabLicenseInfo.Name = "tabLicenseInfo";
-            this.tabLicenseInfo.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.tabLicenseInfo.Padding = new System.Windows.Forms.Padding(20);
             this.tabLicenseInfo.Size = new System.Drawing.Size(1192, 674);
             this.tabLicenseInfo.TabIndex = 0;
             this.tabLicenseInfo.Text = "Thông tin License";
@@ -108,7 +108,6 @@ namespace UI
             this.panelLicenseDetails.Padding = new System.Windows.Forms.Padding(25, 20, 25, 20);
             this.panelLicenseDetails.Size = new System.Drawing.Size(1152, 294);
             this.panelLicenseDetails.TabIndex = 2;
-            //this.panelLicenseDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLicenseDetails_Paint);
             // 
             // lblTenantId
             // 
@@ -197,7 +196,6 @@ namespace UI
             this.panelLicenseStatus.Padding = new System.Windows.Forms.Padding(25, 20, 25, 20);
             this.panelLicenseStatus.Size = new System.Drawing.Size(1152, 250);
             this.panelLicenseStatus.TabIndex = 1;
-            //this.panelLicenseStatus.Paint += new System.Windows.Forms.PaintEventHandler(this.panelLicenseStatus_Paint);
             // 
             // progressExpiry
             // 
@@ -302,7 +300,7 @@ namespace UI
             this.tabActivations.Controls.Add(this.panelActivationsHeader);
             this.tabActivations.Location = new System.Drawing.Point(4, 22);
             this.tabActivations.Name = "tabActivations";
-            this.tabActivations.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.tabActivations.Padding = new System.Windows.Forms.Padding(20);
             this.tabActivations.Size = new System.Drawing.Size(1192, 674);
             this.tabActivations.TabIndex = 1;
             this.tabActivations.Text = "Máy đã cài đặt";

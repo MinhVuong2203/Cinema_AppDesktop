@@ -48,5 +48,15 @@ namespace UI
         {
             Application.Exit(); 
         }
+
+        private void ActivateForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

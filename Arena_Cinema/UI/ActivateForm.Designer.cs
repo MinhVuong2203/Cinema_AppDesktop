@@ -34,6 +34,7 @@
             this.btnActivate = new ReaLTaiizor.Controls.SkyButton();
             this.btnExit = new ReaLTaiizor.Controls.SkyButton();
             this.parrotGradientPanel1 = new ReaLTaiizor.Controls.ParrotGradientPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.parrotGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,20 +44,23 @@
             this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("Modern No. 20", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.Lime;
-            this.lblTitle.Location = new System.Drawing.Point(166, 22);
+            this.lblTitle.Location = new System.Drawing.Point(124, 39);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(299, 34);
+            this.lblTitle.Size = new System.Drawing.Size(249, 29);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Kích hoạt bản quyền";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // lblTenant
             // 
             this.lblTenant.AutoSize = true;
             this.lblTenant.BackColor = System.Drawing.Color.Transparent;
             this.lblTenant.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenant.Location = new System.Drawing.Point(67, 67);
+            this.lblTenant.Location = new System.Drawing.Point(50, 75);
+            this.lblTenant.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTenant.Name = "lblTenant";
-            this.lblTenant.Size = new System.Drawing.Size(431, 25);
+            this.lblTenant.Size = new System.Drawing.Size(357, 20);
             this.lblTenant.TabIndex = 1;
             this.lblTenant.Text = "Vui lòng gửi mã dưới đây cho chúng tôi để kích hoạt";
             // 
@@ -69,13 +73,14 @@
             this.txtKey.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtKey.Hint = "Nhập mã do chúng tôi cung cấp vào đây";
             this.txtKey.LeadingIcon = null;
-            this.txtKey.Location = new System.Drawing.Point(72, 125);
+            this.txtKey.Location = new System.Drawing.Point(54, 123);
+            this.txtKey.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtKey.MaxLength = 32767;
             this.txtKey.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             this.txtKey.Multiline = false;
             this.txtKey.Name = "txtKey";
             this.txtKey.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtKey.Size = new System.Drawing.Size(519, 50);
+            this.txtKey.Size = new System.Drawing.Size(389, 50);
             this.txtKey.TabIndex = 4;
             this.txtKey.TabStop = false;
             this.txtKey.Text = "";
@@ -103,7 +108,8 @@
             this.btnActivate.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(25)))), ((int)(((byte)(73)))), ((int)(((byte)(109)))));
             this.btnActivate.HoverForeColor = System.Drawing.Color.White;
             this.btnActivate.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnActivate.Location = new System.Drawing.Point(215, 195);
+            this.btnActivate.Location = new System.Drawing.Point(161, 179);
+            this.btnActivate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnActivate.Name = "btnActivate";
             this.btnActivate.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnActivate.NormalBGColorB = System.Drawing.Color.Lime;
@@ -113,7 +119,7 @@
             this.btnActivate.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.btnActivate.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(137)))));
             this.btnActivate.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnActivate.Size = new System.Drawing.Size(118, 44);
+            this.btnActivate.Size = new System.Drawing.Size(88, 36);
             this.btnActivate.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnActivate.TabIndex = 5;
             this.btnActivate.Text = "Kích hoạt";
@@ -141,7 +147,8 @@
             this.btnExit.HoverBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(25)))), ((int)(((byte)(73)))), ((int)(((byte)(109)))));
             this.btnExit.HoverForeColor = System.Drawing.Color.White;
             this.btnExit.HoverShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnExit.Location = new System.Drawing.Point(342, 195);
+            this.btnExit.Location = new System.Drawing.Point(256, 179);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.NormalBGColorA = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnExit.NormalBGColorB = System.Drawing.Color.Red;
@@ -151,7 +158,7 @@
             this.btnExit.NormalBorderColorD = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.btnExit.NormalForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(94)))), ((int)(((byte)(137)))));
             this.btnExit.NormalShadowForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnExit.Size = new System.Drawing.Size(109, 44);
+            this.btnExit.Size = new System.Drawing.Size(82, 36);
             this.btnExit.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "Thoát";
@@ -162,6 +169,7 @@
             this.parrotGradientPanel1.BottomLeft = System.Drawing.Color.Black;
             this.parrotGradientPanel1.BottomRight = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.parrotGradientPanel1.CompositingQualityType = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            this.parrotGradientPanel1.Controls.Add(this.label1);
             this.parrotGradientPanel1.Controls.Add(this.btnExit);
             this.parrotGradientPanel1.Controls.Add(this.btnActivate);
             this.parrotGradientPanel1.Controls.Add(this.lblTitle);
@@ -170,10 +178,11 @@
             this.parrotGradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.parrotGradientPanel1.InterpolationType = System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
             this.parrotGradientPanel1.Location = new System.Drawing.Point(0, 0);
+            this.parrotGradientPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.parrotGradientPanel1.Name = "parrotGradientPanel1";
             this.parrotGradientPanel1.PixelOffsetType = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             this.parrotGradientPanel1.PrimerColor = System.Drawing.Color.White;
-            this.parrotGradientPanel1.Size = new System.Drawing.Size(642, 266);
+            this.parrotGradientPanel1.Size = new System.Drawing.Size(482, 242);
             this.parrotGradientPanel1.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             this.parrotGradientPanel1.Style = ReaLTaiizor.Controls.ParrotGradientPanel.GradientStyle.Corners;
             this.parrotGradientPanel1.TabIndex = 7;
@@ -181,16 +190,31 @@
             this.parrotGradientPanel1.TopLeft = System.Drawing.Color.Red;
             this.parrotGradientPanel1.TopRight = System.Drawing.Color.Fuchsia;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.label1.Location = new System.Drawing.Point(56, 9);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(189, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Liên hệ hotline: 0818214849";
+            // 
             // ActivateForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(642, 266);
+            this.ClientSize = new System.Drawing.Size(482, 242);
             this.Controls.Add(this.parrotGradientPanel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "ActivateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mua bản quyền";
+            this.Load += new System.EventHandler(this.ActivateForm_Load);
             this.parrotGradientPanel1.ResumeLayout(false);
             this.parrotGradientPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -205,5 +229,6 @@
         private ReaLTaiizor.Controls.SkyButton btnActivate;
         private ReaLTaiizor.Controls.SkyButton btnExit;
         private ReaLTaiizor.Controls.ParrotGradientPanel parrotGradientPanel1;
+        private System.Windows.Forms.Label label1;
     }
 }

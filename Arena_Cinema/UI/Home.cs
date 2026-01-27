@@ -21,6 +21,7 @@ using UI.Helpers;
 using UI.Dashboard;
 using UI.Revenue;
 using UI.Voucher;
+using DAL;
 
 
 namespace UI
@@ -220,9 +221,26 @@ namespace UI
                     break;
                 case "btnGoiDichVu":
                     LicenseBLL bll = new LicenseBLL();
-                    
-                    LicenseManagementForm settingControl = new LicenseManagementForm(bll.getTenantId());
-                    LoadControl(settingControl);
+                    Console.WriteLine("--------------------" + bll.getTenantId());
+                    if (bll.GetLicense() == null)
+                    {
+                        DialogResult rs = MessageBox.Show("Bạn chưa sử dụng gói dịch vụ!\nHãy liên hệ với trung tâm hỗ trợ để mua gói dịch vụ nếu có nhu cầu!", 
+                             "Xác nhận", 
+                             MessageBoxButtons.YesNo,
+                             MessageBoxIcon.Question
+                            );
+                        if (rs == DialogResult.Yes)
+                        {
+                            ActivateForm acf = new ActivateForm(CinemaDBContext.conn, bll.getTenantId());
+                            acf.Show();
+                        }
+
+                    }
+                    else
+                    {
+                        LicenseManagementForm settingControl = new LicenseManagementForm(bll.getTenantId());
+                        LoadControl(settingControl);
+                    }
                     break;
                 case "btnCaNhan":
                     ProfileUC profileUC = new ProfileUC(this._employee);

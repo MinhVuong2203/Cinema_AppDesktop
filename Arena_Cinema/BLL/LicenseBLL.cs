@@ -2,20 +2,24 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BLL
 {
     public class LicenseBLL
     {
         private readonly LicenseDAL _dal;
-
+       
         public LicenseBLL()
         {
             _dal = new LicenseDAL();
+          
         }
 
         // get Guid tenantId
         public Guid getTenantId() => _dal.getTenantId();
+
+        public DTO.License GetLicense() => _dal.GetLicenseByTenantId(getTenantId());
 
         // Lấy thông tin License kèm validation
         public LicenseInfoViewModel GetLicenseInfo(Guid tenantId)
@@ -104,7 +108,7 @@ namespace BLL
     public class LicenseInfoViewModel
     {
         public bool IsValid { get; set; }
-        public License License { get; set; }
+        public DTO.License License { get; set; }
         public AppSetting AppSetting { get; set; }
         public int ActiveInstallations { get; set; }
         public int DaysRemaining { get; set; }
