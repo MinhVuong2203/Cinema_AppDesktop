@@ -17,34 +17,93 @@ namespace UI.EmployeeSale
     {
         private Home _home;
         private DTO.Employee _employee;
+
         public SaleHomeUC(Home home, DTO.Employee employee)
         {
             InitializeComponent();
             _home = home;
             _employee = employee;
 
-            //load dữ liệu nhân viên
-            LoadEmployeeData(employee);
+            // Khởi tạo giao diện
+            InitializeUI();
+            
+            // Bắt đầu đồng hồ
+            StartClock();
         }
 
-        //Load dữ liệu nhân viên
-        public void LoadEmployeeData(DTO.Employee employee)
+        private void InitializeUI()
         {
-            //picAVT.ImageLocation = employee.ImageUrl;
-            ImgHelper.DisplayImageFromRelative(employee.ImageUrl, picAVT);
-            lb_EmName.Text = employee.FullName;
-            lb_EmpIDText.Text = employee.EmployeeID.ToString();
-            lb_BranchText.Text = employee.Address;
-            lb_EmailText.Text = employee.Email;
-            lb_PhoneText.Text = employee.Phone;
-            lb_BthDayText.Text = employee.BirthDate?.ToString("dd/MM/yyyy") ?? "N/A";
-            lb_SalaryText.Text = employee.HourWage?.ToString("C") ?? "N/A";
-            lb_workDateText.Text = employee.RegisterDate?.ToString("dd/MM/yyyy") ?? "N/A";
+            // Cập nhật thông điệp chào mừng với tên nhân viên
+            lblWelcomeMessage.Text = $"Xin chào, {_employee.FullName}! 👋";
+            
+            // Thêm hiệu ứng hover cho các panel
+            AddHoverEffect(panel_SaleTicket, Color.FromArgb(59, 130, 246));
+            AddHoverEffect(panel_SaleProduct, Color.FromArgb(34, 197, 94));
+        }
+
+        /// <summary>
+        /// Thêm hiệu ứng hover cho panel
+        /// </summary>
+        private void AddHoverEffect(Panel panel, Color accentColor)
+        {
+            Color originalColor = panel.BackColor;
+            Color hoverColor = Color.FromArgb(248, 250, 252);
+
+            panel.MouseEnter += (s, e) =>
+            {
+                panel.BackColor = hoverColor;
+                panel.Cursor = Cursors.Hand;
+            };
+
+            panel.MouseLeave += (s, e) =>
+            {
+                panel.BackColor = originalColor;
+            };
+
+            // Thêm click event cho cả panel
+            panel.Click += (s, e) =>
+            {
+                if (panel == panel_SaleTicket)
+                    btn_SaleTicket_Click(s, e);
+                else if (panel == panel_SaleProduct)
+                    btn_SaleProduct_Click(s, e);
+            };
+        }
+
+        /// <summary>
+        /// Bắt đầu đồng hồ hiển thị thời gian
+        /// </summary>
+        private void StartClock()
+        {
+            UpdateDateTime();
+            timerClock.Start();
+        }
+
+        /// <summary>
+        /// Cập nhật ngày giờ
+        /// </summary>
+        private void TimerClock_Tick(object sender, EventArgs e)
+        {
+            UpdateDateTime();
+        }
+
+        /// <summary>
+        /// Cập nhật hiển thị ngày giờ
+        /// </summary>
+        private void UpdateDateTime()
+        {
+            DateTime now = DateTime.Now;
+            string dayOfWeek = now.ToString("dddd", new System.Globalization.CultureInfo("vi-VN"));
+            
+            // Viết hoa chữ cái đầu
+            dayOfWeek = char.ToUpper(dayOfWeek[0]) + dayOfWeek.Substring(1);
+            
+            lblDateTime.Text = $"{dayOfWeek}, {now:dd/MM/yyyy} - {now:HH:mm:ss}";
         }
 
         private void btn_SaleTicket_Click(object sender, EventArgs e)
         {
-            this._home.LoadControl(new SelectMovieUC(_home, this._employee));
+            _home.LoadControl(new SelectMovieUC(_home, _employee));
         }
 
         private void btn_SaleProduct_Click(object sender, EventArgs e)
