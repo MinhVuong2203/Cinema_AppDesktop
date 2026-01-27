@@ -358,7 +358,13 @@ namespace BLL
             if (showTime.StartTime < DateTime.Now.AddDays(-1))
                 return (false, "✗ Thời gian bắt đầu quá xa trong quá khứ!");
 
-            // ========== THÊM: Kiểm tra ngày khởi chiếu của phim ==========
+            // ========== Kiểm tra khung giờ chiếu 8:00 - 23:00 ==========
+            TimeSpan startTimeOfDay = showTime.StartTime.TimeOfDay;
+            if (startTimeOfDay < new TimeSpan(8, 0, 0) || startTimeOfDay >= new TimeSpan(23, 0, 0))
+            {
+                return (false, "✗ Suất chiếu phải trong khung giờ 8:00 - 23:00!");
+            }
+            // ========== Kiểm tra ngày khởi chiếu của phim ==========
             var movie = _movieBLL.GetMovieById(showTime.MovieID);
             if (movie != null && movie.StartTime.HasValue)
             {
@@ -372,7 +378,20 @@ namespace BLL
                                   $"Phim \"{movie.Title}\" khởi chiếu từ ngày {movieStartDate:dd/MM/yyyy}");
                 }
             }
+            // ========== Kiểm tra giờ kết thúc không vượt quá 23:00 ==========
 
+            if (movie != null)
+            {
+                DateTime endTime = showTime.StartTime.AddMinutes(movie.DurationMinutes);
+                TimeSpan endTimeOfDay = endTime.TimeOfDay;
+
+                if (endTimeOfDay > new TimeSpan(23, 0, 0) || endTimeOfDay < new TimeSpan(8, 0, 0))
+                {
+                    return (false, $"✗ Suất chiếu không hợp lệ!\n" +
+                                  $"Phim có thời lượng là {movie.DurationMinutes} phút và sẽ kết thúc lúc {endTime:HH:mm}.\n" +
+                                  $"Giờ kết thúc phải trước 23:00!");
+                }
+            }
             // ========== THÊM: Kiểm tra ngày kết chiếu của phim ==========
             if (movie != null && movie.EndTime.HasValue)
             {
