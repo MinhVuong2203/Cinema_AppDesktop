@@ -1537,6 +1537,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tết.
+        /// </summary>
+        public static string Test {
+            get {
+                return ResourceManager.GetString("Test", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tháng.
         /// </summary>
         public static string Thang {

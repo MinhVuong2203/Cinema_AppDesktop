@@ -814,39 +814,121 @@ namespace UI.EmployeeSale
         }
 
         // Lấy hoặc tạo khách hàng mặc định
+        // Lấy hoặc tạo khách hàng mặc định
         private DTO.Customer GetCustomerByPhone(string phone)
         {
             try
             {
+                // Nếu phone rỗng, trả về null
+                if (string.IsNullOrWhiteSpace(phone))
+                {
+                    return null;
+                }
+
                 using (var context = new CinemaDBContext())
                 {
+                    // Tắt lazy loading và proxy creation
+                    context.Configuration.ProxyCreationEnabled = false;
+                    context.Configuration.LazyLoadingEnabled = false;
+
                     // Tìm khách hàng theo số điện thoại
                     var customer = context.Customers
+                        .AsNoTracking()
                         .FirstOrDefault(c => c.Phone == phone && !c.IsDeleted);
-                    //nếu không có mở cửa sổ tạo khách hàng mới và txt_phone không được trống
-                    if (customer == null && !string.IsNullOrWhiteSpace(phone))
+
+                    // Nếu không tìm thấy, mở form tạo mới
+                    if (customer == null)
                     {
                         CreatCustomer creatCustomer = new CreatCustomer(phone);
                         var result = creatCustomer.ShowDialog();
+
                         if (result == DialogResult.OK)
                         {
-                            // Lấy khách hàng mới tạo
-                            var customernew = context.Customers
+                            // Đợi một chút để đảm bảo data đã được commit
+                            System.Threading.Thread.Sleep(200);
+
+                            // Sử dụng context MỚI để query khách hàng vừa tạo
+                            using (var newContext = new CinemaDBContext())
+                            {
+                                // Tắt tracking và lazy loading
+                                newContext.Configuration.ProxyCreationEnabled = false;
+                                newContext.Configuration.LazyLoadingEnabled = false;
+
+                                var newCustomer = newContext.Customers
+                                    .AsNoTracking()
                                     .FirstOrDefault(c => c.Phone == phone && !c.IsDeleted);
-                            return customernew;
+
+                                if (newCustomer == null)
+                                {
+                                    MessageBox.Show("Không thể tìm thấy khách hàng vừa tạo. Vui lòng thử lại!",
+                                        "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+
+                                return newCustomer;
+                            }
                         }
                         else
                         {
-                            return null; 
+                            // User đã hủy việc tạo khách hàng
+                            return null;
                         }
                     }
 
                     return customer;
                 }
             }
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                // Log chi tiết lỗi validation
+                string errorMessage = "Lỗi validation khi lưu khách hàng:\n";
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        errorMessage += $"- Trường '{validationError.PropertyName}': {validationError.ErrorMessage}\n";
+                        Console.WriteLine($"[Validation Error] {validationError.PropertyName}: {validationError.ErrorMessage}");
+                    }
+                }
+
+                MessageBox.Show(errorMessage, "Lỗi Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException ex)
+            {
+                // Log chi tiết lỗi update
+                string errorMessage = "Lỗi khi cập nhật database:\n";
+                if (ex.InnerException != null)
+                {
+                    errorMessage += ex.InnerException.Message;
+                    Console.WriteLine($"[DbUpdate Error] {ex.InnerException.Message}");
+
+                    if (ex.InnerException.InnerException != null)
+                    {
+                        errorMessage += "\n" + ex.InnerException.InnerException.Message;
+                        Console.WriteLine($"[DbUpdate Inner Error] {ex.InnerException.InnerException.Message}");
+                    }
+                }
+                else
+                {
+                    errorMessage += ex.Message;
+                }
+
+                MessageBox.Show(errorMessage, "Lỗi Database", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
             catch (Exception ex)
             {
-                throw new Exception($"Lỗi khi lấy khách hàng: {ex.Message}");
+                string errorMessage = $"Lỗi không xác định:\n{ex.Message}";
+                if (ex.InnerException != null)
+                {
+                    errorMessage += $"\n\nChi tiết: {ex.InnerException.Message}";
+                }
+
+                Console.WriteLine($"[Error] {ex.Message}");
+                Console.WriteLine($"[StackTrace] {ex.StackTrace}");
+
+                MessageBox.Show(errorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
 

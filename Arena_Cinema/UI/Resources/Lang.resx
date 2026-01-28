@@ -770,5 +770,7 @@
   </data>
   <data name="hoatdong" xml:space="preserve">
     <value>Hoạt động</value>
+  <data name="Test" xml:space="preserve">
+    <value>Tết</value>
   </data>
 </root>

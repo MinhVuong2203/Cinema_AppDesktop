@@ -38,6 +38,7 @@
             this.txtName = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             this.lblTitle = new ReaLTaiizor.Controls.BigLabel();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.txtSoLuongToiDa = new ReaLTaiizor.Controls.MaterialTextBoxEdit();
             this.panelForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPreview)).BeginInit();
             this.SuspendLayout();
@@ -45,6 +46,7 @@
             // panelForm
             // 
             this.panelForm.BackColor = System.Drawing.Color.White;
+            this.panelForm.Controls.Add(this.txtSoLuongToiDa);
             this.panelForm.Controls.Add(this.btnCancel);
             this.panelForm.Controls.Add(this.btnSave);
             this.panelForm.Controls.Add(this.btnChooseImage);
@@ -55,10 +57,10 @@
             this.panelForm.Controls.Add(this.lblTitle);
             this.panelForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelForm.Location = new System.Drawing.Point(0, 0);
-            this.panelForm.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelForm.Name = "panelForm";
-            this.panelForm.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panelForm.Size = new System.Drawing.Size(450, 528);
+            this.panelForm.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panelForm.Size = new System.Drawing.Size(600, 650);
             this.panelForm.TabIndex = 0;
             this.panelForm.Text = "panel1";
             // 
@@ -72,8 +74,8 @@
             this.btnCancel.HighEmphasis = false;
             this.btnCancel.Icon = null;
             this.btnCancel.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btnCancel.Location = new System.Drawing.Point(294, 464);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnCancel.Location = new System.Drawing.Point(413, 579);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCancel.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -93,8 +95,8 @@
             this.btnSave.HighEmphasis = true;
             this.btnSave.Icon = null;
             this.btnSave.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btnSave.Location = new System.Drawing.Point(364, 464);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnSave.Location = new System.Drawing.Point(506, 579);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSave.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnSave.Name = "btnSave";
             this.btnSave.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -114,8 +116,8 @@
             this.btnChooseImage.HighEmphasis = false;
             this.btnChooseImage.Icon = null;
             this.btnChooseImage.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btnChooseImage.Location = new System.Drawing.Point(147, 390);
-            this.btnChooseImage.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnChooseImage.Location = new System.Drawing.Point(210, 499);
+            this.btnChooseImage.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnChooseImage.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.btnChooseImage.Name = "btnChooseImage";
             this.btnChooseImage.NoAccentTextColor = System.Drawing.Color.Empty;
@@ -131,10 +133,10 @@
             // 
             this.picPreview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
             this.picPreview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picPreview.Location = new System.Drawing.Point(139, 261);
-            this.picPreview.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picPreview.Location = new System.Drawing.Point(185, 340);
+            this.picPreview.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picPreview.Name = "picPreview";
-            this.picPreview.Size = new System.Drawing.Size(150, 122);
+            this.picPreview.Size = new System.Drawing.Size(199, 150);
             this.picPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picPreview.TabIndex = 4;
             this.picPreview.TabStop = false;
@@ -151,8 +153,8 @@
             this.txtPrice.HideSelection = true;
             this.txtPrice.Hint = global::UI.Resources.Lang.GiaSanPhamVND;
             this.txtPrice.LeadingIcon = null;
-            this.txtPrice.Location = new System.Drawing.Point(22, 195);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrice.Location = new System.Drawing.Point(29, 240);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPrice.MaxLength = 32767;
             this.txtPrice.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             this.txtPrice.Name = "txtPrice";
@@ -164,12 +166,13 @@
             this.txtPrice.SelectionLength = 0;
             this.txtPrice.SelectionStart = 0;
             this.txtPrice.ShortcutsEnabled = true;
-            this.txtPrice.Size = new System.Drawing.Size(405, 48);
+            this.txtPrice.Size = new System.Drawing.Size(258, 48);
             this.txtPrice.TabIndex = 3;
             this.txtPrice.TabStop = false;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtPrice.TrailingIcon = null;
             this.txtPrice.UseSystemPasswordChar = false;
+            //this.txtPrice.Click += new System.EventHandler(this.txtPrice_Click);
             // 
             // cboType
             // 
@@ -194,12 +197,12 @@
             "Snack - kẹo",
             "Poca",
             "Combo"});
-            this.cboType.Location = new System.Drawing.Point(22, 130);
-            this.cboType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboType.Location = new System.Drawing.Point(29, 160);
+            this.cboType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboType.MaxDropDownItems = 4;
             this.cboType.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             this.cboType.Name = "cboType";
-            this.cboType.Size = new System.Drawing.Size(406, 49);
+            this.cboType.Size = new System.Drawing.Size(540, 49);
             this.cboType.StartIndex = 0;
             this.cboType.TabIndex = 2;
             // 
@@ -215,8 +218,8 @@
             this.txtName.HideSelection = true;
             this.txtName.Hint = global::UI.Resources.Lang.TenSanPham;
             this.txtName.LeadingIcon = null;
-            this.txtName.Location = new System.Drawing.Point(22, 65);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtName.Location = new System.Drawing.Point(29, 80);
+            this.txtName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtName.MaxLength = 100;
             this.txtName.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
             this.txtName.Name = "txtName";
@@ -228,7 +231,7 @@
             this.txtName.SelectionLength = 0;
             this.txtName.SelectionStart = 0;
             this.txtName.ShortcutsEnabled = true;
-            this.txtName.Size = new System.Drawing.Size(405, 48);
+            this.txtName.Size = new System.Drawing.Size(540, 48);
             this.txtName.TabIndex = 1;
             this.txtName.TabStop = false;
             this.txtName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -241,8 +244,7 @@
             this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.lblTitle.Location = new System.Drawing.Point(18, 16);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitle.Location = new System.Drawing.Point(24, 20);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(309, 37);
             this.lblTitle.TabIndex = 0;
@@ -253,16 +255,50 @@
             this.openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
             this.openFileDialog.Title = "Chọn hình ảnh sản phẩm";
             // 
+            // txtSoLuongToiDa
+            // 
+            this.txtSoLuongToiDa.AnimateReadOnly = false;
+            this.txtSoLuongToiDa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtSoLuongToiDa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtSoLuongToiDa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtSoLuongToiDa.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtSoLuongToiDa.Depth = 0;
+            this.txtSoLuongToiDa.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtSoLuongToiDa.HideSelection = true;
+            this.txtSoLuongToiDa.Hint = "Số lượng tối đa";
+            this.txtSoLuongToiDa.LeadingIcon = null;
+            this.txtSoLuongToiDa.Location = new System.Drawing.Point(304, 240);
+            this.txtSoLuongToiDa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSoLuongToiDa.MaxLength = 32767;
+            this.txtSoLuongToiDa.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.OUT;
+            this.txtSoLuongToiDa.Name = "txtSoLuongToiDa";
+            this.txtSoLuongToiDa.PasswordChar = '\0';
+            this.txtSoLuongToiDa.PrefixSuffixText = null;
+            this.txtSoLuongToiDa.ReadOnly = false;
+            this.txtSoLuongToiDa.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtSoLuongToiDa.SelectedText = "";
+            this.txtSoLuongToiDa.SelectionLength = 0;
+            this.txtSoLuongToiDa.SelectionStart = 0;
+            this.txtSoLuongToiDa.ShortcutsEnabled = true;
+            this.txtSoLuongToiDa.Size = new System.Drawing.Size(265, 48);
+            this.txtSoLuongToiDa.TabIndex = 8;
+            this.txtSoLuongToiDa.TabStop = false;
+            this.txtSoLuongToiDa.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtSoLuongToiDa.TrailingIcon = null;
+            this.txtSoLuongToiDa.UseSystemPasswordChar = false;
+            //this.txtSoLuongToiDa.Click += new System.EventHandler(this.txtSoLuongToiDa_Click);
+            this.txtSoLuongToiDa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuongToiDa_KeyPress);
+            // 
             // ProductAddEditForm
             // 
             this.AcceptButton = this.btnSave;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(450, 528);
+            this.ClientSize = new System.Drawing.Size(600, 650);
             this.Controls.Add(this.panelForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProductAddEditForm";
@@ -285,6 +321,7 @@
         private ReaLTaiizor.Controls.MaterialButton btnSave;
         private ReaLTaiizor.Controls.MaterialButton btnCancel;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private ReaLTaiizor.Controls.MaterialTextBoxEdit txtSoLuongToiDa;
     }
 
     #endregion

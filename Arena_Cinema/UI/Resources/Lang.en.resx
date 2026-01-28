@@ -770,5 +770,7 @@
   </data>
   <data name="hoatdong" xml:space="preserve">
     <value>Active</value>
+  <data name="Test" xml:space="preserve">
+    <value>New Year</value>
   </data>
 </root>
