@@ -8,13 +8,11 @@ namespace UI.ShowTime
 {
     public partial class AddShowTimeUC : UserControl
     {
-        // Constructor không tham số (BẮT BUỘC cho Designer)
         public AddShowTimeUC()
         {
             InitializeComponent();
         }
 
-        // Constructor có tham số
         public AddShowTimeUC(Home home, DTO.Employee employee) : this()
         {
             _home = home;

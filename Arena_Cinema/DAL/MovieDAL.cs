@@ -265,10 +265,7 @@ namespace DAL
             }
         }
 
-        // =====================================================
-        // PHƯƠNG THỨC MỚI: Sử dụng Stored Procedure phân trang
-        // =====================================================
-        // FIXED: Đổi thứ tự tham số - tham số bắt buộc trước, tham số optional sau
+        // Sử dụng Stored Procedure phân trang
         public List<Movie> GetMoviesPaginatedWithSP(
      int pageNumber,
      int pageSize,

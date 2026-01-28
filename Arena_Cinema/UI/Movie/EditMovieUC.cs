@@ -35,7 +35,6 @@ namespace UI.Movie
             //btnCancel.Click += BtnCancel_Click;
             //btnUploadImage.Click += BtnUploadImage_Click;
 
-            // Track changes
             SetupChangeTracking();
 
             // Load dữ liệu phim vào form

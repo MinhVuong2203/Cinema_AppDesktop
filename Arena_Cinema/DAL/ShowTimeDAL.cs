@@ -180,13 +180,13 @@ namespace DAL
                 {
                     DateTime existingEndTime = s.StartTime.AddMinutes(s.Movie.DurationMinutes);
 
-                    // Trường hợp 1: StartTime mới nằm trong khoảng [existingStart, existingEnd)
+                    // TH 1: StartTime mới nằm trong khoảng [existingStart, existingEnd)
                     bool case1 = startTime >= s.StartTime && startTime < existingEndTime;
 
-                    // Trường hợp 2: EndTime mới nằm trong khoảng (existingStart, existingEnd]
+                    // TH 2: EndTime mới nằm trong khoảng (existingStart, existingEnd]
                     bool case2 = endTime > s.StartTime && endTime <= existingEndTime;
 
-                    // Trường hợp 3: Suất chiếu mới bao trùm suất chiếu cũ
+                    // TH 3: Suất chiếu mới bao trùm suất chiếu cũ
                     bool case3 = startTime <= s.StartTime && endTime >= existingEndTime;
 
                     return case1 || case2 || case3;
@@ -334,7 +334,6 @@ namespace DAL
                 int totalPages = 0;
                 int currentPageResult = 0;
 
-                // Đảm bảo connection được mở
                 if (_context.Database.Connection.State != System.Data.ConnectionState.Open)
                 {
                     _context.Database.Connection.Open();
@@ -345,8 +344,7 @@ namespace DAL
                     command.CommandText = "sp_GetShowTimesPaginated";
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     command.CommandTimeout = 60; // Tăng timeout
-
-                    // Thêm parameters với kiểm tra kỹ
+        
                     var paramPageNumber = command.CreateParameter();
                     paramPageNumber.ParameterName = "@PageNumber";
                     paramPageNumber.Value = pageNumber;
