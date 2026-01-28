@@ -361,7 +361,6 @@ namespace UI.Voucher
                 System.Diagnostics.Debug.WriteLine($"Current Points: {customer.Point?.ToString("N2") ?? "NULL"}");
                 System.Diagnostics.Debug.WriteLine($"Required Points: {voucher.PointRequired}");
 
-                // 3. KIỂM TRA ĐIỂM CẨN THẬN - XỬ LÝ NULLABLE
                 decimal currentPoints = customer.Point ?? 0; // Nếu null thì coi như 0
 
                 if (currentPoints < voucher.PointRequired)

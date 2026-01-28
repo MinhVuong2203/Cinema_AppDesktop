@@ -242,24 +242,34 @@ namespace UI.EmployeeSale
 
         private void LoadMovieInfo()
         {
-            // Cho phép label tự động điều chỉnh kích thước
-            lbTitle.AutoSize = true;
-            lbTitle.MaximumSize = new Size(520, 0);
-
+            lbTitle.AutoSize = false;
+            lbTitle.Size = new Size(500, 60); 
+            lbTitle.MaximumSize = new Size(500, 0);
             lbTitle.Text = $"{_movie.Title} ({_movie.AgeLimit})";
 
-            // Điều chỉnh vị trí của lbInfo dựa trên chiều cao thực tế của lbTitle
-            int titleBottom = lbTitle.Location.Y + lbTitle.Height + 10; // 10px margin
-            lbInfo.Location = new Point(lbInfo.Location.X, titleBottom);
+            using (Graphics g = this.CreateGraphics())
+            {
+                SizeF textSize = g.MeasureString(lbTitle.Text, lbTitle.Font, lbTitle.Width);
+                int actualHeight = (int)Math.Ceiling(textSize.Height);
 
+                // Cập nhật chiều cao của lbTitle
+                if (actualHeight > lbTitle.Height)
+                {
+                    lbTitle.Height = actualHeight + 5;
+                }
+            }
+
+            int titleBottom = lbTitle.Location.Y + lbTitle.Height + 5;
+            lbInfo.Location = new Point(lbInfo.Location.X, titleBottom);
             lbInfo.AutoSize = true;
-            lbInfo.MaximumSize = new Size(520, 0);
+            lbInfo.MaximumSize = new Size(500, 0);
             lbInfo.Text = $"{_movie.Genre} • {_movie.DurationMinutes} phút • {_movie.AgeLimit}";
 
-            // Điều chỉnh chiều cao của pnlMovieInfo nếu cần
-            int infoBottom = lbInfo.Location.Y + lbInfo.Height + 20; // 20px bottom padding
+            int infoBottom = lbInfo.Location.Y + lbInfo.Height + 20;
             int picPosterBottom = picPoster.Location.Y + picPoster.Height + 20;
-            int requiredHeight = Math.Max(infoBottom, picPosterBottom) + 20;
+            int txtPhoneBottom = txt_Phone.Location.Y + txt_Phone.Height + 50;
+
+            int requiredHeight = Math.Max(Math.Max(infoBottom, picPosterBottom), txtPhoneBottom);
 
             if (pnlMovieInfo.Height < requiredHeight)
             {
@@ -286,7 +296,7 @@ namespace UI.EmployeeSale
                 }
                 var btnShowTime = new Button
                 {
-                    Text = $"{showTime.StartTime:HH:mm} - Phòng {showTime.RoomID} - {showTime.Price.ToString("C0")}",
+                    Text = $"{showTime.StartTime:HH:mm} - Phòng {showTime.RoomID}",
                     Width = 200,
                     Height = 40,
                     Margin = new Padding(5),
