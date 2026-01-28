@@ -53,11 +53,11 @@ namespace UI.Dashboard
                 var stats = _invoiceBLL.GetDashboardStatistics();
 
                 // Cập nhật các label
-                lblMonthYear.Text = $"Doanh Thu Tháng {stats["CurrentMonth"]}";
+                lblMonthYear.Text = global::UI.Resources.Lang.doanhthuthang+ $" {stats["CurrentMonth"]}";
                 lblRevenue.Text = _invoiceBLL.FormatCurrency((decimal)stats["MonthlyRevenue"]);
 
                 decimal growth = (decimal)stats["RevenueGrowth"];
-                lblGrowth.Text = _invoiceBLL.FormatPercentage(growth) + " so với tháng trước";
+                lblGrowth.Text = _invoiceBLL.FormatPercentage(growth) + global::UI.Resources.Lang.sovoithangtruoc;
                 lblGrowth.ForeColor = _invoiceBLL.GetGrowthColor();
 
                 // Hiển thị icon tăng/giảm
@@ -71,10 +71,10 @@ namespace UI.Dashboard
                 lblGrowthIcon.ForeColor = _invoiceBLL.GetGrowthColor();
 
                 // Các thống kê bổ sung
-                lblInvoiceCount.Text = $"Số hóa đơn: {stats["InvoiceCount"]}";
-                lblTodayRevenue.Text = $"Doanh thu hôm nay: {_invoiceBLL.FormatCurrency((decimal)stats["TodayRevenue"])}";
-                lblAvgInvoice.Text = $"Giá trị TB/HĐ: {_invoiceBLL.FormatCurrency((decimal)stats["AverageInvoiceValue"])}";
-                lblYearRevenue.Text = $"Doanh thu năm {DateTime.Now.Year}: {_invoiceBLL.FormatCurrency((decimal)stats["YearlyRevenue"])}";
+                lblInvoiceCount.Text = global::UI.Resources.Lang.sohoadon + $": {stats["InvoiceCount"]}";
+                lblTodayRevenue.Text = global::UI.Resources.Lang.doanhthuhomnay + $": {_invoiceBLL.FormatCurrency((decimal)stats["TodayRevenue"])}";
+                lblAvgInvoice.Text = global::UI.Resources.Lang.giatritrungbinh + $": {_invoiceBLL.FormatCurrency((decimal)stats["AverageInvoiceValue"])}";
+                lblYearRevenue.Text = global::UI.Resources.Lang.doanhthunam + $": {DateTime.Now.Year}: {_invoiceBLL.FormatCurrency((decimal)stats["YearlyRevenue"])}";
             }
             catch (Exception ex)
             {
@@ -100,7 +100,7 @@ namespace UI.Dashboard
                 {
                     flowPanelMovies.Visible = false;
                     lblNoData.Visible = true;
-                    lblTitle.Text = "PHIM SẮP CHIẾU (0 phim)";
+                    lblTitle.Text = global::UI.Resources.Lang.phimsapchieu + "(0 phim)";
                     btnNext.Enabled = false;
                     btnPrev.Enabled = false;
                     return;
@@ -108,7 +108,7 @@ namespace UI.Dashboard
 
                 flowPanelMovies.Visible = true;
                 lblNoData.Visible = false;
-                lblTitle.Text = $"PHIM SẮP CHIẾU ({_allUpcomingMovies.Count} phim)";
+                lblTitle.Text = global::UI.Resources.Lang.phimsapchieu + $"({_allUpcomingMovies.Count})"+ global::UI.Resources.Lang.phimlbl;
 
                 DisplayPage(_currentPage);
             }
@@ -144,7 +144,7 @@ namespace UI.Dashboard
             btnPrev.Enabled = pageIndex > 0;
             btnNext.Enabled = pageIndex < totalPages - 1;
 
-            lblTitle.Text = $"PHIM SẮP CHIẾU ({_allUpcomingMovies.Count} phim) - Trang {pageIndex + 1}/{totalPages}";
+            lblTitle.Text = global::UI.Resources.Lang.phimsapchieu + $" ({_allUpcomingMovies.Count} " + global::UI.Resources.Lang.phimlbl + ") - "+ global::UI.Resources.Lang.lblTrang + $" {pageIndex + 1}/{totalPages}";
         }
 
         private void BtnNext_Click(object sender, EventArgs e)
