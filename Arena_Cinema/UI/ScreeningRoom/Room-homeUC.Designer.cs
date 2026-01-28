@@ -82,7 +82,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(245, 32);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "Quản lí phòng chiếu";
+            this.lblTitle.Text = global::UI.Resources.Lang.QlyPhongChieu;
             // 
             // btnAddRoom
             // 
@@ -180,7 +180,7 @@
             this.BtnSeatManagement.NoAccentTextColor = System.Drawing.Color.Empty;
             this.BtnSeatManagement.Size = new System.Drawing.Size(147, 42);
             this.BtnSeatManagement.TabIndex = 8;
-            this.BtnSeatManagement.Text = "Bảo trì phòng";
+            this.BtnSeatManagement.Text = global::UI.Resources.Lang.baotri;
             this.BtnSeatManagement.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.BtnSeatManagement.UseAccentColor = false;
             this.BtnSeatManagement.UseVisualStyleBackColor = true;
@@ -366,7 +366,7 @@
             this.btnBaoTri.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(40)))), ((int)(((byte)(55)))));
             this.btnBaoTri.ButtonImage = null;
             this.btnBaoTri.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
-            this.btnBaoTri.ButtonText = "Phòng đang bảo trì";
+            this.btnBaoTri.ButtonText = global::UI.Resources.Lang.phongBaoTri;
             this.btnBaoTri.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.btnBaoTri.ClickTextColor = System.Drawing.Color.White;
             this.btnBaoTri.CornerRadius = 5;

@@ -79,7 +79,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(289, 32);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "DOANH THU CÁC PHIM";
+            this.lblTitle.Text = global::UI.Resources.Lang.doanhthucacphim;
             // 
             // pnlFilter
             // 
@@ -111,7 +111,7 @@
             this.lblFilter.Name = "lblFilter";
             this.lblFilter.Size = new System.Drawing.Size(106, 19);
             this.lblFilter.TabIndex = 0;
-            this.lblFilter.Text = "Lọc theo thời gian:";
+            this.lblFilter.Text = global::UI.Resources.Lang.loctheothoigian ;
             // 
             // btnDay
             // 
@@ -123,7 +123,7 @@
             this.btnDay.Name = "btnDay";
             this.btnDay.Size = new System.Drawing.Size(80, 35);
             this.btnDay.TabIndex = 1;
-            this.btnDay.Text = "Ngày";
+            this.btnDay.Text = global::UI.Resources.Lang.Ngay;
             this.btnDay.UseVisualStyleBackColor = false;
             this.btnDay.Click += new System.EventHandler(this.btnDay_Click);
             // 
@@ -137,7 +137,7 @@
             this.btnWeek.Name = "btnWeek";
             this.btnWeek.Size = new System.Drawing.Size(80, 35);
             this.btnWeek.TabIndex = 2;
-            this.btnWeek.Text = "Tuần";
+            this.btnWeek.Text = global::UI.Resources.Lang.Tuan;
             this.btnWeek.UseVisualStyleBackColor = false;
             this.btnWeek.Click += new System.EventHandler(this.btnWeek_Click);
             // 
@@ -151,7 +151,7 @@
             this.btnMonth.Name = "btnMonth";
             this.btnMonth.Size = new System.Drawing.Size(80, 35);
             this.btnMonth.TabIndex = 3;
-            this.btnMonth.Text = "Tháng";
+            this.btnMonth.Text = global::UI.Resources.Lang.Thang;
             this.btnMonth.UseVisualStyleBackColor = false;
             this.btnMonth.Click += new System.EventHandler(this.btnMonth_Click);
             // 
@@ -165,7 +165,7 @@
             this.btnQuarter.Name = "btnQuarter";
             this.btnQuarter.Size = new System.Drawing.Size(80, 35);
             this.btnQuarter.TabIndex = 4;
-            this.btnQuarter.Text = "Quý";
+            this.btnQuarter.Text = global::UI.Resources.Lang.Quy;
             this.btnQuarter.UseVisualStyleBackColor = false;
             this.btnQuarter.Click += new System.EventHandler(this.btnQuarter_Click);
             // 
@@ -179,7 +179,7 @@
             this.btnYear.Name = "btnYear";
             this.btnYear.Size = new System.Drawing.Size(80, 35);
             this.btnYear.TabIndex = 5;
-            this.btnYear.Text = "Năm";
+            this.btnYear.Text = global::UI.Resources.Lang.Nam;
             this.btnYear.UseVisualStyleBackColor = false;
             this.btnYear.Click += new System.EventHandler(this.btnYear_Click);
             // 
@@ -191,7 +191,7 @@
             this.lblSelectDate.Name = "lblSelectDate";
             this.lblSelectDate.Size = new System.Drawing.Size(70, 15);
             this.lblSelectDate.TabIndex = 6;
-            this.lblSelectDate.Text = "Chọn ngày:";
+            this.lblSelectDate.Text = global::UI.Resources.Lang.chonNgay;
             // 
             // dtpSelectDate
             // 
@@ -211,7 +211,7 @@
             this.lblTopCount.Name = "lblTopCount";
             this.lblTopCount.Size = new System.Drawing.Size(82, 15);
             this.lblTopCount.TabIndex = 8;
-            this.lblTopCount.Text = "Hiển thị Top:";
+            this.lblTopCount.Text = global::UI.Resources.Lang.hienthitop;
             // 
             // cboTopCount
             // 
@@ -234,7 +234,7 @@
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(100, 35);
             this.btnRefresh.TabIndex = 10;
-            this.btnRefresh.Text = "Làm mới";
+            this.btnRefresh.Text = global::UI.Resources.Lang.lammoi;
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
@@ -266,7 +266,7 @@
             this.lblTotalRevenue.Name = "lblTotalRevenue";
             this.lblTotalRevenue.Size = new System.Drawing.Size(101, 15);
             this.lblTotalRevenue.TabIndex = 0;
-            this.lblTotalRevenue.Text = "Tổng doanh thu:";
+            this.lblTotalRevenue.Text = global::UI.Resources.Lang.tongdoanhthu;
             // 
             // lblTotalRevenueValue
             // 
@@ -288,7 +288,7 @@
             this.lblTotalTickets.Name = "lblTotalTickets";
             this.lblTotalTickets.Size = new System.Drawing.Size(86, 15);
             this.lblTotalTickets.TabIndex = 2;
-            this.lblTotalTickets.Text = "Tổng số vé:";
+            this.lblTotalTickets.Text = global::UI.Resources.Lang.tongsove;
             // 
             // lblTotalTicketsValue
             // 
@@ -310,7 +310,7 @@
             this.lblTotalMovies.Name = "lblTotalMovies";
             this.lblTotalMovies.Size = new System.Drawing.Size(89, 15);
             this.lblTotalMovies.TabIndex = 4;
-            this.lblTotalMovies.Text = "Số phim:";
+            this.lblTotalMovies.Text = global::UI.Resources.Lang.tongsophim;
             // 
             // lblTotalMoviesValue
             // 
@@ -332,7 +332,7 @@
             this.lblAverageRevenue.Name = "lblAverageRevenue";
             this.lblAverageRevenue.Size = new System.Drawing.Size(140, 15);
             this.lblAverageRevenue.TabIndex = 6;
-            this.lblAverageRevenue.Text = "Doanh thu TB/phim:";
+            this.lblAverageRevenue.Text = global::UI.Resources.Lang.doanhthuTB;
             // 
             // lblAverageRevenueValue
             // 

@@ -204,18 +204,19 @@ namespace UI.ScreeningRoom
             btnXoa.Click += btnXoa_Click;
 
             // ===== NÚT BẢO TRÌ (THAY ĐỔI TỪ SEAT MANAGEMENT) =====
-            var btnMaintenance = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnSeatManagement"];
+            // ===== NÚT BẢO TRÌ =====
+            var btnMaintenance = (ReaLTaiizor.Controls.MaterialButton)p.Controls["BtnSeatManagement"];
             btnMaintenance.Tag = room.RoomID;
 
-            // Thay đổi text và màu dựa trên trạng thái hiện tại
+            // SỬ DỤNG RESOURCE ĐA NGÔN NGỮ
             if (room.statement == "Bảo trì")
             {
-                btnMaintenance.Text = "Hoạt động";
+                btnMaintenance.Text = Resources.Lang.hoatdong;  // ← Dùng resource
                 btnMaintenance.BackColor = Color.Green;
             }
             else
             {
-                btnMaintenance.Text = "Bảo trì";
+                btnMaintenance.Text = Resources.Lang.baotri;  // ← Dùng resource
                 btnMaintenance.BackColor = Color.Orange;
             }
 
@@ -293,7 +294,7 @@ namespace UI.ScreeningRoom
 
         private void btnAddRoom_Click(object sender, EventArgs e)
         {
-            this._home.LoadControl(new AddRoom(_home, this._room));
+            this._home.LoadControl(new AddRoom(_home, null));
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -327,5 +328,6 @@ namespace UI.ScreeningRoom
         {
             this._home.LoadControl(new maintenanceRoom(_home, this._room));
         }
+
     }
 }

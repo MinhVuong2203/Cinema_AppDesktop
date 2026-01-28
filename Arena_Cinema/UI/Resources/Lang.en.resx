@@ -373,7 +373,7 @@
     <value>🗣️ Language</value>
   </data>
   <data name="TheLoaiPhim" xml:space="preserve">
-    <value>🎭 Category</value>
+    <value>🎭 Genre</value>
   </data>
   <data name="PhimDaXoa" xml:space="preserve">
     <value>Deleted Movie</value>
@@ -400,7 +400,7 @@
     <value>Age</value>
   </data>
   <data name="TheLOAI" xml:space="preserve">
-    <value>Category</value>
+    <value>Genre</value>
   </data>
   <data name="DatLai" xml:space="preserve">
     <value>Reset</value>
@@ -524,9 +524,6 @@
   </data>
   <data name="Price" xml:space="preserve">
     <value>Price (VNĐ)</value>
-  </data>
-  <data name="nhapgiave" xml:space="preserve">
-    <value>Enter Price (VD: 85000)</value>
   </data>
   <data name="TimeShow" xml:space="preserve">
     <value>⏰ Showtime</value>
@@ -762,7 +759,100 @@
   <data name="IconDiaChi" xml:space="preserve">
     <value>📍 Address</value>
   </data>
+  <data name="nhapgiave" xml:space="preserve">
+    <value>Enter Price (VD: 85000)</value>
+  </data>
+  <data name="baotri" xml:space="preserve">
+    <value>Maintain</value>
+  </data>
+  <data name="phongBaoTri" xml:space="preserve">
+    <value>Maintaining room</value>
+  </data>
+	<data name="hoatdong" xml:space="preserve">
+    <value>Active</value>
+	  </data>
+  <data name="phimsapchieu" xml:space="preserve">
+    <value>UPCOMING MOVIES</value>
+  </data>
+  <data name="lblTrang" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="doanhthuthang" xml:space="preserve">
+    <value>Monthly Revenue</value>
+  </data>
+  <data name="sovoithangtruoc" xml:space="preserve">
+    <value>compared to last month</value>
+  </data>
+  <data name="sohoadon" xml:space="preserve">
+    <value>Total Bill</value>
+  </data>
+  <data name="doanhthuhomnay" xml:space="preserve">
+    <value>Revenue of Today</value>
+  </data>
+  <data name="giatritrungbinh" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="doanhthunam" xml:space="preserve">
+    <value>Revenue of This Year</value>
+  </data>
+  <data name="doanhthucacphim" xml:space="preserve">
+    <value>Films's Revenue</value>
+  </data>
+  <data name="loctheothoigian" xml:space="preserve">
+    <value>Filter by time</value>
+  </data>
+  <data name="Tuan" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="Quy" xml:space="preserve">
+    <value>Quarter</value>
+  </data>
+  <data name="Nam" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="chonNgay" xml:space="preserve">
+    <value>Choose a Day:</value>
+  </data>
+  <data name="hienthitop" xml:space="preserve">
+    <value>Show Top:</value>
+  </data>
+  <data name="lammoi" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="tongdoanhthu" xml:space="preserve">
+    <value>Total of Revenue</value>
+  </data>
+  <data name="tongsove" xml:space="preserve">
+    <value>Total of ticket:</value>
+  </data>
+  <data name="sophim" xml:space="preserve">
+    <value>Total of Films:</value>
+  </data>
+  <data name="doanhthutrungbinh" xml:space="preserve">
+    <value>Average Revenue /film</value>
+  </data>
+	  <data name="sodonggop" xml:space="preserve">
+    <value>Percent/Total</value>
+	 </data>
   <data name="Test" xml:space="preserve">
     <value>New Year</value>
+  </data>
+  <data name="sodongop" xml:space="preserve">
+    <value>Percent/Total</value>
+  </data>
+  <data name="tongsophim" xml:space="preserve">
+    <value>Total of Film</value>
+  </data>
+  <data name="doanhthuTB" xml:space="preserve">
+    <value>Average/Film</value>
+  </data>
+  <data name="soveban" xml:space="preserve">
+    <value>Ticket sold</value>
+  </data>
+  <data name="doanhthuvnd" xml:space="preserve">
+    <value>Revenue(VNĐ)</value>
+  </data>
+  <data name="tennphim" xml:space="preserve">
+    <value>Movie's Name</value>
   </data>
 </root>

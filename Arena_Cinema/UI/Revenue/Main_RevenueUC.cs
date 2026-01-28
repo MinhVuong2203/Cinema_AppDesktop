@@ -94,7 +94,7 @@ namespace UI.Revenue
 
             // Cột Tên phim
             DataGridViewTextBoxColumn colTitle = new DataGridViewTextBoxColumn();
-            colTitle.HeaderText = "Tên Phim";
+            colTitle.HeaderText = global::UI.Resources.Lang.tennphim;
             colTitle.DataPropertyName = "MovieTitle";
             colTitle.Name = "colTitle";
             colTitle.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -102,7 +102,7 @@ namespace UI.Revenue
 
             // Cột Thể loại
             DataGridViewTextBoxColumn colGenre = new DataGridViewTextBoxColumn();
-            colGenre.HeaderText = "Thể Loại";
+            colGenre.HeaderText = global::UI.Resources.Lang.TheLOAI;
             colGenre.DataPropertyName = "Genre";
             colGenre.Name = "colGenre";
             colGenre.Width = 150;
@@ -110,7 +110,7 @@ namespace UI.Revenue
 
             // Cột Số vé bán
             DataGridViewTextBoxColumn colTickets = new DataGridViewTextBoxColumn();
-            colTickets.HeaderText = "Số Vé Bán";
+            colTickets.HeaderText = global::UI.Resources.Lang.soveban;
             colTickets.DataPropertyName = "TicketsSold";
             colTickets.Name = "colTickets";
             colTickets.Width = 120;
@@ -120,7 +120,7 @@ namespace UI.Revenue
 
             // Cột Doanh thu
             DataGridViewTextBoxColumn colRevenue = new DataGridViewTextBoxColumn();
-            colRevenue.HeaderText = "Doanh Thu (VNĐ)";
+            colRevenue.HeaderText = global::UI.Resources.Lang.doanhthuvnd;
             colRevenue.DataPropertyName = "TotalRevenue";
             colRevenue.Name = "colRevenue";
             colRevenue.Width = 200;
@@ -130,7 +130,7 @@ namespace UI.Revenue
 
             // Cột Phần trăm
             DataGridViewTextBoxColumn colPercent = new DataGridViewTextBoxColumn();
-            colPercent.HeaderText = "% Đóng Góp";
+            colPercent.HeaderText = global::UI.Resources.Lang.sodongop;
             colPercent.Name = "colPercent";
             colPercent.Width = 100;
             colPercent.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
