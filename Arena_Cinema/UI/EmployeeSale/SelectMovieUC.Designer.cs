@@ -169,7 +169,7 @@
             this.lbMovieListTitle.Name = "lbMovieListTitle";
             this.lbMovieListTitle.Size = new System.Drawing.Size(277, 46);
             this.lbMovieListTitle.TabIndex = 1;
-            this.lbMovieListTitle.Text = "🎬 CHỌN PHIM";
+            this.lbMovieListTitle.Text = global::UI.Resources.Lang.MovieListTitle;
             // 
             // btn_back
             // 

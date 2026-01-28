@@ -873,7 +873,91 @@
   <data name="SaleProduct_Desc" xml:space="preserve">
     <value>Bán bắp nước, combo và các sản phẩm khác</value>
   </data>
+  <data name="InvoiceTitle" xml:space="preserve">
+    <value>📋 HÓA ĐƠN THANH TOÁN</value>
+  </data>
+  <data name="PaymentButton" xml:space="preserve">
+    <value>💳 THANH TOÁN</value>
+  </data>
+  <data name="PhoneLabel" xml:space="preserve">
+    <value>Số điện thoại:</value>
+  </data>
+  <data name="CheckCustomer" xml:space="preserve">
+    <value>Kiểm tra</value>
+  </data>
+  <data name="lbProducts" xml:space="preserve">
+    <value>🍿 CHỌN ĐỒ ĂN VÀ NƯỚC</value>
+  </data>
+  <data name="ToggleInvoice" xml:space="preserve">
+    <value>◀ Thu gọn</value>
+  </data>
   <data name="welcome" xml:space="preserve">
     <value>Chào mừng đến bán hàng</value>
+  </data>
+  <data name="lbShowTime" xml:space="preserve">
+    <value>Chọn suất chiếu</value>
+  </data>
+  <data name="lbSeats" xml:space="preserve">
+    <value>Chọn ghế ngồi</value>
+  </data>
+  <data name="MovieListTitle" xml:space="preserve">
+    <value>🎬 CHỌN PHIM</value>
+  </data>
+  <data name="InvoiceInforTitle" xml:space="preserve">
+    <value>THÔNG TIN HÓA ĐƠN</value>
+  </data>
+  <data name="InvoiceCodeLabel" xml:space="preserve">
+    <value>Mã hóa đơn:</value>
+  </data>
+  <data name="InvoiceDateLabel" xml:space="preserve">
+    <value>Ngày tạo:</value>
+  </data>
+  <data name="EmployeeLabel" xml:space="preserve">
+    <value>Nhân viên:</value>
+  </data>
+  <data name="StatusLabel" xml:space="preserve">
+    <value>Trạng thái:</value>
+  </data>
+  <data name="CustomerTitle" xml:space="preserve">
+    <value>THÔNG TIN KHÁCH HÀNG</value>
+  </data>
+  <data name="CustomerNameLabel" xml:space="preserve">
+    <value>Tên khách hàng:</value>
+  </data>
+  <data name="CustomerPoints" xml:space="preserve">
+    <value>Điểm tích lũy:</value>
+  </data>
+  <data name="TicketsTitle" xml:space="preserve">
+    <value>THÔNG TIN VÉ</value>
+  </data>
+  <data name="TicketTotal" xml:space="preserve">
+    <value>Tổng tiền vé:</value>
+  </data>
+  <data name="ProductsTitle" xml:space="preserve">
+    <value>THÔNG TIN SẢN PHẨM</value>
+  </data>
+  <data name="ProductTotal" xml:space="preserve">
+    <value>Tổng tiền sản phẩm:</value>
+  </data>
+  <data name="Subtotal" xml:space="preserve">
+    <value>Tạm tính:</value>
+  </data>
+  <data name="DiscountLabel" xml:space="preserve">
+    <value>Giảm giá:</value>
+  </data>
+  <data name="GrandTotal" xml:space="preserve">
+    <value>TỔNG CỘNG:</value>
+  </data>
+  <data name="PayOSButton" xml:space="preserve">
+    <value>💳 Thanh toán PayOS</value>
+  </data>
+  <data name="PayCashButton" xml:space="preserve">
+    <value>💳 Thanh toán tiền mặt</value>
+  </data>
+  <data name="SelectVoucher" xml:space="preserve">
+    <value>🎫 Chọn voucher</value>
+  </data>
+  <data name="RemoveVoucher" xml:space="preserve">
+    <value>✕ Bỏ voucher</value>
   </data>
 </root>

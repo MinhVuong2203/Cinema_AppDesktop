@@ -125,9 +125,9 @@ namespace UI.EmployeeSale
             this.btnPayOS = new System.Windows.Forms.Button();
             this.btn_payCash = new System.Windows.Forms.Button();
             this.panelVoucher = new System.Windows.Forms.Panel();
+            this.btnSelectVoucher = new System.Windows.Forms.Button();
             this.lblVoucherTitle = new System.Windows.Forms.Label();
             this.lblVoucherName = new System.Windows.Forms.Label();
-            this.btnSelectVoucher = new System.Windows.Forms.Button();
             this.btnRemoveVoucher = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.panelCustomer.SuspendLayout();
@@ -219,7 +219,7 @@ namespace UI.EmployeeSale
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.lblTitle.Location = new System.Drawing.Point(20, 8);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(400, 50);
+            this.lblTitle.Size = new System.Drawing.Size(544, 50);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "THÔNG TIN HÓA ĐƠN";
             // 
@@ -349,7 +349,7 @@ namespace UI.EmployeeSale
             this.lblCustomerName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.lblCustomerName.Location = new System.Drawing.Point(180, 60);
             this.lblCustomerName.Name = "lblCustomerName";
-            this.lblCustomerName.Size = new System.Drawing.Size(350, 25);
+            this.lblCustomerName.Size = new System.Drawing.Size(298, 25);
             this.lblCustomerName.TabIndex = 2;
             this.lblCustomerName.Text = "---";
             // 
@@ -369,7 +369,7 @@ namespace UI.EmployeeSale
             this.lblCustomerPhone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.lblCustomerPhone.Location = new System.Drawing.Point(180, 90);
             this.lblCustomerPhone.Name = "lblCustomerPhone";
-            this.lblCustomerPhone.Size = new System.Drawing.Size(350, 25);
+            this.lblCustomerPhone.Size = new System.Drawing.Size(233, 25);
             this.lblCustomerPhone.TabIndex = 4;
             this.lblCustomerPhone.Text = "---";
             // 
@@ -397,19 +397,19 @@ namespace UI.EmployeeSale
             // 
             this.lblCustomerPointsTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblCustomerPointsTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(114)))), ((int)(((byte)(128)))));
-            this.lblCustomerPointsTitle.Location = new System.Drawing.Point(420, 60);
+            this.lblCustomerPointsTitle.Location = new System.Drawing.Point(431, 90);
             this.lblCustomerPointsTitle.Name = "lblCustomerPointsTitle";
-            this.lblCustomerPointsTitle.Size = new System.Drawing.Size(100, 25);
+            this.lblCustomerPointsTitle.Size = new System.Drawing.Size(133, 25);
             this.lblCustomerPointsTitle.TabIndex = 8;
-            this.lblCustomerPointsTitle.Text = "Điểm tích lũy:";
+            this.lblCustomerPointsTitle.Text = global::UI.Resources.Lang.CustomerPoints;
             // 
             // lblCustomerPoints
             // 
             this.lblCustomerPoints.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lblCustomerPoints.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(115)))), ((int)(((byte)(22)))));
-            this.lblCustomerPoints.Location = new System.Drawing.Point(540, 60);
+            this.lblCustomerPoints.Location = new System.Drawing.Point(581, 90);
             this.lblCustomerPoints.Name = "lblCustomerPoints";
-            this.lblCustomerPoints.Size = new System.Drawing.Size(200, 25);
+            this.lblCustomerPoints.Size = new System.Drawing.Size(89, 25);
             this.lblCustomerPoints.TabIndex = 7;
             this.lblCustomerPoints.Text = "0 điểm";
             // 
@@ -434,7 +434,7 @@ namespace UI.EmployeeSale
             this.lblTicketsTitle.Name = "lblTicketsTitle";
             this.lblTicketsTitle.Size = new System.Drawing.Size(250, 30);
             this.lblTicketsTitle.TabIndex = 0;
-            this.lblTicketsTitle.Text = "THÔNG TIN VÉ";
+            this.lblTicketsTitle.Text = global::UI.Resources.Lang.TicketsTitle;
             // 
             // dgvTickets
             // 
@@ -465,7 +465,7 @@ namespace UI.EmployeeSale
             this.lblTicketTotalLabel.Name = "lblTicketTotalLabel";
             this.lblTicketTotalLabel.Size = new System.Drawing.Size(314, 25);
             this.lblTicketTotalLabel.TabIndex = 2;
-            this.lblTicketTotalLabel.Text = "Tổng tiền vé:";
+            this.lblTicketTotalLabel.Text = global::UI.Resources.Lang.TicketTotal;
             // 
             // lblTicketTotal
             // 
@@ -499,7 +499,7 @@ namespace UI.EmployeeSale
             this.lblProductsTitle.Name = "lblProductsTitle";
             this.lblProductsTitle.Size = new System.Drawing.Size(300, 30);
             this.lblProductsTitle.TabIndex = 0;
-            this.lblProductsTitle.Text = "THÔNG TIN SẢN PHẨM";
+            this.lblProductsTitle.Text = global::UI.Resources.Lang.ProductsTitle;
             // 
             // dgvProducts
             // 
@@ -530,7 +530,7 @@ namespace UI.EmployeeSale
             this.lblProductTotalLabel.Name = "lblProductTotalLabel";
             this.lblProductTotalLabel.Size = new System.Drawing.Size(221, 25);
             this.lblProductTotalLabel.TabIndex = 2;
-            this.lblProductTotalLabel.Text = "Tổng tiền sản phẩm:";
+            this.lblProductTotalLabel.Text = global::UI.Resources.Lang.ProductTotal;
             // 
             // lblProductTotal
             // 
@@ -566,7 +566,7 @@ namespace UI.EmployeeSale
             this.lblSubtotalLabel.Name = "lblSubtotalLabel";
             this.lblSubtotalLabel.Size = new System.Drawing.Size(100, 25);
             this.lblSubtotalLabel.TabIndex = 0;
-            this.lblSubtotalLabel.Text = "Tạm tính:";
+            this.lblSubtotalLabel.Text = global::UI.Resources.Lang.Subtotal;
             // 
             // lblSubtotal
             // 
@@ -587,7 +587,7 @@ namespace UI.EmployeeSale
             this.lblDiscountLabel.Name = "lblDiscountLabel";
             this.lblDiscountLabel.Size = new System.Drawing.Size(100, 25);
             this.lblDiscountLabel.TabIndex = 2;
-            this.lblDiscountLabel.Text = "Giảm giá:";
+            this.lblDiscountLabel.Text = global::UI.Resources.Lang.DiscountLabel;
             // 
             // lblDiscount
             // 
@@ -608,7 +608,7 @@ namespace UI.EmployeeSale
             this.lblGrandTotalLabel.Name = "lblGrandTotalLabel";
             this.lblGrandTotalLabel.Size = new System.Drawing.Size(150, 30);
             this.lblGrandTotalLabel.TabIndex = 4;
-            this.lblGrandTotalLabel.Text = "TỔNG CỘNG:";
+            this.lblGrandTotalLabel.Text = global::UI.Resources.Lang.GrandTotal;
             // 
             // lblGrandTotal
             // 
@@ -649,7 +649,7 @@ namespace UI.EmployeeSale
             this.btnPayOS.Name = "btnPayOS";
             this.btnPayOS.Size = new System.Drawing.Size(257, 50);
             this.btnPayOS.TabIndex = 6;
-            this.btnPayOS.Text = "💳 Thanh toán PayOS";
+            this.btnPayOS.Text = global::UI.Resources.Lang.PayOSButton;
             this.btnPayOS.UseVisualStyleBackColor = false;
             this.btnPayOS.Click += new System.EventHandler(this.btnPayOS_Click);
             // 
@@ -665,7 +665,7 @@ namespace UI.EmployeeSale
             this.btn_payCash.Name = "btn_payCash";
             this.btn_payCash.Size = new System.Drawing.Size(249, 50);
             this.btn_payCash.TabIndex = 6;
-            this.btn_payCash.Text = "💳 Thanh toán tiền mặt";
+            this.btn_payCash.Text = global::UI.Resources.Lang.PayCashButton;
             this.btn_payCash.UseVisualStyleBackColor = false;
             this.btn_payCash.Click += new System.EventHandler(this.btn_payCash_Click);
             // 
@@ -681,6 +681,22 @@ namespace UI.EmployeeSale
             this.panelVoucher.Name = "panelVoucher";
             this.panelVoucher.Size = new System.Drawing.Size(779, 80);
             this.panelVoucher.TabIndex = 8;
+            // 
+            // btnSelectVoucher
+            // 
+            this.btnSelectVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(115)))), ((int)(((byte)(22)))));
+            this.btnSelectVoucher.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelectVoucher.FlatAppearance.BorderSize = 0;
+            this.btnSelectVoucher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectVoucher.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSelectVoucher.ForeColor = System.Drawing.Color.White;
+            this.btnSelectVoucher.Location = new System.Drawing.Point(398, 20);
+            this.btnSelectVoucher.Name = "btnSelectVoucher";
+            this.btnSelectVoucher.Size = new System.Drawing.Size(206, 40);
+            this.btnSelectVoucher.TabIndex = 2;
+            this.btnSelectVoucher.Text = global::UI.Resources.Lang.SelectVoucher;
+            this.btnSelectVoucher.UseVisualStyleBackColor = false;
+            this.btnSelectVoucher.Click += new System.EventHandler(this.btnSelectVoucher_Click);
             // 
             // lblVoucherTitle
             // 
@@ -702,22 +718,6 @@ namespace UI.EmployeeSale
             this.lblVoucherName.TabIndex = 1;
             this.lblVoucherName.Text = "Chưa chọn voucher";
             // 
-            // btnSelectVoucher
-            // 
-            this.btnSelectVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(115)))), ((int)(((byte)(22)))));
-            this.btnSelectVoucher.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSelectVoucher.FlatAppearance.BorderSize = 0;
-            this.btnSelectVoucher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelectVoucher.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSelectVoucher.ForeColor = System.Drawing.Color.White;
-            this.btnSelectVoucher.Location = new System.Drawing.Point(398, 20);
-            this.btnSelectVoucher.Name = "btnSelectVoucher";
-            this.btnSelectVoucher.Size = new System.Drawing.Size(206, 40);
-            this.btnSelectVoucher.TabIndex = 2;
-            this.btnSelectVoucher.Text = "🎫 Chọn voucher";
-            this.btnSelectVoucher.UseVisualStyleBackColor = false;
-            this.btnSelectVoucher.Click += new System.EventHandler(this.btnSelectVoucher_Click);
-            // 
             // btnRemoveVoucher
             // 
             this.btnRemoveVoucher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
@@ -730,7 +730,7 @@ namespace UI.EmployeeSale
             this.btnRemoveVoucher.Name = "btnRemoveVoucher";
             this.btnRemoveVoucher.Size = new System.Drawing.Size(150, 40);
             this.btnRemoveVoucher.TabIndex = 3;
-            this.btnRemoveVoucher.Text = "✕ Bỏ voucher";
+            this.btnRemoveVoucher.Text = global::UI.Resources.Lang.RemoveVoucher;
             this.btnRemoveVoucher.UseVisualStyleBackColor = false;
             this.btnRemoveVoucher.Visible = false;
             this.btnRemoveVoucher.Click += new System.EventHandler(this.btnRemoveVoucher_Click);
