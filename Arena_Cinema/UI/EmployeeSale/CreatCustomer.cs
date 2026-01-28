@@ -51,7 +51,7 @@ namespace UI.EmployeeSale
                     return;
                 }
 
-                // Validate email format (nếu có nhập)
+                // Validate email format
                 string email = null;
                 if (!string.IsNullOrWhiteSpace(txtEmail.Text))
                 {
@@ -68,7 +68,7 @@ namespace UI.EmployeeSale
                 // Nếu email rỗng, để null hoặc tạo email unique
                 else
                 {
-                    // Tạo email unique tự động để tránh duplicate NULL
+                    // Tạo email unique tự động
                     email = $"customer_{Guid.NewGuid().ToString("N").Substring(0, 4)}@gmail.com";
                 }
 
