@@ -762,4 +762,7 @@
   <data name="IconDiaChi" xml:space="preserve">
     <value>📍 Address</value>
   </data>
+  <data name="Test" xml:space="preserve">
+    <value>New Year</value>
+  </data>
 </root>

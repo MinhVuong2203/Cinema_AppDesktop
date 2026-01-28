@@ -52,6 +52,7 @@ namespace UI.Products
                 }
                 txtPrice.Text = _product.Price.HasValue ? _product.Price.Value.ToString() : "";
                 this.selectedImagePath = _product.ImageUrl;
+            this.txtSoLuongToiDa.Text = _product.QuaLimited.HasValue ? _product.QuaLimited.ToString() : "";
                 ImgHelper.DisplayImageFromRelative(_product.ImageUrl, picPreview);
             }
 
@@ -137,7 +138,8 @@ namespace UI.Products
                     ProductType = cboType.SelectedItem.ToString(),
                     Price = string.IsNullOrWhiteSpace(txtPrice.Text) ? (decimal?)null : decimal.Parse(txtPrice.Text),
                     ImageUrl = CopyImageToProductFolder(),
-                    IsDeleted = false
+                    IsDeleted = false,
+                    QuaLimited = txtSoLuongToiDa.Text == "" ? 0 : int.Parse(txtSoLuongToiDa.Text)
                 };
 
                 productBLL.AddProduct(product);
@@ -148,9 +150,9 @@ namespace UI.Products
                 _product.ProductName = txtName.Text.Trim();
                 _product.ProductType = cboType.SelectedItem.ToString();
                 _product.Price = string.IsNullOrWhiteSpace(txtPrice.Text) ? (decimal?)null : decimal.Parse(txtPrice.Text);
-
-                // Chỉ cập nhật hình ảnh nếu có chọn hình mới
-                if (!string.IsNullOrEmpty(selectedImagePath) && selectedImagePath != _product.ImageUrl)
+                _product.QuaLimited = txtSoLuongToiDa.Text == "" ? 0 : int.Parse( txtSoLuongToiDa.Text);
+            // Chỉ cập nhật hình ảnh nếu có chọn hình mới
+            if (!string.IsNullOrEmpty(selectedImagePath) && selectedImagePath != _product.ImageUrl)
                 {
                     _product.ImageUrl = CopyImageToProductFolder();
                 }
@@ -187,5 +189,18 @@ namespace UI.Products
                 }
             }
         
+
+
+
+        private void txtSoLuongToiDa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Cho phép phím điều khiển (Backspace, Delete, Ctrl+C, Ctrl+V...)
+            if (char.IsControl(e.KeyChar))
+                return;
+
+            // Chỉ cho phép chữ số
+            if (!char.IsDigit(e.KeyChar))
+                e.Handled = true;
+        }
     }
 }

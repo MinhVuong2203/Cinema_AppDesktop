@@ -762,4 +762,7 @@
   <data name="IconDiaChi" xml:space="preserve">
     <value>📍 Địa chỉ</value>
   </data>
+  <data name="Test" xml:space="preserve">
+    <value>Tết</value>
+  </data>
 </root>

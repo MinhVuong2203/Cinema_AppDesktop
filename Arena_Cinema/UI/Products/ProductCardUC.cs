@@ -47,6 +47,8 @@ namespace UI.Products
             lblPrice.Text = _product.Price.HasValue
                 ? $"{_product.Price.Value:N0} VNĐ"
                 : "Chưa có giá";
+            lbSL.ForeColor =_product.QuaLimited <= 10 ? Color.Red :  Color.Black;
+            lbSL.Text = _product.QuaLimited.ToString();
 
             ImgHelper.DisplayImageFromRelative(_product.ImageUrl, picProduct);
         }
@@ -80,6 +82,14 @@ namespace UI.Products
            
         }
 
-     
+        private void bigLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelCard_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

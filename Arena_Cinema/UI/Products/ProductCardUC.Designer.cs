@@ -34,10 +34,12 @@
             this.lblId = new ReaLTaiizor.Controls.BigLabel();
             this.panelCard = new ReaLTaiizor.Controls.ParrotGradientPanel();
             this.panel1 = new ReaLTaiizor.Controls.Panel();
-            this.btnNgungBan = new ReaLTaiizor.Controls.MaterialButton();
-            this.btnEdit = new ReaLTaiizor.Controls.MaterialButton();
             this.btnKhoiPhuc = new ReaLTaiizor.Controls.MaterialButton();
+            this.btnEdit = new ReaLTaiizor.Controls.MaterialButton();
+            this.btnNgungBan = new ReaLTaiizor.Controls.MaterialButton();
             this.picProduct = new System.Windows.Forms.PictureBox();
+            this.bigLabel1 = new ReaLTaiizor.Controls.BigLabel();
+            this.lbSL = new ReaLTaiizor.Controls.BigLabel();
             this.panelCard.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProduct)).BeginInit();
@@ -49,7 +51,7 @@
             this.lblPrice.BackColor = System.Drawing.Color.Transparent;
             this.lblPrice.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
-            this.lblPrice.Location = new System.Drawing.Point(1083, 49);
+            this.lblPrice.Location = new System.Drawing.Point(1036, 49);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(138, 30);
             this.lblPrice.TabIndex = 4;
@@ -117,12 +119,15 @@
             this.panelCard.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.panelCard.TopLeft = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panelCard.TopRight = System.Drawing.Color.Black;
+            this.panelCard.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCard_Paint);
             this.panelCard.MouseEnter += new System.EventHandler(this.panelCard_MouseEnter);
             this.panelCard.MouseLeave += new System.EventHandler(this.panelCard_MouseLeave);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.lbSL);
+            this.panel1.Controls.Add(this.bigLabel1);
             this.panel1.Controls.Add(this.btnKhoiPhuc);
             this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnNgungBan);
@@ -137,26 +142,26 @@
             this.panel1.TabIndex = 7;
             this.panel1.Text = "panel1";
             // 
-            // btnNgungBan
+            // btnKhoiPhuc
             // 
-            this.btnNgungBan.AutoSize = false;
-            this.btnNgungBan.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnNgungBan.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnNgungBan.Depth = 0;
-            this.btnNgungBan.HighEmphasis = true;
-            this.btnNgungBan.Icon = global::UI.Properties.Resources.ban;
-            this.btnNgungBan.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btnNgungBan.Location = new System.Drawing.Point(279, 36);
-            this.btnNgungBan.Margin = new System.Windows.Forms.Padding(0);
-            this.btnNgungBan.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            this.btnNgungBan.Name = "btnNgungBan";
-            this.btnNgungBan.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnNgungBan.Size = new System.Drawing.Size(64, 50);
-            this.btnNgungBan.TabIndex = 8;
-            this.btnNgungBan.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnNgungBan.UseAccentColor = true;
-            this.btnNgungBan.UseVisualStyleBackColor = true;
-            this.btnNgungBan.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnKhoiPhuc.AutoSize = false;
+            this.btnKhoiPhuc.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnKhoiPhuc.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnKhoiPhuc.Depth = 0;
+            this.btnKhoiPhuc.HighEmphasis = true;
+            this.btnKhoiPhuc.Icon = global::UI.Properties.Resources.reset1;
+            this.btnKhoiPhuc.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnKhoiPhuc.Location = new System.Drawing.Point(236, 36);
+            this.btnKhoiPhuc.Margin = new System.Windows.Forms.Padding(0);
+            this.btnKhoiPhuc.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btnKhoiPhuc.Name = "btnKhoiPhuc";
+            this.btnKhoiPhuc.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnKhoiPhuc.Size = new System.Drawing.Size(64, 50);
+            this.btnKhoiPhuc.TabIndex = 8;
+            this.btnKhoiPhuc.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnKhoiPhuc.UseAccentColor = true;
+            this.btnKhoiPhuc.UseVisualStyleBackColor = true;
+            this.btnKhoiPhuc.Click += new System.EventHandler(this.btnKhoiPhuc_Click);
             // 
             // btnEdit
             // 
@@ -182,26 +187,26 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnKhoiPhuc
+            // btnNgungBan
             // 
-            this.btnKhoiPhuc.AutoSize = false;
-            this.btnKhoiPhuc.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnKhoiPhuc.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnKhoiPhuc.Depth = 0;
-            this.btnKhoiPhuc.HighEmphasis = true;
-            this.btnKhoiPhuc.Icon = global::UI.Properties.Resources.reset1;
-            this.btnKhoiPhuc.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
-            this.btnKhoiPhuc.Location = new System.Drawing.Point(236, 36);
-            this.btnKhoiPhuc.Margin = new System.Windows.Forms.Padding(0);
-            this.btnKhoiPhuc.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
-            this.btnKhoiPhuc.Name = "btnKhoiPhuc";
-            this.btnKhoiPhuc.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnKhoiPhuc.Size = new System.Drawing.Size(64, 50);
-            this.btnKhoiPhuc.TabIndex = 8;
-            this.btnKhoiPhuc.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnKhoiPhuc.UseAccentColor = true;
-            this.btnKhoiPhuc.UseVisualStyleBackColor = true;
-            this.btnKhoiPhuc.Click += new System.EventHandler(this.btnKhoiPhuc_Click);
+            this.btnNgungBan.AutoSize = false;
+            this.btnNgungBan.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnNgungBan.Density = ReaLTaiizor.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnNgungBan.Depth = 0;
+            this.btnNgungBan.HighEmphasis = true;
+            this.btnNgungBan.Icon = global::UI.Properties.Resources.ban;
+            this.btnNgungBan.IconType = ReaLTaiizor.Controls.MaterialButton.MaterialIconType.Rebase;
+            this.btnNgungBan.Location = new System.Drawing.Point(279, 36);
+            this.btnNgungBan.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNgungBan.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
+            this.btnNgungBan.Name = "btnNgungBan";
+            this.btnNgungBan.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnNgungBan.Size = new System.Drawing.Size(64, 50);
+            this.btnNgungBan.TabIndex = 8;
+            this.btnNgungBan.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnNgungBan.UseAccentColor = true;
+            this.btnNgungBan.UseVisualStyleBackColor = true;
+            this.btnNgungBan.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // picProduct
             // 
@@ -213,6 +218,30 @@
             this.picProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picProduct.TabIndex = 0;
             this.picProduct.TabStop = false;
+            // 
+            // bigLabel1
+            // 
+            this.bigLabel1.AutoSize = true;
+            this.bigLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.bigLabel1.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bigLabel1.ForeColor = System.Drawing.Color.DimGray;
+            this.bigLabel1.Location = new System.Drawing.Point(-5, 46);
+            this.bigLabel1.Name = "bigLabel1";
+            this.bigLabel1.Size = new System.Drawing.Size(42, 30);
+            this.bigLabel1.TabIndex = 8;
+            this.bigLabel1.Text = "SL:";
+            this.bigLabel1.Click += new System.EventHandler(this.bigLabel1_Click);
+            // 
+            // lbSL
+            // 
+            this.lbSL.BackColor = System.Drawing.Color.Transparent;
+            this.lbSL.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSL.ForeColor = System.Drawing.Color.DimGray;
+            this.lbSL.Location = new System.Drawing.Point(43, 46);
+            this.lbSL.Name = "lbSL";
+            this.lbSL.Size = new System.Drawing.Size(137, 30);
+            this.lbSL.TabIndex = 9;
+            this.lbSL.Text = "SL:";
             // 
             // ProductCardUC
             // 
@@ -226,6 +255,7 @@
             this.panelCard.ResumeLayout(false);
             this.panelCard.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProduct)).EndInit();
             this.ResumeLayout(false);
 
@@ -244,5 +274,7 @@
         private ReaLTaiizor.Controls.ParrotGradientPanel panelCard;
         private ReaLTaiizor.Controls.Panel panel1;
         private ReaLTaiizor.Controls.MaterialButton btnNgungBan;
+        private ReaLTaiizor.Controls.BigLabel bigLabel1;
+        private ReaLTaiizor.Controls.BigLabel lbSL;
     }
 }

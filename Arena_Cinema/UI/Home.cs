@@ -51,8 +51,8 @@ namespace UI
             StartClock();
             StartCleanupTimer();
             StartSeatLockService();
+            LoadHome();
         }
-
       
         private void Decentralization()
         {
@@ -104,7 +104,17 @@ namespace UI
             {
                 btnVoucher.Visible = true;
             }
+        }
 
+
+        private void LoadHome()
+        {
+            DashboardUC dashboardUC = new DashboardUC(this, _employee);
+            dashboardUC.LoadUpcomingMovies();
+            LoadControl(dashboardUC);
+            btnTrangChu.BackgroundColor = Color.FromArgb(23, 23, 23);
+            btnTrangChu.TextColor = Color.Red;
+            selectedButton = btnTrangChu;
         }
 
         private void InitializeSidebarAnimation()
