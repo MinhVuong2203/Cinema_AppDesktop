@@ -768,9 +768,9 @@
   <data name="phongBaoTri" xml:space="preserve">
     <value>Maintaining room</value>
   </data>
-	<data name="hoatdong" xml:space="preserve">
+  <data name="hoatdong" xml:space="preserve">
     <value>Active</value>
-	  </data>
+  </data>
   <data name="phimsapchieu" xml:space="preserve">
     <value>UPCOMING MOVIES</value>
   </data>
@@ -831,9 +831,9 @@
   <data name="doanhthutrungbinh" xml:space="preserve">
     <value>Average Revenue /film</value>
   </data>
-	  <data name="sodonggop" xml:space="preserve">
+  <data name="sodonggop" xml:space="preserve">
     <value>Percent/Total</value>
-	 </data>
+  </data>
   <data name="Test" xml:space="preserve">
     <value>New Year</value>
   </data>
@@ -854,5 +854,27 @@
   </data>
   <data name="tennphim" xml:space="preserve">
     <value>Movie's Name</value>
+  </data>
+  <data name="TitleSaleHome" xml:space="preserve">
+    <value>🛒 SALES AREA</value>
+  </data>
+  <data name="SaleButton" xml:space="preserve">
+    <value>START SELLING</value>
+  </data>
+  <data name="SaleTicket_Title" xml:space="preserve">
+    <value>🎬 MOVIE TICKETS FOR SALE</value>
+  </data>
+  <data name="SaleTicket_Desc" xml:space="preserve">
+    <value>Buy movie tickets, choose showtimes and seats.</value>
+  </data>
+  <data name="SaleProduct_Title" xml:space="preserve">
+    <value>🍿 SELLING PRODUCTS</value>
+  </data>
+  <data name="SaleProduct_Desc" xml:space="preserve">
+    <value>Selling popcorn, drinks, combos, and other products.</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="welcome" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
 </root>

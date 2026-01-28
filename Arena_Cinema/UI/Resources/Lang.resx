@@ -768,9 +768,9 @@
   <data name="phongBaoTri" xml:space="preserve">
     <value>Phòng đang bào trì</value>
   </data>
-	<data name="hoatdong" xml:space="preserve">
+  <data name="hoatdong" xml:space="preserve">
     <value>Hoạt động</value>
-	  </data>
+  </data>
   <data name="phimsapchieu" xml:space="preserve">
     <value>PHIM SẮP CHIẾU</value>
   </data>
@@ -831,9 +831,9 @@
   <data name="doanhthutrungbinh" xml:space="preserve">
     <value>Doanh Thu TB/Phim</value>
   </data>
-	  <data name="sodonggop" xml:space="preserve">
+  <data name="sodonggop" xml:space="preserve">
     <value>% Đóng góp</value>
-	 </data>
+  </data>
   <data name="Test" xml:space="preserve">
     <value>Tết</value>
   </data>
@@ -854,5 +854,26 @@
   </data>
   <data name="tennphim" xml:space="preserve">
     <value>Tên Phim</value>
+  </data>
+  <data name="TitleSaleHome" xml:space="preserve">
+    <value>🛒 KHU VỰC BÁN HÀNG</value>
+  </data>
+  <data name="SaleButton" xml:space="preserve">
+    <value>BẮT ĐẦU BÁN</value>
+  </data>
+  <data name="SaleTicket_Title" xml:space="preserve">
+    <value>🎬 BÁN VÉ XEM PHIM</value>
+  </data>
+  <data name="SaleTicket_Desc" xml:space="preserve">
+    <value>Bán vé xem phim, chọn suất chiếu và ghế ngồi</value>
+  </data>
+  <data name="SaleProduct_Title" xml:space="preserve">
+    <value>🍿 BÁN SẢN PHẨM</value>
+  </data>
+  <data name="SaleProduct_Desc" xml:space="preserve">
+    <value>Bán bắp nước, combo và các sản phẩm khác</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>Chào mừng đến bán hàng</value>
   </data>
 </root>
