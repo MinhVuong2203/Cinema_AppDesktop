@@ -244,7 +244,6 @@ namespace UI
                             ActivateForm acf = new ActivateForm(CinemaDBContext.conn, bll.getTenantId());
                             acf.Show();
                         }
-
                     }
                     else
                     {
