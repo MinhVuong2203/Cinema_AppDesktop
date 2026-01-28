@@ -114,7 +114,7 @@ namespace BLL
             }
         }
 
-        // Tìm kiếm phim (phương thức cũ - giữ lại cho tương thích)
+        // Tìm kiếm phim 
         public List<Movie> SearchMovies(string searchText, string filterStatus = "Tất cả phim")
         {
             try
@@ -145,8 +145,7 @@ namespace BLL
             }
         }
 
-        // Tìm kiếm và lọc phim với phân trang sử dụng stored procedure
-        // FIXED: Đổi thứ tự tham số để khớp với MovieDAL
+
         // Tìm kiếm và lọc phim với phân trang sử dụng stored procedure
         public List<Movie> SearchMoviesWithPagingSP(
             string searchText,
@@ -161,7 +160,7 @@ namespace BLL
             {
                 int totalRecords;
 
-                // ✅ BƯỚC 1: Lấy TẤT CẢ phim phù hợp (không phân trang)
+                //Lấy tất cả phim 
                 // Đặt pageSize = int.MaxValue để lấy hết
                 var allMovies = movieDAL.GetMoviesPaginatedWithSP(
                     pageNumber: 1,
@@ -174,7 +173,7 @@ namespace BLL
                     isDeleted: false
                 );
 
-                // ✅ BƯỚC 2: Lọc theo trạng thái (client-side)
+                // Lọc theo trạng thái (client-side)
                 List<Movie> filteredMovies;
 
                 if (filterStatus != "Tất cả phim" && allMovies.Count > 0)
@@ -192,13 +191,13 @@ namespace BLL
                     filteredMovies = allMovies;
                 }
 
-                // ✅ BƯỚC 3: Tính lại totalRecords và totalPages SAU KHI lọc
+                // Tính lại totalRecords và totalPages sau khi lọc
                 int actualTotalRecords = filteredMovies.Count;
                 totalPages = actualTotalRecords > 0
                     ? (int)Math.Ceiling((double)actualTotalRecords / pageSize)
                     : 1;
 
-                // ✅ BƯỚC 4: Phân trang thủ công trên kết quả đã lọc
+                //  Phân trang dựa trên kết quả đã lọc
                 var pagedMovies = filteredMovies
                     .Skip((pageNumber - 1) * pageSize)
                     .Take(pageSize)
@@ -216,7 +215,7 @@ namespace BLL
             }
         }
 
-        // Tìm kiếm và lọc với phân trang (phương thức cũ - giữ lại cho tương thích)
+        // Tìm kiếm và lọc với phân trang
         public List<Movie> SearchMoviesWithPaging(string searchText, string filterStatus, int pageNumber, int pageSize, out int totalPages)
         {
             try
@@ -301,7 +300,7 @@ namespace BLL
             }
         }
 
-        // Xóa phim (soft delete)
+        // Xóa phim (xóa mềm)
         public Tuple<bool, string> DeleteMovie(int movieId)
         {
             try
@@ -332,7 +331,7 @@ namespace BLL
             }
         }
 
-        // Lấy phim với phân trang (phương thức cũ)
+        // Lấy phim với phân trang
         public List<Movie> GetMoviesWithPaging(int pageNumber, int pageSize, out int totalPages)
         {
             try
@@ -573,7 +572,7 @@ namespace BLL
             try
             {
                 var genres = movieDAL.GetMovieGenres();
-                genres.Insert(0, "Tất cả"); // Thêm option "Tất cả" ở đầu
+                genres.Insert(0, "Tất cả");
                 return genres;
             }
             catch (Exception)
@@ -588,7 +587,7 @@ namespace BLL
             try
             {
                 var ratings = movieDAL.GetAgeRatings();
-                ratings.Insert(0, "Tất cả"); // Thêm option "Tất cả" ở đầu
+                ratings.Insert(0, "Tất cả"); 
                 return ratings;
             }
             catch (Exception)

@@ -266,7 +266,7 @@
             this.lblTotalRevenue.Name = "lblTotalRevenue";
             this.lblTotalRevenue.Size = new System.Drawing.Size(101, 15);
             this.lblTotalRevenue.TabIndex = 0;
-            this.lblTotalRevenue.Text = "Tổng doanh thu:";
+            this.lblTotalRevenue.Text = global::UI.Resources.Lang.tongdoanhthu;
             // 
             // lblTotalRevenueValue
             // 
@@ -288,7 +288,7 @@
             this.lblTotalTickets.Name = "lblTotalTickets";
             this.lblTotalTickets.Size = new System.Drawing.Size(86, 15);
             this.lblTotalTickets.TabIndex = 2;
-            this.lblTotalTickets.Text = "Tổng số vé:";
+            this.lblTotalTickets.Text = global::UI.Resources.Lang.tongsove;
             // 
             // lblTotalTicketsValue
             // 
@@ -310,7 +310,7 @@
             this.lblTotalMovies.Name = "lblTotalMovies";
             this.lblTotalMovies.Size = new System.Drawing.Size(89, 15);
             this.lblTotalMovies.TabIndex = 4;
-            this.lblTotalMovies.Text = "Số phim:";
+            this.lblTotalMovies.Text = global::UI.Resources.Lang.tongsophim;
             // 
             // lblTotalMoviesValue
             // 
@@ -332,7 +332,7 @@
             this.lblAverageRevenue.Name = "lblAverageRevenue";
             this.lblAverageRevenue.Size = new System.Drawing.Size(140, 15);
             this.lblAverageRevenue.TabIndex = 6;
-            this.lblAverageRevenue.Text = "Doanh thu TB/phim:";
+            this.lblAverageRevenue.Text = global::UI.Resources.Lang.doanhthuTB;
             // 
             // lblAverageRevenueValue
             // 

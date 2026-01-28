@@ -127,7 +127,7 @@ namespace BLL
                 if (showTime == null)
                     return (false, "✗ Suất chiếu không tồn tại!");
 
-                // ✅ THÊM: Kiểm tra trạng thái suất chiếu
+                // Kiểm tra trạng thái suất chiếu
                 string status = GetShowTimeStatus(showTime);
 
                 // Nếu là "Đang chiếu" hoặc "Đã chiếu" -> không được xóa
@@ -138,7 +138,7 @@ namespace BLL
                                   $"Chỉ có thể xóa suất chiếu 'Sắp chiếu' mà chưa bán vé.");
                 }
 
-                // ✅ THÊM: Kiểm tra số vé đã bán
+                // Kiểm tra số vé đã bán
                 int ticketsSold = _showTimeDAL.CountTicketsSold(showTimeId);
                 if (ticketsSold > 0)
                 {
@@ -147,7 +147,7 @@ namespace BLL
                                   $"Vui lòng kiểm tra lại hoặc liên hệ quản trị viên.");
                 }
 
-                // ✅ THÊM: Xóa thành công nếu là "Sắp chiếu" và không có vé bán
+                // Xóa thành công nếu là "Sắp chiếu" và không có vé bán
                 bool result = _showTimeDAL.DeleteShowTime(showTimeId);
                 if (result)
                     return (true, "✓ Xóa suất chiếu thành công!");
@@ -392,7 +392,7 @@ namespace BLL
                                   $"Giờ kết thúc phải trước 23:00!");
                 }
             }
-            // ========== THÊM: Kiểm tra ngày kết chiếu của phim ==========
+            // ========== Kiểm tra ngày kết chiếu của phim ==========
             if (movie != null && movie.EndTime.HasValue)
             {
                 // Chỉ so sánh ngày, bỏ qua giờ

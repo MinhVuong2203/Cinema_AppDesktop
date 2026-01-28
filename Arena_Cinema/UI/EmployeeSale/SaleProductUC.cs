@@ -41,16 +41,14 @@ namespace UI.EmployeeSale
             flpProducts.Controls.Clear();
             _products = _saleTicketDAL.GetAllProducts();
 
-            // ✅ Tính chiều rộng khả dụng (trừ scrollbar và padding)
-            int availableWidth = flpProducts.ClientSize.Width - 50; // 50 = padding + scrollbar
+            int availableWidth = flpProducts.ClientSize.Width - 50;
 
             foreach (var product in _products)
             {
-                // ✅ Kiểm tra số lượng tồn kho
+                //Kiểm tra số lượng tồn kho
                 int stockQuantity = product.QuaLimited ?? 0;
                 bool isOutOfStock = stockQuantity <= 0;
 
-                // ✅ Panel vừa khít với container: availableWidth x 130
                 var productPanel = new Panel
                 {
                     Width = availableWidth,
@@ -71,7 +69,7 @@ namespace UI.EmployeeSale
                     pen.Dispose();
                 };
 
-                // ✅ PictureBox: 90x90
+                //PictureBox
                 var picProduct = new PictureBox
                 {
                     Location = new Point(15, 20),
@@ -85,7 +83,7 @@ namespace UI.EmployeeSale
                     ImgHelper.DisplayImageFromRelative(product.ImageUrl, picProduct);
                 }
 
-                // ✅ Overlay "Hết hàng"
+                //Overlay
                 if (isOutOfStock)
                 {
                     var lblOutOfStock = new Label
@@ -102,14 +100,13 @@ namespace UI.EmployeeSale
                     lblOutOfStock.BringToFront();
                 }
 
-                // ✅ Tính vị trí động dựa trên availableWidth
                 int nameWidth = availableWidth - 550; // Chiều rộng còn lại cho tên
                 int priceX = availableWidth - 360;    // Vị trí giá
                 int buttonX = availableWidth - 215;   // Vị trí nút -
                 int qtyX = availableWidth - 165;      // Vị trí số lượng
                 int plusX = availableWidth - 80;      // Vị trí nút +
 
-                // ✅ Label tên sản phẩm - dynamic width
+                //Label tên sản phẩm - dynamic width
                 var lblName = new Label
                 {
                     Text = product.ProductName,
@@ -123,7 +120,7 @@ namespace UI.EmployeeSale
                     AutoEllipsis = true
                 };
 
-                // ✅ Label loại sản phẩm
+                //Label loại sản phẩm
                 var lblCategory = new Label
                 {
                     Text = $"📦 {product.ProductType ?? "Sản phẩm"}",
@@ -134,7 +131,7 @@ namespace UI.EmployeeSale
                     AutoSize = false
                 };
 
-                // ✅ Label số lượng tồn kho
+                //Label số lượng tồn kho
                 var lblStock = new Label
                 {
                     Text = isOutOfStock
@@ -172,7 +169,7 @@ namespace UI.EmployeeSale
 
                 if (!isOutOfStock)
                 {
-                    // ✅ Nút giảm - dynamic position
+                    //Nút giảm
                     var btnMinus = new ReaLTaiizor.Controls.ParrotButton
                     {
                         Width = 40,
@@ -193,7 +190,7 @@ namespace UI.EmployeeSale
                         Tag = product.ProductID
                     };
 
-                    // ✅ Label số lượng - dynamic position
+                    //Label số lượng
                     var lblQuantity = new Label
                     {
                         Text = "0",
@@ -206,7 +203,7 @@ namespace UI.EmployeeSale
                         Name = $"lblQty_{product.ProductID}"
                     };
 
-                    // ✅ Nút tăng - dynamic position
+                    //Nút tăng
                     var btnPlus = new ReaLTaiizor.Controls.ParrotButton
                     {
                         Width = 40,
@@ -227,7 +224,7 @@ namespace UI.EmployeeSale
                         Tag = product.ProductID
                     };
 
-                    // ✅ Sự kiện nút giảm
+                    //Sự kiện nút giảm
                     btnMinus.Click += (s, e) =>
                     {
                         int productId = (int)((ReaLTaiizor.Controls.ParrotButton)s).Tag;
@@ -245,7 +242,7 @@ namespace UI.EmployeeSale
                         }
                     };
 
-                    // ✅ Sự kiện nút tăng (có kiểm tra tồn kho)
+                    //Sự kiện nút tăng (có kiểm tra tồn kho)
                     btnPlus.Click += (s, e) =>
                     {
                         int productId = (int)((ReaLTaiizor.Controls.ParrotButton)s).Tag;
@@ -256,7 +253,7 @@ namespace UI.EmployeeSale
                             int currentQty = _selectedProductQuantities[productId];
                             int stock = prod.QuaLimited ?? 0;
 
-                            // ✅ KIỂM TRA: Không cho mua quá tồn kho
+                            //Không cho mua quá tồn kho
                             if (currentQty >= stock)
                             {
                                 MessageBox.Show(
@@ -286,7 +283,7 @@ namespace UI.EmployeeSale
                 }
                 else
                 {
-                    // ✅ Nút "Hết hàng"
+                    // Nút "Hết hàng"
                     var btnDisabled = new Button
                     {
                         Text = "HẾT HÀNG",
@@ -327,7 +324,7 @@ namespace UI.EmployeeSale
                     return;
                 }
 
-                // ✅ KIỂM TRA TỒN KHO TRƯỚC KHI THANH TOÁN
+                //KIỂM TRA TỒN KHO TRƯỚC KHI THANH TOÁN
                 foreach (var p in selectedProducts)
                 {
                     int requestedQty = _selectedProductQuantities[p.ProductID];
@@ -336,7 +333,7 @@ namespace UI.EmployeeSale
                     if (requestedQty > stock)
                     {
                         MessageBox.Show(
-                            $"❌ Sản phẩm '{p.ProductName}' chỉ còn {stock} trong kho!\n" +
+                            $"Sản phẩm '{p.ProductName}' chỉ còn {stock} trong kho!\n" +
                             $"Bạn đang chọn {requestedQty}.\n\n" +
                             $"Vui lòng giảm số lượng.",
                             "Vượt quá tồn kho",
@@ -346,18 +343,18 @@ namespace UI.EmployeeSale
                     }
                 }
 
-                var confirmResult = MessageBox.Show(
-                    $"Bạn có chắc chắn muốn tạo hóa đơn?\n\n" +
-                    $"📦 {selectedProducts.Count} loại sản phẩm\n" +
-                    $"💰 Tổng tiền: {CalculateTotal():N0} ₫",
-                    "Xác nhận tạo hóa đơn",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                //var confirmResult = MessageBox.Show(
+                //    $"Bạn có chắc chắn muốn tạo hóa đơn?\n\n" +
+                //    $"{selectedProducts.Count} loại sản phẩm\n" +
+                //    $"Tổng tiền: {CalculateTotal():N0} ₫",
+                //    "Xác nhận tạo hóa đơn",
+                //    MessageBoxButtons.YesNo,
+                //    MessageBoxIcon.Question);
 
-                if (confirmResult != DialogResult.Yes)
-                {
-                    return;
-                }
+                //if (confirmResult != DialogResult.Yes)
+                //{
+                //    return;
+                //}
 
                 var customer = GetCustomerByPhone(txt_Phone.Text.Trim());
 

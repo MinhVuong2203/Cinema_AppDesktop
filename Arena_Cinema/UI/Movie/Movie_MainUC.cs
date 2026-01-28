@@ -31,13 +31,10 @@ namespace UI.Movie
 
             movieBLL = new MovieBLL();
 
-            // Setup keyboard events
             txtSearch.KeyDown += TxtSearch_KeyDown;
 
-            // NOTE: Pagination events được tạo động trong UpdatePaginationButtons()
-            // Không cần gắn event ở đây nữa
+            //  Pagination events được tạo động trong UpdatePaginationButtons()
 
-            // Load event
             this.Load += Movie_MainUC_Load;
         }
 
@@ -131,7 +128,7 @@ namespace UI.Movie
 
                 foreach (var genreString in genresFromDB)
                 {
-                    // Bỏ qua "Tất cả" (sẽ thêm sau)
+                    // Bỏ qua "Tất cả"
                     if (genreString == "Tất cả")
                         continue;
 
@@ -674,9 +671,8 @@ namespace UI.Movie
             }
         }
 
-        // ============================================
-        // PHƯƠNG THỨC MỚI - TẠO NÚT PAGINATION ĐỘNG
-        // ============================================
+
+        //TẠO NÚT PAGINATION ĐỘNG
         private void UpdatePaginationButtons()
         {
             try
@@ -703,7 +699,7 @@ namespace UI.Movie
             }
         }
 
-        // Tạo các nút điều hướng (First, Prev, Next, Last) từ TEMPLATE
+        // Tạo các nút điều hướng (First, Prev, Next, Last) 
         private void CreateNavigationButtons()
         {
             Color disabledColor = Color.FromArgb(180, 180, 180);
@@ -790,7 +786,7 @@ namespace UI.Movie
                 {
                     Name = $"btnDynamicPage{pageNum}",
                     // CLONE TẤT CẢ THUỘC TÍNH TỪ TEMPLATE
-                    BackgroundColor = isCurrentPage ? activeColor : inactiveColor, // ✅ FIX: Dùng inactiveColor thay vì template color
+                    BackgroundColor = isCurrentPage ? activeColor : inactiveColor,
                     ButtonImage = btnPageNumberTemplate.ButtonImage,
                     ButtonStyle = btnPageNumberTemplate.ButtonStyle,
                     ButtonText = pageNum.ToString(),
@@ -800,7 +796,7 @@ namespace UI.Movie
                     Cursor = btnPageNumberTemplate.Cursor,
                     Font = btnPageNumberTemplate.Font,
                     Horizontal_Alignment = btnPageNumberTemplate.Horizontal_Alignment,
-                    HoverBackgroundColor = isCurrentPage ? activeColor : Color.FromArgb(128, 137, 145), // ✅ FIX: Hover cũng phân biệt
+                    HoverBackgroundColor = isCurrentPage ? activeColor : Color.FromArgb(128, 137, 145), 
                     HoverTextColor = btnPageNumberTemplate.HoverTextColor,
                     ImagePosition = btnPageNumberTemplate.ImagePosition,
                     Location = new Point(startX + (i * (buttonWidth + spacing)), 10),
