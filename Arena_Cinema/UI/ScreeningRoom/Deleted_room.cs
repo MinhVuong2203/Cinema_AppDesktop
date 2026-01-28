@@ -147,7 +147,7 @@ namespace UI.ScreeningRoom
 
             // NÚT KHÔI PHỤC (thay btnXoa cũ)
             var btnRestore = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnKhoiphuc"];
-            btnRestore.Text = "Khôi phục";
+            btnRestore.Text = global::UI.Resources.Lang.KhoiPhuc;
             btnRestore.BackColor = Color.FromArgb(0, 192, 0); // Xanh lá
             btnRestore.ForeColor = Color.White;
             btnRestore.Tag = room.RoomID;

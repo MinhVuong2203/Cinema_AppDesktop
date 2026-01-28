@@ -115,6 +115,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bảo.
+        /// </summary>
+        public static string baotri {
+            get {
+                return ResourceManager.GetString("baotri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bổ sung nhân sự.
         /// </summary>
         public static string BoSungNhanSu {
@@ -606,6 +615,15 @@ namespace UI.Resources {
         public static string HinhCoTheTrong {
             get {
                 return ResourceManager.GetString("HinhCoTheTrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hoạt động.
+        /// </summary>
+        public static string hoatdong {
+            get {
+                return ResourceManager.GetString("hoatdong", resourceCulture);
             }
         }
         
@@ -1155,6 +1173,15 @@ namespace UI.Resources {
         public static string phimlbl {
             get {
                 return ResourceManager.GetString("phimlbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phòng đang bào trì.
+        /// </summary>
+        public static string phongBaoTri {
+            get {
+                return ResourceManager.GetString("phongBaoTri", resourceCulture);
             }
         }
         

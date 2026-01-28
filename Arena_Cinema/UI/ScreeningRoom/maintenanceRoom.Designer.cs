@@ -97,7 +97,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(236, 32);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = "Phòng đang bảo trì";
+            this.lblTitle.Text = global::UI.Resources.Lang.phongBaoTri;
             // 
             // panelMain
             // 

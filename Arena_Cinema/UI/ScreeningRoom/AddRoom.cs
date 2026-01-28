@@ -177,7 +177,7 @@ namespace UI.ScreeningRoom
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            _home.LoadControl(new Room_homeUC(_home, _room));
+            _home.LoadControl(new Room_homeUC(_home, null));
         }
 
     }
