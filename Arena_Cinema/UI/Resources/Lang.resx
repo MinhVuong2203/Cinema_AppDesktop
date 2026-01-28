@@ -762,4 +762,67 @@
   <data name="IconDiaChi" xml:space="preserve">
     <value>📍 Địa chỉ</value>
   </data>
+  <data name="phimsapchieu" xml:space="preserve">
+    <value>PHIM SẮP CHIẾU</value>
+  </data>
+  <data name="lblTrang" xml:space="preserve">
+    <value>Trang</value>
+  </data>
+  <data name="doanhthuthang" xml:space="preserve">
+    <value>Doanh Thu Tháng</value>
+  </data>
+  <data name="sovoithangtruoc" xml:space="preserve">
+    <value>so với tháng trước</value>
+  </data>
+  <data name="sohoadon" xml:space="preserve">
+    <value>Số Hóa Đơn</value>
+  </data>
+  <data name="doanhthuhomnay" xml:space="preserve">
+    <value>Doanh Thu Hôm Nay</value>
+  </data>
+  <data name="giatritrungbinh" xml:space="preserve">
+    <value>Giá Trị Trung Bình</value>
+  </data>
+  <data name="doanhthunam" xml:space="preserve">
+    <value>Doanh Thu năm</value>
+  </data>
+  <data name="doanhthucacphim" xml:space="preserve">
+    <value>Doanh Thu Các Phim</value>
+  </data>
+  <data name="loctheothoigian" xml:space="preserve">
+    <value>Lọc theo thời gian</value>
+  </data>
+  <data name="Tuan" xml:space="preserve">
+    <value>Tuần</value>
+  </data>
+  <data name="Quy" xml:space="preserve">
+    <value>Quý</value>
+  </data>
+  <data name="Nam" xml:space="preserve">
+    <value>Năm</value>
+  </data>
+  <data name="chonNgay" xml:space="preserve">
+    <value>Chọn Ngày:</value>
+  </data>
+  <data name="hienthitop" xml:space="preserve">
+    <value>Hiển Thị Top:</value>
+  </data>
+  <data name="lammoi" xml:space="preserve">
+    <value>Làm mới</value>
+  </data>
+  <data name="tongdoanhthu" xml:space="preserve">
+    <value>Tổng Doanh Thu</value>
+  </data>
+  <data name="tongsove" xml:space="preserve">
+    <value>Tổng số vé:</value>
+  </data>
+  <data name="sophim" xml:space="preserve">
+    <value>Số Phim:</value>
+  </data>
+  <data name="doanhthutrungbinh" xml:space="preserve">
+    <value>Doanh Thu TB/Phim</value>
+  </data>
+  <data name="sodonggop" xml:space="preserve">
+    <value>% Đóng góp</value>
+  </data>
 </root>

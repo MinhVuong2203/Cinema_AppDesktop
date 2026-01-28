@@ -74,7 +74,7 @@
             this.lblTitle.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.lblTitle.Size = new System.Drawing.Size(1340, 30);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "PHIM SẮP CHIẾU";
+            this.lblTitle.Text = global::UI.Resources.Lang.phimsapchieu;
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnNext
