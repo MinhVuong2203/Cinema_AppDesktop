@@ -51,8 +51,6 @@ namespace UI.ScreeningRoom
             {
                 cboRoomType.SelectedIndex = 0; 
             }
-
-            //Ảnh phòng
             if (!string.IsNullOrEmpty(_room.ImageUrl))
             {
                 try
@@ -77,17 +75,13 @@ namespace UI.ScreeningRoom
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     ptbRoomImage.Image = Image.FromFile(ofd.FileName);
-
-                    // Tạo đường dẫn lưu trong dự án
                     string fileName = Path.GetFileName(ofd.FileName);
                     string relativePath = Path.Combine("Image\\Room", fileName);
-
-                    // Copy vào thư mục dự án
                     string fullPath = Path.Combine(Application.StartupPath, relativePath);
                     Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
                     File.Copy(ofd.FileName, fullPath, true);
 
-                    _currentImagePath = relativePath; // Lưu đường dẫn tương đối
+                    _currentImagePath = relativePath; 
                 }
             }
         }
@@ -107,16 +101,12 @@ namespace UI.ScreeningRoom
                 MessageBox.Show("Vui lòng chọn hoặc nhập loại phòng!", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Kiểm tra trùng tên phòng
             bool nameExists = _roomBLL.IsRoomNameExists(txtRoomName.Text.Trim(), _room.RoomID > 0 ? _room.RoomID : (int?)null);
             if (nameExists)
             {
                 MessageBox.Show("Tên phòng đã tồn tại! Vui lòng chọn tên khác.", "Trùng lặp", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Số ghế (mặc định 250 nếu không nhập)
             int seatCount = 250;
             if (!string.IsNullOrWhiteSpace(txtSeatCount.Text))
             {
@@ -126,8 +116,6 @@ namespace UI.ScreeningRoom
                     return;
                 }
             }
-
-            // Gán dữ liệu vào table room
             _room.RoomName = txtRoomName.Text.Trim();
             _room.RoomType = cboRoomType.Text.Trim();
             _room.SeatCount = seatCount;
@@ -149,7 +137,6 @@ namespace UI.ScreeningRoom
 
             if (result.Contains("thành công") && isNewRoom && _room.RoomID > 0)
             {
-                // Tạo ghế bất đồng bộ – KHÔNG block UI
                 var seatBLL = new SeatBLL();
                 try
                 {
