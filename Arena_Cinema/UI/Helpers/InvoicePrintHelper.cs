@@ -106,7 +106,7 @@ namespace UI.Helpers
                 document.Add(subHeader);
 
                 document.Add(new Paragraph("Địa chỉ: 123 Đường ABC, TP.HCM", smallFont));
-                document.Add(new Paragraph("Hotline: 1900-xxxx", smallFont));
+                document.Add(new Paragraph("Hotline: 0999999999", smallFont));
                 document.Add(new Paragraph(" "));
 
                 document.Add(new LineSeparator());
