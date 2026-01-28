@@ -51,27 +51,25 @@ namespace UI.EmployeeSale
                     return;
                 }
 
-                // Kiểm tra số điện thoại đã tồn tại chưa
-                var existingCustomer = _context.Customers
-                    .FirstOrDefault(c => c.Phone == txtPhone.Text.Trim() && !c.IsDeleted);
-
-                if (existingCustomer != null)
-                {
-                    MessageBox.Show("Số điện thoại này đã được đăng ký!", "Thông báo", 
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
                 // Validate email format (nếu có nhập)
+                string email = null;
                 if (!string.IsNullOrWhiteSpace(txtEmail.Text))
                 {
-                    if (!IsValidEmail(txtEmail.Text.Trim()))
+                    string emailInput = txtEmail.Text.Trim();
+                    if (!IsValidEmail(emailInput))
                     {
                         MessageBox.Show("Email không hợp lệ!", "Thông báo", 
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtEmail.Focus();
                         return;
                     }
+                    email = emailInput; // Chỉ gán nếu email hợp lệ
+                }
+                // Nếu email rỗng, để null hoặc tạo email unique
+                else
+                {
+                    // Tạo email unique tự động để tránh duplicate NULL
+                    email = $"customer_{Guid.NewGuid().ToString("N").Substring(0, 4)}@gmail.com";
                 }
 
                 // Validate giới tính
@@ -85,10 +83,9 @@ namespace UI.EmployeeSale
 
                 string phone = txtPhone.Text.Trim();
                 string name = txtFullName.Text.Trim();
-                string email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
                 DateTime birthDate = dtpBirthDate.Value;
                 string gender = cbGender.Text;
-                DateTime registerDate = DateTime.Now; // Ngày hiện tại
+                DateTime registerDate = DateTime.Now;
 
                 // Tạo đối tượng khách hàng mới
                 var customer = new Customer
@@ -97,11 +94,11 @@ namespace UI.EmployeeSale
                     Phone = phone,
                     FullName = name,
                     Email = email,
-                    BirthDate = birthDate.ToString("yyyy-MM-dd"), // Format chuẩn
+                    BirthDate = birthDate.ToString("yyyy-MM-dd"),
                     Gender = gender,
-                    RegisterDate = registerDate, // ✅ Thêm dòng này
-                    Point = 10, // Khách hàng mới có 0 điểm
-                    VipLevel = 0, // Level 0
+                    RegisterDate = registerDate,
+                    Point = 0,
+                    VipLevel = 0,
                     IsDeleted = false
                 };
 
@@ -124,6 +121,7 @@ namespace UI.EmployeeSale
                     foreach (var validationError in validationErrors.ValidationErrors)
                     {
                         errorMessage += $"- {validationError.PropertyName}: {validationError.ErrorMessage}\n";
+                        Console.WriteLine($"[Validation] {validationError.PropertyName}: {validationError.ErrorMessage}");
                     }
                 }
                 MessageBox.Show(errorMessage, "Lỗi Validation", 
@@ -134,12 +132,32 @@ namespace UI.EmployeeSale
                 string errorMessage = "Lỗi khi lưu vào database:\n";
                 if (ex.InnerException?.InnerException != null)
                 {
-                    errorMessage += ex.InnerException.InnerException.Message;
+                    string innerError = ex.InnerException.InnerException.Message;
+                    Console.WriteLine($"[DbUpdate Error] {innerError}");
                     
-                    // Kiểm tra lỗi duplicate key
-                    if (errorMessage.Contains("UNIQUE KEY") || errorMessage.Contains("duplicate"))
+                    // Kiểm tra lỗi duplicate key cụ thể
+                    if (innerError.Contains("UNIQUE") || innerError.Contains("duplicate"))
                     {
-                        errorMessage = "Số điện thoại này đã được đăng ký trong hệ thống!";
+                        if (innerError.Contains("Phone"))
+                        {
+                            errorMessage = "Số điện thoại này đã được đăng ký trong hệ thống!";
+                        }
+                        else if (innerError.Contains("Email"))
+                        {
+                            errorMessage = "Email này đã được đăng ký trong hệ thống!";
+                        }
+                        else if (innerError.Contains("NULL"))
+                        {
+                            errorMessage = "Có trường thông tin bị trùng lặp. Vui lòng kiểm tra lại!";
+                        }
+                        else
+                        {
+                            errorMessage = "Dữ liệu đã tồn tại trong hệ thống!";
+                        }
+                    }
+                    else
+                    {
+                        errorMessage += innerError;
                     }
                 }
                 else
@@ -152,6 +170,8 @@ namespace UI.EmployeeSale
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"[Error] {ex.Message}");
+                Console.WriteLine($"[StackTrace] {ex.StackTrace}");
                 MessageBox.Show($"Lỗi không xác định: {ex.Message}", "Lỗi", 
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
