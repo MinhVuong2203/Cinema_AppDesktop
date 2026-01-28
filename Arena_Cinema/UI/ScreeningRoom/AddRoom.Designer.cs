@@ -110,7 +110,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(277, 32);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = global::UI.Resources.Lang.ThemPhong;
+            this.lblTitle.Text = "Thêm phòng chiếu mới";
             // 
             // panelMain
             // 
@@ -159,7 +159,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(204, 23);
             this.label8.TabIndex = 7;
-            this.label8.Text = global::UI.Resources.Lang.HinhCoTheTrong;
+            this.label8.Text = "Hình có thể không tải lên";
             // 
             // label7
             // 
@@ -168,9 +168,9 @@
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(32, 244);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(209, 23);
+            this.label7.Size = new System.Drawing.Size(147, 23);
             this.label7.TabIndex = 6;
-            this.label7.Text = global::UI.Resources.Lang.MacDinhGhe;
+            this.label7.Text = "Mặc định 250 ghế";
             // 
             // label6
             // 
@@ -179,9 +179,9 @@
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(32, 194);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(206, 23);
+            this.label6.Size = new System.Drawing.Size(251, 23);
             this.label6.TabIndex = 5;
-            this.label6.Text = global::UI.Resources.Lang.MaPhongTuTao;
+            this.label6.Text = "MÃ phòng sẽ tự động được tạo";
             // 
             // label5
             // 
@@ -192,7 +192,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 23);
             this.label5.TabIndex = 4;
-            this.label5.Text = global::UI.Resources.Lang.LuuY;
+            this.label5.Text = "Lưu ý";
             // 
             // label4
             // 
@@ -203,7 +203,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(228, 23);
             this.label4.TabIndex = 3;
-            this.label4.Text = global::UI.Resources.Lang.TenPhongChieuLaDuyNhat;
+            this.label4.Text = "Tên phòng chiếu là duy nhất";
             // 
             // label2
             // 
@@ -215,7 +215,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(329, 44);
             this.label2.TabIndex = 2;
-            this.label2.Text = global::UI.Resources.Lang.HuongDan;
+            this.label2.Text = "Hướng dẫn";
             // 
             // label3
             // 
@@ -226,7 +226,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(145, 23);
             this.label3.TabIndex = 0;
-            this.label3.Text = global::UI.Resources.Lang.TruongBatBuoc;
+            this.label3.Text = "Trường bắt buộc";
             // 
             // left_Panel
             // 
@@ -319,7 +319,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(146, 23);
             this.label14.TabIndex = 16;
-            this.label14.Text = global::UI.Resources.Lang.AnhPhongChieu;
+            this.label14.Text = "Ảnh phòng chiếu";
             // 
             // txtDescription
             // 
@@ -338,7 +338,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(57, 23);
             this.label13.TabIndex = 14;
-            this.label13.Text = global::UI.Resources.Lang.MoTa;
+            this.label13.Text = "Mô tả";
             // 
             // label11
             // 
@@ -349,7 +349,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(100, 23);
             this.label11.TabIndex = 12;
-            this.label11.Text = global::UI.Resources.Lang.LoaiPhong;
+            this.label11.Text = "Loại phòng";
             // 
             // txtSeatCount
             // 
@@ -376,9 +376,9 @@
             this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(476, 78);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(118, 23);
+            this.label10.Size = new System.Drawing.Size(123, 23);
             this.label10.TabIndex = 10;
-            this.label10.Text = global::UI.Resources.Lang.SoLuongGhe;
+            this.label10.Text = "Số lượng ghế:";
             // 
             // txtRoomName
             // 
@@ -407,7 +407,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(94, 23);
             this.label9.TabIndex = 8;
-            this.label9.Text = global::UI.Resources.Lang.TenPhong;
+            this.label9.Text = "Tên phòng";
             // 
             // label1
             // 
@@ -419,7 +419,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1326, 44);
             this.label1.TabIndex = 2;
-            this.label1.Text = global::UI.Resources.Lang.ThongTinPhong;
+            this.label1.Text = "Thông tin phòng";
             // 
             // cboRoomType
             // 

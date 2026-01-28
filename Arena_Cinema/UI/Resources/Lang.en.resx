@@ -525,9 +525,6 @@
   <data name="Price" xml:space="preserve">
     <value>Price (VNĐ)</value>
   </data>
-  <data name="nhapgiave" xml:space="preserve">
-    <value>Enter Price (VD: 85000)</value>
-  </data>
   <data name="TimeShow" xml:space="preserve">
     <value>⏰ Showtime</value>
   </data>
@@ -762,6 +759,18 @@
   <data name="IconDiaChi" xml:space="preserve">
     <value>📍 Address</value>
   </data>
+  <data name="nhapgiave" xml:space="preserve">
+    <value>Enter Price (VD: 85000)</value>
+  </data>
+  <data name="baotri" xml:space="preserve">
+    <value>Maintain</value>
+  </data>
+  <data name="phongBaoTri" xml:space="preserve">
+    <value>Maintaining room</value>
+  </data>
+	<data name="hoatdong" xml:space="preserve">
+    <value>Active</value>
+	  </data>
   <data name="phimsapchieu" xml:space="preserve">
     <value>UPCOMING MOVIES</value>
   </data>
@@ -822,6 +831,9 @@
   <data name="doanhthutrungbinh" xml:space="preserve">
     <value>Average Revenue /film</value>
   </data>
+	  <data name="sodonggop" xml:space="preserve">
+    <value>Percent/Total</value>
+	 </data>
   <data name="Test" xml:space="preserve">
     <value>New Year</value>
   </data>

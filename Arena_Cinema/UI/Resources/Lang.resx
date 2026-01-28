@@ -525,9 +525,6 @@
   <data name="Price" xml:space="preserve">
     <value>Giá Vé (VNĐ)</value>
   </data>
-  <data name="nhapgiave" xml:space="preserve">
-    <value>Nhập giá vé (VD: 85000)</value>
-  </data>
   <data name="TimeShow" xml:space="preserve">
     <value>⏰ Thời Gian Chiếu</value>
   </data>
@@ -762,6 +759,18 @@
   <data name="IconDiaChi" xml:space="preserve">
     <value>📍 Địa chỉ</value>
   </data>
+  <data name="nhapgiave" xml:space="preserve">
+    <value>Nhập giá vé (VD: 85000)</value>
+  </data>
+  <data name="baotri" xml:space="preserve">
+    <value>Bảo</value>
+  </data>
+  <data name="phongBaoTri" xml:space="preserve">
+    <value>Phòng đang bào trì</value>
+  </data>
+	<data name="hoatdong" xml:space="preserve">
+    <value>Hoạt động</value>
+	  </data>
   <data name="phimsapchieu" xml:space="preserve">
     <value>PHIM SẮP CHIẾU</value>
   </data>
@@ -822,6 +831,9 @@
   <data name="doanhthutrungbinh" xml:space="preserve">
     <value>Doanh Thu TB/Phim</value>
   </data>
+	  <data name="sodonggop" xml:space="preserve">
+    <value>% Đóng góp</value>
+	 </data>
   <data name="Test" xml:space="preserve">
     <value>Tết</value>
   </data>
