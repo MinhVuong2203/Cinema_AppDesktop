@@ -483,10 +483,7 @@
             this.cboApplicableFor.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboApplicableFor.FormattingEnabled = true;
             this.cboApplicableFor.Items.AddRange(new object[] {
-            "Tất cả",
-            "Vé xem phim",
-            "Sản phẩm",
-            "Combo"});
+            "Hóa đơn tổng" });
             this.cboApplicableFor.Location = new System.Drawing.Point(560, 475);
             this.cboApplicableFor.Name = "cboApplicableFor";
             this.cboApplicableFor.Size = new System.Drawing.Size(490, 31);
