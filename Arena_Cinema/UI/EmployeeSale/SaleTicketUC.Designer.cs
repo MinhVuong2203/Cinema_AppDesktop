@@ -165,7 +165,7 @@
             this.lbProducts.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.lbProducts.Size = new System.Drawing.Size(1049, 44);
             this.lbProducts.TabIndex = 0;
-            this.lbProducts.Text = "🍿 Chọn đồ ăn và nước";
+            this.lbProducts.Text = global::UI.Resources.Lang.lbProducts;
             // 
             // pnlSeats
             // 
@@ -198,7 +198,7 @@
             this.lbSeats.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.lbSeats.Size = new System.Drawing.Size(1049, 42);
             this.lbSeats.TabIndex = 0;
-            this.lbSeats.Text = "🎬 Chọn ghế ngồi";
+            this.lbSeats.Text = global::UI.Resources.Lang.lbSeats;
             // 
             // pnlShowTime
             // 
@@ -231,7 +231,7 @@
             this.lbShowTime.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.lbShowTime.Size = new System.Drawing.Size(1049, 36);
             this.lbShowTime.TabIndex = 0;
-            this.lbShowTime.Text = "🕐 Chọn suất chiếu";
+            this.lbShowTime.Text = global::UI.Resources.Lang.lbShowTime;
             // 
             // pnlMovieInfo
             // 
@@ -259,7 +259,7 @@
             this.lbCustomerPhone.Name = "lbCustomerPhone";
             this.lbCustomerPhone.Size = new System.Drawing.Size(370, 20);
             this.lbCustomerPhone.TabIndex = 7;
-            this.lbCustomerPhone.Text = "📞 SĐT: ---";
+            this.lbCustomerPhone.Text = global::UI.Resources.Lang.PhoneLabel;
             // 
             // lbCustomerName
             // 
@@ -283,7 +283,7 @@
             this.btnCheckCustomer.Name = "btnCheckCustomer";
             this.btnCheckCustomer.Size = new System.Drawing.Size(100, 32);
             this.btnCheckCustomer.TabIndex = 5;
-            this.btnCheckCustomer.Text = "Kiểm tra";
+            this.btnCheckCustomer.Text = global::UI.Resources.Lang.CheckCustomer;
             this.btnCheckCustomer.UseVisualStyleBackColor = false;
             this.btnCheckCustomer.Click += new System.EventHandler(this.btnCheckCustomer_Click);
             // 
@@ -406,7 +406,7 @@
             this.btnPayment.Name = "btnPayment";
             this.btnPayment.Size = new System.Drawing.Size(408, 55);
             this.btnPayment.TabIndex = 3;
-            this.btnPayment.Text = "💳 THANH TOÁN";
+            this.btnPayment.Text = global::UI.Resources.Lang.PaymentButton;
             this.btnPayment.UseVisualStyleBackColor = false;
             // 
             // pnlInvoiceTotal
@@ -506,7 +506,7 @@
             this.lbInvoiceTitle.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.lbInvoiceTitle.Size = new System.Drawing.Size(408, 65);
             this.lbInvoiceTitle.TabIndex = 0;
-            this.lbInvoiceTitle.Text = "📋 HÓA ĐƠN THANH TOÁN";
+            this.lbInvoiceTitle.Text = global::UI.Resources.Lang.InvoiceTitle;
             this.lbInvoiceTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnToggleInvoice
@@ -522,7 +522,7 @@
             this.btnToggleInvoice.Name = "btnToggleInvoice";
             this.btnToggleInvoice.Size = new System.Drawing.Size(448, 45);
             this.btnToggleInvoice.TabIndex = 0;
-            this.btnToggleInvoice.Text = "◀ Thu gọn";
+            this.btnToggleInvoice.Text = global::UI.Resources.Lang.ToggleInvoice;
             this.btnToggleInvoice.UseVisualStyleBackColor = false;
             this.btnToggleInvoice.Click += new System.EventHandler(this.btnToggleInvoice_Click);
             // 

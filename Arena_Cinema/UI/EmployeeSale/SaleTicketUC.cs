@@ -875,7 +875,7 @@ namespace UI.EmployeeSale
                     }
 
                     return customer;
-                }
+                } 
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException ex)
             {

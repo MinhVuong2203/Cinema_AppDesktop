@@ -187,7 +187,7 @@
             this.btnCheckCustomer.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btnCheckCustomer.Size = new System.Drawing.Size(120, 45);
             this.btnCheckCustomer.TabIndex = 3;
-            this.btnCheckCustomer.Text = "🔍 Kiểm tra";
+            this.btnCheckCustomer.Text = global::UI.Resources.Lang.CheckCustomer;
             this.btnCheckCustomer.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnCheckCustomer.UseAccentColor = false;
             this.btnCheckCustomer.UseVisualStyleBackColor = false;
@@ -284,7 +284,7 @@
             this.btnPayment.Padding = new System.Windows.Forms.Padding(25);
             this.btnPayment.Size = new System.Drawing.Size(490, 70);
             this.btnPayment.TabIndex = 3;
-            this.btnPayment.Text = "💳 THANH TOÁN";
+            this.btnPayment.Text = global::UI.Resources.Lang.PaymentButton;
             this.btnPayment.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnPayment.UseAccentColor = false;
             this.btnPayment.UseVisualStyleBackColor = false;
