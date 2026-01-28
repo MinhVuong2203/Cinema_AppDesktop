@@ -44,6 +44,10 @@
             this.lblEmployeeName = new System.Windows.Forms.Label();
             this.lblRoomID = new System.Windows.Forms.Label();
             this.ptbRoomImage = new System.Windows.Forms.PictureBox();
+            this.paginationPanel = new System.Windows.Forms.Panel();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.btnPageNumberTemplate = new ReaLTaiizor.Controls.ParrotButton();
+            this.btnNavTemplate = new ReaLTaiizor.Controls.ParrotButton();
             this.filterPanel = new System.Windows.Forms.Panel();
             this.left_Panel = new System.Windows.Forms.Panel();
             this.lblMovie = new System.Windows.Forms.Label();
@@ -57,6 +61,7 @@
             this.cardRoomSample.SuspendLayout();
             this.panelCardContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbRoomImage)).BeginInit();
+            this.paginationPanel.SuspendLayout();
             this.filterPanel.SuspendLayout();
             this.left_Panel.SuspendLayout();
             this.right_Panel.SuspendLayout();
@@ -82,7 +87,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(245, 32);
             this.lblTitle.TabIndex = 1;
-            this.lblTitle.Text = global::UI.Resources.Lang.QlyPhongChieu;
+            this.lblTitle.Text = "Quản lí phòng chiếu";
             // 
             // btnAddRoom
             // 
@@ -119,7 +124,7 @@
             this.panelMain.Location = new System.Drawing.Point(0, 60);
             this.panelMain.Name = "panelMain";
             this.panelMain.Padding = new System.Windows.Forms.Padding(25);
-            this.panelMain.Size = new System.Drawing.Size(1376, 737);
+            this.panelMain.Size = new System.Drawing.Size(1376, 677);
             this.panelMain.TabIndex = 3;
             // 
             // panelRoomsList
@@ -130,7 +135,7 @@
             this.panelRoomsList.Margin = new System.Windows.Forms.Padding(10);
             this.panelRoomsList.Name = "panelRoomsList";
             this.panelRoomsList.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.panelRoomsList.Size = new System.Drawing.Size(1326, 538);
+            this.panelRoomsList.Size = new System.Drawing.Size(1326, 478);
             this.panelRoomsList.TabIndex = 4;
             // 
             // cardRoomSample
@@ -144,7 +149,7 @@
             this.cardRoomSample.MouseState = ReaLTaiizor.Helper.MaterialDrawHelper.MaterialMouseState.HOVER;
             this.cardRoomSample.Name = "cardRoomSample";
             this.cardRoomSample.Padding = new System.Windows.Forms.Padding(15);
-            this.cardRoomSample.Size = new System.Drawing.Size(462, 406);
+            this.cardRoomSample.Size = new System.Drawing.Size(462, 459);
             this.cardRoomSample.TabIndex = 0;
             // 
             // panelCardContent
@@ -161,7 +166,7 @@
             this.panelCardContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelCardContent.Location = new System.Drawing.Point(15, 15);
             this.panelCardContent.Name = "panelCardContent";
-            this.panelCardContent.Size = new System.Drawing.Size(432, 376);
+            this.panelCardContent.Size = new System.Drawing.Size(432, 429);
             this.panelCardContent.TabIndex = 0;
             // 
             // BtnSeatManagement
@@ -295,6 +300,79 @@
             this.ptbRoomImage.TabIndex = 0;
             this.ptbRoomImage.TabStop = false;
             // 
+            // paginationPanel
+            // 
+            this.paginationPanel.BackColor = System.Drawing.Color.White;
+            this.paginationPanel.Controls.Add(this.btnNavTemplate);
+            this.paginationPanel.Controls.Add(this.btnPageNumberTemplate);
+            this.paginationPanel.Controls.Add(this.lblInfo);
+            this.paginationPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.paginationPanel.Location = new System.Drawing.Point(0, 737);
+            this.paginationPanel.Name = "paginationPanel";
+            this.paginationPanel.Size = new System.Drawing.Size(1376, 70);
+            this.paginationPanel.TabIndex = 10;
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblInfo.Location = new System.Drawing.Point(20, 20);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(240, 23);
+            this.lblInfo.TabIndex = 2;
+            this.lblInfo.Text = "Hiển thị: 0 phòng | Trang 1 / 1";
+            // 
+            // btnPageNumberTemplate
+            // 
+            this.btnPageNumberTemplate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnPageNumberTemplate.ButtonImage = null;
+            this.btnPageNumberTemplate.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnPageNumberTemplate.ButtonText = "1";
+            this.btnPageNumberTemplate.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(95)))), ((int)(((byte)(100)))));
+            this.btnPageNumberTemplate.ClickTextColor = System.Drawing.Color.White;
+            this.btnPageNumberTemplate.CornerRadius = 5;
+            this.btnPageNumberTemplate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPageNumberTemplate.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPageNumberTemplate.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPageNumberTemplate.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
+            this.btnPageNumberTemplate.HoverTextColor = System.Drawing.Color.White;
+            this.btnPageNumberTemplate.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnPageNumberTemplate.Location = new System.Drawing.Point(-100, 10);
+            this.btnPageNumberTemplate.Name = "btnPageNumberTemplate";
+            this.btnPageNumberTemplate.Size = new System.Drawing.Size(35, 40);
+            this.btnPageNumberTemplate.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.btnPageNumberTemplate.TabIndex = 1;
+            this.btnPageNumberTemplate.TextColor = System.Drawing.Color.White;
+            this.btnPageNumberTemplate.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnPageNumberTemplate.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPageNumberTemplate.Visible = false;
+            // 
+            // btnNavTemplate
+            // 
+            this.btnNavTemplate.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnNavTemplate.ButtonImage = null;
+            this.btnNavTemplate.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
+            this.btnNavTemplate.ButtonText = "‹";
+            this.btnNavTemplate.ClickBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(95)))), ((int)(((byte)(100)))));
+            this.btnNavTemplate.ClickTextColor = System.Drawing.Color.White;
+            this.btnNavTemplate.CornerRadius = 5;
+            this.btnNavTemplate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNavTemplate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnNavTemplate.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnNavTemplate.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(137)))), ((int)(((byte)(145)))));
+            this.btnNavTemplate.HoverTextColor = System.Drawing.Color.White;
+            this.btnNavTemplate.ImagePosition = ReaLTaiizor.Controls.ParrotButton.ImgPosition.Left;
+            this.btnNavTemplate.Location = new System.Drawing.Point(-100, 10);
+            this.btnNavTemplate.Name = "btnNavTemplate";
+            this.btnNavTemplate.Size = new System.Drawing.Size(40, 40);
+            this.btnNavTemplate.SmoothingType = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            this.btnNavTemplate.TabIndex = 0;
+            this.btnNavTemplate.TextColor = System.Drawing.Color.White;
+            this.btnNavTemplate.TextRenderingType = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.btnNavTemplate.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnNavTemplate.Visible = false;
+            // 
             // filterPanel
             // 
             this.filterPanel.BackColor = System.Drawing.SystemColors.Window;
@@ -417,6 +495,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelHeader);
+            this.Controls.Add(this.paginationPanel);
             this.Name = "Room_homeUC";
             this.Size = new System.Drawing.Size(1376, 797);
             this.panelHeader.ResumeLayout(false);
@@ -427,6 +506,8 @@
             this.panelCardContent.ResumeLayout(false);
             this.panelCardContent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbRoomImage)).EndInit();
+            this.paginationPanel.ResumeLayout(false);
+            this.paginationPanel.PerformLayout();
             this.filterPanel.ResumeLayout(false);
             this.left_Panel.ResumeLayout(false);
             this.left_Panel.PerformLayout();
@@ -460,5 +541,9 @@
         private ReaLTaiizor.Controls.ParrotButton btnDeletedRoom;
         private ReaLTaiizor.Controls.ParrotButton btnBaoTri;
         private ReaLTaiizor.Controls.MaterialButton BtnSeatManagement;
+        private System.Windows.Forms.Panel paginationPanel;
+        private ReaLTaiizor.Controls.ParrotButton btnNavTemplate;
+        private System.Windows.Forms.Label lblInfo;
+        private ReaLTaiizor.Controls.ParrotButton btnPageNumberTemplate;
     }
 }
