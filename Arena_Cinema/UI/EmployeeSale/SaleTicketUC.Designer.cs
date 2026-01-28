@@ -316,12 +316,13 @@
             // 
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
-            this.lbTitle.Location = new System.Drawing.Point(175, 50);
-            this.lbTitle.MaximumSize = new System.Drawing.Size(520, 0);
+            this.lbTitle.Location = new System.Drawing.Point(175, 20);
+            this.lbTitle.MaximumSize = new System.Drawing.Size(500, 0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(520, 0);
+            this.lbTitle.Size = new System.Drawing.Size(500, 60);
             this.lbTitle.TabIndex = 2;
             this.lbTitle.Text = "Tên phim";
+            this.lbTitle.AutoSize = false;
             // 
             // picPoster
             // 

@@ -113,6 +113,7 @@ namespace DAL
                 existingProduct.Price = product.Price;
                 existingProduct.ImageUrl = product.ImageUrl;
                 existingProduct.IsDeleted = product.IsDeleted;
+                existingProduct.QuaLimited = product.QuaLimited;
 
                 _context.SaveChanges();
             }

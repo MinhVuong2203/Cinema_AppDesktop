@@ -142,7 +142,7 @@ namespace UI.EmployeeSale
             this.dtpRegisterDate.Name = "dtpRegisterDate";
             this.dtpRegisterDate.Size = new System.Drawing.Size(250, 22);
             this.dtpRegisterDate.TabIndex = 12;
-            this.dtpRegisterDate.Value = new System.DateTime(2025, 11, 18, 23, 28, 23, 913);
+            this.dtpRegisterDate.Value = DateTime.Now;
             // 
             // btnCreate
             // 

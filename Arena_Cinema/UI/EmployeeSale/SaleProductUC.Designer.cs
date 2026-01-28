@@ -196,7 +196,7 @@
             // txt_Phone
             // 
             this.txt_Phone.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.txt_Phone.Location = new System.Drawing.Point(292, 35);
+            this.txt_Phone.Location = new System.Drawing.Point(252, 35);
             this.txt_Phone.Name = "txt_Phone";
             this.txt_Phone.Size = new System.Drawing.Size(230, 34);
             this.txt_Phone.TabIndex = 2;
@@ -205,13 +205,13 @@
             // lblPhoneLabel
             // 
             this.lblPhoneLabel.AutoSize = true;
-            this.lblPhoneLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblPhoneLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhoneLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(55)))));
             this.lblPhoneLabel.Location = new System.Drawing.Point(100, 38);
             this.lblPhoneLabel.Name = "lblPhoneLabel";
-            this.lblPhoneLabel.Size = new System.Drawing.Size(177, 28);
+            this.lblPhoneLabel.Size = new System.Drawing.Size(132, 28);
             this.lblPhoneLabel.TabIndex = 1;
-            this.lblPhoneLabel.Text = "📞 Số điện thoại:";
+            this.lblPhoneLabel.Text = "Số điện thoại:";
             // 
             // btn_back
             // 

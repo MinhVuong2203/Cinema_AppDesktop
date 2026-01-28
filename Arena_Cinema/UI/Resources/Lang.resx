@@ -824,5 +824,7 @@
   </data>
   <data name="sodonggop" xml:space="preserve">
     <value>% Đóng góp</value>
+  <data name="Test" xml:space="preserve">
+    <value>Tết</value>
   </data>
 </root>

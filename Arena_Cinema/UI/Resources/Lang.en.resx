@@ -824,5 +824,7 @@
   </data>
   <data name="sodonggop" xml:space="preserve">
     <value>Percent/Total</value>
+  <data name="Test" xml:space="preserve">
+    <value>New Year</value>
   </data>
 </root>
