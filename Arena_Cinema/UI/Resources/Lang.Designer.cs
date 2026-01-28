@@ -1456,6 +1456,51 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to BẮT ĐẦU BÁN.
+        /// </summary>
+        public static string SaleButton {
+            get {
+                return ResourceManager.GetString("SaleButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bán bắp nước, combo và các sản phẩm khác.
+        /// </summary>
+        public static string SaleProduct_Desc {
+            get {
+                return ResourceManager.GetString("SaleProduct_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🍿 BÁN SẢN PHẨM.
+        /// </summary>
+        public static string SaleProduct_Title {
+            get {
+                return ResourceManager.GetString("SaleProduct_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bán vé xem phim, chọn suất chiếu và ghế ngồi.
+        /// </summary>
+        public static string SaleTicket_Desc {
+            get {
+                return ResourceManager.GetString("SaleTicket_Desc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🎬 BÁN VÉ XEM PHIM.
+        /// </summary>
+        public static string SaleTicket_Title {
+            get {
+                return ResourceManager.GetString("SaleTicket_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SẢN PHẨM.
         /// </summary>
         public static string SANPHAM {
@@ -1497,6 +1542,15 @@ namespace UI.Resources {
         public static string SoDienThoai {
             get {
                 return ResourceManager.GetString("SoDienThoai", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to % Đóng góp.
+        /// </summary>
+        public static string sodonggop {
+            get {
+                return ResourceManager.GetString("sodonggop", resourceCulture);
             }
         }
         
@@ -1996,6 +2050,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 🛒 KHU VỰC BÁN HÀNG.
+        /// </summary>
+        public static string TitleSaleHome {
+            get {
+                return ResourceManager.GetString("TitleSaleHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tổng ca hoàn thành.
         /// </summary>
         public static string TongCaHoanThanh {
@@ -2208,6 +2271,15 @@ namespace UI.Resources {
         public static string VLTenGhe {
             get {
                 return ResourceManager.GetString("VLTenGhe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chào mừng đến bán hàng.
+        /// </summary>
+        public static string welcome {
+            get {
+                return ResourceManager.GetString("welcome", resourceCulture);
             }
         }
         

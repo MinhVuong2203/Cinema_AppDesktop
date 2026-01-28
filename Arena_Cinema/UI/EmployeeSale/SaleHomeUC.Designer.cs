@@ -77,7 +77,7 @@
             this.lblWelcomeMessage.Name = "lblWelcomeMessage";
             this.lblWelcomeMessage.Size = new System.Drawing.Size(433, 46);
             this.lblWelcomeMessage.TabIndex = 0;
-            this.lblWelcomeMessage.Text = "Chào mừng đến bán hàng";
+            this.lblWelcomeMessage.Text = global::UI.Resources.Lang.welcome;
             // 
             // lblDateTime
             // 
@@ -126,7 +126,7 @@
             this.lb_SaleProduct_Desc.Name = "lb_SaleProduct_Desc";
             this.lb_SaleProduct_Desc.Size = new System.Drawing.Size(440, 60);
             this.lb_SaleProduct_Desc.TabIndex = 3;
-            this.lb_SaleProduct_Desc.Text = "Bán bắp nước, combo và các sản phẩm khác";
+            this.lb_SaleProduct_Desc.Text = global::UI.Resources.Lang.SaleProduct_Desc;
             this.lb_SaleProduct_Desc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lb_SaleProduct_Title
@@ -137,7 +137,7 @@
             this.lb_SaleProduct_Title.Name = "lb_SaleProduct_Title";
             this.lb_SaleProduct_Title.Size = new System.Drawing.Size(440, 50);
             this.lb_SaleProduct_Title.TabIndex = 2;
-            this.lb_SaleProduct_Title.Text = "🍿 BÁN SẢN PHẨM";
+            this.lb_SaleProduct_Title.Text = global::UI.Resources.Lang.SaleProduct_Title;
             this.lb_SaleProduct_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_SaleProduct
@@ -162,7 +162,7 @@
             this.btn_SaleProduct.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btn_SaleProduct.Size = new System.Drawing.Size(300, 50);
             this.btn_SaleProduct.TabIndex = 0;
-            this.btn_SaleProduct.Text = "BẮT ĐẦU BÁN";
+            this.btn_SaleProduct.Text = global::UI.Resources.Lang.SaleButton;
             this.btn_SaleProduct.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btn_SaleProduct.UseAccentColor = false;
             this.btn_SaleProduct.UseVisualStyleBackColor = false;
@@ -190,7 +190,7 @@
             this.lb_SaleTicket_Desc.Name = "lb_SaleTicket_Desc";
             this.lb_SaleTicket_Desc.Size = new System.Drawing.Size(440, 60);
             this.lb_SaleTicket_Desc.TabIndex = 3;
-            this.lb_SaleTicket_Desc.Text = "Bán vé xem phim, chọn suất chiếu và ghế ngồi";
+            this.lb_SaleTicket_Desc.Text = global::UI.Resources.Lang.SaleTicket_Desc;
             this.lb_SaleTicket_Desc.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lb_SaleTicket_Title
@@ -201,7 +201,7 @@
             this.lb_SaleTicket_Title.Name = "lb_SaleTicket_Title";
             this.lb_SaleTicket_Title.Size = new System.Drawing.Size(440, 50);
             this.lb_SaleTicket_Title.TabIndex = 2;
-            this.lb_SaleTicket_Title.Text = "🎬 BÁN VÉ XEM PHIM";
+            this.lb_SaleTicket_Title.Text = global::UI.Resources.Lang.SaleTicket_Title;
             this.lb_SaleTicket_Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btn_SaleTicket
@@ -226,7 +226,7 @@
             this.btn_SaleTicket.NoAccentTextColor = System.Drawing.Color.Empty;
             this.btn_SaleTicket.Size = new System.Drawing.Size(300, 50);
             this.btn_SaleTicket.TabIndex = 0;
-            this.btn_SaleTicket.Text = "BẮT ĐẦU BÁN";
+            this.btn_SaleTicket.Text = global::UI.Resources.Lang.SaleButton;
             this.btn_SaleTicket.Type = ReaLTaiizor.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btn_SaleTicket.UseAccentColor = false;
             this.btn_SaleTicket.UseVisualStyleBackColor = false;
@@ -251,7 +251,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(1630, 80);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "🛒 KHU VỰC BÁN HÀNG";
+            this.lblTitle.Text = global::UI.Resources.Lang.TitleSaleHome;
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timerClock
