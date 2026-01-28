@@ -520,6 +520,15 @@ namespace UI.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Doanh Thu Trung Bình/Phim.
+        /// </summary>
+        public static string doanhthuTB {
+            get {
+                return ResourceManager.GetString("doanhthuTB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Doanh Thu Tháng.
         /// </summary>
         public static string doanhthuthang {
@@ -534,6 +543,15 @@ namespace UI.Resources {
         public static string doanhthutrungbinh {
             get {
                 return ResourceManager.GetString("doanhthutrungbinh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doanh Thu(VNĐ).
+        /// </summary>
+        public static string doanhthuvnd {
+            get {
+                return ResourceManager.GetString("doanhthuvnd", resourceCulture);
             }
         }
         
@@ -1456,11 +1474,11 @@ namespace UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to % Đóng góp.
+        ///   Looks up a localized string similar to % Đóng Góp.
         /// </summary>
-        public static string sodonggop {
+        public static string sodongop {
             get {
-                return ResourceManager.GetString("sodonggop", resourceCulture);
+                return ResourceManager.GetString("sodongop", resourceCulture);
             }
         }
         
@@ -1515,6 +1533,15 @@ namespace UI.Resources {
         public static string sophim {
             get {
                 return ResourceManager.GetString("sophim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Số Vé Bán.
+        /// </summary>
+        public static string soveban {
+            get {
+                return ResourceManager.GetString("soveban", resourceCulture);
             }
         }
         
@@ -1632,6 +1659,15 @@ namespace UI.Resources {
         public static string TenGhePhaiUnique {
             get {
                 return ResourceManager.GetString("TenGhePhaiUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tên Phim.
+        /// </summary>
+        public static string tennphim {
+            get {
+                return ResourceManager.GetString("tennphim", resourceCulture);
             }
         }
         
@@ -1983,6 +2019,15 @@ namespace UI.Resources {
         public static string TongPhim {
             get {
                 return ResourceManager.GetString("TongPhim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tổng số phim.
+        /// </summary>
+        public static string tongsophim {
+            get {
+                return ResourceManager.GetString("tongsophim", resourceCulture);
             }
         }
         

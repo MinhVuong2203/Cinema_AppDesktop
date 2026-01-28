@@ -822,9 +822,25 @@
   <data name="doanhthutrungbinh" xml:space="preserve">
     <value>Average Revenue /film</value>
   </data>
-  <data name="sodonggop" xml:space="preserve">
-    <value>Percent/Total</value>
   <data name="Test" xml:space="preserve">
     <value>New Year</value>
+  </data>
+  <data name="sodongop" xml:space="preserve">
+    <value>Percent/Total</value>
+  </data>
+  <data name="tongsophim" xml:space="preserve">
+    <value>Total of Film</value>
+  </data>
+  <data name="doanhthuTB" xml:space="preserve">
+    <value>Average/Film</value>
+  </data>
+  <data name="soveban" xml:space="preserve">
+    <value>Ticket sold</value>
+  </data>
+  <data name="doanhthuvnd" xml:space="preserve">
+    <value>Revenue(VNĐ)</value>
+  </data>
+  <data name="tennphim" xml:space="preserve">
+    <value>Movie's Name</value>
   </data>
 </root>

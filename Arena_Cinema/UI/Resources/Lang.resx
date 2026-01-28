@@ -822,9 +822,25 @@
   <data name="doanhthutrungbinh" xml:space="preserve">
     <value>Doanh Thu TB/Phim</value>
   </data>
-  <data name="sodonggop" xml:space="preserve">
-    <value>% Đóng góp</value>
   <data name="Test" xml:space="preserve">
     <value>Tết</value>
+  </data>
+  <data name="sodongop" xml:space="preserve">
+    <value>% Đóng Góp</value>
+  </data>
+  <data name="tongsophim" xml:space="preserve">
+    <value>Tổng số phim</value>
+  </data>
+  <data name="doanhthuTB" xml:space="preserve">
+    <value>Doanh Thu Trung Bình/Phim</value>
+  </data>
+  <data name="soveban" xml:space="preserve">
+    <value>Số Vé Bán</value>
+  </data>
+  <data name="doanhthuvnd" xml:space="preserve">
+    <value>Doanh Thu(VNĐ)</value>
+  </data>
+  <data name="tennphim" xml:space="preserve">
+    <value>Tên Phim</value>
   </data>
 </root>
