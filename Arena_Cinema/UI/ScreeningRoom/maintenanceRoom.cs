@@ -36,12 +36,8 @@ namespace UI.ScreeningRoom
         private void LoadMaintenanceRooms()
         {
             panelRoomsList.Controls.Clear();
-
-            // Tạo BLL mới để tránh cache
             _roomBLL = new RoomBLL();
             var allRooms = _roomBLL.GetAllRooms();
-
-            // Lọc chỉ lấy phòng đang bảo trì
             var maintenanceRooms = allRooms.Where(r => r.statement == "Bảo trì").ToList();
 
             if (!maintenanceRooms.Any())
@@ -128,8 +124,6 @@ namespace UI.ScreeningRoom
         private void FillCard(ReaLTaiizor.Controls.MaterialCard card, Room room)
         {
             var p = (Panel)card.Controls[0];
-
-            // ===== ẢNH =====
             var pic = (PictureBox)p.Controls["ptbRoomImage"];
 
             if (!string.IsNullOrEmpty(room.ImageUrl))
@@ -164,23 +158,17 @@ namespace UI.ScreeningRoom
             {
                 pic.Image = Properties.Resources.roomDefault;
             }
-
-            // ===== CÁC LABEL =====
             ((Label)p.Controls["lblRoomID"]).Text = $"ID: {room.RoomID}";
             ((Label)p.Controls["lblEmployeeName"]).Text = room.RoomName;
             ((Label)p.Controls["lblRoomType"]).Text = room.RoomType ?? "Standard";
             ((Label)p.Controls["lblSeatcount"]).Text = $"{room.SeatCount ?? 0} ghế";
             ((Label)p.Controls["lblDescription"]).Text = room.Description ?? "Không có mô tả";
-
-            // ===== NÚT KHÔI PHỤC =====
             var btnKhoiPhuc = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnBaoTri"];
             btnKhoiPhuc.Tag = room.RoomID;
             btnKhoiPhuc.Text = "Khôi phục";
             btnKhoiPhuc.BackColor = Color.Green;
             btnKhoiPhuc.Click -= BtnKhoiPhuc_Click;
             btnKhoiPhuc.Click += BtnKhoiPhuc_Click;
-
-            // ===== NÚT SẮP XẾP GHẾ =====
             var btnXepGhe = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnXepGhe"];
             btnXepGhe.Tag = room.RoomID;
             btnXepGhe.Text = "Sắp xếp ghế";
@@ -223,14 +211,11 @@ namespace UI.ScreeningRoom
         private void BtnXepGhe_Click(object sender, EventArgs e)
         {
             int roomId = (int)((Control)sender).Tag;
-
-            // Chuyển sang trang quản lý ghế
             _home.LoadControl(new SeatManagementUC(_home, roomId));
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            // Quay về trang quản lý phòng
             _home.LoadControl(new Room_homeUC(_home, _room));
         }
 

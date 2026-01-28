@@ -34,8 +34,6 @@ namespace UI.ScreeningRoom
         private void LoadDeletedRooms()
         {
             panelRoomsList.Controls.Clear();
-
-            // DÙNG METHOD MỚI – BẮT BUỘC
             var deletedRooms = _roomBLL.GetDeletedRooms();
 
             if (!deletedRooms.Any())
@@ -129,31 +127,18 @@ namespace UI.ScreeningRoom
             string imgPath = string.IsNullOrEmpty(room.ImageUrl) ? "Image\\Room\\roomDefault.png" : room.ImageUrl;
             try { ImgHelper.DisplayImageFromRelative(imgPath, pic); }
             catch { pic.Image = Properties.Resources.roomDefault; }
-
-            // ID
             ((Label)p.Controls["lblRoomID"]).Text = $"ID: {room.RoomID} (đã xóa)";
-
-            // Tên phòng
             ((Label)p.Controls["lblEmployeeName"]).Text = room.RoomName;
-
-            // Loại phòng
             ((Label)p.Controls["lblRoomType"]).Text = room.RoomType ?? "Standard";
-
-            // Số ghế
             ((Label)p.Controls["lblSeatcount"]).Text = $"{room.SeatCount ?? 0} ghế";
-
-            // Mô tả
             ((Label)p.Controls["lblDescription"]).Text = room.Description ?? "Không có mô tả";
-
-            // NÚT KHÔI PHỤC (thay btnXoa cũ)
             var btnRestore = (ReaLTaiizor.Controls.MaterialButton)p.Controls["btnKhoiphuc"];
             btnRestore.Text = global::UI.Resources.Lang.KhoiPhuc;
-            btnRestore.BackColor = Color.FromArgb(0, 192, 0); // Xanh lá
+            btnRestore.BackColor = Color.FromArgb(0, 192, 0); 
             btnRestore.ForeColor = Color.White;
             btnRestore.Tag = room.RoomID;
-
-            btnRestore.Click -= BtnRestore_Click; // Gỡ cũ
-            btnRestore.Click += BtnRestore_Click;   // Gắn mới
+            btnRestore.Click -= BtnRestore_Click; 
+            btnRestore.Click += BtnRestore_Click; 
         }
 
         private void BtnRestore_Click(object sender, EventArgs e)
@@ -163,11 +148,10 @@ namespace UI.ScreeningRoom
             if (MessageBox.Show($"Khôi phục phòng ID {roomId}?", "Xác nhận khôi phục",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                // Gọi BLL để khôi phục (chỉ đổi IsDeleted = false)
-                var result = _roomBLL.RestoreRoom(roomId); // bạn sẽ thêm method này
+                var result = _roomBLL.RestoreRoom(roomId);
                 MessageBox.Show(result);
 
-                LoadDeletedRooms(); // Refresh thùng rác
+                LoadDeletedRooms();
             }
         }
 
