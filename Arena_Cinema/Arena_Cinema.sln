@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyGen", "KeyGen\KeyGen.csp
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CinemaKey", "CinemaKey\CinemaKey.vdproj", "{DC451807-0DAB-57E5-890E-2DFF82944924}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Arena", "Arena\Arena.vdproj", "{78D42E75-25A6-CBBA-5DC5-8C9B23B01D37}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,8 @@ Global
 		{6B5796C8-D498-457E-B66F-8CFDD8D99195}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DC451807-0DAB-57E5-890E-2DFF82944924}.Debug|Any CPU.ActiveCfg = Debug
 		{DC451807-0DAB-57E5-890E-2DFF82944924}.Release|Any CPU.ActiveCfg = Release
+		{78D42E75-25A6-CBBA-5DC5-8C9B23B01D37}.Debug|Any CPU.ActiveCfg = Debug
+		{78D42E75-25A6-CBBA-5DC5-8C9B23B01D37}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
