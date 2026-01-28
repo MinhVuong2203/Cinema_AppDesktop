@@ -1285,16 +1285,20 @@ namespace UI.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Phòng đang bào trì.
-        /// </summary>
-        public static string phongBaoTri {
-            get {
-                return ResourceManager.GetString("phongBaoTri", resourceCulture);
         ///   Looks up a localized string similar to PHIM SẮP CHIẾU.
         /// </summary>
         public static string phimsapchieu {
             get {
                 return ResourceManager.GetString("phimsapchieu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phòng đang bào trì.
+        /// </summary>
+        public static string phongBaoTri {
+            get {
+                return ResourceManager.GetString("phongBaoTri", resourceCulture);
             }
         }
         
